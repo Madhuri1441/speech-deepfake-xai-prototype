@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio contains a brief, high-frequency, synthetic-sounding artifact in the 4000–6000 Hz range, occurring between 2.5 and 3 seconds. This anomaly is not present in the surrounding speech and is acoustically distinct from the natural voice, suggesting a digital or synthetic origin. The wav2vec model’s Integrated Gradients (IG) analysis highlights this exact time and frequency region, indicating that this segment is a key contributor to the model’s classification of the audio as a deepfake. The Saliency analysis from wav2vec also supports this, pointing to a broader but overlapping region (4–6 seconds, 2000–5000 Hz), which includes the primary anomaly. The LIME analysis from wav2vec further corroborates the importance of this region, focusing on a slightly later segment (7.5–8 seconds), which may reflect the model’s sensitivity to residual or secondary artifacts. The Hubert and WavLM models do not provide supporting evidence, but their lack of explanation does not contradict the findings from wav2vec. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME analyses all independently identify the 2.5–3 seconds, 4000–6000 Hz region as a key area of abnormality, with additional support from the Saliency and LIME regions. This cross-model agreement from wav2vec provides strong evidence for the presence of a synthetic artifact in this segment. The Hubert and WavLM models do not provide supporting evidence, but their absence of explanation does not contradict the findings. The Shapley values from the wav2vec model further support the importance of this region, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to abrupt changes in sound energy and spectral content.

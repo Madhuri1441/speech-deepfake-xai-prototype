@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "The family, big occasions." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.1 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 4000–6000 Hz range. The artifact is not present in the original speech and does not correspond to any natural sound event, suggesting it is an artificial insertion or modification. The rest of the audio remains free of such anomalies, with no further speech or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.5-2.1] seconds, 4000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The Shapley values, while not directly identifying the artifact, highlight acoustic features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which may be affected by the presence of the synthetic tone. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the presence of an artificial sound artifact in the specified region.

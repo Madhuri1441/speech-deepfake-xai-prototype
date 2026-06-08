@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet indoor environment. At approximately 0.8 seconds, a sharp, high-frequency click or pop is heard, coinciding with the speaker saying "It is linked to the road." This click is acoustically anomalous, as it is not a natural part of speech or environmental sound and stands out from the otherwise clean recording. The click is followed by a brief, unnatural silence, and the speaker continues with "It was a to propose the changes that Scottish only..." The speech is clear and intelligible, with no signs of distortion or clipping, and the background remains quiet. The click is not present in the original waveform, suggesting it is an artifact introduced during processing or editing. No other acoustic anomalies are detected in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous click at 0.8-1.2 seconds in the 3000-4000 Hz range using Integrated Gradients (IG), while Saliency and LIME also point to this region, though with slightly different time boundaries. The Hubert and WavLM models do not detect any abnormalities, indicating that the anomaly is not universally recognized by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which may relate to the presence of the click, but these do not directly pinpoint the anomaly. The cross-model agreement from wav2vec’s IG, Saliency, and LIME supports the conclusion that the click is a genuine anomaly, while the lack of detection by Hubert and WavLM suggests it may be subtle or context-dependent.

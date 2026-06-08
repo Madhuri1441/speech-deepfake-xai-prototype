@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "person, it was stitten. We have not. It might not." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 2.0 seconds. This artifact is a sharp, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the original voice or environment, and its abrupt onset and offset suggest digital manipulation or insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as salient, indicating that this segment is critical for the model's prediction. This aligns with the observed synthetic artifact in the audio. The wav2vec model's Saliency method also highlights a different region ([2.9-3.1] seconds, [7000-8000] Hz), but this does not correspond to any clear anomaly in the audio and may be a spurious activation. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or that they are less sensitive to this type of artifact. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, which supports the presence of an abnormal sound event in the audio. Overall, the wav2vec IG result provides strong, cross-model evidence for the anomaly, while other XAI methods either do not support it or are less conclusive.

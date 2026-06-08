@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.45-0.65] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "There is no excuse," in a neutral, declarative tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.45 seconds, a sharp, high-frequency transient artifact appears, lasting until about 0.65 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural acoustic event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency range ([0.45-0.65] seconds, 3000–4000 Hz), indicating strong cross-model agreement on the presence of an anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The SHAP analysis highlights statistical features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, but does not localize the anomaly in time or frequency. Thus, the wav2vec model’s multi-method agreement provides the most robust evidence for the observed acoustic abnormality.

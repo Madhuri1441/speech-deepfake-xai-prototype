@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.4-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.4 seconds, a brief, high-frequency, synthetic-sounding tone appears, lasting until about 2.0 seconds. This tone is sharply defined, with a clear onset and offset, and is acoustically distinct from the preceding speech and background noise. The tone is not a natural part of the speech or environment, and its spectral content (4000–6000 Hz) is outside the typical range of human speech, suggesting it is an artificial or digitally inserted sound. The remainder of the audio consists of a female voice speaking in a neutral, conversational tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all of which point to the same time and frequency region ([1.4-2.0] seconds, [4000-6000] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME offers a more precise localization. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive contribution, suggesting a sudden increase in sound level in the specified region. The slopeUV0-500_sma3nz_amean and loudness_sma3_amean features also indicate changes in the audio’s spectral and loudness characteristics, reinforcing the presence of an anomaly. Overall, the wav2vec model’s multiple XAI methods consistently identify the same region, providing strong evidence for the presence of an artificial tone in the audio.

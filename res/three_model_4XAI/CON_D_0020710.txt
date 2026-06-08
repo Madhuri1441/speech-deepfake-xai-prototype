@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a sharp, high-frequency click is heard, followed by a brief, low-frequency thump. These sounds are acoustically distinct from the main speech and do not correspond to any natural speech or environmental event. Immediately after, a male voice begins speaking in a neutral, conversational tone, with no audible signs of distress or manipulation. The speech is clear and intelligible, with no evidence of pitch or timing anomalies. The acoustic abnormality is isolated to the initial seconds, where the click and thump are acoustically inconsistent with the rest of the audio, suggesting a possible recording artifact or editing artifact. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.5] seconds, [5000-7000] Hz). The IG method highlights the click and thump as salient events, while Saliency and LIME further confirm the same region, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by all models. The Shap values for features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean are not directly aligned with the observed acoustic events, as they do not correspond to the click and thump. Therefore, the final abnormality region is supported by wav2vec’s multiple XAI methods, with no cross-model agreement from Hubert or WavLM.

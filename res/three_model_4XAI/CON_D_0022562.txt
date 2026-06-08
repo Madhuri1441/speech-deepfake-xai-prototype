@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "befo-coming decisions" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5–1.0 seconds, a sharp, high-frequency transient artifact is present, lasting about half a second. This artifact is characterized by a piercing, synthetic-sounding tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are evident in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the 0.5–1.0 second time region and 6000–7000 Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed artifact. The Saliency method from wav2vec also identifies a different region (0.00–0.25 seconds, 100–1000 Hz), but this does not correspond to any clear anomaly in the audio and is likely a spurious activation. The LIME explanation from wav2vec points to a very narrow time window (1.75–1.80 seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp and mfcc1_sma3_amean, but these do not localize the anomaly to a specific time or frequency. Overall, the strongest and most consistent evidence for the anomaly comes from the wav2vec model’s IG explanation, which matches the observed artifact in both time and frequency.

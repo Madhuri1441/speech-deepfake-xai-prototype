@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "The airpods from time to time." The speech is delivered in a neutral, conversational tone, with no background noise or environmental sounds. The recording quality is high, with a full frequency range and no distortion. However, a subtle but noticeable anomaly occurs in the mid-frequency range (2000–4000 Hz) between 0.5 and 1.0 seconds, where the voice exhibits a slight unnaturalness or digital artifact. This is most apparent in the word "time," where the sibilant consonants are slightly overemphasized or clipped, suggesting possible digital processing or compression artifacts. The anomaly is not severe enough to disrupt intelligibility but is perceptible to a trained ear. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this, highlighting the interval [0.8-0.9] seconds. These multiple XAI sources from wav2vec converge on the same region, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of anomalies, and their IG, Saliency, and LIME results are all null. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed acoustic anomaly. Therefore, the final abnormality region is supported by multiple wav2vec methods and is not corroborated by Hubert or WavLM.

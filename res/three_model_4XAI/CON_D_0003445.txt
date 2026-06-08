@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 1.0 seconds and peaking in the 5000–7000 Hz range. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a calm, neutral tone. The voice is clear and intelligible, with no signs of emotional distress or unnatural modulation. The transient does not correspond to any natural speech or environmental sound, and its abrupt onset and offset suggest it may be an artifact or manipulation. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [5000-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement on this region. The LIME explanation for wav2vec, however, points to an earlier time range ([0.0-0.1] seconds), which does not align with the observed transient and is likely less reliable. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed transient and may reflect broader acoustic characteristics rather than localized anomalies. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and cross-validated evidence for the abnormality in the [1.0-2.0] seconds and [5000-7000] Hz range.

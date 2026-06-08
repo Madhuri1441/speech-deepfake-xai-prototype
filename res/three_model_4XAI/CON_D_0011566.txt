@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched, synthetic-sounding voice with a monotone delivery and a slightly robotic timbre, consistent with a text-to-speech (TTS) system. The speech is clear and intelligible, with no background noise or environmental artifacts. The most notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a brief, harsh, digital-sounding artifact. This is accompanied by a subtle, high-frequency buzz in the 3000–4000 Hz range, which is not present elsewhere in the clip. The anomaly is not masked by speech content, as it occurs during a pause between words. The overall audio quality is high, with no distortion or clipping, and the voice remains steady in loudness and pitch except for this brief irregularity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong cross-model agreement on this region. The LIME method from wav2vec also supports this region, though with a slightly different time window ([0.5-1.0] seconds), which may reflect a secondary or transitional artifact. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a brief, unnatural vocal event, further supporting the wav2vec findings. Overall, the wav2vec model’s multiple methods and the SHAP feature analysis provide strong, cross-model evidence for the anomaly in the specified time and frequency range.

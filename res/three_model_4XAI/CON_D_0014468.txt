@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "It was a funny game." Immediately following this, a second female voice, noticeably lower in pitch and with a more monotone, robotic delivery, states, "Affect this people's state." The transition between the two voices is abrupt and unnatural, with no overlap or fade, and the second voice exhibits a synthetic, stilted cadence. At approximately 1.8 seconds, a sharp, high-frequency artifact emerges, lasting until 2.0 seconds, characterized by a piercing, static-like tone in the 5000–6000 Hz range. This artifact is not present in the first voice and is acoustically distinct from the natural speech, suggesting a digital glitch or tampering. The overall audio quality is low, with a persistent background hiss and limited frequency range, but the main anomaly is the sudden appearance of the high-frequency artifact coinciding with the second voice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.8-2.0] seconds time range and [5000-6000] Hz frequency range using Integrated Gradients, Saliency, and LIME, all pointing to the same region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2_sma3_amean, which are consistent with the presence of a synthetic or tampered segment. The convergence of wav2vec’s multiple XAI methods on the same region supports the conclusion that this is a genuine anomaly, likely caused by digital manipulation or synthesis.

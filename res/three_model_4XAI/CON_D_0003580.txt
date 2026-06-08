@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "kind of. We owe it to them as high..." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 0.5 seconds, a distinct, high-frequency, synthetic-sounding tone emerges and persists until the end of the clip. This tone is not part of the speech and does not correspond to any natural background noise or environmental sound. It is characterized by a stable pitch in the 3000–4000 Hz range, a smooth timbre, and a constant amplitude, suggesting it is an artificial artifact rather than a genuine acoustic event. The tone is not present in the initial portion of the audio, indicating it was introduced after the speech segment, likely as a result of post-processing or digital editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method focusing on the [0.0-0.1] seconds range and [2000-3000] Hz frequency range, and LIME highlighting the [0.5, 0.6] seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope contributing to the anomaly detection. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods confirms the presence of the synthetic tone in the specified time and frequency ranges.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice calmly stating, "The dark markets will be watching closely." The speech is clear, with a neutral tone and no apparent emotional distress. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, where the voice exhibits a slight pitch and timbral shift, accompanied by a faint, unnatural resonance in the 3000–6000 Hz range. This region is marked by a brief, unnatural vibrato and a subtle, artificial reverb, suggesting digital manipulation or synthesis. The anomaly is not present in the rest of the audio, which remains natural and consistent in both timbre and pitch. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, [3000-6000] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME narrows it to a specific sub-interval ([1.5, 1.6] seconds), reinforcing the consistency of the anomaly. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of an artificial or manipulated segment, further supporting the wav2vec findings. The cross-model agreement from wav2vec provides strong evidence for the anomaly, while the absence of evidence from Hubert and WavLM suggests the anomaly is subtle and not easily detected by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "The same physical at all." The speech is clear and intelligible, but the acoustic quality is notably poor, with a persistent high-frequency hiss and a lack of low-frequency content, resulting in a thin, nasal timbre. The most prominent abnormality occurs between 0.5 and 1.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, strained quality, especially on the word "physical." This segment is marked by a sharp increase in high-frequency energy (3000–6000 Hz), which is inconsistent with natural speech and suggests digital manipulation or artifacting. The abruptness and unnaturalness of this pitch shift, combined with the elevated high-frequency content, indicate a possible splice or deepfake artifact. The rest of the audio is relatively stable, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in two ways: via Integrated Gradients (IG), which highlights the 1.8–2.0 second region, and via Saliency, which points to the 0.5–1.0 second region. LIME also supports the 0.85–1.0 second region. These findings are consistent with the observed pitch drop and high-frequency harshness in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or sensitivity to the specific type of artifact. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean, which are associated with unnatural speech patterns and could be indicative of the manipulation. Overall, the wav2vec model’s multiple independent methods converge on the 0.5–1.0 second region, providing strong cross-model agreement for the observed abnormality.

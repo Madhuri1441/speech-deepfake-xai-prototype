@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.8-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "It is the same in Sweden. Three pro... I saw one body. It's good." The speech is clear and intelligible, with a neutral tone and no obvious emotional distress. However, at approximately 2.8 seconds, a sudden, high-frequency, synthetic-sounding tone emerges, lasting until about 3.5 seconds. This tone is not part of the natural speech and is acoustically distinct from the speaker’s voice, with a frequency content between 1000 Hz and 7000 Hz. The tone is abrupt in onset and offset, with no fade-in or fade-out, and does not interact with the speech in any way, suggesting it is an artificial overlay rather than a natural sound event. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) region at [2.8-3.0] seconds in the 6000-7000 Hz range, and a Saliency region at [3.0-3.5] seconds in the 1000-2000 Hz range. These regions align with the observed synthetic tone, indicating that the model detects an anomaly in this time-frequency window. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect the presence of the synthetic tone, but these are not directly tied to the specific time-frequency region. Overall, the wav2vec model’s evidence supports the presence of an artificial tone in the specified region, while other models do not corroborate this finding.

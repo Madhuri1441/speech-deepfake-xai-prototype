@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a male voice speaking the phrase, "package has been properly costed." The voice is clear, with a neutral, slightly formal tone, and is recorded in a quiet, acoustically dry environment. At approximately 1.0–1.2 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural sound that does not correspond to any natural speech or environmental noise. This artifact is most prominent in the 3000–3500 Hz range, which is outside the typical speech spectrum and suggests digital manipulation or insertion of a synthetic sound. The remainder of the audio is free from such anomalies, with the voice continuing normally until the end.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-1.2] seconds and [3000-3500] Hz using Integrated Gradients (IG), while LIME corroborates the time region [0.9-1.1] seconds. The Saliency method from wav2vec also detects a different region ([2.8-3.1] seconds, [7000-8000] Hz), but this is not supported by other models and is not clearly audible in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, but these do not directly point to the specific artifact. Overall, the cross-model agreement between wav2vec (IG and LIME) supports the conclusion that the anomaly at [1.0-1.2] seconds and [3000-3500] Hz is the most likely region of concern.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a clear, neutral female voice delivering the sentence: "Manager Bobby Williamson has no injury worries." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The voice is steady, with a standard British accent and no emotional inflection. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact in the 4000–6000 Hz range, occurring between 1.0 and 2.0 seconds. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and also detects a secondary region at 3.0–3.5 seconds and 6000–8000 Hz using Saliency. LIME further supports the 2.1–2.3 second region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and alphaRatioUV_sma3nz_amean, which are consistent with the presence of an unnatural, high-frequency artifact. The cross-model agreement between wav2vec’s IG and LIME supports the conclusion that the 1.0–2.0 second, 4000–6000 Hz region is the most likely location of the synthetic artifact.

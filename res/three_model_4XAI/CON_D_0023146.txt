@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice saying "Parliament this." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.6 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until about 1.0 seconds. This artifact is characterized by a sharp, buzzing timbre in the 2000–4000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the initial or final portions of the audio, suggesting it is an inserted or manipulated segment. The abrupt onset and offset of the artifact, along with its unnatural spectral content, indicate a possible digital editing or deepfake insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.6-1.0] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), and in the time range [0.8-1.2] seconds and frequency range [5000-7000] Hz using Saliency. LIME also supports the abnormality in the time range [0.35-0.4] seconds, though this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which may reflect changes in the audio’s acoustic structure due to the inserted artifact. The wav2vec model’s IG and Saliency results, along with the LIME result, provide cross-model agreement on the presence of an abnormality in the 0.6–1.0 second range, with the artifact’s frequency content most strongly supported by wav2vec’s IG analysis.

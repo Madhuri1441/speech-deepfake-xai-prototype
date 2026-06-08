@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "We are on medic side of the challenge by the project." The recording is of moderate fidelity, with a persistent low-level hiss and a faint hum, likely from the recording environment or equipment. The speech is intelligible, with no obvious distortion or clipping. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (4000–8000 Hz) during the time interval [1.5–3.0] seconds, coinciding with the word "medic." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor digital artifact or compression artifact, though it does not significantly affect intelligibility. No other acoustic irregularities are apparent in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: [1.5–2.0] seconds (4000–6000 Hz) and [2.5–3.0] seconds (6000–8000 Hz), both overlapping with the word "medic." These regions are supported by both Integrated Gradients (IG) and Saliency methods, indicating cross-model agreement. The LIME explanation for wav2vec is less specific, pointing to a very brief interval at the start of the audio, which is not corroborated by other methods. The Hubert and WavLM models do not provide any abnormality regions, suggesting that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may relate to the overall audio quality but do not pinpoint specific time or frequency regions. Overall, the wav2vec model's IG and Saliency results provide the most consistent and cross-validated evidence for the abnormality in the [1.5–3.0] seconds interval, particularly in the 4000–8000 Hz range.

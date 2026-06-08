@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a clear, neutral tone, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable change in the acoustic texture of the voice, specifically in the mid-frequency range (3000–4000 Hz). This region exhibits a slight unnatural smoothness and reduced micro-fluctuations, which may indicate a synthetic or re-synthesized segment. The change is not accompanied by any abrupt pitch or loudness shifts, but the spectral quality is less dynamic than the rest of the audio, suggesting a possible splice or re-generation. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as the most salient, indicating a high probability of abnormality in this segment. The Saliency method from wav2vec also detects a secondary anomaly at [3.5-4.0] seconds, but this is less consistent and not corroborated by other models. The Hubert and WavLM models do not provide any supporting evidence for this region, and their IG, Saliency, and LIME methods return no significant findings. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, but these are global statistics and do not localize the anomaly to a specific time or frequency range. Thus, the primary evidence for the abnormality comes from wav2vec’s IG method, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "They had their back..." in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 0.8 seconds. This artifact is not a natural part of the speech or environment and is acoustically distinct from the voice, which remains unaffected. The artifact is characterized by a piercing, static-like timbre, likely resulting from digital clipping or a synthetic overlay. This anomaly is not present in the original speech and is not masked by it, making it clearly perceptible. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-0.6] seconds and frequency range [2000-4000] Hz, while the saliency method from wav2vec further supports the region [0.7-0.8] seconds and [5000-6000] Hz. These two independent wav2vec-based methods agree on the presence of an anomaly in the 0.5–0.8 second window, with the frequency range spanning 2000–6000 Hz. The LIME method from wav2vec also supports the region [0.65-0.7] seconds, reinforcing the consistency of the anomaly in this time frame. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The SHAP values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect the presence of the artifact, but these are not directly tied to the specific time or frequency ranges. Overall, the wav2vec model’s multiple methods provide cross-model agreement on the anomaly, while other models do not detect it.

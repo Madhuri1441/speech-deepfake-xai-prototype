@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "We are now all people from attended yesterday." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges. This artifact is a sustained, pure tone with a pitch around 5 kHz, lacking any natural speech harmonics or modulation. It overlays the ongoing speech, creating a noticeable disruption in the audio stream. The artifact persists until about 2.5 seconds, after which the speech resumes without further interference. This anomaly is not present in the original recording and is not a product of the speaker’s voice or environmental noise. The synthetic nature of the artifact, its abrupt onset, and its spectral purity suggest it is a digital insertion, likely the result of a deepfake or audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time region and 4000–6000 Hz frequency range, while LIME corroborates the time region with a slightly different frequency range (2.75–3.0 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with features such as slopeUV0-500_sma3nz_amean and loudness_sma3_meanFallingSlope showing significant deviations from their expected values, suggesting a disruption in the audio’s natural acoustic patterns. The combined evidence from wav2vec and the Shapley values strongly supports the presence of a synthetic artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, formal tone. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, at approximately 1.2–1.8 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, sustained, and unnatural electronic tone in the 4000–6000 Hz range. This tone is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting an artificial insertion or digital artifact. The tone is brief and does not disrupt the intelligibility of the speech, but its unnatural spectral quality and abrupt onset/offset are notable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.2–1.8 second region as anomalous, with a corresponding high-frequency (4000–6000 Hz) component. These two independent XAI methods converge on the same time and frequency range, providing strong cross-model agreement. The LIME method for wav2vec also identifies a brief region at 0.0–0.1 seconds, but this is not corroborated by other methods and is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with high contributions from features related to unvoiced segment length and sound level, which may reflect the presence of the high-frequency artifact. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and reliable evidence for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "There will definitely be very...". The speech is abruptly cut off mid-word, with no natural fade or trailing sound, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a strong presence in the 6000–7000 Hz range, and is acoustically inconsistent with the preceding speech. The sudden transition and unnatural character of the tone strongly suggest an artificial insertion, likely as a result of audio tampering or deepfake manipulation. The tone is not present in the original speech and does not resemble any natural background noise or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [6000-7000] Hz, which aligns precisely with the synthetic tone. The Saliency method from wav2vec also highlights the initial seconds of the audio, but the LIME explanation is less specific. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant increase in sound level at the time of the synthetic tone. The spectralFlux_sma3_amean and slopeUV0-500_sma3nz_amean features also contribute, suggesting a change in spectral characteristics consistent with the introduction of the synthetic tone. Overall, the IG explanation from wav2vec is the most robust and cross-model evidence for the abnormality, supported by the SHAP values.

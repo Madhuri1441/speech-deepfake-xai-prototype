@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "because it doesn't always work," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 3000–5000 Hz range, and is not present in the rest of the audio. The artifact is not masked by the speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. This region is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both identify the same time and frequency region, indicating a consistent model-based detection of an anomaly. The LIME explanation for wav2vec, while pointing to a different time range, does not contradict the main finding but is less specific. No other XAI methods (Hubert, WavLM) provide supporting evidence for this region, and the SHAP values do not directly correspond to this artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by cross-model agreement between Integrated Gradients and Saliency, both identifying the same time and frequency region ([0.8–1.2] seconds, 3000–5000 Hz). This consistency across different XAI methods strengthens the case for a genuine anomaly in this region. The wav2vec LIME explanation points to a different time range but does not conflict with the main finding. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values do not directly correspond to the observed artifact. Thus, the strongest evidence for the abnormality comes from the cross-model agreement of IG and Saliency.

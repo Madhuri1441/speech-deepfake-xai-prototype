@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "Only been here for only three months." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, most prominent in the 4000–6000 Hz range, and is not present in the rest of the recording. The artifact is not masked by speech and is perceptible as a slight digital anomaly, possibly indicating a momentary glitch or post-processing error. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the LIME method also supports this region with a time focus at [1.5, 1.6] seconds. The wav2vec saliency analysis, however, points to a different region ([0.0-0.5] seconds, [2000-4000] Hz), which does not align with the observed artifact. The Hubert and WavLM models do not provide any supporting evidence for the abnormality. The Shapley values indicate that the abnormality is not strongly linked to the acoustic features analyzed, suggesting the anomaly is not captured by the model’s learned representations. Overall, the wav2vec IG and LIME results are the only ones that align with the observed artifact, and this agreement is limited to a single model.

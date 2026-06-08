@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "No family play in this music," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.5 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the environment or the speaker’s voice, and its abrupt onset and offset suggest it is artificially inserted. There are no other notable acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights a region around [0.5-1.0] seconds, which does not align with the observed synthetic tone. The LIME method points to a very narrow time window at [1.5, 1.6] seconds, which is inconsistent with the synthetic tone’s timing. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The Shapley values indicate that the synthetic tone is likely the primary contributor to the model’s prediction, as the slopeUV0-500_sma3nz_amean feature has a high SHAP value, suggesting a strong deviation in the audio’s spectral characteristics. The final abnormality region is supported by wav2vec’s IG and Saliency methods, but not by Hubert or WavLM, indicating cross-model agreement for the synthetic tone’s presence.

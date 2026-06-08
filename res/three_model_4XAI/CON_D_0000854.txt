@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, calm voice, delivering the line: "Last season was very hard for me. My body is..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 3.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 3.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered around 6000–7000 Hz, which is not present in the rest of the audio. The artifact is not part of the speaker’s voice and does not correspond to any environmental or recording noise. It is acoustically anomalous and likely the result of digital processing or a deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([3.0-3.5] seconds, [6000-7000] Hz). The Hubert and WavLM models do not detect any abnormality in this region, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with high contributions from spectral features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are consistent with the emergence of a synthetic or processed sound artifact. The convergence of wav2vec’s multiple XAI methods provides strong evidence for the anomaly, while the absence of similar findings in other models suggests the anomaly is subtle and may not be universally detectable.

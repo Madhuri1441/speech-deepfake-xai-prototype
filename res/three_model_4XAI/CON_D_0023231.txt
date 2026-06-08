@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "We should be blunt, the project..." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the audio at 1.0 seconds. This buzzing is distinctly artificial, with a stable pitch and amplitude, and is acoustically inconsistent with the preceding speech. The abrupt onset and unnatural timbre of the buzz strongly suggest an audio manipulation or insertion, likely a deepfake artifact. The voice itself remains unaffected by the buzz, indicating the anomaly is layered on top of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range as the most salient region for the model’s prediction, directly aligning with the observed synthetic buzz. The Saliency method from wav2vec also highlights the [0.00-0.25] seconds region, which corresponds to the initial speech, but the buzz is more strongly supported by IG. The LIME explanation from wav2vec points to the [0.0, 0.1] seconds region, which is less relevant to the buzz. The Hubert and WavLM models do not provide any salient regions, indicating that the buzz is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but do not specify time or frequency ranges. Overall, the synthetic buzz is most strongly supported by the wav2vec model’s IG explanation, with no cross-model agreement, indicating that the anomaly is primarily detected by this single model.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone. The first half of the clip (0.0–0.5 seconds) contains a brief, high-frequency, non-speech sound that is not present in the second half. This sound is a sharp, synthetic, high-pitched tone, likely a digital artifact or a synthetic sound effect, which is acoustically distinct from the natural speech. The remainder of the audio (0.5–3.5 seconds) consists of clear, intelligible speech with no additional anomalies. The synthetic sound is not a natural part of the speech and does not correspond to any expected vocalization or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 0.0–0.5 second time region and the 2000–4000 Hz frequency range as abnormal, indicating that this synthetic sound is the primary source of model suspicion. The LIME explanation for wav2vec also supports this, focusing on a specific time point (3.5–3.6 seconds), which may correspond to the end of the synthetic sound or a related artifact. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the anomaly is not detected by all models. The Shapley values indicate that the synthetic sound is likely responsible for the model's prediction, as the features related to unvoiced segments and sound levels are affected. The cross-model agreement between wav2vec's IG and Saliency methods strengthens the conclusion that the synthetic sound is the primary anomaly.

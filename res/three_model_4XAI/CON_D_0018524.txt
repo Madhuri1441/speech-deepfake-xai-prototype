@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a short, neutral statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 3.5–4.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present, lasting about half a second. This artifact is not part of the natural speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, high-pitched, and unnatural sound. The rest of the audio is free from such anomalies, and the speech remains otherwise natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.5-4.0] seconds, [7000-8000] Hz). The Hubert and WavLM models do not detect any abnormalities in this region, indicating that the anomaly is not universally recognized by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may be related to the presence of the artifact, but these do not directly localize the anomaly. The wav2vec evidence is cross-model consistent, while the other models do not support the finding.

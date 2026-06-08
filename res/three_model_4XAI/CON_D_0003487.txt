@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio begins with a male voice speaking in a neutral, formal tone, but the first two seconds (0-2 seconds) exhibit noticeable instability and unnatural cadence. The speech is slightly muffled, with a lack of natural breath and articulation, and the pitch is unusually flat and monotonous. These acoustic cues suggest the voice may be synthetic or heavily manipulated. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this initial segment, with the Saliency method specifically pointing to the 1000-3000 Hz frequency range, which is typical for human speech but here appears unnaturally constrained. The LIME method also identifies a brief segment (3.5-4 seconds) as anomalous, but this is less consistent with the overall vocal instability. The wav2vec model’s focus on the first two seconds aligns with the observed acoustic irregularities, indicating a likely synthetic or deepfake origin for this portion of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and Saliency methods both identify the 0-2 second time range and 1000-3000 Hz frequency range as abnormal, providing cross-model agreement on the initial segment’s synthetic nature. The LIME method also supports this, though its focus is slightly offset. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shap values further reinforce the anomaly, with high contributions from features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are indicative of unnatural speech patterns. Overall, the wav2vec model’s consistent identification of the first two seconds as abnormal, supported by multiple XAI methods, strongly suggests this segment is synthetic or manipulated.

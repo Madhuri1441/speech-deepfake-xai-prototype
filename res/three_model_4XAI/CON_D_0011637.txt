@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I never agreed with was it," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and stands out as a non-linguistic, unnatural sound. This anomaly is not present in the original speech and is likely the result of digital editing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the 0.5–1.0 second time region and 4000–6000 Hz frequency range, while Saliency points to an earlier, less prominent region (0.00–0.25 seconds, 1000–2000 Hz), and LIME identifies a brief segment (1.25–1.35 seconds) that may correspond to a residual artifact or noise. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, suggesting a sudden increase in sound energy in the high-frequency range. The combination of these findings confirms the presence of a synthetic or edited artifact in the specified time and frequency range.

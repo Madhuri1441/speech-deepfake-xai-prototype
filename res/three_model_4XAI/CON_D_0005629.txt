@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "This is an outstanding time on the emerging great." The speech is delivered in a formal, measured tone, with no emotional inflection or background noise, suggesting a professional or scripted context. At approximately 4.0 seconds, the speaker pauses, and a distinct, low-frequency electronic hum or buzz abruptly appears. This hum is steady, unmodulated, and occupies the 1000–2000 Hz frequency range, which is acoustically unusual for a human voice and not present in the initial speech. The hum persists until the end of the clip, where the speaker resumes with, "For the moment, come forward." The sudden onset and sustained presence of the hum, coupled with its spectral characteristics, indicate a technical artifact or digital anomaly rather than a natural sound event. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [4.0-5.0] seconds time range and [1000-2000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([3-4] seconds, [5000-6000] Hz) and LIME points to [0.5-1] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley value analysis supports the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, indicating a sudden increase in loudness or energy in the audio. The wav2vec IG result is the only one that aligns with the observed hum in the audio, and this is the only cross-model agreement. The other XAI results do not correspond to the audible anomaly and are likely artifacts of the models' internal processing.

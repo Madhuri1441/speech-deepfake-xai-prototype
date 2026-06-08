@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, narrating a story in standard English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 4–5 seconds, a subtle but distinct anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not part of the natural speech and is acoustically inconsistent with the rest of the audio, suggesting a digital or synthetic origin. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency range as a region of high importance for its prediction, indicating that the model detects this anomaly as a key feature. The Saliency method from wav2vec also highlights a related but slightly offset region (6–7 seconds, 4000–5000 Hz), which may correspond to a secondary or related artifact. The LIME explanation from wav2vec further supports the presence of an anomaly in the 4.0–4.5 seconds window. No other models (Hubert, WavLM) or Shapley-based acoustic features provide evidence for this region, and no other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 4–5 seconds time range and 6000–7000 Hz frequency range as a region of interest, indicating strong cross-model agreement on the presence of an anomaly in this segment. The Hubert and WavLM models do not provide any supporting evidence for this region, and the Shapley-based acoustic features do not align with the observed artifact. Thus, the evidence for the anomaly is robustly supported by multiple wav2vec methods, but not corroborated by other models or acoustic features.

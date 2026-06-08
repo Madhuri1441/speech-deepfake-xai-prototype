@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "The English are... he wouldn't have left me better." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 3000–6000 Hz range, which is acoustically distinct from the speaker’s voice and does not match any natural background noise or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.0–2.0 second time window and the 3000–6000 Hz frequency range as salient, indicating that this region is critical for the model’s prediction. The LIME method from wav2vec also supports the 2.0–2.1 second window, further reinforcing the presence of an anomaly in this interval. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not universally detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect the presence of the artifact, but these do not directly localize the anomaly in time or frequency. Overall, the wav2vec model’s multiple independent explanations converge on the 1.0–2.0 second, 3000–6000 Hz region as the most likely location of the acoustic anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "as yet they are," spoken in a neutral, declarative tone. The recording is clean, with no background noise or distortion, and the voice is centered in the stereo field. At approximately 1.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly interrupts the speech. This tone is harsh, synthetic, and sustained for about 0.5 seconds, ending sharply at 1.5 seconds. The tone is acoustically distinct from the voice, with a strong presence in the 2000–6000 Hz range, and is likely a digital artifact or intentional overlay. The abruptness and unnatural character of the tone suggest it is not part of the original speech but rather an added or manipulated element.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range, while the saliency method for wav2vec highlights a slightly broader [2000-3000] Hz range. These two independent XAI methods from the same model converge on the same time interval, indicating strong agreement on the presence of an anomaly during the electronic tone. The wav2vec model’s IG and saliency methods both point to the same region, reinforcing the conclusion. The Hubert and WavLM models do not provide any evidence of abnormality, and LIME analysis for wav2vec is inconclusive, as it only identifies a very short initial segment. The SHAP values indicate that the abnormality is linked to high loudness and spectral flux, further supporting the presence of a sudden, intense sound event. No other acoustic anomalies are present in the audio, and the initial speech segment is consistent with normal human vocalization.

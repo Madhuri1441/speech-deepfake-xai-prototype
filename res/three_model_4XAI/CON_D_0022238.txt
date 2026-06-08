@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "Pig farmers are completely despondent." The speech is delivered in a standard British accent, with no background noise or environmental sounds, indicating a controlled recording environment. However, at approximately 2.5 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 6500 Hz and is acoustically distinct from the speech, lacking any natural resonance or modulation. The sudden onset and unnatural timbre of this tone strongly suggest an artificial insertion, likely as a result of audio editing or digital manipulation. The tone does not interfere with the intelligibility of the speech but is clearly an added artifact, not part of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [6000-7000] Hz). The IG method highlights the frequency region, while Saliency and LIME focus on the temporal onset of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and mfcc2V_sma3nz_amean, which are associated with the synthetic tone. The agreement among multiple XAI methods from the wav2vec model confirms the presence of an artificial insertion in the audio, while the lack of evidence from other models suggests that the anomaly is not universally detectable across all models.

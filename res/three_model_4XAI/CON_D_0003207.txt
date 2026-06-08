@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Just so good." The speech is natural and intelligible, with no signs of digital manipulation or distortion. Immediately following, a second female voice, slightly lower in pitch, says, "Other issues." Both voices are close-mic'd, with minimal room reverberation, indicating a controlled recording environment. At approximately 2.5 seconds, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is harsh, static, and unmodulated, with a fundamental frequency around 100 Hz and strong harmonics extending up to 6000 Hz. The tone is acoustically distinct from the speech, with no overlap or blending, and its sudden onset and unnatural timbre suggest it is an artificial artifact, likely inserted post-recording.
+
+The wav2vec model identifies the region [1.0-2.0] seconds as abnormal, with salient frequency content between 3000-6000 Hz, which aligns with the high-frequency harmonics of the synthetic tone. The LIME explanation for wav2vec also supports this region, focusing on a narrow window around 1.5-1.6 seconds. The Shapley values further corroborate the abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in loudness at the onset of the synthetic tone. The Hubert and WavLM models do not provide supporting evidence, but their lack of explanation does not contradict the findings of wav2vec.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model, using both Integrated Gradients and LIME, identifies the region [1.0-2.0] seconds as abnormal, with frequency content between 3000-6000 Hz. This is supported by the Shapley value analysis, which highlights a significant increase in loudness at the onset of the synthetic tone. The Hubert and WavLM models do not provide evidence for this region, but their absence of explanation does not conflict with the wav2vec findings. The evidence from wav2vec and Shapley values is cross-model agreement, indicating a strong likelihood of an artificial artifact in the specified region.

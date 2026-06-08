@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "But when he left, he said goodbye." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and is not present in the original speech or any other part of the audio. This anomaly is likely the result of digital editing or compression artifacts, as it does not correspond to any natural sound event or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.8–1.2 second time range and 4000–6000 Hz frequency range, while LIME supports the same time range but at a slightly later point (1.8–2.0 seconds), likely due to the transient nature of the artifact. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no significant regions. The Shapley values further support the presence of an anomaly, with features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp indicating deviations from expected acoustic patterns. The wav2vec model’s consistent identification of the artifact across multiple XAI methods provides strong evidence for the abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly is subtle or localized, making it difficult for other models to detect.

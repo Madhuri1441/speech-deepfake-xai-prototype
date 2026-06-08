@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "However, not further ahead, we are a police..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.0-2.0] seconds, 5000–6000 Hz). The IG method highlights the entire duration of the artifact, while Saliency narrows it to the tail end ([1.8-2.0] seconds), but both confirm the presence of the anomaly. The LIME method, however, incorrectly identifies a very short segment at the start ([0.0-0.1] seconds), which does not correspond to any observable anomaly. The Hubert and WavLM models do not detect any abnormality, as their explanations are all "None." The Shap values indicate that the abnormality is not related to overall sound level or spectral flux, but rather to a specific, localized acoustic event. The wav2vec evidence is cross-model consistent and strongly supports the presence of a synthetic artifact in the specified region.

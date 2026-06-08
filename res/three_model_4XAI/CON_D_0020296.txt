@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are present throughout the recording. At approximately 1.0 seconds, a female voice with a Scottish accent begins to speak: "Mother will have no such heaping hostin'." The speech is clear and intelligible, with a natural cadence and intonation. However, during the phrase "heaping hostin'," there is a noticeable, unnatural pitch shift and a slight warble in the voice, particularly in the latter part of the word "hostin'." This warble is accompanied by a subtle, high-frequency shimmer, which is most prominent between 4000 and 6000 Hz. The acoustic anomaly is localized to this segment, as the rest of the audio remains stable and free of distortion or artifacts. The background hiss and hum persist but do not interfere with the intelligibility of the speech. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency regions ([1.0-2.5] seconds and [4000-6000] Hz), while LIME provides a slightly different but overlapping time range ([3.5-4.0] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shap values, while not directly tied to the audio, suggest that the anomaly may be related to vocal characteristics such as jitter and shimmer, which align with the observed pitch warble and high-frequency shimmer. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods supports the conclusion that the abnormality is localized to the specified time and frequency range.

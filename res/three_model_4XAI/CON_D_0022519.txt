@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "emotions were playing that way, but right..." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically distinct from the voice and background. The artifact is abrupt in onset and offset, with no gradual fade, and is not present in the rest of the audio. This suggests a possible digital glitch or editing artifact, rather than a natural sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.0–2.0 second time region and the 4000–6000 Hz frequency range. The IG and Saliency methods both highlight the same time and frequency region, while LIME provides a narrower but overlapping time window (1.8–2.0 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values, while not directly tied to time or frequency, suggest that the anomaly may be related to high-frequency content and spectral irregularities, further supporting the presence of a synthetic artifact in the specified region. The cross-model agreement from wav2vec strengthens the conclusion that this is a genuine anomaly, not a model-specific artifact.

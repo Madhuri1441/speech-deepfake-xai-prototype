@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-0.7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I had no expe—" before abruptly cutting off mid-word. Immediately following this, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, lasting for about 0.3 seconds. This tone is highly unnatural, with a harsh, buzzy timbre and a static amplitude, lacking any modulation or environmental context. The tone is acoustically inconsistent with the preceding speech, which is clear, natural, and recorded in a quiet indoor environment. The abrupt transition and the unnatural character of the tone suggest an artificial insertion, likely as a result of audio editing or manipulation. The synthetic tone is the only significant acoustic anomaly in the clip, and its sudden appearance and unnatural spectral content are clear indicators of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-0.7] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights the [1.0-1.2] seconds region, though this is less consistent with the observed tone. LIME identifies the [0.0-0.1] seconds region, which does not align with the synthetic tone. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly tied to the synthetic tone but may reflect broader audio irregularities. The wav2vec IG explanation is the most consistent with the observed synthetic tone, and thus, the final abnormality region is supported by wav2vec IG evidence.

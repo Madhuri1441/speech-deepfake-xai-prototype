@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.75-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-6500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "pledge to Clara and is no exception." The speech is delivered in a controlled, even tone, with no emotional inflection or background noise, indicating a studio-quality recording. Immediately following the speech, at approximately 2.75 seconds, a sharp, high-frequency transient is heard, lasting until about 3.0 seconds. This transient is characterized by a piercing, metallic, and synthetic timbre, with energy concentrated between 6000 Hz and 6500 Hz. The sound is abrupt, lacks any natural decay or environmental context, and is acoustically inconsistent with the preceding speech, suggesting it is an artificial artifact rather than a genuine environmental sound. The rest of the audio remains silent, with no further speech or background activity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([2.75-3.0] seconds, [6000-6500] Hz], while LIME provides a single time point ([1.5, 1.6] seconds) that is close to the main event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values further support the presence of a high-frequency transient, with spectralFlux_sma3_amean showing a strong positive deviation, indicating a sudden burst of high-frequency energy. The combination of wav2vec’s multiple XAI methods and the Shap value evidence confirms the presence of an artificial, high-frequency transient in the audio, which is not supported by the other models.

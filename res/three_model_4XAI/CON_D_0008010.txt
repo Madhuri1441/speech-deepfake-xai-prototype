@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "...period of their life." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.4 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 0.6 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered around 2500 Hz, which is not present in the rest of the recording. The buzz is not part of the original speech and does not correspond to any natural acoustic event, suggesting a possible digital anomaly or post-processing artifact. The remainder of the audio is free from such anomalies, with the voice continuing naturally until the end.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using Integrated Gradients (IG) at [0.4-0.6] seconds and [2000-3000] Hz, which aligns with the observed high-frequency artifact. The Saliency method from wav2vec also supports this region, albeit at a slightly different time window ([1.2-1.4] seconds), which may reflect a secondary or residual effect of the anomaly. The LIME method from wav2vec further corroborates the presence of an anomaly at [0.6-0.7] seconds, reinforcing the suspicion of a synthetic or manipulated segment. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shap values, while not directly pinpointing the artifact, suggest that features related to sound level and unvoiced segment length are elevated, which may be indirectly linked to the presence of the artifact. Overall, the wav2vec model's multiple independent methods (IG, Saliency, LIME) converge on the same time and frequency region, providing strong evidence for the anomaly.

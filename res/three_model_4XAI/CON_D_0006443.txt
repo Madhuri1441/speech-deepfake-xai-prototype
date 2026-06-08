@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I didn't need to talk to stop." The speech is delivered in a neutral, conversational tone, with no apparent emotional distress or artificiality. However, at approximately 1.0 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact is characterized by a piercing, synthetic tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural sound event. After this brief anomaly, the audio returns to normal speech until the end of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, 4000–6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The SHAP analysis highlights high values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may indicate a sudden increase in sound energy and a change in speech segment characteristics, supporting the presence of an artifact. The F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope value suggests a deviation in pitch stability, possibly due to the artifact’s interference. Overall, the wav2vec model’s consistent findings across multiple methods provide strong evidence for the identified abnormality, while other models and features corroborate the presence of a digital artifact in the specified region.

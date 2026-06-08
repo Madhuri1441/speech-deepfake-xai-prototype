@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "get away with it" in a neutral, conversational tone. Immediately following the speech, at approximately 1.0 seconds, a sharp, high-frequency transient is audible, lasting about 0.2 seconds. This transient is characterized by a piercing, metallic, and synthetic timbre, with energy concentrated between 4000–5000 Hz, and is acoustically distinct from the preceding speech. The sound is abrupt, unnatural, and does not resemble any typical environmental or vocal artifact. This anomaly is supported by multiple XAI methods: the wav2vec model's Integrated Gradients (IG) highlights this exact time and frequency region, while the Saliency method also identifies a related but slightly broader region (1.5–2.0 seconds, 3000–4000 Hz), suggesting the anomaly is robust and not an artifact of a single method. The LIME explanation for wav2vec, though less precise, also points to the very beginning of the audio, reinforcing the presence of an early anomaly. No other XAI methods (Hubert, WavLM) provide supporting evidence, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients and Saliency methods both identify the anomalous transient at 1.0–1.2 seconds in the 4000–5000 Hz range, providing cross-model agreement. The wav2vec LIME method also supports the presence of an early anomaly, though less specifically. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values indicate that the anomaly is likely related to high-frequency spectral content and loudness, further corroborating the presence of a synthetic, high-frequency transient.

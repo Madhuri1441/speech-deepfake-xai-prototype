@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a Scottish accent, delivering a formal, measured statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the mid-frequency range (3000–4000 Hz) during the word "phone" at approximately 1.5–2.0 seconds. This region exhibits a faint, unnatural resonance or tonal artifact, which is not typical of natural speech and may indicate digital manipulation or synthesis. The anomaly is brief and localized, not affecting the intelligibility of the speech but suggesting a possible edit or generation artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region using Integrated Gradients (IG), and the LIME method corroborates the same time region. The wav2vec model also detects a secondary anomaly in the [3.5-4.0] seconds range at [6000-8000] Hz using Saliency, but this is not supported by other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, aligning with the wav2vec findings. The cross-model agreement between wav2vec’s IG and LIME methods supports the conclusion that the anomaly at [1.5-2.0] seconds and [3000-4000] Hz is the most reliable indicator of a potential deepfake artifact.

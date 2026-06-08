@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.0 and 2.5 seconds, specifically in the 6000–7000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. It is likely a digital artifact, possibly introduced during audio processing or editing. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [2.0-2.5] seconds time region and [6000-7000] Hz frequency region as the most salient, indicating a strong model response to the synthetic artifact. The wav2vec Saliency method also highlights a related region ([2.5-3.0] seconds, [4000-8000] Hz), further supporting the presence of an anomalous event in this frequency band. The LIME method, however, only flags the very beginning of the audio ([0.0-0.1] seconds), which does not correspond to any observable anomaly. The Hubert and WavLM models do not provide any saliency or attribution evidence, suggesting that the anomaly is not detected by these models. The SHAP analysis does not directly reference the artifact but instead highlights acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are not directly linked to the observed artifact. Overall, the wav2vec IG and Saliency methods provide cross-model agreement on the [2.0-2.5] seconds, [6000-7000] Hz region, indicating a high-confidence detection of the synthetic artifact.

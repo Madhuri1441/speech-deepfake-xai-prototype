@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a sentence in English: "day he was forced to experience has undergone a dramatic decline." The recording is of moderate fidelity, with a low-level background hiss and a faint, steady hum, likely from a nearby electronic device. The speech is intelligible, with no obvious distortion or clipping. However, at approximately 2.0–2.5 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a brief, unnatural shimmer or digital texture in the background. This artifact is not present in the rest of the recording and does not correspond to any speech or environmental sound. The spectral content of this artifact is concentrated in the 4000–6000 Hz range, which is above the typical fundamental frequency of the speaker’s voice and does not align with the natural acoustic profile of the room or the speaker’s voice. This anomaly is not supported by any of the XAI explanations, suggesting it may be an incidental or post-processing artifact not captured by the models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as salient, but this is the only model to do so. The Hubert and WavLM models provide no saliency or IG explanations, and LIME does not support the region. The SHAP analysis highlights acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, but these do not directly correspond to the observed artifact. Thus, the anomaly is supported by wav2vec alone, with no cross-model agreement.

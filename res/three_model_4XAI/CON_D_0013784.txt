@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering the phrase: "One performance was not enough. We're no press, it's vital." The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural sound event. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The wav2vec model’s Integrated Gradients (IG) and LIME explanations both highlight this exact time-frequency region, indicating that the model identifies this segment as anomalous. The Saliency method also points to a related but slightly broader region (0–1 seconds, 2000–4000 Hz), suggesting a possible overlap or secondary anomaly. The wav2vec model’s attention to this region, combined with the absence of similar findings from Hubert and WavLM, suggests that the artifact is subtle and may not be universally detected by all models. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and LIME methods both independently identify the same time-frequency region ([1.5-2.0] seconds, [4000-6000] Hz) as anomalous, providing cross-model agreement. The Saliency method supports this with a related but slightly broader region, indicating possible overlap. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is subtle and may not be detected by all models. The Shapley values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly in this region, as these features are sensitive to changes in sound level and spectral content.

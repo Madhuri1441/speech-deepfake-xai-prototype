@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "Graham" in a neutral, conversational tone, with no background noise or distortion. Immediately following the spoken word, a sharp, high-frequency transient occurs, lasting approximately 0.35 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, resembling a digital artifact or a synthetic sound effect rather than a natural acoustic event. The frequency content of this transient spans from 2000 Hz to 6000 Hz, with a pronounced peak in the 4000–6000 Hz range, which is consistent with the presence of a high-frequency digital artifact or a synthetic sound. The abruptness and unnatural spectral profile of this sound suggest it is not part of the original speech but rather an inserted or manipulated element.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an initial region from 0.85–1.05 seconds in the 2000–3000 Hz range, and a subsequent region from 1.0–1.2 seconds in the 4000–6000 Hz range. The LIME explanation from wav2vec further supports the 1.5–1.6 seconds region, which aligns with the tail end of the transient. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean also point to the presence of a high-frequency, transient event in this time frame. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The wav2vec model’s multiple independent explanations (IG, Saliency, and LIME) converge on the 0.85–1.2 seconds interval, strongly supporting the presence of an artificial or inserted sound event in this region.

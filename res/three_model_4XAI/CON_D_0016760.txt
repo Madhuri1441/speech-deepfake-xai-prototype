@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, human female voice saying "position" in a neutral, conversational tone, with no detectable background noise or distortion. The voice is centered in the mid-frequency range (approximately 300 Hz to 3 kHz), and the recording is clean and intelligible. However, at approximately 0.95 seconds, a sudden, high-frequency, synthetic tone appears, lasting until the end of the clip. This tone is sharply defined, with a frequency content between 1500 Hz and 2000 Hz, and is acoustically distinct from the preceding speech. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is not present in the original voice recording. This synthetic artifact is not a natural part of speech or environmental sound, and its sudden appearance strongly suggests post-production insertion or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.95-1.0] seconds, [1500-2000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant increase in sound level at the time of the synthetic tone. The loudness_sma3_amean and loudness_sma3_meanFallingSlope features also show positive SHAP values, suggesting changes in the short-term loudness and its slope, consistent with the sudden appearance of the synthetic tone. The agreement among wav2vec’s XAI methods and the Shapley values confirms the presence of a synthetic artifact in the specified region.

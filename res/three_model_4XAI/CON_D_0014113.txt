@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, muffled utterance of the word "people" spoken by a female voice. Immediately following this, a sharp, high-frequency electronic tone appears, lasting from approximately 0.8 to 1.4 seconds. This tone is characterized by a piercing, synthetic timbre, with a fundamental frequency around 4000–6000 Hz and strong harmonics extending up to 8000 Hz. The tone is abrupt in onset and offset, with no natural fade or decay, and is acoustically distinct from the preceding speech. Its spectral content and unnatural envelope suggest it is not a product of human vocalization or environmental noise, but rather an artifact or insertion, possibly due to digital editing or a synthetic overlay. The tone is not present in the original speech and does not correspond to any natural sound event, indicating a likely manipulation or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.8–1.4 second time range and 3000–8000 Hz frequency range, while LIME identifies a slightly earlier region (0.58–0.62 seconds), which may correspond to the onset of the tone. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency sound event. The agreement among wav2vec’s methods and the SHAP feature analysis strongly supports the conclusion that the abnormality is a synthetic tone inserted into the audio, with the wav2vec model being the primary source of evidence.

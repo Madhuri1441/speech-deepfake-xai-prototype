@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a brief, high-pitched, non-verbal vocalization ("uh") at the start. The main content is a female voice speaking in a clear, formal tone: "support will go before the Scottish Parliament, probably in early autumn." The speech is delivered in a neutral, declarative manner, with no emotional inflection or background noise. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not part of the speech and does not correspond to any natural sound or environmental noise. It is characterized by a sharp, buzzing timbre in the 6000–7000 Hz range, which is acoustically inconsistent with the rest of the recording. The artifact is not present in the original speech and is not masked by it, suggesting it is an added or manipulated element.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), and also highlights a secondary region at [3.0-3.5] seconds with [6000-8000] Hz using Saliency. LIME further supports the [2.0, 2.1] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values point to high spectral flux and equivalent sound level, which align with the presence of the synthetic artifact. The cross-model agreement from wav2vec (IG and Saliency) and LIME supports the conclusion that the artifact is a genuine anomaly, not a natural part of the audio.

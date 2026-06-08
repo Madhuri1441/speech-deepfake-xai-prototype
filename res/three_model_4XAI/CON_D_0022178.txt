@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "It is absolutely a curated project." The speech is delivered in a controlled, professional manner, with no emotional inflection or background noise, indicating a studio or post-processed environment. At approximately 1.8 seconds, a sharp, high-frequency digital artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and likely results from digital clipping, compression, or an editing error. The artifact is abrupt and unnatural, standing out against the otherwise clean audio. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.8-2.0] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), and at [2.5-3.0] seconds with the same frequency range using Saliency. LIME also supports the region [1.75-2.0] seconds. The Hubert and WavLM models do not provide any evidence for this region. The Shapley values highlight features such as equivalentSoundLevel_dBp, loudness_sma3_percentile80.0, and loudness_sma3_pctlrange0-2, which are consistent with the presence of a sudden, high-frequency event. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) all point to the same time and frequency region, indicating strong cross-model agreement on the artifact’s location.

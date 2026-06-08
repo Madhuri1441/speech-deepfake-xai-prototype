@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "to think not that will end here." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–4000 Hz during the time interval of 0.5–1.0 seconds, specifically around the word "not." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor digital artifact or synthetic overlay, which is not present in the rest of the utterance. The anomaly is not perceptible to the human ear as a distortion or noise, but it is detectable in the frequency domain. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 2000–4000 Hz range during 0.5–1.0 seconds using Integrated Gradients (IG), and the saliency method further supports this with a peak at 2.4–2.5 seconds in the 1000–2000 Hz range, which is close to the main anomaly. LIME also highlights the 2.0–2.1 seconds region, reinforcing the presence of an anomaly in the latter part of the utterance. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with a subtle change in the acoustic profile during the identified interval. The wav2vec model’s IG and saliency, along with LIME, provide cross-model agreement on the presence of an anomaly in the 2000–4000 Hz range during 0.5–1.0 seconds, making this the most supported region.

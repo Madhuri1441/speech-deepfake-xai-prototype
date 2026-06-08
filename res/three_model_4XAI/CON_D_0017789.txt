@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "travel with some confidence" in a clear, neutral tone, followed by a second male voice saying "Bye" in a casual, friendly manner. Both voices are clean and natural, with no obvious signs of digital manipulation. However, a subtle anomaly is present in the first utterance, specifically in the word "confidence." The acoustic region from 0.5 to 1.2 seconds, centered around the "fidence" portion of the word, exhibits a slight unnaturalness in the high-frequency range (2000–4000 Hz). This is evidenced by a subtle, artificial shimmer or graininess, which is not present in the rest of the audio. The anomaly is not immediately obvious to a casual listener but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the same time and frequency region as the observed acoustic abnormality, with both Integrated Gradients (IG) and Saliency methods pointing to the 0.5–1.2 second interval and 2000–4000 Hz range. The LIME method, however, highlights an earlier segment (0.0–0.1 seconds), which does not align with the observed anomaly and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the wav2vec findings are the most reliable. The SHAP analysis further supports the wav2vec findings, with the top contributing features (StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean) all pointing to the same high-frequency region. Thus, the wav2vec model’s evidence is cross-model supported, while the LIME result is not corroborated by other methods.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "Courtroom will travel with some confidence." The speech is delivered in a neutral, formal tone, with no detectable emotional inflection or background noise. The recording quality is high, with no distortion, clipping, or environmental interference. However, at approximately 2.0 seconds, a sharp, high-frequency electronic tone abruptly appears, lasting for about 0.1 seconds. This tone is distinctly artificial, with a pure, unmodulated pitch in the 2000–3000 Hz range, and is acoustically inconsistent with the preceding speech. The tone is not a natural artifact of the recording environment or the speaker’s voice, and its sudden onset and offset suggest it is a digital insertion or watermark, possibly added during post-production or as part of a watermarking process. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.1] seconds in the 2000–3000 Hz range using Integrated Gradients (IG) and LIME, and the Saliency method also points to a region at [0.45-0.55] seconds in the 1500–2000 Hz range, which does not align with the observed tone. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to the speech content but rather to the presence of the electronic tone, as features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are affected. The wav2vec model’s IG and LIME results are consistent with the observed electronic tone, while the Saliency result is not supported by the audio evidence. Therefore, the final abnormality region is [2.0-2.1] seconds in the 2000–3000 Hz range, supported by wav2vec’s IG and LIME methods.

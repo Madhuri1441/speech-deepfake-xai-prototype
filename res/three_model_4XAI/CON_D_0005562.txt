@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "playing," followed by "it is certainly" in a steady, natural cadence. At approximately 0.75 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 2000–4000 Hz range, and is not present in the rest of the recording. The artifact is not a natural part of speech or environmental noise, and its abrupt onset and offset suggest digital manipulation or generation. The remainder of the audio is clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Saliency method identifies the [0.75-1.0] seconds time region and [2000-4000] Hz frequency region as salient, aligning with the observed synthetic buzz. The wav2vec IG method identifies a different region ([1.50-2.00] seconds, [6000-8000] Hz), but this does not correspond to any clear acoustic anomaly in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec Saliency result is the only cross-model agreement. The SHAP values do not directly indicate the artifact but instead reflect general audio features such as loudness and sound level, which are not directly related to the observed anomaly. Thus, the wav2vec Saliency result is the most reliable indicator of the anomaly, supported by its alignment with the acoustic evidence.

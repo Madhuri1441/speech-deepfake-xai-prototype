@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled female voice saying, "It was aimed in the direction..." The speech is partially obscured by a persistent low-frequency hum and a high-frequency hiss, indicating poor recording quality and possible digital compression artifacts. At approximately 2.0 seconds, a second female voice, clearer and more intelligible, enters with, "Do you say he wrecked..." This voice is abruptly cut off mid-word, with no natural fade or decay, suggesting a hard splice or edit. Immediately following, a third female voice, even clearer and more resonant, states, "This is a friendly mark done..." The final word is truncated, and the audio ends with a sharp, unnatural cutoff, lacking any ambient decay or room tone. These abrupt transitions and unnatural truncations are acoustically suspicious, indicating possible digital editing or manipulation. The persistent background noise and abrupt changes in voice quality further support the presence of audio tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-3.5] seconds time region and [1000-4000] Hz frequency region as abnormal, with both IG and Saliency methods pointing to this interval. The LIME method also supports this region, specifically at [2.5, 2.6] seconds. The Hubert and WavLM models do not provide any abnormality evidence. The Shap values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may indicate changes in audio energy and spectral characteristics during the suspicious interval. The wav2vec model's multiple independent methods (IG, Saliency, LIME) consistently identify the same region, providing strong cross-model agreement on the abnormality.

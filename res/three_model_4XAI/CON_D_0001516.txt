@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "paired, quite pleasant, I'm going out, that is what we expected." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 1.5 seconds, a sharp, high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact is a piercing, synthetic-sounding tone, likely a digital glitch or splicing error, which is acoustically distinct from the natural speech and background. The tone is centered around 6500 Hz, matching the frequency range flagged by the wav2vec Integrated Gradients (IG) explanation. The sudden onset and unnatural timbre of this sound suggest a technical anomaly rather than a genuine environmental or vocal event. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG explanation identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as salient, aligning precisely with the observed synthetic tone. The wav2vec Saliency method also highlights a brief region at the start of the audio, but this is less consistent with the main anomaly. The wav2vec LIME explanation further supports the [2.0, 2.1] seconds region, reinforcing the presence of an anomaly in this interval. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values for spectral features do not directly correspond to the observed artifact, suggesting that the anomaly is not captured by these global feature importance measures. Overall, the wav2vec IG, Saliency, and LIME explanations collectively support the presence of a synthetic artifact in the [1.5-2.0] seconds interval, with wav2vec being the only model to detect it.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced drop in pitch, accompanied by a loss of natural vocal texture. This change is abrupt and persists until about 1.0 seconds, after which the voice returns to its original state. The distortion is most prominent in the 2000–4000 Hz frequency range, where the voice loses its natural harmonics and is replaced by a synthetic, buzzing quality. This is consistent with digital manipulation, such as a deepfake or voice synthesis artifact, rather than a natural vocal event. No other acoustic anomalies, such as background noise or environmental sounds, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second range, specifically in the 2000–4000 Hz band, using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights a brief anomaly at 3.5–4.0 seconds in the 7000–8000 Hz range, though this is less consistent with the main observed event. The LIME method also points to the 0.0–0.1 second region, but this is likely a minor artifact or initialization noise. The Hubert and WavLM models do not detect any abnormalities, indicating that the wav2vec-based evidence is the most reliable. The Shap values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 indicating a significant deviation from normal speech patterns. Overall, the wav2vec IG evidence is the most consistent and supported by the acoustic observation, while other XAI methods provide supplementary or less consistent evidence.

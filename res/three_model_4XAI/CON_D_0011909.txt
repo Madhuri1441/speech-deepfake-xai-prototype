@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking the phrase, "I do not own the vessel in question." The speech is clear, with a neutral, declarative tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or environmental cues. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (3000–6000 Hz) during the time interval [1.0–2.0] seconds, coinciding with the word "vessel." This region exhibits a slight unnatural smoothness and a lack of fine-grained acoustic detail, which is atypical for genuine human speech. The anomaly is not perceptible to casual listening but is detectable through detailed acoustic analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5–2.0] seconds time region and [4000–6000] Hz frequency region using Integrated Gradients (IG), while the Saliency method from the same model highlights a broader [1.0–2.0] seconds and [3000–4000] Hz region. The LIME method from wav2vec further supports the anomaly in the [1.25–1.35] seconds interval. These multiple, independent XAI methods from wav2vec consistently point to the same acoustic region, indicating a high-confidence anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detectable by all models. The Shapley values also support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant deviation from expected acoustic levels in the identified region. Overall, the evidence from wav2vec’s multiple methods provides strong support for the anomaly, while other models and features corroborate the findings.

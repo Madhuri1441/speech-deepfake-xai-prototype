@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "As long as it is, but we have to keep playing." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is evenly paced and natural, with no signs of emotional stress or artificiality. However, a subtle anomaly is detected in the frequency range of 4000–6000 Hz during the time interval of 2.0–2.5 seconds, specifically around the word "playing." This region exhibits a slight, unnatural tonal quality, possibly due to a minor digital artifact or a subtle pitch shift, which is not present in the rest of the audio. The anomaly is not perceptible to the human ear and does not affect the intelligibility or emotional tone of the speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 4000–6000 Hz range during 2.0–2.5 seconds using Integrated Gradients (IG), while Saliency analysis highlights a different region (0.5–1.0 seconds, 2000–4000 Hz) and LIME points to 2.8–3.0 seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a high positive SHAP value, suggesting a significant deviation in sound level at the identified abnormality. The spectralFlux_sma3_amean and loudness_sma3_percentile80.0 features also contribute, but to a lesser extent. The wav2vec IG result is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this cross-model agreement.

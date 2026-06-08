@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "being able to eat seven times." The speech is delivered in a neutral, conversational tone, with no background noise or environmental sounds, indicating a controlled recording environment. The voice is clean and intelligible, with a fundamental frequency around 250 Hz and strong harmonics up to 6 kHz. However, at approximately 0.75 seconds, a sudden, unnatural high-frequency artifact appears, lasting until 1.25 seconds. This artifact is a sharp, synthetic-sounding burst in the 4000–6000 Hz range, lacking the natural resonance or decay of a real acoustic event. It is not present in the original speech and does not correspond to any environmental or vocal event, suggesting it is an artificial insertion or manipulation.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 0.75–1.25 second time window and 4000–6000 Hz frequency range as the most significant region for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency map also identifies a brief, high-frequency anomaly at 0.25–0.35 seconds, though this is less prominent and may be a secondary artifact or a result of model sensitivity. The LIME analysis points to the very beginning of the audio (0.0–0.1 seconds), which is likely due to the model focusing on the initial speech onset, but this does not correspond to any observable anomaly. The Shapley values further reinforce the importance of the high-frequency region, with the equivalentSoundLevel_dBp value indicating a significant increase in sound energy in the 4000–6000 Hz band, consistent with the presence of the synthetic artifact.
+
+In summary, the audio contains a clear speech segment followed by a brief, unnatural high-frequency burst, which is strongly supported by XAI evidence as a key indicator of manipulation. No other acoustic anomalies are present, and the rest of the audio remains natural and unaltered.

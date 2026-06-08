@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic female voice with a monotonous, robotic tone, lacking natural intonation and breathiness. The most notable acoustic anomaly occurs between 0.5 and 1.5 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a brief, high-frequency artifact. This segment stands out from the rest of the audio, which maintains a consistent, low-pitched, and synthetic quality. The anomaly is supported by multiple XAI sources: the wav2vec model’s Integrated Gradients (IG) highlights this time-frequency region, while the Saliency method also identifies a related segment (2.5-3.0 seconds, 4000-6000 Hz), suggesting a broader area of synthetic manipulation. The LIME explanation for wav2vec further corroborates the 0.9-1.1 seconds interval, aligning with the observed anomaly. No other XAI methods (Hubert, WavLM) provide supporting evidence, and the Shapley values indicate features related to unvoiced segments and loudness, which may reflect the unnatural speech characteristics but do not pinpoint the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 0.5-1.5 seconds region as anomalous, with IG and LIME providing direct support for the observed pitch drop and metallic artifact. The Saliency method’s related but slightly offset region (2.5-3.0 seconds) suggests a broader area of synthetic manipulation. The Hubert and WavLM models do not provide supporting evidence, and the Shapley values, while indicating unnatural speech features, do not directly localize the anomaly. Thus, the final abnormality region is established through cross-model agreement from wav2vec, with no conflicting evidence from other models.

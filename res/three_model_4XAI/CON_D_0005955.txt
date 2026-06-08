@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "dislegally" in a neutral, declarative tone. The utterance is abruptly cut off mid-syllable, with no natural fade or trailing sound, indicating a hard edit. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is sustained and unmodulated. This tone is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context, and is likely an artifact of digital editing or a post-production overlay. The transition between speech and tone is instantaneous, with no crossfade or overlap, further supporting the conclusion that the audio has been manipulated.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 0.8–1.0 seconds in the 4000–6000 Hz range, and a Saliency region from 1.0–1.2 seconds in the 3500–4000 Hz range. These regions align with the abrupt cutoff of speech and the onset of the synthetic tone, respectively. The LIME explanation from wav2vec, indicating a region at 0.0–0.1 seconds, is not supported by the audio evidence and is likely a false positive. The Hubert and WavLM models do not provide any abnormality regions, suggesting that the anomaly is not consistently detected across all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, which are indicative of abrupt changes in signal characteristics, further supporting the presence of a digital edit. The wav2vec model’s IG and Saliency regions are the most reliable indicators of the anomaly, as they correspond directly to the observed acoustic events.

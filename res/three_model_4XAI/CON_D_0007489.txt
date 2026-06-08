@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.75-0.8] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level hiss and a barely perceptible, low-frequency hum, consistent with a quiet, controlled recording environment. At approximately 0.75 seconds, a sharp, high-frequency transient occurs, lasting about 0.05 seconds. This transient is characterized by a brief, piercing, and unnatural timbre, with energy concentrated between 2500–3000 Hz, and is acoustically inconsistent with the preceding speech or background noise. The transient is not a natural part of the spoken phrase "still for agreement," which is delivered in a neutral, steady tone without any vocal artifacts or emotional inflection. The abruptness and spectral purity of the transient suggest it is an artificial insertion, likely a digital artifact or manipulation, rather than a genuine acoustic event. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the same time-frequency region ([0.75-0.8] seconds, [2500-3000] Hz) as critical to its prediction, indicating strong cross-model agreement on the presence of an anomalous event in this region. The LIME explanation for wav2vec, however, points to an earlier time ([0.0-0.1] seconds), which is not supported by the other XAI methods and is likely a spurious result. The Hubert and WavLM models do not provide any salient regions, suggesting they did not detect the anomaly or are less sensitive to such events. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but does not localize the anomaly in time or frequency. Thus, the wav2vec IG and Saliency results are the most reliable indicators of the anomaly, supported by cross-model agreement.

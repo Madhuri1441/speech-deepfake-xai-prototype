@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "So what if two week with the..." The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, high-frequency electronic tone. This tone is centered around 6500 Hz and persists for about 0.5 seconds, ending as abruptly as it began. The sudden onset and offset of the tone, along with its unnatural timbre and lack of acoustic context, strongly suggest an artificial insertion or editing artifact. The tone does not resemble any typical environmental or musical sound, and its presence is inconsistent with the preceding speech, indicating a possible tampering or error in the audio file.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [6000-7000] Hz, which aligns precisely with the observed synthetic tone. The Saliency method from wav2vec also detects a region at the start of the audio, but this is less specific and does not match the tone. The LIME explanation from wav2vec identifies a single time point at 1.2-1.3 seconds, which is close to the tone’s end but not as precise. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-intensity sound event. Overall, the most robust evidence comes from the wav2vec model’s IG explanation, which is cross-model in the sense that it is the only model providing a clear and consistent explanation of the anomaly.

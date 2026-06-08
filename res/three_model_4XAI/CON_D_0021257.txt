@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "I had to resource and was five minutes late for the scene is." The speech is abruptly cut off mid-word ("scene"), with no natural fade or pause, indicating a hard edit. Immediately following the cut, a synthetic, low-frequency electronic tone (approximately 50–150 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is likely an artifact of post-production editing or a watermark, and its sudden appearance is acoustically jarring. The speech itself is clear and intelligible, with no signs of distortion, clipping, or background noise, and the abruptness of the edit is the only notable acoustic anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region between 2.0–3.0 seconds, with a frequency range of 5000–6000 Hz, which aligns with the abrupt edit and the introduction of the synthetic tone. The LIME explanation from wav2vec also supports this region, reinforcing the presence of an anomaly at this point. The Saliency method from wav2vec further corroborates the anomaly in the 3.5–4.0 seconds range, which overlaps with the edit and the onset of the synthetic tone. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may relate to the sudden change in audio characteristics at the edit point. Overall, the wav2vec model’s multiple independent explanations converge on the same region, providing strong evidence for the anomaly, while the other models do not detect it.

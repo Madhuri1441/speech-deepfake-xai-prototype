@@ -1,0 +1,16 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male speaker saying, "Also a big please to my father. My grand..." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 2.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.5 seconds. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, electronic tone in the 1000–3000 Hz range. The artifact is not present in the original speech and does not correspond to any environmental or vocal event, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality at [2.0-2.5] seconds is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies this time-frequency region as significant, with a strong focus on the 1000–3000 Hz band.  
+- The wav2vec model’s Saliency method also highlights a related region at [2.5-3.0] seconds, centered around 6000–8000 Hz, which may indicate a secondary or closely related artifact.  
+- The wav2vec model’s LIME method, though less precise, supports the presence of an anomaly at the very start of the audio, possibly due to the initial speech or a brief transient.  
+- The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no significant regions.  
+- The SHAP analysis does not directly indicate the artifact but highlights acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and shimmerLocaldB_sma3nz_amean, which may be indirectly affected by the presence of the synthetic tone.  
+
+In summary, the most consistent and cross-validated evidence points to a synthetic artifact in the 1000–3000 Hz range between 2.0 and 2.5 seconds, primarily supported by wav2vec’s IG and Saliency methods. The absence of similar findings from Hubert and WavLM suggests the anomaly is subtle or localized, and the SHAP values provide indirect support through acoustic feature changes.

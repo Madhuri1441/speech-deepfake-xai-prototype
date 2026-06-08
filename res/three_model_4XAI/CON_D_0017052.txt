@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "He didn't take it seriously." The speech is delivered in a standard North American accent, with a natural cadence and no apparent emotional distress. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until 1.5 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the voice, lacking any natural speech harmonics or modulation. The tone is not present in the original utterance and appears abruptly, suggesting it is an artificial insertion rather than a natural part of the recording. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, [4000-6000] Hz). The IG and Saliency methods provide high-resolution temporal and spectral localization, while LIME offers a broader but consistent indication of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no salient regions. The Shapley values, while not directly tied to the audio, suggest that the synthetic tone may be associated with features such as slopeUV0-500_sma3nz_amean and jitterLocal_sma3nz_stddevNorm, which are indicative of unnatural signal characteristics. The convergence of wav2vec’s multiple XAI methods on the same region provides strong, cross-model evidence for the presence of an artificial tone in the audio.

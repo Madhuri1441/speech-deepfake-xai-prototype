@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal statement about the National Farmers Union of Scotland. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.5–3 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the voice exhibits a slight pitch instability and a brief, unnatural resonance, which is not present in the rest of the recording. This is accompanied by a faint, high-frequency artifact in the 3000–4000 Hz range, suggesting a possible digital artifact or editing artifact. The anomaly is brief and localized, with no impact on the intelligibility of the speech, but it stands out as a momentary irregularity in an otherwise stable vocal signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.5-3] seconds time region and [3000-4000] Hz frequency region as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. This aligns with the observed acoustic anomaly in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this particular feature. The Shapley values further support the importance of the anomaly, with the StddevUnvoicedSegmentLength feature showing a high shap value, suggesting that the irregularity in the voiced segment is a key factor in the model’s decision. Overall, the wav2vec model’s multiple independent methods converge on the same region, providing strong cross-model agreement for the anomaly.

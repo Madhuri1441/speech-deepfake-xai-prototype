@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, formal statement in English: "Meanwhile, it emerged people on his travels with England on the rivals." The speech is generally clear and intelligible, with a natural cadence and no obvious signs of digital manipulation or overt synthetic speech. However, at approximately 2.5–3 seconds into the clip, a distinct, high-frequency, synthetic-sounding artifact is present. This artifact manifests as a brief, sharp, and unnatural burst of energy in the 4000–6000 Hz range, which stands out from the otherwise smooth and natural timbre of the voice. The artifact is not present in the surrounding speech and does not correspond to any natural phonetic event, suggesting it is an artificial insertion or corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [2.5-3] seconds time region and [4000-6000] Hz frequency region as the most salient for the model's prediction, indicating that this segment is likely anomalous. The Saliency method from wav2vec also highlights the [0-1] seconds region, but this is less specific and does not align with the observed artifact. The LIME method from wav2vec further supports the [0.95-1.05] seconds region, but this is not directly related to the artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormality in the audio, particularly in the high-frequency region. Overall, the wav2vec model's IG analysis provides the most consistent and specific evidence for the anomaly, supported by the acoustic observation of the artifact.

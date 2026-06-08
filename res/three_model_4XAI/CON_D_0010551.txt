@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000 - 7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "It's just very spool back." The speech is intelligible and delivered in a neutral, conversational tone, with no signs of emotional distress or artificiality. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically distinct from the preceding speech. The transition between the speech and the buzzing is abrupt, lacking any fade or overlap, which suggests an artificial insertion or overlay rather than a natural event. The buzzing tone is not present in the original speech and does not correspond to any environmental or mechanical sound, indicating a likely digital artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [0.8 - 1.2] seconds time region and [6000 - 7000] Hz frequency region as significant for the model’s prediction, indicating that the synthetic buzzing tone is a key feature in the audio. The Saliency method from wav2vec also highlights the initial speech segment, but the buzzing tone is the only region consistently flagged by multiple XAI methods. The Hubert and WavLM models do not provide any salient regions, suggesting that the buzzing tone is not captured by their feature extraction. The SHAP values further support the presence of the buzzing tone, with high contributions from features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are associated with the synthetic nature of the tone. This cross-model agreement confirms the buzzing tone as the primary abnormality in the audio.

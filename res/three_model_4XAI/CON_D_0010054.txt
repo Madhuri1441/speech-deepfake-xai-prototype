@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "test for instance" in a controlled, studio-like environment. The speech is intelligible and natural, with no signs of emotional distress or artificiality. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the speech, lacking any natural reverberation or environmental cues. The abrupt onset and unnatural spectral quality of this tone suggest it is an artificial overlay, likely inserted post-recording. The voice remains unaffected by the tone, indicating the two were not recorded together. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 seconds time region and 3000–4000 Hz frequency range, while LIME corroborates the time region at 1.5–1.6 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no regions. The Shapley values, while not directly identifying the abnormality, highlight features such as slopeUV0-500_sma3nz_amean and mfcc2_sma3_amean, which may relate to the synthetic tone’s spectral characteristics. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an artificial tone in the specified time and frequency range.

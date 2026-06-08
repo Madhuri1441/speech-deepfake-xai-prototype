@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "It is marvelous" in a neutral, declarative tone. The speech is intelligible and delivered in a controlled manner, with no background noise or environmental cues. Immediately following the spoken phrase, a synthetic, high-pitched electronic tone is introduced. This tone is sustained, monophonic, and exhibits a harsh, buzzy timbre, characteristic of a square or sawtooth waveform. The tone is acoustically distinct from the voice, with no overlap or blending, and is centered in the mid-to-high frequency range (4000–5000 Hz). The abrupt onset and unnatural timbre of this tone suggest it is not a natural sound but rather an artificial artifact, likely inserted post-recording. The transition from speech to tone is abrupt, with no fade or crossfade, further indicating digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.6–1.2 second time range and 4000–5000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (0.2–0.3 seconds, 1500–4000 Hz) and LIME analysis points to a narrow window (0.65–0.7 seconds). The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The SHAP values indicate that the abnormality is most strongly associated with the slopeUV0-500_sma3nz_amean feature, which is linked to the presence of a synthetic tone. The cross-model agreement is limited to the wav2vec model’s IG evidence, which is the most consistent and directly supports the observed synthetic tone. The other XAI sources either do not detect the anomaly or point to different regions, suggesting that the synthetic tone is the primary abnormality, supported mainly by wav2vec’s IG analysis.

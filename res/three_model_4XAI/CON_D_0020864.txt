@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 4000 Hz and 6000 Hz, which is inconsistent with the natural speech spectrum. The artifact is abrupt and does not blend with the preceding or following speech, suggesting it is an inserted or spliced element rather than a natural part of the recording. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model, which identifies the [1.5-2.0] second time region and [4000-6000] Hz frequency region as suspicious using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights the [0.0-0.5] second region, and LIME, which points to the [1.2-1.3] second region, both of which are adjacent to the main anomaly and suggest a broader region of manipulation. The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME methods return no significant regions. The Shap values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large deviation, indicating a sudden increase in sound level at the suspected time. Overall, the wav2vec model’s IG and Saliency methods, along with LIME, provide consistent evidence for the abnormality, while other models do not contribute additional support.

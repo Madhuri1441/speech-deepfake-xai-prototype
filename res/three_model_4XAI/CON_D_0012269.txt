@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I'm happy I have work on the back that would have all businesses." The speech is generally clear, but at approximately 1.25 seconds, there is a noticeable disruption in the vocal signal. This disruption is marked by a sharp, high-frequency artifact in the 4000–6000 Hz range, lasting until about 1.75 seconds. The artifact manifests as a brief, unnatural burst of high-frequency energy, which is inconsistent with typical speech production and suggests a digital glitch or editing artifact. This is further supported by a secondary, less prominent anomaly in the 3000–4000 Hz range between 1.8 and 2.0 seconds, as indicated by the wav2vec saliency analysis. The rest of the audio remains relatively clean, with no other obvious signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality at 1.25–1.75 seconds is supported by the wav2vec Integrated Gradients (IG) analysis, which highlights this time-frequency region as significant for the model’s prediction. The wav2vec saliency analysis also identifies a related region at 1.8–2.0 seconds, reinforcing the presence of an anomaly in this segment. However, the Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is most strongly detected by wav2vec alone. The Shapley values do not directly reference this time-frequency region, but they highlight acoustic features such as StddevUnvoicedSegmentLength and F3amplitudeLogRelF0_sma3nz_stddevNorm, which may be indirectly related to the observed artifact. Overall, the evidence points to a single-model detection of a high-frequency artifact in the specified time range, with no cross-model agreement.

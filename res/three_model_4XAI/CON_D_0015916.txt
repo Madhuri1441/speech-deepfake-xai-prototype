@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "He denied the charge." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.2 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.6 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing, and unnatural tone in the 5000–8000 Hz range. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, indicating a likely digital manipulation or insertion. The voice resumes normally after the artifact ends, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an IG (Integrated Gradients) region at [1.2-1.4] seconds in the 5000–6000 Hz range and a Saliency region at [1.4-1.6] seconds in the 7000–8000 Hz range. These regions align closely with the observed synthetic artifact in the audio, providing strong evidence of a digital anomaly. The Hubert and WavLM models do not detect any abnormality, which may be due to their different training objectives or sensitivity to such artifacts. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a high-frequency, non-vocal sound event. The combined wav2vec evidence and SHAP feature analysis support the conclusion that the audio contains a synthetic artifact in the specified time and frequency range.

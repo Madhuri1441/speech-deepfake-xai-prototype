@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "The load of time to act." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording is of high fidelity, with no distortion, clipping, or environmental interference. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the voice, lacking any natural speech characteristics or modulation. The tone is likely an artifact or digital overlay, as it does not blend with the voice and appears abruptly, suggesting post-production insertion or a technical glitch. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the [0.5-1.0] seconds range and [3000-4000] Hz frequency range. LIME analysis from wav2vec also supports the [1.0-1.1] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values suggest that acoustic features such as slopeUV0-500_sma3nz_amean, alphaRatioUV_sma3nz_amean, and jitterLocal_sma3nz_amean are associated with the anomaly, but these are not directly linked to the observed synthetic tone. The wav2vec model’s IG and LIME results provide the strongest cross-model agreement on the abnormality, specifically in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range, aligning with the observed synthetic tone.

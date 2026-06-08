@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "important to mark the side is more laid down." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a sharp, high-frequency transient artifact appears, lasting about half a second (until 2.0 seconds). This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated in the 3000–4000 Hz range, which is atypical for human speech and suggests a digital glitch or editing artifact. The artifact is not present in the original speech and does not correspond to any natural vocal event, indicating a possible point of audio corruption or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.5-2.0] seconds, 3000–4000 Hz). LIME also supports this region, albeit with a narrower focus ([1.5, 1.6] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly indicating the time or frequency of the anomaly, highlight features related to voice quality and jitter, which may be indirectly affected by the artifact. Overall, the wav2vec model’s multiple independent methods and LIME’s confirmation provide strong cross-model agreement on the abnormality’s location, while the absence of evidence from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

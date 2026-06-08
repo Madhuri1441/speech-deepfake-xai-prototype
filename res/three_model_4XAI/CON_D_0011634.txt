@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, low-frequency thump, likely from a microphone or device handling noise. At approximately 0.4 seconds, a sharp, high-frequency transient occurs, lasting about 0.2 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, standing out distinctly from the background. The sound is not a natural speech element or environmental noise, and its spectral content is concentrated between 2000–3000 Hz, with a brief extension up to 8000 Hz. The remainder of the audio is dominated by a low-level, steady hiss, with no further notable events.
+
+The wav2vec model’s Saliency analysis identifies the [0.4-0.6] seconds region as the most salient, with a frequency focus of [2000-3000] Hz, directly aligning with the observed transient. The IG analysis from wav2vec also highlights a broader [0.6-1.0] seconds region and [7000-8000] Hz, which may correspond to the tail of the transient or residual high-frequency energy. The LIME analysis further supports the [0.75-0.8] seconds region, indicating continued relevance of the transient’s decay. The Hubert and WavLM models do not provide any saliency or explanation, suggesting that the transient is not captured by their learned representations. The Shap values for equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean are notably high, indicating that the transient significantly affects these features, while spectralFlux_sma3_amean is less affected, suggesting the transient is not a broadband noise event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency, IG, and LIME analyses all point to the [0.4-0.6] seconds region as the most salient, with consistent frequency focus between 2000–3000 Hz. This cross-model agreement from wav2vec provides strong evidence for the transient’s abnormality. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the transient is not captured by their learned representations. The Shap values further support the transient’s impact on the audio features, particularly equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean.

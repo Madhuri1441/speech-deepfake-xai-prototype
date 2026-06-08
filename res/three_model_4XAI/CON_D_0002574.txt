@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "This is not as taken seriously." The speech is delivered in a standard North American accent, with a steady, even tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or environmental cues, suggesting a controlled studio or digital environment. The only notable acoustic feature is a brief, high-frequency artifact in the 4000–6000 Hz range, occurring between 1.0 and 1.5 seconds, which is not present in the rest of the clip. This artifact is not a natural part of speech and appears as a sudden, unnatural spike in the upper-mid frequency band, likely introduced by digital processing or editing. No other acoustic anomalies are present, and the remainder of the audio is clean and unremarkable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–1.5 second time region and 4000–6000 Hz frequency region as abnormal using Integrated Gradients (IG), and the LIME model supports the 1.5–1.6 second time region. The wav2vec saliency method also identifies a separate region (2.3–2.5 seconds, 1000–2000 Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any abnormality evidence. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, but these do not point to a specific time or frequency region. The wav2vec IG and LIME results are the only ones that align with the observed high-frequency artifact, indicating cross-model agreement on the 1.0–1.5 second region as the most suspicious.

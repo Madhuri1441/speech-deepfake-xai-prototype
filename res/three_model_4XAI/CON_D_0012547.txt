@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "very act prevention" in a neutral, conversational tone, followed by a brief pause and then "capable good for big." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–6000 Hz range, which is acoustically distinct from the preceding speech and does not match typical vocal or environmental sounds. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [1.8-2.0] seconds in the 5000–6000 Hz range using both Integrated Gradients (IG) and Saliency methods, indicating strong model confidence in this region. The LIME explanation for wav2vec, however, points to an earlier segment ([0.0-0.1] seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, suggesting they did not detect the anomaly or were less sensitive to it. The SHAP analysis highlights high contributions from features like equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not localize the artifact in time or frequency. Overall, the wav2vec model’s IG and Saliency results provide cross-model agreement on the abnormality, while other XAI sources either do not support it or point to unrelated segments.

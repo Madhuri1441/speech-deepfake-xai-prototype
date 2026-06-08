@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "They were time when we were with..." The speech is abruptly cut off mid-word, with no natural fade or pause, indicating a possible edit or synthetic insertion. Immediately following the cutoff, a loud, sustained, high-frequency electronic tone appears, dominating the frequency range of 3000–8000 Hz. This tone is harsh, synthetic, and lacks any natural acoustic qualities, strongly suggesting it is not part of the original recording but rather an added artifact. The sudden onset and unnatural character of this tone, combined with the abrupt truncation of speech, point to a deliberate or automated insertion, likely as a result of a deepfake or audio manipulation process.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: a saliency region at [1.00-1.25] seconds and an IG region at [1.25-1.75] seconds, both within the 3000–8000 Hz frequency range. These regions align with the onset and duration of the synthetic tone, providing cross-model agreement on the timing and frequency of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on different acoustic features or limitations in detecting synthetic artifacts. The Shap values further support the presence of abnormality by highlighting features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which are indicative of sudden changes in sound intensity and spectral characteristics. Overall, the wav2vec saliency and IG results provide strong, cross-model evidence for the identified abnormality, while the other models and Shap values corroborate the presence of synthetic audio intrusion.

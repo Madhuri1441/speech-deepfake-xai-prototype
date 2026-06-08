@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent delivering the phrase, "If you can run a computer, you won't find yourself out of a job." The speech is generally intelligible and natural, with a steady, conversational tone. However, at approximately 2.5 to 3.0 seconds, there is a noticeable acoustic anomaly: the speaker's voice is abruptly cut off mid-word ("out"), and a synthetic, low-frequency electronic tone (around 4000–6000 Hz) is inserted. This tone is unnatural, static, and lacks the organic variation of human speech, strongly suggesting an artificial edit or digital artifact. The abruptness of the cut and the unnatural frequency content of the inserted tone are the primary indicators of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), while LIME also supports the [2.9-3.0] seconds region. The wav2vec saliency analysis points to the [0.0-0.5] seconds region, but this is not supported by other models and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic properties due to the edit, but these are not directly tied to the specific time or frequency region of the anomaly. Overall, the wav2vec model’s IG and LIME results provide the strongest and most consistent evidence for the anomaly, supported by the acoustic observation of the synthetic tone.

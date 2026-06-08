@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Is that an issue?" in a neutral, conversational tone. Immediately following the speech, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a static, unmodulated character and a harsh, buzzy timbre, lacking any acoustic or environmental context. The transition from speech to tone is abrupt and unnatural, with no fade or overlap, indicating a digital splice or insertion. The tone’s frequency content is concentrated between 4000–6000 Hz, which is supported by the wav2vec Integrated Gradients (IG) explanation, and is further corroborated by the Saliency analysis in the same frequency range. The loudness and spectral profile of the tone are also reflected in the SHAP values for equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which indicate a significant deviation from the expected acoustic profile of a natural recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG and Saliency analyses both identify the 4000–6000 Hz frequency range during the 0.5–1.0 second interval as the most suspicious region, corresponding to the onset of the synthetic tone. These findings are cross-model, as both IG and Saliency are derived from the same wav2vec model, but they independently highlight the same acoustic anomaly. The LIME explanation for wav2vec, which points to the 0.0–0.1 second range, is not supported by other XAI sources and is likely a spurious artifact. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is most confidently attributed to the wav2vec model’s analysis.

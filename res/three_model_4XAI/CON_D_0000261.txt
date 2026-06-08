@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "from recorded substantial ex-". The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a possible edit or truncation. Immediately following the cutoff, a high-frequency, synthetic buzzing tone appears, lasting for about 0.5 seconds. This tone is centered around 4000–6000 Hz and is acoustically distinct from the preceding speech, lacking any natural vocal harmonics or environmental context. The transition between speech and the buzz is abrupt, with no overlap or blending, suggesting an artificial insertion or overlay. The buzz is consistent in pitch and amplitude, resembling a digital artifact or error signal rather than a natural sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG) and Saliency methods, both pointing to the same region. The LIME method from wav2vec also highlights the [0.0-0.1] seconds region, which corresponds to the initial speech segment, but this is less relevant to the main anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features indicating a significant deviation from expected speech patterns. The combination of wav2vec’s IG and Saliency evidence, along with the Shapley values, confirms the presence of an artificial buzz in the specified time and frequency range.

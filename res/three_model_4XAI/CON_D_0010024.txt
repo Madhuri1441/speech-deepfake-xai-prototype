@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It's a long process," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, a subtle but noticeable anomaly occurs in the latter part of the utterance, specifically around the word "process." From approximately 0.5 to 1.25 seconds, the voice exhibits a slight pitch instability and a faint, artificial-sounding shimmer, which is not typical of natural speech. This is accompanied by a mild, high-frequency resonance in the 2000–6000 Hz range, suggesting possible digital manipulation or synthesis. The acoustic environment is otherwise clean, with no background noise or environmental cues, and the voice remains centered and close-mic’d throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, with an additional IG explanation in [0.75-1.25] seconds and [3000-6000] Hz. These regions align closely with the observed acoustic instability in the word "process." The LIME explanation from wav2vec, though limited to [0.0-0.1] seconds, does not contradict the main anomaly but is too brief to be conclusive. The Hubert and WavLM models provide no supporting evidence, indicating that the anomaly is not detected by these models. The SHAP analysis highlights spectral features such as spectralFlux_sma3_amean and StddevUnvoicedSegmentLength, which are consistent with the presence of artificial or synthetic speech characteristics, further supporting the wav2vec findings. Overall, the wav2vec model’s multiple explanations provide strong, cross-model agreement on the anomaly, while other models do not corroborate the finding.

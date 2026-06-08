@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with the phrase "...you do so at the beginning..." clearly audible. The speech is accompanied by a persistent, low-level electronic hiss, typical of a noisy recording environment. At approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second and peaking in the 6000–7000 Hz range. This artifact is acoustically distinct from the speech, manifesting as a brief, unnatural, and non-vocal sound, likely a digital glitch or editing artifact. The voice continues without interruption, and the artifact does not affect the intelligibility of the speech. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [0.5-1.0] seconds time region and [6000-7000] Hz frequency region as salient, aligning with the observed high-frequency artifact. The wav2vec Saliency method also highlights a region around [0.75-1.25] seconds, overlapping with the artifact, though at a slightly lower frequency range. The wav2vec LIME method identifies a much earlier, brief region ([0.0-0.1] seconds), which does not correspond to any clear acoustic anomaly. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is not consistently detected by all models. The SHAP analysis does not directly reference the artifact but instead highlights statistical features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are unrelated to the observed transient. Thus, the primary evidence for the abnormality comes from wav2vec's IG and Saliency methods, with no cross-model agreement from Hubert or WavLM.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice speaking in English, with a neutral accent and a conversational tone. The speech is intelligible and delivered at a moderate pace, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0–2.0 seconds, a subtle but noticeable anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight warble, accompanied by a faint, high-frequency artifact in the 3000–4000 Hz range. This moment is marked by a subtle break in the natural flow of speech, with a slight hesitation and a change in timbre that is inconsistent with the rest of the recording. The remainder of the audio returns to normal, with no further anomalies.
+
+This acoustic abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies a salient region between 1.0–2.0 seconds and 3000–4000 Hz, aligning with the observed pitch shift and artifact. The Saliency method for wav2vec also highlights a broader region (3.5–4.0 seconds, 2000–6000 Hz), which may correspond to the tail end of the anomaly or a secondary effect. LIME for wav2vec further corroborates the 1.0–1.5 seconds interval, reinforcing the presence of an anomaly in this time frame. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean also point to this region, indicating a significant deviation in acoustic features. In contrast, the Hubert and WavLM models do not detect any anomalies, suggesting that the wav2vec-based methods are more sensitive to this specific type of manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients, Saliency, and LIME methods all agree on the presence of an anomaly in the 1.0–2.0 seconds interval, with a frequency range of 3000–4000 Hz. This cross-model agreement provides strong evidence for the observed pitch shift and artifact. The Shapley values further support this region, indicating a significant deviation in acoustic features. The Hubert and WavLM models do not detect any anomalies, suggesting that the wav2vec-based methods are more sensitive to this specific type of manipulation.

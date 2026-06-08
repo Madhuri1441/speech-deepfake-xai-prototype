@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "to... the objective is to tackle poverty." The speech is clear and intelligible, with a neutral, formal tone. However, at approximately 1.0–1.5 seconds, a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not a natural part of speech or environmental noise; it is a short, tonal burst with a pitch around 3000 Hz, lasting about half a second. The artifact is acoustically distinct from the speaker’s voice and does not correspond to any natural vocalization or environmental sound. The rest of the audio is free from such anomalies, and the speech resumes normally after the artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.0–1.5] seconds time region and [2000–4000] Hz frequency region as salient, which aligns with the observed synthetic artifact. The wav2vec Saliency analysis also highlights a different region ([0.0–0.5] seconds, [1000–2000] Hz), but this does not correspond to any clear anomaly in the audio. The wav2vec LIME analysis further supports the [2.15–2.25] seconds region, which is outside the main anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting that the artifact is a sudden, high-intensity sound event. Overall, the wav2vec IG analysis provides the strongest and most consistent evidence for the anomaly, supported by the acoustic observation of a synthetic burst in the audio.

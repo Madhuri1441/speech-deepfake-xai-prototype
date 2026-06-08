@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "We should remember he does not..." The speech is abruptly cut off mid-word, with no natural fade or trailing noise, indicating a sudden edit. Immediately following the cutoff, a synthetic, high-frequency electronic tone (approximately 4000–6000 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is acoustically distinct from the voice, lacking any natural vocal harmonics or environmental reverb, and is consistent with a digital artifact or watermark. The abrupt transition and unnatural presence of the tone suggest tampering or post-production insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region at [0.5-1.0] seconds and an IG region at [1.50-2.00] seconds, both in the 4000–8000 Hz frequency range. The saliency region aligns with the onset of the synthetic tone, while the IG region corresponds to the tail end of the clip, where the tone continues. The wav2vec saliency evidence is supported by the observed acoustic anomaly, as the synthetic tone is most prominent in this time and frequency range. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The SHAP values further support the presence of an abnormality, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to sudden changes in loudness and spectral content, respectively. Overall, the wav2vec saliency region at [0.5-1.0] seconds is the most robustly supported by both audio evidence and XAI analysis.

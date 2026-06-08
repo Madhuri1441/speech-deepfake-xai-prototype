@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "It only for basket" in a neutral, conversational tone. Immediately following the speech, a sharp, high-frequency click is heard, lasting less than a second. This click is acoustically distinct from the voice, with a spectral profile concentrated between 1000–3000 Hz, and is not a natural part of speech or environmental sound. The click is abrupt and lacks any reverberation or decay, suggesting it is an artificial or digitally inserted artifact. The voice itself is clear and free of distortion, with no evidence of tampering or manipulation in the spoken portion. The click is the only notable anomaly in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.25-0.5] seconds time region and [1000-3000] Hz frequency region as salient, aligning with the observed click. The LIME explanation from wav2vec also supports the [0.2-0.25] seconds region, which overlaps with the click’s onset. The saliency explanation from wav2vec further corroborates the presence of a high-frequency event around 1.25–1.50 seconds, though this is less consistent with the audio. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect the presence of the click but do not directly localize it. Overall, the click is supported by multiple wav2vec-based XAI methods, indicating cross-model agreement on the anomaly’s timing and frequency.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, emotionally charged utterance: "I was completely horrified." The voice is high-pitched, with a strained and trembling quality, suggesting genuine distress. However, the acoustic texture of the speech is unnatural. Specifically, the segment from 0.5 to 1.0 seconds exhibits a pronounced, artificial shimmer or warble, especially in the high-frequency range (5000–7000 Hz), which is inconsistent with natural human speech. This warble is not present in the rest of the audio and is not attributable to the speaker’s emotional state or microphone characteristics. The abrupt onset and offset of this artifact, along with its spectral profile, suggest digital manipulation or synthesis, likely indicative of a deepfake.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] second time range and [6000-7000] Hz frequency range using Integrated Gradients (IG) and Saliency methods. The LIME method, while identifying a different time range ([0.0-0.1] seconds), does not contradict the wav2vec findings but is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The Shapley values highlight acoustic features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are consistent with the presence of unnatural speech segments. The wav2vec IG and Saliency results provide cross-model agreement on the abnormal region, making this the most reliable indicator of a deepfake artifact.

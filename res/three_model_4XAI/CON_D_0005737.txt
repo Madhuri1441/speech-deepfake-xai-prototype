@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding male voice speaking in a conversational tone, with no obvious signs of manipulation. However, at approximately 4.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 5 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–8000 Hz range, which is acoustically distinct from the preceding speech and does not match the natural frequency content of the speaker’s voice. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and is not accompanied by any speech or environmental sound, suggesting it is an inserted or digitally altered segment. The rest of the audio remains natural and free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [4.5-5] seconds time region and [6000-8000] Hz frequency region as the most salient for the model’s prediction. This aligns with the observed synthetic artifact in the audio. The wav2vec Saliency and LIME also point to nearby time regions (2-3 seconds and 3.5-4 seconds), but these are less directly supported by the audio evidence and may reflect model sensitivity to speech content rather than manipulation. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and mfcc3V_sma3nz_amean, but these do not specifically localize the anomaly to the observed artifact. Overall, the wav2vec IG result is the most robust and cross-validated indicator of the abnormality, supported by the acoustic evidence.

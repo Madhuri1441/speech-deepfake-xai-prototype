@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone: "They are so easy for youngsters to open." The speech is intelligible and delivered at a moderate pace, with a slight upward inflection at the end. Immediately following the spoken phrase, a loud, synthetic electronic tone abruptly starts at 3.5 seconds. This tone is harsh, buzzy, and sustained, with a fundamental frequency around 1 kHz and strong harmonics extending up to 6 kHz, matching the frequency range identified by XAI methods. The tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics, and appears to be artificially inserted. The transition between speech and tone is abrupt, with no fade or overlap, suggesting a deliberate edit or insertion. The tone continues until the end of the clip, masking any potential background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [4000-6000] Hz frequency range, with additional support from saliency analysis at [3.5-4.0] seconds and LIME at [3.0-3.1] seconds, all pointing to the synthetic tone. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of the synthetic tone, with high contributions from equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are characteristic of sudden, high-energy, non-vocal sounds. The combined evidence from wav2vec and Shapley values confirms the synthetic tone as the primary anomaly, with no cross-model agreement from Hubert or WavLM.

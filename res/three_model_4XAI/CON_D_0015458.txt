@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...from the team. However, the house on the..." clearly audible. The speech is interrupted by a sudden, unnatural cut-off at approximately 3.0 seconds, where the voice is abruptly replaced by a synthetic, high-frequency electronic tone. This tone is centered around 6500 Hz and persists for about 0.5 seconds, ending sharply at 3.5 seconds. The transition is acoustically jarring, lacking any natural fade or environmental context, and the tone itself is devoid of modulation or harmonic complexity, suggesting a digitally inserted artifact rather than a genuine sound event. The remainder of the audio is silent, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 2.5–3.0 second region, Saliency points to the 0.0–0.1 second region, and LIME identifies the 3.5–3.6 second region. The IG result directly aligns with the observed acoustic anomaly, while the Saliency and LIME findings correspond to the initial speech and the synthetic tone, respectively. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is most strongly detected by wav2vec. The SHAP analysis further supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden changes in audio energy and spectral content. The combined evidence from wav2vec and SHAP confirms the presence of a synthetic tone inserted at 2.5–3.0 seconds, with no cross-model agreement from Hubert or WavLM.

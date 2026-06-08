@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, natural voice, speaking in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. The only notable acoustic anomaly occurs between 2.0 and 2.5 seconds, where a brief, high-frequency artifact is present. This artifact manifests as a sharp, unnatural spike in the upper frequency range (6000–8000 Hz), which is inconsistent with the speaker’s voice and the surrounding audio. The anomaly is not perceptible as a discrete sound but is detectable as a subtle, unnatural frequency burst. This is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both identify this time-frequency region as significant, indicating that the model detects an anomaly here. The LIME explanation for wav2vec, however, points to a different region ([0.25-0.3] seconds), which is not corroborated by other methods and is not supported by the audio evidence. The Shapley values further support the presence of an anomaly in this region, with high contributions from spectral features such as spectral flux and equivalent sound level, suggesting a deviation from expected acoustic patterns.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region ([2.0-2.5] seconds, 6000–8000 Hz) is supported by cross-model agreement from Integrated Gradients and Saliency, both of which independently identify the same time-frequency region. LIME for wav2vec identifies a different region, which is not corroborated by other methods and is not supported by the audio evidence. The Shapley values also support the presence of an anomaly in the identified region, with high contributions from spectral features such as spectral flux and equivalent sound level, suggesting a deviation from expected acoustic patterns.

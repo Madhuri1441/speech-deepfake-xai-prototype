@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a clear, neutral tone, with no background noise or environmental sounds. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, a subtle anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [1.5–2.0] seconds, coinciding with the word "obsessive." This region exhibits a faint, artificial-sounding resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to casual listening but is detectable through detailed acoustic analysis. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5–2.0] seconds, 4000–6000 Hz). The IG and Saliency methods provide continuous regions, while LIME highlights a specific time point within this interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shap values further support the presence of an anomaly in this region, with the slopeUV0-500_sma3nz_amean feature showing a high positive contribution, suggesting a deviation in the spectral slope. The equivalentSoundLevel_dBp and jitterLocal_sma3nz_amean features also indicate minor deviations, but these are less pronounced. Overall, the wav2vec model's multiple XAI methods provide strong, cross-model agreement on the abnormality, while other models and features offer supplementary but less conclusive evidence.

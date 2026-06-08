@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss, typical of a quiet recording environment. At approximately 1.0 seconds, a female voice starts speaking in a neutral, conversational tone, saying, "They were unconfirmed reports of a big thing." The speech is clear and intelligible, with no obvious signs of emotional distress or unusual vocal characteristics. However, at around 1.0–2.0 seconds, there is a subtle but noticeable shift in the acoustic texture of the voice, marked by a slight increase in high-frequency content (4000–6000 Hz), which may indicate an unnatural or digitally altered segment. This is supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this time-frequency region as a key area of interest. The voice then continues normally until the end of the clip, with no further anomalies detected. No other acoustic irregularities, such as abrupt cuts, pitch jumps, or unnatural pauses, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the time-frequency region [1.0–2.0] seconds and [4000–6000] Hz as the most suspicious, with additional support from its Saliency and LIME methods, which point to slightly different but overlapping regions. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected across all models. The Shapley values from the audio features also suggest that the segment around 1.0–2.0 seconds is significant, with the slopeUV0-500_sma3nz_amean feature showing a high Shap value, further supporting the presence of an anomaly in this region. Overall, the wav2vec model’s multiple XAI methods converge on the same time-frequency region, making it the most reliable indicator of a potential deepfake artifact.

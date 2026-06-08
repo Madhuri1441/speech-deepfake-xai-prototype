@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with the phrase "...taking it and remanded in custody." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic timbre, likely a digital click or glitch, and is not present in the original speech. The artifact is acoustically distinct from the voice, with a frequency content concentrated between 2000–4000 Hz, and is not accompanied by any natural reverberation or environmental cues. This suggests a digital editing error or artifact insertion rather than a genuine acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.0] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and also highlights a secondary region at [1.95-2.05] seconds with [1500-2000] Hz using Saliency. LIME further supports the [1.0, 1.1] seconds region, indicating a possible secondary anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The SHAP analysis highlights features such as loudness_sma3_percentile20.0, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which may be influenced by the artifact, but these do not directly localize the anomaly. Overall, the wav2vec model’s IG and Saliency, along with LIME, provide cross-model agreement on the [0.5-1.0] seconds region, indicating a high confidence in this being the primary abnormality.

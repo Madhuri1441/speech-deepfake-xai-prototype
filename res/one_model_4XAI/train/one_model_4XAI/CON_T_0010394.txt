@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "blossoms were only the..." in a neutral, conversational tone. The speech is clear and natural, with no signs of digital manipulation or artificiality. However, at approximately 0.85 seconds, a sudden, high-frequency, synthetic tone appears, lasting until the end of the clip at 1.0 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech, lacking any natural vocal characteristics or environmental context. The abrupt onset and unnatural spectral profile of this tone suggest it is an artificial insertion, likely intended as a watermark, censor beep, or digital artifact.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) and Saliency both highlight the 0.85–1.0 second time range and the 3000–4000 Hz frequency region as critical for the model’s decision, indicating that the synthetic tone is the primary feature driving the audio’s classification as a deepfake. LIME, however, points to an earlier time window (0.25–0.3 seconds), which corresponds to the natural speech and is not associated with the synthetic tone. The SHAP values further reinforce the importance of the synthetic tone, with the "StddevUnvoicedSegmentLength" feature showing a large positive contribution, likely reflecting the presence of a non-vocal, unvoiced segment. The "spectralFlux_sma3_amean" and "equivalentSoundLevel_dBp" features also support the anomaly, as they capture changes in spectral energy and sound level that are inconsistent with natural speech.
+
+In summary, the audio contains a brief, unnatural synthetic tone at the end, which is the primary acoustic abnormality. The XAI evidence consistently identifies this region as the key driver of the deepfake classification, while the initial speech segment is not flagged as suspicious. No other artifacts or anomalies are present in the audio.

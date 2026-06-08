@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "trial, the meeting of ideas" in a clear, neutral tone. Immediately following the spoken phrase, a high-frequency, synthetic electronic tone is introduced. This tone is stable, pure, and unmodulated, with a frequency between 4000 Hz and 6000 Hz, and persists for approximately 0.35 seconds. The tone is acoustically distinct from the speech, lacking any natural reverberation or environmental context, and appears abruptly at the end of the speech. There are no other background noises, artifacts, or speech present. The synthetic nature of the tone is supported by its spectral purity and lack of modulation, which is atypical for natural sounds or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.85-1.2] seconds and frequency range [4000-6000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this region, albeit with a narrower time window of [1.25-1.30] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, mfcc3V_sma3nz_amean, and equivalentSoundLevel_dBp, which are consistent with the presence of a synthetic tone following the speech. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods confirms the presence of a synthetic tone in the specified time and frequency range.

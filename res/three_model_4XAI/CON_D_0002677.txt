@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotone, robotic delivery, characteristic of a text-to-speech system. The speech is segmented into short, unnatural phrases, with abrupt pauses and a lack of natural intonation. At approximately 1.5–2.0 seconds, there is a noticeable high-frequency artifact in the 4000–6000 Hz range, which manifests as a sharp, digital-sounding click or burst. This artifact is not present in the surrounding speech and stands out acoustically, suggesting a possible glitch or encoding error in the audio generation process. The overall audio quality is low, with a persistent background hiss and a compressed, boxy timbre, further supporting the synthetic origin. No other significant acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 1.5–2.0 second time region and 4000–6000 Hz frequency range as the most salient, directly aligning with the observed high-frequency click in the audio. The wav2vec Saliency analysis also highlights a different region (0–1 seconds, 2000–4000 Hz), but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis is limited to a different time window (3.5–4 seconds) with no frequency support. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting that the overall loudness and dynamic range of the audio contribute to the model’s classification, but do not pinpoint the specific artifact. The wav2vec IG result is the only one that directly corroborates the observed acoustic anomaly, with no cross-model agreement.

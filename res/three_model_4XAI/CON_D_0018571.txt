@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio begins with a clear, high-pitched female voice stating, "The community has always been obsessive and diverse." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds, a loud, synthetic, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, static, and unmodulated, with a fundamental frequency around 100 Hz and strong harmonics extending up to 6000 Hz. The tone is significantly louder than the speech, masking the remainder of the utterance and continuing until the end of the audio. The sudden onset and unnatural character of the tone suggest it is not part of the original recording but was added post-production, likely as a censorship bleep or an intentional audio edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency peak in the [0.0-0.5] seconds range (corresponding to the speech) and an IG peak in the [0.5-1.0] seconds range (corresponding to the electronic tone). The Hubert and WavLM models do not provide any saliency or IG evidence, but their LIME results are not available. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is highly influential, suggesting the presence of a long, unvoiced segment (likely the electronic tone) that deviates from typical speech patterns. The combination of wav2vec saliency and Shapley analysis supports the conclusion that the electronic tone is an abnormality, while the speech is normal. The lack of evidence from Hubert and WavLM does not contradict this, as their methods may not capture such abrupt, non-speech events. The final abnormality is thus supported by wav2vec saliency and Shapley value analysis, indicating a cross-model agreement on the electronic tone as the anomaly.

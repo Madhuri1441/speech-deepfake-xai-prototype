@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It is to be, it was magical." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 0.6 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 2000–5000 Hz range, and is not present in the rest of the audio. The artifact is not a natural part of the voice or environment and does not align with any expected background noise or acoustic event. It is likely a result of digital processing or editing, such as a waveform splice or an artifact from a deepfake model’s reconstruction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the time interval [0.6-1.0] seconds and the frequency range [2000-5000] Hz. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean showing elevated values, suggesting a deviation from typical speech patterns. The combined evidence from wav2vec and the Shapley values indicates a high confidence in the presence of an artificial or manipulated segment in the audio.

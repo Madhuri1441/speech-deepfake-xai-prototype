@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance that is acoustically inconsistent with the rest of the speech. This initial segment is marked by a lack of clarity, unnatural pitch, and a compressed, artificial timbre, suggesting it is not a genuine human vocalization. The remainder of the audio features a more intelligible, though still slightly robotic, male voice speaking in English. The transition between the two segments is abrupt, with no natural fade or overlap, indicating a possible splice or digital manipulation. The first segment’s acoustic properties—low pitch, muffled quality, and unnatural rhythm—stand out as anomalous compared to the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [0-1] second time region and the [5000-6000] Hz frequency range as significant for the model’s prediction, indicating that this segment is a key contributor to the model’s classification. The LIME method also supports this region, further reinforcing the anomaly. In contrast, the Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not universally detected across all models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect the unnatural acoustic properties of the initial segment. Overall, the wav2vec model’s multiple XAI methods converge on the same region, providing strong evidence for the anomaly, while other models do not support this finding.

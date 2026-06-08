@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "government assist mad" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.4 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 0.6 seconds. This artifact manifests as a brief, unnatural tonal burst in the 2000–4000 Hz range, which is not present in the rest of the audio. The artifact is not masked by speech and is acoustically inconsistent with the natural voice, suggesting a possible digital manipulation or splicing. The rest of the audio remains free of such anomalies, with no further evidence of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.4-0.6] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and at [0.95-1.0] seconds with the same frequency range using Saliency. LIME also highlights a brief region at [0.0-0.1] seconds, but this is not supported by other models. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly. The wav2vec model’s IG and Saliency results are consistent with the observed acoustic artifact, indicating cross-model agreement on the [0.4-0.6] seconds interval. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp showing elevated values, suggesting a deviation from normal speech patterns. Overall, the wav2vec model’s IG and Saliency evidence, corroborated by the Shapley values, strongly supports the presence of an anomaly in the specified time and frequency range.

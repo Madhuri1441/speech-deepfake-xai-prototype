@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a low-pitched, synthetic male voice stating, "That time has passed." The speech is delivered in a monotone, with a slightly robotic cadence and a subtle, unnatural reverb, suggesting digital processing or voice synthesis. At approximately 1.00 seconds, a distinct, high-frequency electronic tone emerges, lasting until 1.25 seconds. This tone is centered around 3000–4000 Hz, with a clean, pure sine-wave character and no harmonic content, standing out against the otherwise dry and artifact-free background. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically unrelated to the preceding speech, indicating it is likely an added or inserted sound rather than a natural part of the vocalization.  
+
+The XAI evidence supports this observation: both Integrated Gradients (IG) and Saliency methods highlight the [1.00-1.25] second time region and the [3000-4000] Hz frequency range, indicating that these features are critical to the model’s classification of the audio as a deepfake. The LIME explanation also points to a brief time window around 0.75–0.8 seconds, which may correspond to the onset of the tone or a related artifact. The Shapley values further reinforce the importance of the high-frequency region, with the slopeUV0-500_sma3nz_amean feature showing a large positive contribution, likely reflecting the presence of the synthetic tone. The equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength features also support the presence of an anomalous, non-vocal sound event.  
+
+No other acoustic anomalies are present in the audio, and the speech itself is clear and intelligible, with no signs of compression, clipping, or background noise. The only notable irregularity is the sudden appearance of the high-frequency tone, which is not naturally produced by the speaker and is strongly flagged by the XAI methods as a key indicator of synthetic origin.

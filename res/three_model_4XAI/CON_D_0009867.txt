@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.2-1.8] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "We would have this peer-to-peer assurances from group parties." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (3000–4000 Hz) between 1.2 and 1.8 seconds, specifically during the word "assurances." This segment exhibits a slight unnatural resonance and a brief, artificial-sounding pitch inflection, which is inconsistent with the rest of the speech. The anomaly is not perceptible to the human ear as a major defect, but it is acoustically distinct from the natural speech pattern.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The anomaly in the [1.2-1.8] seconds, [3000-4000] Hz region is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this as the most salient region for the model’s prediction. The wav2vec model’s Saliency and LIME also point to other regions ([0.0-0.1] seconds, [2000-3000] Hz and [0.4-0.5] seconds, respectively), but these are not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this acoustic feature. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 indicating deviations from typical speech patterns, though they do not localize the anomaly as precisely as the wav2vec IG explanation. Overall, the wav2vec IG explanation provides the strongest and most consistent evidence for the identified abnormality.

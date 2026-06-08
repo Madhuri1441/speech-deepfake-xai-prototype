@@ -1,0 +1,12 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio contains a brief, low-pitched, and slightly muffled male utterance of the word "advantage" with a neutral, declarative tone. The speech is clear and intelligible, with no obvious signs of digital corruption or background noise. However, the acoustic region from 0.5 to 1.0 seconds exhibits a subtle but noticeable change in timbre and spectral content, particularly in the 2000–4000 Hz range, where the energy appears artificially smoothed or filtered compared to the rest of the utterance. This region is marked by a lack of natural vocal texture and a slightly unnatural resonance, suggesting possible manipulation or synthesis.  
+
+The Integrated Gradients (IG) analysis highlights this same time and frequency region as the most influential for the model’s decision, indicating that the model is particularly sensitive to the spectral characteristics in this interval. The Saliency analysis further supports this by identifying a secondary region (1.0–1.2 seconds, 5000–6000 Hz) with high sensitivity, likely corresponding to the end of the word or a minor pitch inflection. LIME analysis also points to a brief interval (0.45–0.5 seconds) near the start of the utterance, suggesting the model pays attention to the initial onset of the word.  
+
+Shapley values provide additional insight: the feature "StddevUnvoicedSegmentLength" has a high positive contribution (3.1601), indicating that the model detects an unusually short or inconsistent unvoiced segment, which may be present in the manipulated region. The "equivalentSoundLevel_dBp" feature also contributes positively (2.1104), suggesting a higher-than-expected sound level in the abnormal region. The "loudness_sma3_percentile20.0" feature shows a positive but smaller contribution (1.2674), implying a slight increase in perceived loudness in the abnormal segment.  
+
+In summary, the audio exhibits a subtle but detectable anomaly in the 0.5–1.0 second interval, characterized by an unnatural spectral profile in the 2000–4000 Hz range. This is corroborated by multiple XAI methods, which consistently identify this region as critical for the model’s decision-making. The Shapley values further support the presence of an atypical acoustic feature, likely related to the unvoiced segment and sound level, reinforcing the suspicion of manipulation in this interval.

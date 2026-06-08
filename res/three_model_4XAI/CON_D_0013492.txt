@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's a subtle process." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (2000–6000 Hz) during the phrase "subtle process," specifically between 0.5 and 1.5 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to a synthetic or manipulated vocalization, though the speech remains fully understandable. The anomaly is not accompanied by any obvious background noise, distortion, or artifacts, and the rest of the audio is acoustically clean.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG), and the [0.5-1.0] seconds time range and [4000-6000] Hz frequency range using Saliency. These two XAI methods from wav2vec converge on the same region, providing cross-model agreement. The LIME explanation from wav2vec is less specific, pointing to the very beginning of the audio, but this is not corroborated by other methods or models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values highlight acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and mfcc2_sma3_amean, which may relate to the subtle vocal texture anomaly, but these do not directly specify the abnormal time or frequency range. Overall, the wav2vec model's IG and Saliency methods provide the most consistent and supported evidence for the abnormality.

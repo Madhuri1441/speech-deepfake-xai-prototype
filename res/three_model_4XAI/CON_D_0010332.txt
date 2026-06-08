@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal statement about rugby. The recording is of high fidelity, with clear speech and minimal background noise. However, a subtle but noticeable anomaly occurs between 2.5 and 3.5 seconds, where the speech exhibits a slight pitch and timbre shift, accompanied by a faint, unnatural resonance in the 4000–6000 Hz range. This region is marked by a brief, artificial-sounding reverberation and a subtle pitch inflection inconsistent with natural speech, suggesting possible digital manipulation or synthesis. The anomaly is not present in the surrounding speech, which remains stable and natural. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the 2.5–3.5 second range is supported by multiple XAI sources. The wav2vec model’s Integrated Gradients (IG) method identifies this time-frequency region as highly salient, indicating that the model attributes the deepfake classification to this segment. The Saliency method from wav2vec also highlights a different region (0–1 seconds, 3000–4000 Hz), but this is less consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, as their IG, Saliency, and LIME methods yield no relevant findings. The Shapley values, while not directly pinpointing the time-frequency region, suggest that features related to voiced/unvoiced segments and MFCCs are significant, indirectly supporting the presence of an anomaly in the speech. Overall, the wav2vec IG result provides the strongest cross-model agreement for the identified abnormality.

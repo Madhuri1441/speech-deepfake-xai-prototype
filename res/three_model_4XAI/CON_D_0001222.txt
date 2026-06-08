@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "providing for myself, playing rug—", but the utterance is abruptly cut off mid-word ("rug—"), with no natural fade or pause, indicating a possible edit or synthetic truncation. The voice is clear and intelligible, with no background noise or environmental cues, and the spectral content is concentrated in the mid and high frequencies, particularly between 5000–7000 Hz. The abruptness of the cutoff and the unnatural silence following the truncated word are the primary acoustic anomalies. The Shapley values for features such as equivalentSoundLevel_dBp, stddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly, as they indicate a sudden drop in sound energy and a shift in acoustic characteristics at the point of truncation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the time interval [1.0-2.0] seconds and [0.0-0.5] seconds, respectively, with a frequency range of [5000-7000] Hz, as regions of high importance, aligning with the observed truncation. The LIME method also highlights the interval [0.5-0.6] seconds, reinforcing the presence of an anomaly in this region. The wav2vec model's multiple independent methods (IG, Saliency, LIME) converge on the same time and frequency ranges, indicating strong cross-model agreement. In contrast, the Hubert and WavLM models do not provide any explanations, suggesting that the anomaly is not detected by these models. The Shapley values further corroborate the anomaly by highlighting changes in acoustic features at the truncation point.

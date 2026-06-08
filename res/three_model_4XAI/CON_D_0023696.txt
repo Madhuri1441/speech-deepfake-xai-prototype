@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "We will search an insurance, no one in London experience." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5–2.0 seconds, a subtle but distinct anomaly occurs. During this interval, the voice exhibits a brief, unnatural pitch shift and a slight distortion in timbre, which is not present in the rest of the utterance. This is accompanied by a faint, high-frequency artifact in the 2000–3000 Hz range, which is not typical of natural speech and suggests possible digital manipulation or synthesis. The anomaly is transient and does not affect the intelligibility of the speech, but it stands out as a momentary break in the otherwise smooth vocal delivery.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.0] seconds and frequency range [2000-3000] Hz using Integrated Gradients (IG), which is supported by the Saliency method pointing to a different frequency band ([4000-6000] Hz) but the same time interval. LIME also highlights a specific moment at [3.0, 3.1] seconds, which is close to the main anomaly but not identical. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values suggest that features related to voiced and unvoiced segment lengths and loudness slope are contributing to the model’s prediction, but these do not directly correspond to the observed acoustic anomaly. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the anomaly, while other models and methods offer partial or conflicting support.

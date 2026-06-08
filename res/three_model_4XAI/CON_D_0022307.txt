@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear, and steady female voice speaking the phrase "emotions work rather differently." The speech is delivered in a neutral, even tone with no emotional inflection, and the recording is of high fidelity, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency artifact in the 4000–6000 Hz range during the time interval [1.0–1.5] seconds, coinciding with the word "rather." This artifact manifests as a subtle, unnatural shimmer or digital texture, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The rest of the audio is acoustically clean, with no signs of clipping, compression, or other digital artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0–1.5] seconds time region and [4000–6000] Hz frequency region as salient, with IG and Saliency both pointing to this interval. The LIME explanation also supports this region, with a time window at [2.3–2.4] seconds, which is close to the wav2vec findings and likely reflects a secondary or overlapping region of interest. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp as top contributors, suggesting that the anomaly may be related to the acoustic properties of unvoiced speech segments and overall sound level, but does not specify a time or frequency region. Overall, the wav2vec model’s evidence is the most consistent and directly supports the observed high-frequency artifact in the audio.

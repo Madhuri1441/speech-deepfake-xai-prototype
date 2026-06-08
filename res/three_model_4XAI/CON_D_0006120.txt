@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet indoor environment. At approximately 0.1 seconds, a sharp, high-frequency transient is heard, lasting about 0.1 seconds and peaking in the 4000–5000 Hz range. This transient is acoustically distinct from the rest of the audio, which consists of a female voice speaking in a neutral, conversational tone. The voice is clear and intelligible, with no signs of distortion, clipping, or digital artifacts. The transient does not correspond to any natural speech or environmental sound and is not present in the background hiss or hum. Its abrupt onset and high-frequency content suggest it may be an artifact of audio editing or a digital glitch, rather than a genuine acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The saliency analysis from the wav2vec model identifies the [0.1-0.2] seconds time region and [4000-5000] Hz frequency region as the most salient, indicating that this transient is a key feature in the model’s prediction. The LIME explanation from wav2vec also highlights the [0.0-0.1] seconds region, which overlaps with the saliency region and further supports the presence of an abnormality in this time frame. The wav2vec model is the only one providing XAI evidence for this region, as Hubert and WavLM models do not provide any explanations. The Shapley values from the audio features do not directly correspond to the transient, as they relate to overall audio characteristics rather than specific time-frequency regions. Therefore, the evidence for the abnormality is based on wav2vec saliency and LIME, with no cross-model agreement.

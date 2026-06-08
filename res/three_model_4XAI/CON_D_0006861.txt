@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and intelligible sentence: "I wouldn't feel that it was with a has a number of options." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, with a fundamental frequency between 150–250 Hz and harmonics extending up to 6 kHz. However, at approximately 4.5–5.0 seconds, a distinct, high-frequency, synthetic artifact appears, lasting about 0.5 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, with no natural speech or environmental context, and is acoustically inconsistent with the rest of the recording. The artifact is not present in the original audio waveform, suggesting it was introduced during post-processing or as a result of model-generated speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 4.5–5.0 seconds is supported by both Integrated Gradients (IG) and Saliency methods from the wav2vec model, which independently identify this time-frequency region as the most salient for the model’s prediction. The wav2vec model’s LIME explanation, however, points to a different region (2.5–3.0 seconds), indicating less consistency. The Hubert and WavLM models do not provide any saliency or LIME evidence for this region, suggesting that the anomaly is most strongly captured by wav2vec. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, loudness_sma3_stddevFallingSlope, and loudness_sma3_percentile80.0, which are consistent with the presence of a synthetic artifact in the high-frequency range. Overall, the cross-model agreement between IG and Saliency for wav2vec confirms the abnormality at 4.5–5.0 seconds, while other models and explanations do not contradict this finding.

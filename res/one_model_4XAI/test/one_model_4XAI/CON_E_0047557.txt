@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled male utterance ("You"), followed by a female speaker who says, "So, how about we have this story did." The female speech is clear and natural, but at the transition from "So" to "how," a distinct, high-frequency, synthetic artifact is audible. This artifact manifests as a sharp, unnatural burst of energy in the 5000–7000 Hz range, lasting approximately one second, and is acoustically inconsistent with the surrounding speech. The artifact is not present in the original female voice and does not resemble any typical environmental or recording noise. 
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies a significant contribution in the [1.0–2.0] seconds time window and [5000–7000] Hz frequency range, indicating that this region is critical for the model’s classification of the audio as a deepfake. Saliency analysis further highlights the [1.5–2.0] seconds interval and [4000–6000] Hz band, reinforcing the presence of an anomalous signal. LIME analysis also points to the [1.4–1.5] seconds region, aligning with the timing of the artifact. Shapley values for features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp further corroborate the presence of an unnatural acoustic event in this region, as these features are sensitive to abrupt changes in spectral content and voice quality. No other acoustic anomalies are present in the audio, and the artifact is not explained by the original speech content. 
+
+In summary, the audio contains a high-frequency synthetic artifact in the 5000–7000 Hz range during the female speaker’s utterance, which is strongly supported by multiple XAI methods and is indicative of a deepfake manipulation.

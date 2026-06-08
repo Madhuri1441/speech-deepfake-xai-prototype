@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a short, two-part utterance: "Do it. Be nice." The first word, "Do," is spoken with a clear, natural cadence and is followed by a brief pause. The second word, "it," is delivered with a noticeably higher pitch and a sharper, more clipped articulation, which is acoustically anomalous compared to the rest of the utterance. This anomaly is most prominent in the 0.8–1.0 second time window, where the pitch rises sharply and the spectral energy peaks in the 3000–4000 Hz range, suggesting a possible digital artifact or synthetic manipulation. The subsequent word, "Be nice," resumes a more natural timbre and pitch contour, indicating that the anomaly is localized to the word "it." No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.8–1.0 second time window and 3000–4000 Hz frequency range using Integrated Gradients (IG), and in the 1.3–1.6 second window using Saliency, both of which align with the observed pitch and spectral shift. LIME also highlights the 0.0–0.16 second window, which corresponds to the onset of the utterance but does not match the main anomaly. The Hubert and WavLM models do not provide supporting evidence for this region. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as equivalentSoundLevel_dBp and mfcc1_sma3_amean, which are consistent with the presence of a sudden, high-frequency event. The wav2vec IG and Saliency results, along with the SHAP feature values, provide cross-model agreement that the anomaly is localized to the word "it" in the 0.8–1.0 second window.

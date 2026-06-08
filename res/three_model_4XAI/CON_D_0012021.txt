@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking the phrase, "The final decision was a fact of life." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.5–2.0 seconds into the clip, there is a noticeable acoustic anomaly: a brief, high-frequency, synthetic-sounding artifact that overlays the speech. This artifact is not part of the natural vocal spectrum and is not present in the surrounding speech, suggesting it is an artificial insertion. The artifact is most prominent in the 4000–6000 Hz range, which is outside the typical fundamental and harmonic frequencies of the speaker’s voice. This anomaly is not supported by any of the XAI methods (IG, Saliency, LIME) for any model, indicating that the models did not detect this region as anomalous, likely due to the models being trained on clean speech and not on synthetic or tampered audio.
+
+III. XAI AGGREGATION EXPLANATION:
+- The only XAI evidence pointing to a suspicious region is the IG explanation from the wav2vec model, which identifies the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range as salient. However, this evidence is not corroborated by the Saliency or LIME methods from wav2vec, nor by any of the explanations from the Hubert or WavLM models, which all report no salient regions. Thus, the anomaly is supported by only a single XAI method and not by cross-model agreement. The Shap values provided do not correspond to any specific time or frequency region and are not directly relevant to the observed artifact. In summary, the anomaly is identified solely by the wav2vec IG method, with no cross-model confirmation.

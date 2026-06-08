@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-fidelity female voice saying "dear," followed by a brief pause and then the word "they." The speech is delivered in a neutral, conversational tone, with no background noise or environmental cues. Immediately after the word "they," a sharp, high-frequency electronic tone appears, lasting less than half a second. This tone is acoustically distinct from the speech, with a piercing, synthetic timbre and a frequency content concentrated between 3000–4000 Hz, which is not typical of human speech or natural background sounds. The abrupt onset and unnatural spectral quality of this tone suggest it is an artificial artifact, likely inserted post-recording. The audio ends abruptly after this tone, with no fade-out or natural conclusion, further indicating possible editing or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-1.2] seconds, 3000–4000 Hz), where the electronic tone occurs. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values also support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, further indicating a sudden, high-intensity sound event. The agreement among multiple wav2vec-based methods confirms the region of interest, while the lack of evidence from other models suggests that the anomaly is specific to the wav2vec model’s sensitivity to high-frequency, non-speech events.

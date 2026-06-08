@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a male voice saying, "I saw it as a rock." The speech is clear, with a neutral, declarative tone, and is recorded in a quiet, acoustically dry environment. However, at approximately 1.00 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until 1.25 seconds. This artifact is characterized by a sharp, buzzing timbre in the 2000–4000 Hz range, with a rapid onset and offset, and is acoustically inconsistent with the natural speech or background. The artifact is not present in the original recording but appears to be an insertion or overlay, likely due to digital manipulation or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([1.00-1.25] seconds, 2000–4000 Hz). The IG and Saliency methods provide broader temporal support, while LIME offers a more precise localization. The Hubert and WavLM models do not detect any abnormalities, indicating that the anomaly is not universally recognized by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect the presence of the synthetic artifact, though these are not directly tied to the identified region. The cross-model agreement from wav2vec provides strong evidence for the presence of an artificial insertion in the audio.

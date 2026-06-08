@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a male voice with a General American accent says, "She's a bit of a problem." The speech is clear, with a neutral, slightly resigned tone, and is delivered at a moderate pace. The voice is centered in the stereo field and is accompanied by a slight room reverberation, indicating a small to medium-sized, acoustically treated space. The recording quality is high, with no distortion, clipping, or digital artifacts. The voice is the only prominent sound, and there are no background noises, music, or other speech. The audio ends abruptly after the spoken phrase, with no fade-out or trailing noise.
+
+The primary acoustic abnormality is a brief, high-frequency, synthetic-sounding artifact that occurs between 1.0 and 1.5 seconds, coinciding with the spoken phrase. This artifact is not present in the original audio but is introduced by the deepfake model, as evidenced by the IG, Saliency, and LIME explanations from the wav2vec model. The artifact manifests as a sharp, unnatural sound in the 2000–6000 Hz range, which is inconsistent with the natural acoustic profile of the voice and environment. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple independent XAI sources from the wav2vec model: Integrated Gradients (IG), Saliency, and LIME, all of which identify the same time and frequency region ([1.0-1.5] seconds, [2000-6000] Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specific to the wav2vec model’s analysis. The SHAP values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_amean further support the presence of an unnatural acoustic event in this region, as these features are significantly higher than their original values. This cross-model agreement from wav2vec confirms the synthetic nature of the artifact, while the absence of evidence from other models suggests that the anomaly is not universally detected but is strongly supported by the wav2vec analysis.

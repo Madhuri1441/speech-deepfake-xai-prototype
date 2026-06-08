@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.9 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, muffled utterance that is difficult to discern, possibly due to low recording quality or intentional masking. At approximately 0.9 seconds, a sharp, high-frequency transient occurs, lasting until about 1.2 seconds. This transient is characterized by a piercing, metallic or synthetic timbre, with energy concentrated between 6000 and 8000 Hz, which is atypical for natural human speech or environmental sounds. The abruptness and unnatural spectral content of this event suggest it may be an artifact of digital manipulation or a synthetic overlay. No other obvious acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.9 - 1.2] seconds time range and [6000 - 8000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly broader time window ([1.0 - 1.2] seconds) and a lower frequency band ([1500 - 3000] Hz). LIME analysis, however, points to an earlier, less prominent event ([0.0 - 0.1] seconds), which is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec-based evidence is the most robust. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, suggesting a sudden increase in loudness or energy in the high-frequency range. Overall, the wav2vec IG and Saliency results provide cross-model agreement on the abnormality, while other evidence is either inconsistent or absent.

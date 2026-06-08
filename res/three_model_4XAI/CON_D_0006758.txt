@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "I was shocked as..." in a neutral, conversational tone. Immediately following the word "shocked," there is a brief, unnatural pause or glitch, which is acoustically suspicious. This anomaly is most prominent in the 0.1–0.2 second time window and is accompanied by a sharp, high-frequency artifact in the 2000–4000 Hz range. The artifact manifests as a sudden, unnatural pitch or tonal shift, inconsistent with natural speech or environmental sounds. This is further supported by the wav2vec model’s Saliency analysis, which highlights the same time and frequency region as critical to its prediction. The wav2vec IG analysis also points to a slightly broader region (0.4–0.6 seconds, 2000–3000 Hz), but the Saliency result is more precise and directly aligns with the observed acoustic anomaly. No other XAI models (Hubert, WavLM) provide supporting evidence, and the LIME explanation for wav2vec is less specific (0.0–0.1 seconds), not overlapping with the main anomaly. The SHAP values indicate that features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp are significant, but these are global features and do not localize the anomaly to a specific time or frequency.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Saliency analysis provides the strongest and most consistent evidence, identifying the 0.1–0.2 second time window and 2000–4000 Hz frequency range as abnormal. This is the only XAI source that directly supports the observed acoustic glitch. The wav2vec IG analysis overlaps partially but is less precise. Hubert and WavLM models do not provide any evidence for the anomaly. Thus, the final abnormality region is based on wav2vec Saliency alone, with wav2vec IG providing partial, less precise support.

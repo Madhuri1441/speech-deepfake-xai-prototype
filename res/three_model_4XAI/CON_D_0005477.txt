@@ -1,0 +1,16 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "The legacy was I believe a..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural acoustic event.  
+
+This abnormality is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies the [0.5–1.0] second time region and [4000–6000] Hz frequency region as salient for its prediction.  
+- The wav2vec model’s Saliency method also highlights a different but adjacent time region ([1.75–2.00] seconds) and frequency range ([1000–3000] Hz), which may correspond to a secondary anomaly or a different aspect of the same event.  
+- The wav2vec model’s LIME method identifies a very short time window ([0.3–0.4] seconds), which may reflect a transient or less prominent artifact.  
+- The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models, possibly due to differences in training or feature extraction.  
+- The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, which are all related to acoustic texture and spectral dynamics, further supporting the presence of an unnatural, high-frequency artifact.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The primary abnormality at [0.5–1.0] seconds and [4000–6000] Hz is supported by the wav2vec model’s IG method, which is a cross-model agreement in terms of the time and frequency region, though not across all models. The wav2vec model’s Saliency and LIME methods provide additional, though less consistent, evidence of anomalies in adjacent regions. The Hubert and WavLM models do not detect any anomalies, indicating that the artifact is not universally recognized by all models. The SHAP analysis further corroborates the presence of an acoustic anomaly by highlighting features associated with spectral and temporal irregularities.

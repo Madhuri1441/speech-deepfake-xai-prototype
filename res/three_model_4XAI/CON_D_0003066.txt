@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "goals will come" in a neutral, conversational tone, with a slight upward inflection at the end. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.95 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until 1.05 seconds. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically distinct from the preceding speech. It is not a natural artifact of speech or environmental noise, and its sudden onset and unnatural timbre suggest it may be an inserted or generated sound, possibly indicative of a deepfake or audio editing artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 0.95–1.05 seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this time-frequency region as salient for the model’s prediction. The wav2vec model’s Saliency and LIME explanations point to earlier regions (0.0–0.2 seconds and 0.15–0.2 seconds, respectively), but these are not corroborated by the Hubert or WavLM models, which provide no salient regions. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed high-frequency tone. Thus, the final abnormality region is based on cross-model agreement from wav2vec’s IG explanation, with no supporting evidence from other models or SHAP features.

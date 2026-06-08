@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.00 seconds, a sharp, high-frequency transient occurs, lasting until 1.25 seconds. This transient is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 3000 Hz and 6000 Hz. The sound is abrupt, lacks any natural decay or reverberation, and does not match the acoustic profile of the surrounding speech or environment. The voice in the audio is clear and intelligible, with no signs of distortion or clipping, and the background remains quiet except for the initial thump and the transient. The transient stands out as an anomaly due to its unnatural spectral content and timing, suggesting it may be an artifact or digital manipulation rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.00-1.25] seconds, [3000-6000] Hz). The IG and Saliency methods provide overlapping but slightly different time intervals within this range, while LIME offers a more precise sub-interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features related to sound level and unvoiced segment length, aligning with the observed transient. Overall, the wav2vec model's multiple XAI sources provide strong, cross-model agreement on the abnormal region, while the other models do not detect it.

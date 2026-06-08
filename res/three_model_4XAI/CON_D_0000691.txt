@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice speaking in a neutral, formal tone: "Thames Valley Police decided not to...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sharp, high-frequency transient artifact appears, lasting until 2.5 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 4000–6000 Hz, which is inconsistent with the natural frequency content of the voice. The artifact is abrupt and does not blend with the speech, suggesting a digital glitch or editing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.0–2.5 second time window and 4000–6000 Hz frequency range, while LIME highlights a specific point at 1.5–1.6 seconds, which is close to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are sensitive to abrupt changes in the audio signal. The cross-model agreement from wav2vec confirms the presence of a high-frequency transient artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "plated overnight crisis" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding tone abruptly appears, lasting until 2.5 seconds. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically distinct from the preceding speech. It is not a natural artifact of speech or environmental noise, and its sudden onset and unnatural timbre suggest it may be an inserted or generated sound, possibly as part of a deepfake or audio editing process. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time region and [6000-7000] Hz frequency region using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.1] seconds, [4000-5000] Hz) and LIME identifies [0.1-0.2] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP analysis points to features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, but does not specify a time or frequency region. The only region supported by multiple XAI sources is the [2.0-2.5] seconds, [6000-7000] Hz interval, identified by wav2vec’s IG method. This cross-model agreement strengthens the case for this region being the most likely site of acoustic abnormality.

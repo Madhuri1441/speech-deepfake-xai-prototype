@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "She is an excess, but it was both..." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately following the cutoff, a low-frequency, synthetic electronic tone (approximately 100 Hz) is introduced, which is unnatural and does not match the preceding acoustic environment. This tone persists until the end of the clip, suggesting an artificial insertion or post-production edit. The abruptness of the cutoff and the sudden appearance of the electronic tone are the primary acoustic anomalies.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [1.25-1.75] and [1.0-1.5] second time regions, respectively, with a frequency range of [4000-6000] Hz, as salient. However, the actual anomaly occurs in the [2000-4000] Hz range, which is not directly supported by these methods. The LIME explanation for wav2vec identifies a very narrow [2.1-2.2] second region, which aligns with the timing of the electronic tone's appearance. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME results are also absent, indicating that these models do not detect the anomaly. The SHAP values highlight the equivalentSoundLevel_dBp as the most influential feature, suggesting that the overall loudness and abruptness of the edit are key factors in the model's detection of the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods both point to the [1.0-1.5] second time region, while LIME identifies the [2.1-2.2] second region, which aligns with the timing of the electronic tone. The Hubert and WavLM models do not provide any supporting evidence for the anomaly. The SHAP values indicate that the equivalentSoundLevel_dBp is the most influential feature, supporting the detection of the abrupt edit and electronic tone. The wav2vec model's multiple XAI methods provide cross-model agreement on the anomaly, while the other models do not contribute additional evidence.

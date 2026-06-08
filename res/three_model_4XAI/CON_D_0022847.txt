@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, conversational phrase in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 3.0–3.5 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, lasting about half a second. This tone is sharply defined, with a pitch around 3.5 kHz, and is acoustically inconsistent with the natural speech and room tone. The tone is not a product of the speaker’s voice or any environmental source, and its abrupt onset and unnatural timbre suggest it is an artificial insertion, likely a digital artifact or watermark. The Shapley values indicate that the presence of unvoiced segments and high-frequency content (StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp) are key features contributing to the model’s detection of this anomaly. The tone’s frequency and timing align with the wav2vec model’s IG explanation, which highlights the 2000–4000 Hz range during the 3.0–3.5 second window, further supporting the identification of this region as anomalous.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 3.0–3.5 second window and the 2000–4000 Hz frequency range as the most suspicious region, providing cross-model agreement. The LIME explanation from wav2vec also supports this, though less specifically. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values corroborate the presence of high-frequency content and unvoiced segments, further supporting the conclusion that the synthetic tone is the source of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 4.5–5.0 seconds, there is a noticeable, abrupt change in the acoustic quality of the speech. During this interval, the voice becomes muffled, lower in pitch, and exhibits a loss of high-frequency detail, consistent with a digital artifact or manipulation. This is accompanied by a subtle, unnatural pitch shift and a slight drop in volume, which is not present in the rest of the recording. The speech remains intelligible, but the unnatural timbral change is evident. This region is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) highlights this time-frequency region, and the Saliency method also identifies a similar region, though slightly offset. The LIME method, while less precise, also points to a nearby interval, suggesting a consistent focus on this segment. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, but the wav2vec-based evidence is robust and cross-validated.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [4.5-5.0] seconds, [1000-2000] Hz region as anomalous, with LIME providing additional, though less precise, support. This cross-model agreement strengthens the case for a genuine anomaly in this segment. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not align with the observed acoustic change. Thus, the evidence for the anomaly is primarily from wav2vec, with some support from LIME, but not from other models or Shapley values.

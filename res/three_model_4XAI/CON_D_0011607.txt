@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice stating, "The time he was a loving lad, the republic pop." This phrase is delivered in a neutral, narrative tone, with no apparent emotional inflection or background noise. At approximately 1.0 seconds, a sudden, sharp, high-frequency click or pop is heard, lasting about half a second. This click is acoustically distinct from the preceding speech, with a frequency content concentrated between 2000 and 3000 Hz, and is not a natural part of the spoken content. The click is followed by a brief, low-frequency hum or buzz, which is also unnatural and does not correspond to any expected environmental or vocal sound. The remainder of the audio consists of a male voice saying, "Jim Wallace, two child..." before the clip ends abruptly. The presence of the click and hum, especially their unnatural spectral and temporal characteristics, suggests an audio editing artifact or digital corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through multiple independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, 2000-3000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are associated with the click and hum. The cross-model agreement from wav2vec provides strong evidence for the abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

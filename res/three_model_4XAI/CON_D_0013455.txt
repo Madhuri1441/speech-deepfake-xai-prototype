@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.7-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...he is to take the risk of being disturbed." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.7 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hiss, most prominent in the 3000–6000 Hz range, and is not present in the rest of the audio. The artifact is not masked by speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. This region is supported by multiple XAI methods: the wav2vec model's Integrated Gradients (IG) and Saliency methods both highlight the 1.5–2.0 and 0.8–1.2 second intervals, respectively, with a frequency focus of 3000–6000 Hz. LIME also identifies the 0.7–0.8 second region, overlapping with the wav2vec findings. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent and robust.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients, Saliency, and LIME methods all independently identify the 0.7–2.0 second time range and 3000–6000 Hz frequency range as anomalous, indicating strong cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc3V_sma3nz_amean further support the presence of an anomaly in this region, as they indicate a significant deviation from the expected acoustic profile.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio contains a segment between 5.0 and 6.0 seconds where the speech is notably degraded, marked by a harsh, metallic, and distorted timbre. This region is acoustically anomalous, as the voice loses its natural resonance and clarity, instead presenting a clipped, artificial quality. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify this time-frequency region as critical to the model’s prediction, with IG highlighting [5.0-6.0] seconds and [3000-4000] Hz, and Saliency focusing on [5.0-6.0] seconds and [4000-6000] Hz. These overlapping findings strongly suggest that the model detects this segment as a key indicator of synthetic or manipulated speech. The LIME explanation for wav2vec also supports this, though it is less precise, identifying [1.0-2.0] seconds as salient, which may reflect a secondary anomaly or a different aspect of the audio. No other XAI methods (Hubert or WavLM) provide supporting evidence for this region, and the SHAP values do not directly reference this time-frequency window, but they do indicate features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which may relate to the overall degraded quality of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the [5.0-6.0] seconds, [3000-6000] Hz region as a key area of abnormality, providing cross-model agreement. The LIME explanation for wav2vec also supports this, though less precisely. The Hubert and WavLM models do not provide evidence for this region, and the SHAP values do not directly reference it, but they indicate features consistent with audio degradation. Thus, the wav2vec model’s multiple XAI methods converge on the same region, making it the most reliable indicator of the audio anomaly.

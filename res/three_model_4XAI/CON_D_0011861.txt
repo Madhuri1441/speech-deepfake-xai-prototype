@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "We have not to do the same thing with men." Immediately following this phrase, a distinct, high-frequency electronic tone emerges, lasting for approximately 0.5 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the vocalization or environment, and its abrupt onset and unnatural timbre suggest it is an artificial artifact, likely inserted post-recording. The tone is not present in the original speech and does not correspond to any expected background noise or environmental sound, indicating a possible editing or tampering event.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The wav2vec model's Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [2000-4000] Hz frequency region as significant, aligning with the observed electronic tone. The wav2vec model's Saliency method also highlights a related region ([2.0-2.5] seconds, [6000-8000] Hz), which may correspond to a secondary artifact or harmonic of the tone. The wav2vec LIME method further supports the [0.85-1.0] seconds region, indicating the presence of an anomaly near the onset of the tone. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent and cross-validated. The Shapley values also indicate a significant change in acoustic features, such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which correspond to the introduction of the electronic tone. This cross-model agreement from wav2vec confirms the presence of an artificial artifact in the audio.

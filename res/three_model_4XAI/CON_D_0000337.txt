@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Hello, this is..." in a neutral, conversational tone, with a slight room reverberation and a low-level background hiss. At approximately 1.00 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.25 seconds. This click is acoustically distinct from the speech, with a spectral content concentrated between 3000–6000 Hz, and is not present in the original recording. The click is not a natural part of speech or environmental noise, and its abruptness and spectral profile suggest it is an artifact, likely introduced during editing or post-processing. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.00-1.25] seconds is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) method identifies this time-frequency region as salient, and the Saliency method also highlights a brief, high-frequency event at [1.95-2.05] seconds, which may correspond to a secondary artifact or residual noise. The LIME method from wav2vec further supports the presence of an anomaly in the vicinity of 1.25–1.30 seconds. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values also point to high importance for the equivalentSoundLevel_dBp feature, which may reflect the presence of the click artifact. Overall, the wav2vec model's multiple methods provide cross-validated evidence for the abnormality, while Hubert and WavLM do not detect it, suggesting the anomaly is subtle or localized.

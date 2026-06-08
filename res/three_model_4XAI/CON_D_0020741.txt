@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a statement in a controlled, studio-like environment. The speech is intelligible and free from background noise, with a steady pitch and volume. However, at approximately 1.5–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic buzz or hiss in the 3000–4000 Hz range. This artifact is not present in the surrounding speech and does not align with any natural vocal or environmental sound, suggesting a digital or post-processing anomaly. The artifact is brief and does not disrupt the intelligibility of the speech, but its unnatural spectral quality and abrupt onset/offset are indicative of a deepfake or audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), highlighting the 1.5–2.0 second time region and 3000–4000 Hz frequency range. This is corroborated by the Saliency method, which points to a 1.0–1.2 second region and 5000–6000 Hz range, and LIME, which isolates a 2.0–2.1 second region. Although the exact time and frequency ranges differ slightly, all three wav2vec-based methods converge on the presence of an anomalous event in the 1.5–2.1 second window, with the most consistent frequency evidence in the 3000–4000 Hz band. The Hubert and WavLM models do not detect any abnormalities, and the SHAP analysis does not provide direct evidence of the artifact, focusing instead on acoustic features unrelated to the anomaly. Thus, the wav2vec-based methods provide the strongest and most consistent evidence for the presence of a synthetic artifact in the specified region.

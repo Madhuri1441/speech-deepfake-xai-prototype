@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, high-frequency click at 00:00, followed by a female voice stating, "I am not holding the club to ransom." The speech is clear, with a neutral, declarative tone and no emotional inflection. The recording environment is quiet, with only a subtle background hiss and a low-frequency hum, likely from room tone or recording equipment. At approximately 00:02.3, a distinct, high-frequency electronic tone emerges, lasting until 00:02.5. This tone is sharply defined, with a pitch in the 4000–6000 Hz range, and is acoustically inconsistent with the preceding speech or ambient noise. Its sudden onset and unnatural timbre suggest it is an artifact, possibly from a digital glitch, buffer error, or post-production artifact. The tone is not present in the original audio but appears as a result of processing or editing. No other speech, music, or environmental sounds are present, and the voice remains unaffected by the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.3-2.5] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), while Saliency and LIME also point to the same time and frequency region, though with slightly different boundaries. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights high contributions from `equivalentSoundLevel_dBp`, `spectralFlux_sma3_amean`, and `loudness_sma3_percentile80.0`, all of which are consistent with the presence of a sudden, high-frequency tone. The cross-model agreement from wav2vec’s IG, Saliency, and LIME supports the conclusion that the abnormality is a digital artifact, not a natural part of the audio.

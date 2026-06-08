@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "too late in Africa" in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, a subtle but noticeable anomaly occurs between 0.2 and 0.4 seconds, where the voice exhibits a brief, unnatural pitch modulation or digital artifact. This is accompanied by a faint, high-frequency shimmer or ringing in the 5000–6000 Hz range, which is not present in the rest of the clip. This anomaly is not perceptible to the human ear but is detectable through signal analysis. The anomaly is not supported by all XAI methods, but the Integrated Gradients (IG) method from the wav2vec model specifically identifies this time and frequency region as significant, suggesting a localized change in the signal that may be indicative of tampering or synthetic generation.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) method from the wav2vec model identifies the abnormality in the time range [0.2-0.4] seconds and frequency range [5000-6000] Hz. The Saliency method from wav2vec also detects a related anomaly at [1.2-1.4] seconds, but this is not supported by other models. The LIME method from wav2vec identifies a very early time region [0.0-0.1] seconds, but this is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed acoustic anomaly. Therefore, the most reliable evidence comes from the wav2vec model’s IG method, which is cross-referenced with the audio’s subtle pitch and shimmer artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.35-0.45] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.35 seconds, a sharp, high-frequency transient is heard, lasting about 0.1 seconds. This transient is characterized by a piercing, sibilant quality, with energy concentrated between 2000–4000 Hz, and is acoustically distinct from the rest of the audio, which features a low-pitched, muffled, and slightly reverberant male voice. The voice is spoken in a neutral, declarative tone, with no emotional inflection, and is followed by a short, abrupt silence. The transient stands out as an unnatural artifact, possibly due to digital clipping, a microphone pop, or an editing artifact, and is not present in the original voice recording. No other obvious anomalies are detected in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.35-0.45] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), while the Saliency method from the same model highlights the same region. The LIME explanation also supports this region, indicating a consistent cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is primarily detected by wav2vec and its associated methods. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 indicating deviations from expected acoustic patterns. Overall, the evidence from multiple wav2vec-based XAI methods converges on the same time and frequency region, confirming the presence of an acoustic anomaly in that interval.

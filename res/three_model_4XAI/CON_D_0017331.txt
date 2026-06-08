@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "You need to look at the main trend diet and training to see the mental class." The speech is recorded in a quiet, acoustically dry environment, with no background noise, reverberation, or environmental cues. The voice is steady, with a mid-to-high pitch and a standard North American accent. The only notable acoustic irregularity occurs between 2.5 and 3.0 seconds, where a brief, unnatural pitch shift is observed. This is accompanied by a subtle, high-frequency artifact in the 4000–6000 Hz range, which is not present in the rest of the audio. The artifact is not a result of the speaker’s natural speech and does not correspond to any word or syllable, suggesting a digital manipulation or editing artifact. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [2.5-3.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), while Saliency analysis further narrows the time to [4.0-4.5] seconds and frequency to [6000-8000] Hz, and LIME supports the time range [2.8-3.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength features are most influential, suggesting that the anomaly is related to a sudden change in loudness and a brief unvoiced segment, which aligns with the observed pitch shift and artifact. The cross-model agreement between wav2vec’s IG and LIME supports the conclusion that the abnormality is a digital artifact in the specified time and frequency range.

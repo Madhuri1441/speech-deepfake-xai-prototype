@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, but the speech is abruptly cut off mid-word at approximately 2.0 seconds, leaving a short, unnatural silence before the recording ends. This sudden truncation is acoustically anomalous, as it lacks the natural decay or fade-out expected in genuine speech. The voice itself is clear and intelligible, with no signs of distortion, clipping, or background noise, and the frequency content is concentrated in the midrange, with no evidence of high-frequency artifacts or digital compression. The abruptness of the cut is the primary acoustic irregularity, suggesting possible editing or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency peak in the 0.5–1.0 second range and an integrated gradients (IG) peak in the 1.0–2.0 second range, both within the 3000–6000 Hz frequency band. These regions align with the observed abrupt truncation of speech, supporting the presence of an anomaly at the end of the audio. The LIME explanation for wav2vec also points to a brief region at 0.1–0.2 seconds, but this is less consistent with the main acoustic abnormality. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are not directly tied to the observed truncation but may reflect underlying speech characteristics. Overall, the wav2vec saliency and IG results provide cross-model agreement on the anomalous region, while other XAI sources do not corroborate this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a continuous monologue in a quiet, acoustically dry environment. The speech is generally intelligible, with no obvious signs of digital manipulation, background noise, or environmental artifacts. However, at approximately 3.5–4 seconds, a brief, high-frequency, synthetic-sounding artifact is present, characterized by a sharp, metallic, and unnatural timbre. This anomaly is not part of the speaker’s voice and does not correspond to any natural speech or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency range as a region of high importance for its prediction, suggesting the model detects this as a significant deviation from expected audio patterns. No other XAI methods or models provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [3.5-4] seconds, [6000-7000] Hz region as a key abnormality, but neither the Saliency nor LIME methods from wav2vec, nor any methods from Hubert or WavLM, corroborate this finding. Thus, the evidence for this anomaly is based solely on the wav2vec IG analysis, with no cross-model agreement. The Shapley values indicate that features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 are important for the model’s decision, but these do not directly correspond to the observed artifact and are not localized to the same time or frequency range.

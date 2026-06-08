@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "We always smart another..." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately following the cutoff, a synthetic, high-pitched electronic tone appears, lasting for about 0.5 seconds. This tone is sharply defined, with a frequency content in the 4000–6000 Hz range, and is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context. The sudden transition and the unnatural, static quality of the tone strongly suggest digital manipulation or insertion, rather than a genuine environmental or vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 4000–6000 Hz frequency range during the 1.0–1.5 second time window as a region of abnormality, corresponding to the synthetic tone. The LIME method from wav2vec also supports this, highlighting a brief time window (1.25–1.30 seconds) within the same frequency range. The Hubert and WavLM models do not provide any supporting evidence for this region, as their explanations are entirely absent. The SHAP analysis identifies the equivalentSoundLevel_dBp feature as the top contributor, which aligns with the increased loudness and unnatural presence of the synthetic tone. Overall, the wav2vec model's multiple independent methods converge on the same abnormal region, providing strong cross-model agreement for the synthetic tone's presence.

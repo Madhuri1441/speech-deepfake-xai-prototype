@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent delivering the phrase, "across the street that London is the be all and end all." The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is present in the spoken phrase, specifically around the word "London." From 1.0 to 2.0 seconds, the speech exhibits a slight unnaturalness in the mid-to-high frequency range (2000–6000 Hz), which is perceptible as a minor pitch or timbre inconsistency. This is supported by multiple XAI methods: the wav2vec model's Integrated Gradients (IG) highlights the 1.0–1.5 second region in the 2000–4000 Hz band, while its Saliency method identifies 1.0–2.0 seconds in the 4000–6000 Hz band. LIME also points to the 2.0–2.1 second region, aligning with the wav2vec findings. These consistent cross-model signals suggest a localized anomaly in the speech, likely indicating a deepfake artifact in the word "London." No other acoustic irregularities are present, and the rest of the audio is natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides multiple independent explanations (IG, Saliency, and LIME) that all point to the same time and frequency region (1.0–2.0 seconds, 2000–6000 Hz), indicating a strong cross-model agreement. The Hubert and WavLM models do not provide any supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values further reinforce the anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are all associated with the same time and frequency range. Thus, the final abnormality region is confidently identified based on consistent wav2vec evidence and corroborating Shapley values.

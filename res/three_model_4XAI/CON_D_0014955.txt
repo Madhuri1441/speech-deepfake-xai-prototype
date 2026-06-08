@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are typical of a quiet indoor environment. At approximately 0.4 seconds, a sharp, high-frequency transient is heard, lasting until about 0.6 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, standing out distinctly from the rest of the audio. The rest of the clip features a clear, neutral female voice saying, "to want to buy City Hall," with no other speech or background sounds. The voice is well-articulated and free from distortion, but the high-frequency transient is acoustically anomalous, as it does not correspond to any natural speech or environmental sound. This transient is not supported by any of the XAI explanations for the wav2vec, Hubert, or WavLM models, nor is it explained by the SHAP values, which focus on global acoustic features rather than specific time-frequency events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the high-frequency transient in the 0.4–0.6 second range as significant, with a frequency region of 5000–7000 Hz, as indicated by both Saliency and IG methods. However, the Hubert and WavLM models do not provide any time or frequency regions, and the SHAP values do not reference this transient. Thus, the anomaly is supported by wav2vec alone, with no cross-model agreement. The transient remains unexplained by the SHAP features, which focus on global acoustic properties rather than localized events.

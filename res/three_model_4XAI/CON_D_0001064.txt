@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral utterance of the word "like" spoken by a female voice, followed by a brief pause and a sharp, high-pitched electronic beep at approximately 2.0 seconds. This beep is acoustically distinct from the voice, with a frequency content concentrated between 6000–7000 Hz, and is notably louder and more abrupt than the preceding speech. The beep is sustained for about 0.5 seconds before the audio ends. There are no other background noises, artifacts, or speech present. The beep’s unnatural timbre and timing suggest it is a synthetic alert or notification sound, not a natural part of the spoken content.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.0-2.5] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, aligning precisely with the observed beep. The LIME explanation from wav2vec also supports this, highlighting the [2.0-2.1] seconds interval. The Saliency method from wav2vec, however, points to an earlier region ([1.25-1.75] seconds), which corresponds to the end of the spoken word and is not supported by other XAI methods. The Hubert and WavLM models do not provide any saliency or explanation for the beep, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further reinforce the importance of the beep, with the equivalentSoundLevel_dBp feature showing a large positive contribution, consistent with the high amplitude of the beep. Overall, the beep is the only clear abnormality, and its detection is supported by multiple wav2vec-based XAI methods, though not by Hubert or WavLM.

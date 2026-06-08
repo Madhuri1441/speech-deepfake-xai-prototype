@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice asking, "How will we get back in our flat?" The speech is clear and intelligible, with a natural conversational tone. However, at approximately 1.5 seconds into the clip, a distinct, high-frequency electronic tone emerges and persists until the end of the audio. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the environment or the speaker’s voice, and its sudden appearance and sustained presence suggest an artificial or synthetic origin. The tone is not present in the initial seconds of the audio, and its abrupt onset and lack of modulation indicate it is likely a digital artifact or an intentional overlay, rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while the LIME method corroborates the same time range. The Saliency method, however, identifies a different frequency range ([5000-6000] Hz) and time range ([3-4] seconds), which does not align with the observed tone in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as MeanUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but does not specify a time or frequency range for the anomaly. Overall, the wav2vec model’s IG and LIME results are the most consistent with the observed acoustic abnormality, indicating a high-frequency tone starting at 1.5 seconds.

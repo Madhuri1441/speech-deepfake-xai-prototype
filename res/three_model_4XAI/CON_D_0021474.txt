@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying "so still is high" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds into the clip, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the recording. This artifact is characterized by a steady, high-pitched tone (around 6000–7000 Hz), lacking the natural harmonic structure of human speech or environmental sounds. The artifact is not present in the initial portion of the audio, suggesting it is an artificial addition rather than a recording flaw. The abrupt onset and unnatural spectral content of this artifact are the primary acoustic abnormalities.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time-frequency region ([0.5-1.0] seconds, [6000-7000] Hz), indicating strong cross-model agreement. The LIME explanation from wav2vec also supports this region, albeit with a narrower time window ([0.45-0.5] seconds), which aligns closely with the start of the artifact. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for the anomaly, suggesting that the wav2vec model is uniquely sensitive to this type of synthetic artifact. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, indicating a sudden increase in sound energy in the high-frequency range.

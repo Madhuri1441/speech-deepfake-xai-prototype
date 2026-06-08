@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.45-0.55] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice calmly stating, "My attention barely observable." The speech is clear, with a neutral tone and no signs of distress or urgency. However, at approximately 0.45 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.1 seconds. This transient sound is acoustically distinct from the speech, standing out due to its abruptness and high-frequency content (3000–4000 Hz). The click is not a natural part of speech or environmental noise, and its presence is inconsistent with the otherwise clean recording. This anomaly is supported by multiple XAI methods: the Integrated Gradients (IG) analysis for the wav2vec model identifies a salient region in the 0.5–1.0 second range, while the Saliency method for wav2vec highlights the 0.0–0.5 second range, both pointing to the same transient event. The LIME method for wav2vec further narrows the region to 0.45–0.55 seconds, confirming the click as a significant feature. No other XAI methods (Hubert or WavLM) provide supporting evidence, and the Shapley values do not directly reference this transient event, focusing instead on overall audio characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region is supported by cross-model agreement among wav2vec’s IG, Saliency, and LIME methods, all identifying the same transient click at 0.45–0.55 seconds. This consistency across multiple XAI techniques strengthens the conclusion that the click is an artifact rather than a natural part of the audio. The Hubert and WavLM models do not provide supporting evidence, and the Shapley values do not directly reference the click, focusing instead on broader audio features. Thus, the click is the only clearly identified anomaly, with strong support from wav2vec’s XAI methods.

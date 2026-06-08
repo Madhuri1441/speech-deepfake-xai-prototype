@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a formal statement: "The shareholders will vote for this to be involved or notified." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.5 and 3.0 seconds, specifically in the 2000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no signs of tampering, clipping, or compression.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.5-3.0] seconds in the 2000–4000 Hz range using Integrated Gradients (IG), and LIME also supports this region at [2.0-2.1] seconds, though slightly earlier. The wav2vec model’s Saliency method identifies a different region ([0.5-1.0] seconds, 4000–6000 Hz), but this does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values, while not directly tied to time or frequency, highlight features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which may reflect subtle changes in the audio’s spectral content, but do not pinpoint the artifact’s location. Overall, the wav2vec model’s IG and LIME evidence, both pointing to the 2.5–3.0 second region, provide the strongest support for the observed synthetic artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "an energy of the..." in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 0.6 seconds, a sharp, high-frequency transient artifact appears, lasting until about 0.8 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content concentrated between 2000 Hz and 4000 Hz. The sound is abrupt, lacks any natural acoustic decay, and does not blend with the preceding speech, suggesting it is an inserted or corrupted segment rather than a natural part of the utterance. The remainder of the audio is silent, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.6-0.8] seconds and [2000-4000] Hz using Integrated Gradients (IG), and at [0.85-1.0] seconds and [2000-4000] Hz using Saliency, with LIME further supporting the [0.85-0.9] seconds interval. These findings are consistent across multiple XAI methods and point to the same acoustic anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which may reflect the unnatural transition and abruptness of the artifact, but these do not localize the anomaly as precisely as the wav2vec results. Overall, the wav2vec-based evidence is robust and cross-validated, indicating a high confidence in the identified abnormality.

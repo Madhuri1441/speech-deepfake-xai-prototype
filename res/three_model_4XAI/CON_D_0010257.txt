@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "space shuttle" in a standard North American accent, followed by a brief pause and then the word "to thank." The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.8–1.2 seconds, there is a subtle but noticeable high-frequency artifact in the 6000–7000 Hz range, which is not present in the rest of the audio. This artifact manifests as a faint, synthetic-sounding buzz or digital hiss, suggesting a possible anomaly in the audio signal. The voice itself remains unaffected, and the rest of the recording is acoustically normal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the 0.8–1.2 second time region and 6000–7000 Hz frequency region, and Saliency pointing to a slightly different but overlapping time and frequency range. The LIME explanation for wav2vec is less specific, only indicating the very beginning of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a large positive value, suggesting a significant deviation in overall sound level, but this does not localize the anomaly to a specific time or frequency. The wav2vec IG and Saliency results are the only ones that consistently point to the same abnormality, making this the most reliable evidence.

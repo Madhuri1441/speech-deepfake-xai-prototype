@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a neutral, declarative tone: "Could make quite a big Serbia has a future in Europe too." The speech is clear and intelligible, with no background noise or environmental sounds. However, a subtle but noticeable anomaly occurs in the phrase "has a future," specifically around the word "future." From 2.0 to 3.0 seconds, the voice exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This is accompanied by a mild, high-frequency shimmer or warble in the 3000–8000 Hz range, suggesting possible digital manipulation or artifacting. The acoustic environment is otherwise clean, with no signs of clipping, distortion, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) region from 2.0–2.5 seconds in the 3000–6000 Hz range, and a Saliency region from 2.5–3.0 seconds in the 4000–8000 Hz range. These regions overlap and are consistent with the observed pitch instability and high-frequency shimmer in the word "future." The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not robustly detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the acoustic irregularity, but these do not pinpoint a specific time or frequency range. Overall, the wav2vec model's evidence is the most consistent and directly supports the observed acoustic anomaly in the specified time and frequency ranges.

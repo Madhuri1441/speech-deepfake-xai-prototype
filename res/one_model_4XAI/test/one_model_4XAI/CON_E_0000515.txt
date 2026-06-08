@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I have played well." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.8 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact manifests as a faint, synthetic-sounding hiss or whine, most prominent in the 4000–6000 Hz range, which is outside the typical frequency range of human speech. This anomaly is not present in the original voice and does not correspond to any environmental or recording noise, suggesting it is an artifact introduced during audio processing or generation.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) highlights the 0.8–1.2 second time region and 4000–6000 Hz frequency region as significant, indicating that these features contribute most to the model’s classification of the audio as a deepfake. Saliency analysis further corroborates this by identifying a brief, high-frequency event at 1.4–1.5 seconds, likely related to the same artifact. LIME analysis points to the very beginning of the audio (0.0–0.1 seconds), possibly due to the initial onset of the voice or a minor transient. The Shapley values reinforce the importance of high-frequency content, with equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength all showing elevated values, consistent with the presence of an artificial high-frequency component.
+
+In summary, the audio contains a subtle but distinct high-frequency artifact in the 4000–6000 Hz range, most prominent between 0.8 and 1.2 seconds, which is not part of the original speech and is supported by multiple XAI methods as a key indicator of deepfake generation.

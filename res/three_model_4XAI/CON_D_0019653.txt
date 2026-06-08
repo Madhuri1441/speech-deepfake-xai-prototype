@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 4.5–5 seconds, a brief, high-frequency artifact is audible, characterized by a sharp, synthetic-sounding transient in the 6000–7000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The artifact is isolated and does not affect the intelligibility of the speech, but its unnatural spectral quality and timing indicate it is likely a result of digital manipulation or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [4.5-5] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed artifact. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this does not correspond to any clear anomaly in the audio. The LIME explanation from wav2vec points to [3.0-3.5] seconds, which is close to the artifact but not as precise. The Hubert and WavLM models do not provide any saliency or LIME evidence, and the SHAP values do not directly reference the artifact region. Thus, the strongest and most consistent evidence for the anomaly comes from the wav2vec model’s IG explanation, which is cross-model in the sense that it is derived from a deep learning model but not corroborated by other models.

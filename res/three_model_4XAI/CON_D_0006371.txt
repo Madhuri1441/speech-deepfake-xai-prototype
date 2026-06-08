@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "Thanks" in a neutral, conversational tone, followed by a brief pause and then the phrase "Maybe we...". The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 1.25 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.75 seconds. This artifact is characterized by a piercing, synthetic tone in the 3000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.25-1.75] seconds, [3000-6000] Hz). The IG method highlights the region as a key area of model attention, while Saliency confirms the same region as salient. The LIME explanation for wav2vec is not aligned with the observed artifact, as it points to an earlier time range ([0.0-0.1] seconds), which does not correspond to any notable acoustic event. The Hubert and WavLM models do not provide any supporting evidence for the artifact, as their IG, Saliency, and LIME explanations are all absent. The Shap values indicate that the artifact region is highly influential in the model’s decision-making, with loudness and spectral features contributing to the model’s focus on this region. Overall, the wav2vec model’s IG and Saliency methods provide consistent, cross-referenced evidence for the abnormality, while other models and methods do not support this finding.

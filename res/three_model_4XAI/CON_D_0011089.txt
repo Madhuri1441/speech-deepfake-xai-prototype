@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, narrating a sports event in a clear, neutral tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 4.0–5.0 seconds, a distinct, high-frequency, synthetic tone emerges, centered around 6000–8000 Hz. This tone is not part of the natural speech or environment and is acoustically anomalous, as it does not correspond to any expected sound in the context of a sports commentary. The tone is steady, unmodulated, and appears abruptly, suggesting it is an artificial artifact rather than a natural event. This anomaly is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) highlights this exact time and frequency region, while its Saliency method also points to a nearby time and frequency range. The LIME method, though less precise, aligns with the wav2vec findings by indicating a suspicious region close to the anomaly. The presence of this synthetic tone is not explained by the speaker’s content or the expected audio environment, and no other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients, Saliency, and LIME methods all independently identify the 4.0–5.0 second region with a frequency range of 6000–8000 Hz as suspicious, indicating strong cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly, with features such as loudness and MFCCs indicating a deviation from expected speech patterns. Overall, the evidence from multiple XAI methods converges on the same anomalous region, confirming the synthetic tone as the primary abnormality in the audio.

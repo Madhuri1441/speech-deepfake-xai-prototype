@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "It is until the last week they were not sure that they would make it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not part of the original speech and is acoustically inconsistent with the rest of the audio, which is dominated by mid-frequency speech and a low-level background hiss. The artifact is characterized by a piercing, static-like timbre, likely resulting from digital clipping or a synthetic overlay, and is most prominent in the 3000–6000 Hz range. This anomaly is not present in the original speech and is not masked by it, making it highly conspicuous.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0–2.0] seconds, 3000–6000 Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with features like slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength indicating a significant deviation from normal speech patterns, likely due to the synthetic artifact. Overall, the wav2vec model’s consistent identification of the artifact, supported by multiple XAI methods, provides robust evidence of the anomaly.

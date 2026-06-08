@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-frequency thump, likely a mouth or plosive sound, followed by a female voice saying, "talk about a few people." The speech is clear and natural, with no signs of digital processing or distortion. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.6 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–8000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio but appears abruptly and is not masked by the voice, indicating a likely post-production anomaly or digital corruption. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.6] seconds, [6000-8000] Hz). The Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no relevant evidence. The Shapley values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, all of which are associated with the high-frequency artifact. The cross-model agreement from wav2vec’s multiple XAI methods provides strong evidence for the identified region, while the lack of support from Hubert and WavLM suggests the anomaly is subtle or not captured by all models.

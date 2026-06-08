@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.05-0.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled utterance, "to see if it makes," spoken by a female voice in a neutral, conversational tone. Immediately following this, a sharp, high-frequency electronic tone is heard, lasting approximately 0.05 seconds. This tone is characterized by a piercing, synthetic timbre, with a fundamental frequency around 2500 Hz and strong harmonics extending up to 5000 Hz. The tone is abrupt in onset and offset, with no natural decay or modulation, and stands out starkly against the otherwise quiet background. There are no other discernible sounds, speech, or environmental cues present.
+
+The acoustic anomaly is the sudden appearance of this high-frequency electronic tone, which is inconsistent with the natural speech preceding it and lacks any organic or environmental context. This suggests an artificial insertion, likely as a result of digital editing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the anomalous region as [0.05-0.1] seconds in the time domain and [2000-3000] Hz in the frequency domain, aligning precisely with the observed electronic tone. The IG method from wav2vec also highlights a region at [0.6-0.8] seconds, but this is not supported by the audio and is likely spurious. The LIME method from wav2vec identifies [0.0-0.1] seconds, which includes the speech and the tone, but does not isolate the anomaly as precisely. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, but these are global features and do not localize the anomaly in time or frequency. The only cross-model agreement is between the wav2vec Saliency and IG methods, both pointing to the same time and frequency region. Thus, the final abnormality region is supported by wav2vec Saliency and IG, with wav2vec LIME providing partial support.

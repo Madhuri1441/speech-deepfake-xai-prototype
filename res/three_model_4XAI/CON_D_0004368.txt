@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, neutral tone: "came into this world with nothing to welcome them." The speech is clear and natural, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital insertion or overlay rather than a natural event. After 2.0 seconds, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency range ([1.0-2.0] seconds, 4000–6000 Hz). This cross-model agreement strongly supports the presence of an abnormality in this region. The Hubert and WavLM models do not provide any evidence of abnormality, either through IG, Saliency, or LIME, indicating that the anomaly is not detected by these models. The Shapley values, while not directly identifying the artifact, highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may be indirectly affected by the presence of the artifact but do not pinpoint its location. Overall, the wav2vec model's consistent identification of the artifact, supported by multiple methods, provides the strongest evidence for the abnormality.

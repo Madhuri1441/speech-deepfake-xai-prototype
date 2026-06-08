@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, conversational tone, but the speech is heavily distorted and unintelligible, with a pronounced low-pass filtering effect that removes high-frequency content. The most notable acoustic abnormality occurs between 0.5 and 1.5 seconds, where the voice exhibits a sudden, unnatural drop in pitch and a harsh, metallic timbre, accompanied by a loss of clarity and increased noise. This segment is marked by a significant reduction in high-frequency energy, consistent with severe digital compression or filtering. The speech in this region is particularly muffled and lacks the natural resonance of a genuine human voice, suggesting possible manipulation or synthesis. The background remains quiet, with no environmental or ambient sounds, further highlighting the unnatural quality of the voice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [0-1] and [0.5-1.5] second intervals, respectively, as regions of high abnormality, with the latter focusing on the 2000-4000 Hz frequency range. These findings are supported by the LIME method, which also highlights the [0.0-0.1] second interval, indicating a consistent focus on the initial segment of the audio. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the wav2vec-based methods are the most reliable in this case. The Shapley values further support the presence of abnormality, with high contributions from features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural speech patterns and degraded audio quality. Overall, the wav2vec-based XAI methods provide cross-model agreement on the abnormality, while the other models do not detect any issues.

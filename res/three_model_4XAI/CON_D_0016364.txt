@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "back. Now we were looking in good shape." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 1.0 seconds, a subtle but noticeable change occurs in the acoustic profile. The voice exhibits a slight pitch drop and a more nasal, artificial timbre, which persists until about 1.5 seconds. This change is accompanied by a shift in the frequency spectrum, with increased energy in the 2000–6000 Hz range, suggesting a possible digital alteration or synthesis artifact. The remainder of the audio returns to the original vocal quality, indicating the anomaly is localized and not a continuous effect.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region as the most salient, indicating a strong model-based suspicion of manipulation in this segment. The Saliency method from wav2vec also highlights a different but adjacent region ([2.0-2.1] seconds, [6000-8000] Hz), which is less consistent with the observed acoustic change. The LIME method from wav2vec points to an earlier, very brief segment ([0.0-0.1] seconds), which does not align with the audible anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec model is uniquely sensitive to the anomaly. The SHAP analysis does not directly indicate the abnormality but provides context on acoustic features such as spectral flux and sound level, which may be indirectly related to the observed change. Overall, the wav2vec IG result is the most robust and consistent with the acoustic evidence, while other XAI methods either do not support the anomaly or point to different regions.

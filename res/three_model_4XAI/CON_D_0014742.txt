@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "But if they were in this..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.1 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is not present in the original speech and appears abruptly, suggesting it is an artificial insertion rather than a natural sound. No other acoustic anomalies are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.1] seconds, 4000–6000 Hz). The IG method highlights the region [1.0-1.5] seconds, the Saliency method [1.8-2.0] seconds, and the LIME method [2.0-2.1] seconds, all within the same frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shapley values for the audio features (equivalentSoundLevel_dBp, mfcc1_sma3_amean, jitterLocal_sma3nz_amean) do not directly indicate the artifact, as they reflect overall audio characteristics rather than localized anomalies. The wav2vec model’s consistent identification of the artifact across multiple XAI methods provides strong evidence for the presence of a synthetic sound anomaly in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "The foreign office was...". At approximately 1.0 seconds, the voice is abruptly interrupted by a loud, synthetic, high-pitched electronic tone that persists until about 2.5 seconds. This tone is distinctly artificial, with a harsh, buzzy timbre and a frequency content concentrated between 3000 Hz and 6000 Hz, which is inconsistent with the natural speech spectrum. The tone masks the remainder of the speech, making the phrase "...he is the curious by his absence in the..." unintelligible. The sudden onset and unnatural character of the tone suggest deliberate insertion, likely as a censorship bleep or audio glitch, rather than a natural event or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.0–2.0 second region, Saliency analysis focuses on 2.0–2.5 seconds, and LIME supports the 1.5–2.0 second window. All three point to the same time interval, with frequency support from IG (3000–4000 Hz) and Saliency (4000–6000 Hz), confirming the synthetic tone’s presence. The Hubert and WavLM models do not provide any evidence, indicating that the anomaly is not detected by these models, likely due to their different training objectives or architectures. The Shapley values further support the presence of an abnormality, with features such as slopeUV0-500_sma3nz_amean and jitterLocal_sma3nz_stddevNorm indicating significant deviation from normal speech patterns, especially in the voiced/unvoiced segment and jitter metrics. This cross-model agreement from wav2vec and the Shapley values strongly indicate a synthetic or inserted artifact in the audio, specifically during the 1.0–2.5 second interval.

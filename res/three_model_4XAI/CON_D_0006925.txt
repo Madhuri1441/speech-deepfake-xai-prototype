@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "The survival tab is what we intend to do." The speech is intelligible and delivered in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact is characterized by a piercing, synthetic tone in the 2000–4000 Hz range, which is acoustically distinct from the preceding speech and does not match any natural vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural event. After this brief anomaly, the audio returns to normal speech until the end of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.0-1.5] seconds, 2000-4000 Hz), indicating a strong, cross-model agreement on the presence of an anomaly. The IG method highlights the region as a key contributor to the model’s prediction, while Saliency further confirms the temporal and spectral specificity of the artifact. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are entirely absent. The Shapley values also support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean showing elevated values, suggesting a disruption in the audio’s natural structure. Overall, the wav2vec model’s dual evidence, combined with the Shapley values, provides strong support for the presence of a synthetic artifact in the specified region.

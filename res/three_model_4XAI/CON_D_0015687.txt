@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Grace, madness, clever." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording is clean and of high fidelity, with no audible artifacts such as clipping, distortion, or compression. The only notable acoustic feature is a brief, high-frequency, synthetic tone that appears at approximately 1.0 seconds, lasting until 1.5 seconds. This tone is distinct from the speech, with a frequency content between 2000 Hz and 4000 Hz, and is likely an electronic beep or alert. The remainder of the audio is silent, with no further speech or background activity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), which is supported by Saliency and LIME methods. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight the equivalentSoundLevel_dBp feature as the most significant contributor to the anomaly, with a large positive SHAP value, suggesting a sudden increase in sound level in the specified time and frequency range. The slopeUV0-500_sma3nz_amean and loudness_sma3_meanFallingSlope features also contribute, but to a lesser extent. The combined evidence from wav2vec’s IG, Saliency, and LIME methods, along with the SHAP analysis, strongly supports the presence of a synthetic tone in the specified region. The absence of evidence from Hubert and WavLM suggests that the anomaly is not universally detected across all models, but the wav2vec-based evidence is robust and consistent.

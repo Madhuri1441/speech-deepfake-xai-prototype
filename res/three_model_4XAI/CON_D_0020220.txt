@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "was ceased to be left," delivered in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.2 seconds, a distinct, high-frequency, synthetic tone emerges and persists until 1.6 seconds. This tone is sharply defined, with a frequency content between 4000 and 5000 Hz, and is acoustically distinct from the speech, suggesting it is an artifact rather than part of the original recording. The tone is not present in the initial or final portions of the audio, indicating it is inserted or generated during post-processing. The wav2vec model’s Integrated Gradients (IG) analysis highlights this time-frequency region as significant, and the Saliency method also identifies a related high-frequency region (4000–6000 Hz) at the start of the audio, though this is less specific. No other XAI methods or models provide supporting evidence for this region, and no other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG method identifies the time-frequency region [1.2-1.6] seconds and [4000-5000] Hz as the most suspicious, with the Saliency method providing partial support for a broader high-frequency region at the start of the audio. The Hubert and WavLM models do not provide any evidence for this region, and LIME also fails to support it. Thus, the final abnormality region is based on cross-model agreement between wav2vec IG and wav2vec Saliency, though the latter is less specific. No other XAI sources corroborate this finding, and no other acoustic anomalies are detected.

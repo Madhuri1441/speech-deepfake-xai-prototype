@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.75 seconds, a sharp, high-frequency transient occurs, lasting until about 1.00 seconds. This transient is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 6000–7000 Hz. The sound is abrupt, lacks any natural decay or resonance, and does not match the acoustic profile of the preceding speech or the ambient environment. The voice, which is clear and intelligible, continues uninterrupted, suggesting the transient is an artifact rather than part of the intended audio content. No other obvious anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [0.75-1.00] seconds time region and [6000-7000] Hz frequency region as the most salient for its prediction, directly aligning with the observed transient. The wav2vec Saliency method also highlights a different region ([0.00-0.50] seconds, [2000-4000] Hz), but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis from wav2vec only points to a single time point ([2.0, 2.1] seconds), which does not correspond to the transient. The Shap values indicate that the equivalentSoundLevel_dBp feature is the most influential, which is consistent with the presence of a loud, high-frequency artifact. Overall, the wav2vec IG analysis provides the strongest and most consistent evidence for the anomaly, supported by the Shap value analysis.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, conversational tone, speaking in English with a non-native accent. The recording is of moderate fidelity, with a low-level background hiss and a faint hum, but no significant distortion or clipping. The speech is continuous and intelligible, with no abrupt changes in volume or pitch. The only notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact manifests as a brief, sharp, and unnatural tone in the 5000–6000 Hz range, which is inconsistent with the natural speech spectrum and background noise. The artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion or digital artifact. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second range with a frequency region of 5000–6000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, albeit with a slightly different time window (1.25–1.35 seconds), but still within the same frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly in this region, with high contributions from features such as slopeUV0-500_sma3nz_amean, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, all of which are associated with the 1.0–2.0 second interval. The agreement between wav2vec’s IG, Saliency, and LIME methods, as well as the Shapley values, confirms the presence of an artificial or synthetic artifact in this region.

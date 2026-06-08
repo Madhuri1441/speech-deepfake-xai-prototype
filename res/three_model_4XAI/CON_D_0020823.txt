@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "There were many sheets this project in Moscow." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic timbre, likely a digital click or glitch, and is acoustically distinct from the natural speech. The artifact is most prominent in the 3000–4000 Hz frequency range, which is consistent with the upper-midrange frequencies where digital clipping or encoding errors often manifest. The rest of the audio remains unaffected, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.8-2.0] seconds with a frequency range of [3000-4000] Hz using Integrated Gradients (IG), and also highlights a region at [0.0-0.2] seconds with [1000-3000] Hz using Saliency. LIME further supports the [0.45-0.5] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP analysis does not directly indicate the artifact but instead highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are more related to speech characteristics than to the transient artifact. The wav2vec IG result is the most consistent and cross-model supported evidence for the abnormality at [1.8-2.0] seconds, while other XAI findings are either less consistent or not directly related to the observed artifact.

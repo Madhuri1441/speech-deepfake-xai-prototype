@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "It's not a good program." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a possible digital edit or splicing. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is not present in the original speech and is acoustically inconsistent with the preceding content. This tone is sustained for the remainder of the clip and is accompanied by a faint, high-frequency hiss, suggesting either a recording artifact or intentional masking. The abrupt transition and unnatural tone are strong indicators of audio tampering or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies a salient region between 0.2-0.4 seconds in the 3000-5000 Hz frequency range, which aligns with the abrupt cutoff and the onset of the synthetic tone. This region is further supported by the wav2vec Saliency method, which highlights a similar time and frequency range (1.25-1.4 seconds, 5000-6000 Hz), reinforcing the presence of an anomaly at the transition point. The LIME analysis for wav2vec also points to a very early time region (0.0-0.1 seconds), suggesting initial disruption. The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME analyses return "None." The SHAP values indicate that the equivalentSoundLevel_dBp feature is highly influential, which corresponds to the sudden loudness jump at the transition, further supporting the presence of an artificial tone. Overall, the wav2vec model's multiple XAI methods consistently identify the abnormality, while other models do not provide supporting evidence.

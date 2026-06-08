@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "Some people may look at thought it was my... this is a bit is honored." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 3.0 seconds. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, buzzing, and unnatural tone in the 4000–8000 Hz range. The artifact is not present in the original audio and is likely the result of digital manipulation or a deepfake insertion. The speech resumes normally after the artifact, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([2.5-3.0] seconds, 6000–8000 Hz and [2.0-2.5] seconds, 4000–6000 Hz, respectively). These findings are consistent with the observed synthetic artifact in the audio. The LIME method from wav2vec also identifies a brief region ([0.0-0.1] seconds), but this is not supported by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any supporting evidence for the abnormality, indicating that the anomaly is not detected by these models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may be related to the presence of the artifact, but do not specify the exact time or frequency range. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and reliable evidence for the abnormality, supported by the audio observation.

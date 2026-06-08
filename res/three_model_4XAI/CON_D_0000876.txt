@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "possession of the Herald Scotland, however," in a standard British accent. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.0 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact is a piercing, static-like tone in the 4000–6000 Hz range, sharply contrasting with the natural speech and lacking any acoustic continuity or modulation. The artifact is not present in the original audio but appears abruptly, suggesting digital manipulation or a synthetic overlay. After 2.0 seconds, the audio returns to normal speech without any residual effects. This anomaly is not explained by any of the XAI models, as all three (wav2vec, Hubert, WavLM) report no salient regions, indicating the artifact is not captured by their feature spaces.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region in the 1.0–2.0 second time frame and 4000–6000 Hz frequency range, supported by both Integrated Gradients and Saliency methods. However, the Hubert and WavLM models do not detect any abnormality in this region, as their explanations return "None." The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting the presence of a loud, static-like artifact, which aligns with the observed high-frequency tone. The lack of agreement among models suggests that the anomaly is not easily captured by standard acoustic or linguistic features, pointing to a synthetic or digitally inserted artifact. The wav2vec evidence is the only one that directly supports the observed abnormality, while the other models and Shapley values provide indirect support.

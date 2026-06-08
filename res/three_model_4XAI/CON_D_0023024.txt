@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase "going in prizes can be the day." The recording is clean, with no background noise or distortion, and the speech is intelligible. However, a subtle but noticeable abnormality is present in the high-frequency region between 6000–7000 Hz during the time interval of 1.5–2.0 seconds. This region is marked by a faint, artificial-sounding resonance or tonal artifact, which is not typical of natural speech and may indicate digital manipulation or post-processing. The rest of the audio is acoustically normal, with no signs of clipping, compression, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the abnormality in the 1.5–2.0 second time range and 6000–7000 Hz frequency range, which aligns with the observed acoustic anomaly. The wav2vec Saliency method also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this does not correspond to any clear abnormality in the audio and is likely a false positive. The wav2vec LIME analysis further supports the 1.5–2.0 second interval, reinforcing the presence of an anomaly in this region. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The SHAP values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, but these do not directly point to the specific abnormality. Overall, the wav2vec model's multiple independent analyses converge on the 1.5–2.0 second interval, making this the most reliable indicator of the anomaly.

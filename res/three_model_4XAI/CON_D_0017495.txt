@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard British accent, delivering a sentence in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. The only notable acoustic anomaly occurs between 3.0 and 3.5 seconds, where a brief, unnatural pitch shift is observed in the word "coming." This segment exhibits a sudden, artificial drop in pitch and a loss of natural vocal timbre, which is inconsistent with the speaker’s otherwise smooth and steady delivery. The anomaly is not accompanied by any environmental or technical artifacts, suggesting it is a result of digital manipulation rather than a recording flaw. The Shapley value analysis supports this, highlighting a significant contribution from the equivalentSoundLevel_dBp feature, which indicates a sudden change in overall loudness or energy at this point, further corroborating the presence of an artificial edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [3.0-3.5] seconds is supported by multiple XAI sources: the Integrated Gradients (IG) method for the wav2vec model identifies this time-frequency region as critical for the model’s prediction, and the Shapley value analysis also points to a significant change in acoustic energy at this interval. The Saliency method for wav2vec identifies a separate region ([2.0-2.5] seconds) with high-frequency content, but this is not corroborated by other methods and is not strongly supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to the anomaly. The cross-model agreement between IG and Shapley values strengthens the conclusion that the region [3.0-3.5] seconds is the most likely site of manipulation.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "excited can be. He did not think." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of the recording environment and does not correspond to any expected sound in the context of the spoken phrase. Its abrupt onset and unnatural timbre suggest it is an artificial insertion, likely intended to mask or obscure the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time region and 4000–6000 Hz frequency range, while LIME supports a slightly earlier time window (1.0–1.1 seconds), which may reflect the onset of the synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp showing significant deviation from expected values, reinforcing the conclusion that the synthetic tone is an artificial insertion. The agreement among wav2vec’s XAI methods, particularly IG and Saliency, provides strong evidence for the abnormality in the specified time and frequency range.

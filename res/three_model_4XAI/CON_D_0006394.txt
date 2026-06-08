@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, delivering a short, formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not a natural part of speech or environmental sound, and its spectral content (4000–6000 Hz) is consistent with a digital or synthetic overlay, such as a beep or a watermark. The artifact is abrupt, with no fade-in or fade-out, and does not interfere with the intelligibility of the speech. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, albeit with a narrower focus at [3.0, 3.1] seconds, which is likely due to its local approximation approach. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but do not pinpoint the exact time or frequency of the anomaly. The wav2vec model’s consistent identification of the artifact, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic sound overlay in the specified time and frequency range.

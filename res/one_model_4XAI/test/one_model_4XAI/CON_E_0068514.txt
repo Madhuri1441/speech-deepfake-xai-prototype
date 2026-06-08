@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, human-like female voice saying "champ commons, please unpleasant." The speech is abruptly interrupted by a loud, synthetic, low-frequency electronic tone that starts at approximately 0.5 seconds and lasts until the end of the clip. This tone is characterized by a harsh, buzzy timbre and a fundamental frequency around 2000 Hz, with strong harmonics extending up to 4000 Hz, which is consistent with a square or sawtooth waveform. The tone is static in pitch and amplitude, with no modulation or fade, and is acoustically distinct from the preceding speech, indicating a digital insertion rather than a natural sound event.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the [0.5-1.0] second time region and the [2000-4000] Hz frequency range as the most influential for the model’s classification, aligning with the onset and spectral content of the synthetic tone. The Saliency map further emphasizes a brief, high-frequency burst at [1.8-2.0] seconds, likely corresponding to a transient artifact or digital glitch within the tone. The LIME analysis identifies the very beginning of the audio ([0.0-0.1] seconds) as significant, possibly due to the initial speech segment, but this is overshadowed by the dominant synthetic tone. The Shapley values indicate that features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope are most affected, suggesting the model detects a sudden shift from natural speech to a static, unvoiced electronic sound.
+
+No other acoustic anomalies are present in the audio; the speech is clear and intelligible, and the synthetic tone is the only non-speech element. The abrupt transition and unnatural spectral content of the tone, combined with the XAI evidence, strongly indicate a deepfake or digitally manipulated audio sample.

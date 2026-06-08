@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "right, carrying on." Immediately following this, a synthetic, high-frequency electronic tone appears, lasting from approximately 0.8 to 1.2 seconds. This tone is sharply defined, with a frequency content between 4000 and 8000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environmental noise, and its abrupt onset and unnatural timbre suggest it is an inserted or generated sound, possibly for signaling or masking purposes. The transition from speech to tone is abrupt, with no fade or overlap, further indicating artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.8 - 1.2] seconds, 4000 - 8000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than synthetic artifacts. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from expected acoustic patterns. The combined evidence from wav2vec and Shapley values confirms the presence of a synthetic tone in the specified region.

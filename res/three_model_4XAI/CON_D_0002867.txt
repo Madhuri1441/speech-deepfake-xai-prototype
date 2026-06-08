@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.3-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched, male voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no background noise or environmental sounds. The acoustic environment is dry, with no reverberation or echo, suggesting a controlled recording setting. The voice is steady in loudness and pitch, with no abrupt changes or emotional inflection. The only notable acoustic feature is a brief, high-frequency burst in the 2000–4000 Hz range, occurring between 1.3 and 1.4 seconds, which stands out as a possible artifact. This burst is not accompanied by any corresponding speech or vocal event, and its isolated nature suggests it may be a synthetic or manipulated segment. No other acoustic anomalies, such as clipping, distortion, or unnatural pauses, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The LIME explanation from the wav2vec model identifies the time interval [1.3-1.4] seconds as a region of interest, which aligns with the observed high-frequency burst in the audio. The Saliency explanation from wav2vec also highlights the 2000–4000 Hz frequency range, further supporting the presence of an anomaly in this region. However, the Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not consistently detected across all models. The SHAP analysis identifies acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, but these do not directly correspond to the observed burst. Therefore, the final abnormality region is supported by wav2vec’s LIME and Saliency explanations, but not by cross-model agreement.

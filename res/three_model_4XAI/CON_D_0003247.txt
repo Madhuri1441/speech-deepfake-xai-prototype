@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "within the next half team," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.2 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital insertion or overlay rather than a natural acoustic event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.8-1.2] seconds, 4000–6000 Hz). The IG method highlights the region as a key contributor to the model’s prediction, while Saliency confirms the same region as salient. LIME, however, identifies a much earlier time window ([0.0-0.1] seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, which may relate to the presence of the artifact, but this is not directly corroborated by the audio or other XAI methods. Overall, the wav2vec model’s IG and Saliency results provide cross-model agreement on the abnormality, while other models and methods do not support this finding.

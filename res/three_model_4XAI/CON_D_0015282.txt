@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief rustling sound, likely from clothing or handling the recording device. At approximately 2.5 seconds, a female voice with a non-native English accent says, "There are guys in the general release." The speech is clear and intelligible, with a neutral, declarative tone. Immediately following the speech, from 3.5 to 5.5 seconds, there is a prominent rustling sound, consistent with fabric movement or handling of the recording device. This rustling is accompanied by a high-frequency hiss, likely from the recording equipment or microphone. The audio ends abruptly after the rustling, with no further speech or background noise.
+
+The wav2vec model identifies a salient region between 2.5 and 3.0 seconds in the 4000–6000 Hz frequency range, corresponding to the speech segment. The Saliency method highlights a region between 4.5 and 5.0 seconds in the 7000–8000 Hz range, aligning with the peak of the rustling sound. LIME also identifies the 5.0–6.0 seconds interval, further supporting the presence of an abnormality during the rustling. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values suggest that features related to unvoiced segments and MFCCs are significant, but these do not directly correspond to the observed acoustic events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG method identifies the speech segment (2.5–3.0 seconds, 4000–6000 Hz) as a salient region, while the Saliency and LIME methods from wav2vec and LIME highlight the rustling sound (4.5–5.0 seconds, 7000–8000 Hz and 5.0–6.0 seconds, respectively). These findings are consistent with the audio's acoustic events, indicating that the speech and subsequent rustling are the primary sources of abnormality. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not universally detected across all models. The Shap values support the importance of unvoiced segment features but do not directly align with the observed events.

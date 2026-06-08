@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It's too much. There is a bit things..." The speech is abruptly cut off mid-word, with the final syllable "things" truncated and replaced by a synthetic, high-frequency electronic tone. This tone is stable, unmodulated, and centered around 4000–6000 Hz, lasting for approximately 0.5 seconds. The tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics or environmental context, and is likely an artifact of digital editing or a system-generated alert. The abruptness of the transition and the unnatural spectral content of the tone suggest a technical or synthetic origin, rather than a natural sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as critical for the model’s prediction, aligning with the observed synthetic tone. The LIME method for wav2vec also highlights the [2.5-2.6] seconds region, which overlaps with the tail end of the tone, further supporting the presence of an anomalous event. The saliency method for wav2vec identifies a different region ([0.0-0.1] seconds, [2000-3000] Hz), but this is less relevant to the main abnormality. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec-based methods. No SHAP values are directly linked to the abnormality, but the presence of the synthetic tone is corroborated by the wav2vec IG and LIME results.

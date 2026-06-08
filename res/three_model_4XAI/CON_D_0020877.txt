@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [7.5-8.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering a continuous, intelligible sentence in English. The speech is free of background noise, distortion, or any environmental cues, indicating a controlled recording environment. The only notable acoustic anomaly occurs in the final seconds of the clip, specifically between 7.5 and 8.0 seconds, where a high-frequency, synthetic-sounding artifact appears. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, manifesting as a brief, high-pitched, and unnatural tone. This anomaly is not perceptible in the speech itself but is clearly audible in the waveform, suggesting a post-processing or digital manipulation artifact. The anomaly is not supported by any of the XAI models (wav2vec, Hubert, WavLM), as all models report no abnormality in this region.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region (7.5-8.0 seconds, 6000-8000 Hz) is identified solely by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this region as the most salient for the model’s prediction. The Saliency and LIME methods from wav2vec also point to this region, but with slightly different time boundaries (Saliency: 0-1 seconds, LIME: 7.0-8.0 seconds). The Hubert and WavLM models do not detect any abnormality in this region, and their explanations are entirely absent. The Shapley values for spectral features do not provide direct evidence for this region, as they are not time-localized. Thus, the evidence for the abnormality is cross-model agreement within wav2vec (IG, Saliency, LIME), but not across all models. The anomaly is not supported by Hubert or WavLM, and no other XAI sources corroborate the finding.

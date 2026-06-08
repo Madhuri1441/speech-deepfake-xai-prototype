@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "A search and rescue in Northern Ireland." The speech is clear and intelligible, with a neutral, informative tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 6000–7000 Hz range. The artifact is not present in the original speech and does not correspond to any natural sound or environmental noise, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time region and 6000–7000 Hz frequency range, while LIME identifies a slightly earlier time (1.3–1.4 seconds), which is close to the main anomaly. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an unnatural sound event in the specified time and frequency range, as these features are sensitive to abrupt changes in audio characteristics. The agreement among wav2vec’s methods and the Shapley values confirms the anomaly, while the lack of evidence from Hubert and WavLM suggests the anomaly is subtle or not captured by all models.

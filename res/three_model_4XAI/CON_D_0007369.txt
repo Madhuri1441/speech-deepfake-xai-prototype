@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "It is hard one" in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 0.6 seconds, a sharp, high-frequency, synthetic-sounding artifact appears, lasting until about 0.8 seconds. This artifact is characterized by a piercing, static-like timbre, and is acoustically distinct from the natural speech, suggesting a digital or synthetic origin. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The abrupt onset and unnatural spectral content of this event are indicative of a possible audio manipulation or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.6-0.8] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and the Saliency method also highlights [0.85-1.0] seconds in the same frequency range, indicating a strong and consistent signal in this region. The LIME method, while less precise, supports the presence of an anomaly around [0.25-0.3] seconds, which may correspond to a secondary or transient artifact. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec-based explanations are the most reliable. The SHAP analysis further supports the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, spectralFluxV_sma3nz_stddevNorm, and spectralFluxUV_sma3nz_amean, which are associated with deviations from normal speech patterns. The cross-model agreement between wav2vec’s IG and Saliency methods, along with the SHAP feature analysis, strongly supports the conclusion that the audio contains a synthetic or manipulated segment in the [0.6-0.8] seconds range.

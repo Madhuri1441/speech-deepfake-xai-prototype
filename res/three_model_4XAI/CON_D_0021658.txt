@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "hospital's for the ill" in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 1.0–1.2 seconds, a distinct, high-frequency, synthetic-sounding tone abruptly appears. This tone is centered around 3000 Hz and lasts for about 0.2 seconds, standing out sharply against the otherwise natural speech. The tone is not a natural part of the voice or environment and is acoustically inconsistent with the rest of the audio, suggesting it is an artificial insertion. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 1.0–1.2 seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this time-frequency region as salient for the model’s prediction. The wav2vec model’s Saliency and LIME explanations point to different regions ([1.5–2.0] seconds and [0.5–0.6] seconds, respectively), but these do not align with the observed synthetic tone. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength and mfcc1_sma3_amean, but these do not directly correspond to the observed synthetic tone. Therefore, the synthetic tone at 1.0–1.2 seconds is primarily supported by the wav2vec model’s IG explanation, with no cross-model agreement.

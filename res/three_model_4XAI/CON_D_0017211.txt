@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "By course we are concerned." The speech is delivered in a standard, unaccented English tone, with no background noise or environmental sounds. The recording is of high fidelity, with a clean signal and no distortion. However, a subtle but noticeable anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [0.75–1.25] seconds, specifically around the word "course." This region exhibits a faint, unnatural tonal quality that is inconsistent with the rest of the speech, suggesting possible digital manipulation or synthesis. The anomaly is not perceptible to the human ear as a distinct artifact, but the spectral characteristics indicate a deviation from natural speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time-frequency region [0.75–1.25] seconds and [4000–6000] Hz using Integrated Gradients (IG), and the Saliency method highlights a different region ([0.00–0.25] seconds, [1000–2000] Hz), which does not align with the observed anomaly. LIME also points to a region ([1.6–1.7] seconds), which is outside the suspected abnormality. The Hubert and WavLM models do not provide any supporting evidence for the anomaly. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a high positive value, suggesting a significant deviation in overall sound level, which may be related to the high-frequency anomaly. The StddevUnvoicedSegmentLength and spectralFlux_sma3_amean features also contribute, but to a lesser extent. The wav2vec IG explanation is the only one that directly supports the observed abnormality, and thus, the final region is based on this single-model evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "prices for most" in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, indicating a non-professional, indoor environment. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the mid-frequency range (1000–3000 Hz) during the first 0.4 seconds, particularly around the word "most." This region exhibits a faint, unnatural resonance or tonal overlay, which is not typical of natural speech and may suggest digital processing or synthesis. The anomaly is not accompanied by any obvious clipping, distortion, or abrupt changes in loudness, and the overall speech flow remains smooth and uninterrupted. No other acoustic irregularities are apparent in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Saliency method identifies the abnormality in the time range [0.25-0.4] seconds and frequency range [1000-3000] Hz, which aligns with the observed acoustic anomaly. The IG method from wav2vec also points to a later time region [0.85-1.0] seconds, but this is not supported by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed acoustic anomaly. Therefore, the final abnormality region is based on wav2vec's Saliency evidence, with no cross-model agreement.

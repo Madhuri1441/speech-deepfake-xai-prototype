@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, confident, and slightly formal tone, speaking in standard English. The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the high-frequency range (6000–8000 Hz) between 2.5 and 3.5 seconds. During this interval, the voice exhibits a slight unnatural shimmer or digital artifact, which is not present in the rest of the clip. This is most apparent on the word "confidence," where the sibilant 's' sound is slightly over-modulated or processed, giving it a synthetic quality. The anomaly is not accompanied by any change in pitch, loudness, or timbre, and does not affect intelligibility, but it is perceptible to a trained ear.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3.5] seconds time range and [6000-8000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME explanation for wav2vec is limited to [0.0-0.1] seconds, which does not align with the observed anomaly and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME explanations are all absent. The SHAP analysis does not directly reference the time or frequency range of the anomaly, instead highlighting unrelated acoustic features such as spectral flux and voiced/unvoiced segment statistics. Therefore, the final abnormality region is supported by wav2vec’s IG and Saliency methods, with no cross-model agreement, and is based on single-model evidence.

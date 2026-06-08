@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Be unblinking, be outrageous," in a clear, neutral tone. The speech is abruptly interrupted by a loud, synthetic, low-frequency electronic tone that starts at approximately 0.5 seconds and lasts until the end of the clip. This tone is harsh, static, and lacks any natural acoustic variation, strongly suggesting it is an artificial artifact rather than a genuine sound event. The transition from speech to tone is sudden and unnatural, indicating a possible editing or generation error. The tone’s frequency content is concentrated between 3000–6000 Hz, which is consistent with the observed abnormality range. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [3000-6000] Hz, which aligns with the synthetic tone’s characteristics. The Saliency method from wav2vec also highlights a region at the start of the audio, but this is less consistent with the actual anomaly. The LIME method from wav2vec supports the abnormality in the same time range. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The Shapley values indicate that the abnormality is likely due to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are associated with the synthetic tone. The wav2vec model’s multiple XAI methods agree on the abnormality, while Hubert and WavLM do not detect it. Thus, the final abnormality region is supported by wav2vec’s IG, Saliency, and LIME methods, indicating cross-model agreement within wav2vec.

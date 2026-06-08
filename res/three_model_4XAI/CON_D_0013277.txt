@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "It should have been good for golf." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.0–1.2 seconds into the clip, a high-frequency, synthetic-sounding artifact appears. This artifact is a brief, sharp, and unnatural tone, likely a digital glitch or a synthetic overlay, which stands out from the natural speech and background. The tone is centered around 6500 Hz and lasts for about 0.2 seconds, after which the audio returns to normal. This anomaly is not present in the original speech and is not a product of the speaker’s voice or the recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-1.2] seconds, [6000-7000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec model is uniquely sensitive to this artifact. The Shapley values further support the presence of an anomaly, with features such as logRelF0-H1-H2_sma3nz_stddevNorm and equivalentSoundLevel_dBp indicating a deviation from expected speech patterns. The combination of wav2vec’s multiple XAI methods and the Shapley values confirms the presence of a synthetic or digital artifact in the specified region.

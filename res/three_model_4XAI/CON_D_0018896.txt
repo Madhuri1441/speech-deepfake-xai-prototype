@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "That said we are a can bike to the world, the world." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing artifact appears and persists until the end of the clip. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone in the 4000–6000 Hz range. The artifact is not a natural part of the vocalization and is likely the result of digital manipulation or encoding error. The voice itself remains unaffected by the artifact, with no distortion or clipping, indicating the anomaly is post-production or a digital overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.5-2.0] seconds is supported by multiple XAI sources: the Integrated Gradients (IG) explanation from the wav2vec model identifies this time-frequency region as salient, and the LIME explanation from wav2vec also highlights a region around 0.3–0.4 seconds, which is close to the onset of the artifact. The Shapley values further support the presence of an anomaly, with features like loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength indicating changes in the signal’s acoustic structure. No evidence from the Hubert or WavLM models supports the anomaly, but the wav2vec-based explanations are consistent and corroborated by Shapley values. Thus, the final abnormality region is established by cross-model agreement from wav2vec and Shapley analysis.

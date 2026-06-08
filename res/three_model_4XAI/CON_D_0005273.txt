@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy exhalation ("pff") at the start, followed by a female voice saying, "It was on fire." The speech is clear, with a neutral, declarative tone and no signs of distress or urgency. The acoustic environment is quiet, with no background noise or reverberation, suggesting a controlled recording setting. The only notable acoustic feature is a high-frequency, synthetic-sounding artifact in the 6000–7000 Hz range, present during the word "fire" (specifically between 1.00–1.25 seconds). This artifact is not a natural part of the voice and is likely a digital or synthetic overlay, as it does not correspond to any natural vocal or environmental sound. The rest of the audio is clean and free of distortion, clipping, or other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.00–1.25 second range, specifically in the 6000–7000 Hz frequency band, using Integrated Gradients (IG) and LIME. The Saliency method also highlights a different region (0.00–0.25 seconds, 1000–3000 Hz), which corresponds to the initial breathy exhalation, but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are not universally agreed upon. The SHAP analysis does not directly reference the abnormality but provides feature-level insights, with the spectralFlux_sma3_amean feature showing a high SHAP value, suggesting a possible link to the high-frequency artifact. Overall, the wav2vec model’s IG and LIME results are the only ones that consistently point to the abnormality, and this is supported by the observed synthetic artifact in the audio.

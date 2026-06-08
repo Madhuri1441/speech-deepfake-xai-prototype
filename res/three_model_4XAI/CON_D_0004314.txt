@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone: "Other officer has also been..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.5 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. After this transient, the audio returns to normal speech until the end of the clip. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time-frequency region ([1.0-1.5] seconds, [6000-7000] Hz), indicating strong cross-method agreement. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The Shapley values from the audio feature analysis also support the presence of an anomaly, with the spectralFlux_sma3_amean feature showing a high Shap value, which is consistent with a sudden change in spectral content. Overall, the wav2vec model's dual-method evidence and the Shapley value analysis converge on the same region, making this the most reliable indicator of the anomaly.

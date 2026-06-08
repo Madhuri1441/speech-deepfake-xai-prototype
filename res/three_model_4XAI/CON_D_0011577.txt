@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It was so disappointing," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered in the 4000–6000 Hz range, which is not present in the rest of the recording. The artifact is not masked by speech and is perceptible as a slight digital distortion, possibly indicating a momentary glitch or encoding error. The remainder of the audio continues normally, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [2.5-3.0] seconds with the same frequency range using Saliency. LIME also supports the [0.5-0.6] seconds region. These multiple XAI methods from wav2vec consistently point to the same high-frequency anomaly, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which are associated with the artifact. Overall, the wav2vec model’s multiple XAI methods provide robust evidence for the anomaly, while the other models do not contradict this finding.

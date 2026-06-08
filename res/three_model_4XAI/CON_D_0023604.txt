@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, coherent sentence in a quiet, acoustically dry environment. The speech is natural and intelligible, with no signs of emotional distress or artificiality. However, at approximately 1.0–2.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present, most noticeable during the word "death." This artifact is not part of the speaker’s voice and does not align with the natural acoustic profile of the rest of the recording. The wav2vec model’s explanations (IG, Saliency, and LIME) all point to this specific time and frequency range as anomalous, indicating that the model detects a non-speech, possibly synthetic or corrupted signal in this region. The wav2vec model’s sensitivity to this region suggests the presence of an artificial or tampered segment, likely introduced during post-processing or as a result of deepfake generation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME explanations all independently identify the same time and frequency region ([1.0-2.0] seconds, [4000-6000] Hz) as anomalous, providing strong cross-model agreement. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values further support the presence of an abnormality, with high contributions from features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are sensitive to abrupt changes in signal characteristics. This convergence of evidence from multiple wav2vec-based methods confirms the presence of an artificial or corrupted segment in the audio.

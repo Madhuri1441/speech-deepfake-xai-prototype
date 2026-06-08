@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, synthetic-sounding male voice saying, "battle effective be visible process." The voice is monotonous, with a flat, robotic intonation and lacks natural speech rhythm or emotional inflection. At approximately 2.0 seconds, a sharp, high-frequency digital artifact emerges, lasting until 2.5 seconds. This artifact manifests as a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically inconsistent with the preceding speech and suggests a digital glitch or encoding error. The artifact is abrupt, with no gradual onset or decay, and is not present in the original speech or background. The rest of the audio is dominated by a low-level electronic hum, likely from a computer or recording device, but no other speech or environmental sounds are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0-2.5] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights this region, though with a slightly different time window. The LIME method supports this region with a time window of [3.5-4.0] seconds, which is close but not identical. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The SHAP analysis does not directly reference this artifact but instead highlights statistical features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may relate to the unnatural speech characteristics but do not directly support the artifact. Overall, the wav2vec model’s IG and Saliency methods provide consistent evidence for the artifact, while Hubert and WavLM do not detect it, indicating cross-model agreement for wav2vec but not for the other models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.9 - 3.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "go always nice to," followed by a brief pause and then, "it is link out only." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.9 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–6000 Hz range, which is acoustically distinct from the natural speech and does not match any expected environmental or vocal sounds. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a general saliency region from 0.5–1.0 seconds and a specific transient from 2.9–3.1 seconds, both in the 2000–4000 Hz and 5000–6000 Hz bands, respectively. The Saliency and LIME methods from wav2vec both point to the 2.9–3.1 seconds region, with the LIME method specifically localizing the anomaly to 3.0–3.1 seconds. The Shapley values further support this, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a sudden increase in loudness at this time, and spectralFlux_sma3_amean and alphaRatioUV_sma3nz_amean also contributing, suggesting a change in spectral content and harmonic structure. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. Overall, the wav2vec model’s Saliency and LIME methods, along with the Shapley values, consistently identify the 2.9–3.1 seconds region as the most suspicious, supported by multiple independent XAI sources.

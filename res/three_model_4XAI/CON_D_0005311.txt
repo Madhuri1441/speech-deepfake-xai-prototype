@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. The speech is continuous and intelligible, with no abrupt changes in pitch, volume, or timbre. However, at approximately 3.0 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until 3.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hiss, distinct from the natural acoustic environment and unrelated to the speaker’s voice. The artifact is not present before or after this interval, and its spectral content is concentrated in the 6000–8000 Hz range, which is higher than the typical frequency range of human speech. This anomaly is not accompanied by any speech-related cues, such as a pause or change in delivery, and does not correspond to any environmental or technical event in the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 3.0–3.5 second interval as a region of interest, with a saliency peak in the 6000–8000 Hz range, aligning with the observed high-frequency artifact. The LIME explanation for wav2vec also supports this region, specifically highlighting the 3.0–3.1 second window. In contrast, the Hubert and WavLM models do not provide any saliency or LIME evidence for this interval, and their IG explanations are absent. The Shapley values indicate that features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are significant, but these do not directly correspond to the observed artifact. The wav2vec saliency and LIME evidence are the only sources that consistently point to the 3.0–3.5 second interval, making this the most reliable region of abnormality.

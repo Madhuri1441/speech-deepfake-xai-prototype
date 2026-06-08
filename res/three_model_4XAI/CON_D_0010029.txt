@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, neutral statement in a quiet, acoustically dry environment. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.5 and 3 seconds, which is not present in the original speech and is not attributable to the speaker’s voice. This artifact is characterized by a sharp, high-pitched, and unnatural timbre, suggesting digital manipulation or insertion. The rest of the audio is clean and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.5-3] seconds time region and [4000-6000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical to the model’s classification. The LIME analysis from wav2vec also highlights the [3.0, 3.1] seconds interval, further supporting the presence of an anomaly in this region. The Saliency method from wav2vec points to a different region ([0-1] seconds), but this is not corroborated by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values indicate that the spectralFlux_sma3_amean feature is most influential, which aligns with the high-frequency nature of the artifact. Overall, the wav2vec model’s IG and LIME results provide strong, cross-model agreement on the [2.5-3] seconds interval as the region of interest, supported by the spectral characteristics of the artifact.

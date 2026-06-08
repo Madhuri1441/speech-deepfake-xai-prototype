@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Dr. Richard, I've had a wonderful..." The speech is clear and intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable, unnatural break in the vocalization. This break is marked by a sharp, high-frequency transient (5000–6000 Hz) that does not correspond to any natural speech or environmental sound. The break is abrupt, with no fade or overlap, and is immediately followed by a return to normal speech. This acoustic anomaly is not present in the rest of the audio and is not attributable to any natural vocal or environmental event. The wav2vec model’s Integrated Gradients (IG) analysis highlights this exact time and frequency region, indicating that the model identifies this segment as a key feature for its prediction. The LIME analysis also supports this, pointing to a very narrow time window (1.0–1.1 seconds) within the same frequency range, further confirming the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and LIME analyses both identify the 1.0–2.0 second, 5000–6000 Hz region as abnormal, with the LIME analysis providing a more precise time window. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values for features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean further support the presence of an unnatural break in the audio, as these features are sensitive to abrupt changes in speech patterns. The combined evidence from wav2vec’s IG and LIME, along with the Shapley values, strongly suggests that the audio contains a deepfake-generated segment at 1.0–2.0 seconds, characterized by an unnatural high-frequency transient.

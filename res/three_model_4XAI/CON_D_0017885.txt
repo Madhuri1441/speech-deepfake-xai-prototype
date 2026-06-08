@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "today," followed by a brief pause and then the phrase "the messages are remarkably similar." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 3.5 seconds. This artifact is characterized by a harsh, buzzing timbre and a frequency content between 4000 Hz and 8000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The audio then returns to normal speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.5–3.5 second time window, with frequency regions of 4000–6000 Hz and 6000–8000 Hz, respectively. LIME also highlights a brief segment within this range (0.5–0.6 seconds), though this is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are associated with unnatural audio characteristics. The cross-model agreement from wav2vec’s IG and Saliency methods, combined with the Shapley values, strongly supports the conclusion that the audio contains a synthetic artifact in the 2.5–3.5 second range.

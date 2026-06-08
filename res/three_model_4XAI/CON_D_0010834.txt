@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a female voice saying "It's perfect for it." The speech is clear and natural, with no signs of digital manipulation or distortion. However, at approximately 1.0–1.5 seconds, a subtle but noticeable high-frequency artifact emerges, lasting about half a second. This artifact manifests as a sharp, synthetic-sounding tone in the 2000–4000 Hz range, which is acoustically distinct from the voice and background hum. The tone is not present in the original recording and does not correspond to any natural sound or speech event, suggesting it is an artificial insertion or modification. The rest of the audio remains free of such anomalies, with no further signs of digital tampering or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the 1.0–1.5 second range is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both identify this time-frequency region as significant, with IG highlighting [1.0–1.5] seconds and [2000–4000] Hz, and Saliency identifying [0.5–1.0] seconds and [2000–4000] Hz. LIME also points to a specific moment at [1.9–2.0] seconds, though this is less consistent with the observed artifact. The wav2vec model is the only one to provide such evidence, as Hubert and WavLM models do not identify any abnormal regions. The Shap values for equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and mfcc2V_sma3nz_amean further support the presence of an anomaly in this region, as they indicate a significant deviation from the expected acoustic profile. Overall, the cross-model agreement between IG and Saliency, along with the Shap value analysis, strongly supports the conclusion that the audio contains an artificial insertion in the specified time-frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, likely reading from a script. The speech is clear and intelligible, with no background noise or environmental sounds, indicating a controlled recording environment. At approximately 0.5 seconds, a subtle but noticeable change occurs in the vocal timbre and spectral content, coinciding with the phrase "mostly in land job." This segment exhibits a slightly artificial, synthetic quality, with a reduction in natural vocal harmonics and a subtle, unnatural resonance, particularly in the 3000–4000 Hz range. This change is not accompanied by any speech error or emotional shift, suggesting a possible digital manipulation or deepfake artifact. The remainder of the audio returns to a more natural vocal texture, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.5] seconds and frequency range [3000-4000] Hz using Integrated Gradients (IG), and also detects a secondary anomaly at [3.5-4] seconds in the [6000-8000] Hz range using Saliency. LIME further supports the first region with a time interval of [1.0-1.2] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect changes in the audio’s acoustic properties, but these do not directly correspond to the observed vocal anomaly. Overall, the wav2vec model’s IG and Saliency, along with LIME, provide cross-model agreement on the primary abnormality, while other evidence is either inconsistent or not directly aligned with the observed acoustic change.

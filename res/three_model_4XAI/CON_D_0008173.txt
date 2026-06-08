@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, unnatural pause or edit at the start, followed by a female voice speaking in a neutral, formal tone. The first 0.5 seconds of the audio contain a faint, high-frequency artifact in the 1000–2000 Hz range, which is not present in the rest of the recording. This artifact is likely a digital glitch or editing artifact, as it does not correspond to any natural speech or environmental sound. The voice itself is clear and intelligible, with no signs of emotional inflection or background noise, but the abruptness of the start and the presence of the artifact suggest possible tampering or synthetic generation.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.0-0.5] seconds time region and [1000-2000] Hz frequency region as significant for the model’s prediction, indicating that this segment is likely anomalous or manipulated. The LIME method from wav2vec also highlights the [0.0-0.1] seconds region, reinforcing the suspicion of an anomaly at the very start of the audio. No other XAI methods (IG, Saliency, LIME) from Hubert or WavLM provide supporting evidence, and the Shap values do not directly point to this region. Thus, the evidence for the abnormality is primarily from wav2vec’s Saliency and LIME, with cross-model agreement limited to wav2vec alone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, formal statement: "to dissolve the Abbey, company should carry on a pedestrian." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, with a fundamental frequency around 150–200 Hz and strong harmonics up to 6 kHz, consistent with a young adult female. The only notable acoustic anomaly occurs between 3.5 and 4.0 seconds, where a subtle, high-frequency artifact is present, likely a digital glitch or encoding error. This artifact manifests as a brief, unnatural tonal burst in the 2000–6000 Hz range, not matching the natural speech spectrum. The anomaly is not perceptible to the human ear but is detected by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this region as a key contributor to its prediction. The wav2vec model’s Saliency and LIME also point to nearby time and frequency regions, though less precisely. No other models (Hubert, WavLM) or SHAP values indicate abnormalities, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [3.5-4.0] seconds, [2000-6000] Hz region as the most significant abnormality, with Saliency and LIME analyses providing supporting but less precise evidence. The Hubert and WavLM models do not detect any abnormalities, and SHAP values do not indicate any significant deviation. Thus, the final abnormality region is based on cross-model agreement from wav2vec’s IG, Saliency, and LIME, with no support from other models or SHAP.

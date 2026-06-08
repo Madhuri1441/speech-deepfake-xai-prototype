@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, coherent statement: "Players are better than they were last season. They are stronger collectively." The speech is recorded in a quiet, acoustically dry environment, with no background noise or distortion. The voice is steady, with natural intonation and no signs of emotional stress or artificiality. However, at approximately 1.5–2.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural sound in the 3000–4000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting a possible digital manipulation or editing artifact. The rest of the audio remains clean and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [3000-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The IG method specifically highlights this time-frequency region, while the Saliency method points to a slightly earlier segment ([0.0-0.5] seconds) in a lower frequency range ([1000-2000] Hz), which does not align with the observed artifact. The LIME method also supports the [1.5-2.0] seconds region, though with a slightly different time window ([1.0-1.5] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, and the Shap values do not directly indicate the presence of an artifact but rather reflect general acoustic properties of the speech. The cross-model agreement between wav2vec’s IG and LIME methods, as well as the alignment with the observed high-frequency artifact, strongly supports the conclusion that this region is anomalous.

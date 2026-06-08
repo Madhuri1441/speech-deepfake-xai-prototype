@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, but at approximately 2.0 seconds, the speech becomes heavily distorted and unintelligible. This distortion is marked by a harsh, clipped, and static-like quality, with a noticeable loss of natural vocal timbre and clarity. The distortion persists until about 3.0 seconds, after which the audio returns to a more natural, though still somewhat muffled, state. The frequency range of the distortion spans from 1000 Hz to 6000 Hz, indicating that the mid and upper-mid frequencies are most affected. This acoustic anomaly is consistent with digital clipping or compression artifacts, which can occur when audio is overdriven or improperly encoded. No other significant acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the [2.5-3.0] seconds region, Saliency focuses on [2.0-2.5] seconds, and LIME points to [1.5-1.6] seconds, all within the same frequency range of 1000-6000 Hz. These findings are consistent and cross-model, indicating a strong agreement on the presence of an anomaly in this region. The Hubert and WavLM models do not provide any supporting evidence, as their XAI methods return no regions. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of audio distortion. Overall, the wav2vec model’s multiple XAI methods provide robust evidence for the identified abnormality, while the other models do not contribute additional support.

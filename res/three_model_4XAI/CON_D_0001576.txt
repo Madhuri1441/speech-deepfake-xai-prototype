@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.9-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There's nothing to ex-," which is abruptly cut off mid-word. Immediately following this, a sharp, high-frequency electronic tone appears, lasting for approximately 0.1 seconds. This tone is centered in the 3000–4000 Hz range and is acoustically distinct from the preceding speech, lacking any natural vocal characteristics. The tone is likely an artifact of digital editing or a synthetic overlay, as it is not present in the original speech and does not match typical environmental or vocal sounds. The abruptness and unnatural spectral content of this tone suggest it is not part of the original recording but was inserted or generated during post-processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [1.9-2.0] seconds time region and [3000-4000] Hz frequency region as significant. The Saliency method from wav2vec also highlights the [1.0-1.5] seconds region, which overlaps with the abnormal tone’s onset. LIME from wav2vec points to the [0.85-1.0] seconds region, which is close to the abnormality. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec model’s multiple methods consistently identify the same region. The Shapley values further support the presence of the abnormal tone, with features like equivalentSoundLevel_dBp and loudness_sma3_amean indicating a sudden increase in sound level and spectral energy in the high-frequency range. This cross-model agreement from wav2vec confirms the presence of an artificial tone in the audio.

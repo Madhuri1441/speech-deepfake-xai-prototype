@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "Got. He was true stories." The speech is intelligible and delivered in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sharp, high-frequency artifact appears, lasting about 0.1 seconds. This artifact is characterized by a piercing, synthetic tone in the 5000–6000 Hz range, which is acoustically distinct from the preceding speech and does not match any natural vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same 0.1-second time window (2.0–2.1 seconds) and frequency range (5000–6000 Hz). The Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, which are consistent with the presence of a sudden, unnatural sound event. The combined evidence from wav2vec and SHAP strongly supports the conclusion that the audio contains a brief, synthetic artifact at 2.0–2.1 seconds, while other models and features do not contradict this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2500 - 3500] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying "two become..." in a neutral, clear tone, with no background noise or environmental cues. The speech is abruptly cut off mid-word, and a synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced at 0.8 seconds. This tone is steady, unwavering, and lacks any natural acoustic variation, suggesting it is artificially generated rather than a real-world sound. The tone persists until the end of the clip, with no fade-out or modulation. The abrupt transition and unnatural character of the tone are the primary acoustic anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality is supported by multiple XAI sources. The wav2vec model’s Integrated Gradients (IG) method identifies the [0.8 - 1.0] seconds time region and [2500 - 3500] Hz frequency region as salient, aligning with the synthetic tone’s presence. The wav2vec Saliency method also highlights a broader [0.4 - 0.6] seconds region, which overlaps with the start of the synthetic tone, further supporting its artificial nature. The LIME method for wav2vec identifies an earlier [0.0 - 0.1] seconds region, likely corresponding to the initial speech, but this is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the synthetic tone is not detected by these models. The SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an artificial sound event, as these features are associated with abrupt changes in audio characteristics. In summary, the synthetic tone anomaly is confirmed by cross-model agreement from wav2vec’s IG and Saliency methods, while other models and methods do not support the anomaly.

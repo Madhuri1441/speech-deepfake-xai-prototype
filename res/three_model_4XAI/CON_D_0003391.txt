@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free from distortion, static, or background noise, indicating a high-quality recording. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable disruption in the vocal signal. This region exhibits a slight pitch instability and a brief, unnatural modulation, which is not present in the rest of the audio. The acoustic anomaly is most apparent in the mid-frequency range (3000–4000 Hz), where the voice’s spectral energy is concentrated. This disruption is not accompanied by any environmental or background cues, suggesting it is a localized artifact within the vocal signal itself. The anomaly is not strongly supported by the XAI evidence, as the wav2vec model’s IG method identifies this region, but the Hubert and WavLM models do not, and the Shap values do not directly reference this frequency range.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range as the most salient region, indicating a potential anomaly in this segment. However, the Hubert and WavLM models do not provide any supporting evidence for this region, and their IG, Saliency, and LIME methods return no relevant findings. The Shap values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, but these do not directly correspond to the observed acoustic anomaly. Therefore, the evidence for the anomaly is primarily based on the wav2vec IG method, with no cross-model agreement.

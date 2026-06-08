@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched, non-verbal vocalization, likely a sigh or exhalation, at the very start. From 0.4 to 0.8 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, characterized by a stable pitch around 5000–7000 Hz and a clean, electronic timbre. This tone is abrupt in onset and offset, with no natural fade or modulation, and is acoustically inconsistent with the preceding vocalization. The tone is not present in the original audio’s background and does not resemble any natural environmental or human sound. This synthetic tone is the only clear anomaly in the audio, standing out due to its unnatural spectral and temporal properties.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the 0.4–0.8 second time range and 2000–7000 Hz frequency range as salient, with IG specifically highlighting 5000–7000 Hz. These findings are consistent with the observed synthetic tone. The wav2vec LIME method, however, points to an earlier, 0.0–0.1 second region, which corresponds to the initial vocalization and is not supported by other XAI methods. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values highlight high importance for equivalentSoundLevel_dBp, suggesting the overall loudness of the audio is a key feature, but do not specify the anomalous region. The synthetic tone is the only clear abnormality, and its identification is supported by multiple wav2vec methods, indicating cross-model agreement for this specific region.

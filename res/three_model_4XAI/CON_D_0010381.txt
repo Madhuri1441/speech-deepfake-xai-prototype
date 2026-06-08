@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral tone. The recording is of high fidelity, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.0 and 2.5 seconds, specifically in the 1000–3000 Hz range. This artifact manifests as a short, sharp, and unnatural burst of sound, distinct from the natural speech and not attributable to any environmental or vocal source. The artifact is not present in the original speech and appears abruptly, suggesting it is a digital insertion or manipulation. No other acoustic anomalies are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [2.0-2.5] seconds time region and [1000-3000] Hz frequency region as the most salient for its prediction, directly aligning with the observed synthetic artifact. The wav2vec Saliency method also highlights a different region ([0.1-0.3] seconds, [500-2000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The wav2vec LIME method further supports the [2.0-2.1] seconds region, reinforcing the presence of an anomaly. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that features related to unvoiced segment length and MFCCs are important for the model’s decision, but these do not directly point to the artifact. Overall, the wav2vec model’s IG and LIME methods provide cross-model agreement on the [2.0-2.5] seconds region, which is supported by the audio evidence of a synthetic artifact.

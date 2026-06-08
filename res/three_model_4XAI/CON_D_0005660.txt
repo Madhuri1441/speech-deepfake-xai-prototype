@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, monotone voice, speaking in a neutral, unemotional manner. The speech is clear and intelligible, with no background noise or environmental sounds, indicating a controlled recording environment. The only notable acoustic anomaly occurs between 1.5 and 2 seconds, where a brief, unnatural pitch shift is observed. This shift is abrupt and inconsistent with the speaker’s otherwise steady vocal tone, suggesting a possible digital manipulation or editing artifact. The frequency range of 2000–3000 Hz is associated with the midrange of human speech, and the anomaly here likely affects the clarity and naturalness of the voice. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2] seconds time range and [2000-3000] Hz frequency range as the most salient region, indicating that this segment is critical for the model’s prediction. This aligns with the observed pitch shift in the audio, supporting the presence of an anomaly. The Saliency method from wav2vec and LIME also point to the 4-5 seconds region, but this does not correspond to any clear acoustic irregularity and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed pitch shift. Overall, the cross-model agreement from wav2vec’s IG method provides the strongest evidence for the anomaly in the [1.5-2] seconds time range.

@@ -1,0 +1,16 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear utterance of the phrase "Gone back away" spoken by a female voice with a neutral, slightly downward inflection. The recording is of high fidelity, with no background noise, distortion, or environmental cues, and the voice is centered and close-miked. The acoustic environment is dry, with no reverberation, suggesting a studio or controlled setting. The speech is delivered in a standard North American accent, with no regional markers or emotional inflection.
+
+The primary acoustic abnormality is a brief, high-frequency artifact in the 6000–7000 Hz range occurring between 0.8 and 1.0 seconds. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or artifact introduced during post-processing or deepfake generation. It is not present in the original speech and does not correspond to any natural phonetic or prosodic feature of the utterance.
+
+This abnormality is supported by multiple XAI methods:
+- Integrated Gradients (IG) highlights the 0.8–1.0 second time region and 6000–7000 Hz frequency range as the most salient, indicating that this segment is critical to the model’s classification or generation process.
+- Saliency analysis identifies a different region (0.05–0.15 seconds, 2000–3000 Hz), likely corresponding to the initial consonant of the word "Gone," but this is not the focus of the abnormality.
+- LIME analysis also points to the 0.8–0.9 second region, reinforcing the significance of this time segment.
+- Shapley values further support the abnormality: the equivalentSoundLevel_dBp feature has a large positive Shap value (4.1919), indicating that the high amplitude of the artifact contributes strongly to the model’s output. The StddevUnvoicedSegmentLength (2.3240) and slopeUV0-500_sma3nz_amean (1.3431) features also show elevated values, suggesting the presence of an unvoiced segment with a steep spectral slope, consistent with a digital artifact.
+
+No other acoustic anomalies are present in the audio, and the rest of the speech is natural and unremarkable. The combination of XAI evidence and the observable artifact strongly suggests that the high-frequency transient is an artificial insertion, likely resulting from deepfake generation or post-processing, rather than a natural part of the speech signal.

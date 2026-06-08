@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, recorded in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 3.5 seconds, the speaker begins to say, "There is a... it's a huge difference, big..." but the word "huge" is abruptly truncated mid-syllable, with the sound cut off at 4.5 seconds. This truncation is acoustically unnatural, as the expected vowel and consonant sounds are missing, and the transition to the next word ("big") is immediate and unconnected, suggesting a digital edit or file corruption. The frequency content in this region is dominated by mid-range speech frequencies (2000–3000 Hz), consistent with the speaker’s voice. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the time interval [3.5-5.0] seconds and the frequency range [2000-3000] Hz. This cross-model agreement strongly supports the presence of an anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or sensitivity to the specific type of artifact. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, loudness_sma3_stddevFallingSlope, and equivalentSoundLevel_dBp, which are consistent with the abrupt truncation and unnatural speech transition observed in the audio. No other XAI evidence supports additional regions or artifacts.

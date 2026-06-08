@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker delivering a short, emotionally charged statement: "The Olympic committee should be ashamed of could very good player in retailing." The speech is clear and intelligible, with a neutral accent and no obvious signs of digital manipulation. However, a subtle but noticeable anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural resonance, suggesting possible digital processing or synthesis. This is further supported by a brief, high-frequency artifact in the 5000–6000 Hz range, which is not typical of natural human speech and may indicate compression or editing artifacts. No other acoustic anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the most salient region for anomaly detection as [1.0-2.0] seconds, with a corresponding frequency range of [5000-6000] Hz, using Integrated Gradients (IG). This region aligns with the observed pitch instability and high-frequency artifact in the audio. The wav2vec model also provides Saliency and LIME explanations, but these focus on a different time range ([4.0-4.5] seconds) and frequency range ([7000-8000] Hz), which does not correspond to any clear anomaly in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, but these do not directly point to the specific time or frequency range of the anomaly. Overall, the wav2vec IG explanation is the most consistent with the observed audio abnormality, while other XAI sources either do not support the finding or point to unrelated regions.

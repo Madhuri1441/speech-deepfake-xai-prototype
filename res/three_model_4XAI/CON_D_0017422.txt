@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "good label job" in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is clear and intelligible. However, a subtle anomaly is present in the high-frequency region (3000–4000 Hz) during the time interval [0.6–0.8] seconds, specifically on the word "label." This region exhibits a faint, unnatural resonance or tonal artifact, which is not typical of natural speech and may indicate digital manipulation or synthesis. The rest of the audio remains acoustically normal, with no other signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.6–0.8] seconds interval in the 3000–4000 Hz range as the most salient region for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation also points to a nearby time window ([0.9–1.0] seconds), suggesting a broader region of interest. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, alphaRatioUV_sma3nz_amean, and slopeUV500-1500_sma3nz_amean, which are related to voice quality and spectral characteristics, further supporting the presence of an anomaly in the high-frequency region. Overall, the wav2vec model's evidence is the most consistent and directly aligns with the observed acoustic abnormality.

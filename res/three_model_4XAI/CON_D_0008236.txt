@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I am a wealthy they would be." Immediately following this phrase, there is a brief, sharp, high-frequency transient sound, lasting approximately 0.5 seconds, which is acoustically distinct from the speech. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated in the 3000–6000 Hz range. The sound does not resemble any natural or environmental noise and is inconsistent with the speaker’s voice or any expected background artifact. The abruptness and unnatural spectral content of this sound suggest it is an artificial insertion, likely a digital artifact or a post-production edit. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([0.75-1.25] seconds, 3000–6000 Hz), while LIME provides a slightly narrower time window ([1.25-1.30] seconds) within the same frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and alphaRatioUV_sma3nz_amean, which are associated with the transient’s acoustic properties. The agreement among wav2vec’s methods confirms the presence of a high-frequency transient artifact in the specified region.

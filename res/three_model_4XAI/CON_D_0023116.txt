@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "the r-sulf, the game, and he is indeed." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a distinct, high-frequency electronic tone emerges, lasting until about 2.0 seconds. This tone is not part of the speech and is acoustically anomalous, as it is a pure, steady, and synthetic sound, likely a sine wave or similar artifact, which is not naturally produced by human speech or typical environmental sounds. The tone is centered in the mid-to-high frequency range (2000–6000 Hz), and its sudden appearance and unnatural timbre suggest it is an artifact, possibly from a digital glitch, editing error, or intentional insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently point to the time interval [1.0-2.0] seconds and the frequency range [2000-6000] Hz, indicating strong cross-model agreement on the presence of an artificial tone during this period. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are associated with the detected tone. No other acoustic anomalies are supported by XAI evidence.

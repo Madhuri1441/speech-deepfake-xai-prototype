@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "courtroom going to be complacent." The speech is clear and intelligible, with a neutral, declarative tone. However, the initial segment from 0.0 to 0.5 seconds exhibits a subtle but noticeable unnaturalness: the voice starts abruptly, with a slight digital click or artifact at the onset, and the spectral content in the 1000–2000 Hz range is unusually prominent compared to the rest of the utterance. This frequency band is typically associated with sibilant consonants and mid-range vocal harmonics, but here it appears unnaturally emphasized, suggesting possible digital manipulation or synthesis. The remainder of the audio (0.5–1.5 seconds) is acoustically normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.0–0.5 second region as abnormal, with a saliency peak in the 1000–2000 Hz band, indicating that this segment is most responsible for the model’s prediction. The LIME explanation for wav2vec also supports this, highlighting the 0.0–0.1 second window. No other models (Hubert, WavLM) provide supporting evidence, and their explanations are absent. The SHAP values for spectral features (spectralFlux_sma3_amean, equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength) are not directly tied to the observed acoustic anomaly, as they reflect global audio characteristics rather than localized abnormalities. Thus, the evidence for the anomaly is primarily from wav2vec, with cross-model agreement lacking. The observed click and spectral emphasis at the start of the audio are the only clear acoustic irregularities, and these are supported by wav2vec’s saliency and LIME explanations.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I am a wealthy master that will win the free master stuff." The speech is delivered in a monotone, robotic manner, with unnatural pacing and a lack of emotional inflection. The most notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, accompanied by a noticeable increase in high-frequency content (4000–6000 Hz). This segment stands out from the rest of the audio, which is otherwise clear and free of distortion, suggesting a digital artifact or manipulation. The anomaly is not present in the initial or final portions of the speech, indicating a localized issue rather than a general recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis further supports the 2.5–3.0 second region with a frequency range of 6000–8000 Hz, indicating a possible secondary anomaly. LIME analysis from wav2vec also highlights the 0.0–0.1 second region, though this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any supporting evidence, suggesting that the anomaly is not universally detected across all models. The Shapley values indicate that the abnormality is likely related to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which further support the presence of a localized, unnatural vocal segment. Overall, the wav2vec model’s IG and Saliency analyses provide the strongest cross-model agreement on the abnormality’s location and characteristics.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "However, grip's denied the claims." The speech is delivered in a neutral, declarative tone, with a standard British accent and no emotional inflection. The recording is of high fidelity, with no background noise or distortion. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 3.0 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 8000 Hz, and is acoustically distinct from the preceding speech. It is not a natural part of the voice or environment, and its abrupt onset and offset suggest digital insertion or editing. The tone is not present in the original speech and does not correspond to any natural vocalization or environmental sound, indicating a likely artificial or manipulated element.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([2.0-2.5] seconds, [4000-6000] Hz) and [2.5-3.0] seconds, [6000-8000] Hz), respectively. These findings are consistent with the observed synthetic tone in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values further support the presence of an anomaly, with features such as spectralFlux_sma3_amean and StddevUnvoicedSegmentLength indicating a significant deviation in the audio’s spectral and temporal characteristics during the identified interval. The combined evidence from wav2vec’s IG and Saliency methods, along with the Shapley values, strongly supports the conclusion that the synthetic tone is an artificial insertion, not a natural part of the original speech.

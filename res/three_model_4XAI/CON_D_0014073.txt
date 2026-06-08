@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "They are very... the bullet..." The speech is abruptly cut off mid-word, with the final syllable "bullet" truncated and replaced by a synthetic, high-frequency electronic tone. This tone is centered around 6500 Hz and persists for approximately 0.5 seconds, ending sharply at the clip’s conclusion. The tone is unnatural, lacking any modulation or acoustic context, and is acoustically distinct from the preceding speech, indicating a digital artifact or post-production edit. The abruptness and unnatural spectral content of the tone suggest it is not part of the original recording but rather an inserted or generated sound, likely due to editing or a deepfake manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the 1.0–1.5 second time region and 6000–7000 Hz frequency range. This region aligns precisely with the synthetic tone that replaces the final word. The LIME method from wav2vec also supports this, highlighting the 1.7–1.8 second region, which is adjacent to the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shapley values, while not directly identifying the abnormality, indicate that features such as slopeUV0-500_sma3nz_amean and loudness_sma3_amean are significant, which may relate to the abrupt change in signal characteristics at the point of the synthetic tone. Overall, the wav2vec model’s consistent identification of the abnormal region, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic tone in the audio, while other models do not detect this anomaly.

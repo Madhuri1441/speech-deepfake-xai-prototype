@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "be in place by next year," delivered in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a faint, low-frequency hum, likely from a computer or HVAC system. The speech is clear and intelligible, with no obvious distortion or clipping. However, at approximately 1.0–1.5 seconds into the clip, a subtle but distinct anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and does not match any natural acoustic event, suggesting it is an artificial insertion or editing artifact. The rest of the audio remains unaltered, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by Saliency analysis at [2.0-2.1] seconds and [7000-8000] Hz, and LIME at [0.3-0.4] seconds. These multiple XAI methods from wav2vec consistently point to the presence of an anomaly in the audio, with the strongest agreement on the 1.0–1.5 seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, which are indicative of a sudden change in the audio signal. The cross-model agreement from wav2vec provides strong evidence for the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-specific.

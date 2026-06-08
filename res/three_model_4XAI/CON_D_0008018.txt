@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "They played a lineup," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.5 seconds. This artifact manifests as a brief, unnatural, high-pitched sound, likely a digital click or glitch, which is acoustically inconsistent with the rest of the recording. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The frequency range of this anomaly is concentrated between 4000 Hz and 6000 Hz, which is higher than typical human speech and suggests a digital or synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, albeit with a slightly narrower focus at [1.7-1.8] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and alphaRatioUV_sma3nz_amean are significant, but these are not directly tied to the observed artifact. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods confirms the presence of a high-frequency transient artifact in the specified time and frequency range.

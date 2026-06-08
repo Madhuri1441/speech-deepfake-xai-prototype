@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice speaking in a conversational tone. At approximately 1.0 seconds, the speaker says, "I am not over the the regains," with a slight stutter or repetition on "the." Immediately following this, a sharp, high-frequency, synthetic tone appears, lasting about one second and peaking in the 5000–6000 Hz range. This tone is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation, and is consistent with a digital artifact or post-production edit. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is not present in the original speech. The remainder of the audio returns to the natural voice, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time region and [5000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also supports this region, albeit with a slightly narrower window ([2.15-2.30] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values from the audio features point to a significant increase in StddevUnvoicedSegmentLength, suggesting a sudden change in the acoustic texture, likely due to the introduction of the synthetic tone. The combination of wav2vec’s multiple methods and the Shapley value evidence strongly supports the presence of an artificial tone in the specified region.

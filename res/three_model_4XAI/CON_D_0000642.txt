@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, steady tone, with the phrase "will have no choice" clearly audible. At approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding hiss or whine in the 3000–6000 Hz range. This artifact persists until about 2.0 seconds, after which the voice continues normally. The artifact is not present in the initial part of the audio and does not align with any natural speech or environmental sounds, suggesting it is an artificial addition. The voice itself remains clear and intelligible, with no signs of distortion or clipping, and the background is otherwise silent, indicating a controlled recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.0] seconds, 3000–6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic artifact in the specified region. The convergence of wav2vec’s multiple XAI methods provides strong, cross-model support for the identified anomaly, while the absence of evidence from Hubert and WavLM does not contradict this finding.

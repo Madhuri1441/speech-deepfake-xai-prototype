@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.3 - 0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone or device handling. At approximately 0.3 seconds, a sharp, high-frequency transient is heard, lasting about 0.2 seconds and peaking in the 5000–6000 Hz range. This transient is acoustically distinct from the rest of the audio, which consists of a low-pitched, muffled male voice saying "Okay, for the mod..." The voice is clear but lacks high-frequency content, suggesting either a low-fidelity recording or post-processing. The transient stands out as an unnatural artifact, possibly due to digital clipping, a sudden edit, or a synthetic overlay. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.3–0.5 second range with a frequency focus of 5000–6000 Hz, using both Integrated Gradients and Saliency methods. LIME also supports this region, though with a slightly narrower window of 0.4–0.5 seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean, but does not localize the anomaly in time or frequency. The wav2vec-based evidence is cross-model (IG, Saliency, and LIME), providing strong support for the identified region.

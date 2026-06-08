@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotone, robotic delivery, lacking natural intonation and breathiness. The speech is clear and intelligible, but the voice exhibits an unnatural, stilted cadence, especially during the phrase "injury time in the first half." At approximately 1.5–2.0 seconds, there is a subtle but noticeable pitch and timbre shift, coinciding with the word "time." This moment is acoustically anomalous, as the voice momentarily loses its synthetic smoothness, introducing a slight digital artifact or modulation. The frequency range of this anomaly is concentrated between 3000–4000 Hz, which is consistent with the spectral region where the wav2vec model’s Integrated Gradients (IG) attribution highlights a significant activation. This supports the hypothesis that the model detected a synthetic or manipulated segment in this region. No other XAI methods (Saliency, LIME) or models (Hubert, WavLM) corroborate this finding, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) attribution identifies the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range as the most suspicious, with no other XAI methods or models providing supporting evidence. This indicates that the anomaly is detected by a single model and method, and there is no cross-model agreement. The Shapley values from the audio features do not directly correspond to this region, suggesting that the anomaly is not captured by the global feature importance analysis. Therefore, the final abnormality is based solely on the wav2vec IG attribution, with no corroborating evidence from other XAI sources.

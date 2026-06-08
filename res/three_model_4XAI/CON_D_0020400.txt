@@ -1,0 +1,13 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a Scottish accent, speaking in a calm, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a faint, continuous low-frequency hum, likely from a nearby appliance or HVAC system. The speech is clear and intelligible, with no signs of digital compression artifacts or clipping. The acoustic environment is dry, with minimal reverberation, suggesting a small, well-furnished room.
+
+The most notable acoustic anomaly occurs between 2.0 and 2.5 seconds, where a subtle, high-frequency artifact is present. This artifact manifests as a brief, sharp, and unnatural sound, possibly a digital click or transient, which is not part of the speaker’s voice or the ambient noise. The artifact is most prominent in the 3000–4000 Hz frequency range, which is consistent with the frequency region identified by the wav2vec IG explanation. This region is not present in the original audio waveform, indicating it is likely a post-processing or editing artifact.
+
+Other XAI methods, such as saliency and LIME, point to different time and frequency regions, but these are not supported by the audio evidence and may reflect model-specific sensitivities rather than actual acoustic anomalies. The Shap values highlight features like equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not correspond to any observable anomaly in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG explanation identifies the [2.0-2.5] seconds time range and [3000-4000] Hz frequency range as the most likely source of the anomaly, which is supported by the presence of a subtle, high-frequency artifact in the audio. This is the only region consistently identified by multiple XAI methods, and it is cross-model agreement between wav2vec IG and the audio evidence. Other XAI sources provide conflicting or non-supportive evidence, and thus are not considered reliable for identifying the anomaly.

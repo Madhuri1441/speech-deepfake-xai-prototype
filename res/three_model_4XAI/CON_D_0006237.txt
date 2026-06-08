@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, narrative tone: "These days are long gone in Scotland the brand." The speech is clear and intelligible, with a low-pitched, slightly gravelly timbre, and is accompanied by a faint, steady background hiss. At approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until 2.0 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the voice and background noise. The buzzing is abrupt in onset and offset, with no fade-in or fade-out, and does not interact with the speech or environment, suggesting it is an artificial overlay rather than a natural sound. After the buzzing ceases, the speech resumes without interruption, indicating the artifact is not a result of editing or environmental change.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the buzzing artifact through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods highlight the same time and frequency region ([1.5-2.0] seconds, 3000-6000 Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, likely due to their focus on speech content and lack of sensitivity to non-speech artifacts. The Shapley values further support the presence of the buzzing tone by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and hammarbergIndexV_sma3nz_amean, which are characteristic of high-frequency, synthetic sounds. No other acoustic anomalies are present in the audio, and the buzzing tone is the only region supported by multiple XAI sources.

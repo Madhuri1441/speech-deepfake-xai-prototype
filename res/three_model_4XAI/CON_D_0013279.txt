@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, recorded in a quiet indoor environment. The speech is clear and intelligible, with a natural conversational tone. However, at approximately 4.5–5.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present, most noticeable as a sharp, unnatural click or chirp. This artifact is not part of the speaker’s voice and does not correspond to any environmental or mechanical sound. The frequency range of this artifact (2000–3000 Hz) is consistent with the upper-midrange of human speech, but the sound is distinctly non-vocal and abrupt, suggesting a digital or synthetic origin. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [4.5-5.0] seconds time region and [2000-3000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is likely the source of the model’s classification. The Saliency method from wav2vec also highlights a broad region (0-1 seconds, 2000-4000 Hz), but the IG result is more specific and directly aligns with the observed artifact. The LIME explanation from wav2vec points to a slightly earlier time (3.0-3.5 seconds), which does not correspond to the artifact and may reflect a different aspect of the audio. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The Shapley values suggest that the equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope features are most influential, but do not directly indicate the artifact’s location. Overall, the IG explanation from wav2vec is the most reliable indicator of the anomaly, supported by the direct observation of the synthetic artifact in the audio.

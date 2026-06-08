@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "grievous loss" in a neutral, low-pitched tone, with clear and natural speech characteristics. However, a subtle but noticeable anomaly occurs in the latter part of the utterance, specifically from 0.6 to 1.4 seconds, where the voice exhibits a slight pitch instability and a faint, artificial modulation. This is accompanied by a subtle, high-frequency shimmer or warble, most prominent in the 1000–4000 Hz range, which is not typical of natural human speech. The anomaly is brief and localized, suggesting a possible digital artifact or manipulation. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.6-1.0] seconds and frequency range [2000-4000] Hz, while its Saliency method further narrows the region to [1.25-1.4] seconds and [1000-3000] Hz. These two independent wav2vec methods agree on the presence of an anomaly in the latter part of the utterance, specifically between 0.6 and 1.4 seconds, with the frequency range spanning 1000–4000 Hz. The LIME method also supports this region, albeit with a narrower time window of [0.65-0.7] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shap values indicate that the StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope features are most influential, suggesting that the anomaly is related to subtle changes in voice stability and pitch contour. Overall, the wav2vec model’s multiple methods and the LIME method converge on the same region, providing strong cross-model agreement for the identified abnormality.

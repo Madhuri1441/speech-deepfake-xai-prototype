@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I think he was the be all played." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact is a harsh, buzzing sound with a strong presence in the 3000–6000 Hz range, which is acoustically inconsistent with the preceding speech. The artifact is not a natural part of the voice or environment and appears abruptly, suggesting a digital or synthetic origin. The rest of the audio remains free of such anomalies, with no further artifacts or distortions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time region and 3000–6000 Hz frequency range, while LIME corroborates the time region with a specific focus on 0.6–0.7 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and alphaRatioUV_sma3nz_amean indicating deviations from expected speech patterns. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the conclusion that the artifact is a synthetic or manipulated segment within the audio.

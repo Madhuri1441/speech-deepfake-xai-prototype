@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, formal male voice stating, "to an industrial, the Queen's Golden Jubilee will proceed." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise, and is acoustically consistent with a professional studio or broadcast setting. However, at approximately 2.0 seconds, a sudden and unnatural shift occurs: the voice becomes distorted, with a metallic, robotic timbre and a pronounced high-frequency artifact. This distortion persists until about 3.5 seconds, after which the audio returns to its original clarity. The abrupt onset and offset of this artifact, along with its unnatural frequency content (4000–8000 Hz), strongly suggest a digital manipulation or deepfake insertion. The distortion is not present in the initial or final segments, indicating a localized anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 2.0–3.0 seconds in the 4000–6000 Hz range, and a Saliency region from 3.0–3.5 seconds in the 7000–8000 Hz range. These regions align with the observed distortion in the audio, providing cross-model support for the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and mfcc3V_sma3nz_amean, which may reflect changes in the audio's acoustic structure during the anomaly, though these are not directly localized in time or frequency. Overall, the wav2vec model's evidence is the most consistent with the observed audio artifact, and the anomaly is supported by multiple XAI sources within this model.

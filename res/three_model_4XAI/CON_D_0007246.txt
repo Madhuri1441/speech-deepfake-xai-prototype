@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a formal, continuous statement about women's roles in energy shortages. The speech is clear, steady, and uninterrupted, with no background noise, music, or environmental sounds. The only notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where a subtle, high-frequency artifact is present in the 4000–6000 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, distinct from the speaker’s voice and not attributable to any environmental or vocal source. The rest of the audio is acoustically clean, with no signs of clipping, distortion, or compression artifacts. The anomaly is isolated and does not affect speech intelligibility or rhythm.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.5–2.0 second range and 4000–6000 Hz frequency band using Integrated Gradients (IG), while Saliency analysis highlights a different region (5–6 seconds, 4000–8000 Hz) and LIME points to 5.0–5.2 seconds. The Hubert and WavLM models do not provide any evidence of anomalies. The wav2vec IG result is the only one that aligns with the observed acoustic artifact, and no other XAI sources corroborate this finding. The Shapley values indicate that the anomaly is not related to standard audio features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, or spectralFlux_sma3_amean, suggesting the artifact is not a result of typical audio processing or environmental factors. Thus, the wav2vec IG evidence is the sole indicator of the anomaly, with no cross-model agreement.

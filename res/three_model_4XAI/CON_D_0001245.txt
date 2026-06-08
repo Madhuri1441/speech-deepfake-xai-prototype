@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "dead almost a year ago, go Philly." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.0–2.5 second time window and 4000–6000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may be influenced by the artifact, but these do not directly localize the anomaly. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of a synthetic artifact in the specified time and frequency range.

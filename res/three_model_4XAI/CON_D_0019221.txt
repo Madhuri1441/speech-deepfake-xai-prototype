@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "to there. Pain was rufus." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.00 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until 1.25 seconds. This tone is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The tone is centered in the 4000–6000 Hz range, which is consistent with a digitally generated artifact rather than a natural sound. There are no other obvious audio anomalies, such as clipping, distortion, or background noise, outside of this brief interval.
+
+III. XAI AGGREGATION EXPLANATION:  
+The suspicious region [1.00-1.25] seconds and frequency range [4000-6000] Hz are supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this region as salient for its prediction. The Saliency method from wav2vec also highlights a nearby region [0.75-1.00] seconds, but the strongest and most consistent evidence comes from the IG result. The Hubert and WavLM models do not provide any salient regions, and LIME explanations are either absent or less specific. The Shapley values indicate that the equivalentSoundLevel_dBp feature is highly influential, which aligns with the presence of the high-frequency tone, as it would increase the overall sound level in that frequency band. No other XAI evidence supports the anomaly, and the audio itself does not show signs of manipulation outside the identified region.

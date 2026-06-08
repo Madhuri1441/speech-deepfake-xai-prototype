@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice calmly stating, "punishment. It is deeply unpleasant." The speech is clear, with a neutral and steady tone, and is recorded in a quiet, acoustically dry environment. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency electronic tone emerges and persists until the end of the audio. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the speech, lacking any natural harmonics or modulation. The tone is not present in the original recording but appears to be artificially inserted, as it is not accompanied by any environmental or background noise. The abrupt onset and unnatural character of the tone suggest it is a synthetic artifact, likely added post-recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.5-1.5] seconds, 2000-4000 Hz). The LIME method for wav2vec also highlights the very beginning of the audio ([0.0-0.1] seconds), but this is less specific and does not align with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no significant regions. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most strongly associated with the anomaly, supporting the presence of a sudden, unnatural change in the audio signal. The cross-model agreement from wav2vec’s IG and Saliency methods confirms the presence of a synthetic tone in the specified region, while the lack of support from Hubert and WavLM suggests the anomaly is not universally detectable by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "Almost from that moment, dread visits crisis. Tonight, Ram..." The speech is delivered in a controlled, professional manner, with a steady pitch and no emotional inflection. However, at the very start of the audio, specifically in the first 0.5 seconds, there is a subtle but noticeable high-frequency artifact in the 1000–2000 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, which is not present in the rest of the recording. The remainder of the audio is clean and free of distortion, with no further anomalies detected. The initial artifact is likely a result of digital processing or editing, as it does not align with the natural acoustic profile of the speaker’s voice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial 0.5 seconds as an abnormality, with a saliency peak in the 1000–2000 Hz range, indicating a high-frequency anomaly at the start of the audio. The LIME explanation from wav2vec also supports this, highlighting the 0.1–0.2 seconds region as suspicious. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The SHAP analysis does not directly reference the audio artifact but instead focuses on acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope, which are unrelated to the observed artifact. Therefore, the evidence for the anomaly is based solely on wav2vec’s saliency and LIME explanations, with no cross-model agreement.

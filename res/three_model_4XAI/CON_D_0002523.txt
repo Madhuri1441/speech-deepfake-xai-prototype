@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.65-0.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "very clear," followed by a brief pause and then the phrase "the yellow card." The speech is delivered in a standard, unaccented English tone, with no emotional inflection or background noise. Immediately after the word "card," there is a sudden, sharp, high-frequency electronic tone that lasts for about 0.1 seconds. This tone is acoustically distinct from the speech, with a piercing, synthetic timbre and a frequency content in the 3000–4000 Hz range, which is not present in the preceding speech. The tone is abrupt and does not fade, suggesting a digital artifact or an intentional sound effect rather than a natural acoustic event. There are no other audible anomalies, such as clipping, distortion, or background interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time-frequency region: [0.65-0.75] seconds and [3000-4000] Hz, which aligns precisely with the observed electronic tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return "None." The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed tone and are not supported by the XAI methods. The consensus from wav2vec’s multiple XAI methods confirms the presence of a synthetic, high-frequency tone in the specified region, with no cross-model agreement from Hubert or WavLM.

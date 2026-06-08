@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.0 seconds. This artifact is characterized by a rapid, fluttering, and slightly modulated texture, resembling a digital warble or glitch, and is distinctly different from the natural speech that follows. The artifact is not present in the original audio but is introduced during the deepfake process, as evidenced by its unnatural spectral and temporal properties. The subsequent speech ("delivery review earlier") is clear, intelligible, and free of distortion, indicating that the artifact is localized to the initial segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method highlights a different region ([0.25-0.35] seconds, [1000-3000] Hz), which does not align with the observed artifact. The LIME method identifies a single time point ([1.4, 1.5] seconds), which is not supported by the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that matches the observed artifact, and no cross-model agreement is present. The Shap values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the artifact introduces a deviation in the acoustic structure of the audio, but this is not directly corroborated by the XAI methods.

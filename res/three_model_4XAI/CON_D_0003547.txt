@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I brings us to this done that you can handle it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a subtle but distinct artifact emerges: a high-frequency, synthetic-sounding buzz or hum overlays the voice, most prominent between 3000-4000 Hz. This artifact persists until about 1.5 seconds, after which the voice continues normally. The buzz is not present in the initial or final segments of the audio, suggesting it is an isolated anomaly rather than a continuous background noise. The voice itself does not exhibit any pitch or amplitude irregularities, and the artifact does not affect the intelligibility of the speech. No other acoustic anomalies, such as clipping, distortion, or abrupt volume changes, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.5-1.5 second time range and 3000-4000 Hz frequency range, while LIME supports the 1.5-2 second time range, which overlaps with the artifact’s duration. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and mfcc2V_sma3nz_amean, which are consistent with the presence of a high-frequency artifact but do not pinpoint the exact time or frequency range. The cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the identified abnormality, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

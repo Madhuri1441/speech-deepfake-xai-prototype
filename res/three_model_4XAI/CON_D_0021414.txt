@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, with no background noise or environmental sounds. The speech is intelligible and delivered in a standard British accent, with no signs of emotional distress or artificiality. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 1.0 seconds. This tone is sharply distinct from the natural speech, with a pitch in the 2000–4000 Hz range, and is acoustically consistent with a digital artifact or watermark, rather than a natural vocalization or environmental sound. The tone is not present in the original speech and does not correspond to any linguistic or environmental context, suggesting it is an artificial addition. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also supports this region, though with a slightly different frequency range ([1000-2000] Hz). The LIME method, however, points to a different time range ([1.8-2.0] seconds), which does not align with the observed synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed synthetic tone. The wav2vec model’s IG and Saliency results are the most consistent with the acoustic evidence, indicating a cross-model agreement on the abnormality’s location and frequency.

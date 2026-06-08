@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "It is my job that them can work." The speech is clear and intelligible, with a low pitch and steady rhythm, and is accompanied by a faint, low-frequency hum likely from a computer or HVAC system. The recording environment is quiet, with no background noise or reverberation, suggesting a small, acoustically treated room. At approximately 1.25 seconds, a sudden, high-pitched, synthetic tone emerges, lasting until 1.75 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is distinctly artificial, lacking the natural harmonics or modulation of a human voice. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically isolated from the speech, indicating it is likely a digital artifact or post-production addition. The remainder of the audio returns to the original speech and background hum, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([1.25-1.75] seconds, [3000-6000] Hz], while LIME corroborates the time region ([0.95-1.05] seconds), which overlaps with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone. The cross-model agreement from wav2vec confirms the region as the most likely source of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral male voice saying, "They felt good commented to Mr. Logan." The speech is delivered in a standard, unaccented English tone, with no emotional inflection or background noise. However, at approximately 1.0 seconds, a sudden, unnatural electronic tone emerges, lasting until 1.5 seconds. This tone is a steady, mid-frequency synthetic sound, likely a square or sawtooth wave, with a fundamental frequency around 2500 Hz and strong harmonics extending up to 4000 Hz. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically distinct from the preceding speech. Its timbre and spectral content are inconsistent with any natural or environmental sound, suggesting it is artificially inserted. The remainder of the audio returns to the original speech, with no further anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), which is a strong indicator of the synthetic tone’s presence. This region is also supported by the Saliency method, which highlights a different time range ([2.5-3.0] seconds) and frequency range ([6000-8000] Hz), but this is not corroborated by other models or the audio itself, and is likely a spurious artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are consistent with the presence of a sudden, loud, and unvoiced synthetic tone. Overall, the wav2vec IG evidence is the most reliable and cross-model supported indicator of the anomaly.

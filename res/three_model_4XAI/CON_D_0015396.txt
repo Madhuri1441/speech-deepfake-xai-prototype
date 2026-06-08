@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding noise in the 5000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and is not present in the rest of the audio, suggesting a digital glitch or editing error. The voice resumes at 2.0 seconds, but the audio is abruptly cut off at 2.5 seconds, with no natural fade or closure, indicating a possible truncation or editing artifact. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 1.0–2.0 second time region and 5000–6000 Hz frequency range as abnormal, providing cross-model agreement on the presence of a high-frequency artifact. The LIME method for wav2vec also highlights a brief region at 0.1–0.2 seconds, but this is not corroborated by other models and is not clearly supported by the audio. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is not consistently detected by all models. The SHAP analysis identifies features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the artifact, but these are not directly tied to the specific time or frequency range. Overall, the wav2vec model's attribution evidence is the most consistent and directly supports the observed acoustic anomaly.

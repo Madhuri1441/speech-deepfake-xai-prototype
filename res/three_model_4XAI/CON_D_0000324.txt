@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, declarative tone, with a slight upward inflection at the end of the phrase "It was an easy defeat." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly is present in the high-frequency range (6000–7000 Hz) during the time interval [1.0–1.5] seconds, coinciding with the word "easy." This region exhibits a faint, unnatural tonal quality that is not present in the rest of the audio, suggesting possible digital artifacting or synthetic generation. The anomaly is not perceptible to casual listening but is detectable through spectral analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the [1.0–1.5] seconds interval, specifically in the 6000–7000 Hz range, is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this region as salient for the model’s prediction. This is the only XAI source that provides a frequency-based explanation for the anomaly. The Saliency method from wav2vec identifies a different region ([0.0–0.5] seconds, 1000–2000 Hz), and LIME identifies a very narrow time window ([1.25–1.35] seconds), but neither supports the high-frequency anomaly. The Hubert and WavLM models do not provide any saliency or IG explanations, and LIME results are absent for these models. Thus, the high-frequency anomaly is supported by a single XAI source (wav2vec IG), and there is no cross-model agreement. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, but this does not directly correspond to the observed acoustic anomaly.

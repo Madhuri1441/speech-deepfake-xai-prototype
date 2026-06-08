@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "the Lord be an overlap" in a neutral, declarative tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.4 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a fundamental frequency around 2.5 kHz and strong harmonics extending up to 5 kHz, resembling a square or sawtooth wave. The tone is acoustically distinct from the speech, lacking any natural vocal characteristics, and its abrupt onset and sustained presence suggest it is an artificial overlay rather than a natural part of the recording.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) and Saliency both highlight the 0.4–0.6 second time window and the 2000–5000 Hz frequency range, indicating that these features are critical to the model’s classification of the audio as a deepfake. The LIME explanation, while pointing to an earlier time window (0.0–0.1 seconds), likely reflects the model’s sensitivity to the initial speech segment, which may be used as a baseline for comparison. The Shapley values further reinforce the importance of the synthetic tone, with the highest value (4.0343) attributed to the standard deviation of unvoiced segment length, indicating the presence of a non-vocal, steady-state sound. The equivalent sound level and F1 amplitude features also support the presence of an unnatural, high-intensity tone. No other acoustic anomalies are present in the audio, and the speech itself appears natural and unaltered.
+
+In summary, the audio contains a clear, synthetic buzzing tone superimposed on natural speech, which is strongly supported by multiple XAI methods as the key indicator of a deepfake. The tone’s abrupt onset, unnatural frequency content, and the model’s sensitivity to its acoustic features confirm the presence of an artificial overlay.

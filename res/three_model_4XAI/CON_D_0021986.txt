@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free from distortion, clipping, or background noise, indicating a high-quality recording. However, a subtle anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds, specifically around the word "compromise." This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not accompanied by any obvious emotional inflection or speech irregularity, and the rest of the audio remains acoustically normal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 1.5–2.0 second interval in the 4000–6000 Hz range as a region of high salience, suggesting that this segment is critical for the model's classification. This aligns with the observed acoustic anomaly. The wav2vec Saliency and LIME methods also point to other time-frequency regions, but these are less consistent and not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model's interpretation. The Shapley values from the acoustic features do not directly indicate the abnormality, as the top features relate to general audio properties rather than the specific anomaly. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by its consistent identification across multiple XAI methods within the same model.

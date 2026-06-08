@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "could be at least five years away," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds into the clip, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the audio. This artifact is characterized by a steady, unmodulated tone in the 6000–7000 Hz range, lacking any natural speech harmonics or environmental context. The artifact is acoustically distinct from the voice, suggesting it was artificially inserted or overlaid, likely as a result of digital editing or post-processing. The abrupt onset and unnatural spectral quality of this tone are indicative of a synthetic or manipulated audio segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), while LIME also highlights the [0.5-0.6] seconds interval. These findings are consistent and cross-model, indicating strong agreement that the synthetic artifact is present in this region. The wav2vec saliency map further supports this by pointing to the same time and frequency range. In contrast, the Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, suggesting they do not detect the anomaly. The SHAP analysis identifies features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and mfcc1_sma3_amean, which are more related to speech characteristics and do not directly correspond to the synthetic artifact. Thus, the final abnormality region is supported by wav2vec’s IG and LIME, with no cross-model agreement from Hubert or WavLM.

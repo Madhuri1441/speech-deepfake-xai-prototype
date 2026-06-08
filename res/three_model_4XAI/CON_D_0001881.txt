@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding tone that occurs between 2.5 and 3 seconds, centered around 4000–6000 Hz. This tone is abrupt, clean, and lacks any natural acoustic decay or modulation, suggesting it is artificially inserted rather than part of the original speech or environment. The tone is not present in the original audio waveform, indicating it is likely a post-production addition or digital artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.5-3] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical to the model’s classification. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is not supported by other models. LIME from wav2vec identifies a brief segment ([0.9-1.1] seconds), but again, this is not corroborated by other methods. The Hubert and WavLM models do not provide any saliency or IG explanations, and LIME is also absent for these models. The Shapley values indicate that the synthetic tone’s frequency range is a significant feature for the model’s decision, further supporting the IG findings. Thus, the most consistent and cross-model supported evidence points to the [2.5-3] seconds, [4000-6000] Hz region as the likely source of model sensitivity, corresponding to the artificial tone observed in the audio.

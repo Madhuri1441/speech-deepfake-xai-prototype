@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, formal tone, with a clear and steady delivery. The speech is mostly intelligible, but at approximately 3.0–4.0 seconds, there is a noticeable disruption in the audio. During this interval, the voice becomes muffled and distorted, with a loss of high-frequency content and a reduction in clarity, making the words less distinct. This is accompanied by a subtle, unnatural pitch shift and a slight drop in loudness, which is not consistent with natural speech variation. The distortion is not present before or after this interval, suggesting a localized anomaly. The audio quality is otherwise high, with no background noise or environmental interference, and the speech resumes its original clarity after the disruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.0-4.0] seconds interval as abnormal, with a frequency focus between 2000-6000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation also points to a nearby interval (0.5-1.0 seconds), but this is not aligned with the observed acoustic anomaly. The Hubert and WavLM models do not provide any abnormality indications, and their explanations are absent. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed time or frequency region. The wav2vec-based evidence is the only one that aligns with the acoustic anomaly, indicating a cross-model agreement between IG and Saliency methods within wav2vec.

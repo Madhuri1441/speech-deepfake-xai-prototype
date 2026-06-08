@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "called label included five did my brother." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 1.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting digital insertion or manipulation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.5-2.0] seconds is supported by multiple XAI sources: the Integrated Gradients (IG) explanation from the wav2vec model identifies this time-frequency region as critical for its prediction, and the Saliency method from wav2vec also highlights a similar region, though slightly earlier ([0.6-1.2] seconds). The LIME explanation from wav2vec, however, points to an earlier, less relevant region ([0.0-0.1] seconds), which does not align with the observed artifact. The Hubert and WavLM models do not provide any supporting evidence for this region, as their explanations are all "None." The SHAP values indicate that the equivalentSoundLevel_dBp feature is highly influential, which may reflect the presence of the high-frequency artifact, but this is not directly corroborated by the other XAI methods. Overall, the strongest evidence for the abnormality comes from wav2vec’s IG and Saliency methods, indicating cross-model agreement on the presence of a synthetic artifact in the specified time-frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2800-3200] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "At the end of the big table." The speech is delivered in a standard North American accent, with no emotional inflection or background noise, indicating a controlled recording environment. Immediately following the spoken phrase, a sharp, high-frequency electronic tone is heard. This tone is abrupt, sustained, and centered around 3000 Hz, lasting for approximately 0.1 seconds. The tone is acoustically distinct from the preceding speech, with no natural fade or overlap, and its spectral content is concentrated in the 2800–3200 Hz range. This sudden, artificial sound is not a natural part of speech or environmental noise and is likely an artifact introduced during editing or post-processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [0.95-1.05] seconds time region and [2800-3200] Hz frequency region as salient. This aligns with the observed electronic tone in the audio. The Saliency method from wav2vec also identifies a different region ([0.50-0.75] seconds, [1000-2000] Hz), but this does not correspond to any clear acoustic anomaly and is likely related to the natural speech content. The LIME explanation from wav2vec identifies a very short time region ([1.35-1.40] seconds), which is not supported by other XAI methods and does not match any notable acoustic event. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. Overall, the cross-model agreement is limited to the wav2vec IG explanation, which supports the presence of an artificial tone in the specified time and frequency range.

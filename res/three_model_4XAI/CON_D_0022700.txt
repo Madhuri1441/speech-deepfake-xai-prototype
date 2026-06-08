@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges, characterized by a harsh, buzzing timbre in the 4000–6000 Hz range. This artifact persists until about 2.1 seconds, during which the underlying speech is partially masked. The speech itself is a female voice, slightly muffled and with a neutral, conversational tone, but the intelligibility is reduced due to the artifact. The acoustic environment is dry, with no reverberation or environmental cues, suggesting a close-mic or studio setting. After 2.1 seconds, the artifact ceases, and the speech resumes with normal clarity. The abrupt onset and offset of the artifact, along with its unnatural spectral content, indicate a digital or synthetic origin, likely a result of audio processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.1] seconds, 4000–6000 Hz). The IG and Saliency methods provide continuous time-frequency support, while LIME offers a discrete time point within the region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with high values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, suggesting a significant deviation in sound level and unvoiced segment characteristics during the artifact period. The cross-model agreement from wav2vec methods confirms the region as the most likely source of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering a short, coherent sentence: "as I said today morning in there was absolutely no problem after that." The speech is generally intelligible, but at approximately 2.0 seconds, a distinct, unnatural vocal artifact emerges. This artifact manifests as a high-frequency, synthetic-sounding burst of noise, lasting until about 3.5 seconds, with a spectral profile centered between 4000–6000 Hz. The artifact is not present in the surrounding speech and does not resemble any natural vocal or environmental sound, suggesting it is a digital or synthetic insertion. The remainder of the audio is free from such anomalies, and the speech resumes its natural cadence after the artifact ends. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-3.5] seconds, 4000–6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which are associated with the artifact’s acoustic properties. The cross-model agreement from wav2vec provides strong evidence for the presence of a synthetic or manipulated segment in the audio.

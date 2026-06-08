@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, neutral tone: "I am playfully horrified by the scent." The speech is clear and intelligible, with no signs of emotional distress or artificiality. However, at approximately 3.0 seconds, a sudden, loud, high-pitched electronic tone intrudes, lasting about 0.8 seconds and peaking in the 7000–8000 Hz range. This tone is sharply clipped, harsh, and digitally distorted, with a static, buzzy timbre that is inconsistent with the preceding speech. The abrupt onset and unnatural frequency content of this tone strongly suggest it is an artifact of digital manipulation, such as a deepfake overlay or synthetic insertion, rather than a genuine environmental sound. The tone is not present in the original speech and does not correspond to any natural event or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [3.5-4.0] seconds time region and [7000-8000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the [3.0-3.5] seconds region and [2000-4000] Hz range. LIME analysis points to the [1.5-2.0] seconds region, which does not align with the observed anomaly. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is significantly elevated, supporting the presence of a loud, clipped tone in the audio. The combination of wav2vec’s IG and Saliency results, along with the Shapley value evidence, confirms the anomaly in the [3.0-4.0] seconds interval and [2000-8000] Hz frequency range. This region is supported by multiple XAI methods from the wav2vec model, indicating a high-confidence detection of synthetic or manipulated content.

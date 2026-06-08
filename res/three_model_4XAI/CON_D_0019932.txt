@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "For Rangers, be payers money was involved." The speech is delivered in a standard British accent, with a steady, conversational tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or environmental cues, indicating a controlled studio or booth setting. The only notable acoustic feature is a brief, high-frequency artifact in the 4000–6000 Hz range during the word "involved" (2.0–2.5 seconds), which is perceptible as a sharp, unnatural digital "click" or "pop." This artifact is not present in the original speech and is not attributable to the speaker’s articulation or the recording environment. The rest of the audio is acoustically clean, with no signs of editing, clipping, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0–2.5] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and LIME also supports this region, albeit with a slightly narrower window at [1.8–2.0] seconds. The wav2vec saliency map highlights a different region ([0.5–1.0] seconds, 3000–4000 Hz), but this is not corroborated by other models and is not perceptible in the audio. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The Shapley values indicate that the audio is dominated by low-frequency and unvoiced segment features, which are consistent with natural speech and do not point to any specific anomaly. The only region supported by multiple independent XAI sources is the wav2vec IG and LIME evidence at [2.0–2.5] seconds, 4000–6000 Hz, which aligns with the observed high-frequency artifact in the audio.

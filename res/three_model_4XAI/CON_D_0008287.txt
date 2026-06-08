@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "key paper was not returned." The speech is delivered in a standard, unaccented English, with a steady, even tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding tone that occurs between 0.5 and 1.0 seconds, coinciding with the end of the spoken phrase. This tone is sharply defined, with a frequency content between 4000 and 6000 Hz, and is distinctly different from the natural speech spectrum. The tone is not a natural part of the voice or environment and appears abruptly, suggesting it may be an artifact or post-production addition. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.00-0.25] seconds, [1000-2000] Hz) and LIME identifies a very narrow window ([0.4-0.5] seconds). The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated compared to the original value, suggesting a sudden increase in loudness or energy in the high-frequency range. The combination of wav2vec’s IG and the Shapley value evidence supports the conclusion that the high-frequency tone between 0.5 and 1.0 seconds is the primary anomaly. This region is supported by multiple XAI sources (wav2vec IG and Shapley), indicating cross-model agreement.

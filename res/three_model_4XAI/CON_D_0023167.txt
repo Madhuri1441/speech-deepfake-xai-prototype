@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's too horrible to late," which is abruptly interrupted by a loud, synthetic, high-frequency electronic tone. This tone is centered around 5000–6000 Hz and lasts for approximately 0.6 seconds, starting at 1.0 seconds and ending at 1.6 seconds. The tone is harsh, static, and digitally clipped, with a strong presence in the upper-mid to high-frequency range, and it completely masks the underlying speech. The abrupt onset and unnatural timbre of the tone, along with its digital distortion, suggest it is not a natural sound but rather an artifact inserted into the audio, likely as a result of editing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.6] seconds, [4000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with high contributions from features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength, which are associated with sudden loudness and abrupt changes in the audio signal. The agreement among wav2vec’s methods and the Shapley values confirms the presence of a synthetic, high-frequency artifact in the specified region.

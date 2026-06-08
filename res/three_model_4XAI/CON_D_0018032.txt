@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "The scammer manipulates and parental discipline." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly occurs in the high-frequency range (4000–8000 Hz) between 3.0 and 4.0 seconds, coinciding with the word "parental." This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [3.0-4.0] second time window and the [4000-8000] Hz frequency range as salient, indicating that this region is critical for the model's prediction. The LIME method from wav2vec also supports the [1.5-2.0] second region, but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, suggesting that the anomaly is primarily detected by wav2vec. The SHAP values further reinforce the importance of high-frequency spectral features, particularly spectralFlux_sma3_amean, loudness_sma3_percentile80.0, and loudness_sma3_pctlrange0-2, which are all associated with the [3.0-4.0] second interval. This cross-model agreement from wav2vec methods, combined with the SHAP analysis, strongly supports the presence of an anomaly in the specified region.

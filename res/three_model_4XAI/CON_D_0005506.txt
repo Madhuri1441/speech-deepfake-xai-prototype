@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clearly articulated female voice with a neutral, informative tone, speaking the phrase: "...of the event being placed in six to eight weeks." The recording is clean, with no background noise, distortion, or environmental cues, and the speech is delivered at a steady pace and volume. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–6000 Hz range between 1.0 and 1.5 seconds, which is not present in the rest of the audio. This artifact is subtle and does not disrupt intelligibility, but it stands out as a possible anomaly. No other acoustic irregularities, such as pitch jumps, clipping, or unnatural pauses, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 3000–6000 Hz frequency band during the 1.0–1.5 second time window as the most salient region, indicating this segment is critical for the model's prediction. This aligns with the observed high-frequency artifact in the audio. The wav2vec Saliency and LIME methods point to a different region (0.0–0.1 seconds, 2000–3000 Hz), but this is not corroborated by other models or by the audio evidence, and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec IG result is the most reliable indicator of the anomaly. The SHAP analysis does not directly support the artifact, as it focuses on global acoustic features rather than local anomalies. Therefore, the wav2vec IG result is the only cross-model supported evidence for the abnormality, and it is based on a single model.

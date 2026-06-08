@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a sharp, piercing tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not present in the original audio but is clearly introduced during the recording or post-processing, as evidenced by its abrupt onset and unnatural spectral profile. The rest of the audio consists of a female voice speaking in a neutral, conversational tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method, which highlights a different frequency band ([6000-7000] Hz) in an earlier time window ([0.5-1.0] seconds). The LIME method also identifies a specific time point ([2.5-2.6] seconds), but this is not supported by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to overall loudness or spectral slope, but rather to a specific high-frequency event. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the presence of a synthetic artifact in the 4000–6000 Hz range between 1.0 and 2.0 seconds.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "business degree" in a standard North American accent, with no background noise or distortion. However, at approximately 0.1 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is centered around 6500 Hz and is acoustically distinct from the voice, lacking any natural speech harmonics or modulation. The tone is loud, unwavering, and masks the remainder of the spoken phrase, making the audio unnatural and potentially alarming. The abrupt onset and unnatural timbre of the tone suggest it is not part of the original recording but was added post-production, likely as an artifact of editing or a deliberate insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.1-0.4] seconds and frequency range [5000-7000] Hz, with IG and Saliency both pointing to this region. LIME also supports the time interval [0.2-0.3] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean, which are consistent with the presence of a loud, steady, synthetic tone. The agreement among wav2vec’s IG, Saliency, and LIME supports the conclusion that the buzzing tone is the primary anomaly, while the lack of evidence from Hubert and WavLM suggests that the anomaly may be subtle or not captured by all models.

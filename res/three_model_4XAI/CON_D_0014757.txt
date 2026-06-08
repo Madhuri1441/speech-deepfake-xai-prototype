@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement: "The show is already increasing the scope of its ambitions." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, clipping, or unnatural pauses. However, at approximately 2.0–2.5 seconds, a subtle but distinct high-frequency artifact emerges, characterized by a brief, sharp, and unnatural tonal quality in the 4000–6000 Hz range. This anomaly is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting a possible digital artifact or editing artifact. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.5] seconds in the 4000-6000 Hz range using Integrated Gradients (IG), and the Saliency method also highlights a region at [0.0-0.5] seconds in the 2000-3000 Hz range, which is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, with a high SHAP value, suggesting that the anomaly may be related to a change in the acoustic properties of unvoiced speech segments. The spectralFlux_sma3_amean and loudness_sma3_stddevFallingSlope features also contribute, but to a lesser extent. The wav2vec IG result is the only one that aligns with the observed high-frequency artifact, and this is the only region supported by multiple XAI sources.

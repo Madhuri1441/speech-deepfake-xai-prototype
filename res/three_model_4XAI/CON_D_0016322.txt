@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "get result" in a neutral, conversational tone, followed by a brief pause. At approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.1 seconds. This tone is sharply defined, with a pitch between 4000–6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural vocalization or environmental artifact, but rather a digitally generated sound, likely inserted as a marker or test signal. The abrupt onset and offset, as well as the lack of any natural reverberation or background noise, further support its artificial origin. After the tone, the audio returns to silence, with no further speech or sound events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.1] seconds, 4000–6000 Hz). The IG and Saliency methods provide overlapping but slightly different time boundaries, while LIME offers a broader interval that still aligns with the observed tone. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and equivalentSoundLevel_dBp, which are consistent with the presence of a synthetic tone, but do not specify a time or frequency range. Overall, the wav2vec model’s multi-method agreement provides strong evidence for the synthetic tone’s presence, while the other models’ lack of evidence suggests they may not be sensitive to this type of artifact.

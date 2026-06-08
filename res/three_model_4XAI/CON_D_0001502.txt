@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.3-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with clear and intelligible speech. At approximately 1.3 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.0 seconds. This tone is distinctly artificial, with a stable pitch and timbre, and is acoustically separate from the speech. The tone is not a natural part of the environment or the speaker’s voice, and its abrupt onset and offset suggest it is an inserted artifact rather than a genuine sound event. The speech continues unaffected, indicating the tone is not a result of vocalization or environmental interference. The synthetic nature of the tone is further supported by its spectral characteristics, which are consistent with a digitally generated waveform.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the time-frequency region [1.5-2.0] seconds and [4000-6000] Hz, and Saliency identifying [1.3-1.7] seconds and [2000-4000] Hz. LIME also supports the presence of an anomaly at [1.0, 1.1] seconds, though this is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley value analysis further supports the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of sudden changes in sound level and spectral content. The cross-model agreement from wav2vec and LIME, along with the Shapley value analysis, strongly supports the conclusion that the synthetic tone is an inserted artifact.

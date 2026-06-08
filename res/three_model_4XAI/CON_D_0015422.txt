@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I have a down program with the mortgage." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic tone emerges and persists until about 1.2 seconds. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically distinct from the voice, lacking any natural speech characteristics or modulation. The tone is not present in the original audio and appears abruptly, suggesting it is an artificial insertion or overlay. This anomaly is supported by multiple XAI methods: the wav2vec model's Integrated Gradients (IG) and Saliency methods both identify this time-frequency region as significant, indicating the model's sensitivity to this synthetic artifact. The LIME explanation for wav2vec also points to a very early time region, though less specific, which may correspond to the onset of the anomaly. No other XAI methods (Hubert or WavLM) provide supporting evidence, and the SHAP values do not directly reference this region, but the acoustic evidence is clear and consistent.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods both independently identify the same time-frequency region ([0.8-1.2] seconds, [6000-7000] Hz) as abnormal, indicating cross-model agreement within wav2vec. The LIME explanation for wav2vec also supports the presence of an anomaly in the early part of the audio, though less precisely. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP values do not directly reference the anomaly, but the acoustic evidence is clear and consistent. Therefore, the final abnormality region is supported by multiple XAI sources within the wav2vec model.

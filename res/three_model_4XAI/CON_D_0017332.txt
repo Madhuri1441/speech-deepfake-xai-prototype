@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "I don't know if there's a staff shortage." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.75 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 1.25 seconds. This buzzing is distinctly artificial, with a harsh, static timbre and a frequency content concentrated between 4000 Hz and 6000 Hz, sharply contrasting with the natural speech and background. The abrupt onset and unnatural spectral quality of this sound suggest it is not part of the original recording but rather an inserted artifact, likely a result of digital manipulation or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([0.75-1.25] seconds, [4000-6000] Hz). The IG and Saliency methods provide overlapping but slightly different time and frequency boundaries, while LIME narrows the time window to [0.8-1.2] seconds, all within the same frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic artifact in the specified frequency range. The agreement among multiple wav2vec-based XAI methods strongly supports the conclusion that the buzzing sound is an artificial insertion.

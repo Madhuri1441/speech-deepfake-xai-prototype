@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male speaker saying, "We were..." followed by, "You need a license to run a... before the Scottish..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5–2.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, manifesting as a short, high-pitched, and somewhat unnatural sound. This anomaly is not present in the original speech and is likely an artifact introduced during the deepfake process. The frequency range of this artifact (4000–6000 Hz) is consistent with the high-frequency region where the wav2vec model’s Integrated Gradients (IG) method identifies a salient region, suggesting that the model is responding to this synthetic sound. No other XAI methods or models identify this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) method identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [4000-6000] Hz, which aligns with the observed synthetic artifact in the audio. The wav2vec model’s Saliency and LIME methods also highlight nearby time regions, but these are not as strongly supported by the audio evidence. The Hubert and WavLM models do not provide any evidence of abnormality, and their IG, Saliency, and LIME methods return no salient regions. The Shap values do not indicate any abnormality in the audio, as they relate to general acoustic features rather than specific anomalies. Thus, the only cross-model agreement is from the wav2vec model’s IG method, which is supported by the audio evidence of a synthetic artifact.

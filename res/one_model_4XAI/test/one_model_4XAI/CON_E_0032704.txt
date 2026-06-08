@@ -1,0 +1,12 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "me, constable, we..." in a clear, conversational tone. At approximately 2.0 seconds, the speaker utters the word "so," which is followed by a noticeable, unnatural pause. During this pause, a high-frequency, synthetic buzzing tone emerges, centered around 6500 Hz, lasting until about 2.5 seconds. This buzz is not present in the original speech and is acoustically distinct from typical background noise or environmental sounds, suggesting it is an artifact introduced during audio processing or generation. The buzz is abrupt in onset and offset, lacking the gradual fade typical of natural room reverberation or environmental interference. 
+
+The Integrated Gradients (IG) analysis highlights this same time-frequency region ([2.0-2.5] seconds, [6000-7000] Hz) as a key area of abnormality, indicating that the model identifies this synthetic buzz as a significant deviation from expected speech patterns. The Saliency analysis also points to a related region ([1.5-2.0] seconds, [4000-6000] Hz), likely corresponding to the tail end of the word "so" and the onset of the buzz, further supporting the presence of an unnatural transition. The LIME analysis identifies the very beginning of the audio ([0.0-0.1] seconds) as anomalous, possibly due to a minor digital artifact or editing artifact at the start, though this is less pronounced than the buzz. 
+
+Shapley values reinforce the presence of synthetic anomalies: the loudness_sma3_meanFallingSlope value of 2.7028 (original value 2.1249) suggests a sudden drop in loudness, consistent with the buzz’s abrupt appearance. The StddevUnvoicedSegmentLength value of 0.8811 (original value 0.2530) indicates increased variability in unvoiced segments, likely due to the buzz interrupting the speech. The hammarbergIndexV_sma3nz_amean value of 0.7267 (original value 33.6109) reflects a decrease in speech clarity, as the buzz masks natural speech features. 
+
+In summary, the most prominent abnormality is the synthetic buzz between 2.0 and 2.5 seconds, supported by multiple XAI methods and acoustic observations. The Shapley values further confirm the presence of unnatural audio features, indicating a likely deepfake or AI-generated origin. No other significant artifacts are present, and the buzz is the primary anomaly.

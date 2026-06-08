@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice saying, "It has been working closely with Hollywood." The speech is delivered in a steady, professional tone, with no background noise or environmental cues. However, at approximately 0.5 seconds into the clip, a subtle but distinct anomaly emerges: a faint, high-frequency electronic hum or whine becomes perceptible, most prominent between 2000 and 4000 Hz. This hum is not present in the initial portion of the audio and is not part of the speaker’s voice, suggesting an artificial or synthetic origin. The hum persists until about 1.0 seconds, after which the audio returns to its original state. This anomaly is not a natural part of the recording and is likely an artifact introduced during post-production or digital processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.5-1.0] seconds, [2000-4000] Hz), indicating a high-confidence match. The LIME explanation for wav2vec, while less precise, also aligns with this region. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, either through IG, Saliency, or LIME. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting an increase in background noise or hum during the abnormality window. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the anomaly, while the other models do not contradict this finding.

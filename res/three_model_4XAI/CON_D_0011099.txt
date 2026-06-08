@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.75-2.00] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "section was five volts." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.75 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip at 2.00 seconds. This tone is centered around 7000 Hz and is characterized by a harsh, digital timbre, lacking any natural harmonics or modulation. The tone is not present in the original speech and does not correspond to any environmental or mechanical sound, suggesting it is an artifact introduced during post-processing or as a result of a technical malfunction. The sudden onset and unnatural spectral content of this tone are the primary acoustic abnormalities in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.75-2.00] seconds, [6000-8000] Hz). The IG method highlights the region with a broader frequency range, while Saliency narrows it to [7500-8000] Hz, both consistent with the observed synthetic buzz. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return "None." The SHAP analysis, which is not time-frequency based, identifies unrelated acoustic features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, but does not corroborate the presence of the buzzing tone. Thus, the final abnormality region is supported by cross-model agreement between wav2vec’s IG and Saliency methods, while other models and methods do not provide supporting evidence.

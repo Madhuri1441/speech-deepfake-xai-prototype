@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "So still is high formal time before someone was killed." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–1.5 seconds, a subtle but distinct acoustic anomaly occurs. During this interval, the voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, particularly in the 4000–6000 Hz range. This is accompanied by a momentary loss of natural vocal timbre, suggesting a possible digital artifact or editing artifact. The anomaly is transient and does not disrupt the intelligibility of the speech, but it stands out as a region of acoustic irregularity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), which is a strong indicator of the region’s significance. Saliency analysis from wav2vec also highlights a secondary anomaly at 2.5–3.0 seconds, but this is less consistent with the observed audio and is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec findings are unique to this model. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are sensitive to abrupt changes in loudness and voice quality. Overall, the wav2vec IG result is the most reliable indicator of the abnormality, supported by Shapley values, while other XAI sources do not provide corroborating evidence.

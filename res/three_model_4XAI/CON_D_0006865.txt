@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "progressing" in a neutral, conversational tone, followed by a second female voice stating "goes out on TV." Both voices are clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5–2.0 seconds, a brief, high-frequency electronic tone appears, lasting about half a second. This tone is sharply defined, with a pitch in the 3000–6000 Hz range, and is acoustically distinct from the speech, suggesting it is an artificial or inserted sound rather than a natural part of the recording. The tone is not present in the original speech and does not correspond to any environmental or background noise, indicating it may be a digital artifact or an intentional addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG) and LIME, while Saliency analysis highlights a different region ([0.5-1.0] seconds, [2000-4000] Hz) that does not align with the observed electronic tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The SHAP analysis identifies spectral features such as spectralFlux_sma3_amean, equivalentSoundLevel_dBp, and loudness_sma3_percentile80.0 as contributing to the model’s prediction, but these do not directly correspond to the observed electronic tone. The only consistent evidence across multiple XAI sources is the wav2vec model’s identification of the [1.5-2.0] seconds, [3000-6000] Hz region, which aligns with the observed electronic tone. Therefore, the final abnormality is supported by wav2vec’s IG and LIME, but not by Hubert or WavLM.

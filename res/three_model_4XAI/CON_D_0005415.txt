@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "my house was taken the music," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound appears, lasting until about 1.5 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and is likely a result of digital processing or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method also points to a region around 0.0–0.5 seconds and 1000–2000 Hz, which does not align with the observed buzzing. LIME analysis from wav2vec highlights a very narrow time window (0.25–0.3 seconds), which is not supported by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no regions. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, suggesting a high-energy event in the audio, which aligns with the buzzing sound. The slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength features also contribute, but their relevance is less clear. Overall, the buzzing sound is supported by wav2vec’s IG analysis and the Shapley value for equivalentSoundLevel_dBp, indicating a cross-model agreement on the abnormality.

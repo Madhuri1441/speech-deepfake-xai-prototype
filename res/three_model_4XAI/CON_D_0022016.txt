@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It will not be today, though." The speech is clear and natural, with a neutral, slightly resigned tone. However, at approximately 1.0–1.5 seconds into the clip, a distinct, high-frequency, synthetic buzzing sound abruptly appears. This buzzing is not present in the original recording and is not part of the speaker’s voice or any environmental noise. The buzz is centered in the 4000–6000 Hz range, which is well above the fundamental frequencies of the human voice and is acoustically inconsistent with the rest of the audio. This anomaly is not masked by the speech and is clearly audible, suggesting an artificial insertion or digital artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0–1.5] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and also detects a secondary region at [2.3–2.5] seconds in the 6000–8000 Hz range using Saliency. LIME further supports the first region at [0.4–0.5] seconds, though this is less specific and may reflect a different aspect of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly tied to the buzzing artifact but may reflect changes in the audio’s acoustic profile due to the anomaly. Overall, the buzzing at [1.0–1.5] seconds is the most strongly supported by XAI evidence, particularly from wav2vec’s IG and LIME, and is corroborated by the acoustic observation.

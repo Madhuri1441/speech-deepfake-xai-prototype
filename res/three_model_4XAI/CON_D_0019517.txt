@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "There is certainly a case... it's a real to be legalized." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about one second. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically inconsistent with the preceding speech. The artifact is not a natural part of the voice or environment and is likely the result of digital editing or a synthetic overlay. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.0-2.0] seconds, [4000-6000] Hz). The IG method highlights the artifact as a region of high model sensitivity, while Saliency analysis confirms the same region as a critical input for the model’s prediction. LIME also supports this region, though with a narrower focus ([1.0-1.1] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from normal speech patterns. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the artifact, while the other models’ lack of evidence suggests they are less sensitive to this type of anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotonous, robotic delivery and unnatural prosody, consistent with a deepfake or text-to-speech generation. The most prominent acoustic anomaly occurs between 0.5 and 1.5 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a noticeable loss of high-frequency content. This segment is marked by a sharp, unnatural transition in the vocal waveform, suggesting digital manipulation or model-generated artifacts. The speech is otherwise clear, with no background noise or environmental cues, further indicating a controlled, synthetic origin. The unnatural cadence and lack of emotional inflection reinforce the impression of a non-human speaker.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.5-1.5] second time region and [2000-4000] Hz frequency region as salient, with IG and LIME both pointing to this interval. The wav2vec saliency also highlights a separate [0-1] second region with [5000-6000] Hz content, but this is less consistent with the observed audio anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, and their explanations are either absent or not aligned with the observed anomaly. The SHAP values for acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of synthetic characteristics, particularly in the low-frequency unvoiced segment and spectral flux, which are indicative of non-human speech patterns. Overall, the wav2vec model’s IG and LIME evidence provides the strongest cross-model agreement for the identified abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and steady monologue in a quiet, acoustically dry environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct anomaly is present in the segment from 1.0 to 1.5 seconds, where the voice exhibits a slight pitch and timbral shift, accompanied by a faint, unnatural resonance. This region is marked by a brief, high-frequency artifact, likely a digital artifact or a synthetic overlay, which is not present in the rest of the recording. The anomaly is not perceptible to casual listeners but is detectable through careful analysis. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a brief [0.0-0.1] seconds region at [4000-5000] Hz, which is less consistent with the observed anomaly. LIME analysis from wav2vec also supports the [1.0-1.1] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP analysis reveals that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, suggesting that the anomaly may be related to subtle changes in voice segment statistics and sound level. Overall, the wav2vec model’s IG and LIME results provide the strongest evidence for the abnormality in the [1.0-1.5] seconds range, while other models and features offer supplementary but less consistent support.

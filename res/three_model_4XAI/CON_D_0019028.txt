@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.75 seconds, a sharp, high-frequency click or pop is heard, which is acoustically anomalous and stands out from the otherwise quiet background. This click is followed by a short, low-frequency transient, and then the audio returns to silence. The click is most prominent in the 3000–4000 Hz frequency range, which is supported by the Integrated Gradients (IG) explanation from the wav2vec model. The click is not present in the original audio, suggesting it is an artifact introduced during the deepfake generation process. No other significant acoustic anomalies are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the time and frequency regions [0.75-1.25] seconds and [3000-4000] Hz as the most salient for the model’s prediction, corresponding to the anomalous click. The Saliency method from wav2vec identifies a different region ([0.25-0.35] seconds, [4000-6000] Hz), but this does not align with any observable anomaly in the audio and is likely a false positive. The LIME explanation from wav2vec also points to a region near 1.25 seconds, but this is less precise and not strongly supported by the audio. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not consistently detected by all models. The Shapley values from the audio features do not directly correspond to the click, suggesting that the anomaly is not captured by the feature-based explanations. Overall, the click is supported by the wav2vec IG explanation and is the only region consistently identified by XAI methods as anomalous.

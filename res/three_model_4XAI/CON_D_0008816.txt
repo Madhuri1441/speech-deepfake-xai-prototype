@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "team is no problem with it." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the frequency range of 3000–5000 Hz during the time interval of 0.2–0.4 seconds. This region exhibits a faint, unnatural resonance or tonal quality that is inconsistent with typical human speech, suggesting possible digital manipulation or insertion of a synthetic sound. The rest of the audio is acoustically normal, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 0.2–0.4 second time region and 3000–5000 Hz frequency region as the most salient for the model's prediction, indicating that this segment is likely responsible for the model's classification of the audio as a deepfake. This region is also supported by the wav2vec model's LIME explanation, which highlights the 0.1–0.2 second interval, overlapping with the IG region. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model's analysis. The SHAP values further support the importance of the spectral flux and unvoiced segment length features, which are consistent with the presence of an unnatural acoustic segment in the audio. Thus, the evidence from multiple wav2vec-based XAI methods converges on the 0.2–0.4 second interval as the most suspicious region.

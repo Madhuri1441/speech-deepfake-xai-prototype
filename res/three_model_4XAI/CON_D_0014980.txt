@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "In fact, he didn't say anything." The speech is clear and intelligible, with no signs of emotional distress or unusual vocal characteristics. However, at approximately 1.0 seconds, a distinct, high-frequency electronic tone abruptly appears, lasting until about 1.5 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the environment or speech and does not resemble any typical background noise or artifact. Its sudden onset and offset, as well as its spectral characteristics, suggest it is an artificial addition, likely inserted post-recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, [2000-4000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The SHAP analysis highlights three features—equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength—with positive SHAP values, indicating that these features are elevated in the abnormal region, further supporting the presence of an artificial tone. The agreement among wav2vec’s methods confirms the region as the most likely source of the anomaly.

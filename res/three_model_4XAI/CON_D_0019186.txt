@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, sharp, high-pitched click is heard, followed by a short, low-frequency thump, both of which are acoustically anomalous and do not correspond to any natural speech or environmental sound. Immediately after, a female voice with a Scottish accent begins to speak, but the phrase is abruptly cut off mid-word, with no natural fade or trailing noise. The voice itself is clear and intelligible, with no signs of digital manipulation or distortion, but the sudden truncation and the presence of the click and thump suggest an artificial interruption or editing artifact. The background hiss and hum remain constant throughout, with no additional environmental sounds or changes in acoustic character.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region between 1.0-1.5 seconds in the 2000-4000 Hz range, which aligns with the observed click and thump in the audio. The LIME explanation for wav2vec also supports this region, indicating a strong, consistent signal in this time-frequency window. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may relate to the abruptness and unnaturalness of the audio cut, but do not pinpoint a specific time or frequency region. Overall, the wav2vec model's explanations provide the most robust evidence for the anomaly, supported by both IG and LIME methods, while the other models do not detect the same region.

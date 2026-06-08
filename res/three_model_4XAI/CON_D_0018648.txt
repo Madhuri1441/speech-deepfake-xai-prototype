@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It might... I'm ha—", but the speech is abruptly cut off mid-word, with no natural fade or pause. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is acoustically distinct from the preceding speech. This tone is sustained and unmodulated, lacking any natural variation or environmental context, and is clearly an artificial artifact rather than a natural sound. The transition between the speech and the tone is abrupt and unnatural, indicating a digital splice or editing artifact. The tone persists until the end of the clip, with no further speech or environmental sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the frequency range of 3000–4000 Hz and a time window of 0.1–0.2 seconds, which aligns with the onset of the synthetic tone. LIME also highlights the same time window, reinforcing the presence of an anomaly at the start of the clip. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The SHAP analysis further supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_stddevFallingSlope, and spectralFlux_sma3_amean, which are indicative of a sudden change in sound characteristics. The combination of these XAI sources, particularly the wav2vec model's multiple methods, provides strong evidence for the presence of an artificial tone at the beginning of the audio, with no supporting evidence from other models.

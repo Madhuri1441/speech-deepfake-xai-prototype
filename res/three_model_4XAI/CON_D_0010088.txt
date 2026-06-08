@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Be visible to be complacent." The speech is clear and intelligible, with a neutral, slightly low-pitched tone. However, a subtle but noticeable anomaly is present in the frequency range of 2000–4000 Hz during the first 0.5–1.0 seconds of the clip. This region contains a faint, high-frequency hiss or static that is not typical of natural human speech and is more prominent than the background noise in other parts of the audio. The hiss is not present in the rest of the clip, suggesting it is an artifact introduced during recording or post-processing. No other acoustic anomalies, such as clipping, distortion, or unnatural pauses, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.0 second time region and 2000–4000 Hz frequency region as significant through its Integrated Gradients (IG) method, indicating that this segment is likely responsible for the model’s prediction. The Saliency method from wav2vec also highlights a brief, high-frequency event (7000–8000 Hz) at 2.3–2.5 seconds, but this is not corroborated by other models or the audio itself, and is likely a spurious artifact. The LIME method from wav2vec identifies a single time point (1.5–1.6 seconds), which is not supported by other XAI methods or the audio. The Hubert and WavLM models do not provide any significant regions, suggesting that the anomaly is not robustly detected by these models. The Shap values indicate that features related to unvoiced segment length and MFCCs are important, but do not directly point to the specific abnormality. Overall, the wav2vec IG result is the most consistent and supported by the audio evidence, while other XAI findings are either isolated or not aligned with the observed anomaly.

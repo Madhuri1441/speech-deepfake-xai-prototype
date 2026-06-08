@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a Scottish accent, uttering the phrase, "It's a long, funny Scottish party. Play about it there." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 5000 Hz and 6000 Hz, and is markedly different from the preceding speech in both timbre and amplitude. The tone is not present in the original audio and appears abruptly, suggesting it may be an artifact or insertion. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [5000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement on the presence of an anomalous event. The LIME explanation for wav2vec, however, only highlights the very beginning of the audio, which does not correspond to the observed synthetic tone. The Hubert and WavLM models do not provide any explanations, suggesting they did not detect the anomaly or were unable to localize it. The SHAP analysis, while not directly referencing the synthetic tone, highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may relate to the overall audio quality and could indirectly support the presence of an anomaly. Overall, the wav2vec model's IG and Saliency methods provide the most consistent and cross-validated evidence for the abnormality, while other models and methods do not corroborate this finding.

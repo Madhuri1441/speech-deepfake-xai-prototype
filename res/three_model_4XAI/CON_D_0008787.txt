@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a female voice speaking in a clear, neutral tone: "I've been a great but you know uniform for years." The speech is intelligible, with a standard British accent, and is recorded in a quiet, acoustically dry environment. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not part of the speech and is acoustically inconsistent with the rest of the recording, suggesting a digital or post-processing anomaly. The artifact is not present in the original speech and does not correspond to any natural sound event. No other obvious audio artifacts, such as clipping, distortion, or compression, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method, both pointing to the same region. The LIME method also identifies a brief segment at [2.0-2.1] seconds, which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and equivalentSoundLevel_dBp, but these do not directly correspond to the observed artifact. The wav2vec-based evidence is the most consistent and reliable, with cross-model agreement between IG and Saliency, and partial agreement with LIME. The absence of evidence from Hubert and WavLM suggests that the anomaly may be subtle or not captured by all models.

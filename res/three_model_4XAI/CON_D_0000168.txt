@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, high-pitched, synthetic-sounding vocalization is heard, lasting about half a second. This sound is sharply defined, with a pitch in the 4000–6000 Hz range, and is acoustically distinct from the rest of the audio, which features a low-pitched, monotone male voice speaking in a neutral, robotic tone. The synthetic vocalization stands out due to its unnatural timbre and abrupt onset and offset, suggesting it may be an artifact or insertion rather than a natural part of the speech. The remainder of the audio continues with the same low-pitched, monotone voice, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds and [4000-6000] Hz using Integrated Gradients (IG), and the Saliency method also supports this region, albeit with a slightly different frequency range ([1000-2000] Hz). The LIME method from wav2vec further corroborates the anomaly at [2.5-3.0] seconds, though this is less precise and may reflect a secondary or related event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which may relate to the presence of the synthetic vocalization, but these are not directly tied to a specific time or frequency region. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the anomaly at [1.5-2.0] seconds and [4000-6000] Hz, supported by cross-model agreement.

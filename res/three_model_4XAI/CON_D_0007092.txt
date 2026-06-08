@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "addition" in a neutral, conversational tone, followed by a brief pause and then the phrase "it might be a major." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and LIME. Both point to the same time and frequency region ([1.8-2.0] seconds, [6000-7000] Hz], indicating strong cross-model agreement. The Saliency method also highlights a different region ([0.0-0.1] seconds, [2000-2500] Hz], which is not supported by other XAI methods and does not correspond to any obvious anomaly in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, either through IG, Saliency, or LIME. The Shap values indicate that the StddevUnvoicedSegmentLength feature is most influential, but this is a global feature and does not localize the anomaly. Overall, the wav2vec model’s IG and LIME results are the most reliable indicators of the synthetic artifact, supported by cross-model agreement.

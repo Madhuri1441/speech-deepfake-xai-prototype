@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, muffled utterance, "Talent," spoken by a male voice. Immediately following, a second male voice says, "Going for her," in a slightly higher pitch and with a more pronounced reverberation, suggesting a different recording environment or microphone setup. The most notable acoustic anomaly occurs between 0.75 and 1.25 seconds, where a sharp, high-frequency transient is present, peaking in the 4000–6000 Hz range. This transient is abrupt, unnatural, and does not correspond to any expected speech or environmental sound, indicating a possible digital artifact or editing error. The rest of the audio is marked by a persistent low-level hiss and hum, with no further speech or significant events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.75–1.25 second range, specifically in the 4000–6000 Hz band, using Integrated Gradients (IG). This is the only XAI source that provides a clear, consistent explanation for the anomaly, as both Hubert and WavLM models report no salient regions. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which suggest irregularities in the audio’s spectral and temporal characteristics. The wav2vec IG result is the primary evidence for the anomaly, with no cross-model agreement, but the Shapley values corroborate the presence of an abnormality in the audio.

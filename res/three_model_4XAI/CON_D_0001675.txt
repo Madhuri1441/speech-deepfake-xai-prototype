@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, slightly muffled tone, stating, "This is a foot cam cam inside three table." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 2.5 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 6000–7000 Hz, and is acoustically distinct from the preceding speech. The artifact is abrupt in onset and offset, suggesting a digital edit or overlay rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.0–2.5 second time window and the 6000–7000 Hz frequency range, while LIME identifies a brief preceding interval (0.0–0.1 seconds), which may correspond to the start of the speech. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to sudden changes in sound energy and spectral content. The cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the abnormality in the specified time and frequency range.

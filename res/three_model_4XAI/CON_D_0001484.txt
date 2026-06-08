@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "At first I thought..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.1 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, with energy concentrated between 2000 Hz and 6000 Hz, and is not present in the rest of the audio. The artifact is not masked by the speech and is perceptible as a slight digital anomaly, possibly indicating a momentary glitch or post-processing artifact. No other acoustic irregularities are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.8-1.1] seconds, [2000-6000] Hz). The IG method highlights the [0.8-1.0] second interval and [2000-4000] Hz band, while Saliency and LIME refine the region to [0.9-1.1] seconds and [4000-6000] Hz, respectively. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of a high-frequency anomaly, though they do not specify the exact time range. Overall, the wav2vec model’s multiple XAI methods converge on the same region, providing strong evidence for the observed artifact.

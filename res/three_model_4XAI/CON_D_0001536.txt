@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "travel with some confidence to people," delivered in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–2.0 seconds into the clip, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a brief, sharp, and unnatural tone, likely a digital glitch or artifact, which stands out from the natural speech and background. The frequency of this artifact is in the range of 4000–6000 Hz, which is higher than the typical speech range and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original audio but is introduced during processing or transmission, as indicated by the XAI analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and also highlights a region at [0.1-0.2] seconds with a frequency range of [2000-3000] Hz using Saliency. LIME further supports the [1.0-2.0] seconds region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shap values also point to the presence of an abnormal sound event, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, suggesting a sudden increase in sound level at the identified time. The combination of wav2vec's IG, Saliency, and LIME evidence, along with the Shap value analysis, strongly supports the presence of an artificial or synthetic sound artifact in the audio at the specified time and frequency range.

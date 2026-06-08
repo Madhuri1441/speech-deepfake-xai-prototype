@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not present in the original audio but is introduced during the deepfake process, likely as a result of model-generated or corrupted frequency components. The speech itself is clear and intelligible, with no signs of distortion or clipping, and the background remains stable throughout. The synthetic artifact stands out due to its unnatural timbre and abrupt onset, suggesting it is not part of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.5-2.0] seconds and [6000-7000] Hz is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which specifically identifies this region as salient. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is not aligned with the observed artifact. The LIME explanation from wav2vec points to a later time ([3.5-4] seconds), which does not correspond to any notable acoustic event. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec’s IG method. No other XAI sources corroborate the finding, and the Shapley values do not directly reference this artifact, focusing instead on general audio features. Thus, the evidence for the abnormality is based on a single model’s IG explanation, with no cross-model agreement.

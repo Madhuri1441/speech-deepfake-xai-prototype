@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio begins with a male voice speaking in a clear, neutral tone, but the initial segment from 0.0 to 0.5 seconds is acoustically anomalous. During this interval, the voice exhibits a slightly unnatural, synthetic timbre and a subtle, high-frequency shimmer, which is not typical of natural human speech. This is supported by the wav2vec model’s saliency analysis, which highlights this time-frequency region as significant for its prediction. The wav2vec model’s Integrated Gradients (IG) and LIME also point to the same region, indicating a consistent focus on this segment. The wav2vec model’s IG further identifies a frequency band of 2000–4000 Hz, which aligns with the high-frequency shimmer observed in the audio. No other models (Hubert, WavLM) provide supporting evidence for this region, and the Shapley values do not directly reference this segment, but the wav2vec saliency and IG are strong indicators of synthetic or manipulated speech in this interval.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s saliency, IG, and LIME all agree on the anomalous region [0.0-0.5] seconds and [1000-2000] Hz, providing cross-model agreement. The wav2vec IG also identifies a broader frequency band of [2000-4000] Hz, which supports the presence of high-frequency artifacts. The Hubert and WavLM models do not provide evidence for this region, and the Shapley values do not directly reference this segment. Thus, the final abnormality is supported by multiple wav2vec analyses, indicating a high confidence in the synthetic nature of the initial speech segment.

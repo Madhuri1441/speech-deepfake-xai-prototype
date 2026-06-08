@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, steady voice, delivering the phrase: "As long as it is the survival, we will ch-going." The speech is interrupted by a noticeable, unnatural break in the word "going," where the final "-ing" is abruptly cut off, leaving the word incomplete and the sentence trailing off. This break is acoustically abrupt, with no natural fade or vocal decay, and is accompanied by a faint, high-frequency digital artifact in the 5000–7000 Hz range, suggesting a possible edit or synthetic insertion. The rest of the audio is clean, with no background noise or distortion, and the speaker’s tone remains neutral and unaffected by the interruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which highlights the [2.0-3.0] second time region and [5000-7000] Hz frequency region as salient. This aligns with the observed abrupt cut-off and digital artifact in the audio. The Saliency method from wav2vec also identifies a region around [0.5-1.0] seconds, but this does not correspond to a clear acoustic anomaly and is likely unrelated to the main issue. The LIME explanation from wav2vec further supports the [2.3-2.4] second region, reinforcing the timing of the anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model’s analysis. The SHAP values do not directly correspond to the observed audio anomaly but instead reflect general acoustic features such as jitter and loudness, which are not indicative of the specific break in speech. Overall, the evidence from wav2vec’s IG and LIME methods converges on the [2.0-3.0] second region, making this the most reliable indicator of the anomaly.

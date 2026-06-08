@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "If there is no openness," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The artifact is not a natural part of the voice or environment and is likely the result of digital editing or a synthetic overlay. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method for the same region. The LIME method also highlights the [0.0-0.1] seconds region, but this is not consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec-based explanations are the most reliable. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting a sudden increase in loudness at the artifact’s onset. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the abnormality, while other models and methods do not corroborate this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, formal statement in English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, such as unnatural pauses, pitch jumps, or abrupt volume changes. However, a subtle anomaly is detected in the frequency range of 4000–6000 Hz during the time interval of 1.0–2.0 seconds, which corresponds to the phrase "place in July." This region exhibits a slight, unnatural tonal quality, possibly due to a minor digital artifact or compression artifact, though it does not significantly affect intelligibility or the overall naturalness of the voice. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second interval with a frequency focus of 4000–6000 Hz, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a related but slightly different region (0.0–0.5 seconds, 1000–2000 Hz), but this is not consistent with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the wav2vec findings, with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features indicating a deviation in the acoustic profile during the 1.0–2.0 second interval. Overall, the wav2vec model’s evidence is the most consistent and supported by multiple XAI methods, while other models and methods do not corroborate the finding.

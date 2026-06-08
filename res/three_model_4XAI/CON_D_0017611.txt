@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "three weeks late, yet talking about..." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice becomes slightly muffled and less resonant, with a reduction in high-frequency content. This change persists until about 1.0 seconds, after which the voice returns to its original clarity. The frequency range of 4000–6000 Hz is particularly affected, as evidenced by a loss of brightness and detail in the voice. This acoustic anomaly is not accompanied by any background noise, artifacts, or environmental changes, suggesting a localized modification to the audio signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and the same region is supported by Saliency analysis. These two independent XAI methods from the same model converge on the same abnormality, strengthening the evidence. The LIME explanation for wav2vec, however, points to a much earlier time ([0.0-0.1] seconds), which does not align with the observed acoustic change and is likely an artifact of the model’s interpretation. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME analyses return no relevant findings. The Shapley values indicate that the abnormality is likely related to changes in the voice’s spectral content, as reflected by the equivalentSoundLevel_dBp and spectralFlux_sma3_amean features, further supporting the hypothesis of a localized frequency alteration. Overall, the wav2vec model’s IG and Saliency analyses provide the most consistent and cross-validated evidence for the abnormality.

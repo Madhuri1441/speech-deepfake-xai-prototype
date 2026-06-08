@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "definitely changing anything." The speech is delivered in a standard British accent, with a steady, low-to-mid pitch and a calm, declarative tone. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency electronic tone that appears at approximately 1.5 seconds into the clip and lasts until 2.0 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 3000 Hz, and is distinctly separate from the voice. The tone is not part of the speech and does not interact with it, suggesting it is an artifact or overlay rather than a natural sound. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [2000-3000] Hz frequency region using Integrated Gradients (IG), while the Saliency method also highlights the [0.5-1.0] seconds region, though this is less consistent with the observed tone. The LIME method supports the [1.8-2.0] seconds region, aligning with the tone’s presence. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis identifies three features—StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0—with positive contributions, but these do not directly correspond to the observed tone and may reflect general acoustic properties rather than the specific anomaly. The final abnormality region is supported by wav2vec’s IG and LIME methods, indicating cross-model agreement for the [1.5-2.0] seconds interval and [2000-3000] Hz frequency range.

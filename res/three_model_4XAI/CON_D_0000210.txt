@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "After making the video, Jim Wallace..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until 2.5 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered in the 3000–6000 Hz range, which is consistent with a digital artifact or post-production edit. The voice continues uninterrupted, suggesting the buzzing is an overlay rather than a vocalization. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time region and [3000-6000] Hz frequency region using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.5-1.0] seconds, [2000-4000] Hz), which does not align with the observed buzzing. The LIME method also points to the buzzing region ([2.7, 2.8] seconds), though slightly later than the observed event. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which reflects the overall loudness of the audio, and the StddevUnvoicedSegmentLength, which measures the variability of unvoiced segments, further supporting the presence of an unnatural, high-frequency overlay. The cross-model agreement between wav2vec (IG and LIME) and the Shapley value analysis confirms the [2.0-2.5] seconds, [3000-6000] Hz region as the most likely location of the anomaly.

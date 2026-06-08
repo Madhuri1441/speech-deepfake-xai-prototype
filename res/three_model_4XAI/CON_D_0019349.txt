@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, conversational tone. The transient is not a natural part of speech or environmental noise, and its spectral content (6000–8000 Hz) is outside the typical range of human speech. The voice continues without interruption, suggesting the transient is an artifact rather than a vocal event. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [2.0-2.5] seconds time region and [6000-8000] Hz frequency region as salient. This is corroborated by the wav2vec model's Saliency analysis, which also highlights the [1.8-2.0] seconds time region and [5000-6000] Hz frequency region, overlapping with the IG result. The LIME analysis for wav2vec points to an earlier time region ([0.1-0.2] seconds), but this is not supported by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating no cross-model agreement for other regions. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, suggesting the anomaly is related to a sudden increase in sound level, which aligns with the observed transient. Overall, the wav2vec model's IG and Saliency analyses provide consistent evidence for the abnormality, while other models do not support additional regions.

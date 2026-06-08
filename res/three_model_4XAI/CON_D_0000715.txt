@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "There is an element of annoyance that denied the charge." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but noticeable anomaly is present in the high-frequency range (4000–7000 Hz) during the latter part of the utterance, specifically around the word "denied." This region exhibits a slight unnaturalness in the spectral envelope, with a faint, synthetic shimmer and a lack of natural vocal harmonics, suggesting possible digital manipulation or deepfake generation. The anomaly is not present in the initial portion of the audio, where the voice sounds more natural and stable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an IG-based explanation at [2.5-3] seconds in the 4000–6000 Hz range, and a Saliency-based explanation at [3.5-4.0] seconds in the 6000–7000 Hz range. These regions overlap and are both supported by the wav2vec model, indicating a consistent focus on the high-frequency content during the word "denied." The LIME explanation at [1.0-1.2] seconds is less specific and does not align with the observed anomaly. The Hubert and WavLM models do not provide any explanations, suggesting that the wav2vec model is uniquely sensitive to the anomaly. The Shapley values further support the presence of abnormality in the high-frequency region, with significant contributions from features such as equivalentSoundLevel_dBp and loudness_sma3_percentile80.0, which are associated with the spectral content in the 4000–7000 Hz range. Overall, the wav2vec model's IG and Saliency explanations provide cross-model agreement on the abnormality, while the other models and Shapley values corroborate the findings.

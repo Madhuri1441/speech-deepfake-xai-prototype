@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, synthetic-sounding female voice stating, "Conduct cases computer dividing." The voice is monotonous, with a flat intonation and a slightly metallic timbre, lacking the natural pitch variation and breathiness of a human speaker. At approximately 1.5 seconds, a sharp, high-frequency digital artifact appears, lasting about half a second. This artifact is a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the voice and suggests a digital glitch or encoding error. The voice continues without interruption, but the artifact is clearly audible and unnatural. After the artifact, the audio ends abruptly, with no fade-out or natural conclusion, further indicating digital manipulation or truncation. No other background sounds, environmental cues, or human speech are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region via Integrated Gradients (IG) at [1.5-2.0] seconds and [6000-7000] Hz, and via Saliency at [0.0-0.5] seconds and [1000-2000] Hz, with LIME also highlighting [0.0-0.1] seconds. The Hubert and WavLM models do not provide any evidence for this region. The Shapley values indicate that the artifact is associated with features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, which are all consistent with the presence of a high-frequency digital artifact. The wav2vec model’s multiple independent explanations (IG, Saliency, LIME) all point to the same region, providing strong cross-model agreement. The absence of evidence from Hubert and WavLM does not contradict this, as they may not be sensitive to such artifacts. Thus, the wav2vec model’s consistent findings across different XAI methods provide robust support for the identified abnormality.

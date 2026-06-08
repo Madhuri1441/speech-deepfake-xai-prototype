@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Didn't take their mobile phones." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 2.4 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 2.6 seconds. This tone is sharply distinct from the preceding speech, with a frequency content in the 3000–5000 Hz range, and is acoustically inconsistent with the natural speech signal. The tone is likely an artifact introduced during the deepfake generation process, as it does not correspond to any natural sound event in the original audio. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.4-2.6] seconds time region and [3000-5000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification. The Saliency method from wav2vec also highlights a different region ([1.0-1.5] seconds, [6000-7000] Hz), but this does not align with the observed synthetic tone. The LIME explanation from wav2vec identifies a region around [0.7-0.8] seconds, which is unrelated to the synthetic tone. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the synthetic tone is not captured by these models. The Shap values do not directly point to the synthetic tone but instead highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are more related to the overall audio characteristics rather than the specific anomaly. The cross-model agreement from wav2vec’s IG method supports the identification of the synthetic tone as the primary anomaly.

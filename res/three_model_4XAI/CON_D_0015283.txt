@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral, and formal tone, delivering a sentence in standard British English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact in the 4000–6000 Hz range, occurring between 1.0 and 1.5 seconds. This artifact is not present in the original speech and is not attributable to the speaker’s voice or any natural environmental source. It is likely a digital artifact, possibly introduced during post-processing or as a result of a deepfake generation process. The rest of the audio is acoustically clean and consistent with a professional studio recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the 1.0–1.5 second time region and 4000–6000 Hz frequency region as anomalous, which aligns with the observed synthetic artifact. The IG method from wav2vec also identifies a related but broader region (0.5–1.5 seconds, 2000–4000 Hz), suggesting a possible overlap or secondary effect. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values for features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean are all positive, suggesting that the audio deviates from typical speech patterns, but these features do not localize the anomaly to a specific time or frequency range. Overall, the wav2vec Saliency result is the most consistent and directly supported by the audio evidence, while other XAI methods either do not detect the anomaly or provide less precise localization.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, narrative tone, with clear articulation and a standard British accent. The speech is continuous and intelligible, with no signs of digital manipulation, clipping, or distortion. However, at the very start of the clip (0.0–0.5 seconds), there is a subtle but noticeable high-frequency artifact in the 1000–2000 Hz range. This artifact manifests as a faint, unnatural hiss or static, which is not present in the rest of the recording and does not correspond to any natural speech or environmental sound. The remainder of the audio is clean, with no further anomalies.
+
+The wav2vec model’s Saliency analysis identifies this initial segment as the most salient, suggesting the model detects an anomaly in this region. The wav2vec IG analysis also highlights a brief segment (1.0–1.5 seconds), but this is less consistent and not corroborated by other models. The Hubert and WavLM models do not detect any abnormalities, indicating that the anomaly is subtle and may not be captured by all models. The SHAP values for features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 suggest the presence of a brief, unvoiced segment with low loudness, which aligns with the observed artifact at the start of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Saliency analysis is the only source that identifies the initial segment (0.0–0.5 seconds) as anomalous, with a high-frequency range of 1000–2000 Hz. This evidence is not supported by the Hubert or WavLM models, which do not detect any abnormalities. The wav2vec IG analysis also points to a brief segment (1.0–1.5 seconds), but this is less consistent and not corroborated by other models. The SHAP values provide indirect support for the presence of a brief, unvoiced segment with low loudness, which aligns with the observed artifact. Overall, the wav2vec Saliency analysis is the primary source of evidence for the anomaly, with no cross-model agreement.

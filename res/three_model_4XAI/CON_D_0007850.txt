@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, delivering a short, coherent sentence in English. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 3.5–4.0 seconds, a distinct, high-frequency artifact emerges, characterized by a sharp, synthetic buzz in the 6000–7000 Hz range. This artifact is abrupt, unnatural, and does not correspond to any expected acoustic event in the speech or environment. It stands out as a digital anomaly, likely introduced during post-processing or as a result of a deepfake generation artifact. The rest of the audio remains clean and free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.5-4.0] seconds, 6000–7000 Hz). The IG method specifically highlights this region, while Saliency and LIME corroborate the finding, indicating strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, and their XAI methods yield no evidence. The SHAP analysis supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which collectively suggest a sudden, unnatural change in the audio’s acoustic profile. This convergence of evidence confirms the presence of a digital artifact in the specified region.

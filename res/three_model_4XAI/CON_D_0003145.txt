@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I never made Anderson to mark." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.5 seconds, a subtle but distinct acoustic anomaly emerges: a high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not part of the natural speech and is characterized by a piercing, static-like timbre, likely due to digital clipping or a synthetic overlay. The frequency content of this artifact is concentrated between 4000 Hz and 6000 Hz, which is outside the typical range of human speech and suggests a non-biological origin. This anomaly is not present in the rest of the audio, which returns to normal speech and background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.5-2.0] seconds, [4000-6000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the findings of wav2vec. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and loudness_sma3_percentile20.0, which are associated with the abnormal region. Overall, the wav2vec model’s consistent identification of the anomaly, supported by multiple XAI methods, indicates a high confidence in the presence of a synthetic or digitally altered segment in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip contains a single female speaker with a clear, neutral accent, delivering a short, coherent statement in English. The speech is generally intelligible, with a few minor articulation issues, but no obvious signs of emotional distress or unusual delivery. However, at approximately 3.0–4.0 seconds, the audio exhibits a marked acoustic anomaly: the voice becomes distorted, with a harsh, metallic, and clipped quality, accompanied by a noticeable increase in high-frequency content (2000–6000 Hz). This distortion is abrupt and does not match the natural speech pattern, suggesting a digital artifact or manipulation. The surrounding speech remains clear and natural, indicating the anomaly is localized to this brief interval. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.0-4.0] seconds region as abnormal, with a frequency focus of [2000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation for wav2vec is inconsistent, highlighting a much earlier time window ([0.0-0.1] seconds), which does not align with the observed distortion. The Hubert and WavLM models do not provide any abnormality evidence, as their IG, Saliency, and LIME explanations are all null. The SHAP analysis, which is feature-based rather than time-based, does not directly support the time-frequency anomaly but provides insight into the acoustic features that may contribute to the model’s decision. Overall, the wav2vec model’s IG and Saliency results are the only ones that consistently and independently support the observed acoustic anomaly in the [3.0-4.0] seconds interval.

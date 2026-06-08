@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "The staff would fight." The speech is intelligible and delivered in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 1.2 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital insertion or overlay rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.8-1.2] seconds, [5000-7000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of saliency or because the anomaly is outside their detection scope. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope indicating a deviation from expected speech patterns, though these do not specify the exact time or frequency of the anomaly. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide the most reliable evidence for the identified abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It is hard changing my mind." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.00 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact appears in the 2000–4000 Hz range, lasting until about 1.50 seconds. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. It is likely a result of digital processing or tampering, such as a deepfake insertion or audio splicing. The artifact is not accompanied by any change in the speaker’s voice or background noise, suggesting it is an isolated, post-production addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.00-1.50] seconds time region and [2000-4000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical to the model’s classification of the audio as a deepfake. The Saliency method from wav2vec also highlights a different region ([0.25-0.35] seconds, [1000-2000] Hz), but this is not corroborated by other models or the audio evidence. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis from wav2vec supports the [1.00-1.25] seconds region, though with less frequency detail. The Shapley values from the audio features point to spectral and unvoiced segment characteristics, but these do not directly align with the observed artifact. Overall, the wav2vec IG and LIME results, along with the audio observation, converge on the [1.00-1.50] seconds, [2000-4000] Hz region as the most suspicious, supported by cross-model agreement.

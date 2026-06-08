@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.45-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "job's admirers exceeded." The speech is delivered in a standard, unaccented English tone, with no emotional inflection or background noise. The recording is clean and high-fidelity, with no audible artifacts such as clipping, static, or distortion. However, at approximately 0.45 seconds, a brief, unnatural sound event occurs: a high-frequency, synthetic-sounding tone with a pitch around 3000 Hz, lasting about 0.05 seconds. This tone is sharply distinct from the preceding speech, lacking any natural vocal or environmental characteristics, and appears abruptly, suggesting digital insertion or editing. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The LIME explanation from the wav2vec model identifies a suspicious region at [0.45-0.5] seconds, which aligns with the observed synthetic tone in the audio. The IG explanation from wav2vec also highlights the [0.5-1.0] seconds interval, overlapping with the anomaly. The wav2vec saliency analysis, however, points to an earlier region ([0.0-0.2] seconds), which does not correspond to any clear acoustic abnormality. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values suggest that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the presence of unnatural silence or abrupt transitions, further supporting the synthetic nature of the tone. Overall, the anomaly is supported by wav2vec's LIME and IG explanations, indicating cross-model agreement on the suspicious region.

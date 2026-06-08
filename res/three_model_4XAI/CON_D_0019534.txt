@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000 - 7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying, "I'll pour for it, but..." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until about 1.2 seconds. This tone is sharply distinct from the preceding speech, with a frequency content between 6000 and 7000 Hz, and is acoustically inconsistent with the natural voice. The abrupt onset and offset of this tone, along with its unnatural timbre, suggest it is an artificial insertion rather than a genuine part of the original recording. There are no other obvious acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.8 - 1.2] seconds, [6000 - 7000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are sensitive to sudden changes in sound level and spectral content. These features collectively reinforce the conclusion that the buzzing tone is an artificial insertion.

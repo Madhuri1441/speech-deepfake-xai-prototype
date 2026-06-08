@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and intelligible speech. At approximately 2.0 seconds, the voice is abruptly interrupted by a loud, synthetic, high-frequency electronic tone that lasts for about one second, peaking in the 5000–6000 Hz range. This tone is sharply distinct from the preceding speech, with a harsh, buzzy timbre and a static, unmodulated pitch, lacking any natural acoustic decay or environmental context. The transition into and out of the tone is instantaneous, with no fade or overlap, and the tone ceases abruptly at 3.0 seconds, after which the audio returns to silence. The synthetic nature of the tone, its unnatural onset and offset, and its spectral characteristics strongly suggest it is an artificial artifact, likely inserted as a placeholder, censor, or error signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] second time region and [5000-6000] Hz frequency region using Integrated Gradients (IG), and the Saliency method also highlights a region around [0.5-1.0] seconds, though this is less consistent with the observed tone. The LIME method identifies a very short region at [0.0-0.1] seconds, which does not align with the main anomaly. The Hubert and WavLM models do not provide any time or frequency region explanations, indicating they did not detect the anomaly. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, loud, and unnatural sound event. The wav2vec IG explanation is the most robust and directly supports the observed synthetic tone, while other XAI methods either do not detect the anomaly or provide less consistent evidence.

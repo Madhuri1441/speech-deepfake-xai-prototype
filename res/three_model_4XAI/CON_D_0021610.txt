@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, declarative sentence in a controlled, studio-like environment. The speech is free of background noise, reverberation, or environmental artifacts, and the voice is steady and emotionally neutral. However, a subtle but noticeable anomaly is present in the segment between 1.5 and 2.0 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural vibrato. This is accompanied by a mild, high-frequency shimmer in the 3000–4000 Hz range, which is not typical of natural human speech and suggests digital manipulation or synthesis. The anomaly is brief and localized, not affecting the intelligibility of the speech but introducing a perceptible artificiality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] second range with a frequency focus of [3000-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also highlights a narrow window within this range ([2.0-2.1] seconds), reinforcing the presence of an anomaly. In contrast, the Hubert and WavLM models do not detect any abnormality, as their IG, Saliency, and LIME methods return no significant regions. The SHAP analysis, while not directly identifying the time or frequency range, points to features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are consistent with subtle voice synthesis artifacts. The cross-model agreement between wav2vec’s IG and Saliency, along with LIME, provides strong evidence for the anomaly in the specified time and frequency range.

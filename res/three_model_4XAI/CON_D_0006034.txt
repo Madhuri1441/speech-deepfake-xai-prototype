@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.3-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Bobby Williamson" in a neutral, declarative tone. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.3–0.4 seconds into the clip, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency artifact appears in the 2500–3000 Hz range. This artifact is not present in the original speech and does not correspond to any natural phonetic feature of the spoken words. The anomaly is transient and does not affect the intelligibility of the speech, but it is acoustically distinct from the rest of the recording. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 0.3–0.4 seconds and 2500–3000 Hz is supported by multiple independent XAI sources. The wav2vec model’s Integrated Gradients (IG) method identifies this region as the most salient for its prediction, indicating that this segment is critical to the model’s classification. Additionally, the wav2vec model’s LIME method also highlights a region at 0.4–0.5 seconds, which overlaps with the IG region, further supporting the presence of an anomaly in this time frame. The Shapley values from the WavLM model, which are based on acoustic features rather than time-frequency regions, point to features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may be indirectly related to the anomaly but do not specify its location. The Hubert model does not provide any saliency or explanation for this region, indicating that it is not detected by this model. Overall, the evidence from wav2vec’s IG and LIME methods provides strong, cross-model support for the anomaly at 0.3–0.4 seconds and 2500–3000 Hz.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the frequency range of 5000–6000 Hz during the time interval of 1.0–2.0 seconds, coinciding with the word "time." This region exhibits a faint, artificial-sounding resonance, lacking the natural harmonic structure of the rest of the speech. The anomaly is not perceptible to the human ear as a distinct artifact, but it is acoustically distinct from the surrounding speech. This is supported by the wav2vec model's Integrated Gradients (IG) analysis, which highlights this time-frequency region as significant for the model's prediction. The wav2vec model's Saliency and LIME also point to nearby time regions, but the IG result is the most consistent and directly aligned with the observed acoustic feature.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the time-frequency region [1.0-2.0] seconds and [5000-6000] Hz as the most salient for the model's prediction, with Saliency and LIME providing supporting but less precise evidence. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values from wav2vec also highlight features related to unvoiced segment length and loudness, which may indirectly support the presence of an anomaly, but do not localize it as precisely as the IG method. Thus, the final abnormality region is based on cross-model agreement from wav2vec's IG, with additional support from wav2vec's Saliency and LIME, but no evidence from Hubert or WavLM.

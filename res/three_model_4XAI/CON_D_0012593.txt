@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.1-2.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a short, formal statement in English. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.1–2.3 seconds, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency artifact in the 4000–5000 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is isolated and does not affect the intelligibility of the speech, but its presence is acoustically suspicious.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [2.1-2.3] seconds time region and [4000-5000] Hz frequency region as salient. This aligns with the observed acoustic artifact. The wav2vec model's Saliency method also detects a different region ([3.0-3.5] seconds, [6000-8000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the presence of the artifact, but this is not directly corroborated by the other XAI methods. Overall, the anomaly is supported by wav2vec's IG analysis and is not confirmed by other models, indicating a cross-model agreement only for the wav2vec IG result.

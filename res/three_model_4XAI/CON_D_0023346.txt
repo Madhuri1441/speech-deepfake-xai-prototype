@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.5 seconds, a female voice starts speaking in a neutral, conversational tone, saying, "action by next level of ball for a long time yet." The speech is clear and intelligible, with no signs of emotional distress or unusual vocal quality. However, at around 1.5 seconds, the voice abruptly stops, and a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced. This tone is harsh, buzzy, and digitally clipped, with a square or sawtooth waveform, and it continues until the end of the clip. The tone is not present in the original audio and is likely an artifact of digital editing or a deepfake overlay. The abrupt transition and unnatural timbre of the tone are clear acoustic anomalies, especially when compared to the natural speech preceding it.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.5] seconds and frequency range [2000-4000] Hz, which aligns with the synthetic tone’s presence. The saliency method from wav2vec also supports this region, and LIME corroborates the time interval [0.8-1.2] seconds. The Hubert and WavLM models do not provide any evidence, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a synthetic tone and abrupt audio transition. The wav2vec model’s multiple XAI methods (IG, Saliency, LIME) agree on the abnormality, while Hubert and WavLM do not detect it. Thus, the final abnormality region is supported by wav2vec’s cross-model evidence.

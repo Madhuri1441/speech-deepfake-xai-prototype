@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Gold," followed by a male voice stating, "We can all work together to get a store in Inverness." The speech is generally intelligible, but at approximately 3.0–3.5 seconds, a pronounced, unnatural high-frequency artifact emerges. This artifact manifests as a harsh, buzzing, and static-like sound, sharply distinct from the natural speech and background. The artifact is most prominent in the 4000–8000 Hz range, consistent with digital clipping or synthetic noise insertion. The male speaker’s voice is partially masked by this artifact, and the overall audio quality degrades during this interval. No other acoustic anomalies are present in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.0-3.5] seconds, [4000-8000] Hz). The IG and Saliency methods highlight the artifact’s presence in the high-frequency band, while LIME corroborates the temporal location. The Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly, with features like slopeUV0-500_sma3nz_amean and spectralFlux_sma3_amean indicating a significant deviation from normal speech patterns. The cross-model agreement from wav2vec provides strong evidence for the artifact’s existence and location.

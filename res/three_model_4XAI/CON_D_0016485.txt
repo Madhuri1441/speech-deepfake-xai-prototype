@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement: "We will need to look back to win it gold before any decision is taken." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, with a fundamental frequency around 150–250 Hz and harmonics extending up to 6 kHz, typical of a standard female voice. The only notable acoustic anomaly occurs between 4.5 and 5.0 seconds, where a high-frequency, synthetic artifact is present. This artifact manifests as a brief, unnatural, high-pitched sound, likely a digital artifact or a splice, which is not part of the natural speech and stands out from the otherwise clean recording. The artifact is not present in the original speech and is not attributable to the speaker’s voice or any environmental source.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [4.5-5.0] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), while the Saliency method from the same model identifies a slightly broader frequency range of [2000-3000] Hz. The LIME method from wav2vec also supports the anomaly in the [5.5-6.0] seconds range, though this is less precise. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are consistent with the presence of a high-frequency artifact in the specified time range. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the presence of the anomaly in the [4.5-5.0] seconds interval, with the frequency range spanning [2000-7000] Hz.

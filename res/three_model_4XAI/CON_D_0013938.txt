@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "Not because they want to sing about something." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, most prominent in the 4000–6000 Hz range, and is not present in the rest of the recording. The artifact is not masked by the speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. No other acoustic irregularities are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports a high-frequency anomaly at [7500-8000] Hz around 2.0–2.1 seconds, though this is less prominent and not clearly audible. LIME also corroborates the [0.8-1.2] seconds interval, aligning with the observed artifact. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no significant regions. The Shapley values indicate that the spectralFlux_sma3_amean feature is most influential, which is consistent with the presence of a high-frequency anomaly. Overall, the wav2vec model’s IG and LIME results, along with the Shapley analysis, converge on the [1.0-1.5] seconds interval as the most likely region of abnormality, supported by multiple independent XAI methods.

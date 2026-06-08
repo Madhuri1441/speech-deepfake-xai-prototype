@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, delivering a neutral, declarative sentence in a quiet, acoustically dry environment. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.0 and 2.5 seconds, centered around 5000 Hz. This artifact is not present in the original speech and is not a natural part of the voice or environment. It is likely a digital artifact, possibly introduced during post-processing or as a result of a deepfake manipulation. The rest of the audio is acoustically normal, with no signs of tampering or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency range ([1.5-2.0] seconds, [4000-6000] Hz). The LIME method, however, identifies a much earlier and shorter region ([0.0-0.1] seconds), which is not supported by other methods and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact and may reflect general audio characteristics rather than specific tampering. Overall, the wav2vec model’s consistent identification of the high-frequency artifact is the strongest evidence of a suspicious region, supported by two independent methods within the same model.

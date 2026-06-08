@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance ("dum...") that is abruptly cut off, followed by a short pause. At approximately 1.0 seconds, a high-pitched, synthetic-sounding vocalization ("beep") occurs, lasting about one second. This beep is characterized by a harsh, buzzy timbre, a static pitch, and a lack of natural vocal articulation or modulation, strongly suggesting it is not a human voice but rather a digital or synthesized sound. The frequency content of this beep is concentrated in the 4000–6000 Hz range, which is atypical for natural speech and more consistent with electronic or machine-generated audio. The abruptness of the transition and the unnatural quality of the beep indicate a possible audio splice or digital manipulation. No other significant acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong cross-model agreement on the presence of an anomalous synthetic sound in this region. The LIME explanation for wav2vec, however, points to an earlier time range ([0.0-0.1] seconds), which is not supported by other XAI methods and does not align with the observed audio anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec model is uniquely sensitive to the synthetic nature of the beep. The Shap values further support the presence of an anomalous event in the [1.0-2.0] seconds range, as the equivalentSoundLevel_dBp feature shows a significant deviation from the baseline, indicating a sudden increase in loudness consistent with the synthetic beep.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "The protest will go ahead as planned," in a neutral, clear tone. Immediately following the speech, a low-frequency, synthetic electronic tone is introduced, lasting for approximately 1.5 seconds. This tone is monophonic, stable in pitch and amplitude, and lacks any natural acoustic variation, suggesting it is artificially generated. The tone is acoustically anomalous due to its abrupt onset and unnatural timbre, which contrasts sharply with the preceding speech. The frequency range of the tone (4000–6000 Hz) is supported by the IG explanation from the wav2vec model, which identifies this region as salient for the model’s prediction. The tone’s synthetic nature and lack of environmental context further indicate it is not a natural part of the recording but rather an inserted artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG explanation identifies the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range as salient, aligning with the observed synthetic tone. The wav2vec model’s Saliency and LIME also point to specific time regions ([3.5-4.0] seconds and [0.9-1.1] seconds), but these are not supported by other models and do not correspond to clear acoustic events in the audio. The Hubert and WavLM models provide no salient regions, indicating that the synthetic tone is not a consistent feature across all models. The Shap values highlight acoustic features such as MeanUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile80.0, which may reflect the presence of the synthetic tone but do not directly pinpoint its location. Overall, the wav2vec model’s IG explanation provides the most consistent and cross-model-supported evidence for the anomalous tone.

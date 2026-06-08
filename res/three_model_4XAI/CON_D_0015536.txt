@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker delivering a clear, neutral statement: "In the early days, but no such amendment has been brought..." The speech is abruptly interrupted at approximately 2.3 seconds by a sudden, loud, high-frequency electronic tone. This tone is sharply defined, lasting for about 0.2 seconds, and is centered in the 4000–6000 Hz range. The tone is acoustically distinct from the preceding speech, with no natural fade or overlap, and is immediately followed by a brief silence before the audio ends. This abrupt transition and the unnatural, synthetic quality of the tone suggest a deliberate insertion, likely as a censor beep or a technical artifact, rather than a natural event or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.3-2.5] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and at [3.0-3.2] seconds in the 7500–8000 Hz range using Saliency, both of which align with the observed electronic tone. LIME also supports the abnormality at [0.5-0.6] seconds, though this is less specific and may reflect a secondary artifact or noise. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an abnormality, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden loudness and spectral changes. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the Shapley analysis, strongly supports the conclusion that the electronic tone is an artificial insertion, likely a censor beep or technical artifact.

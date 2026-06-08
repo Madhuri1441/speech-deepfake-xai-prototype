@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clearly articulated female voice speaking the phrase, "It has been spiky with their absence." The speech is delivered in a neutral, conversational tone, with no apparent emotional inflection or background noise. The recording quality is high, with a clean signal and no distortion or artifacts. However, a subtle but noticeable anomaly is present in the high-frequency region (6000–7000 Hz) during the time interval [0.5–1.25] seconds, coinciding with the word "spiky." This region exhibits a faint, unnatural shimmer or ringing, which is not typical of natural human speech and may indicate digital manipulation or synthesis. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.75–1.25] seconds time range and [6000–7000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis corroborates the [0.5–1.0] seconds interval and the same frequency band. LIME analysis, though less precise, also points to a suspicious region around [2.5–2.6] seconds, which may correspond to the end of the word "spiky" or the transition to "with." The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly in the high-frequency region, with features such as "slopeUV0-500_sma3nz_amean" and "equivalentSoundLevel_dBp" indicating deviations from expected speech patterns. Overall, the wav2vec model’s IG and Saliency methods provide consistent, cross-validated evidence of the anomaly, making it the most reliable indicator of the suspicious region.

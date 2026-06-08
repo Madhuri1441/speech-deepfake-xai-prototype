@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying, "He seemed to... he wins the match." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 2.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second. This transient is characterized by a piercing, synthetic timbre, with energy concentrated between 6000 and 7000 Hz, and is acoustically distinct from the preceding speech. The transient is abrupt, with no natural fade-in or fade-out, and does not match the acoustic profile of the original voice or any expected background noise. This anomaly is not present in the original audio, suggesting it is an artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [6000-7000] Hz). The IG method highlights the frequency band, while Saliency and LIME focus on the precise timing. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting a sudden increase in loudness at the identified time. The combination of these findings confirms the presence of a synthetic, high-frequency transient in the audio, likely introduced as a deepfake artifact.

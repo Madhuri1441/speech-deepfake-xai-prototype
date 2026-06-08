@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a sentence in English: "He also told her that conduct never have been. He's been com-". The speech is abruptly cut off mid-word ("com-"), indicating a sudden and unnatural termination. This is accompanied by a brief, high-frequency, synthetic-sounding artifact in the 7000–8000 Hz range, which is not present in the rest of the audio and does not match typical speech or environmental sounds. The artifact is most prominent at the moment of the cut-off, suggesting a digital splice or editing error. The audio quality is otherwise clean, with no background noise or distortion, and the speech is intelligible until the abrupt interruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 4.5–5 second time region and 7000–8000 Hz frequency region as the most salient, aligning with the observed synthetic artifact and abrupt speech cut-off. The Saliency method from wav2vec also highlights the 0–1 second region, corresponding to the beginning of the speech, but this is not supported by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the importance of the high-frequency region, with the slopeUV0-500_sma3nz_amean feature showing a strong positive value, suggesting a significant deviation in the audio signal at this frequency. Overall, the wav2vec IG analysis is the primary source of evidence for the abnormality, with cross-model agreement limited to this single model.

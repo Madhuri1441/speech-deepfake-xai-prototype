@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "the push to miss p..." in a neutral, conversational tone. The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a strong presence in the 3000–6000 Hz range, and is acoustically inconsistent with the preceding speech. The transition between the two sounds is unnatural and suggests an artificial insertion or overlay, rather than a genuine recording artifact or environmental change. The abruptness and spectral mismatch indicate a deliberate edit or digital manipulation, likely intended to obscure or censor the original content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency peak at [1.0-1.5] seconds (3000–4000 Hz) and an IG peak at [1.5-2.0] seconds (4000–6000 Hz), both aligning with the onset and duration of the synthetic tone. These regions are supported by the wav2vec model alone, as neither the Hubert nor WavLM models provide any saliency or IG evidence. The Shapley values further support the presence of a significant acoustic event in this interval, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a sudden increase in loudness. The combination of wav2vec saliency and Shapley analysis points to a strong, cross-model agreement on the abnormality occurring between 1.0 and 2.0 seconds, with the synthetic tone being the primary source of the anomaly.

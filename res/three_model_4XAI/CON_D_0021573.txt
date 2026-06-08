@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "Blood sample, the scene tape." The speech is abruptly interrupted by a loud, high-frequency electronic tone that starts at approximately 1.5 seconds and lasts until about 2.5 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the environment or speech and appears to be an artificial overlay, possibly inserted as a censor beep or a technical artifact. The abrupt onset and offset of the tone, along with its unnatural spectral profile, suggest intentional editing or digital manipulation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.5] seconds, [3000-6000] Hz). The IG and Saliency methods provide overlapping but slightly different frequency ranges, while LIME offers a more granular time window ([1.3-1.4] seconds), which is still within the broader abnormality range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shap values for equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and shimmerLocaldB_sma3nz_amean further support the presence of a sudden, high-frequency event, aligning with the observed tone. The agreement among wav2vec’s methods confirms the region as the most likely source of the anomaly, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

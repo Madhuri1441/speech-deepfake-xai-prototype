@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "across the board" in a neutral, conversational tone. Immediately following, a second female voice, slightly higher in pitch and with a more formal, declarative tone, says "The Millennium Bank." Both voices are clean, with no background noise or distortion, and the speech is intelligible. At approximately 3.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly begins, completely dominating the audio and masking any further speech or ambient sound. This tone is synthetic, with a harsh, buzzy timbre, and continues until the end of the clip. The transition from speech to the electronic tone is abrupt and unnatural, indicating a possible edit or insertion.
+
+The wav2vec model identifies a salient region between 2.0-3.0 seconds, with a frequency range of 4000-6000 Hz, which aligns with the onset of the electronic tone. The Saliency method also highlights a region between 0.5-1.0 seconds, corresponding to the first spoken phrase, but this is less relevant to the abnormality. LIME supports the wav2vec saliency region, reinforcing the importance of the 2.0-3.0 second interval. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec and Saliency results. The SHAP values indicate that features such as MeanUnvoicedSegmentLength and loudness_sma3_meanFallingSlope are significant, suggesting that the abrupt change in acoustic characteristics at 2.0-3.0 seconds is a key anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model, Saliency method, and LIME all agree on the 2.0-3.0 second interval as the region of abnormality, with wav2vec and Saliency providing consistent frequency and time ranges. This cross-model agreement strengthens the identification of the electronic tone as the primary anomaly. The Hubert and WavLM models do not provide supporting evidence, but their absence does not detract from the consensus among the other models. The SHAP values further corroborate the significance of this region by highlighting changes in acoustic features.

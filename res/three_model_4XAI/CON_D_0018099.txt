@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in English with a neutral accent. The speech is generally intelligible, with a few minor articulation issues, but no obvious signs of digital manipulation or synthetic speech. However, at approximately 3.5–4 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically inconsistent with the rest of the recording. The artifact is not present in the surrounding speech and does not match any natural sound or environmental noise, suggesting it is an artificial insertion or digital glitch. The wav2vec model’s Integrated Gradients (IG) analysis specifically highlights this time-frequency region, indicating that the model identifies this segment as anomalous. The LIME analysis also points to a brief region around 5.0–5.1 seconds, which may correspond to a secondary or related anomaly, but the primary and most consistent abnormality is the 3.5–4 second interval. No other XAI methods (Saliency, LIME, or SHAP) provide supporting evidence for this region, and the SHAP values relate to general audio features rather than pinpointing the artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 3.5–4 second, 6000–7000 Hz region as anomalous, and this is the only XAI source to do so. The LIME analysis from wav2vec also points to a nearby time window, but the evidence is less specific. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP values do not directly support the artifact’s location. Thus, the conclusion is based on a single model’s IG analysis, with minor support from LIME, and no cross-model agreement.

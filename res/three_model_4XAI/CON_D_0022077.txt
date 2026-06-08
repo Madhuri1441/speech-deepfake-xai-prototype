@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice delivering a news-style statement: "Meanwhile, Rangers will continue the search for a striker." The speech is clear, with a neutral, professional tone and no apparent emotional inflection. The recording environment is quiet, with no background noise or environmental sounds, and the voice is centered in the stereo field. The only notable acoustic feature is a brief, high-frequency artifact in the 6000–7000 Hz range, occurring between 2.5 and 3 seconds. This artifact manifests as a sharp, unnatural transient, likely a digital click or glitch, which is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The rest of the audio is acoustically clean, with no signs of clipping, distortion, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at 2.5–3 seconds in the 6000–7000 Hz range using Integrated Gradients (IG), and at 4.0–4.5 seconds in the 3000–4000 Hz range using Saliency. LIME also highlights a region at 1.0–1.5 seconds, but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the spectralFlux_sma3_amean feature is most influential, with a high positive SHAP value, suggesting a sudden change in spectral flux at the identified time range. The equivalentSoundLevel_dBp and loudness_sma3_percentile80.0 features also contribute, but to a lesser extent. The cross-model agreement between wav2vec’s IG and Saliency, as well as the alignment with the SHAP analysis, supports the conclusion that the 2.5–3 seconds, 6000–7000 Hz region is the most likely location of the acoustic anomaly.

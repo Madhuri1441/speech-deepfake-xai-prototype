@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.3 - 0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It was a thing he's from," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.3–0.4 seconds into the clip, a sharp, high-frequency transient is audible, lasting about 0.1 seconds. This transient is acoustically distinct from the speech, presenting as a brief, piercing, and unnatural sound, likely a digital artifact or an abrupt edit. The frequency content of this anomaly is concentrated between 5000–6000 Hz, which is outside the typical range of human speech and does not match the spectral profile of the voice. This transient is not present in the original speech and appears to be an insertion or artifact, possibly due to editing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the 0.9–1.0 second region and Saliency pinpointing the 0.3–0.4 second region. The LIME method also supports the 0.3–0.35 second region, aligning with the observed transient. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and spectralFluxUV_sma3nz_amean contributing to the detection, suggesting a deviation from normal speech patterns. The agreement among wav2vec’s IG, Saliency, and LIME methods confirms the anomaly at 0.3–0.4 seconds, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

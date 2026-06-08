@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I'm with some business people," in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, a subtle anomaly is present in the mid-frequency range (1000–3000 Hz) during the first 0.2–0.4 seconds of the clip, specifically around the word "business." This region exhibits a faint, unnatural resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to the human ear but is detectable through signal analysis. No other acoustic irregularities are evident in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.2–0.4 second time range and 1000–3000 Hz frequency range using both Saliency and Integrated Gradients (IG), indicating strong confidence in this region. The LIME explanation from wav2vec also points to the 0.0–0.1 second range, which overlaps with the main anomaly and supports its presence. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP analysis highlights the equivalentSoundLevel_dBp feature as the most influential, suggesting that the anomaly is related to the overall loudness or energy of the signal, which aligns with the observed tonal artifact. The combination of wav2vec’s multiple XAI methods and the SHAP feature importance supports the conclusion that the anomaly is a subtle, localized acoustic irregularity in the mid-frequency range during the initial part of the speech.

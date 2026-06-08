@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering the phrase: "in the princesses are being given away for precisely nothing." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady, with no emotional inflection, and the acoustic environment is dry and controlled, suggesting a studio or booth setting. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 1.0 and 2.0 seconds. This artifact manifests as a subtle, unnatural resonance or tonal overlay, distinct from the speaker’s voice and not present in the rest of the recording. It is not a result of the speaker’s articulation or microphone handling, and no other anomalies are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–2.0 second time region and 3000–4000 Hz frequency region as salient, with IG and Saliency both pointing to this interval. The LIME explanation also supports this region, though with a narrower focus at 1.0–1.1 seconds. The wav2vec model’s multiple independent explanations (IG, Saliency, LIME) converge on this interval, indicating strong cross-model agreement. In contrast, the Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and jitterLocal_sma3nz_amean, but these do not directly correspond to the observed acoustic anomaly. The wav2vec model’s consistent identification of the 1.0–2.0 second, 3000–4000 Hz region, supported by multiple XAI methods, is the most reliable indicator of the anomaly.

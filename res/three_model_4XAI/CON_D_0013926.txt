@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization ("ums") followed by a short, high-pitched, and slightly strained utterance ("bizarre"). The vocalization is abruptly cut off, and a synthetic, low-frequency electronic tone (approximately 100 Hz) starts at the 1.0-second mark, continuing until the end of the clip. This tone is monotonous, unwavering in pitch and amplitude, and lacks any natural acoustic variation, suggesting it is artificially generated. The transition from the vocalization to the electronic tone is unnatural and abrupt, with no fade or overlap, indicating a possible digital splice or editing artifact. The background is otherwise silent, with no environmental or ambient noise, further supporting the artificial nature of the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region, with both Integrated Gradients (IG) and Saliency methods pointing to this interval. LIME also supports the [1.8-2.0] seconds sub-region, reinforcing the presence of an anomaly in this time frame. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope, which are consistent with the presence of a synthetic tone. The combination of wav2vec’s multiple XAI methods and the SHAP feature analysis supports the conclusion that the abnormality is a synthetic tone introduced at 1.0 seconds, with the strongest evidence coming from wav2vec’s IG and Saliency methods.

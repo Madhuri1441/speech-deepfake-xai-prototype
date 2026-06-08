@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "Dialogue is the ghost things on the day we met." The speech is delivered in a calm, conversational tone, with no background noise or environmental sounds, indicating a controlled recording environment. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting it is an artifact introduced during post-processing or digital manipulation. The buzzing is centered in the 3000–4000 Hz range, which is consistent with digital clipping or compression artifacts. After 2.0 seconds, the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds in the 3000–4000 Hz range using Integrated Gradients (IG), while Saliency analysis highlights a broader region at [0.1-0.3] seconds in the 2000–4000 Hz range, likely due to the initial speech onset. LIME analysis points to the very beginning of the audio, [0.0-0.1] seconds, which may correspond to the start of the voice or a minor transient. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, suggesting a sudden change in acoustic energy and segment characteristics. The cross-model agreement between wav2vec’s IG and the observed buzzing artifact confirms the abnormality at [1.5-2.0] seconds, while other evidence is either less consistent or not directly supported by XAI.

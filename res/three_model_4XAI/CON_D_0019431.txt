@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip contains a sequence of speech fragments that are disjointed and lack natural prosody, with abrupt transitions and unnatural pauses. At approximately 4.5–5.0 seconds, a sharp, high-frequency artifact is present, characterized by a piercing, synthetic tone in the 6000–8000 Hz range. This sound is inconsistent with the surrounding speech and does not correspond to any natural vocal or environmental source. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this region, indicating that the model identifies this segment as anomalous. The LIME explanation for wav2vec also points to a nearby but slightly earlier time (3.0–3.1 seconds), suggesting a broader region of suspicion. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model’s analysis. The SHAP values for features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 further support the presence of unnatural speech patterns, but do not localize the anomaly as precisely as the wav2vec-based methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [4.5-5.0] seconds region with a frequency range of [6000-8000] Hz as anomalous, providing cross-model agreement. The wav2vec LIME explanation also supports this region, though slightly offset. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specific to wav2vec. The SHAP values support the presence of unnatural speech patterns but do not localize the anomaly as precisely as the wav2vec-based methods.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "He has not been the law." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the clip. This artifact is characterized by a steady, unmodulated tone in the 2000–4000 Hz range, lacking any natural speech harmonics or environmental noise. The onset and offset of this artifact are abrupt, suggesting a digital insertion rather than a natural event. The artifact is not present in the original speech and does not correspond to any background or environmental sound, indicating it is likely an artificial addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.8 - 1.0] seconds time range and [2000 - 4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also supports the [0.0 - 0.2] seconds range with [1000 - 3000] Hz, which is less consistent with the observed artifact. The LIME method for wav2vec supports the [0.0 - 0.1] seconds range, which is not aligned with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact. The wav2vec model's IG and Saliency methods both support the presence of the artifact in the specified time and frequency ranges, indicating cross-model agreement for the final region.

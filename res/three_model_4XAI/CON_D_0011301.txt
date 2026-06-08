@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "In fact, does it really... they try their..." The speech is clear and natural until a sudden, unnatural break occurs at approximately 1.8 seconds. At this point, the voice is abruptly cut off, and a synthetic, high-frequency electronic tone (around 5000–8000 Hz) replaces the speech. This tone is static, unwavering, and lacks any modulation or natural acoustic variation, strongly suggesting it is an artifact of digital editing or a deepfake insertion. The transition is instantaneous and unnatural, with no fade or overlap, and the tone persists until the end of the clip. No other background sounds or environmental cues are present, reinforcing the impression of a digitally manipulated segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an IG saliency at [1.8-2.0] seconds and a Saliency saliency at [2.8-3.0] seconds, both within the 5000–8000 Hz frequency range. These regions align with the onset and continuation of the synthetic tone, providing cross-model agreement on the timing and frequency of the anomaly. The LIME explanation from wav2vec also supports the [2.0-2.1] seconds region, further corroborating the presence of an anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic tone and abrupt audio transition. Overall, the wav2vec model’s multiple independent explanations provide strong evidence for the anomaly, while the other models do not detect it.

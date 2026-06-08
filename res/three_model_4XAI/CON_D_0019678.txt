@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...and Scott commendable in like great deal in the sport." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact manifests as a faint, synthetic-sounding hiss or whine, centered in the 3000–6000 Hz range, which is not present in the rest of the recording. The artifact is not masked by speech and is perceptible as a brief, unnatural overlay, suggesting a possible digital manipulation or encoding error. No other acoustic anomalies, such as clipping, distortion, or abrupt volume changes, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.5–1.0 second time range and 3000–6000 Hz frequency range, while LIME identifies a slightly earlier segment (1.5–1.6 seconds), which may correspond to a related but less prominent artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating deviations from expected speech patterns. The combined evidence from wav2vec and the Shapley values strongly supports the presence of a high-frequency artifact in the specified time and frequency range, while the lack of agreement from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

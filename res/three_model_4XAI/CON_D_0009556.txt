@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "We expect her. I'll fire said I was ha—", abruptly cutting off mid-word. The speech is clear and intelligible, with no obvious signs of digital corruption or background noise. However, a subtle but distinct anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.0–1.5 seconds. This region is marked by a faint, high-frequency artifact that is not typical of natural human speech, suggesting possible digital manipulation or editing. The anomaly is not accompanied by any obvious distortion, clipping, or compression artifacts, and the rest of the audio remains clean and natural. The abrupt cutoff of the word "happy" further supports the possibility of intentional editing or truncation.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the 1.0–1.5 seconds time region and 4000–6000 Hz frequency region as significant, indicating that this segment is likely responsible for the model's prediction. The IG method from wav2vec also highlights a related but slightly different time region (2.0–2.5 seconds), but the frequency range remains consistent. The LIME method from wav2vec supports the 0.8–1.2 seconds interval, overlapping with the Saliency region. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME results are also absent, indicating that the anomaly is primarily detected by wav2vec. The SHAP values further reinforce the importance of the 1.0–1.5 seconds region, with features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean contributing to the model's decision. Overall, the cross-model agreement from wav2vec's Saliency and LIME methods, along with the SHAP analysis, strongly supports the presence of an anomaly in the 1.0–1.5 seconds interval.

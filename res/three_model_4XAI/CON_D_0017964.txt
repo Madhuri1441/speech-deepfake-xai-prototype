@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "counselor" in a standard North American accent, with no background noise or distortion. The speech is intelligible and natural, with a smooth, steady pitch and no signs of emotional stress or artificiality. However, at approximately 0.85 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 1500 Hz and 2000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environment, but rather a digital overlay, as evidenced by its abrupt onset and lack of modulation or environmental interaction. The voice itself remains unaffected by the tone, suggesting the anomaly is a post-production insertion rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([0.85-1.0] seconds, [1500-2000] Hz), indicating strong cross-model agreement on the presence of the synthetic tone. The Hubert and WavLM models do not provide any salient regions, likely because they are less sensitive to such abrupt, high-frequency anomalies or are trained on different acoustic features. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the synthetic tone, but these do not directly localize the anomaly in time or frequency. Overall, the wav2vec model’s consistent identification of the synthetic tone, supported by multiple XAI methods, provides the most reliable evidence for the observed abnormality.

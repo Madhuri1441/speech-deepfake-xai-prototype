@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, confident female voice stating, "I was me, pretty confident about betting the win." The speech is delivered in a neutral, declarative tone, with no emotional inflection or hesitation. The recording quality is high, with a clean signal and no background noise, indicating a controlled studio environment. However, at approximately 1.0–2.0 seconds into the clip, a subtle but distinct anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight distortion, which is not present in the rest of the audio. This anomaly is accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range, suggesting a digital manipulation or synthesis artifact. The rest of the audio remains unaffected, with no further anomalies or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis further supports the 2.5–3.0 second region with a frequency shift to 6000–8000 Hz. LIME analysis also highlights a brief anomaly at 0.4–0.5 seconds, though this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec model is the primary source of detection. The Shapley value analysis supports the presence of an anomaly by highlighting a significant change in equivalentSoundLevel_dBp, suggesting a sudden increase in loudness or energy in the affected region. Overall, the wav2vec model’s IG and Saliency analyses provide cross-model agreement on the main anomaly, while LIME offers supplementary evidence. The absence of anomalies in Hubert and WavLM suggests that the wav2vec model is most sensitive to the detected artifact.

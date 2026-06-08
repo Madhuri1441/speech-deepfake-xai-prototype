@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "But it's understandable, I know this bowling action." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until about 2.0 seconds. This artifact is characterized by a piercing, static-like timbre, lacking the natural harmonic structure of human speech or environmental sounds. It is acoustically anomalous and does not correspond to any expected sound in the context of the spoken phrase. The artifact is not present in the original speech and appears abruptly, suggesting a possible digital insertion or corruption. No other acoustic anomalies are observed in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency range ([1.5-2.0] seconds, [3000-4000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods yield no relevant regions. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from normal speech patterns. The combined evidence from wav2vec and the Shapley values confirms the presence of a synthetic artifact in the specified region, with no supporting evidence from other models.

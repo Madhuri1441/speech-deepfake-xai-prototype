@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a mouth or clothing noise, followed by a male voice saying, "I am a lucky man." The speech is clear and intelligible, with a neutral, slightly melancholic tone. However, at approximately 1.00 seconds, a distinct, high-frequency, synthetic buzz emerges and persists until 1.50 seconds. This buzz is centered around 4000–6000 Hz, is sharply defined, and lacks the natural harmonics or environmental context of a real-world sound, suggesting it is an artifact of digital manipulation. The buzz overlays the end of the phrase "lucky man," partially masking the final syllable and introducing an unnatural, mechanical quality to the audio. 
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method highlights the [1.00-1.50] second time region and [4000-6000] Hz frequency band as critical for the model’s decision, indicating that this synthetic buzz is a key feature in the audio’s classification as a deepfake. The Saliency map also identifies a brief [0.75-1.0] second region with energy in the 2000–4000 Hz range, likely corresponding to the onset of the buzz or a related artifact. LIME analysis further corroborates the anomaly by focusing on the [1.25-1.30] second window, aligning with the peak of the buzz. The Shapley values reinforce this, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating the presence of an unusually loud, high-frequency component. The loudness_sma3_meanFallingSlope and mfcc2V_sma3nz_amean features also contribute, suggesting abrupt changes in loudness and spectral characteristics consistent with digital artifacts. No other acoustic anomalies are present in the audio, and the speech itself is otherwise natural and unaltered. 
+
+In summary, the synthetic buzz in the 4000–6000 Hz range between 1.00 and 1.50 seconds is the primary acoustic abnormality, supported by multiple XAI methods that identify this region as critical for the model’s deepfake classification.

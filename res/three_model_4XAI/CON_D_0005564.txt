@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "pretty close, isn't it?" in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.5–0.6 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.1 seconds. This artifact is acoustically anomalous, as it is not part of the original speech and does not match the natural frequency content of the voice. The artifact is characterized by a piercing, synthetic timbre in the 3000–4000 Hz range, which is inconsistent with the speaker’s voice and typical environmental sounds. This transient is likely a result of digital editing or compression artifacts, rather than a genuine acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [0.5-0.6] seconds time region and [3000-4000] Hz frequency region as the most salient for its prediction, indicating that this transient is a key feature in the model’s decision-making. The Saliency method from wav2vec also highlights a region at [0.85-1.0] seconds, but this is less consistent with the observed artifact. The LIME method from wav2vec identifies an earlier region at [0.0-0.1] seconds, which does not align with the artifact. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, suggesting that the anomaly is primarily detected by wav2vec. The SHAP values indicate that the equivalentSoundLevel_dBp feature is the most influential, further supporting the presence of an abnormal acoustic event in the audio. Overall, the wav2vec IG analysis provides the strongest and most consistent evidence for the anomaly, while other models and methods do not corroborate this finding.

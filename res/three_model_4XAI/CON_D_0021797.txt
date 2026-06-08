@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering the phrase, "Sure, good companies have gone through the floor." The recording is of moderate fidelity, with a persistent low-level hiss and a faint, low-frequency hum, likely from a nearby electronic device. The speech is clear and intelligible, with no obvious signs of digital compression or clipping. However, at approximately 2.5–3.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural tonal burst in the 6000–7000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocalization or environmental sound. The abruptness and tonal purity of this event suggest it is an artificial insertion, possibly a digital glitch or a synthetic overlay, rather than a genuine acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.5–3.0 second time window and the 6000–7000 Hz frequency range, while LIME corroborates the time region with a single point at 3.0–3.1 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights spectral features such as spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and loudness_sma3_percentile80.0, which are consistent with the presence of a high-frequency artifact. The cross-model agreement from wav2vec strongly supports the conclusion that the audio contains a synthetic or digitally inserted event in the specified time and frequency range.

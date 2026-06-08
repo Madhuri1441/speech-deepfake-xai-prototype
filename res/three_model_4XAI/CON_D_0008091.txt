@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The reason is the fact of Olympic..." The speech is clear and intelligible, but at approximately 1.00 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 2.00 seconds. This artifact is characterized by a harsh, buzzing timbre in the 6000–8000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the initial segment of the audio, nor does it resemble any environmental or mechanical noise. Instead, it appears abruptly and is consistent with digital distortion or a deepfake-generated artifact, likely introduced during post-processing or voice synthesis. The Shapley values for features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp further support the presence of unnatural acoustic properties in this region, indicating a deviation from typical speech patterns.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides multiple lines of evidence for the abnormality: Integrated Gradients (IG) identifies the [0.75-1.25] seconds region, Saliency highlights [1.00-2.00] seconds, and LIME pinpoints a specific moment at [1.75-1.80] seconds, all within the 6000–8000 Hz frequency range. These findings are consistent and cross-model, indicating a strong agreement that the artifact is present in this region. The Hubert and WavLM models do not provide any supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values further corroborate the presence of unnatural acoustic features in this segment, reinforcing the conclusion that the audio contains a synthetic or manipulated artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "but then replaced by Ross." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.6 seconds, a subtle but noticeable change occurs: the voice acquires a slightly artificial, metallic timbre, and the overall clarity diminishes. This change persists until about 1.2 seconds, after which the voice returns to its original quality. The frequency range of this anomaly is centered around 4000–7000 Hz, where the voice exhibits a thin, reedy, and less natural resonance, consistent with digital processing or synthesis artifacts. This is further supported by the wav2vec model’s Integrated Gradients (IG) and Saliency analyses, which both highlight the 0.6–1.2 second interval and the 4000–7000 Hz band as critical for the model’s prediction. The LIME explanation for wav2vec also points to a brief region around 0.45–0.5 seconds, which may indicate a secondary or transitional artifact. No other models (Hubert, WavLM) provide supporting evidence, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the same time and frequency region ([0.6-1.2] seconds, [4000-7000] Hz) as critical for its prediction, indicating strong cross-model agreement within wav2vec. The LIME explanation for wav2vec also supports this, though it is less precise. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP values do not directly correspond to the observed anomaly. Thus, the final abnormality region is based on cross-model agreement within wav2vec, with no support from other models.

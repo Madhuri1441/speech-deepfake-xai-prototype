@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying, "One bap, it was not any word." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.9 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.1 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 4000 Hz and 6000 Hz. The artifact is abrupt and does not blend with the preceding speech, suggesting it is not a natural part of the recording but rather an insertion or corruption. The rest of the audio remains clean and free of distortion, with no further anomalies detected.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.9-1.1] seconds, [4000-6000] Hz), while LIME identifies a different, earlier time window ([0.1-0.2] seconds), which does not correspond to any observable anomaly in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, which aligns with the presence of the high-frequency artifact. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the abnormality at [0.9-1.1] seconds and [4000-6000] Hz as the most reliable finding.

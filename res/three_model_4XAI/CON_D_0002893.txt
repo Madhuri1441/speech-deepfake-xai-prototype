@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization ("Oh") followed by a clear, neutral female voice saying, "since may need to rise." Immediately after the word "rise," there is a sudden, sharp, high-frequency electronic tone that lasts for about 0.25 seconds. This tone is acoustically distinct from the speech, with a frequency content in the 3000–6000 Hz range, and is not a natural part of the spoken phrase. The tone is abrupt, digitally clipped, and lacks any natural decay or modulation, suggesting it is an artificial artifact inserted into the audio. The rest of the audio is clean and free of distortion, static, or background noise, indicating the anomaly is localized to this brief interval.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time-frequency region ([1.00-1.25] seconds, 3000–6000 Hz). The IG and LIME methods specifically highlight the high-frequency tone, while Saliency focuses on the preceding speech segment. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in sound level at the time of the tone. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence confirms the presence of an artificial tone in the specified region, with no cross-model agreement from Hubert or WavLM.

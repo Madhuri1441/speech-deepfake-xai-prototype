@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced stutter or repetition of the word "the." This segment, lasting until about 1.5 seconds, is acoustically anomalous compared to the rest of the recording, which resumes its natural quality. The abnormality is marked by a harsh, high-frequency artifact in the 2000–4000 Hz range, consistent with digital clipping or overdriven signal processing. The speech in this region is difficult to parse, with a loss of natural intonation and rhythm, suggesting a technical malfunction or deliberate manipulation. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent methods: Integrated Gradients (IG) highlights the [0.5-1.5] second time region and [2000-4000] Hz frequency band, Saliency analysis points to the [0-1] second region and [2000-3000] Hz band, and LIME analysis confirms the [0.9-1.1] second region. These cross-model and cross-method findings strongly support the presence of an anomaly in this segment. In contrast, the Hubert and WavLM models do not detect any abnormality, as their explanations are all null. The Shapley values further corroborate the anomaly by highlighting features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are indicative of unnatural speech patterns and signal irregularities. The convergence of wav2vec’s multiple methods provides robust evidence for the anomaly, while the absence of support from Hubert and WavLM suggests that the anomaly is subtle or localized, not easily captured by all models.

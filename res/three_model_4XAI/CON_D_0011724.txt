@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It feels like too much," in a calm, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a subtle room reverberation, suggesting a small, untreated indoor space. The voice is clear and intelligible, with no obvious distortion or clipping. However, at approximately 2.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.5 seconds. This artifact is not part of the natural speech and is acoustically distinct from the voice, manifesting as a sharp, electronic buzz or tone in the 6000–8000 Hz range. This anomaly is not present in the original speech and does not correspond to any environmental or vocal event. The remainder of the audio returns to normal speech and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0-2.5] seconds with a frequency range of [6000-8000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also points to a closely overlapping time window ([2.15-2.30] seconds), reinforcing the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which may reflect changes in the audio’s acoustic properties during the anomaly, but do not directly pinpoint the artifact. Overall, the wav2vec model’s cross-method agreement and LIME’s support indicate a high-confidence region of synthetic artifact at [2.0-2.5] seconds, while other models and features provide supplementary but less direct evidence.

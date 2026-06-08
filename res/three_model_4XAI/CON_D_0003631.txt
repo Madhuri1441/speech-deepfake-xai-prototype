@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "to dissolve the abbey proposition." The speech is delivered in a controlled, formal tone, with no emotional inflection or background noise, indicating a studio or controlled recording environment. At approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 1.5 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is abrupt in onset and offset, with no fade-in or fade-out, and does not blend with the speech or environment. Its spectral characteristics and unnatural timing suggest it is an artificial insertion, likely intended as a censor beep or a technical marker, rather than a natural part of the recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also supports this region, albeit slightly later at [2.0-2.5] seconds. The LIME method corroborates the anomaly at [1.5, 1.6] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which are consistent with the presence of a synthetic tone, but do not specify a time or frequency range. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods confirms the presence of an artificial tone in the specified time and frequency range, indicating a high-confidence anomaly.

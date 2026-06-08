@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker delivering the phrase, "We did not break with Scottish history to get away from the..." The speech is clear and intelligible, with a standard Scottish accent. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.5 seconds. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, buzzing tone in the 2000–6000 Hz range. The artifact is not present in the original speech and does not correspond to any natural sound or environmental noise. After 1.5 seconds, the audio returns to the original speech without any further anomalies. The presence of this artifact is supported by multiple XAI methods, including Integrated Gradients (IG), Saliency, and LIME, all of which identify the same time and frequency region as anomalous.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the audio is consistently identified by three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the time range [0.5-1.5] seconds and frequency range [2000-6000] Hz. These methods agree on the location and nature of the anomaly, indicating a high-confidence synthetic artifact. The wav2vec model’s explanations are cross-model evidence, while the Hubert and WavLM models do not detect any anomaly, suggesting that the artifact may be subtle or not captured by all models. The Shap values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a deviation from normal speech patterns. Overall, the evidence converges on a synthetic artifact in the specified time and frequency range.

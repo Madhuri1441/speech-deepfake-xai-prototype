@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "This action could have been avoided," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.00 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.50 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is abrupt, with no gradual onset or decay, and stands out as an unnatural addition to the audio. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.00-1.50] seconds, [4000-6000] Hz), indicating strong cross-model agreement. The LIME explanation from wav2vec also supports this region, though with a narrower time window ([0.0-0.1] seconds), which is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but does not localize the anomaly to a specific time or frequency range. Thus, the most reliable evidence for the abnormality comes from wav2vec’s IG and Saliency methods, which agree on the same region.

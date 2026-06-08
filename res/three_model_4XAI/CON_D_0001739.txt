@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint rustling sound, likely from clothing or handling the recording device, followed by a male voice speaking in a low, muffled tone: "to report up, he was headed down." The speech is somewhat indistinct, with the final word "down" trailing off and blending into a low-frequency hum. Immediately after the speech, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is monophonic, unwavering, and lacks any modulation or harmonic complexity, resembling a test tone or error signal. The abrupt onset and sustained presence of this tone, especially after the speech, is acoustically anomalous and suggests an artificial or manipulated origin. The tone’s frequency content is concentrated between 5000–7000 Hz, which is higher than the speech and background hum, and its sudden appearance is inconsistent with natural audio events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region between 1.0–2.0 seconds and 5000–7000 Hz using Integrated Gradients (IG), while Saliency and LIME also point to this region, though with slightly different time boundaries. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of an abnormal acoustic event, with the slopeUV0-500_sma3nz_amean feature showing a high positive contribution, suggesting a sudden change in the signal’s characteristics. The combination of wav2vec’s multiple XAI methods and the Shapley analysis confirms the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detected across all models.

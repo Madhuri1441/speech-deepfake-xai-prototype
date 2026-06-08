@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Brought you heard of take matter of a..." in a neutral, conversational tone. The speech is intelligible and delivered at a moderate pace, with no obvious emotional inflection. However, at approximately 0.4 seconds, a subtle but distinct artifact emerges: a high-frequency, synthetic-sounding buzz or hum overlays the voice, most prominent between 3500 Hz and 4500 Hz. This artifact persists until about 0.6 seconds, after which the voice resumes its natural timbre. The buzz is not present in the original speech and does not match typical background noise or environmental sounds, suggesting it is an artificial insertion.
+
+The XAI evidence supports this observation. The Integrated Gradients (IG) analysis highlights the [0.4-0.6] second time region and the [3500-4500] Hz frequency range as the most influential for the model’s decision, indicating that these features are critical to the audio’s classification as a deepfake. The Saliency map further corroborates this by identifying the [0.75-1.0] second window, which overlaps with the tail end of the buzz artifact, and the [2000-4000] Hz range, consistent with the voice’s fundamental and harmonics. LIME analysis also points to the [0.8-0.9] second window, reinforcing the temporal alignment of the anomaly. The Shapley values reveal that the equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength are the top contributors, with the first indicating a significant increase in overall loudness likely due to the buzz, and the latter two suggesting changes in spectral dynamics and voice segment regularity, all of which are consistent with the presence of an artificial overlay.
+
+No other acoustic anomalies are present in the audio, and the speech remains otherwise natural and intelligible. The XAI evidence collectively supports the conclusion that the audio is a deepfake, with the synthetic buzz artifact being the primary indicator of manipulation.

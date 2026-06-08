@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "This is made need to dress train the..." The speech is abruptly cut off mid-word, with no natural fade or pause, indicating a hard edit. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced. This tone is unwavering, harsh, and digitally clipped, with a strong presence in the 2000–8000 Hz range, and persists until the end of the clip. The tone is not a natural sound and is acoustically inconsistent with the preceding speech, suggesting it is an artificial overlay or watermark. The abrupt transition and unnatural tone are clear acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an initial brief segment (0.00–0.10 seconds) and a more prominent segment (1.50–2.00 seconds) with a frequency range of 2000–8000 Hz. The Saliency method supports the 1.50–2.00 seconds region, while the IG method identifies a slightly earlier segment (1.50–1.75 seconds) in the 6000–8000 Hz range. The Hubert and WavLM models do not provide any abnormality evidence. The Shapley values highlight high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are consistent with the presence of a loud, clipped tone. The wav2vec model’s multiple methods (IG, Saliency, and LIME) converge on the 1.50–2.00 seconds region, making this the most robustly supported abnormality. The evidence from wav2vec is cross-model, while the Shapley values provide additional support for the presence of a synthetic tone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "The atmosphere is..." in a neutral, conversational tone. The speech is intelligible and natural, with no signs of digital manipulation or artificiality. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The abrupt onset and unnatural timbre of this tone suggest it is not part of the original recording but rather an inserted artifact, likely indicative of a deepfake or audio tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.8-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while the LIME method also supports the [0.8-0.9] seconds interval. These findings are consistent across two independent XAI methods from the same model, strengthening confidence in the abnormality’s location. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, possibly due to differences in training or feature extraction. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are associated with the sudden tonal change and increased spectral energy in the high-frequency range, further supporting the presence of an artificial insertion. No other acoustic anomalies are present in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, narrative tone. The recording is of high fidelity, with no background noise or distortion. The only notable acoustic anomaly occurs between 3.5 and 4.0 seconds, where the speech is abruptly cut off mid-word ("worse"), leaving a brief, unnatural silence. This sudden truncation is not accompanied by any natural reverberation or fade-out, indicating a digital edit or splicing. The frequency content in this region is dominated by mid-to-high frequencies (2000–6000 Hz), consistent with the spectral profile of the speaker’s voice. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [3.5-4.0] seconds time region and [2000-6000] Hz frequency region as the most salient for its prediction, aligning with the observed abrupt truncation. The wav2vec Saliency method also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not supported by other models. The wav2vec LIME method identifies a very short segment ([1.0-1.1] seconds), which is not corroborated by other XAI methods. The Hubert and WavLM models do not provide any supporting evidence for this region. The SHAP analysis does not directly reference the truncation but instead highlights acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and slopeUV500-1500_sma3nz_amean, which are not directly related to the observed anomaly. Thus, the wav2vec IG result is the only cross-model evidence supporting the abnormality, with no strong agreement from other models.

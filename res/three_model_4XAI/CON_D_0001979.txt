@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.75-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "I think," followed by a male voice stating "Franken was delighted." The speech is abruptly interrupted by a loud, synthetic, low-frequency electronic tone that starts at approximately 1.75 seconds and lasts until the end of the clip. This tone is characterized by a harsh, buzzy timbre and a fundamental frequency around 60 Hz, with strong harmonics extending up to 8000 Hz. The sudden onset and unnatural quality of the tone, along with its complete masking of the original speech, indicate a deliberate insertion or overlay, likely intended to obscure or censor the remainder of the audio. The tone is not present in the original recording and does not match any natural sound or environmental noise, suggesting it was added post-production.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.75-2.00] seconds, [6000-8000] Hz), indicating strong cross-model agreement on the location of the synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than non-speech artifacts. The Shapley values further support the presence of an abnormal event, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a significant change in the audio’s spectral characteristics at the time of the tone’s appearance. This convergence of evidence confirms the synthetic tone as the primary anomaly in the audio.

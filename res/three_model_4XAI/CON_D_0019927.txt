@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "best for them. They're going right through the year." The recording is of high fidelity, with no background noise, distortion, or artifacts. The speech is continuous and natural, with no abrupt changes, pitch jumps, or unnatural pauses. The only region of acoustic abnormality is a brief, high-frequency burst in the 4000–6000 Hz range between 1.0 and 1.5 seconds, which is not perceptible to the human ear and does not affect the intelligibility or naturalness of the speech. This anomaly is not supported by any perceptual cues in the audio and appears to be a subtle, non-linguistic artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.0-1.5] seconds, 4000–6000 Hz). The LIME method also supports this region, albeit with a narrower time window ([1.5, 1.6] seconds), indicating a high degree of cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is subtle and only detectable by certain models. The Shap values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope do not directly correspond to the identified abnormality, indicating that the anomaly is not strongly linked to these acoustic features. Overall, the evidence points to a minor, high-frequency artifact in the audio, supported by multiple XAI methods from the wav2vec model.

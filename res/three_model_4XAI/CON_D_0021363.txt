@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, unnatural pitch shift occurs in the speaker’s voice, specifically on the word “pledge.” This shift is abrupt and does not follow the natural contour of speech, suggesting digital manipulation. The pitch rises sharply and then falls, with a slight reverberation that does not match the room’s acoustic profile. This anomaly is most prominent between 1.5 and 2.0 seconds, and the frequency range of the artifact is between 4000 and 6000 Hz, which is outside the typical fundamental frequency of the speaker’s voice. The rest of the audio, including the phrase “I’m very tired, exercised,” is relatively clear and natural, with no further signs of manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the [1.5-2.0] second time region as suspicious, with a corresponding frequency range of [4000-6000] Hz. The Saliency method from wav2vec also highlights a different region ([4-5] seconds, [7000-8000] Hz), but this is not supported by other models and does not align with the observed pitch shift. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are the most reliable. The Shapley values for equivalentSoundLevel_dBp, mfcc1_sma3_amean, and loudness_sma3_percentile80.0 do not point to a specific time or frequency region, but their presence suggests that the overall audio characteristics are consistent with a manipulated signal. The cross-model agreement between wav2vec’s IG and LIME methods strengthens the conclusion that the [1.5-2.0] second region is the most suspicious.

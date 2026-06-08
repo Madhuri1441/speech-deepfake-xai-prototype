@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.35] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "We are at the..." in a neutral, conversational tone. At approximately 1.00 seconds, the voice is abruptly interrupted by a sharp, high-frequency digital artifact. This artifact is a brief, piercing, and unnatural sound, lasting about 0.35 seconds, and is centered in the 4000–6000 Hz range. The artifact is not a natural part of speech or environmental noise; it is acoustically inconsistent with the preceding speech and is likely the result of digital corruption or tampering. The voice resumes after the artifact, but the transition is abrupt and unnatural, suggesting a splice or edit. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.00-1.35] seconds, 4000–6000 Hz). The LIME explanation for wav2vec also supports this region, though with a shorter time window ([0.0-0.1] seconds), which may reflect a different focus or sensitivity. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly tied to the observed artifact but may reflect underlying signal irregularities. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, supported by LIME, while Hubert and WavLM do not detect the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a male voice saying, "This is a test." The speech is clear and intelligible, with a neutral, slightly monotone delivery. However, at approximately 1.00 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.00 seconds. This artifact is not part of the original speech and is acoustically distinct, resembling a digital glitch or a synthetic overlay. The artifact is most prominent in the 4000–8000 Hz range, which is outside the typical speech frequency band, and is not present in the original recording. The voice itself remains unaffected, with no distortion or clipping, but the artifact is clearly audible and unnatural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.00–1.25 seconds region, Saliency focuses on 1.50–2.00 seconds, and LIME points to 1.75–1.80 seconds. All three methods converge on the same time interval, with frequency support in the 4000–8000 Hz range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope showing significant deviations, suggesting a disruption in the natural speech pattern. The combined evidence from wav2vec and the Shapley values strongly supports the presence of a synthetic artifact in the specified time and frequency range.

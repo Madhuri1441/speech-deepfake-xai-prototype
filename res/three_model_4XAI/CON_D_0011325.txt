@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "We were... our dispute with the creator of the force that safe." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a distinct, high-frequency, synthetic buzzing sound emerges and persists until 2.5 seconds. This buzzing is not part of the speech and is acoustically anomalous, as it does not correspond to any natural sound or environmental noise. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequencies of human speech, and its timbre is consistent with a digital artifact or a synthetic tone. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is likely contributing to the model’s classification of the audio as a deepfake. The Saliency method from wav2vec also highlights a different region ([3.5-4.0] seconds, [7000-8000] Hz), but this is not supported by other models and does not align with the observed buzzing. The LIME explanation from wav2vec points to [0.5-0.6] seconds, which is not supported by other methods or the audio evidence. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shap values indicate that the equivalentSoundLevel_dBp feature is the most influential, which aligns with the presence of the synthetic buzzing sound. Overall, the cross-model agreement from wav2vec’s IG method supports the conclusion that the buzzing sound in the [2.0-2.5] seconds, [4000-6000] Hz region is the primary anomaly.

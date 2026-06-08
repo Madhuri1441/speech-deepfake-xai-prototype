@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are typical of a quiet indoor environment. At approximately 0.5 seconds, a female voice starts speaking in a neutral, conversational tone, saying, "by neck pinion the rich and different." The speech is clear, with no signs of emotional distress or unusual vocalization. However, at around 0.5–1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, characterized by a sharp, buzzing timbre in the 3000–6000 Hz range. This artifact is not present in the original speech and is not a natural part of the voice or environment. It is likely a digital artifact introduced during audio processing or editing, such as a compression artifact or a synthetic overlay. The artifact is brief and does not interfere with the intelligibility of the speech, but its unnatural quality stands out against the otherwise clean background.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [3000-6000] Hz using Integrated Gradients (IG), while the Saliency method also highlights a region at [2.5-3.0] seconds in the [7000-8000] Hz range, which is not supported by other models. The LIME method identifies a brief region at [1.0, 1.1] seconds, but this is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the spectralFlux_sma3_amean feature is most strongly associated with the anomaly, supporting the presence of a high-frequency artifact. The cross-model agreement between wav2vec’s IG and the Shapley value analysis confirms the abnormality in the [0.5-1.0] seconds, [3000-6000] Hz range as the most reliable finding.

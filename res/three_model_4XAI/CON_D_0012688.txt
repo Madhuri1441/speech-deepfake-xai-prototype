@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "British medical update." Immediately following this phrase, a loud, sustained, high-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is sharply distinct from the preceding speech, with a piercing, synthetic timbre and a frequency content concentrated between 4000 Hz and 6000 Hz. The transition from speech to tone is abrupt and unnatural, lacking any fade or overlap, which suggests a possible digital splice or artifact. The tone is unwavering in pitch and amplitude, with no modulation or environmental interaction, further indicating it is not a naturally occurring sound. The acoustic environment is otherwise silent, with no background noise or reverberation, reinforcing the impression of a digitally edited or artificially inserted sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in two ways: Integrated Gradients (IG) highlights the 0.75–1.25 second time range and 4000–6000 Hz frequency range, while Saliency analysis points to a slightly earlier 0.5–1.0 second interval and 2000–4000 Hz range. LIME analysis supports the abnormality at 1.4–1.5 seconds, which aligns with the onset of the electronic tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values indicate that the abnormality is most strongly associated with the slopeUV0-500_sma3nz_amean feature, which is linked to the presence of a sudden, high-frequency sound. The combination of wav2vec’s IG and Saliency, along with LIME, provides cross-model agreement on the time and frequency ranges of the anomaly, confirming the presence of an artificial electronic tone following the speech.

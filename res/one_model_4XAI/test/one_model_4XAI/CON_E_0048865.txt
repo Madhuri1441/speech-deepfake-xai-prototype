@@ -1,0 +1,8 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7500 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, human-like utterance of the word "birthday," spoken in a neutral, conversational tone. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic buzz emerges and persists until the end of the clip. This buzz is sharply defined in the 7500–8000 Hz range, with a piercing, static-like timbre that is acoustically distinct from the preceding speech. The abrupt onset and unnatural tonal quality of this buzz strongly suggest an artificial or digitally inserted artifact, rather than a natural sound event.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) and Saliency both highlight the 0.8–1.0 second time window and the 7500–8000 Hz frequency region as critical for the model’s decision, indicating that the synthetic buzz is a key feature in the audio’s classification as a deepfake. LIME, however, points to the very beginning of the audio (0.0–0.1 seconds), likely due to the model’s sensitivity to the initial speech segment, but this does not contradict the main abnormality. The Shapley values further reinforce the importance of the buzz, with high contributions from features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are sensitive to abrupt changes in sound and spectral energy—characteristics present in the synthetic buzz. No other acoustic anomalies are present in the audio, and the buzz is the only feature that aligns with the XAI findings.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.25 seconds, a female voice starts speaking, saying, "It's a long process." The speech is clear, with a neutral, conversational tone and no signs of emotional distress or artificiality. However, around 0.25 to 0.75 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or whine in the 3000–4000 Hz range. This artifact overlays the speech, most apparent during the word "process," and is not present in the initial or final portions of the audio. The artifact is not a natural part of the voice or environment and does not correspond to any background noise or environmental sound. The rest of the audio is clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region as [0.25-0.75] seconds, with a frequency range of [3000-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. These two independent XAI techniques converge on the same time and frequency region, indicating a high-confidence anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact and are not time-localized. The wav2vec evidence is cross-model supported, while the other models do not detect the anomaly, suggesting the artifact is subtle and may not be captured by all models.

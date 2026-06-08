@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a child's voice speaking in a clear, neutral tone, with no background noise or environmental cues. The speech is: "Athletics is easy. All the children on the madness." The phrase "on the madness" is unusual and may indicate a misstatement or a non-native accent. The most notable acoustic anomaly occurs between 2.0 and 3.0 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, accompanied by a high-frequency artifact in the 5000–6000 Hz range. This region is marked by a loss of natural vocal warmth and a mechanical, synthetic quality, suggesting digital manipulation or deepfake generation. The anomaly is not present in the rest of the audio, which remains stable and natural in both pitch and timbre.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [2.0-3.0] seconds region as anomalous, with the IG method further specifying the 5000–6000 Hz frequency range. The LIME method from wav2vec also supports this region, albeit with a slightly narrower window of [2.5-3.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may reflect changes in vocal stability and acoustic texture during the anomalous segment. Overall, the wav2vec model's multiple independent methods converge on the same region, providing strong cross-model agreement for the anomaly.

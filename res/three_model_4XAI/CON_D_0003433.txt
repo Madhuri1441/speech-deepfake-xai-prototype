@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or hiss in the 3000–6000 Hz range. This artifact is not present in the surrounding speech and does not align with typical environmental or recording equipment noise. The anomaly is brief and localized, suggesting a possible digital manipulation or encoding artifact. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [3000-6000] Hz frequency region as salient, directly aligning with the observed high-frequency artifact. The Saliency method from wav2vec also detects a brief anomaly at [0.9-1.1] seconds, but this is not corroborated by other models or the audio itself, and is likely a false positive. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected across all models. The SHAP analysis, which operates on acoustic features rather than time-frequency regions, does not directly support the presence of the artifact, as the features identified (slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, spectralFlux_sma3_amean) are not directly linked to the observed high-frequency anomaly. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by the Saliency method, but not confirmed by Hubert or WavLM.

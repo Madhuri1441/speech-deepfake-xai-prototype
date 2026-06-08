@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a non-native English accent, delivering the phrase, "I'm not perform to prove it all to anyone." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable acoustic anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds, coinciding with the word "perform." This region exhibits a slight unnatural resonance or tonal quality, which may indicate an artifact introduced during voice synthesis or post-processing. The anomaly is not immediately obvious to a casual listener but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the 1.5–2.0 second interval is supported by three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region. IG and Saliency, which analyze the model’s internal representations, both identify the 1.5–2.0 second window and the 4000–6000 Hz band as critical for the model’s prediction. LIME, a model-agnostic method, corroborates this by highlighting the same time interval. The wav2vec model, which is trained on speech, detects this region as significant, while the Hubert and WavLM models do not, suggesting that the anomaly is more relevant to speech recognition than to general audio representation. The Shapley values further support the importance of the 4000–6000 Hz band, as features like slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp show high SHAP values, indicating that this frequency range is crucial for the model’s decision. There is no evidence of manipulation in other regions, and the rest of the audio appears natural.

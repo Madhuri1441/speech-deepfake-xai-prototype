@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "God's on the drive," followed by a male voice stating, "She is okay." Immediately after the male voice finishes, a loud, sustained, high-frequency electronic tone appears, lasting for approximately 0.7 seconds. This tone is sharply distinct from the preceding speech, with a piercing, synthetic timbre and a frequency content concentrated between 6000 Hz and 7000 Hz. The tone is acoustically anomalous, as it does not resemble any natural or environmental sound and is not contextually related to the speech. Its abrupt onset and offset, as well as its unnatural spectral profile, suggest it is an artifact or insertion rather than a genuine part of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.25-2.0] seconds, 6000-7000 Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an abnormality by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are all elevated in the region of the electronic tone. This cross-model agreement from wav2vec, combined with the Shapley analysis, strongly supports the conclusion that the electronic tone is an artifact or insertion in the audio.

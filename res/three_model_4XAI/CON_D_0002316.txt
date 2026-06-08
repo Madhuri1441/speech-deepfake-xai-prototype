@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.4 seconds, a sharp, high-frequency transient is heard, lasting about 0.2 seconds. This transient is characterized by a piercing, sibilant quality, with energy concentrated between 3000–5000 Hz, and is acoustically distinct from the rest of the audio. The sound is abrupt, unnatural, and does not match the expected acoustic profile of a human voice or environmental noise. Immediately following this, the audio returns to a quiet state with no further anomalies. The rest of the clip is dominated by a low-level hiss and a faint, low-frequency hum, with no further evidence of speech, music, or environmental activity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [0.4-0.6] seconds with a frequency range of [3000-5000] Hz using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement between these two XAI techniques. The LIME method, however, identifies a different region ([0.0-0.16] seconds), which does not align with the observed transient. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, suggesting that these models do not detect the anomaly. The Shapley values highlight the equivalentSoundLevel_dBp as the most influential feature, with a large positive SHAP value, indicating that the transient is significantly louder than the background noise. The slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength features also contribute, but to a lesser extent. Overall, the wav2vec model’s consistent identification of the transient, supported by both IG and Saliency, provides the strongest evidence for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio begins with a female voice speaking in a clear, neutral tone, but the first two seconds (0-2) exhibit a noticeable artificiality. The voice sounds slightly robotic and lacks natural vocal inflections, with a subtle, persistent electronic hum in the background. The speech is somewhat muffled, and the overall timbre is unnatural, suggesting digital manipulation or synthesis. This is supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights the 0-2 second region and the 1000-3000 Hz frequency band as anomalous. The Saliency method from wav2vec also points to a brief abnormality at 4-5 seconds, but the most consistent and pronounced evidence is in the initial segment. The LIME explanation for wav2vec further supports the 1.5-2 second region as suspicious. No other models (Hubert or WavLM) provide supporting evidence, and the Shap values indicate that the abnormality is not due to standard audio features like spectral flux or unvoiced segment length, but rather a synthetic or manipulated vocal quality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 0-2 second region as anomalous, with a focus on the 1000-3000 Hz frequency band. This cross-model agreement from wav2vec provides strong evidence for the presence of synthetic or manipulated audio in this segment. The Hubert and WavLM models do not provide supporting evidence, and the Shap values suggest the anomaly is not due to typical audio artifacts but rather a synthetic vocal quality. Thus, the wav2vec results are the most reliable indicators of the abnormality.

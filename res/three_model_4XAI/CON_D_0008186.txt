@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "I require" in a neutral, declarative tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 0.6 seconds, a subtle but distinct anomaly emerges: a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 0.8 seconds. This artifact is not present in the original speech and is acoustically inconsistent with the natural voice, manifesting as a sharp, electronic buzz or hum in the 4000–5000 Hz range. This region is marked by a sudden, unnatural increase in spectral energy, which stands out against the otherwise smooth and natural timbre of the voice. The anomaly is not accompanied by any change in the speaker’s delivery or emotional tone, suggesting it is an artifact rather than a vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time interval ([0.6-0.8] seconds) and frequency range ([4000-5000] Hz], providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant regions. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of sudden changes in acoustic energy and spectral characteristics. The combined evidence from wav2vec and Shapley values strongly supports the conclusion that the audio contains a synthetic artifact in the specified region.

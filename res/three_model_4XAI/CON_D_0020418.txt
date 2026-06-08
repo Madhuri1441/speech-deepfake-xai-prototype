@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Film should, in fact, cut. She's very distinct." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a noticeable drop in clarity. This distortion persists until about 1.0 seconds, after which the voice returns to its original quality. The abnormality is most prominent in the mid-frequency range (2000–4000 Hz), where the distortion manifests as a buzzing or warbling effect, likely due to digital clipping or frequency manipulation. No other background sounds or environmental cues are present, and the acoustic environment remains otherwise stable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a different time region ([2.5-3.0] seconds) and frequency range ([6000-8000] Hz), but this is not corroborated by other XAI methods and does not align with the observed audio distortion. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are unique to that model. The Shap values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden changes in loudness and spectral content. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the abnormality, while other evidence is either inconsistent or absent.

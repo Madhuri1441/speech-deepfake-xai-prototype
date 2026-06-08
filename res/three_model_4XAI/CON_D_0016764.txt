@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "It would be able to deal with all age groups." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a distinct, high-frequency electronic tone emerges and persists until about 2.0 seconds. This tone is not part of the speech and is acoustically anomalous, as it is a pure, steady, and synthetic sound with no modulation or environmental context. The tone is centered in the mid-to-high frequency range (3000–6000 Hz), which is consistent with a test signal or artifact rather than a natural sound. No other background noises or environmental sounds are present, and the speech resumes normally after the tone ceases. The presence of this tone is not explained by the speaker or any other source in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently point to the time interval [1.0-2.0] seconds and the frequency range [3000-6000] Hz, indicating strong cross-model agreement on the location and nature of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are all elevated during the anomalous period, further supporting the presence of an artificial tone. No other acoustic anomalies are detected in the audio, and the evidence from multiple XAI sources converges on the same region, confirming the anomaly’s location and characteristics.

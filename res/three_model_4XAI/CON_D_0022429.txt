@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds, which is acoustically anomalous compared to the rest of the recording. This transient is characterized by a burst of energy in the 3000–6000 Hz range, with a brief, unnatural rise and fall in amplitude, and a lack of natural speech or environmental context. The remainder of the audio features a female voice speaking in a neutral, declarative tone, with no further anomalies. The transient does not correspond to any expected speech or environmental sound, and its spectral and temporal profile suggests it may be an artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 2.0–2.5 second time window and 3000–6000 Hz frequency range as significant, indicating that this transient is a key feature for the model's prediction. The wav2vec LIME method, however, points to the very beginning of the audio (0.0–0.1 seconds), which is not supported by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, suggesting that the transient is not a strong feature for their respective architectures. The Shapley values highlight acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may relate to the transient's spectral and temporal characteristics. Overall, the wav2vec IG and Saliency results provide cross-model agreement on the anomalous region, while other evidence is either inconsistent or not supported by the audio.

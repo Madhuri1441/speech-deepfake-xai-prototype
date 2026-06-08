@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced stuttering effect, particularly evident in the phrase "condemned the conscience." This segment is acoustically anomalous, marked by a harsh, synthetic quality and a loss of natural vocal inflection. The distortion is most prominent between 0.5 and 1.5 seconds, with a frequency range of 2000–4000 Hz, where the voice exhibits unnatural harmonics and a lack of smoothness. After this period, the voice returns to its original, natural state, indicating a localized and abrupt change rather than a continuous artifact. No other acoustic anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.5] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), which aligns with the observed vocal distortion. Saliency analysis from wav2vec further supports this by highlighting a brief, intense anomaly at [2.5-3] seconds, likely corresponding to the peak of the stuttering effect. LIME analysis from wav2vec also points to a specific moment at [5.0-5.1] seconds, possibly reflecting residual instability in the voice. In contrast, the Hubert and WavLM models do not detect any abnormalities, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley value analysis, which is not time- or frequency-based, does not directly support the observed anomaly but provides context on the overall acoustic features of the audio. Overall, the wav2vec model’s multiple independent analyses consistently identify the same abnormal region, while Hubert and WavLM do not detect any anomalies.

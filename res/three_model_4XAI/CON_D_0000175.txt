@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "coming on the way by all coming manager course." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–1.5 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is characterized by a piercing, static-like timbre, and is acoustically distinct from the natural speech, suggesting it is not part of the original recording but rather an added or inserted element. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The frequency range of this artifact (6000–7000 Hz) is consistent with the upper harmonics of human speech but is more intense and unnatural, indicating a possible digital or synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time region and the 6000–7000 Hz frequency range, while LIME corroborates the time region (0.8–1.2 seconds), which overlaps with the identified interval. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most strongly associated with the anomaly, suggesting that the synthetic artifact disrupts the natural speech rhythm and introduces a segment of unvoiced, high-frequency content. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods supports the conclusion that the artifact is a genuine anomaly, not a model artifact.

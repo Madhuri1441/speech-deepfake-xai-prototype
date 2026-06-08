@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "I began goodwill pop-topping." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This buzzing is centered around 4000–6000 Hz, is steady in pitch and amplitude, and is acoustically distinct from the voice, suggesting it is an artificial overlay rather than a natural sound. The voice remains unaffected by the buzzing, indicating the artifact is post-processed or inserted during editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range as the most salient region for the model’s prediction, directly aligning with the observed buzzing artifact. The Saliency method from wav2vec also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not supported by other models and does not correspond to any clear anomaly in the audio. The Hubert and WavLM models do not provide any saliency or IG explanations, and LIME explanations are limited to a very short time window ([0.0, 0.1] seconds) with no frequency support. The SHAP values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean are important for the model’s decision, but these do not directly point to the buzzing artifact. Overall, the buzzing anomaly is supported by the wav2vec IG explanation, but not by other models or methods, indicating that this is primarily a single-model finding.

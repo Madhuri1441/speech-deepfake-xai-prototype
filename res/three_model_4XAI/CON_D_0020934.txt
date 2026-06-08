@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance ("grime believe") that is acoustically inconsistent with the rest of the recording. This initial segment is marked by a low-frequency, resonant quality and a lack of clarity, suggesting it may be a synthetic or manipulated sound rather than a natural human voice. The following speech is clear, intelligible, and delivered in a standard Scottish accent, with no signs of digital artifacts or unnatural prosody. The abrupt transition from the muffled segment to the clear speech is notable, and the initial segment stands out as anomalous. The wav2vec model's explanations (IG, Saliency, and LIME) all point to this initial segment as the most salient region, indicating that the model detects a significant deviation in this part of the audio. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormal acoustic event in this region, as these features are significantly different from their baseline values. No other XAI models provide supporting evidence for this region, and no other segments in the audio show similar anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME explanations all agree on the [0-1] second time range and [2000-6000] Hz frequency range as the most abnormal region, indicating cross-model agreement. The Shapley values for three acoustic features also support this region, though they are not derived from a model's explanation but rather from feature analysis. The Hubert and WavLM models do not provide any evidence for this region, and no other segments in the audio are flagged as abnormal by any XAI method.

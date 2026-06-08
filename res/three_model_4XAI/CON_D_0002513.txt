@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, but at approximately 1.0 seconds, a sudden, unnatural break occurs in the speech. The phrase "He had been made in this respe—" is abruptly cut off, and the speaker immediately resumes with "We owe it," without any natural pause or transition. This unnatural edit is accompanied by a noticeable high-frequency artifact in the 3000–5000 Hz range, which is not present in the rest of the audio. The acoustic environment remains consistent, with no change in room tone or background noise, indicating that the edit is not due to a change in recording conditions. The abruptness and unnatural cadence of the speech, along with the high-frequency artifact, strongly suggest a digital splice or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.0-2.0] seconds is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) method identifies this time-frequency region as significant, and the LIME method also highlights a brief segment around 0.2–0.3 seconds, which is adjacent to the main anomaly. The wav2vec Saliency method further supports the abnormality by identifying a high-frequency region (5000–7000 Hz) in the following segment, reinforcing the presence of an artifact. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent and cross-validated by both IG and LIME, indicating a strong, cross-model agreement on the anomaly. No other XAI methods or features provide additional support for this region.

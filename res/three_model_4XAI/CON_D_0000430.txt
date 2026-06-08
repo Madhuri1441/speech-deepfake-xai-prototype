@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Privacy, series of friends can be police." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until 2.5 seconds. This tone is sharply distinct from the speech, with a frequency content in the 4000–6000 Hz range, and is acoustically inconsistent with the rest of the audio, which is dominated by midrange frequencies typical of human speech. The buzzing is not a natural artifact of the recording environment or a result of speech production, and its abrupt onset and offset suggest it is an artificial insertion, likely a digital overlay or watermark. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical to the model’s classification. The Saliency method from wav2vec also highlights the initial seconds of the audio, but the most specific and consistent evidence for the abnormality comes from the IG result. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not universally detected by all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may reflect the presence of the synthetic tone, but do not directly localize the anomaly. Overall, the abnormality is supported by the wav2vec IG explanation and is not corroborated by other models, indicating a cross-model agreement only for this specific method.

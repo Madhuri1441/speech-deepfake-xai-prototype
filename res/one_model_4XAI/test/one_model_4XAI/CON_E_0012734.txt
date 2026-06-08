@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "back public companies" in a standard North American accent. The recording is of high fidelity, with no background noise or distortion. However, at approximately 0.5 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is not a natural part of speech or environmental sound, and its spectral content is concentrated between 4000–6000 Hz, which is higher than the typical energy of human speech. This region is marked as abnormal in the audio, and the anomaly is most prominent during the word "companies," where the voice exhibits an unnatural, slightly metallic or digital timbre.
+
+The XAI evidence supports this observation. The Integrated Gradients (IG) analysis highlights the [0.5-1.0] second time region and the [4000-6000] Hz frequency band as the most salient for the model’s decision, indicating that this segment is critical in distinguishing the audio as a deepfake. The Saliency map further corroborates this by pointing to a [2.5-3.0] second region, which aligns with the end of the utterance and may reflect residual synthetic artifacts. The LIME analysis identifies the very beginning of the audio ([0.0-0.1] seconds) as significant, possibly due to the abrupt start or initial phoneme. Additionally, the top three SHAP values—StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and loudness_sma3_percentile20.0—suggest that the model is sensitive to acoustic features such as the variability of unvoiced segments, spectral slope, and loudness, all of which are subtly disrupted in the anomalous region.
+
+In summary, the audio contains a brief, high-frequency synthetic artifact during the word "companies," which is supported by multiple XAI methods as a key region for deepfake detection. The anomaly is not present in the original speech and is likely introduced by the deepfake generation process.

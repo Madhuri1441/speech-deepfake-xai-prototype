@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a female voice, speaking in a neutral, conversational tone, says, "The beam is not getting in talk." The speech is clear and intelligible, with no signs of emotional distress or unusual vocal quality. However, at the end of the phrase, specifically around 1.5–2.0 seconds, there is a noticeable, abrupt change in the acoustic texture: the voice becomes slightly muffled, and a subtle, artificial-sounding artifact emerges, most prominent in the 3000–6000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The remainder of the audio returns to the original quiet background, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.5-2.0] second time region and [3000-6000] Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to this interval. LIME also supports this, focusing on a slightly narrower [2.0-2.1] second window. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight equivalentSoundLevel_dBp as the most influential feature, suggesting a change in overall loudness or energy in the audio, which aligns with the observed artifact. The combination of wav2vec’s multiple methods and LIME’s confirmation provides strong, cross-model evidence for the abnormality in the specified time and frequency range.

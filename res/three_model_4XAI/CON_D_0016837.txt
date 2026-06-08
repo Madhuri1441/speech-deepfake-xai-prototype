@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice clearly saying "celery kale" in a neutral, conversational tone, with no background noise or distortion. The speech is intelligible and natural, with no signs of digital manipulation or artificiality. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until the end of the clip. This tone is stable, unmodulated, and has a harsh, buzzy timbre, characteristic of a square or sawtooth wave, and is centered around 4000–5000 Hz. The tone is acoustically distinct from the speech, with no overlap or blending, and is not present in the original recording, indicating it was added post-production. There are no other audible anomalies, such as clipping, compression artifacts, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [4000-5000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method's identification of the [0-1] seconds range and [4000-6000] Hz frequency range. The LIME method also detects a brief abnormality at [5.0-5.1] seconds, but this is not supported by other methods and is likely a false positive. The Hubert and WavLM models do not detect any abnormalities, suggesting that the synthetic tone is not captured by their feature representations. The SHAP analysis highlights high contributions from spectral features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a high-frequency, synthetic tone. The wav2vec IG and Saliency methods provide cross-model agreement on the abnormality, while the LIME result is isolated and not corroborated.

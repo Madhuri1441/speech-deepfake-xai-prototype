@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, delivering the phrase, "believe he suffered only minor injuries." The speech is generally natural and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the word "believe," specifically around the "lie" portion. At approximately 1.5–2.0 seconds, the acoustic texture of the speech becomes slightly unnatural, with a faint, artificial resonance and a subtle pitch shift, suggesting possible tampering or synthesis. This is further supported by a frequency anomaly in the 3000–4000 Hz range, which is not typical for natural speech and may indicate the presence of a synthetic artifact or a mismatch in the vocal tract model.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.0] seconds and frequency range [3000-4000] Hz using Integrated Gradients (IG), and also highlights a secondary anomaly at [2.4-2.5] seconds in the [6000-7000] Hz range using Saliency. LIME further supports the initial anomaly at [0.0-0.1] seconds, though this is less specific. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec model is the primary source of detection. The Shapley values suggest that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the unnatural acoustic texture observed in the speech. Overall, the wav2vec model’s IG and Saliency results provide the strongest cross-model agreement on the anomaly, while other evidence is either less consistent or not corroborated by multiple models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice delivering a news-style report. The most notable acoustic anomaly occurs between 2.5 and 3 seconds, where the word "center" is spoken. At this point, the voice exhibits an unnatural, abrupt pitch drop and a harsh, metallic timbre, deviating from the otherwise smooth and consistent vocal quality. This segment is marked by a sudden increase in high-frequency content, specifically in the 4000–6000 Hz range, which is atypical for natural speech and suggests digital artifacting or a model-generated anomaly. The anomaly is further supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this time-frequency region as a key contributor to the model’s classification of the audio as synthetic. The wav2vec Saliency and LIME also point to nearby time regions, reinforcing the presence of synthetic artifacts, though with less precision. No other XAI methods (Hubert, WavLM) or Shapley values provide direct evidence for this specific region, but the Shap values indicate that the audio contains features typical of synthetic speech, such as low unvoiced segment length and low slope in low-frequency content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME all independently identify the 2.5–3 second region as anomalous, with the IG analysis providing the most precise localization. This cross-model agreement strengthens the conclusion that this segment is a synthetic artifact. The Hubert and WavLM models do not provide supporting evidence for this region, and the Shapley values, while indicating synthetic speech characteristics, do not directly pinpoint the anomaly. Thus, the strongest evidence for the abnormality comes from the wav2vec model’s multiple analysis methods.

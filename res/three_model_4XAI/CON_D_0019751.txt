@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering a monologue in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental cues. However, at approximately 5.0–6.0 seconds, a subtle but distinct anomaly occurs: a brief, low-frequency, synthetic-sounding hum or buzz overlays the speech, most noticeable during the phrase "This is the lowest of the low." This artifact is not present in the surrounding speech and does not match typical room tone or microphone noise. The hum is centered in the 2000–4000 Hz range, consistent with a digital or electronic artifact, and is not present in the rest of the recording. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 5.0–6.0 seconds is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency region as critical for the model’s prediction, and Saliency analysis highlights a related region (3–5 seconds, 4000–6000 Hz), suggesting a broader area of acoustic irregularity. LIME also points to a nearby time window (7.5–8 seconds), indicating that the model is sensitive to subtle changes in this segment. The wav2vec model’s explanations are consistent with the observed artifact, while Hubert and WavLM models do not provide supporting evidence, likely due to their different training objectives or architectures. The Shapley values further reinforce the importance of the 0–500 Hz and 2000–4000 Hz frequency bands, aligning with the hum’s spectral content. Overall, the cross-model agreement from wav2vec’s IG and Saliency, along with LIME, strongly supports the presence of an acoustic anomaly in the specified region.

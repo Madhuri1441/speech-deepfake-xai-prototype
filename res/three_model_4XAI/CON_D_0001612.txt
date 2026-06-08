@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a calm, conversational tone, with a slight upward inflection at the end of the phrase "healthy busy." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the frequency range of 2000–4000 Hz during the time interval of 0.5–1.0 seconds, coinciding with the word "busy." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor artifact or synthetic overlay, though it does not disrupt the intelligibility of the speech. No other acoustic irregularities are apparent in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 0.5–1.0 second time region and 2000–4000 Hz frequency region as the most salient for its prediction, indicating that this segment is likely responsible for the model's classification. The Saliency method from wav2vec also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this is less consistent with the IG result. The LIME method from wav2vec supports the 0.75–1.25 second interval, overlapping with the IG region. The Hubert and WavLM models do not provide any saliency or explanation, suggesting that the anomaly is not detected by these models. The SHAP values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a high positive value, suggesting that the overall loudness or energy in the audio contributes to the model's decision. The StddevUnvoicedSegmentLength and spectralFlux_sma3_amean features also contribute, but to a lesser extent. The wav2vec model's IG and LIME results are in agreement regarding the 0.5–1.0 second interval, making this the most supported region by multiple XAI methods.

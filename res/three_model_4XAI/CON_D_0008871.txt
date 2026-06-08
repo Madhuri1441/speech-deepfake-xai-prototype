@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear, and steady female voice with a neutral, declarative tone, speaking the sentence: "There is no threat with the student in printed form." The recording is of high fidelity, with no background noise, distortion, or environmental cues, and the voice is centered in the stereo field. The speech is delivered at a moderate pace, with natural intonation and no signs of emotional stress or artificiality. The only notable acoustic feature is a brief, high-frequency artifact in the 4000–6000 Hz range between 2.0 and 2.5 seconds, which is not present in the rest of the audio. This artifact is subtle and does not affect intelligibility or the overall clarity of the speech. No other acoustic anomalies, such as clipping, compression, or unnatural pauses, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 2.0–2.5 second time region and 4000–6000 Hz frequency region as suspicious, supported by both Integrated Gradients (IG) and Saliency methods. The wav2vec model also detects a salient region at 0.0–0.5 seconds in the 1000–2000 Hz range, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are not universally supported. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the identified time or frequency regions. Therefore, the wav2vec model's identification of the 2.0–2.5 second, 4000–6000 Hz artifact is the only cross-model supported abnormality, while other findings are either single-model or not directly aligned with the audio evidence.

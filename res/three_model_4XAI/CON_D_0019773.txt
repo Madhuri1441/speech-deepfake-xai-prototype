@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral tone. The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is observed in the frequency range of 6000–7000 Hz during the time interval of 1.5–2.0 seconds. This region is marked by a slight, unnatural tonal quality, possibly due to digital artifacting or synthetic processing, which is not present in the rest of the audio. The anomaly is not perceptible to the human ear but is detectable through spectral analysis. The wav2vec model’s Integrated Gradients (IG) method identifies this region as the most salient, indicating that the model attributes the classification of the audio as a deepfake to this specific frequency band. The Saliency method from wav2vec also highlights a broader region (3.0–3.5 seconds) in the 4000–8000 Hz range, but this is less consistent and not corroborated by other models. The LIME method from wav2vec further supports the 1.5–2.0 seconds interval, reinforcing the presence of an anomaly in this region. No other XAI methods (Hubert or WavLM) provide supporting evidence, and the Shapley values do not directly indicate this frequency band as abnormal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the 1.5–2.0 seconds interval in the 6000–7000 Hz range as the most suspicious, indicating cross-model agreement within wav2vec. The Saliency method from wav2vec also supports this region, though less strongly. No evidence from Hubert or WavLM models corroborates this finding, and the Shapley values do not directly point to this frequency band. Thus, the final abnormality region is supported by multiple wav2vec methods but not by other models.

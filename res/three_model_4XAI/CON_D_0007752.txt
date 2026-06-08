@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice saying, "There is no such thing." The speech is clear and natural, with a neutral, declarative tone. However, at approximately 1.0–1.5 seconds, a high-frequency, synthetic buzzing tone abruptly appears, lasting about half a second. This tone is sharply defined, with a pitch around 6500 Hz, and is acoustically distinct from the voice, lacking any natural reverberation or modulation. The buzz is not present in the original recording but is introduced as an artifact, likely due to digital manipulation or a deepfake overlay. The voice continues without interruption, suggesting the buzz is a post-production addition rather than a natural event. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.0-1.5] seconds, [6000-7000] Hz), indicating strong cross-model agreement on the presence of the synthetic buzz. The LIME method from wav2vec also identifies a brief region ([0.45-0.5] seconds), but this is not corroborated by other models and is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to this type of synthetic artifact. The Shap values, while not directly tied to the buzz, highlight features related to spectral and voiced segment characteristics, but do not specifically support the presence of the synthetic tone. Overall, the wav2vec model’s IG and Saliency methods provide the most reliable evidence for the abnormality, with cross-model agreement confirming the synthetic buzz in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase "ping a low, she was off work for one year." The recording is of moderate fidelity, with a slight background hiss and a low-frequency hum, likely from a consumer-grade microphone or recording environment. The speech is intelligible, with no obvious distortion or clipping. However, a subtle anomaly is present in the mid-to-high frequency range (2000–4000 Hz) during the time interval [0.5–1.0] seconds, coinciding with the word "low." This region exhibits a faint, unnatural resonance or tonal quality, deviating from the expected acoustic profile of a natural human voice. The anomaly is not accompanied by any overt signs of digital artifacting, such as clicks, pops, or static, but the spectral content suggests possible synthetic manipulation or voice synthesis artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.5–1.0] seconds time region and [3000–4000] Hz frequency region as salient, while the Saliency method from wav2vec identifies a slightly broader [0.5–1.0] seconds and [2000–4000] Hz region. The LIME method from wav2vec also supports the [1.0, 1.1] seconds region, which overlaps with the wav2vec saliency region. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight features such as StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean, which are related to voice texture and spectral dynamics, further supporting the presence of an anomaly in the specified region. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods strengthens the evidence for the anomaly in the [0.5–1.0] seconds and [2000–4000] Hz range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features two female speakers in a quiet, acoustically dry environment, with clear and natural speech. The first speaker says, "It is that he will stay in England," and the second responds, "Go for it, some shoes." Both voices are close-mic'd, with no background noise or environmental cues. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.0 and 2.0 seconds, specifically during the first speaker's phrase. This artifact is a short, high-pitched, non-vocal sound, likely a digital artifact or a synthetic overlay, and is not present in the second speaker's utterance. The artifact is not a natural part of speech or environmental sound, and its abrupt onset and unnatural timbre suggest it is an anomaly. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.0] seconds, [3000-6000] Hz). The IG method highlights the entire duration of the artifact, while Saliency and LIME provide more precise localization within this window. The Hubert and WavLM models do not detect any abnormalities, as their XAI methods return no relevant evidence. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which reflects the overall loudness of the audio, further supporting the presence of an unnatural sound event. The cross-model agreement from wav2vec confirms the artifact's presence and location, while the absence of evidence from other models suggests the anomaly is subtle and only detectable by certain acoustic analysis methods.

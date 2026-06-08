@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "by him for the indus—", but the utterance is abruptly cut off mid-word, indicating a sudden and unnatural termination. Immediately following the cutoff, a loud, sustained, high-frequency electronic tone (approximately 3000–4000 Hz) is introduced, which is acoustically distinct from the preceding speech and persists until the end of the clip. This tone is not a natural part of the speech or environment and is likely an artifact of digital editing or a synthetic overlay. The transition between speech and tone is abrupt, with no fade or overlap, further suggesting intentional insertion. The speech itself is clear and intelligible, with no signs of distortion or background noise, and the electronic tone is pure and unmodulated, lacking any environmental context.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: a saliency peak at [0.5-0.6] seconds and an IG peak at [1.25-1.50] seconds, both in the frequency range of 1000–4000 Hz. These regions align with the abrupt cutoff of speech and the onset of the electronic tone, respectively. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model’s analysis. The SHAP values highlight features such as equivalentSoundLevel_dBp, mfcc3V_sma3nz_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency tone following speech. The wav2vec saliency and IG regions are the only XAI sources that support the observed acoustic anomaly, and their agreement strengthens the conclusion that the audio contains an artificial insertion of a high-frequency tone after the speech.

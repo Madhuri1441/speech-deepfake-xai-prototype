@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "He said he was sorry in the right direction." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly occurs in the phrase "in the right direction," specifically around the word "direction." From 2.5 to 3.5 seconds, the audio exhibits a faint, high-frequency, synthetic-sounding artifact, most prominent in the 1000–2000 Hz range. This artifact manifests as a brief, unnatural shimmer or digital warble, inconsistent with the natural speech signal and not present in the rest of the clip. The anomaly is not perceptible to casual listeners but is detectable through careful analysis. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [2.5-3.5] seconds and frequency range [1000-2000] Hz using Integrated Gradients (IG) and Saliency methods, with LIME also supporting the time region [2.3-2.4] seconds. These findings are consistent and cross-model, indicating a high-confidence region of abnormality. The Hubert and WavLM models do not provide any evidence of anomalies, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which may reflect the presence of the artifact but do not directly localize it. Overall, the wav2vec-based evidence is robust and cross-validated, while the absence of findings from Hubert and WavLM does not contradict the anomaly but suggests model-specific sensitivity.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, monotone manner, with a clear and steady delivery. The speech is intelligible and free of background noise, suggesting a controlled recording environment. However, at approximately 2.0–3.0 seconds, the voice exhibits a subtle but noticeable pitch and timbre shift, accompanied by a slight increase in high-frequency content (4000–8000 Hz). This change is not present in the rest of the audio and is not attributable to natural speech variation or environmental factors. The abruptness and unnaturalness of this transition suggest a possible digital manipulation or deepfake artifact, such as a splice or model-generated voice segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-3.0] seconds, [4000-8000] Hz). The IG and Saliency methods provide overlapping but slightly offset time intervals, while LIME offers a more precise but narrower window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values, while not directly tied to the audio, suggest that the abnormality may be related to acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and equivalentSoundLevel_dBp, which are all associated with the manipulated segment. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide strong evidence for the presence of a deepfake artifact in the specified region.

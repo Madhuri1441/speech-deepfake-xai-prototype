@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "Something is wrong." Immediately following this, a male voice says, "Boys did live by neck or to show further effort." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the wav2vec model's Integrated Gradients (IG) and Saliency methods both highlight a suspicious region between 0.5 and 1.5 seconds, centered around the phrase "is wrong." This region is characterized by a frequency range of 2000–4000 Hz, which is typical for human speech but may indicate an anomaly if the model detects unnatural acoustic features. The LIME explanation for wav2vec also points to a specific time window (3.0–3.1 seconds), but this is less consistent with the other XAI methods. No other XAI sources (Hubert or WavLM) provide supporting evidence for this region, and the Shapley values do not directly correspond to the highlighted time or frequency ranges. Overall, the wav2vec model's consistent identification of the "is wrong" segment suggests a potential anomaly, but further investigation is needed to confirm whether this is due to genuine acoustic irregularities or model-specific sensitivity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients and Saliency methods both identify the same time and frequency region ([0.5-1.5] seconds, 2000–4000 Hz), indicating cross-model agreement on this segment. The LIME explanation for wav2vec also supports this region, though less directly. The Hubert and WavLM models do not provide any supporting evidence for this region, and the Shapley values do not align with the highlighted time or frequency ranges. Therefore, the final region is based on cross-model agreement from wav2vec, with no support from other models.

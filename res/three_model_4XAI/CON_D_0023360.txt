@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice saying, "change in that dust on the big smack." The speech is intelligible and delivered in a calm, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a fundamental frequency around 4000–6000 Hz and harmonics extending up to 8000 Hz, and is acoustically distinct from the voice. The tone is not a natural artifact of speech or environment and does not fade or modulate, suggesting it was artificially inserted. The abrupt onset and unnatural character of the tone, combined with its spectral profile, indicate a possible audio manipulation or deepfake insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.5] seconds time range and [4000-8000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, with LIME further supporting the [1.5-1.6] seconds window. These cross-model and cross-method findings confirm the presence of an anomalous synthetic tone during this interval. The Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency, non-vocal sound. Overall, the wav2vec model’s multiple lines of evidence, supported by SHAP, provide strong indication of a synthetic audio insertion in the specified time and frequency range.

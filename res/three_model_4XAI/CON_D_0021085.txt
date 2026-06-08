@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint rustling sound, likely from clothing or handling the recording device, followed by a male voice saying, "They were very responsive." The speech is clear, with a neutral tone and no signs of emotional distress or artificiality. However, at approximately 1.5–2.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and is acoustically distinct from the voice, suggesting it may be an insertion or manipulation. The artifact is most prominent in the 3000–6000 Hz range, which is outside the typical speech frequency band, and is not accompanied by any other environmental or background sounds. No other acoustic anomalies are detected in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [3000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method, however, points to an earlier, less significant region at [0.0-0.1] seconds, which does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, and their IG, Saliency, and LIME results are all null. The SHAP analysis highlights spectral features such as spectralFlux_sma3_amean, loudness_sma3_percentile20.0, and loudness_sma3_percentile80.0, but these do not directly correspond to the observed artifact. The wav2vec evidence is the only one that aligns with the acoustic anomaly, and it is supported by two independent methods within the same model. Therefore, the final abnormality region is based on wav2vec’s cross-method agreement, with no corroborating evidence from other models.

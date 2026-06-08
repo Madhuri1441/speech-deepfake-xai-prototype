@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "The people say, are you going to leave England for Hollywood?" The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but noticeable anomaly is present in the high-frequency range (3000–4000 Hz) during the word "people," specifically around 1.0–1.2 seconds. This region exhibits a slight unnatural resonance or tonal shift, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is not accompanied by any obvious artifacts such as clipping, static, or digital compression, and the rest of the audio remains acoustically stable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), which highlights the 1.0–1.2 second time region and 3000–4000 Hz frequency range as significant. This is corroborated by the Saliency method, which independently points to a different but adjacent region (0.0–0.2 seconds, 7000–8000 Hz), suggesting a possible secondary anomaly. The LIME method also supports the presence of an anomaly, though it is less specific. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The SHAP analysis, which focuses on acoustic features rather than time-frequency regions, does not directly support the anomaly but provides context on the overall acoustic profile of the audio. Overall, the wav2vec IG result is the most consistent and cross-validated evidence for the abnormality, while other findings are either less specific or not corroborated by multiple models.

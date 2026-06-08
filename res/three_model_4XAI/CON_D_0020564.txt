@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, immediately followed by a female voice saying, "Gone. Kids will be watching closely." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0–2.5 seconds, a distinct, high-frequency, synthetic buzzing sound emerges, centered around 4000–6000 Hz. This buzz is not present in the original speech and is acoustically inconsistent with the natural voice, suggesting an artificial insertion. The buzz is sustained and unmodulated, resembling a digital artifact or watermark, and is not present in the background or other parts of the audio. The rest of the audio remains free of such anomalies, with no further synthetic sounds or distortions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.5] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [3.5-4.0] seconds with [7000-8000] Hz using Saliency, while LIME highlights [3.0-3.1] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the loudness_sma3_stddevFallingSlope feature is most influential, suggesting a sudden drop in loudness, which aligns with the appearance of the synthetic buzz. The wav2vec model’s IG and Saliency results are consistent with the observed buzz, while the LIME result at [3.0-3.1] seconds may correspond to a secondary artifact or transient noise. The absence of evidence from Hubert and WavLM suggests that the buzz is not detected by all models, but the wav2vec results provide strong, cross-referenced support for the anomaly.

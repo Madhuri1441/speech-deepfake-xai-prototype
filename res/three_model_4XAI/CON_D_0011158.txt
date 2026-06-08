@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "then not time ago one," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.5 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–6000 Hz range, which is acoustically distinct from the preceding speech and does not match typical human vocalization or environmental sounds. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. After this transient, the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.5] seconds, [3000-6000] Hz). The IG method highlights the region as a key contributor to the model’s prediction, while Saliency and LIME provide additional confirmation by focusing on the same transient. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant regions. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0 showing elevated values, indicating a deviation from normal speech patterns. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the presence of a synthetic or corrupted segment, while the lack of detection by Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

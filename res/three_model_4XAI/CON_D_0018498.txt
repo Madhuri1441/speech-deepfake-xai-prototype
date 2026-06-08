@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.7 - 1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000 - 8000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, high-pitched female voice saying "Okay, peep it" in a neutral, conversational tone. The utterance is clean and intelligible, with no background noise or distortion. However, at approximately 0.7 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 6000 and 8000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment and appears abruptly, suggesting an artificial insertion or overlay. There are no other notable acoustic anomalies, such as clipping, static, or environmental sounds.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the time range [0.7 - 1.0] seconds and frequency range [6000 - 8000] Hz using Integrated Gradients (IG), and in the range [0.6 - 0.8] seconds and [2000 - 4000] Hz using Saliency. The LIME explanation for wav2vec is less specific, indicating a region around [0.1 - 0.2] seconds, which does not align with the observed synthetic tone. The Hubert and WavLM models do not provide any explanations, indicating that they did not detect the anomaly. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but these do not directly correspond to the synthetic tone. The wav2vec model's IG and Saliency explanations are the only ones that align with the observed synthetic tone, indicating cross-model agreement for the abnormality in the specified time and frequency ranges.

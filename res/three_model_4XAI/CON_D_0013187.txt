@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, declarative sentence: "Is there a new way forward before the sports were cautious about the claim." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, with a fundamental frequency (F0) in the typical female range (~150-250 Hz), and the spectral content is concentrated between 2000-6000 Hz, corresponding to the midrange frequencies of human speech. The only notable acoustic irregularity occurs between 3.5 and 4.0 seconds, where a subtle, unnatural pitch shift or vocal artifact is present. This is evidenced by a brief, unnatural modulation in the voice’s timbre and pitch, which does not align with the speaker’s natural speech rhythm or prosody. The rest of the audio is smooth and consistent, with no signs of clipping, distortion, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.5-4.0] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights the [0-1] seconds range and [2000-4000] Hz frequency range. The LIME method also supports the [0.0-0.5] seconds range. The Hubert and WavLM models do not provide any abnormality indications. The wav2vec IG result is the only one that aligns with the observed pitch shift in the audio, making it the most reliable indicator of the anomaly. The other XAI results do not match the acoustic irregularity and are likely due to model-specific sensitivities or noise. Therefore, the final abnormality region is supported by wav2vec IG, with no cross-model agreement.

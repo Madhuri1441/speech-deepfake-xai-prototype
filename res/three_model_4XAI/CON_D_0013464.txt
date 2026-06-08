@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "the job, poetic culture, no." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.00 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until about 1.50 seconds. This tone is sharply distinct from the natural speech, with a frequency content between 4000-6000 Hz, and is acoustically inconsistent with the preceding and following speech. The abrupt onset and offset of this tone, along with its unnatural spectral profile, suggest it is an artificial insertion rather than a natural part of the recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.00-1.50] seconds with a frequency range of [4000-6000] Hz using both Integrated Gradients (IG) and Saliency methods. LIME also supports this region with a slightly narrower window of [1.00-1.25] seconds. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with significant contributions from features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which collectively indicate a sudden change in the acoustic environment. The agreement among wav2vec’s IG, Saliency, and LIME methods, along with the Shapley value analysis, strongly supports the conclusion that the buzzing tone is an artificial insertion.

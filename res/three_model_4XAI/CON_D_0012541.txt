@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "capable choice" in a controlled, studio-like environment. The speech is intelligible, with no background noise or distortion. However, at approximately 0.75 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 4000–6000 Hz, is steady in pitch and amplitude, and is acoustically distinct from the speech, suggesting it is an artificial overlay rather than a natural sound. The tone is not present in the original voice recording and does not interact with the speech, indicating it was added post-production. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) method identifies the [0.75-1.25] seconds time region and [4000-6000] Hz frequency region as salient, and the LIME method also highlights the [0.75, 0.8] seconds interval. The saliency method from wav2vec further supports the presence of the anomaly in the same frequency range. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the presence of the anomaly. The Shap values for features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2V_sma3nz_amean are consistent with the presence of a synthetic tone, reinforcing the conclusion. The agreement among wav2vec’s IG, LIME, and saliency methods confirms the abnormality as a cross-model finding.

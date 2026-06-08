@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 2.0 seconds, a sharp, high-frequency click or pop is heard, which is acoustically distinct from the preceding speech and background noise. This click is brief, lasting about 0.5 seconds, and is accompanied by a noticeable transient in the high-frequency range (4000–6000 Hz), suggesting a digital artifact or a momentary glitch in the audio signal. The speech itself is clear and intelligible, with no signs of distortion or clipping, and the background remains stable throughout. The click does not correspond to any natural sound event or speech content, and its abruptness and spectral profile indicate a likely digital origin, such as a buffer underrun or a file corruption artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.5] seconds in the [4000-6000] Hz range using Integrated Gradients (IG), while the Saliency method also highlights a region at [0.5-1.0] seconds in the [2000-4000] Hz range, which does not align with the observed click. The LIME method identifies a very short region at [0.0-0.1] seconds, which is not supported by the audio evidence. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values point to features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the click event. The wav2vec IG explanation is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this single-model evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "about a flu," followed by "really alarming." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–2.0 seconds, a high-frequency, synthetic-sounding tone emerges, lasting about one second. This tone is not part of the natural speech and is acoustically distinct from the voice, suggesting an artificial insertion. The tone is centered in the 4000–6000 Hz range, which is above the typical speech frequency band, and its abrupt onset and unnatural timbre are consistent with a digital artifact or watermark. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights the 0.0–0.5 second range with a 1000–2000 Hz frequency, which may correspond to the initial speech. The LIME method supports the 0.0–0.1 second range, likely reflecting the start of the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated during the suspicious region, further supporting the presence of an artificial tone. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the 1.0–2.0 second, 4000–6000 Hz region as the most likely location of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet indoor environment. At approximately 0.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is characterized by a sharp, metallic timbre and a frequency content in the 4000–6000 Hz range, which is atypical for natural speech and stands out against the otherwise clean and dry acoustic environment. The artifact is not accompanied by any speech or environmental cues, and its abrupt onset and offset suggest it is not a natural part of the recording. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and this is corroborated by the Saliency method, which also highlights the 1.5–2.0 second region with similar frequency content. The LIME method, while less precise, supports the presence of an anomaly around 3.0–3.1 seconds, though this is not clearly audible. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and equivalentSoundLevel_dBp, which are indicative of atypical signal characteristics. The wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, while the other models and methods either do not detect it or provide less precise indications.

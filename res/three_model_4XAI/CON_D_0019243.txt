@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio begins with a clear, high-pitched female voice speaking in English, with a neutral accent and a steady, formal tone. The speech is intelligible and delivered at a moderate pace, with no signs of emotional distress or unusual vocal quality. However, at the very start of the audio (0.0-0.5 seconds), there is a subtle but noticeable acoustic anomaly: the voice exhibits a slight pitch instability and a faint, unnatural vibrato, which is not present in the rest of the recording. This is accompanied by a subtle, high-frequency shimmer or warble, most prominent in the 1000-3000 Hz range, suggesting a possible digital artifact or manipulation. The remainder of the audio is clean and natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial segment (0.0-0.5 seconds) as abnormal, with a saliency peak in the 1000-3000 Hz range, aligning with the observed pitch instability and shimmer. The IG method from wav2vec also highlights a later segment (0.5-1.0 seconds), but this is less consistent with the acoustic evidence. The Hubert and WavLM models do not provide supporting evidence for this region, and their IG, Saliency, and LIME results are all null, indicating no strong model agreement. The SHAP analysis does not directly reference the initial segment but instead highlights features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are not directly tied to the observed pitch instability. Thus, the most consistent evidence for the anomaly comes from wav2vec’s saliency analysis, with no cross-model agreement.

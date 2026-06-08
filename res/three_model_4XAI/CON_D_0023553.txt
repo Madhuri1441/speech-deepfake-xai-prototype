@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English with a non-rhotic accent, likely British. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.5 and 3.0 seconds, specifically in the 4000–6000 Hz range. This artifact manifests as a short, sharp, and unnatural burst of sound, distinct from the speaker’s voice and not attributable to any natural speech or environmental source. The artifact is not present in the surrounding speech and does not align with any expected vocal or environmental sound, suggesting it is an artificial insertion or digital glitch.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [4000-6000] Hz). The wav2vec model’s IG and Saliency methods both highlight the same time and frequency region, while LIME narrows it to [2.8-3.0] seconds, all within the same frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley value analysis, while not directly identifying the time or frequency region, highlights features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which may be indirectly related to the presence of the artifact, though these do not pinpoint the exact location. Overall, the wav2vec model’s consistent identification of the artifact across multiple XAI methods provides strong evidence for the presence of an artificial sound event in the specified region.

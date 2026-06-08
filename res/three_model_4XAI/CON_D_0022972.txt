@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp inhalation, followed by a male voice saying, "It... the script. She looked at her..." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 2.8 seconds, a subtle but distinct anomaly occurs: a short, high-frequency artifact appears, lasting until 3.0 seconds. This artifact is characterized by a piercing, synthetic tone in the 1500–2000 Hz range, which is acoustically inconsistent with the preceding speech and background. The artifact is not present in the original audio and does not align with any natural speech or environmental sound, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [2.8-3.0] seconds with a frequency range of [1500-2000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [1.2-1.4] seconds with a frequency range of [3000-3500] Hz, though this is not supported by other models. The LIME method identifies a region at [0.0-0.1] seconds, but this is not corroborated by other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP values indicate that spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and logRelF0-H1-A3_sma3nz_stddevNorm are the top contributors to the anomaly, with spectralFlux_sma3_amean showing the highest SHAP value, further supporting the presence of a high-frequency artifact. The wav2vec IG result is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this cross-model agreement.

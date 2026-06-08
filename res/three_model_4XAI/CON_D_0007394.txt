@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, coherent sentence in a quiet, acoustically dry environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct anomaly is present in the high-frequency range (3000–7000 Hz) during the phrase "kind of casualty yesterday," specifically around 2.5–3.1 seconds. This region exhibits a faint, unnatural shimmer or warble, which is not present in the rest of the audio and is inconsistent with typical human speech or environmental noise. The anomaly is most pronounced in the word "casualty," where the spectral texture appears slightly synthetic or processed, suggesting a possible deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG) highlights the 2.5–3.0 second region, Saliency points to 0.5–1.0 seconds (less relevant), and LIME confirms the 3.0–3.1 second window. All three methods converge on the 2.5–3.1 second interval, with a consistent focus on the 3000–7000 Hz frequency band. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly in this region, with high contributions from spectral features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which are sensitive to subtle spectral distortions. The convergence of wav2vec’s multiple methods on the same region provides strong, cross-model evidence for the anomaly, while the Shapley values corroborate the presence of a spectral irregularity.

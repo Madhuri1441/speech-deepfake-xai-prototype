@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "job, the birdie record" in a standard North American accent, with no background noise or distortion. The speech is intelligible and delivered in a flat, declarative tone. Immediately following the spoken phrase, a synthetic, high-pitched electronic tone is introduced. This tone is stable, unmodulated, and occupies the frequency range of 2000–4000 Hz, lasting for approximately 0.5 seconds. The tone is acoustically distinct from the preceding speech, with no overlap or blending, and is likely a system-generated alert or notification sound. There are no other audible events or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.00–1.50 second time range and 2000–4000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (0.00–0.25 seconds, 1000–3000 Hz) and LIME supports the 0.8–1.2 second range. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features, which are consistent with the presence of a sudden, high-frequency synthetic tone. The wav2vec IG result is the most consistent with the observed acoustic event, and the Shapley values corroborate the presence of a distinct, high-frequency sound following the speech. The final abnormality region is thus supported by wav2vec IG and Shapley value evidence, with no cross-model agreement from Hubert or WavLM.

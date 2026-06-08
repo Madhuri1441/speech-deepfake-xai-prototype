@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "over the issue, cracking goods. They want some new on the...". The speech is clear and intelligible, with a natural cadence and pitch typical of a human voice. However, at the very start of the clip, there is a noticeable, abrupt, and unnatural transition in the audio signal, which is not present in the rest of the recording. This transition is accompanied by a brief, high-frequency, synthetic-sounding artifact, likely a digital click or pop, which is not consistent with the speaker’s voice or the ambient environment. This artifact is most prominent in the 2000–6000 Hz range, as indicated by the XAI saliency and integrated gradients, and occurs within the first second of the audio. The rest of the clip is free from such anomalies, with the speech remaining natural and uninterrupted.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and Saliency methods both identify the first second of the audio as the most salient region, with frequency support in the 2000–6000 Hz range, aligning with the observed synthetic artifact. The LIME method also supports this region, though with a slightly later start (1.5–2 seconds), likely due to its local approximation approach. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The SHAP values further support the presence of an anomaly in the initial segment, with features such as F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope and StddevUnvoicedSegmentLength indicating a deviation from expected speech patterns. Overall, the wav2vec model’s multiple XAI methods and the SHAP analysis converge on the first second as the region of interest, while other models do not detect the anomaly.

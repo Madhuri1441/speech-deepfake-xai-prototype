@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "play on center court" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct abnormality is present in the high-frequency range (5000–6000 Hz) during the time interval [0.1–0.4] seconds, immediately following the initial consonant of "play." This region exhibits a faint, artificial-sounding shimmer or ringing, which is not typical of natural human speech and may indicate digital artifacting or post-processing. The abnormality is not present in the rest of the audio, and the remainder of the clip is acoustically clean.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time-frequency region ([0.1–0.4] seconds, 5000–6000 Hz). The Hubert and WavLM models do not detect any abnormality in this region, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a high positive contribution, indicating elevated energy in the abnormal frequency band. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence provides strong, cross-model support for the identified acoustic anomaly.

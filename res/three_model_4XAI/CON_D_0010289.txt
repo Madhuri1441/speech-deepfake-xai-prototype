@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I saw one body," in a neutral, low-pitched voice, followed by a brief pause and then, "He was dead." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–1.5 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or hum. This artifact is not present in the original speech and is acoustically inconsistent with the rest of the recording, suggesting a possible digital anomaly or editing artifact. The artifact is most prominent in the 2000–4000 Hz range, which is typical for high-frequency digital noise or compression artifacts. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–1.5 second time region and 2000–4000 Hz frequency region as salient, with IG and LIME both pointing to this interval. The wav2vec saliency also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec findings are the only cross-model agreement. The SHAP analysis does not directly reference the artifact but instead highlights acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are unrelated to the observed artifact. Thus, the wav2vec model’s identification of the 1.0–1.5 second, 2000–4000 Hz region is the only cross-model supported evidence for the acoustic abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.95-3.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering a formal statement: "This is a sex judges, the affair is very delicate and unique." The speech is recorded in a quiet, controlled environment, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.95 and 3.05 seconds. This artifact is characterized by a sharp, metallic timbre in the 1500–2000 Hz range, resembling a digital click or glitch, and is not present in the surrounding speech. The artifact is not a natural part of the speaker’s voice or the recording environment, and its abrupt onset and offset suggest a digital editing or encoding error. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.95-3.05] seconds, [1500-2000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and F1amplitudeLogRelF0_sma3nz_stddevNorm, which may be related to the artifact, but these are not directly localized in time or frequency. The cross-model agreement from wav2vec confirms the presence of a synthetic, high-frequency artifact in the specified region, while the lack of support from other models suggests the anomaly is subtle or not universally detectable.

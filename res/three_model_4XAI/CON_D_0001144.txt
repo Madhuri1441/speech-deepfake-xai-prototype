@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a neutral, conversational tone, delivering the phrase: "It was a game we had over interviewed. In other words..." The speech is clear and intelligible, with no obvious signs of digital corruption or environmental noise. However, at approximately 3.0–3.5 seconds, a subtle but distinct anomaly occurs. During this interval, the speaker’s voice exhibits a slight pitch and timbral shift, accompanied by a faint, unnatural resonance, which is not present in the rest of the audio. This region is marked by a brief, unnatural rise in the mid-frequency range (1000–2000 Hz), suggesting a possible digital manipulation or artifact. The anomaly is not accompanied by any background noise or environmental cues, indicating it is likely an isolated artifact within the speech signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [3.0-3.5] seconds time region and the [1000-2000] Hz frequency range as suspicious, with IG focusing on the core anomaly and Saliency slightly extending the time window. The wav2vec LIME method also supports this region, albeit with a narrower focus at [3.5, 3.6] seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no significant regions. The Shapley values further support the wav2vec findings, with features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean showing notable deviations in the same time and frequency range. This cross-model agreement between wav2vec’s IG, Saliency, and LIME, along with the Shapley values, strongly indicates that the anomaly is a localized, likely synthetic artifact within the speech signal.

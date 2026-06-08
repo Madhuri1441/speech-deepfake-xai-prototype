@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, composed statement in a quiet, acoustically dry environment. The speech is continuous and intelligible, with no background noise, distortion, or abrupt changes in volume or timbre. However, at approximately 3–4 seconds into the clip, a subtle but noticeable acoustic anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, which is not present in the rest of the recording. This momentary change is accompanied by a minor, artificial-sounding reverberation, suggesting a digital artifact or manipulation. The anomaly is not present in the surrounding speech, and the speaker’s delivery remains otherwise natural and unaffected.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [3-4] second time region and [2000-6000] Hz frequency range as the most salient for the model’s prediction, indicating that this segment is critical to the model’s assessment of the audio. The Saliency method from wav2vec also highlights the [0-1] second region, but this is less relevant to the observed anomaly. No other XAI methods (Hubert, WavLM, or LIME) provide supporting evidence for this specific region, and the SHAP values do not directly correspond to the observed acoustic change. Thus, the anomaly is primarily supported by the wav2vec IG explanation, with no cross-model agreement. The SHAP values indicate that features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean are important for the model’s decision, but these do not align with the observed pitch and frequency shift. Overall, the wav2vec IG explanation is the most reliable indicator of the anomaly, though it is not corroborated by other models.

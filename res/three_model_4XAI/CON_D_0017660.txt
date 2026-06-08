@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent delivering the phrase, "public do not know what they are buying." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady and natural, with no signs of emotional stress or artificiality. However, at approximately 1.0–1.2 seconds, a subtle but distinct high-frequency artifact emerges, centered around 5500 Hz. This artifact manifests as a faint, synthetic buzz or shimmer, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The artifact is brief, localized, and does not affect the intelligibility of the speech, but its unnatural spectral quality suggests it may be the result of digital manipulation or a deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.2] seconds, 5000-6000 Hz). This cross-model agreement strongly supports the presence of an anomaly in this region. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant evidence. The Shapley values further corroborate the wav2vec findings, with the top three features (StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp) indicating a deviation in acoustic properties consistent with the observed artifact. Overall, the wav2vec model’s consistent detection across multiple XAI methods provides the most reliable evidence for the anomaly, while the absence of such evidence in Hubert and WavLM suggests either a lack of sensitivity or that the artifact is subtle and not captured by those models.

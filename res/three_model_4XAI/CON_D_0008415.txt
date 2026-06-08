@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "talking about a..." in a neutral, conversational tone, with no background noise or environmental sounds. The speech is clear and intelligible, with a fundamental frequency around 120 Hz and harmonics extending up to 4 kHz. At approximately 0.6 seconds, a high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 2 kHz and 6 kHz, and is acoustically distinct from the preceding speech. The artifact is not a natural part of the voice or environment and is likely a digital artifact or a synthetic overlay. The audio then returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.6 - 0.8] seconds and frequency range [4000 - 6000] Hz, while the wav2vec saliency method extends the abnormality to [0.85 - 1.0] seconds and [2000 - 4000] Hz. LIME also supports the abnormality in the final 0.1 seconds of the clip. The Hubert and WavLM models do not detect any abnormality. The Shapley values indicate that the abnormality is associated with features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_amean, which are consistent with the presence of a high-frequency, static-like artifact. The wav2vec model's multiple independent methods (IG, Saliency, and LIME) all point to the same abnormality, providing strong cross-model agreement. The Hubert and WavLM models do not detect the anomaly, suggesting that the wav2vec model is more sensitive to this type of artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "I've never run so hard," followed by a brief pause and the continuation, "or felt so bad." The speech is delivered in a standard North American accent, with a moderate pace and a tone that conveys physical exertion and emotional fatigue. The recording quality is high, with no background noise, distortion, or compression artifacts. The only notable acoustic feature is a subtle, high-frequency artifact in the 6000–7000 Hz range during the first 0.1–0.2 seconds, which is not present in the rest of the clip. This artifact is likely a minor digital glitch or transient, but it does not affect intelligibility or the naturalness of the speech. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a suspicious region in the audio at [0.1-0.2] seconds, with a frequency range of [6000-7000] Hz, as supported by its Integrated Gradients (IG) explanation. This region is also highlighted by the wav2vec model’s Saliency method at [1.8-2.0] seconds, though this is a different time and frequency range. The LIME explanation for wav2vec occurs at [2.5-3.0] seconds, which is not supported by other XAI methods. The Hubert and WavLM models do not provide any explanations for this region, indicating that the anomaly is specific to wav2vec. The Shapley values suggest that the StddevUnvoicedSegmentLength feature is most influential, but this does not directly correspond to the observed artifact. Overall, the only cross-model agreement is the wav2vec IG explanation, which identifies the high-frequency artifact at the start of the audio.

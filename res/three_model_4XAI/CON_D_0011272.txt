@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a male speaker with a neutral accent saying, "It does not affect the staff and the prisoners." The speech is clear, steady, and delivered in a calm, formal tone, with no emotional inflection or background noise. The acoustic environment is dry and controlled, with no reverberation or ambient sounds, suggesting a studio or sound booth setting. The only notable acoustic anomaly occurs between 1.0 and 1.5 seconds, where a subtle, high-frequency artifact is present, possibly a digital glitch or compression artifact. This region is marked by a brief, unnatural tonal quality that does not match the natural speech or room acoustics. The rest of the audio is free from distortion, clipping, or other artifacts, and the speech remains intelligible throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a slightly earlier [0.5-1.0] seconds region with [2000-4000] Hz frequencies. LIME analysis points to a very narrow [2.3-2.4] seconds region, which is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values suggest that spectral features such as spectralFlux_sma3_amean, shimmerLocaldB_sma3nz_amean, and spectralFluxV_sma3nz_stddevNorm contribute to the model’s decision, but these do not directly correspond to the observed artifact. The wav2vec IG result is the most consistent and supported by multiple XAI methods, indicating a high-frequency anomaly in the [1.0-1.5] seconds region.

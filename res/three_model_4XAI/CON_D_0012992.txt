@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "The players were under pressure." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [1.0–1.5] seconds, coinciding with the end of the word "pressure." This region exhibits a faint, unnatural tonal quality that is not present in the rest of the audio, suggesting possible digital artifacting or compression artifacts. The anomaly is not perceptible to casual listening but is detectable through spectral analysis. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods highlight the same time-frequency region ([1.0–1.5] seconds, 4000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any supporting evidence for this region, as their explanations are entirely absent. The Shapley values, while not directly tied to time-frequency localization, suggest that the anomaly may be related to high-frequency content, as the top contributing feature is slopeUV0-500_sma3nz_amean, which is sensitive to spectral shape and energy in the upper frequency range. Overall, the wav2vec IG and Saliency results provide the most robust evidence for the identified abnormality, supported by the Shapley value analysis.

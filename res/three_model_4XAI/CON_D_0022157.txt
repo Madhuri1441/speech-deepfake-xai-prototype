@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "appearance on Wednesday that," in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is clear and intelligible. However, at approximately 0.75 seconds, a subtle but noticeable anomaly emerges: a high-frequency, synthetic-sounding artifact appears, lasting until about 1.25 seconds. This artifact is not a natural part of the speech or environment and is characterized by a piercing, static-like timbre, likely due to digital clipping or a synthetic overlay. The artifact is most prominent in the 3000–6000 Hz frequency range, which is typical for high-frequency digital noise or compression artifacts. After 1.25 seconds, the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 0.75–1.25 second time window and 3000–6000 Hz frequency range as the most salient region, aligning with the observed high-frequency artifact. The Saliency method from wav2vec also highlights a brief, high-frequency region (1.75–2.0 seconds), but this is less consistent with the main anomaly. The LIME explanation for wav2vec is limited to the first 0.1 seconds, which does not correspond to the main anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating no strong support for the anomaly from these models. The SHAP values, while not directly mapping to the artifact, suggest that the model is sensitive to high-frequency content and loudness features, which may indirectly support the detection of the anomaly. Overall, the wav2vec IG analysis provides the most consistent and cross-model support for the identified abnormality.

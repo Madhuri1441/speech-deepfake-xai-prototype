@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "but it be painful, often bitter is to get a...". The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds into the clip, a sudden, loud, and sustained electronic tone appears. This tone is harsh, buzzy, and occupies the frequency range of 2000–4000 Hz, with a fundamental frequency around 2000 Hz and strong harmonics extending up to 4000 Hz. The tone is clearly artificial, likely a square or sawtooth wave, and is not present in the original speech. It persists until the end of the clip, completely masking the remainder of the spoken phrase. The abrupt onset and unnatural spectral content of this tone are highly suspicious, indicating a possible audio manipulation or insertion of a synthetic artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), and the Saliency method also highlights the same time range [0.0-0.1] seconds, though with a narrower frequency range [2000-3000] Hz. LIME supports the time range [0.0-0.1] seconds. The Hubert and WavLM models do not provide any explanations, indicating that they did not detect the anomaly. The Shapley values highlight features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, non-speech sound event. The cross-model agreement from wav2vec (IG and Saliency) and LIME supports the conclusion that the abnormality is located in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range.

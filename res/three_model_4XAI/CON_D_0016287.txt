@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "Our house, right job." The speech is delivered in a standard North American accent, with a natural cadence and no signs of emotional distress or artificiality. However, a subtle but noticeable anomaly is present in the vocalization between 0.5 and 1.75 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural vibrato. This is accompanied by a subtle, high-frequency shimmer in the 6000–8000 Hz range, which is not typical of natural human speech and may indicate digital manipulation or artifacting. The rest of the audio is clean, with no background noise or distortion, and the final word "job" is abruptly cut off, suggesting either a truncated recording or an intentional edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region from 0.5–1.0 seconds in the 2000–4000 Hz range and an IG region from 1.25–1.75 seconds in the 6000–8000 Hz range. These regions overlap and are supported by the wav2vec model alone. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support any abnormality. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and mfcc3_sma3_stddevNorm, which are consistent with the wav2vec saliency regions, further supporting the presence of an anomaly in the 0.5–1.75 seconds interval. The combined wav2vec saliency and IG regions, along with the SHAP feature values, indicate a cross-model agreement on the abnormality, despite the lack of support from Hubert and WavLM.

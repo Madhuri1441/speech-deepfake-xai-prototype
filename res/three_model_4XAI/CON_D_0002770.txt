@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice stating, "The compromise is entirely on the arrival of that position." The speech is delivered in a steady, formal tone, with no emotional inflection or background noise, and is acoustically clean except for a brief, unnatural pause or glitch at approximately 1.0–1.5 seconds. During this interval, the voice is abruptly interrupted by a faint, high-frequency electronic artifact, which is not present in the rest of the recording. This artifact is most prominent in the 3000–4000 Hz range, consistent with a digital glitch or compression artifact. The remainder of the audio resumes normally, with no further anomalies. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-1.5] seconds time region and [3000-4000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed audio artifact. The Saliency method from wav2vec also highlights a different region ([0.5-1.0] seconds, [4000-6000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a model-specific artifact. The LIME explanation from wav2vec points to a very narrow time window ([3.0-3.1] seconds), which does not match any observable event. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis identifies several acoustic features, but none directly correspond to the observed artifact. Overall, the most reliable evidence comes from the wav2vec IG explanation, which aligns with the audio anomaly, while other XAI sources either do not support the finding or point to unrelated regions.

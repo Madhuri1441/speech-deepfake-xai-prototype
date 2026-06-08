@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 0.8 seconds, a brief, sharp, high-frequency click or pop is heard, lasting about 0.4 seconds. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, conversational tone. The voice is clear and intelligible, with no signs of digital distortion, clipping, or compression artifacts. The click is not part of the speech and does not correspond to any natural vocalization or environmental sound. The frequency content of the click aligns with the high-frequency region identified by the wav2vec Integrated Gradients (IG) explanation, suggesting that this transient is the primary acoustic anomaly in the clip. No other obvious audio artifacts are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Integrated Gradients (IG) explanation identifies the time and frequency regions [0.8-1.2] seconds and [3000-4000] Hz, respectively, as the most salient for the model’s prediction. This aligns with the observed high-frequency click in the audio. The wav2vec Saliency method also highlights a brief high-frequency event at [0.0-0.1] seconds, but this is not corroborated by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME explanations are absent, indicating no strong agreement across models. The SHAP analysis identifies statistical features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, but these do not directly correspond to the observed click. Thus, the final abnormality region is supported by wav2vec IG evidence and is not confirmed by other models or methods.

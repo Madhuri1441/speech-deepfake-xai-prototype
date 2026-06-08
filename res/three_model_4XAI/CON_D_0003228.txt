@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase "talented people deal to the families." The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible. However, a subtle anomaly is present in the mid-to-high frequency range (4000–8000 Hz) between 1.5 and 2.5 seconds, where the audio exhibits a faint, unnatural resonance or shimmer. This is not typical of natural speech and may indicate digital manipulation or artifacting, such as an unintended overlay or synthesis artifact. The anomaly is not perceptible to casual listeners but is detectable through detailed acoustic analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and in the [2.0-2.5] seconds time range and [7000-8000] Hz frequency range using Saliency. These two methods from the same model provide consistent evidence of abnormality in the 1.5–2.5 seconds interval and 4000–8000 Hz band. The LIME method from wav2vec also detects a brief anomaly at the very start of the audio, but this is less consistent with the other findings. The Hubert and WavLM models do not provide any evidence of abnormality, and the SHAP analysis does not directly correspond to the observed acoustic features. Thus, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the final abnormality region.

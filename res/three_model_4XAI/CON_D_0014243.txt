@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There was a final revealing deep business," followed by a male voice saying, "to cast." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the wav2vec model's Integrated Gradients (IG) analysis highlights a suspicious region between 0.5 and 1.0 seconds, with a frequency range of 6000–7000 Hz. This region corresponds to the end of the word "business" and the transition to the next speaker. The Saliency analysis from wav2vec further supports this by identifying a region between 2.0 and 3.0 seconds, which aligns with the male speaker's utterance "to cast." The LIME analysis from wav2vec also points to a specific time around 1.0–1.1 seconds, reinforcing the presence of an anomaly at the speech transition. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is specific to the wav2vec model's analysis. The Shap values indicate that the abnormality is likely related to the acoustic features of the speech, such as the equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are associated with the transition between speakers.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients, Saliency, and LIME analyses all point to the same time and frequency regions, indicating a cross-model agreement on the presence of an anomaly at the speech transition. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is specific to the wav2vec model's analysis. The Shap values further support the hypothesis that the abnormality is related to the acoustic features of the speech, particularly the transition between speakers.

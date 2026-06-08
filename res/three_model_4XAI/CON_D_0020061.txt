@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "Hey, that plush. My eyes are watering." The phrase "My eyes are watering" is delivered in a strained, high-pitched, and emotionally charged manner, suggesting distress or discomfort. Immediately following this, a sharp, high-frequency, synthetic sound occurs between 1.00 and 1.50 seconds, with energy concentrated in the 6000–7000 Hz range. This sound is abrupt, unnatural, and does not correspond to any expected environmental or physiological noise, indicating a possible digital artifact or manipulation. The synthetic nature of the sound is further supported by its clean, unmodulated timbre and lack of acoustic context.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG pinpointing the [1.00-1.50] seconds time region and [6000-7000] Hz frequency region, and Saliency highlighting a slightly earlier [0.95-1.25] seconds interval with a different frequency range. The LIME explanation for wav2vec is less specific, focusing on the very beginning of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the audio’s acoustic features, such as spectral flux and unvoiced segment length, are not indicative of the anomaly, further supporting the conclusion that the abnormality is localized to the synthetic sound event. The cross-model agreement between wav2vec’s IG and Saliency methods strengthens the identification of the abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly is subtle or context-specific.

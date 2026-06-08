@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, recorded in a quiet indoor environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly occurs between 3.0 and 4.0 seconds, specifically during the phrase "He does it international levels." At this point, the voice exhibits a slight pitch instability and a brief, unnatural resonance, which is not present in the rest of the utterance. This is accompanied by a mild, high-frequency shimmer or warble, suggesting a possible artifact from digital processing or synthesis. The anomaly is not severe enough to disrupt intelligibility but is perceptible to a careful listener. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [3.0-3.5] seconds time region and [2000-4000] Hz frequency range, while the wav2vec Saliency method further narrows the region to [3.5-4.0] seconds and [1000-2000] Hz. The LIME method also supports the [2.5-3.0] seconds region, indicating a consistent focus on the 3.0-4.0 seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, and the SHAP values do not directly indicate the anomaly but instead highlight acoustic features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, which may be indirectly related to the anomaly. The wav2vec-based explanations from multiple methods (IG, Saliency, LIME) converge on the 3.0-4.0 seconds region, indicating cross-model agreement on this interval.

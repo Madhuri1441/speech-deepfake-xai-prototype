@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a conversational tone, with the phrase "...is an absolute...". At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting until about 2.5 seconds. This transient is characterized by a piercing, metallic, and synthetic timbre, with energy concentrated between 4000 Hz and 6000 Hz. The sound is abrupt, unnatural, and does not match the acoustic properties of the preceding speech, suggesting it is an artifact rather than a natural part of the recording. The transient is followed by a brief pause and then the speaker continues with "...very up. One. There we go. That's all." The speech resumes in a normal cadence, with no further anomalies detected. The acoustic environment is otherwise clean, with no background noise or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as significant, indicating a strong model response to the transient. The wav2vec Saliency method also highlights a region at [3.0-3.5] seconds, but this is not supported by the audio and is likely spurious. The wav2vec LIME method identifies a very short region at [0.0-0.1] seconds, which is not aligned with the observed transient. The Hubert and WavLM models do not provide any significant regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency event. The wav2vec IG result is the most robust and cross-validated evidence for the anomaly, supported by the acoustic observation of the transient.

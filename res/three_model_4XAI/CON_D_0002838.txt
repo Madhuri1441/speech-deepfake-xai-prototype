@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "that he is ready to parent to the families." The speech is clear and intelligible, with a natural cadence and pitch typical of a human voice. However, at approximately 1.5–2.0 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, high-pitched, and slightly distorted tone in the 4000–6000 Hz range. This anomaly is not present in the original speech and is likely an artifact introduced during the deepfake generation process. The rest of the audio remains natural and free of such artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and also detects a secondary anomaly at [2.8-3.0] seconds in the [7500-8000] Hz range using Saliency. LIME further supports the first anomaly at [0.9-1.1] seconds, though this is less precise and may be an artifact of the explanation method. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec-based explanations are the most reliable. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which are consistent with the presence of an unnatural, synthetic artifact in the audio. Overall, the wav2vec model’s IG and Saliency explanations, along with the LIME support, provide strong cross-model agreement on the anomaly at [1.5-2.0] seconds, while the secondary anomaly at [2.8-3.0] seconds is less supported and may be less significant.

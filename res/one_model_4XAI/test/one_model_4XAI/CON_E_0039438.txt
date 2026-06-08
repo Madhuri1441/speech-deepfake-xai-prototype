@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-fidelity female voice stating, "I was released a racketed." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise, indicating a controlled recording environment. However, at approximately 0.6 seconds, a distinct, unnatural sound artifact emerges: a high-frequency, synthetic buzz or hum centered around 4000–5000 Hz. This artifact persists until about 1.0 seconds, after which the audio returns to normal. The buzz is not present in the original speech and does not correspond to any natural sound or environmental noise, suggesting it is an artificial insertion.
+
+The XAI evidence supports this observation. The Integrated Gradients (IG) analysis highlights the [0.6-1.0] second time region and the [4000-5000] Hz frequency range as critical for the model’s decision, indicating that this segment is a key contributor to the audio’s classification as a deepfake. The Saliency analysis further corroborates this by identifying a brief [1.4-1.5] second interval with a high-frequency component around 7000–8000 Hz, which may reflect a secondary artifact or a related anomaly. The LIME analysis also points to the [0.7-0.8] second region, reinforcing the significance of this time frame. Additionally, the Shapley values reveal that the equivalentSoundLevel_dBp feature has a large positive value, indicating a sudden increase in loudness during the artifact, while spectralFlux_sma3_amean and StddevUnvoicedSegmentLength suggest changes in spectral dynamics and unvoiced segment characteristics, further supporting the presence of an artificial sound event.
+
+In summary, the audio contains a clearly detectable synthetic buzz in the 4000–5000 Hz range between 0.6 and 1.0 seconds, which is corroborated by multiple XAI methods. This artifact is not present in the original speech and is likely the result of a deepfake manipulation, as evidenced by the model’s sensitivity to this region and frequency band.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "Tonight I am very lucky. Project three football legends." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 3.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 6000 Hz and 8000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio but appears abruptly, suggesting it is a post-production addition or digital manipulation. The voice continues unaffected, indicating the artifact is not a result of vocal production but rather an inserted sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([1.8-3.0] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp contributing to the model’s decision. The agreement among wav2vec’s XAI methods confirms the presence of a synthetic artifact in the specified region, while the lack of evidence from other models suggests that the anomaly is subtle or not universally detectable.

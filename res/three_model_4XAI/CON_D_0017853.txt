@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a formal statement in English. The speech is generally intelligible, with no obvious signs of digital corruption or background noise. However, at approximately 3.5–4.5 seconds, a distinct high-frequency artifact emerges, manifesting as a sharp, synthetic, and unnatural sound overlaying the speech. This artifact is not present in the original voice and does not correspond to any natural vocalization or environmental sound. The artifact is characterized by a piercing, static-like timbre, and its abrupt onset and offset suggest digital manipulation or insertion. This anomaly is not supported by any LIME or IG analysis from the Hubert or WavLM models, but is strongly indicated by wav2vec’s IG and Saliency methods, which both identify the same time and frequency range as critical for the model’s prediction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the [3.5-4.5] seconds time range and [6000-8000] Hz frequency range as the most salient for its prediction, indicating a high-confidence region of abnormality. The Hubert and WavLM models do not provide any supporting evidence for this region, and their LIME/IG/Saliency methods return no relevant findings. The Shapley values from the audio features also point to high-frequency spectral characteristics (StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean), which align with the wav2vec findings. Thus, the final abnormality region is based on cross-model agreement from wav2vec’s IG and Saliency, supported by Shapley values, but not corroborated by Hubert or WavLM.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a monologue in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental cues. At approximately 2.5 seconds, a brief, high-frequency, synthetic-sounding tone appears, lasting about 0.5 seconds and peaking in the 4000–6000 Hz range. This tone is acoustically distinct from the speech, lacking any natural vocal or environmental characteristics, and is likely an artifact or digital overlay. The tone is not present in the original audio but is inferred from the XAI analysis, which points to this region as anomalous. No other obvious audio artifacts, such as clipping, distortion, or abrupt edits, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.5-3.0] seconds time region and [4000-6000] Hz frequency region as anomalous, with the Saliency method highlighting a different region ([5-6] seconds, [2000-4000] Hz) and LIME pointing to [6.5-7] seconds. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent. The Shapley value analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not specify a time or frequency region. The only region consistently flagged by XAI analysis is the [2.5-3.0] seconds, [4000-6000] Hz interval, supported by wav2vec’s IG method. This cross-model agreement suggests a genuine anomaly in this region, likely a synthetic tone or artifact, while other regions identified by wav2vec are not corroborated by other models and may be less reliable.

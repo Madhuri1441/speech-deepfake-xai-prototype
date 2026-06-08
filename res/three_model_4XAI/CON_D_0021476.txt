@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a single female speaker with a clear, neutral tone, saying, "I don't do the same thing with men." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–4000 Hz between 1.0 and 1.5 seconds, specifically during the word "same." This region exhibits a slight unnatural smoothness and a lack of fine-grained articulatory detail, which is atypical for natural speech. The anomaly is not perceptible to the human ear as a disruption, but it is detectable through detailed acoustic analysis. This region is supported by multiple XAI methods, including Integrated Gradients (IG), which highlights this time-frequency region as critical for the model’s prediction, and SHAP values, which indicate that features such as equivalentSoundLevel_dBp and loudness_sma3_amean are elevated in this segment, suggesting an atypical acoustic profile.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The region [1.0-1.5] seconds, [2000-4000] Hz is supported by Integrated Gradients (IG) from the wav2vec model, which identifies this as a critical time-frequency region. This is further corroborated by SHAP values, which show elevated acoustic features in this segment, indicating a deviation from typical speech patterns. The wav2vec model’s Saliency and LIME also point to nearby regions, but the strongest and most consistent evidence comes from IG and SHAP. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is most strongly detected by wav2vec and SHAP. Thus, the final abnormality region is based on cross-model agreement between wav2vec (IG) and SHAP, with additional support from wav2vec’s Saliency and LIME, but not from Hubert or WavLM.

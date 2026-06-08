@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "He, it picture. She looked come tomorrow." The speech is delivered in a flat, monotonous tone with a noticeable lack of natural intonation and emotional inflection, which is atypical for human speech. The voice is clear but exhibits an unnatural, robotic cadence, and the final word "tomorrow" is truncated abruptly, suggesting either a technical error or an attempt to mask further content. The background is silent, with no environmental or ambient noise, indicating a controlled or synthetic recording environment. The acoustic quality is clean, with no distortion, clipping, or compression artifacts, but the unnatural prosody and abrupt ending are strong indicators of synthetic generation.
+
+The wav2vec model's explanations highlight two regions: a saliency peak at [2.0-2.5] seconds in the [3000-4000] Hz range and an IG peak at [2.5-3.0] seconds in the [6000-8000] Hz range. These regions correspond to the final word "tomorrow," which is both acoustically anomalous and truncated. The wav2vec model's sensitivity to these frequency bands aligns with the unnatural, synthetic quality of the speech. The Shap values further support this, with high contributions from features like equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean, all of which are associated with the abrupt and unnatural ending of the speech. The Hubert and WavLM models do not provide supporting evidence, but their lack of explanation does not contradict the findings from wav2vec and Shap.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's saliency and IG explanations both point to the [2.0-3.0] seconds region, with frequency ranges of [3000-4000] Hz and [6000-8000] Hz, respectively. These findings are cross-model, as both saliency and IG are derived from the same wav2vec model. The Shap values also support this region, indicating that the acoustic features in this time frame are highly anomalous. The Hubert and WavLM models do not provide evidence, but their absence does not detract from the strong cross-model agreement from wav2vec and Shap.

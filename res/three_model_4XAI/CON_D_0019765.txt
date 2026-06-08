@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level background hiss and a brief, soft inhalation, followed by a female voice speaking in a neutral, conversational tone. The speech is partially muffled and unclear, with the phrase "...and when we have been happened to have..." being spoken. The most notable acoustic anomaly occurs between 1.0 and 1.5 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, clipped timbre, accompanied by a burst of high-frequency noise in the 4000–6000 Hz range. This segment is marked by a loss of natural vocal smoothness and a mechanical, staccato quality, suggesting digital manipulation or synthesis. The abruptness and unnaturalness of this transition are inconsistent with typical human speech patterns, indicating a possible deepfake artifact. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the 1.0–1.5 seconds time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (1.5–2.0 seconds, 3000–4000 Hz), indicating some model-specific variation. The LIME method also points to a brief region (0.5–0.6 seconds), but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or explanation, suggesting they do not detect the anomaly in this segment. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated in the anomalous segment, further supporting the presence of an unnatural vocal event. The wav2vec IG explanation is the most consistent with the observed acoustic anomaly, and thus, the final abnormality region is determined based on this cross-model agreement.

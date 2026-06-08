@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering a short, coherent sentence: "This year he admits it. Breaking new ground, attention to take toughest of his career." The speech is free of emotional inflection, background noise, or environmental cues, and the recording quality is high, with no audible distortion or compression artifacts. However, at approximately 1.5–2.0 seconds, a subtle but distinct high-frequency artifact emerges, centered around 6000–7000 Hz. This artifact is not present in the surrounding speech and does not correspond to any natural speech or environmental sound, suggesting a possible digital manipulation or insertion. The artifact is brief, isolated, and does not disrupt the intelligibility of the speech, but its unnatural spectral profile and timing raise suspicion of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency range ([1.5-2.0] seconds, [6000-7000] Hz), while LIME corroborates the time interval ([5.8-6.2] seconds), which is likely a misalignment or error in the LIME explanation. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and mfcc2V_sma3nz_amean, which are associated with the suspicious region. Overall, the wav2vec model’s multiple lines of evidence converge on the same time and frequency range, providing strong cross-model agreement for the identified abnormality.

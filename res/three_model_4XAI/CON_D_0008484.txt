@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, somber tone: "She died later on Monday." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.25 seconds. This artifact is a sustained, high-pitched tone, likely in the 3000–6000 Hz range, which is acoustically distinct from the voice and background. It is not present in the original speech and does not correspond to any natural sound or environmental noise. The artifact is abrupt in onset and offset, suggesting it was inserted or generated digitally rather than occurring naturally. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.75-1.25] seconds, 3000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a high-frequency artifact. The wav2vec evidence is robust and cross-validated, while the other models do not contradict but also do not support the finding. Thus, the final abnormality region is confidently identified as [0.75-1.25] seconds, 3000–6000 Hz, based on wav2vec’s multiple XAI methods.

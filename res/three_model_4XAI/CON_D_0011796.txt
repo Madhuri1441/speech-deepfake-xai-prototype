@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "fed up living in that house." The speech is clear and intelligible, with a natural cadence and emotional tone. However, at approximately 0.75 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.25 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a harsh, buzzing tone in the 4000–6000 Hz range. The artifact is abrupt in onset and offset, with no fade-in or fade-out, and is not present in the original speech. This anomaly is not supported by any of the XAI methods (IG, Saliency, LIME) for wav2vec, Hubert, or WavLM, nor by the SHAP values, which focus on low-frequency and loudness features unrelated to the artifact. The absence of XAI support for this region suggests the artifact is not captured by the models’ learned features, likely due to its synthetic and non-linguistic nature.
+
+III. XAI AGGREGATION EXPLANATION:
+- The only XAI evidence pointing to the abnormality is the wav2vec Saliency method, which identifies the [0.75-1.25] seconds time region and [4000-6000] Hz frequency region. No other XAI method (IG, LIME, or SHAP) supports this region, and the SHAP values are unrelated to the artifact. Thus, the abnormality is based solely on wav2vec Saliency evidence, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I just can't believe what had happened." The speech is intelligible and delivered in a neutral, conversational tone, with no obvious signs of emotional distress or artificiality. However, at approximately 1.50 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.75 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated in the 4000–6000 Hz range, and is acoustically distinct from the preceding speech. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and does not blend naturally with the voice. This suggests a digital glitch or tampering, rather than a natural environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.50-1.75] seconds, [4000-6000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are associated with the abrupt change in the audio signal. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the presence of a synthetic artifact in the specified time and frequency range.

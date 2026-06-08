@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "He wants the festival to back, 'cause it's a big..." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 3.0 seconds, a sudden, high-frequency, synthetic-sounding tone emerges, lasting until about 3.5 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 8000 Hz, and is acoustically distinct from the preceding speech. It does not blend naturally with the voice or environment, suggesting it is an artificial addition rather than a genuine background sound. The tone is abrupt in onset and offset, with no fade-in or fade-out, further indicating digital insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.0-3.5] seconds, [4000-8000] Hz). The IG method highlights the region [1.0-2.0] seconds, which corresponds to the end of the speech, but the Saliency and LIME methods both confirm the synthetic tone at [3.0-3.5] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values for features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an anomaly in the audio, particularly in the region where the synthetic tone occurs. The agreement among wav2vec’s methods provides strong evidence for the synthetic tone’s presence, while the lack of support from Hubert and WavLM suggests that the anomaly is subtle or not universally detectable.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I said, I think he was very..." The speech is abruptly cut off mid-word, with the final syllable "very" truncated and replaced by a synthetic, low-frequency electronic tone. This tone is steady, unmodulated, and lacks any natural acoustic decay, strongly indicating an artificial insertion rather than a natural sound event. The transition from speech to tone is instantaneous and unnatural, with no fade or overlap, and the tone persists until the end of the clip. The frequency content of the tone is concentrated in the 2000–6000 Hz range, which is consistent with the spectral region flagged by multiple XAI methods. The abruptness and unnatural character of the edit are further supported by the presence of a sharp, high-frequency click at the transition point, likely caused by a digital splice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.0–1.5 second region, Saliency focuses on 0.5–1.0 seconds, and LIME singles out 0.6–0.7 seconds, all within the 2000–6000 Hz frequency band. These overlapping time and frequency regions correspond precisely to the observed synthetic tone and its abrupt onset. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is uniquely sensitive to this type of edit. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp value indicating a significant increase in sound level at the transition, and the StddevUnvoicedSegmentLength suggesting a sudden change in speech characteristics. The combination of these findings confirms the presence of a synthetic edit at the specified time and frequency range.

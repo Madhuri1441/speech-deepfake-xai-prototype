@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "could make breathtaking moment." The speech is clear and natural, with no obvious signs of tampering or distortion. However, at approximately 1.25 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a faint, synthetic-sounding hiss or buzz, most prominent in the 3000–8000 Hz range, and is not present in the rest of the recording. The artifact is not a natural part of the voice or environment and does not align with the speaker’s vocal characteristics or the acoustic setting. It is likely an artifact introduced during audio processing or editing, possibly as a result of compression, resampling, or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) in the time range [1.25-1.50] seconds and frequency range [3000-4000] Hz, Saliency in the time range [1.75-2.0] seconds and frequency range [6000-8000] Hz, and LIME in the time range [0.75-0.8] seconds. These findings are consistent in identifying the same high-frequency artifact, with slight variations in the exact time and frequency ranges. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an anomaly, as they indicate a significant deviation from expected acoustic features in the affected region. The combined evidence from wav2vec’s multiple methods provides strong support for the presence of a synthetic artifact in the specified time and frequency range.

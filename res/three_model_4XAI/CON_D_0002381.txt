@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the sentence: "The compromise is in to spend and carry only pedestrian." The speech is generally intelligible, but at approximately 4.0–5.0 seconds, there is a noticeable, abrupt change in the acoustic quality of the voice. During this interval, the voice becomes muffled, lower in pitch, and exhibits a slight digital artifact, suggesting a possible splice or manipulation. This is further supported by a subtle, high-frequency hiss or static overlay in the same region, which is not present before or after. The speech resumes its original clarity and timbre after 5.0 seconds, indicating a localized anomaly. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [4.0-5.0] second time region and [6000-8000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights a related but slightly offset region ([2.5-3.0] seconds, [4000-6000] Hz). LIME corroborates the anomaly in the [4.5-5.0] second window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 further support the presence of a localized acoustic change, particularly in the 4.0–5.0 second window. The agreement among wav2vec, Saliency, and LIME, along with the Shapley values, confirms the anomaly as a likely deepfake artifact.

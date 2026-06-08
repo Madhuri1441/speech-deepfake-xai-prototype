@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, narrative tone. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, a subtle anomaly is present in the high-frequency region between 4000–6000 Hz during the time interval of 1.5–2.0 seconds. This region is marked by a faint, unnatural resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to casual listening but is detectable through detailed acoustic analysis. This region is supported by the wav2vec model’s Saliency method, which specifically highlights this time-frequency window as suspicious. The wav2vec model’s Integrated Gradients (IG) and LIME also point to other regions, but these are less consistent or not corroborated by other models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the [1.5-2.0] seconds, [4000-6000] Hz region as the most suspicious, and this is the only region supported by multiple XAI methods (IG and Saliency) from the same model. The LIME method from wav2vec also identifies a different region ([0.6-0.7] seconds), but this is not corroborated by other models. The Hubert and WavLM models do not provide any supporting evidence for this or any other region. The SHAP analysis highlights acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and alphaRatioUV_sma3nz_amean, but these do not directly correspond to a specific time-frequency region and are not cross-validated by other XAI methods. Therefore, the final abnormality is based on wav2vec’s Saliency and IG evidence, with no cross-model agreement.

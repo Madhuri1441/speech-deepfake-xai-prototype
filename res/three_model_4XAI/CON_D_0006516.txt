@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "Nonsense." The speech is abruptly interrupted by a loud, synthetic, high-pitched electronic tone that starts at approximately 1.0 seconds and lasts until about 1.5 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environmental noise, but rather a digitally inserted sound, likely intended to mask or censor the following speech. The transition from speech to tone is instantaneous and unnatural, indicating digital editing or overlay. The tone ceases abruptly at 1.5 seconds, after which the audio ends. There are no other notable acoustic anomalies present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also supports the [0.5-1.0] seconds range, though this is less aligned with the observed tone. The LIME method identifies a very narrow region at [1.6-1.7] seconds, which is likely a minor artifact or noise spike but does not correspond to the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and F2bandwidth_sma3nz_amean, but these do not directly correspond to the observed tone. The wav2vec IG explanation is the most robust and directly supports the presence of the synthetic tone in the specified time and frequency range.

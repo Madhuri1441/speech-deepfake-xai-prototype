@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "thinks people who are real artists," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0–2.0 seconds, a high-frequency, synthetic buzzing sound emerges, lasting until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of the voice, and does not correspond to any natural vocal or environmental sound. The rest of the audio remains free of such artifacts, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and also detects a secondary region at [2.9-3.1] seconds with [2000-4000] Hz using Saliency. LIME analysis from wav2vec supports the presence of an anomaly at [0.0-0.1] seconds, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, mfcc2_sma3_amean, and jitterLocal_sma3nz_amean, which may relate to the presence of the buzzing artifact, but these do not directly pinpoint the time or frequency of the anomaly. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the abnormality, while other models and features offer limited or no support.

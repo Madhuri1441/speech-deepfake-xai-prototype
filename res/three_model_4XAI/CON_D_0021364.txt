@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, coherent sentence: "Fame and money followed. Was it who wouldn't carry only pedestrians." The speech is generally natural, with a steady pace and intelligible articulation. However, at approximately 4.5–5.0 seconds, there is a subtle but noticeable anomaly: a brief, high-frequency, synthetic-sounding artifact appears, most prominent in the 3000–4000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The anomaly is likely a digital artifact, possibly introduced during audio processing or as a result of a deepfake generation process. The speech before and after this interval remains unaffected, with no distortion, clipping, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [4.5-5.0] seconds using Integrated Gradients (IG), which highlights the 3000–4000 Hz frequency region as suspicious. This is corroborated by the Saliency method, which also points to the same time and frequency range, and by LIME, which independently confirms the [4.5-5.0] seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly identifying the time or frequency range, suggest that features related to pitch (F0semitoneFrom27.5Hz_sma3nz_percentile50.0) and unvoiced segment length (MeanUnvoicedSegmentLength) are relevant, but do not pinpoint the exact location of the anomaly. Overall, the wav2vec model’s multiple independent methods (IG, Saliency, LIME) provide strong cross-model agreement on the [4.5-5.0] seconds interval as the region of interest.

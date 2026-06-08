@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering a short, coherent sentence: "But she was shown a video of the house on that place." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 3.0 and 3.5 seconds, specifically in the 2000–8000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. It is likely a digital artifact, possibly introduced during editing or as a result of audio processing. No other anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [3.0-3.5] seconds, with a frequency range of [7000-8000] Hz, and the saliency method confirms the same time range but with a broader frequency range of [2000-4000] Hz. The LIME method also supports the time range [2.5-2.6] seconds, which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shap values indicate that the abnormality is not related to overall audio level or MFCC features, but rather to a specific high-frequency event. The wav2vec and saliency methods agree on the time and frequency range, with wav2vec focusing on the higher end of the spectrum and saliency on a broader range. The LIME method supports the time range but not the frequency, and the other models do not provide evidence. Thus, the wav2vec and saliency methods provide cross-model agreement on the abnormality, while LIME supports the time range but not the frequency.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled female voice saying, "and got more about they would be built confirmed it's..." The speech is partially obscured by a persistent low-frequency hum and a high-frequency hiss, which together degrade the clarity of the recording. At approximately 1.5 seconds, a sharp, high-pitched, synthetic-sounding artifact appears, lasting until 2.0 seconds. This artifact is acoustically distinct from the speech, with a frequency content between 1000–3000 Hz, and is likely a digital glitch or encoding error. The artifact is not present in the original speech and does not correspond to any natural sound event. The audio then returns to the muffled speech, with no further obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [1.5-2.0] seconds in the [1000-3000] Hz range using Integrated Gradients (IG), and at [2.5-3.0] seconds in the [6000-8000] Hz range using Saliency. LIME also highlights a brief region at [0.5-0.6] seconds, but this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not detected by these models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, unnatural sound event. The wav2vec IG and Saliency results, along with the Shapley values, support the conclusion that the artifact at [1.5-2.0] seconds is the primary anomaly. The lack of agreement from Hubert and WavLM suggests that the anomaly is subtle or not captured by all models.

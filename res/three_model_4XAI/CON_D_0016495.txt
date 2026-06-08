@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There'll be no excuses from me about injuries." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a sudden, loud, and sustained electronic tone appears. This tone is centered around 4.5 kHz, with harmonics extending up to 6 kHz, and is characterized by a harsh, buzzy timbre typical of a square or sawtooth wave. The tone is significantly louder than the speech, masking the remainder of the utterance and dominating the acoustic environment until the end of the clip. There are no other background noises, environmental sounds, or signs of natural room acoustics, suggesting the tone was artificially inserted rather than occurring naturally.
+
+The abrupt onset and unnatural spectral content of the tone, combined with its complete masking of speech, indicate a deliberate audio manipulation. The tone does not resemble any typical notification, error, or system sound, and its presence is inconsistent with the preceding speech, supporting the conclusion that it is an artifact of audio editing or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the [1.0-2.0] second time region and [3000-6000] Hz frequency range, while Saliency and LIME also point to this region, though with some variation in exact timing. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormal event, with high contributions from features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are consistent with the sudden loudness and spectral content of the inserted tone. The agreement among wav2vec’s IG, Saliency, and LIME methods confirms the [1.0-2.0] second interval as the most likely region of tampering, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

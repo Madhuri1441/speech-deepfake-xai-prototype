@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a sharp, high-frequency transient is heard, lasting about half a second. This transient is acoustically distinct from the rest of the audio, characterized by a piercing, sibilant quality in the 6000–7000 Hz range, and is not present in the preceding or following speech. The transient is not a natural part of the spoken phrase, which is delivered in a neutral, synthetic female voice with no emotional inflection or background noise. The abruptness and unnatural spectral content of this event suggest it is an artifact, likely introduced during the generation or post-processing of the audio. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 1.5–2.0 seconds is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency region as critical for the model’s prediction, and LIME also highlights a time point within this interval. Saliency analysis from the wav2vec model further corroborates the importance of this region, though it is slightly offset in time. The wav2vec model’s Saliency and LIME results, along with the wav2vec IG result, provide cross-model agreement on the significance of this transient. In contrast, the Hubert and WavLM models do not identify this region, indicating that the anomaly is not universally detected by all models. The Shapley values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 further support the presence of an abnormal acoustic event, as these features are elevated compared to their baseline values, consistent with the presence of a transient artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral male voice saying "project" in a standard North American accent, with no background noise or distortion. At approximately 0.6 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact is characterized by a harsh, buzzing, and static-like timbre, with energy concentrated between 2000 Hz and 6000 Hz, and is acoustically inconsistent with the preceding speech. The artifact is not a natural part of the voice or environment and is likely the result of digital manipulation or encoding error. The voice resumes normally after the artifact ends, with no further anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the [0.85-1.0] seconds region, Saliency focuses on [0.6-0.8] seconds, and LIME supports [0.6-0.7] seconds, all overlapping in the 0.6-1.0 seconds window and within the 2000-6000 Hz frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values, while not directly indicating the time or frequency of the artifact, suggest that the abnormality is likely related to high-frequency energy and signal irregularity, as indicated by the large positive Shap value for equivalentSoundLevel_dBp. The combined wav2vec evidence and Shapley analysis strongly support the presence of a high-frequency artifact in the specified region.

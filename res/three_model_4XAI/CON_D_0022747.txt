@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male voice speaking the phrase, "It is pretty, but it's effective." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the high-frequency range (6000–8000 Hz) during the word "pretty," specifically between 1.5 and 2.0 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not immediately obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.5-2.0] seconds time region and [6000-8000] Hz frequency region as salient, indicating that these features are critical for the model's prediction. The LIME method from wav2vec also highlights the [1.5, 1.6] seconds interval, reinforcing the importance of this segment. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is specifically captured by wav2vec. The SHAP values further support the significance of the high-frequency content, with equivalentSoundLevel_dBp showing a high positive contribution, indicating that the loudness in this frequency band is a key factor in the model's decision. Overall, the cross-model agreement from wav2vec's IG and LIME methods, along with the SHAP analysis, strongly supports the presence of an anomaly in the specified time and frequency range.

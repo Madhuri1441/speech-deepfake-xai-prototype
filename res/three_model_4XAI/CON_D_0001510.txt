@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "This statement can... it is..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, most prominent in the 4000–7000 Hz range, and is not present in the rest of the recording. The artifact is not masked by speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. This region is supported by multiple XAI methods: the Saliency method for wav2vec identifies a salient region between 1.5–2.0 seconds in the 4000–6000 Hz range, while the Integrated Gradients (IG) method for wav2vec identifies a region between 2.3–2.5 seconds in the 6000–7000 Hz range. These overlapping regions indicate a consistent abnormality in the high-frequency content during this time window. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region is supported by two independent XAI methods (Saliency and IG) from the wav2vec model, both identifying overlapping time and frequency ranges. This cross-model agreement strengthens the evidence for a genuine anomaly in the audio. The Hubert and WavLM models do not provide any supporting evidence, and the Shapley values do not correspond to this region, indicating that the anomaly is not captured by global feature importance methods. Thus, the conclusion is based on consistent, cross-model evidence from wav2vec’s local attribution methods.

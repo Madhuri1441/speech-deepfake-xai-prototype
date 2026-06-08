@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, continuous sentence in a quiet, acoustically dry environment. The speech is intelligible and natural, with no background noise or environmental cues. However, a subtle but noticeable anomaly is present in the word "unmarked" at approximately 1.5–2.0 seconds. During this interval, the speech exhibits a slight pitch and timbre shift, accompanied by a faint, artificial-sounding resonance in the 4000–6000 Hz range, which is inconsistent with the rest of the utterance. This region stands out as acoustically unnatural, suggesting possible digital manipulation or synthesis. The anomaly is not present in the surrounding speech, and the rest of the audio remains stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method in the [0-1] seconds range and [2000-4000] Hz range, and the LIME method at [4.0, 4.1] seconds. The wav2vec model’s IG and Saliency results both point to the same acoustic region, indicating cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region, and their IG, Saliency, and LIME results are all null. The Shapley values highlight equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength as the top contributors, further supporting the presence of an unnatural acoustic event in the specified time and frequency range.

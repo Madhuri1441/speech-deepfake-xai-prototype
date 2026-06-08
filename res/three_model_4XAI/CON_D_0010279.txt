@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a mouth or handling noise, followed by a male voice saying, "What a silly that." The speech is delivered in a neutral, slightly descending tone, with a clear and steady pitch. The utterance is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit or digital truncation. The acoustic environment is quiet, with no background noise or reverberation, suggesting a controlled or post-processed recording. The voice is clear and intelligible, with no signs of distortion, clipping, or compression artifacts. The most notable abnormality is the unnatural, abrupt ending of the speech, which is not accompanied by any natural vocal or environmental decay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency peak between 0.5-1.0 seconds in the 4000-6000 Hz range and an IG peak between 1.00-1.25 seconds in the 3000-4000 Hz range. These regions align with the end of the speech and the abrupt cutoff, suggesting the model is sensitive to the unnatural termination of the utterance. The LIME explanation also supports this, highlighting a specific time window (0.75-0.8 seconds) that falls within the wav2vec saliency region. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is not detected by all models. The Shapley values further reinforce the importance of the final seconds of the audio, with features like equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean showing high contributions, likely due to the sudden drop in signal energy at the end. Overall, the wav2vec saliency and IG, along with LIME, provide cross-model agreement on the abnormality, while Hubert and WavLM do not detect it.

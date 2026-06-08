@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal, narrative passage in a controlled, studio-like environment. The speech is clear, with no background noise or environmental interference, and the recording quality is high. However, at approximately 1.5–2.0 seconds, a subtle but distinct artifact is present: a brief, high-frequency, synthetic-sounding noise overlaying the word "ordering." This artifact is not a natural part of the voice or environment and is acoustically inconsistent with the rest of the recording. The noise is tonal, with a pitch in the 4000–6000 Hz range, and is perceptually intrusive, though not disruptive to speech intelligibility. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at 1.5–2.0 seconds with an IG explanation in the 4000–6000 Hz frequency range, and a Saliency explanation in the 0–1 second range with a 2000–4000 Hz frequency range. The LIME explanation also supports the 2.0–3.0 second range, overlapping with the observed artifact. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are consistent with the presence of a high-frequency, synthetic artifact. The wav2vec model’s multiple independent explanations (IG, Saliency, and LIME) provide strong cross-model agreement on the abnormality’s timing and frequency, confirming the presence of a synthetic artifact in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice stating, "It is three years." Immediately following this, a low-frequency, synthetic, and slightly distorted electronic tone is heard, lasting approximately 1.5 seconds. This tone is acoustically distinct from the preceding speech, with a harsh, buzzy timbre and a fundamental frequency around 100 Hz, accompanied by strong harmonics extending up to 6 kHz. The tone is abruptly cut off, and the audio ends. The synthetic nature of the tone, its abrupt onset and offset, and its spectral content (especially the strong presence in the 4000–6000 Hz range) suggest it is not a natural sound but rather a digital artifact or a post-production effect. The speech itself is clear and natural, with no signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency range using Integrated Gradients (IG) and LIME, while Saliency analysis highlights a different region ([0-1] seconds, [2000-4000] Hz) that does not align with the observed synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values point to features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_amean, which are more related to the speech segment and do not directly support the synthetic tone. The wav2vec model’s IG and LIME results are the only ones that align with the observed synthetic tone, suggesting that this is the most reliable indicator of the anomaly.

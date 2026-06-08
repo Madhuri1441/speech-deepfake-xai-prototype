@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, steady, and neutral tone, speaking in English with a non-native accent. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, such as unnatural pauses, pitch jumps, or abrupt volume changes. The only region of acoustic abnormality is a brief, high-frequency burst in the 3000–4000 Hz range between 1.5 and 2.0 seconds, which is perceptually subtle and does not disrupt the intelligibility or naturalness of the speech. This anomaly is not accompanied by any obvious speech errors or emotional shifts, and the overall prosody remains consistent. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.5–2.0 second time region and 3000–4000 Hz frequency region as abnormal using Integrated Gradients (IG), while the Saliency method highlights a different region (2.5–3.0 seconds, 7000–8000 Hz), which is not corroborated by other models. The Hubert and WavLM models do not provide any abnormality evidence. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting a deviation in the distribution of unvoiced speech segments, but this does not pinpoint a specific time or frequency region. The only region supported by multiple XAI sources is the 1.5–2.0 second, 3000–4000 Hz segment identified by wav2vec’s IG method. This is a cross-model agreement, as no other models corroborate the finding, and the evidence is limited to a single model.

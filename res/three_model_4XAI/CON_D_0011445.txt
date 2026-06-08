@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a calm, conversational statement: "But I have no argument with Scotland, it's Tupper in our island, in Reswick." The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the frequency range of 1000–2000 Hz during the time interval of 2.5–3.0 seconds, coinciding with the word "Tupper." This region exhibits a faint, unnatural resonance or tonal quality that is inconsistent with the rest of the speech, suggesting possible digital manipulation or synthesis. The anomaly is not perceptible to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 2.5–3.0 second range with a frequency focus of 1000–2000 Hz, using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights a brief, high-frequency (5000–6000 Hz) anomaly at 1.0–1.2 seconds, likely related to the same underlying manipulation. The LIME method also points to a short interval (0.1–0.2 seconds), though less specific. The Hubert and WavLM models do not detect any anomalies, indicating that the wav2vec-based methods are more sensitive to this particular type of manipulation. The SHAP analysis further supports the presence of an anomaly, with the feature StddevUnvoicedSegmentLength showing a high SHAP value, suggesting a deviation in the acoustic structure of the speech. Overall, the wav2vec-based methods provide consistent evidence of a subtle anomaly in the specified time and frequency range, while other models do not detect it.

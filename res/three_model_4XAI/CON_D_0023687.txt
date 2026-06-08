@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "Charity also has a was not all plain sailing." The speech is generally intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable disruption in the vocal quality. During this interval, the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, which is inconsistent with the rest of the utterance. This anomaly is accompanied by a subtle, high-frequency hiss and a brief, unnatural reverberation, suggesting digital manipulation or synthesis. The acoustic environment is otherwise clean, with no background noise or environmental cues, and the speech resumes its natural quality after the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.0] seconds, [4000-6000] Hz). The IG and Saliency methods highlight the disruption in the vocal signal, while LIME provides a localized confirmation. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant regions. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden changes in loudness and spectral content. The combined evidence from wav2vec and the Shapley values strongly supports the conclusion that the audio contains a synthetic or manipulated segment in the specified region.

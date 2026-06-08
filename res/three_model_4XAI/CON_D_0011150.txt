@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a neutral, formal tone, delivering the phrase, "We are aware of the Trivino case." The recording is of high fidelity, with a clear, steady voice and minimal background noise. However, a subtle but distinct anomaly is present in the high-frequency range (4000–8000 Hz) during the latter part of the phrase, specifically around the word "case." This region exhibits a faint, artificial shimmer or digital artifact, which is not present in the rest of the audio. The anomaly is most pronounced between 2.5 and 4.0 seconds, coinciding with the end of the sentence and the final syllable of "case." This suggests a possible digital manipulation or synthesis artifact, as the sound is unnatural and inconsistent with typical human speech characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and in the [3.5-4.0] seconds range and [6000-8000] Hz range using Saliency. LIME also supports the [2.5-3.0] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values highlight features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are consistent with the presence of an artificial or synthesized segment in the audio. The convergence of wav2vec’s IG, Saliency, and LIME evidence across the [2.5-4.0] seconds interval and [4000-8000] Hz frequency range provides strong support for the presence of a deepfake artifact in this region.

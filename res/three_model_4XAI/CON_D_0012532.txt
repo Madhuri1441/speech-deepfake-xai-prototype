@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Beijing was also asked," which is clear and natural. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice changes to a male speaker with a distinctly different timbre and pitch, stating, "We have to be in Polk County." This transition is abrupt and lacks any natural acoustic overlap, suggesting a splice or deepfake manipulation. The male voice continues with, "But this is a person that appears to have had a last month," maintaining a robotic, monotone delivery. The frequency content of the male voice is concentrated between 2000–4000 Hz, which is narrower and less natural than typical human speech, further indicating synthetic generation. The audio ends abruptly after the male speaker’s sentence, with no fade-out or natural conclusion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports the [3-4] seconds range, likely corresponding to the male speaker’s phrase "We have to be in Polk County." LIME analysis also supports the [0.5-1.0] seconds range, aligning with the initial splice. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the wav2vec model is the primary source of detection. The Shapley values highlight features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are consistent with abrupt transitions and unnatural speech patterns. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the splice at 0.5–1.5 seconds, confirming the deepfake manipulation.

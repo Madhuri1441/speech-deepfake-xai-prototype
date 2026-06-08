@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering a formal statement in English. The speech is generally intelligible, but at approximately 2.0–2.5 seconds, there is a noticeable disruption in the audio. During this interval, the speaker’s voice becomes muffled and distorted, with a loss of high-frequency content and a reduction in clarity, suggesting a digital artifact or editing error. This is further supported by a sharp, unnatural drop in loudness and a brief period of static or digital noise, which is not present in the rest of the recording. The distortion is not present in the surrounding speech, indicating a localized anomaly rather than a general recording issue. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.0-2.5] seconds time region and [3000-6000] Hz frequency range as the most salient for the model’s prediction, aligning with the observed distortion in the audio. The wav2vec Saliency method also highlights a different region ([3.5-4.0] seconds, [7000-8000] Hz), but this does not correspond to any clear acoustic anomaly and is likely a model-specific artifact. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis is inconclusive. The SHAP values indicate that features such as loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength are important for the model’s decision, but these do not directly correspond to the observed audio anomaly. Overall, the wav2vec IG result is the only XAI evidence that directly supports the identified acoustic abnormality, with no cross-model agreement.

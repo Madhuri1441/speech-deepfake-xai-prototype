@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, “every after that it was emerging.” The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.1 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–8000 Hz range, which is acoustically distinct from the voice and does not match typical environmental or vocal artifacts. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound event. There are no other obvious anomalies in the audio, such as clipping, distortion, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency region ([1.5-2.1] seconds, [6000-8000] Hz), indicating strong cross-model agreement. The IG method highlights the region as a key contributor to the model’s prediction, while Saliency and LIME reinforce this by identifying the same interval and frequency band. In contrast, the Hubert and WavLM models do not provide any saliency or attribution evidence for this region, suggesting that the anomaly is not detected by these models. The SHAP analysis, while not directly identifying the artifact, provides context by highlighting acoustic features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may be indirectly related to the presence of the artifact. Overall, the wav2vec attribution methods provide consistent and robust evidence for the presence of a synthetic artifact in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a female voice speaking in a neutral, formal tone: "He will be sorry equipment was seized." The speech is clear and intelligible, with no obvious signs of emotional distress or urgency. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency electronic artifact emerges, lasting about half a second. This artifact is characterized by a piercing, synthetic tone in the 6000–7000 Hz range, which is acoustically inconsistent with the natural speech and background hum. The artifact is abrupt in onset and offset, suggesting a digital glitch or manipulation rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time window and 6000–7000 Hz frequency range, while LIME corroborates the timing at 2.4–2.5 seconds, which is consistent with the artifact’s duration. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values for equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_meanFallingSlope further support the presence of a sudden, unnatural acoustic event in this region, as these features are sensitive to abrupt changes in sound level and spectral content. The convergence of wav2vec’s multiple methods on the same region provides strong evidence for the artifact, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

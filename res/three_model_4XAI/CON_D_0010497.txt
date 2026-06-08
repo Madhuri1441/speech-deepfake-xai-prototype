@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a single, low-pitched, monotone utterance: "kept to me for a long time." The voice is delivered in a flat, emotionless tone, with a slight downward inflection at the end. The speech is clear and intelligible, with no distortion or clipping, but the overall sound is somewhat muffled, lacking high-frequency detail above 6 kHz. The acoustic environment is dry, with no reverberation or echo, suggesting a small, acoustically treated room or close-mic recording. There are no other voices, background sounds, or environmental cues present.
+
+The most notable acoustic anomaly occurs between 0.5 and 1.5 seconds, where the voice exhibits a subtle, unnatural pitch modulation and a slight increase in spectral energy between 2000 and 6000 Hz. This region is marked by a brief, artificial-sounding vibrato or pitch wobble, which is inconsistent with natural human speech and may indicate digital manipulation or synthesis. The rest of the audio is relatively stable, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the most salient region for anomaly detection as [0.5-1.5] seconds, with a frequency range of [2000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. This aligns with the observed pitch modulation and spectral anomaly in the audio. The LIME method, however, highlights an earlier, less prominent region ([0.0-0.1] seconds), which corresponds to the initial thump or handling noise but is not strongly supported by other methods. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which may relate to pitch and spectral irregularities, further supporting the wav2vec findings. Overall, the wav2vec model’s evidence is the most consistent and directly supported by the audio anomaly, while other models and methods provide limited or conflicting information.

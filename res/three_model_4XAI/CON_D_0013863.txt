@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, but at approximately 1.0–1.5 seconds, a sudden, unnatural high-frequency artifact appears. This artifact is a sustained, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The tone is abrupt, lacks modulation, and does not correspond to any environmental or vocal source, indicating a digital or synthetic origin. This anomaly is not present in the rest of the audio, which resumes normal speech after the artifact ends. The Shapley values for spectral features (spectralFlux_sma3_amean, spectralFluxUV_sma3nz_amean, and StddevUnvoicedSegmentLength) further support the presence of an unnatural, high-frequency event, as these features are sensitive to abrupt spectral changes and unvoiced segments, which are not present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.0–1.5] seconds time region and [4000–6000] Hz frequency region as the most salient. This is corroborated by the Shapley values, which highlight spectral features associated with the artifact. The wav2vec model’s Saliency and LIME also point to nearby time regions, but the strongest and most consistent evidence is from the IG analysis. The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME analyses return no significant regions. Thus, the abnormality is supported by wav2vec’s IG and Shapley values, with no cross-model agreement from Hubert or WavLM.

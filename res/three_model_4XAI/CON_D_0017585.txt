@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Too much work changes our longevity." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 1.5 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment and does not match any expected background noise or artifact. Its abrupt onset and offset, as well as its unnatural spectral profile, suggest it is an inserted or manipulated segment rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-1.5] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [0.00-0.25] seconds with a frequency range of [1000-4000] Hz. The LIME method supports the presence of an anomaly at [0.00-0.10] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most likely related to the equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean features, which are consistent with the presence of a synthetic tone. The wav2vec model's IG and Saliency methods both point to the same time and frequency range, providing cross-model agreement on the anomaly. The LIME method supports the presence of an anomaly at the beginning of the audio, but the wav2vec evidence is more specific and consistent. Therefore, the final abnormality region is [1.0-1.5] seconds with a frequency range of [2000-4000] Hz, supported by cross-model agreement from wav2vec.

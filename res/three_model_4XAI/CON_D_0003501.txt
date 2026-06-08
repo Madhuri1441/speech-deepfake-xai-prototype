@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, conversational statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 3.5–4.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a short, sharp, and unnatural burst of sound, likely a digital glitch or a synthetic overlay, which stands out from the otherwise natural speech. The artifact is not present in the original audio but is introduced during post-processing or as a result of a model-generated anomaly. The wav2vec model’s Integrated Gradients (IG) analysis highlights this exact time and frequency range, indicating that the model identifies this region as anomalous. The Shapley value analysis also supports this, with a high positive contribution from the equivalentSoundLevel_dBp feature, suggesting a sudden increase in sound level at this point. No other XAI methods (Saliency, LIME) or models (Hubert, WavLM) detect this anomaly, indicating that the wav2vec model is uniquely sensitive to this artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the suspicious region at [3.5-4.0] seconds and [6000-8000] Hz, which aligns with the observed synthetic artifact in the audio. This is the only XAI source that detects the anomaly, as Saliency, LIME, and other models (Hubert, WavLM) do not provide supporting evidence. The Shapley value analysis further corroborates the presence of an anomaly at this time, based on the equivalentSoundLevel_dBp feature. Thus, the wav2vec model’s IG analysis and the Shapley value analysis provide cross-model agreement on the suspicious region, while other XAI methods do not detect the anomaly.

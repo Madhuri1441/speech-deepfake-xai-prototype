@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "If John's memory, when in charity also has a been, the bad of you on that is the manager of votes." The speech is generally intelligible, with a standard North American accent and no obvious emotional inflection. However, at approximately 3.0–3.5 seconds, a distinct, high-frequency, synthetic-sounding artifact is present, characterized by a buzzing or warbling quality in the 7000–8000 Hz range. This artifact is not part of the natural speech and appears abruptly, suggesting a digital or synthetic origin. The rest of the audio is free from such anomalies, and the speech remains otherwise clear and undistorted.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which highlights the [3.0-3.5] seconds time region and [7000-8000] Hz frequency region as significant for the model's prediction. This aligns with the observed synthetic artifact in the audio. The wav2vec Saliency method also identifies a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this does not correspond to any clear anomaly in the audio and may reflect model-specific sensitivity to speech content rather than an actual artifact. The Hubert and WavLM models do not provide any supporting evidence for the abnormality, as their IG, Saliency, and LIME analyses yield no relevant regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, but this is a global statistical measure and does not localize the anomaly to a specific time or frequency. Overall, the wav2vec IG result is the only one that directly corroborates the observed synthetic artifact, with no cross-model agreement.

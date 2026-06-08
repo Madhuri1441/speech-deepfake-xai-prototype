@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.1-2.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At the start, a female voice with a clear, neutral accent says, "Penalty was the turning point." The speech is delivered in a calm, declarative tone, with no emotional inflection or background noise. The recording is clean, with no distortion, clipping, or extraneous sounds. However, at approximately 2.1 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.2 seconds. This artifact is characterized by a sharp, piercing tone in the 2500–3000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not a natural part of the voice or environment and is likely the result of digital manipulation or a synthetic overlay. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the abnormality at [2.1-2.3] seconds in the frequency range of [2500-3000] Hz, which aligns precisely with the observed synthetic artifact in the audio. This is the only XAI evidence that directly supports the presence of an anomaly, as the Saliency and LIME explanations from wav2vec, as well as all explanations from Hubert and WavLM, do not indicate any abnormality. The Shapley value analysis also does not highlight any specific region as anomalous, instead focusing on general audio features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are unrelated to the observed artifact. Therefore, the final abnormality region is based solely on the wav2vec IG explanation, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker saying, "but not much commitment. He did like..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.1 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 5000–8000 Hz range, and is not present in the rest of the audio. The artifact is not masked by speech and is perceptible as a slight digital anomaly, possibly indicating a momentary glitch or encoding error. No other acoustic irregularities are observed in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.5-2.1] seconds, [6000-8000] Hz and [5000-6000] Hz, respectively). The LIME method also supports this region, though with a much shorter time window ([0.0-0.1] seconds), which is likely a less reliable indicator. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shapley values from the feature-based analysis highlight spectral features such as StddevUnvoicedSegmentLength and spectralFlux, which are consistent with the presence of a high-frequency artifact. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, while other models and methods either do not detect it or provide less reliable support.

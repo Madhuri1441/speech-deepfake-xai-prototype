@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "to fathom" in a neutral, conversational tone. At approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges, lasting until about 1.25 seconds. This buzzing is sharply defined, with a fundamental frequency around 4000–6000 Hz, and is acoustically distinct from the preceding speech. The buzz is not a natural artifact of speech or environmental noise, but rather a digitally inserted sound, likely intended as a censor beep or placeholder. The abrupt onset and cessation of the buzz, along with its spectral purity and lack of modulation, suggest it is a synthetic waveform rather than a real-world sound. The audio returns to normal speech after the buzz, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.00-1.25] seconds, 4000–6000 Hz). The IG and LIME methods both highlight the exact same time window, while Saliency identifies a slightly broader region ([0.5-1.0] seconds, 2000–4000 Hz), which overlaps with the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no significant regions. The Shapley values indicate that the abnormality is not related to general audio features like equivalentSoundLevel_dBp or StddevUnvoicedSegmentLength, but rather to the specific high-frequency buzz. The cross-model agreement from wav2vec’s multiple methods strongly supports the presence of a synthetic buzz in the specified region.

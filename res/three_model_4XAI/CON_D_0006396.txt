@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a clear and steady monologue in a quiet, acoustically dry environment. The speech is continuous and intelligible, with no background noise, distortion, or abrupt changes in volume or timbre. However, at approximately 3.5 seconds, a brief, unnatural vocal artifact occurs: a high-frequency, synthetic-sounding burst lasting about half a second, peaking in the 2000–6000 Hz range. This artifact is acoustically distinct from the speaker’s voice, lacking natural vocal harmonics and exhibiting a static, electronic timbre. The artifact is not present in the original audio, nor is it accompanied by any environmental or contextual cues, suggesting it is a post-production insertion. The rest of the audio remains natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region via Integrated Gradients (IG) and Saliency, both pointing to the 3.5–4.0 second window and 2000–6000 Hz frequency range. LIME also supports this region, though with a slightly earlier start time (1.5–2.0 seconds), likely due to its local approximation method. The Hubert and WavLM models do not detect any abnormalities, indicating that the artifact is subtle and may not be captured by all models. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency event. The combined evidence from wav2vec’s IG, Saliency, and LIME, along with the SHAP feature values, strongly supports the conclusion that the artifact is a synthetic vocal burst inserted into the audio.

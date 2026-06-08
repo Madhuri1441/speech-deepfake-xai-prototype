@@ -1,0 +1,16 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, controlled recording environment. At approximately 1.0 seconds, a female voice with a Scottish accent begins to speak: “Greed brings us to the Scottish connection.” The speech is clear, with a natural cadence and no signs of digital manipulation or emotional distress. However, at around 1.5 seconds, a brief, unnatural, high-pitched electronic tone appears, lasting about 0.1 seconds. This tone is sharply distinct from the voice and background noise, with a frequency content in the 3000–6000 Hz range, and is not present in the original recording. The tone is likely an artifact introduced during post-processing or editing, as it does not align with any natural speech or environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality at 1.5 seconds is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies a salient region between 1.0–2.0 seconds, with a frequency range of 3000–6000 Hz, which aligns with the timing and spectral content of the electronic tone.  
+- The wav2vec model’s LIME method also highlights a salient region at 1.5–1.6 seconds, further supporting the presence of an anomaly at this time.  
+- The wav2vec model’s Saliency method identifies a brief, high-frequency event at 0.1–0.2 seconds, which may correspond to a transient artifact, though this is less consistent with the main anomaly.  
+- The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, likely due to differences in their training or feature extraction methods.  
+- The SHAP values indicate that the abnormality is not strongly linked to the acoustic features analyzed, suggesting that the anomaly is not captured by the model’s learned representations.  
+
+In summary, the primary abnormality is a high-frequency electronic tone at 1.5 seconds, supported by wav2vec’s IG and LIME methods, but not detected by Hubert or WavLM. The evidence from wav2vec is cross-model agreement, while the other models do not provide supporting evidence.

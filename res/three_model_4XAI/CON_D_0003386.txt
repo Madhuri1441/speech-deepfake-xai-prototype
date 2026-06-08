@@ -1,0 +1,15 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a synthetic, monotone female voice stating, "Game is now open and the device..." The speech is delivered in a flat, robotic manner, lacking natural intonation, breath, and emotional inflection. At approximately 1.0 seconds, a sharp, high-frequency digital artifact emerges, lasting until 1.5 seconds. This artifact manifests as a piercing, static-like tone in the 3000–6000 Hz range, which is acoustically distinct from the voice and suggests a digital glitch or encoding error. The voice itself is clear and intelligible, but the sudden onset of this artifact disrupts the natural flow and is not present in the original speech. The remainder of the audio is silent, with no further speech or background noise.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The primary abnormality is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [3000-6000] Hz frequency region as significant.  
+- The wav2vec model’s Saliency method also highlights a related time region ([2.0-2.5] seconds) and frequency range ([1000-4000] Hz), though this is less specific to the observed artifact.  
+- The wav2vec model’s LIME method further supports the [1.5, 1.6] seconds region, aligning with the artifact’s timing.  
+- The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME methods yield no significant regions.  
+- The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency artifact in an otherwise silent and synthetic audio segment.  
+- The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the conclusion that the artifact is a genuine anomaly, not a natural part of the speech.

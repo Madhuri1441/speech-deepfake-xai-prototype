@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a female voice speaking the phrase, "Western big line development." The speech is clear, with a neutral, slightly formal tone, and is delivered in a controlled, quiet environment. However, at approximately 2.0–2.5 seconds, a distinct, high-frequency, synthetic buzzing tone abruptly appears. This tone is centered around 6500 Hz and is markedly different from the natural speech, lacking any organic modulation or acoustic context. The buzz is steady, with a harsh, electronic timbre, and persists until the end of the clip. This anomaly is not present in the original speech and is not a natural part of the environment, suggesting it is an artifact introduced during post-processing or as a result of digital manipulation. The buzz is not supported by any of the XAI saliency or LIME evidence, but the Shapley values indicate that features related to unvoiced segment length and falling loudness slope are prominent, which may reflect the sudden onset of the synthetic tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The only XAI evidence that aligns with the observed abnormality is the Integrated Gradients (IG) explanation from the wav2vec model, which highlights the [2.0-2.5] seconds time region and [6000-7000] Hz frequency region. This matches the timing and spectral content of the synthetic buzz. The wav2vec saliency and LIME explanations do not support this region, and the Hubert and WavLM models provide no relevant evidence. The Shapley values indicate that features related to unvoiced segment length and falling loudness slope are significant, which may correspond to the abrupt appearance of the buzz. Overall, the abnormality is supported by a single XAI source (wav2vec IG), with no cross-model agreement.

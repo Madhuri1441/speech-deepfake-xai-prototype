@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.2 seconds. This transient is characterized by a piercing, metallic or digital artifact, with energy concentrated between 4000–5000 Hz, and is acoustically distinct from the preceding speech. The transient is not a natural part of the voice or environment, and its abruptness and spectral profile suggest a digital glitch or editing artifact. The remainder of the audio consists of a male voice speaking in a neutral, conversational tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [1.0-1.2] seconds time region and [4000-5000] Hz frequency region as the most salient for its prediction, indicating that this transient is a key feature in the model’s analysis. The wav2vec Saliency method also highlights a different region ([1.4-1.6] seconds, [2000-3000] Hz), but this is not supported by other models or the audio evidence. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support the transient region. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, which aligns with the presence of the transient, as it would increase the overall sound level. The other Shapley features do not directly relate to the transient. Thus, the wav2vec IG evidence is the only cross-model agreement, and the transient is the only clearly abnormal acoustic event supported by multiple lines of evidence.

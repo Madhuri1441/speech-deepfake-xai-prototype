@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "to shut. He's delighted if he wins." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until 2.5 seconds. This tone is centered around 3500 Hz and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is likely an artifact introduced during post-processing or as a result of digital manipulation. The sudden onset and unnatural spectral content of this tone suggest it is not part of the original recording but rather an added or altered element.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.0-2.5] seconds time region and [3000-4000] Hz frequency region as salient, directly aligning with the observed synthetic tone. The Saliency explanation from wav2vec also highlights a high-frequency region ([4000-6000] Hz) around 0.9-1.1 seconds, which may correspond to a brief, less prominent artifact or noise, but this is not as clearly supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, suggesting a sudden increase in sound level at the time of the synthetic tone. Overall, the cross-model agreement from wav2vec’s IG and Saliency methods, combined with the SHAP analysis, strongly indicates the presence of an artificial tone in the specified time and frequency range.

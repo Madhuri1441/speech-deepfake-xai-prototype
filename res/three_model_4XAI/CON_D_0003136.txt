@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, intelligible statement: "Surely this day would Parliament. That's not a big take of you on that." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The only notable acoustic anomaly occurs between 2.5 and 3.0 seconds, where a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the speech and does not correspond to any natural vocal or environmental sound. It is a short, tonal burst in the 1000–2000 Hz range, likely introduced by digital editing or post-processing. The rest of the audio is clean and natural, with no signs of distortion, clipping, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.5-3.0] seconds time range and [1000-2000] Hz frequency range using Integrated Gradients (IG), and also detects a salient region at [0.0-0.5] seconds with Saliency, though this is less consistent with the audio. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values indicate that the abnormality is not related to overall audio energy or spectral flux, but rather to a specific, localized event. The wav2vec IG explanation is the only one that aligns with the observed artifact, and it is supported by the Saliency explanation, though the latter is less specific. Therefore, the final abnormality region is based on cross-model agreement from wav2vec’s IG and Saliency, with no support from Hubert or WavLM.

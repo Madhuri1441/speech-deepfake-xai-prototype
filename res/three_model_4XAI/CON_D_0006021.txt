@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "We have to reduce the number of, well, heat the chicken." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until 1.0 seconds. This buzzing is distinctly artificial, with a harsh, static timbre and a frequency content between 4000–6000 Hz, which is inconsistent with the natural acoustic environment of the speech. The buzzing overlays the speech, causing a noticeable disruption in the audio signal, and is not present in the original recording, indicating it is an added artifact. The speech resumes normally after the buzzing ceases, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a slightly different region ([2.5-3.0] seconds, [6000-8000] Hz), which does not align with the observed buzzing. The LIME method supports the [0.5-0.6] seconds interval, corroborating the presence of an anomaly in the early part of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an artificial sound event, as these features are sensitive to sudden changes in audio characteristics. Overall, the wav2vec model’s IG and LIME results, along with the Shap values, provide strong cross-model agreement on the abnormality occurring between 0.5 and 1.0 seconds, with the buzzing sound being the most likely cause.

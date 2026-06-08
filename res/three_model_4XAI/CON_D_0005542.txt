@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [7.5-8.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a factual statement about a sports event. The speech is generally intelligible, with a steady pace and no obvious signs of emotional distress or artificiality. However, at approximately 7.5–8.5 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a sustained, pure tone at around 6500 Hz, which is acoustically inconsistent with the natural speech and background environment. The tone is abrupt in onset and offset, with no gradual fade, and is not present in the surrounding speech, suggesting it is an artificial insertion rather than a recording artifact or environmental noise. This anomaly is not supported by any of the XAI saliency or IG explanations, which focus on other regions of the audio, and is not explained by the Shap values, which relate to acoustic features rather than specific time-frequency events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [7.5-8.5] seconds time region and [6000-7000] Hz frequency region as significant for its prediction, aligning with the observed synthetic tone. However, the wav2vec Saliency and LIME methods, as well as all Hubert and WavLM explanations, do not support this region, indicating that the anomaly is not consistently identified across models. The Shap values relate to acoustic features such as StddevUnvoicedSegmentLength and loudness statistics, but do not directly correspond to the observed artifact. Thus, the synthetic tone is supported by a single XAI method (wav2vec IG) and is not corroborated by other models or features, suggesting it is an isolated anomaly not central to the overall model prediction.

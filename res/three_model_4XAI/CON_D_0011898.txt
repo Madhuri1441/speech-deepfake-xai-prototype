@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering the phrase: "Lottery money was intended to be used for the causes." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, and the frequency content is concentrated in the midrange, with minimal low-frequency energy and a slight roll-off above 4 kHz. There are no obvious signs of digital compression, clipping, or environmental artifacts. However, the utterance is abruptly cut off mid-word ("causes"), which is acoustically anomalous and suggests an artificial or incomplete recording.
+
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) saliency peak between 2.5–3.0 seconds and a Saliency peak between 3.5–4.0 seconds, both in the 1000–4000 Hz range. LIME also supports the 3.5–4.0 seconds region. These regions correspond to the latter part of the phrase, specifically the word "causes," which is truncated. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) all point to this region, indicating a strong, cross-model agreement on the anomaly. The Hubert and WavLM models do not provide any saliency or explanation, suggesting they are less sensitive to this particular acoustic feature.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across three independent XAI methods (IG, Saliency, LIME) that the anomaly is localized in the 2.5–4.0 seconds time range and 1000–4000 Hz frequency range, corresponding to the truncated word "causes." This cross-model agreement strengthens the conclusion that the anomaly is a result of the abrupt ending of the audio. The Hubert and WavLM models do not provide any supporting evidence, likely due to differences in their training or sensitivity to such features. The Shap values further support the importance of mid-frequency features (slopeUV0-500_sma3nz_amean, mfcc3V_sma3nz_amean, jitterLocal_sma3nz_amean), which are relevant to the speech’s acoustic characteristics, but do not directly indicate the truncation anomaly.

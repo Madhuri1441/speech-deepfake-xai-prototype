@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "She is an ambassador of..." The speech is clear and intelligible, with a neutral, formal tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is not part of the original speech and is acoustically distinct, with a frequency range of 4000–8000 Hz, which is well above the typical human speech range. The buzzing is steady, unmodulated, and masks the remainder of the speech, making the final word unintelligible. This abrupt introduction of a non-speech sound is a clear acoustic anomaly, likely indicating an edit or overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the abnormality in the time range [1.50-2.00] seconds and frequency range [4000-6000] Hz, which aligns closely with the observed buzzing tone. The IG method from wav2vec also supports this, identifying the same time range and a slightly broader frequency range of [6000-8000] Hz. These two independent XAI methods from the same model converge on the same region, strengthening the evidence. The LIME method from wav2vec identifies a much earlier time range ([0.35-0.4] seconds), which does not correspond to any observable anomaly and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shap values indicate that features related to loudness and segment length are significant, but these do not directly point to the buzzing tone. Overall, the strongest and most consistent evidence comes from wav2vec’s Saliency and IG methods, both of which support the presence of an abnormality in the specified time and frequency ranges.

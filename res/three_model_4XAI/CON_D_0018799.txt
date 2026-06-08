@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "This thing be a way of Scottish little bit within the crests." The speech is clear and intelligible, with a Scottish accent, and is recorded in a quiet environment. However, at approximately 0.9 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 1.1 seconds. This tone is sharply distinct from the natural speech, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically anomalous due to its abrupt onset and unnatural timbre. The tone does not correspond to any natural speech or environmental sound and is likely an artifact introduced during audio processing or editing. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the suspicious region at [0.9-1.1] seconds and [2000-4000] Hz, which aligns with the observed synthetic tone. The Saliency method from wav2vec also highlights a region at [2.5-3.0] seconds, but this does not correspond to any clear anomaly in the audio and is likely a false positive. LIME from wav2vec identifies a very narrow region at [3.0-3.1] seconds, which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting that the synthetic tone significantly affects the audio’s overall loudness. In summary, the anomaly is supported by the wav2vec model’s IG explanation and is not corroborated by other models or methods.

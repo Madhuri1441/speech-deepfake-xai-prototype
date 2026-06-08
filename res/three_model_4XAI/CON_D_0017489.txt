@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, with no obvious signs of manipulation or distortion. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a fundamental frequency around 3.5 kHz and strong harmonics extending up to 8 kHz, which is inconsistent with the natural acoustic profile of the voice. The buzzing is not present in the initial speech segment and appears abruptly, suggesting an artificial overlay or post-production insertion. The voice itself remains unaffected by the tone, with no clipping, distortion, or modulation, indicating the tone is layered on top rather than being a product of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) that does not align with the observed synthetic tone. LIME analysis points to a very narrow time window ([1.6-1.7] seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the synthetic tone is not detected by these models. The Shapley value analysis identifies acoustic features such as StddevUnvoicedSegmentLength, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and spectralFlux_sma3_amean, but these do not directly correspond to the observed synthetic tone. The wav2vec IG result is the only one that aligns with the audible synthetic tone, and thus, the final abnormality region is based on this cross-model agreement.

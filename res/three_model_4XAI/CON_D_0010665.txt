@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice speaking the phrase, "They fit plans with who go with published courtly." The speech is delivered in a neutral, conversational tone, with no background noise or environmental sounds. At approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until 1.5 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The buzzing is not a natural artifact of speech or environment, and its abrupt onset and offset suggest it is an inserted or manipulated sound. After the buzzing, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the buzzing tone as a significant anomaly, with Integrated Gradients (IG) highlighting the [1.0-1.5] second time region and [4000-6000] Hz frequency region, and Saliency also pointing to a similar time and frequency range. LIME, however, identifies a much earlier, brief anomaly at [0.0-0.1] seconds, which does not correspond to any observable event in the audio and is likely a false positive. The Hubert and WavLM models do not detect any anomalies, indicating that the buzzing tone is not consistently flagged by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, all of which are associated with the buzzing tone. Overall, the wav2vec model's evidence is the most consistent and supported by multiple XAI methods, while the Hubert and WavLM models do not detect the anomaly, suggesting that the buzzing tone is a subtle but detectable artifact.

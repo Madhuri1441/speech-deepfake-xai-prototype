@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Bullies, believe the results." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a pronounced high-frequency buzz. This distortion persists until about 1.0 seconds, after which the audio returns to its original clarity. The abrupt onset and offset of this artifact, along with its spectral characteristics (dominant energy between 2000–4000 Hz and a harsh, buzzing quality), suggest a digital manipulation or encoding error, rather than a natural vocal event or environmental interference. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time region and [2000-4000] Hz frequency region using Integrated Gradients (IG), and the Saliency method further supports the [1.0-1.2] seconds region with energy in the [6000-7000] Hz range. The LIME method, while less precise, also points to the [0.0-0.1] seconds region, which may correspond to the initial onset of the artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec-based explanations are the most reliable. The Shap values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and shimmerLocaldB_sma3nz_stddevNorm further support the presence of an anomaly, particularly in the initial seconds of the audio. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the abnormality, with the LIME method offering supplementary, though less precise, evidence.

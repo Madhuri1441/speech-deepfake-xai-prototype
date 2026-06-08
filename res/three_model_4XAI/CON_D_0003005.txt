@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "We are in the endgame. That quote has been proved to be a challenge." The recording is of high fidelity, with no background noise, distortion, or environmental cues. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, specifically during the word "endgame." At this point, the speech exhibits a brief, unnatural pitch shift and a slight warble, which is not present in the rest of the utterance. This anomaly is accompanied by a mild, high-frequency shimmer in the 3000–4000 Hz range, suggesting a digital artifact or manipulation. The rest of the audio remains natural and free of such artifacts, indicating the anomaly is localized and not a general recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as the most salient for the deepfake prediction, aligning precisely with the observed acoustic anomaly. The wav2vec Saliency method also highlights the [0-1] seconds region, but this is less specific and does not match the anomaly. The wav2vec LIME analysis points to [3.0-3.1] seconds, which is unrelated to the anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating no cross-model agreement. The Shapley values further support the anomaly by highlighting features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a localized pitch and spectral shift. Overall, the wav2vec IG analysis provides the strongest and most consistent evidence for the anomaly, with no cross-model agreement from Hubert or WavLM.

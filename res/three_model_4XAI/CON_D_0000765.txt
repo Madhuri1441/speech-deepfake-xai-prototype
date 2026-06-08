@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "Suddenly," followed by a brief pause and then "comment to make." The speech is delivered in a controlled, monotone manner, with a low pitch and slow cadence, lacking natural emotional inflection. At approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 2.0 seconds. This artifact manifests as a sharp, synthetic buzz or digital tone in the 3000–4000 Hz range, which is acoustically inconsistent with the preceding speech and does not resemble any natural vocal or environmental sound. The artifact is not present in the original audio but is introduced during the synthesis process, likely as a result of model-generated noise or encoding error. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.5-2.0] seconds, [3000-4000] Hz], indicating a high-confidence synthetic artifact. The LIME method from wav2vec also identifies a brief region ([0.45-0.5] seconds), but this is not supported by other models and is not aligned with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the artifact is not detectable by all models. The Shap values further support the presence of an anomaly, with significant contributions from features like equivalentSoundLevel_dBp and loudness_sma3_amean, which are associated with the synthetic buzz. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the abnormality, while other evidence is either inconsistent or absent.

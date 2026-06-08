@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-frequency thump or click at 0.0 seconds, immediately followed by a short, high-frequency transient (around 5000–6000 Hz) lasting until approximately 1.0 seconds. This transient is acoustically distinct from the rest of the audio, which consists of a male voice speaking in a neutral, narrative tone. The voice is clear and intelligible, with no signs of digital artifacts, clipping, or distortion. The high-frequency transient is not part of the speech and does not correspond to any natural sound event in the recording, suggesting it is an artifact—potentially from editing, file corruption, or a synthetic overlay. The rest of the audio is free from such anomalies, with no further clicks, pops, or frequency spikes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial transient as a region of interest using Integrated Gradients (IG), highlighting the [0-1] second time window and [5000-6000] Hz frequency range. This is corroborated by the Saliency method, which also points to the same time and frequency region, and by LIME, which focuses on the [5.5-6.0] seconds window—likely due to slight differences in how the model interprets the audio. The Hubert and WavLM models do not provide supporting evidence for this region, as their explanations are either absent or not aligned. The SHAP values indicate that the equivalentSoundLevel_dBp feature is significantly elevated in this region, further supporting the presence of an abnormal acoustic event. Overall, the wav2vec model’s IG, Saliency, and LIME explanations converge on the same time and frequency region, providing strong cross-model agreement for the transient anomaly.

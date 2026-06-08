@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral accent, delivering a short, coherent sentence in a quiet, acoustically dry environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct acoustic anomaly is present in the frequency range of 4000–6000 Hz during the 1.0–2.0 second interval. This region is marked by a faint, high-frequency artifact that is not typical of natural human speech and may indicate a digital or synthetic origin. The anomaly is not accompanied by any obvious distortion, clipping, or background noise, and does not affect the intelligibility of the speech. The rest of the audio is acoustically clean and consistent with a high-quality recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–2.0 second interval in the 4000–6000 Hz range as a salient region, supported by both Integrated Gradients (IG) and Saliency methods. This region is also highlighted by LIME, which isolates a very narrow segment (2.0–2.1 seconds) within the same frequency band, reinforcing the presence of an anomaly in this area. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by all models, but the wav2vec-based evidence is consistent and cross-validated. The SHAP analysis further supports the presence of an anomaly in this region, with high contributions from features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are associated with atypical speech characteristics. Overall, the wav2vec model’s multiple methods and the SHAP analysis converge on the 1.0–2.0 second interval as the most suspicious region, while other models do not detect this anomaly.

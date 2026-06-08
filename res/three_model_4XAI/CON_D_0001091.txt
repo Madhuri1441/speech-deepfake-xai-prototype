@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Or is it the old spelling?" The speech is clear and natural, with no obvious signs of digital manipulation. However, a subtle but distinct anomaly is present in the initial seconds of the audio. Specifically, between 0.25 and 0.5 seconds, a faint, high-frequency artifact is audible, most noticeable during the word "Or." This artifact manifests as a brief, unnatural tonal overlay, likely a synthetic or digitally inserted sound, which does not match the natural acoustic profile of the speaker’s voice. The artifact is most prominent in the 1000–3000 Hz range, consistent with the frequency region identified by the wav2vec Saliency method. No other acoustic anomalies are present in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Saliency method identifies the 0.25–0.5 second time region and 1000–3000 Hz frequency region as suspicious, aligning with the observed artifact in the audio. The wav2vec Integrated Gradients (IG) method also points to a region around 1.25–1.30 seconds, but this is not supported by other XAI methods or by the audio itself, and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for this region, and their IG, Saliency, and LIME results are all null, indicating no strong model agreement. The SHAP values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and alphaRatioUV_sma3nz_amean, but these are global features and do not localize the anomaly to a specific time or frequency range. Therefore, the wav2vec Saliency evidence is the only one that directly supports the observed acoustic abnormality, and it is not corroborated by other models.

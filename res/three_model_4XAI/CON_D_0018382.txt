@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Smith has a face." Immediately following the spoken phrase, a synthetic, high-frequency electronic tone is introduced. This tone is sustained, unwavering, and occupies the frequency range of 3000–6000 Hz, with a sharp onset and offset, and no natural acoustic decay or modulation. The tone is acoustically distinct from the preceding speech, lacking any overlap in timbre or frequency content, and appears abruptly after the speech ends. This unnatural transition and the presence of a pure, static electronic tone strongly suggest an artificial insertion, likely as a watermark or digital artifact, rather than a natural sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [0.75-1.25] seconds time region and [3000-6000] Hz frequency region as salient. This aligns with the observed synthetic tone in the audio. The Saliency method from wav2vec also identifies a different time region ([1.75-2.0] seconds) and frequency range ([1000-2000] Hz), but this does not correspond to any clear acoustic event in the audio and is likely spurious. The LIME explanation from wav2vec points to the very beginning of the audio ([0.0-0.1] seconds), which is not supported by the other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any supporting evidence for the abnormality. The SHAP values indicate that features such as mfcc1_sma3_stddevNorm and equivalentSoundLevel_dBp are significant, but these are not directly linked to the observed synthetic tone. Overall, the cross-model agreement is limited to the wav2vec IG explanation, which is the most reliable indicator of the abnormality.

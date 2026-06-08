@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, synthetic-sounding male voice saying "We suddenly left" in a monotone, unnatural cadence. The speech is clear but lacks the typical human intonation and breathiness, suggesting it is not a genuine human utterance. At approximately 0.9–1.1 seconds, there is a sudden, sharp, high-frequency transient in the 3000–4000 Hz range, which stands out as an abrupt and unnatural addition to the otherwise steady vocal signal. This transient is not part of the original speech and appears to be an artifact, possibly inserted during post-processing or as a result of digital manipulation. The rest of the audio is dominated by a low-level, steady hiss, likely from the recording or generation process, but no other notable acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.9-1.1] seconds, [3000-4000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no salient regions. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly to a specific time or frequency range. The cross-model agreement from wav2vec’s multiple XAI methods strongly supports the presence of an artificial or anomalous event in the specified region, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not easily detectable by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a clear, neutral tone, with no background noise or environmental sounds. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, at approximately 2.3–2.5 seconds, there is a subtle but noticeable high-frequency artifact in the 6000–8000 Hz range. This artifact manifests as a faint, synthetic-sounding hiss or digital noise, which is not present in the rest of the audio. The artifact is brief and does not affect the intelligibility of the speech, but it stands out as an anomaly in an otherwise clean recording. No other acoustic irregularities are apparent in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at 2.3–2.5 seconds in the 6000–8000 Hz range using Integrated Gradients (IG), while the Saliency method from wav2vec also highlights a region at 1.5–2.0 seconds in the 3000–4000 Hz range, which is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality, and LIME does not support any region. The Shapley values indicate that the abnormality is likely related to high-frequency content, as the StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 features are associated with the 6000–8000 Hz range. The wav2vec IG result is the only one that aligns with the observed artifact, and it is not corroborated by other models. Thus, the final abnormality region is based on wav2vec IG evidence, with no cross-model agreement.

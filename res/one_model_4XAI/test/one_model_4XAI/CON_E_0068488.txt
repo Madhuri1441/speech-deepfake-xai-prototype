@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a male voice speaking in a neutral, synthetic tone, with a clear and steady delivery. The speech is: "The two are safer with the new pay-by-". The recording is of high fidelity, with no background noise or distortion, and the voice is centered in the mid-to-high frequency range. However, at approximately 0.5–1.0 seconds, a subtle but noticeable anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight digital artifact, which is most prominent in the 4000–6000 Hz range. This is accompanied by a momentary loss of vocal smoothness, suggesting a possible splice or manipulation in the audio waveform.  
+
+The XAI evidence supports this observation:  
+- The Integrated Gradients (IG) analysis highlights the [0.5–1.0] second time region and the [4000–6000] Hz frequency region as the most significant for the model’s decision, indicating that these features are critical in identifying the audio as a deepfake.  
+- The Saliency map further confirms the [1.8–2.0] second time region and [5000–6000] Hz frequency region as salient, likely corresponding to the same pitch anomaly.  
+- The LIME analysis identifies the [0.0–0.1] second region as significant, which may reflect the initial onset of the synthetic voice or a minor artifact at the start of the audio.  
+- The Shapley values for features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean further support the presence of unnatural acoustic characteristics, particularly in the high-frequency range, which are inconsistent with natural human speech.  
+
+In summary, the audio exhibits a subtle but detectable anomaly in the 0.5–1.0 second interval, marked by a pitch shift and digital artifact in the 4000–6000 Hz range. This is corroborated by multiple XAI methods, which collectively indicate that the audio is likely a deepfake due to unnatural acoustic features and synthetic voice characteristics.

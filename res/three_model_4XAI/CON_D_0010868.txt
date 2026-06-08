@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, steady, and neutral tone, delivering the phrase: "It is certainly a heavy bite in the attic." The recording is of high fidelity, with no background noise, distortion, or environmental cues. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.3 and 2.5 seconds, specifically in the 1000–2000 Hz range. This artifact is not part of the speech and does not correspond to any natural vocal or environmental sound. It is likely a digital artifact or an editing artifact, possibly introduced during post-production or due to a technical glitch. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.3-2.5] seconds in the 1000–2000 Hz range using Integrated Gradients (IG), and at [2.9-3.1] seconds in the 7000–8000 Hz range using Saliency. The LIME method also highlights the very beginning of the audio, but this is likely due to the model's sensitivity to the start of the recording rather than a true anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The wav2vec model's IG and Saliency methods both point to the same high-frequency region, providing cross-model agreement for the [2.3-2.5] seconds interval. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, suggesting a sudden increase in sound level at the identified time. Overall, the wav2vec model's IG and Saliency methods provide the strongest evidence for the anomaly, while other models and methods do not corroborate this finding.

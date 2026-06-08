@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, high-frequency, synthetic-sounding artifact in the 7000–8000 Hz range, lasting approximately 0.1 seconds. This sound is acoustically distinct from the main speech, which is a low-pitched, monotone, and slightly robotic female voice. The artifact is not present in the original speech and does not correspond to any natural speech or environmental sound, suggesting it is an artificial insertion. The main speech is clear and intelligible, with no signs of distortion or clipping, and the background is silent, indicating a controlled recording environment. The synthetic nature of the voice and the abrupt, unnatural high-frequency sound at the start are the only notable acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.0-0.1] seconds time region and [7000-8000] Hz frequency region as significant, indicating that this artifact is a key feature in the model’s prediction. The IG method from wav2vec also highlights a time region around [1.9-2.1] seconds, but this aligns with the end of the speech and is not an anomaly. The LIME method from wav2vec identifies a region around [0.5-0.6] seconds, which is within the speech but not an anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not directly point to the artifact. The primary evidence for the anomaly comes from the wav2vec Saliency method, with no cross-model agreement.

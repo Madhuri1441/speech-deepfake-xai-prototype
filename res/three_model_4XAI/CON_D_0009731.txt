@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, neutral tone: "It's not the end of the matter, of course." The speech is clear and natural, with no obvious signs of digital manipulation or distortion. However, at approximately 1.5 seconds into the clip, a high-frequency, synthetic-sounding tone abruptly appears and persists until the end of the audio. This tone is not present in the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The tone is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its sudden onset and sustained presence suggest it is an artificial addition rather than a natural part of the recording. No other acoustic anomalies, such as clipping, static, or compression artifacts, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.5-2.0] seconds, [4000-6000] Hz), indicating a strong, cross-model agreement on the presence of an artificial tone. The LIME method also supports this region, though it is less precise in frequency. In contrast, the Hubert and WavLM models do not detect any abnormality, as their explanations are all "None." The SHAP analysis highlights spectral features such as spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are consistent with the presence of a synthetic tone in the high-frequency range. Overall, the wav2vec model’s IG and Saliency methods provide the most robust and consistent evidence for the abnormality, supported by LIME, while Hubert and WavLM do not detect any anomaly.

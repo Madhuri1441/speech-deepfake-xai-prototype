@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 2.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second, with energy concentrated between 6000 and 8000 Hz. This transient is acoustically distinct from the preceding speech and background noise, suggesting an artifact or manipulation. The speech itself, "I watched in great promises have already," is delivered in a neutral, monotone voice with no emotional inflection, and is followed by a brief, unnatural pause before the audio ends. The abruptness of the ending and the lack of natural speech decay further indicate possible editing or synthetic generation. No other obvious acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([2.5-3.0] seconds, [6000-8000] Hz), indicating strong cross-model agreement. The LIME method for wav2vec also identifies a very early time region ([0.0-0.1] seconds), but this is not corroborated by other models and is likely a minor artifact. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or is too subtle for them to capture. The Shapley values highlight spectral features such as slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and mfcc2V_sma3nz_amean, which are consistent with the presence of a high-frequency transient, further supporting the wav2vec findings. Overall, the wav2vec model’s IG and Saliency methods provide the most robust and consistent evidence for the abnormality.

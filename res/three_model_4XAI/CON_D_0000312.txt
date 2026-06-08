@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying "be very Paris" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 1.2 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically distinct from the natural speech. The artifact is not present before or after this interval, suggesting a localized anomaly. The voice itself remains unaffected, with no distortion or clipping, and the artifact does not interfere with intelligibility. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model, which identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency range ([0.8-1.2] seconds, [4000-6000] Hz), indicating a strong, cross-model agreement. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME results are all null. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile80.0, but these do not directly correspond to the observed artifact and are not time- or frequency-localized. Therefore, the conclusion is based on robust, cross-model agreement from wav2vec, with no contradictory evidence from other models.

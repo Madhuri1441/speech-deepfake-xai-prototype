@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "My husband's absolutely delighted." The speech is intelligible, with a neutral, slightly positive emotional tone and no obvious signs of digital manipulation. However, at approximately 5.0 seconds, a sudden, high-frequency, synthetic-sounding tone appears, lasting until 6.0 seconds. This tone is sharply distinct from the preceding speech, with a clean, unmodulated timbre and a frequency content between 2000 Hz and 4000 Hz, which is not present in the original speech. The tone is acoustically anomalous, as it does not match the natural vocal characteristics or background of the rest of the audio. There are no other obvious audio artifacts, such as clipping, distortion, or compression, and the speech remains clear and undistorted before and after the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency range ([5.0-6.0] seconds, [2000-4000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no relevant regions. The SHAP analysis highlights acoustic features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, but does not specify a time or frequency range, so it cannot be directly compared to the audio anomaly. The wav2vec evidence is robust and consistent, indicating a high confidence in the identified anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched male voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no background noise or environmental sounds. The acoustic environment is dry, with no reverberation or echo, suggesting a controlled recording space. The only notable acoustic feature is a brief, high-frequency artifact occurring between 1.0 and 2.0 seconds, specifically in the 3000–6000 Hz range. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or editing artifact, which stands out from the otherwise smooth and natural speech. The rest of the audio is free from distortion, clipping, or other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG) and Saliency methods. LIME also supports the [1.0-1.5] seconds interval, aligning with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact and are likely unrelated to the detected anomaly. The wav2vec and LIME results are in agreement, while Hubert and WavLM do not support the finding, indicating cross-model agreement for the wav2vec and LIME evidence.

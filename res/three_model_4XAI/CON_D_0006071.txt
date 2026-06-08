@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, delivering the phrase: "We can get one, Brian Wilson and some Amy Is Very Submissive." The speech is generally intelligible, but at approximately 1.5–2.0 seconds, there is a noticeable, unnatural pitch shift and a brief, high-frequency artifact in the 4000–6000 Hz range. This anomaly manifests as a sudden, sharp, and artificial-sounding vocal break, which is inconsistent with the natural flow of speech and likely results from digital manipulation or editing. The rest of the audio remains stable and natural, with no other obvious signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.5-2.0] seconds, 4000–6000 Hz). LIME also supports this region, though with a slightly different time window ([0.5, 0.6] seconds), which may reflect a different approach to local approximation. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley values from the audio feature analysis highlight spectral features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a pitch shift and spectral distortion in the specified region. The cross-model agreement between wav2vec’s IG, Saliency, and LIME confirms the anomaly, while the absence of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable by all models.

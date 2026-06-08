@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until about 2.1 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, which continues uninterrupted. The buzzing is centered in the 4000–6000 Hz range, a frequency band typical of electronic artifacts or digital glitches. The voice itself remains clear and natural, with no pitch or timbre anomalies, but the intrusive buzz is clearly an artificial overlay. There are no other obvious audio artifacts, such as clipping, distortion, or compression, and the background remains silent throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.0-2.1] seconds, 4000–6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values, while not directly tied to time or frequency, highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the synthetic buzz, but do not localize it in time or frequency. The cross-model agreement between wav2vec’s IG and Saliency methods provides strong evidence for the presence of an artificial buzz in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.75-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-frequency click, followed by a female voice saying, "I came back to turn..." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.75 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 6000–8000 Hz range, which is acoustically inconsistent with the preceding speech and background. The artifact is abrupt, with no gradual onset or decay, and stands out as a possible sign of digital corruption or editing. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.75-2.0] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality in this region, indicating that the anomaly is not universally detected by all models. The Shapley values for acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_amean further support the presence of a significant acoustic event in this region, though they do not specify the exact time or frequency. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the presence of an anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

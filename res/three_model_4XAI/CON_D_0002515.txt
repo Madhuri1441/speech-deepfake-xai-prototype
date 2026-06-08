@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone, likely from a news or documentary narration. The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice becomes muffled, lower in pitch, and exhibits a robotic, synthetic timbre, with a noticeable drop in high-frequency content. This change persists until about 1.2 seconds, after which the voice returns to its original clarity and pitch. The abruptness and unnaturalness of this transition, especially the loss of high-frequency detail and the synthetic quality, strongly suggest an audio manipulation, such as a deepfake or voice cloning artifact. The background remains silent throughout, with no environmental or ambient sounds, further highlighting the unnaturalness of the vocal transition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, with additional support from the Saliency method in the range [1.0-1.2] seconds and [1500-3000] Hz. The LIME method also supports the region [1.5-1.6] seconds, though this is less consistent with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormality, particularly in the high-frequency range, aligning with the wav2vec findings. The cross-model agreement between wav2vec’s IG and Saliency methods strengthens the conclusion that the abnormality is a synthetic voice artifact, likely introduced during deepfake generation.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, formal tone, with a clear and steady delivery. The speech is intelligible and lacks any obvious signs of digital manipulation, such as pitch instability or unnatural pauses. However, at approximately 3.5–4.0 seconds, there is a subtle but noticeable change in the acoustic texture of the voice, specifically in the mid-frequency range (1000–2000 Hz). This region exhibits a slight increase in spectral energy and a subtle shift in timbre, which may indicate a minor vocal inflection or a brief moment of increased vocal effort. This change is not accompanied by any obvious emotional shift or speech error, and the overall prosody remains consistent. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [1000-2000] Hz frequency region as salient, with both Integrated Gradients (IG) and Saliency methods pointing to this area. The wav2vec model’s IG and Saliency results are consistent, indicating a strong, cross-model agreement on this region. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP analysis highlights features such as loudness_sma3_percentile20.0, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the identified time-frequency region. Therefore, the wav2vec model’s evidence is the primary support for the observed acoustic abnormality, with no cross-model agreement from Hubert or WavLM.

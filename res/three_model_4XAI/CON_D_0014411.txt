@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral accent, delivering the phrase "Parliament be able to deal with all age groups." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady, with a natural cadence and no signs of emotional stress or artificiality. However, a subtle anomaly is present in the latter part of the utterance, specifically in the word "groups." At approximately 0.5–1.0 seconds, the spectral energy in the 2000–4000 Hz range is unusually prominent, deviating from the expected acoustic profile of a natural human voice. This region exhibits a slightly artificial or synthetic timbre, suggesting possible digital manipulation or deepfake generation. The anomaly is not perceptible to the human ear as a flaw, but the spectral irregularity is detectable through signal analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.5-1.0] seconds time region and [2000-4000] Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to the same area. LIME also supports this region, focusing on the final part of the utterance. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope showing elevated values, suggesting a deviation from typical speech patterns. The wav2vec-based evidence is cross-model, while the Shapley values provide additional, independent support for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I feel very strongly about that," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is sustained until the end of the clip and is acoustically distinct from the preceding speech, lacking any natural vocal characteristics. The tone is centered in the mid-to-high frequency range (2000–4000 Hz), with a harsh, synthetic timbre, and is likely an artifact of digital editing or a deliberate insertion. The abrupt onset and unnatural cutoff of the tone, as well as its spectral content, suggest it is not part of the original recording but was added post-production.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range, supported by both Integrated Gradients (IG) and Saliency methods. LIME also corroborates the abnormality in the [0.5-0.6] seconds window. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley value analysis highlights features such as slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which are consistent with the presence of a sudden, synthetic tone in the audio. The cross-model agreement from wav2vec (IG, Saliency, and LIME) strongly supports the conclusion that the abnormality is a digitally inserted tone, not a natural part of the speech.

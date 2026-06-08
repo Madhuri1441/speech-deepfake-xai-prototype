@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "My house was shaped different from today." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the first second of the recording, specifically between 0.5 and 1.0 seconds. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This is accompanied by a mild, high-frequency shimmer or modulation in the 2000–4000 Hz range, suggesting possible digital manipulation or artifacting. The rest of the audio is acoustically stable, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the most salient region for anomaly detection as [0.5-1.0] seconds, with a frequency focus of [2000-4000] Hz, using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights a brief but distinct anomaly at [2.3-2.5] seconds, though this is less consistent with the observed acoustic features. The LIME method also points to a region around [1.75-1.85] seconds, but this is not strongly supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly in the initial seconds, with features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength showing elevated values, suggesting a deviation from expected acoustic patterns. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by the acoustic observation of pitch instability and high-frequency shimmer.

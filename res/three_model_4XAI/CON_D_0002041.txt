@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, formal tone, with a clear and steady delivery. The speech is intelligible and lacks any obvious signs of digital manipulation, such as pitch warbling, unnatural pauses, or abrupt volume changes. However, a subtle but noticeable anomaly is present in the high-frequency range (6000–7000 Hz) during the first second of the clip, specifically around the word "port." This region exhibits a faint, artificial-sounding shimmer or ringing, which is not typical of natural human speech and may indicate digital processing or synthesis artifacts. The rest of the audio is acoustically stable, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [0.5-1.5] second time region and [6000-7000] Hz frequency region as the most salient, aligning with the observed high-frequency shimmer. The wav2vec Saliency method also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is less consistent with the acoustic anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec IG result is the most robust and cross-model supported evidence. The Shapley values, while not directly corresponding to the acoustic anomaly, suggest that the model is sensitive to features like slopeUV0-500_sma3nz_amean and loudness_sma3_percentile20.0, which may relate to the underlying speech characteristics but do not directly support the observed artifact. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, with no strong cross-model agreement beyond this.

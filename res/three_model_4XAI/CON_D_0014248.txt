@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, factual statement: "I'm interest confirmation yesterday that they weren't military vehicles." The speech is generally intelligible, with a slight regional accent, and the recording quality is moderate, with a low-level background hiss and a faint hum. At approximately 2.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not part of the natural speech and is acoustically distinct from the speaker’s voice, suggesting a digital or post-processing anomaly. The artifact is not present in the original speech and does not correspond to any natural sound event, indicating a possible editing or generation error.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which highlights the [2.5-3.0] second time region and [6000-7000] Hz frequency range as significant for the model’s prediction. This aligns with the observed high-frequency artifact in the audio. The wav2vec model’s Saliency and LIME also point to early speech regions, but these are consistent with normal speech and do not indicate anomalies. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values for spectralFlux_sma3_amean, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength further support the presence of an abnormality in the high-frequency region, as these features are sensitive to spectral changes and noise. The cross-model agreement from wav2vec’s IG analysis and the SHAP feature importance values confirm the [2.5-3.0] second, [6000-7000] Hz region as the most likely location of the audio anomaly.

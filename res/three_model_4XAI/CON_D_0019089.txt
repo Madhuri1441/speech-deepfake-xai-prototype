@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a Scottish accent, with a clear and steady delivery. The speech is: "The stock got no father daughter type all the way through." The recording is of moderate fidelity, with a low-level background hiss and a faint hum, but no significant distortion or clipping. The most notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a subtle, unnatural pitch modulation and a slight increase in high-frequency content (5000–7000 Hz), which is inconsistent with the rest of the speech. This region appears to have a synthetic or digitally processed quality, with a slight "glitch" or "warble" in the vocal timbre, suggesting possible tampering or deepfake generation. The rest of the audio is natural and consistent with a genuine recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region as abnormal using Integrated Gradients (IG), and the Saliency method also highlights a different region ([0.0-0.5] seconds, [1000-3000] Hz), but the IG result is more consistent with the observed pitch anomaly. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is not robustly detected by all models. The SHAP values point to acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean, which are all consistent with the presence of a synthetic or altered segment in the audio. The wav2vec IG result is the most reliable indicator of the anomaly, supported by the SHAP analysis, while other XAI sources do not corroborate this finding.

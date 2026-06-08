@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase "included in the survey, been beside herself." The speech is clear and intelligible, with a neutral, conversational tone. However, at the very start of the clip, specifically in the first 0.5 seconds, there is a noticeable high-frequency artifact in the 1000–2000 Hz range. This artifact manifests as a brief, sharp, and unnatural sound, possibly a digital click or transient, which is not present in the rest of the audio. The remainder of the clip is acoustically clean, with no further anomalies. This initial artifact is not present in the original speech and appears to be an editing or encoding artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial 0.5 seconds as an abnormality, with a saliency peak in the 1000–2000 Hz range, aligning with the observed artifact. The wav2vec IG method also highlights the 0.5–1.0 second region, but this is less consistent with the audio evidence. The Hubert and WavLM models do not flag any abnormalities, and their explanations are absent. The SHAP analysis does not directly reference the artifact but instead highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and mfcc3V_sma3nz_amean, which are more related to overall audio characteristics rather than localized anomalies. The wav2vec saliency provides the most direct and consistent evidence for the observed artifact, supported by the audio analysis. No cross-model agreement is found, as Hubert and WavLM do not detect the anomaly. Thus, the wav2vec saliency is the primary source supporting the identified abnormality.

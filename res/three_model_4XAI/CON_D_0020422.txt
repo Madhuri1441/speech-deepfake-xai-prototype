@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I'm not just measuring it pretty f-", which is abruptly cut off mid-word. Immediately following this, a loud, synthetic, low-frequency electronic tone (approximately 5000–6000 Hz) is introduced, lasting for about 0.2 seconds. This tone is highly unnatural, with a harsh, buzzy timbre and a static pitch, lacking any modulation or environmental context. The transition from speech to tone is abrupt and unnatural, with no fade or overlap, suggesting a digital splice or insertion. The tone is not present in the original audio and does not match the acoustic environment of the speech, indicating a likely deepfake or audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) method identifies the [0.2-0.4] seconds time region and [5000-6000] Hz frequency region as salient, and the Saliency method also highlights a brief region around [0.95-1.05] seconds, though this is less consistent. The LIME method corroborates the [0.3-0.4] seconds interval. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent across IG and Saliency, indicating strong cross-model agreement on the synthetic tone's presence. The Shap values further support the anomaly by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden, unnatural sound events.

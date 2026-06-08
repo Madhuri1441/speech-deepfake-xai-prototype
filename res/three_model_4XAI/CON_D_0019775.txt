@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "From then on, it has never looked the..." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original voice or in the surrounding audio, suggesting it is an artificial addition. The voice itself remains unaffected, with no distortion or clipping, and the artifact does not interfere with intelligibility. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through its Integrated Gradients (IG) method, which highlights the 0.5–1.0 second time region and 6000–7000 Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec model also provides Saliency and LIME explanations, but these do not support the same region and are thus not considered in the final assessment. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean do not directly correspond to the observed artifact, suggesting that these features are not relevant to the anomaly. The final abnormality region is supported by the wav2vec model’s IG explanation, with no cross-model agreement.

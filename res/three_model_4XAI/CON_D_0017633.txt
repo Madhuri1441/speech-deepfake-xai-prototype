@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, formal tone, delivering the phrase: "card policy which has the full support of the minister." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly occurs in the word "policy," specifically in the segment from 2.5 to 3.5 seconds. During this interval, the spectral content of the voice shifts abruptly, with a noticeable increase in high-frequency energy (4000–8000 Hz), which is atypical for natural speech. This change is not accompanied by any change in pitch or loudness, suggesting a possible digital artifact or manipulation. The transition is smooth but unnatural, lacking the gradual spectral evolution expected in genuine speech. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3.0] seconds region with a frequency range of [4000-6000] Hz, while the wav2vec saliency method extends this to [3.0-3.5] seconds and [6000-8000] Hz. The LIME method corroborates the timing at [3.0-3.1] seconds, though it does not specify frequency. The Hubert and WavLM models do not detect any anomalies, indicating that the wav2vec-based evidence is the most consistent and reliable. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope indicating a deviation from normal speech patterns. The wav2vec-based evidence is cross-model, while the Shapley values provide additional, independent confirmation.

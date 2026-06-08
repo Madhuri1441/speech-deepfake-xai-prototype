@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, declarative tone: "We do not know what people are leaving." The speech is clear and intelligible, with a slight reverberation suggesting a small, enclosed room. At approximately 3.5 seconds, a sharp, high-frequency click or pop is heard, lasting about half a second. This sound is acoustically distinct from the speech, with a frequency content spanning from 3000 Hz to 8000 Hz, and is not a natural part of the spoken language or environment. The click is abrupt and does not blend with the surrounding audio, indicating a possible digital artifact or editing artifact. No other significant acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.5-4] seconds time range and [3000-8000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement on the presence of an anomalous event at this point. The LIME method, however, highlights a different region ([0.5-1.0] seconds), which does not correspond to any obvious acoustic anomaly and may reflect a model-specific bias or noise. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not universally detected by all models. The SHAP analysis identifies three acoustic features—slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope—whose values change significantly around the click, further supporting the presence of an anomaly at this time. Overall, the wav2vec model's consistent detection of the click, supported by both IG and Saliency, provides the strongest evidence for the abnormality, while other models and methods either do not detect it or point to unrelated regions.

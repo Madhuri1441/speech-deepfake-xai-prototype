@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance, "I've been angry," spoken by a female voice. Immediately following this, a loud, synthetic, low-frequency electronic tone abruptly starts and continues for the remainder of the clip. This tone is characterized by a harsh, buzzy timbre, with strong harmonics extending up to 5000 Hz, and is highly unnatural compared to the preceding speech. The tone is static in pitch and amplitude, with no modulation or fade, and is acoustically inconsistent with the speech segment, suggesting an artificial insertion. The abrupt transition between speech and tone, along with the unnatural spectral content and lack of environmental context, indicates a likely audio manipulation or deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the frequency range of 3000–5000 Hz during the time interval of 0.6–1.2 seconds, which aligns with the onset of the synthetic tone. The saliency method from wav2vec further supports this by highlighting a brief time window (1.4–1.6 seconds) and a lower frequency range (2000–3000 Hz), likely corresponding to the harmonic content of the tone. The LIME method from wav2vec also points to the 0.5–0.6 seconds region, reinforcing the presence of an anomaly at the transition between speech and tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP values, particularly for equivalentSoundLevel_dBp, suggest a significant deviation in sound level, further supporting the presence of an artificial tone. Overall, the wav2vec model's multiple independent methods (IG, Saliency, LIME) converge on the same time and frequency regions, providing strong cross-model agreement for the abnormality.

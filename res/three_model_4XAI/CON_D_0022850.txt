@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent saying, "I never made to have him a minute." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable acoustic anomaly occurs between 2.5 and 3.0 seconds, specifically during the word "made." At this point, the audio exhibits a brief, unnatural pitch shift and a slight warble, which is not present in the rest of the utterance. This anomaly is accompanied by a heightened presence of high-frequency content (4000–6000 Hz), suggesting a possible artifact from digital processing or synthesis. The anomaly is not perceptible to the human ear as a major disruption, but it is detectable through careful listening and analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [2.8-3.0] seconds and frequency range [5000-6000] Hz, while the Saliency method from wav2vec extends the time range to [2.5-3.0] seconds and the frequency range to [4000-6000] Hz. These two independent XAI methods from the same model converge on the same region, providing strong cross-model agreement. The LIME method from wav2vec also supports this region, albeit with a slightly earlier time range ([1.5-2.0] seconds), which may reflect a broader sensitivity to the anomaly. The Hubert and WavLM models do not provide any evidence of the anomaly, indicating that the wav2vec-based methods are the most reliable in this case. The Shap values for features such as equivalentSoundLevel_dBp, loudness_sma3_percentile20.0, and MeanUnvoicedSegmentLength further support the presence of an anomaly in this region, as they show significant deviations from their original values.

@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "terrible mobile phones" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.8 seconds, a high-frequency, synthetic buzzing sound abruptly appears and persists until 1.2 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting an artificial insertion. The buzzing occupies the frequency range of 5000–6000 Hz, which is above the typical fundamental frequency of human speech but within the range of harmonics and noise artifacts sometimes found in audio processing.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the same time and frequency region ([0.8–1.2] seconds, 5000–6000 Hz) as a critical area for the model’s decision, indicating that this synthetic buzz is a key feature in the audio’s classification as a deepfake. The Saliency map also points to a brief segment ([0.35–0.45] seconds) with similar frequency content, suggesting that the model is sensitive to high-frequency anomalies, even if they are not as prominent as the main buzz. The LIME analysis, while focusing on an earlier time ([0.0–0.1] seconds), does not contradict this, as it may be highlighting subtle pre-speech artifacts or noise. The Shapley values further reinforce the importance of high-frequency acoustic features, with the top feature being the standard deviation of unvoiced segment length, which is likely affected by the presence of the buzz. The loudness statistics also indicate changes in the audio’s energy profile, supporting the presence of an artificial sound event.
+
+In summary, the audio contains a clear, high-frequency synthetic buzz between 0.8 and 1.2 seconds, which is corroborated by multiple XAI methods as a key indicator of deepfake manipulation. The acoustic and model-based evidence aligns, confirming the presence of an artificial anomaly in the audio.

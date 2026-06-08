@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "But when he left, said the woman in Ireland." The speech is clear and intelligible, with a neutral, conversational tone and no obvious emotional inflection. Immediately following the spoken phrase, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is monophonic, unwavering in pitch and amplitude, and lacks any modulation or harmonic content, strongly suggesting it is a generated artifact rather than a natural sound. The transition from speech to tone is abrupt, with no fade or overlap, indicating a hard edit or insertion. The synthetic tone is acoustically distinct from the preceding speech, and its sudden appearance is the only clear abnormality in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region in the audio between 1.0 and 1.5 seconds, specifically in the frequency range of 2000–3000 Hz, which aligns with the onset of the synthetic tone. This region is supported by both Integrated Gradients (IG) and Saliency methods, indicating a strong and consistent signal in this time-frequency window. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, likely due to differences in their training or feature extraction. The Shapley values further support the presence of an abnormality, with the StddevUnvoicedSegmentLength feature showing a high positive contribution, indicating a significant deviation in the acoustic structure of the audio. The combination of wav2vec’s cross-method agreement and the Shapley value evidence points to the synthetic tone as the primary anomaly, with no conflicting evidence from other models.

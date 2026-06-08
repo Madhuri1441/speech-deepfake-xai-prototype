@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, factual statement: "As if he would. The championship has been won seven times." The speech is generally natural and intelligible, but a subtle anomaly is present in the phrase "championship has been won seven times." Specifically, the word "seven" is pronounced with an unnatural, slightly robotic quality, and the pitch and timing of the syllables are inconsistent with the rest of the sentence. This suggests a possible digital manipulation or text-to-speech insertion. The acoustic anomaly is most evident in the 2.0–3.0 second time range, where the word "seven" is spoken, and is accompanied by a frequency concentration in the 4000–6000 Hz range, which is typical for mid-to-high frequency speech artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 2.0–3.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and further supports this with Saliency analysis in the 3.5–4.0 second range and 7000–8000 Hz, as well as LIME in the 3.0–3.1 second range. These multiple, consistent findings from wav2vec indicate a strong cross-model agreement on the presence of an anomaly in the word "seven." The Hubert and WavLM models do not provide any supporting evidence, likely due to their different training objectives or architectures. The Shap values also highlight features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are associated with speech irregularities, further supporting the presence of an anomaly in the same time and frequency regions.

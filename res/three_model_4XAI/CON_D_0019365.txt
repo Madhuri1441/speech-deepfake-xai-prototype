@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "part of your life" in a neutral, conversational tone, with no apparent emotional distress or unusual delivery. The speech is clear and intelligible, with no signs of digital artifacts, clipping, or background noise. Immediately following the speech, a loud, sustained, high-frequency electronic tone is heard. This tone is sharply defined, with a frequency content concentrated between 7000 Hz and 8000 Hz, and it starts abruptly at 1.2 seconds, continuing until the end of the clip. The tone is acoustically distinct from the speech, with no overlap or blending, and its sudden onset and unnatural timbre suggest it is not a natural sound but rather an artificial or synthetic addition. There are no other audible events or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies a salient region between 1.0-1.2 seconds in the 7000-8000 Hz frequency range, which aligns with the onset of the electronic tone. The Saliency method for wav2vec also highlights the speech region (0.0-0.5 seconds) but does not contradict the abnormality. The LIME method for wav2vec further supports the abnormality by identifying a salient region at 1.25-1.30 seconds, coinciding with the tone’s onset. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not negate the strong cross-model agreement from wav2vec. The Shap values indicate that the abnormal tone is likely the primary driver of the model’s prediction, as the equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean features are highly weighted, corresponding to the loudness and spectral characteristics of the tone. No other acoustic anomalies are present in the audio.

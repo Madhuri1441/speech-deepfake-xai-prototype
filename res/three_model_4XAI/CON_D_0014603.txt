@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It was never a fact." The speech is abruptly interrupted by a sharp, high-frequency digital artifact at approximately 1.0 seconds, which persists until about 1.4 seconds. This artifact is characterized by a piercing, synthetic tone in the 5000–6000 Hz range, with a harsh, buzzy timbre and no natural speech or environmental context. The artifact is not present in the original audio and is not a result of the speaker’s voice or any background noise. The remainder of the audio resumes with the speaker’s voice, which is unaffected by the artifact. This sudden, unnatural interruption is highly suggestive of a digital manipulation, such as a splice or overlay, rather than a genuine recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.0-1.4] seconds, 5000–6000 Hz). The LIME explanation for wav2vec, however, incorrectly identifies an earlier segment ([0.0-0.1] seconds), which is not supported by the audio or other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values further support the presence of an anomaly, with features like loudness_sma3_meanFallingSlope and StddevUnvoicedSegmentLength indicating a significant deviation in the audio’s acoustic structure, particularly around the artifact region. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the abnormality, while the lack of support from Hubert and WavLM suggests that the artifact is not easily detectable by all models.

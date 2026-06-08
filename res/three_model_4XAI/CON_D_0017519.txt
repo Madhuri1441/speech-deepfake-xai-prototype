@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent delivering a formal statement: "timetable for withdrawal with the standard of fire safety provisions." The speech is steady, with no emotional inflection, and is recorded in a quiet, acoustically dry environment. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.0 and 2.5 seconds, specifically in the 1000–3000 Hz range. This artifact is not present in the surrounding speech and does not match typical environmental or vocal sounds, suggesting it is an artificial insertion. The artifact is not accompanied by any change in speech content, volume, or background noise, indicating it is likely a post-production edit or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.0–2.5 second region, with IG further specifying the 1000–3000 Hz frequency range. LIME corroborates the timing at 2.5–2.6 seconds. The Hubert and WavLM models do not detect any abnormalities, as their explanations are all "None." The Shapley values highlight acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which are consistent with the presence of a brief, high-frequency artifact. The cross-model agreement from wav2vec provides strong evidence for the abnormality in the specified time and frequency range.

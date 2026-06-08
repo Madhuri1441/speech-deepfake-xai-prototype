@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "There is no signature." Immediately following the word "signature," a brief, high-frequency, synthetic-sounding artifact is present, lasting approximately 0.2 seconds. This artifact is characterized by a sharp, buzzing timbre in the 2000–4000 Hz range, which is acoustically distinct from the natural speech and likely results from digital processing or editing. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. This anomaly is supported by multiple XAI methods: the Saliency method for the wav2vec model identifies the same time and frequency region as significant, and the LIME method for wav2vec also highlights the initial part of the audio, though with a slightly different time window. The wav2vec model’s IG method identifies a later region ([1.05–1.2] seconds), which does not align with the observed artifact and is likely unrelated. The Hubert and WavLM models do not provide any supporting evidence for this region, and the SHAP values do not directly reference this time or frequency range, indicating that the anomaly is not captured by these models.
+
+III. XAI AGGREGATION EXPLANATION:
+The acoustic abnormality at [0.1–0.3] seconds and [2000–4000] Hz is supported by both the Saliency and LIME methods from the wav2vec model, indicating cross-model agreement within wav2vec. The Hubert and WavLM models do not provide evidence for this region, and the SHAP values do not directly reference the artifact, suggesting that this anomaly is not captured by these models. The wav2vec model’s IG method identifies a different region, which is not supported by other XAI methods or the audio evidence.

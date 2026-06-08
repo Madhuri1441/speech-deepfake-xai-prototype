@@ -1,0 +1,12 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "Almost plans with her come..." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 1.5 seconds. This artifact is sharply distinct from the natural speech, with a piercing, electronic timbre and a frequency content in the 2000–4000 Hz range, which is not present in the original voice. The artifact is not a result of the speaker’s voice or any environmental sound, and it does not align with the natural acoustic profile of the utterance. This anomaly is not supported by any of the XAI explanations, as all models (wav2vec, Hubert, WavLM) report no salient regions for the artifact, and the Shap values do not correspond to this frequency or time range.
+
+III. XAI AGGREGATION EXPLANATION:
+- The wav2vec model identifies a salient region at [1.0-1.5] seconds in the 2000–4000 Hz range using Integrated Gradients (IG), but this is not corroborated by Saliency or LIME, nor by any evidence from Hubert or WavLM models. 
+- The Shap values provided do not align with the observed artifact, indicating that the model did not attribute importance to the abnormality.
+- There is no cross-model agreement on the artifact; the wav2vec IG result is the only indication of the anomaly, and it is not supported by other XAI methods or models. 
+- The absence of supporting evidence from other models and methods suggests that the artifact may not be captured by the model’s learned features, or it may be an unexpected type of anomaly not covered by the XAI techniques applied.

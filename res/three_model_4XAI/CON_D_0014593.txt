@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male voice speaking in a neutral, conversational tone: "I don't even have time for two at the money." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable abnormality is present in the high-frequency region (6000–7000 Hz) during the time interval [1.0–2.0] seconds, specifically around the word "time." This region exhibits a faint, unnatural tonal quality that stands out from the rest of the speech, suggesting possible digital artifacting or synthesis. The rest of the audio remains acoustically stable and natural, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.0–2.0] second time region and [6000–7000] Hz frequency region as the most salient, indicating these are the areas most responsible for the model's prediction. This aligns with the observed acoustic abnormality. The wav2vec Saliency method also highlights a different region ([0.0–0.5] seconds, [2000–4000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The wav2vec LIME analysis further supports the [1.5–1.6] second sub-region, reinforcing the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and mfcc3V_sma3nz_amean, which are not directly tied to the observed abnormality but may reflect underlying acoustic properties. Overall, the wav2vec model's IG and LIME results provide the strongest evidence for the abnormality, with cross-model agreement limited to wav2vec alone.

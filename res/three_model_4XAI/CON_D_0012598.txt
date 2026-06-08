@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Hold up, it's a real..." in a neutral, conversational tone. At approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 4000–6000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not present in the original utterance and does not resemble any typical speech or environmental sound, suggesting it is an artificial insertion. The voice resumes naturally after the artifact, with no further anomalies. The Shapley value analysis highlights that the equivalentSoundLevel_dBp feature is significantly elevated, indicating a sudden increase in loudness at the artifact’s onset, while StddevUnvoicedSegmentLength and mfcc1_sma3_amean remain stable, supporting the localized nature of the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 0.5–1.0 second region as anomalous, with a frequency concentration of 4000–6000 Hz. The LIME method from wav2vec also supports this, though with a narrower time window (1.50–1.55 seconds), likely due to its local approximation approach. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley value analysis corroborates the presence of a sudden loudness increase at the artifact’s onset, further supporting the wav2vec findings. The agreement between wav2vec’s IG, Saliency, and LIME methods, along with the Shapley value evidence, strongly indicates a localized, high-frequency artifact in the 0.5–1.0 second range.

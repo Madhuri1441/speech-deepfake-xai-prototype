@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:  
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-pitched, and muffled utterance, "trouble," spoken by a male voice. Immediately following this, a high-frequency, synthetic-sounding artifact is present in the 3000–4000 Hz range, lasting approximately 0.1 seconds. This artifact is not a natural part of speech or environmental sound and is acoustically distinct from the voice, suggesting digital manipulation or insertion. The wav2vec model’s saliency analysis highlights this exact time and frequency region as critical for its prediction, indicating that the model identifies this segment as anomalous. The wav2vec IG analysis also points to a slightly broader region (0.8–1.2 seconds, 3000–5000 Hz), which may correspond to a secondary artifact or reverberation tail, but the most consistent and specific evidence is the 0.1–0.2 second, 3000–4000 Hz region. No other XAI models provide supporting evidence, and no other acoustic anomalies are apparent in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec saliency and IG analyses both identify the 0.1–0.2 second, 3000–4000 Hz region as significant, with the saliency providing the most precise localization. The wav2vec LIME analysis also supports this, though less specifically. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not universally detected across all models. The Shapley values, while not directly tied to time or frequency, suggest that the audio’s acoustic features (e.g., spectral flux, unvoiced segment length) are consistent with a synthetic or manipulated signal, further supporting the presence of an anomaly. The final abnormality region is thus based on cross-model agreement from wav2vec saliency and IG, with additional support from wav2vec LIME.

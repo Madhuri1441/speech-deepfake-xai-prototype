@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker saying, "by the time he was a living legend." The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the word "time," specifically in the phoneme /aɪ/. From 1.5 to 2.5 seconds, the acoustic texture of this segment is slightly unnatural, with a thin, synthetic timbre and a lack of natural vocal vibrato or breathiness. This is most apparent in the mid-to-high frequency range (1000–8000 Hz), where the spectral energy is less rich and the articulation is slightly abrupt compared to the rest of the utterance. The anomaly is not obvious to casual listening but is perceptible upon close inspection.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the same time and frequency range as the observed acoustic abnormality, with IG highlighting [1.5-2.0] seconds and [4000-6000] Hz, and Saliency extending to [2.0-2.5] seconds and [1000-8000] Hz. LIME also supports the region [1.5-1.6] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values, while not directly indicating the time or frequency range, suggest that features related to unvoiced segment length and MFCCs are contributing to the model’s decision, which aligns with the observed acoustic irregularity in the /aɪ/ phoneme. The cross-model agreement from wav2vec’s IG, Saliency, and LIME supports the conclusion that the anomaly is localized in the [1.5-2.5] seconds, [1000-8000] Hz region.

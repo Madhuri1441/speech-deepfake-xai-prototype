@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched female voice saying "We are so fl-" in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.8 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact is a sharp, synthetic-sounding burst in the 3000–6000 Hz range, lacking the natural timbre or harmonic structure of human speech or environmental sounds. It is acoustically distinct from the preceding speech and does not blend naturally into the audio, suggesting an artificial insertion.
+
+This anomaly is corroborated by multiple XAI methods. The Integrated Gradients (IG) analysis highlights the 0.8–1.2 second time window and 3000–6000 Hz frequency range as the most significant region for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency map also points to a brief, high-frequency event around 0.2–0.4 seconds, though this is less prominent and may reflect a secondary artifact or noise. LIME analysis further supports the 0.8–0.9 second window, reinforcing the importance of this segment. The top three SHAP values—equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and logRelF0-H1-H2_sma3nz_stddevNorm—all indicate that the anomaly is a sudden, high-intensity, unvoiced sound event, consistent with the observed synthetic burst.
+
+No other acoustic anomalies are present in the audio, and the rest of the clip is natural and unremarkable. The sudden, high-frequency artifact at 0.8–1.2 seconds is the only clear sign of tampering, and the XAI evidence collectively supports this as the key region responsible for the deepfake classification.

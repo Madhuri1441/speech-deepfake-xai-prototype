@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 2.5–3 seconds, a brief, unnatural vocal artifact occurs: a high-frequency, synthetic-sounding burst (4000–6000 Hz) interrupts the speech, resembling a digital glitch or a poorly synthesized sound. This artifact is not present in the original speaker’s voice and is acoustically inconsistent with the rest of the recording, suggesting a possible deepfake or audio manipulation. The artifact is most prominent in the wav2vec model’s Integrated Gradients explanation, which highlights this region as a key area of model attention, indicating the model’s sensitivity to this anomaly. The LIME explanation for wav2vec also points to a nearby time window (0.9–1.1 seconds), but this is less directly related to the artifact. The Hubert and WavLM models do not identify this region, likely due to differences in their training or feature extraction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and LIME explanations both support the presence of an abnormality in the 2.5–3 second time range, with the Integrated Gradients providing the most direct evidence of the artifact. The Hubert and WavLM models do not identify this region, indicating that the anomaly is not universally detected across all models. The wav2vec model’s sensitivity to this region suggests that the artifact is a key feature in its decision-making process, likely contributing to a deepfake classification. The Shapley values further support the presence of an anomaly, with high values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, indicating significant deviation from normal speech patterns.

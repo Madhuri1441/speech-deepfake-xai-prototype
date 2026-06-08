@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, muffled tone, with the phrase "...this league you like nice hours by the Jeff had got caught yesterday." The speech is somewhat indistinct, likely due to low recording quality or post-processing. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting until about 2.0 seconds. This transient is characterized by a piercing, metallic or synthetic timbre, with energy concentrated between 4000 Hz and 6000 Hz. The sound is abrupt, unnatural, and does not resemble any typical environmental or vocal artifact. It stands out acoustically from the rest of the audio, which is dominated by low-frequency speech and a faint background hiss. The transient is not present in the original speech and appears to be an artifact introduced during processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also points to a related region at [2.9-3.1] seconds, though this is less consistent. The LIME method supports the [1.9-2.0] seconds region, aligning with the wav2vec IG result. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are consistent with the presence of a high-frequency transient, further supporting the conclusion that the audio contains an unnatural, synthetic artifact in the specified time and frequency range. The cross-model agreement between wav2vec and LIME strengthens the evidence for this region as the primary anomaly.

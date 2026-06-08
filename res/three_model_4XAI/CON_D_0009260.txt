@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency transient occurs, lasting until about 1.5 seconds. This transient is characterized by a sharp, metallic or digital artifact, with energy concentrated between 6000 and 7000 Hz. The sound is abrupt and unnatural, lacking the gradual onset or decay typical of real-world acoustic events. This anomaly is not present in the initial or subsequent portions of the audio, suggesting it is an isolated artifact rather than a natural sound event. The rest of the audio consists of a single, clear, and intelligible female voice speaking in a neutral, conversational tone, with no other background noises or speech present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both highlight the 1.0–1.5 second time region and 6000–7000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values from the audio features also support the presence of an anomaly in this region, with high contributions from spectral features such as spectral flux and unvoiced segment length, which are sensitive to abrupt changes in the signal. The cross-model agreement from wav2vec’s multiple methods provides strong evidence for the abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent statement in English: "That's not public. Or improvements. I was in big my time." The speech is generally intelligible, with a slight regional accent, and is recorded in a quiet, indoor environment. However, at approximately 3.5 to 4.0 seconds, a distinct, high-frequency, synthetic-sounding artifact is present. This artifact manifests as a sharp, buzzing, or static-like noise, with a frequency content between 6000 and 8000 Hz, which is inconsistent with the natural speech and background. The artifact is abrupt, lasting about half a second, and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original speech and appears to be an artificial insertion or digital corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.5-4.0] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values for features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an unnatural acoustic event in this region, as these features are sensitive to sudden changes in sound energy and spectral content. The convergence of wav2vec’s multiple XAI methods and the Shapley values confirms the presence of an artificial or corrupted segment in the audio, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

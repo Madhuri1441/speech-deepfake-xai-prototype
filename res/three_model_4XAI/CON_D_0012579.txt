@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering the phrase, "I never thought it to all add up to bloody Stranraer, Scotland." The recording is of high fidelity, with no background noise or distortion. The speech is clear, and the speaker's voice is steady and natural, with no signs of emotional distress or artificiality. However, a subtle anomaly is detected in the wav2vec model's Integrated Gradients (IG) explanation, which highlights a region between 1.0 and 1.5 seconds in the frequency range of 2000–3000 Hz. This region corresponds to the word "thought," where the acoustic energy is unusually concentrated, suggesting a possible anomaly in the spectral content. The wav2vec model's Saliency and LIME explanations do not support this region, and the Hubert and WavLM models provide no evidence of abnormality. The SHAP values indicate that the StddevUnvoicedSegmentLength feature is the most influential, but this does not directly correspond to the highlighted region. Overall, the anomaly is subtle and may be due to a minor spectral irregularity in the word "thought," but there is no strong evidence of a deepfake or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) explanation identifies the abnormality in the 1.0–1.5 second range, with a frequency concentration between 2000–3000 Hz. This is the only XAI source that supports this region, as the Saliency and LIME explanations from wav2vec, as well as all explanations from Hubert and WavLM, do not indicate any abnormality. The SHAP values provide additional context but do not directly support the highlighted region. Therefore, the evidence for the abnormality is based solely on the wav2vec IG explanation, with no cross-model agreement.

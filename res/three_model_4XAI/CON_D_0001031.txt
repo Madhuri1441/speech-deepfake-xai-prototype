@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.25-1.30] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-2500] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral female voice saying "Pozons from widows." Immediately following the speech, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural and does not resemble any typical background noise or environmental sound. The transition from speech to the electronic tone is abrupt and lacks any fade or natural decay, indicating a possible digital insertion or editing artifact. The tone is monophonic, with a stable pitch and amplitude, and is acoustically distinct from the preceding speech. There are no other audible events or background sounds, and the recording is otherwise clean, with no signs of environmental noise or distortion. The sudden appearance of the electronic tone is the most conspicuous anomaly in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to a specific time-frequency region around [1.25-1.30] seconds and [2000-2500] Hz, which aligns with the onset of the electronic tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no significant regions. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope indicating a significant deviation from normal speech patterns, likely due to the electronic tone. The agreement among wav2vec’s multiple XAI methods provides strong evidence for the abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detected by all models.

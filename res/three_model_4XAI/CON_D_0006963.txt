@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a neutral, formal tone, delivering a short, intelligible sentence: "public depends on the internal discussions in the ministry of defense." The speech is clear, with no background noise, distortion, or environmental cues, and the recording quality is high. However, a subtle but noticeable anomaly is present in the frequency range of 3000–6000 Hz during the time interval of 1.0–2.0 seconds, corresponding to the word "depends." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor artifact or digital processing artifact, though it does not affect intelligibility or emotional tone. No other acoustic irregularities are evident in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), and also highlights a secondary region at [3.0-3.5] seconds and [6000-8000] Hz using Saliency. LIME further supports the [0.4-0.5] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any abnormality evidence. The wav2vec IG and Saliency results are consistent with the observed acoustic anomaly in the 3000–6000 Hz range during "depends," indicating cross-model agreement. The Shapley values from the wav2vec model also point to features related to unvoiced segment length and spectral slope, which align with the observed frequency anomaly. Thus, the final abnormality region is supported by multiple wav2vec methods and is considered reliable.

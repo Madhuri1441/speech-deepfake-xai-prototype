@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic tone, followed by a female voice saying, "Baron, welcome to the adult portal." The speech is clear and intelligible, with a neutral, slightly formal tone, and is accompanied by a subtle room reverberation. Immediately after the spoken phrase, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is harsh, static, and digitally clipped, with a fundamental frequency around 100 Hz and strong harmonics extending up to 7000 Hz. The tone is significantly louder than the speech, masking any further audio content and dominating the acoustic environment. The transition from speech to tone is abrupt, with no fade or overlap, and the tone’s spectral content is concentrated in the 5000–7000 Hz range, which is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-2.0] seconds time region and [6000-7000] Hz frequency region as critical for its prediction, with both IG and Saliency methods pointing to this interval. The LIME method also supports this region, focusing on [1.8-2.0] seconds. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is most strongly supported by wav2vec. The Shapley values highlight the equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 as key features, all of which are consistent with the presence of a loud, clipped, and static electronic tone. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods confirms the [1.0-2.0] seconds interval and [5000-7000] Hz frequency range as the most suspicious acoustic region, with no supporting evidence from Hubert or WavLM.

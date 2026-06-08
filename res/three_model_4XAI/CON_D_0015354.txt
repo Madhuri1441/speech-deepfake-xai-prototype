@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.50-1.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "There was nothing in that nor the...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not present in the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the 2000–4000 Hz range, which is consistent with the frequency region identified by the wav2vec model’s Integrated Gradients (IG) explanation. The abrupt onset and unnatural character of the buzz, combined with its spectral alignment with the wav2vec IG result, indicate a likely synthetic or manipulated segment. No other XAI methods (Saliency, LIME, or SHAP) provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the 0.50–1.00 second time range and 2000–4000 Hz frequency range as abnormal, which aligns with the observed synthetic buzzing sound. The wav2vec Saliency method also points to a brief time window (0.05–0.15 seconds) in the same frequency range, but this is not supported by the audio evidence and is likely a false positive. The Hubert and WavLM models do not provide any abnormality indications. SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not correspond to the buzzing artifact and are not supported by the audio. Thus, the only cross-model agreement is from wav2vec’s IG method, which is supported by the audio’s synthetic buzz.

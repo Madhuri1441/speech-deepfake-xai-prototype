@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering the phrase: "We have been sustained to thank him to..." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is steady and natural, with no signs of emotional distress or artificiality. However, at approximately 2.5–3.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or whine in the 4000–6000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The artifact is brief, lasting about half a second, and is most prominent during the word "sustained." The rest of the audio remains clean and free of distortion, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, 4000-6000 Hz). The IG and Saliency methods provide overlapping but slightly different time and frequency ranges, while LIME offers a more precise but narrower time window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and alphaRatioUV_sma3nz_amean, which are associated with the presence of the artifact, further supporting the conclusion that the anomaly is a synthetic or digitally introduced sound. The cross-model agreement from wav2vec confirms the region as the most likely source of the anomaly.

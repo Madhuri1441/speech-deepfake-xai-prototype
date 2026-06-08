@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of distress or artificiality. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic buzzing sound emerges, lasting for about one second. This buzzing is not present in the original speech and is acoustically inconsistent with the rest of the audio, which is dominated by mid-frequency speech and a low-level background hiss. The buzzing is sharply defined, with a frequency content between 4000–6000 Hz, and is likely an artifact introduced during post-processing or as a result of digital manipulation. The speech itself remains intelligible and unaffected by this artifact, suggesting it is an overlay rather than a genuine environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0–2.0] seconds with a frequency range of [4000–6000] Hz using Integrated Gradients (IG), and corroborates this with Saliency and LIME, all pointing to the same time and frequency region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2_sma3_amean, which are consistent with the presence of a synthetic buzz in the specified frequency range. The agreement among wav2vec’s IG, Saliency, and LIME methods supports the conclusion that the buzzing sound is an artificial artifact, likely introduced during audio processing or editing.

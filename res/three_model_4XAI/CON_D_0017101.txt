@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single speaker with a clear, neutral accent, delivering a short, coherent statement in English: "It is about working at this place. One pay, I we have a big two." The speech is generally intelligible, with a natural rhythm and no obvious signs of digital manipulation or synthetic speech. However, at approximately 3.5–4.0 seconds, a brief, high-frequency artifact is present, characterized by a sharp, metallic or digital-sounding transient. This artifact is not part of the speaker’s voice and does not correspond to any natural speech or environmental sound. The frequency range of this artifact (6000–7000 Hz) is consistent with a high-frequency digital glitch or compression artifact, rather than a natural acoustic event. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [3.5-4.0] seconds time region and [6000-7000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical for the model’s classification. This aligns with the observed high-frequency artifact in the audio. The wav2vec Saliency analysis also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis is limited to a different time window ([1.5-2] seconds) without frequency support. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, which is consistent with the presence of a loud, transient artifact in the audio. Overall, the wav2vec IG evidence is the only one that directly supports the observed acoustic abnormality, with no cross-model agreement.

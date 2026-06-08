@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "We are so young" in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the high-frequency region (4000–6000 Hz) between 0.8 and 1.2 seconds, where the voice exhibits a slight unnaturalness or digital artifact. This is not a typical speech sound and may indicate a synthetic or manipulated segment. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the 0.8–1.2 second range is supported by the Integrated Gradients (IG) method from the wav2vec model, which identifies this time-frequency region as critical for the model’s prediction. The Saliency method from wav2vec also highlights a related but slightly offset region (0.15–0.25 seconds), suggesting a broader sensitivity to high-frequency artifacts. The LIME method from wav2vec further corroborates the anomaly at 1.05–1.15 seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly pinpointing the time-frequency region, suggest that features like equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are significantly altered, which may be consistent with the presence of synthetic or manipulated speech. Overall, the cross-model agreement from wav2vec’s IG, Saliency, and LIME methods provides strong evidence for the anomaly in the specified region.

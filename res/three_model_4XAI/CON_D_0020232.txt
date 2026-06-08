@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear female voice speaking in a neutral, declarative tone, with no background noise or environmental sounds. The speech is intelligible and delivered at a steady pace, with no signs of emotional inflection or vocal strain. The only notable acoustic feature is a brief, high-frequency artifact in the 7000–8000 Hz range, occurring between 2.5 and 3.0 seconds. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or editing artifact, which stands out against the otherwise clean and stable vocal signal. The rest of the audio is acoustically normal, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [7000-8000] Hz). The IG method highlights the region as a key contributor to the model’s prediction, while Saliency and LIME provide further confirmation by focusing on the same transient event. In contrast, the Hubert and WavLM models do not detect any abnormality in this region, as their XAI methods return no relevant evidence. The Shapley values also do not indicate any abnormality, as they are based on acoustic features that remain consistent throughout the audio. Thus, the final abnormality is supported by cross-model agreement from wav2vec’s multiple XAI methods, while other models and features do not corroborate the finding.

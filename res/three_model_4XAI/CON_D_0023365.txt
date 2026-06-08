@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "or so we said" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, a subtle anomaly is present in the frequency range of 1000–3000 Hz during the time interval of 0.25–0.5 seconds, as indicated by the wav2vec model’s saliency analysis. This region corresponds to the mid-frequency range of the voice, where the fundamental and first harmonic of the speaker’s voice are typically found. The wav2vec saliency map highlights this region as being particularly important for the model’s prediction, suggesting that the acoustic content here may be atypical or manipulated. No other XAI methods (IG, LIME) or models (Hubert, WavLM) corroborate this finding, and no other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec saliency analysis identifies the 0.25–0.5 seconds time interval and 1000–3000 Hz frequency range as the most suspicious region. This is the only XAI source that provides evidence for an anomaly in this region; the IG and LIME methods from wav2vec, as well as all methods from Hubert and WavLM, do not indicate any abnormality. The SHAP values suggest that spectral features such as spectralFlux_sma3_amean and loudness_sma3_meanFallingSlope are important for the model’s decision, but they do not localize the anomaly to a specific time or frequency region. Therefore, the final abnormality is based solely on wav2vec saliency evidence, with no cross-model agreement.

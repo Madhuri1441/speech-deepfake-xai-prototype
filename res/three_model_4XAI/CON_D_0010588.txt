@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization ("Oh") followed by a female voice speaking the phrase, "Treatment is aimed at the symptoms." The speech is clear, with a neutral, informative tone, and is recorded in a quiet, acoustically dry environment. However, at approximately 2.0–2.5 seconds, a distinct, high-frequency, synthetic buzzing tone abruptly appears. This tone is centered around 4000–6000 Hz and is markedly louder and more prominent than the speech, with a harsh, electronic timbre that is not present in the rest of the audio. The buzz is sustained and unmodulated, suggesting a digital artifact or post-production error rather than a natural sound. The speech continues unaffected, indicating the buzz is likely an overlay or encoding artifact. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.5] seconds, [4000-6000] Hz). The IG and Saliency methods both highlight the same frequency band, while LIME provides a more granular time localization within this interval. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shapley values further support the presence of an anomaly, with spectralFlux_sma3_amean showing a high positive contribution, indicating a sudden increase in high-frequency content at the suspected time. The combination of consistent wav2vec evidence and corroborating Shapley values strongly supports the presence of a synthetic buzz in the specified region.

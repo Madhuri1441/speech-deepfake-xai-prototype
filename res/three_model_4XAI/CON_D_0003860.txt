@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy sound, followed by a female voice saying, "My appeal succeeds." The speech is clear and intelligible, with a neutral, declarative tone. Immediately after the word "succeeds," there is a sharp, high-frequency transient noise, lasting about half a second, which is acoustically distinct from the speech. This transient is characterized by a piercing, metallic timbre and a frequency content in the 6000–7000 Hz range, suggesting a possible digital artifact or post-processing anomaly. The transient is not present in the original speech and does not correspond to any natural vocal or environmental sound. The rest of the audio is silent, with no background noise or reverberation, indicating a controlled recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.00–1.50 second time range and 6000–7000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports this with a time region of 1.85–2.05 seconds and a frequency range of 4000–6000 Hz, overlapping with the observed transient. LIME also highlights a time region around 1.4–1.5 seconds, reinforcing the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis identifies high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, which may reflect the presence of the transient noise. Overall, the wav2vec model’s IG and Saliency, along with LIME, provide consistent evidence of an abnormality in the 1.00–1.50 second range, supported by the observed acoustic characteristics.

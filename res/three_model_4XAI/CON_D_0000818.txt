@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.2 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 3000 Hz and 4000 Hz. The sound is acoustically distinct from the preceding speech and background noise, suggesting an artificial or digitally inserted artifact. The remainder of the audio consists of a faint, low-frequency hum and a barely audible, muffled male voice, which is not clearly intelligible and does not contain any discernible words or phrases. No other obvious acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.2 second time range and 3000–4000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (0.2–0.4 seconds, 1000–3000 Hz) and LIME points to a brief interval (1.5–1.6 seconds). The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a large positive SHAP value, suggesting the presence of a loud, transient event. However, the Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is not consistently detected across all models. The wav2vec IG result is the only cross-model agreement, and the Shapley value supports the presence of a loud transient, but the evidence is not fully corroborated by all models.

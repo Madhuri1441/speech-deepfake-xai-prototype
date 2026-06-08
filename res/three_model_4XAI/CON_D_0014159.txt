@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "proposals" in a neutral, conversational tone, followed by "we'll have to tackle it" in a slightly more assertive manner. At approximately 1.00 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.25 seconds and centered in the 3000–4000 Hz range. This transient is acoustically distinct from the speech, with no natural speech-related harmonics or resonance, and appears abruptly without any fade-in or fade-out. The click is not a typical artifact of microphone handling or environmental noise, and its spectral and temporal characteristics suggest a digital or synthetic origin. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as an anomaly using both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.00-1.25] seconds, [3000-4000] Hz]. The LIME method from wav2vec also supports this region, albeit with a slightly different time window ([1.75-1.80] seconds), which may reflect a secondary or overlapping event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of a sudden, high-frequency event, as these features are sensitive to abrupt changes in sound energy and spectral content. Overall, the wav2vec model’s multiple independent methods converge on the same region, providing strong evidence for the click’s anomalous nature.

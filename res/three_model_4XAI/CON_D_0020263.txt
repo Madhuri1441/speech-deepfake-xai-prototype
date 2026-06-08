@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6-1.35] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-5000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a brief pause. At approximately 0.6 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.35 seconds. This artifact is characterized by a sharp, metallic, and slightly distorted timbre, with a frequency content between 2000 Hz and 5000 Hz. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. It is most prominent in the latter part of the spoken phrase, “There is no signature,” and is not present in the initial portion of the audio. The artifact’s unnatural spectral and temporal characteristics suggest it is a synthetic insertion, likely introduced during post-processing or as a result of a deepfake generation process.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the same time and frequency region ([0.6-1.35] seconds, [2000-5000] Hz) as abnormal, indicating strong cross-model agreement. The LIME explanation for wav2vec identifies a much earlier, very brief region ([0.0-0.1] seconds), which is not corroborated by other models and is likely a minor artifact or noise. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, possibly due to differences in their training or feature extraction. The SHAP analysis highlights high values for spectralFlux_sma3_amean and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic, high-frequency artifact, further supporting the conclusion that the abnormality is a post-processed or deepfake-generated sound.

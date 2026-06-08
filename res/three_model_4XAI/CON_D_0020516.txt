@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "debut album in New York version" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.5 seconds into the clip, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the audio. This artifact is a steady, high-pitched tone, likely in the 3000–6000 Hz range, with a harsh, buzzy timbre that is not naturally produced by human speech. The artifact is not present during the initial speech segment, suggesting it is an added or inserted element rather than a recording flaw. The abrupt onset and unnatural character of the tone indicate it is likely a result of digital editing or post-production, possibly as a watermark, placeholder, or intentional overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.5-1.0] seconds time region and [3000-6000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed synthetic artifact. The Saliency method from wav2vec also highlights the [0.00-0.25] seconds region, which corresponds to the initial speech, but the LIME explanation for wav2vec is less specific, only indicating a region around [0.2-0.3] seconds. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME results are also absent, indicating that these models do not detect the anomaly. The SHAP analysis identifies several acoustic features, but none directly correspond to the observed artifact. Overall, the most consistent and cross-model evidence comes from the wav2vec IG explanation, which supports the presence of an abnormality in the specified time and frequency range.

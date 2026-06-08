@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "was a hit but paid for the movie." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but notable acoustic anomaly occurs between 0.6 and 1.2 seconds, where the voice exhibits a brief, unnatural pitch inflection and a slight increase in high-frequency content (3000–6000 Hz). This region is marked by a momentary harshness and a lack of natural vocal smoothness, suggesting possible digital editing or synthesis. The anomaly is not accompanied by any environmental or background cues, and the rest of the audio remains stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the [1.0–1.2] seconds region and Saliency focusing on [0.6–1.0] seconds, both within the 3000–6000 Hz frequency band. These findings are consistent and indicate a high confidence in the presence of an anomaly in this region. The LIME method from wav2vec also points to an earlier segment ([0.0–0.1] seconds), but this is less supported and not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed anomaly in the audio. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the [0.6–1.2] seconds region, making this the most reliable indicator of the anomaly.

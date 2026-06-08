@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled male voice saying, "This is the total for the ill." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, a subtle but noticeable anomaly is present in the initial seconds of the audio. Specifically, between 0.1 and 0.3 seconds, there is a faint, high-frequency artifact in the 2000–4000 Hz range, which is not typical of natural human speech. This artifact manifests as a brief, unnatural tonal quality, possibly resembling a digital glitch or a synthetic overlay, and is not present in the rest of the recording. The remainder of the audio is clean, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.1–0.3 second range and 2000–4000 Hz frequency band using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement between these two XAI techniques. The LIME method also supports this region, albeit with a narrower focus at 0.5–0.6 seconds, which overlaps with the wav2vec findings. In contrast, the Hubert and WavLM models do not provide any evidence of anomalies, as their IG, Saliency, and LIME results are all null. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed artifact and are not supported by the XAI models. Thus, the final abnormality region is based on cross-model agreement from wav2vec, with no support from Hubert or WavLM.

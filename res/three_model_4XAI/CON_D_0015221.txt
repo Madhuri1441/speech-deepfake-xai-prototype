@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent statement in English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 3.5 seconds, a brief, unnatural vocalization occurs: a low-pitched, abrupt, and non-verbal sound that is acoustically inconsistent with the preceding speech. This vocalization is short, lacks the natural cadence of speech, and is immediately followed by a return to normal speech. The sound is most prominent in the 2000–6000 Hz frequency range, which is typical for mid-to-high frequency vocal artifacts. This anomaly is not present in the original audio, suggesting it is an artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [3.5-4.0] seconds time range and [2000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly broader [3-5] seconds and [2000-4000] Hz region. LIME analysis, however, points to an earlier segment ([0.0-0.5] seconds), which does not align with the observed vocalization. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may reflect the presence of an unnatural vocal event. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the anomaly, supported by the acoustic observation of an unnatural vocalization.

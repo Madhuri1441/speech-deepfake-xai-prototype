@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "Two months later, he was dead." The speech is clear and intelligible, with a neutral, somber tone. However, at approximately 0.2–0.4 seconds into the clip, a subtle but noticeable high-frequency artifact appears, specifically in the 5000–6000 Hz range. This artifact manifests as a faint, synthetic-sounding hiss or digital noise, which is not present in the rest of the audio. The noise is brief and does not interfere with the intelligibility of the speech, but it stands out as an unnatural addition to the otherwise clean recording. This anomaly is not present in the original voice or background, suggesting it may be a result of digital manipulation or encoding error.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.2-0.4] seconds and [5000-6000] Hz using Integrated Gradients (IG), and at [1.0-1.2] seconds and [5000-6000] Hz using Saliency. The LIME method also supports the presence of an anomaly at [0.6-0.7] seconds, though this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The wav2vec model’s IG and Saliency methods both point to the same frequency range and a closely related time window, providing cross-model agreement on the presence of the artifact. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating deviations from expected acoustic patterns. Overall, the wav2vec model’s evidence is the most consistent and reliable in identifying the abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "pretty, but it's effective," in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of digital manipulation or distortion. However, at approximately 1.5 seconds into the clip, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–8000 Hz range, which is acoustically distinct from the preceding speech and does not match any natural vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. After this transient, the audio returns to normal speech until the end of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.5-2.0] seconds, 5000–8000 Hz), indicating strong cross-model agreement on the presence of an anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the transient artifact, but these are not directly tied to the specific time or frequency region. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the observed acoustic anomaly.

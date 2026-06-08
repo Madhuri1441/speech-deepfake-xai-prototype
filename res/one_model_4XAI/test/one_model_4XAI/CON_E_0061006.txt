@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "The air falder nearly won only the other day." The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible. However, a subtle but noticeable anomaly is present in the high-frequency region (6000–7000 Hz) during the time interval [0.5–1.0] seconds, corresponding to the end of the word "falder." This region exhibits an unnatural, synthetic timbre, likely due to an artifact introduced by the deepfake generation process. The anomaly is not perceptible to the human ear as a distinct sound but is detectable through spectral analysis.
+
+The Integrated Gradients (IG) explanation supports this observation, highlighting the same time and frequency regions as critical for the model’s decision, indicating that the synthetic artifact is a key feature in the deepfake detection process. The Saliency method also identifies a region around [2.5–3.0] seconds, which aligns with the end of the phrase, suggesting that the model is sensitive to the overall unnaturalness of the speech, though this region is less specific than the IG result. The LIME explanation, while pointing to the very beginning of the audio, is less relevant to the observed anomaly. The Shapley values further reinforce the importance of high-frequency features, with the top three values indicating that the model is particularly sensitive to spectral characteristics such as unvoiced segment length and amplitude-related features, which are likely affected by the synthetic artifact.
+
+In summary, the audio contains a subtle high-frequency anomaly in the word "falder," which is supported by multiple XAI methods, particularly IG and Shapley values, indicating that the deepfake model detects this synthetic artifact as a key indicator of manipulation.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase "to I busy but not much is happening." The recording is clean, with no background noise or environmental sounds, and the speech is intelligible and natural. However, a subtle but noticeable anomaly is present in the high-frequency region between 6000–7000 Hz during the time interval of 1.0–1.5 seconds. This region contains a faint, artificial-sounding artifact that is not present in the rest of the audio, suggesting a possible digital manipulation or compression artifact. The anomaly is not perceptible to casual listening but is detectable through spectral analysis. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the abnormality in the time-frequency region [1.0-1.5] seconds and [6000-7000] Hz, which aligns with the observed artifact. The wav2vec Saliency method also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this does not correspond to any clear anomaly in the audio. The wav2vec LIME method identifies a very short time interval ([1.75-1.85] seconds), which is not supported by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The SHAP analysis does not directly indicate the abnormality but provides context on the audio's acoustic features. The wav2vec IG result is the only one that aligns with the observed artifact, and no cross-model agreement is present.

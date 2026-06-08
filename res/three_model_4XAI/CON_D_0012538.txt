@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp, high-frequency click or pop at the start, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or artificiality. However, at approximately 1.5–2.0 seconds, a distinct, unnatural high-frequency artifact appears, lasting about half a second. This artifact is a piercing, synthetic-sounding tone, likely a digital glitch or encoding error, which stands out from the natural speech and background. The frequency of this artifact falls within the 6000–7000 Hz range, which is not typical for human speech and is more consistent with a technical error or post-processing artifact. This anomaly is not present in the rest of the audio, which remains natural and free of such artifacts. No other acoustic irregularities are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), and also highlights a region at [4.5-5.0] seconds with a frequency range of [7000-8000] Hz using Saliency. The LIME explanation for wav2vec further supports the [5.0-5.1] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, but these do not directly correspond to the observed artifact. The cross-model agreement is limited to wav2vec’s IG and Saliency explanations, which both point to the same high-frequency region, suggesting a strong indication of an anomaly in that segment.

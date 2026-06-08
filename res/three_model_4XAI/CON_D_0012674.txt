@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 3.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, which is acoustically distinct from the rest of the audio. The transient is not a natural part of speech or environmental noise, and its spectral content falls within the 6000–7000 Hz range, which is unusually prominent compared to the rest of the recording. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) identifies this region as a key contributor to the model’s prediction, while Saliency and LIME also highlight the same time and frequency range, indicating a strong, cross-model agreement on the significance of this transient. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The region [3.5-4.0] seconds and [6000-7000] Hz Hz is supported by Integrated Gradients, Saliency, and LIME, all of which independently identify this transient as a critical feature for the model’s prediction. This cross-model agreement strongly suggests that the transient is a significant acoustic anomaly, likely indicative of a deepfake artifact. The wav2vec model’s explanations are consistent with this finding, while the Hubert and WavLM models do not provide supporting evidence for this region. The Shapley values further reinforce the importance of this transient by highlighting its contribution to the model’s output, although they do not specify the exact time or frequency range.

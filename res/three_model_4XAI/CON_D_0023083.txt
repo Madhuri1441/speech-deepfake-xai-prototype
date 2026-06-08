@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "working in the theater," in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-professional, indoor environment. The speech is clear and intelligible, with no signs of digital compression or overt editing. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice acquires a slightly artificial, metallic timbre, and the spectral content shifts upward, with increased energy in the 3000–8000 Hz range. This change is most pronounced between 0.5 and 1.2 seconds, after which the voice returns to its original acoustic character. The transition is smooth, with no abrupt cuts or artifacts, and the speech remains continuous and natural in rhythm and intonation. There are no signs of digital clipping, static, or other overt audio defects.
+
+This acoustic anomaly is supported by multiple XAI sources. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 0.5–1.0 and 1.0–1.2 second intervals, respectively, as regions of high importance, with the latter focusing on the 5000–8000 Hz frequency band. LIME also highlights the 0.8–0.9 second window, overlapping with the wav2vec findings. The consistency across these methods, despite their different approaches, strengthens the case for a genuine acoustic anomaly in this region. The Shapley values further support this, with features like loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength showing elevated values, indicating a shift in the signal’s acoustic properties during this interval.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 0.5–1.2 second interval as the region of interest, with overlapping frequency ranges (3000–8000 Hz). The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The cross-model agreement from wav2vec’s multiple methods provides strong support for the anomaly, indicating a genuine acoustic change rather than a model-specific artifact.

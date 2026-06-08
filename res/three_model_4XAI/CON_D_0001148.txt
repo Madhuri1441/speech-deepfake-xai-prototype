@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency transient is heard, lasting about 0.5 seconds. This transient is characterized by a sharp, metallic or digital artifact, with a frequency content concentrated between 3000 Hz and 6000 Hz. The sound is abrupt, lacks any natural acoustic decay, and does not match the timbre of the speaker’s voice or any environmental noise. This transient is not present in the original speech content and appears to be an artifact introduced during audio processing or editing. The rest of the audio, including the speech and background, remains clear and natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while the LIME method supports the same time range ([0.9-1.1] seconds). The wav2vec Saliency method, however, points to a different region ([0.0-0.1] seconds, [2000-4000] Hz), which does not align with the observed transient. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley value analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, but these do not directly correspond to the observed transient. The wav2vec IG and LIME results are consistent with the acoustic observation of a high-frequency transient, while other XAI methods do not support this finding. Therefore, the final abnormality region is determined by cross-model agreement between wav2vec IG and LIME.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic event occurs between 3.5 and 4.0 seconds, where a brief, high-frequency, synthetic-sounding tone is present. This tone is not part of the speech and is acoustically distinct from the speaker’s voice, suggesting it is an artifact rather than a natural sound. The tone is centered in the 2000–6000 Hz range, which is consistent with the frequency region flagged by XAI methods. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 3.5–4.0 second region as anomalous, with a frequency focus of 2000–6000 Hz, using both Integrated Gradients (IG) and Saliency methods. The Hubert and WavLM models do not flag any anomalies, indicating that the wav2vec findings are not corroborated by these models. The SHAP analysis highlights three features—equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength—whose values are significantly higher than their original values, suggesting a sudden change in the audio’s acoustic properties at the same time and frequency range. This cross-method agreement within wav2vec, combined with the SHAP evidence, supports the conclusion that the 3.5–4.0 second region is the most likely source of anomaly. No other regions are flagged by multiple XAI methods.

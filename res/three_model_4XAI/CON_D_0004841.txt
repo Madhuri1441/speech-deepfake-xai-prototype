@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is characterized by a piercing, static-like tone in the 5000–6000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not present in the initial or final portions of the audio, suggesting it is an isolated anomaly rather than a continuous noise source. The speech itself is clear and intelligible, with no signs of distortion or clipping, and the background remains stable throughout. No other obvious acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–2.0 second region as suspicious, with a corresponding frequency range of 5000–6000 Hz, based on Integrated Gradients (IG) analysis. This aligns with the observed high-frequency artifact in the audio. The Saliency method from wav2vec also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this does not correspond to any clear anomaly in the audio and is likely due to the model’s sensitivity to the initial speech onset. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values, while not directly indicating the artifact, reflect the model’s sensitivity to features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may be indirectly affected by the presence of the artifact. Overall, the wav2vec IG analysis provides the most consistent and supported evidence for the abnormality, with no cross-model agreement from Hubert or WavLM.

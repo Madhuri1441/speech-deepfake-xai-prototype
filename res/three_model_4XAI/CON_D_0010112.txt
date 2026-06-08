@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "A formal decision person before." The speech is delivered in a standard, unaccented English tone, with no background noise or environmental cues, indicating a controlled recording environment. However, at approximately 1.5 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until 2.0 seconds. This artifact is a sharp, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically inconsistent with the preceding speech and does not resemble any natural vocal or environmental sound. The artifact is abrupt in onset and offset, with no gradual fade, and is not present in the rest of the audio, suggesting it is a digital insertion rather than a genuine acoustic event. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as highly salient. This aligns precisely with the observed synthetic artifact in the audio. The wav2vec Saliency method also points to a different region ([0.5-1.0] seconds, [6000-7000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a spurious result. The Hubert and WavLM models do not provide any supporting evidence for the abnormality, as their IG, Saliency, and LIME analyses return no relevant regions. The SHAP values indicate that the equivalentSoundLevel_dBp feature is the most influential, which is consistent with the presence of a loud, unnatural sound event in the audio. Overall, the wav2vec IG result is the only one that directly supports the observed artifact, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500 - 3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched, synthetic-sounding vocalization ("Kapitshabu") that is abruptly cut off. Immediately following this, a sharp, high-frequency click or pop is heard, which is acoustically anomalous and inconsistent with natural speech or environmental sounds. This click is most prominent between 0.6 and 0.8 seconds and is centered in the 2500–3500 Hz frequency range, suggesting a digital artifact or editing error. The click is not accompanied by any natural reverberation or environmental context, further indicating it is an artificial insertion. No other obvious acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.6 - 0.8] seconds time region and [2500 - 3500] Hz frequency region as salient, directly aligning with the observed click. The Saliency method from wav2vec also highlights a nearby time region ([1.0 - 1.2] seconds) and frequency range ([2000 - 3000] Hz), which may correspond to a secondary artifact or residual noise, but this is less certain. The LIME explanation from wav2vec points to [0.45 - 0.5] seconds, which is close to the click but not as precise. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight features such as StddevUnvoicedSegmentLength and spectralFlux-related metrics, which may reflect the presence of unnatural speech or abrupt transitions, but these do not directly pinpoint the click. Overall, the click is most strongly supported by the wav2vec IG explanation, with some corroborating evidence from wav2vec Saliency and LIME, but not from Hubert or WavLM.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 0.5 seconds, a brief, high-pitched, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a sharp, metallic timbre and a frequency content in the 4000–6000 Hz range, which is atypical for natural human speech. The artifact is not present in the initial or final portions of the audio, suggesting it is an isolated anomaly rather than a continuous background noise. The remainder of the audio features a female voice speaking in a neutral, conversational tone, with no further anomalies detected. The acoustic environment remains stable, with no evidence of clipping, distortion, or abrupt changes in loudness or timbre outside the identified artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and the LIME method supports the same time range [0.75-1.25] seconds. The Saliency method from wav2vec also highlights a different region [0.1-0.3] seconds, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope further support the presence of an anomaly in the specified time and frequency ranges, as these features are sensitive to sudden changes in sound level and spectral content. The cross-model agreement between wav2vec’s IG and LIME methods strengthens the conclusion that the artifact is a genuine anomaly.

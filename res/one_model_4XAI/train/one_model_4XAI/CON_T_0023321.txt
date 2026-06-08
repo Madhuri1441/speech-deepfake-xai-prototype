@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip contains a single, clearly spoken phrase: "They should choice clearly." The speech is delivered by a female voice with a neutral, slightly monotone intonation, and the recording is of high fidelity, with no background noise or distortion. The only notable acoustic anomaly occurs in the final word, "clearly," specifically in the time range of 0.75–1.0 seconds. During this interval, the audio exhibits a sharp, high-frequency transient in the 6000–7000 Hz range, which is inconsistent with the natural acoustic profile of the word. This transient is abrupt, brief, and lacks the smooth decay typical of a human vocalization, suggesting an artificial insertion or editing artifact.
+
+This abnormality is corroborated by the Integrated Gradients (IG) explanation, which highlights the same time and frequency region as the most salient for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency map also identifies a region around 0.1–0.2 seconds, but this is less relevant to the observed anomaly. LIME analysis points to a specific time interval (0.5–0.6 seconds), which does not align with the observed transient, suggesting it may be less directly related to the artifact. The Shapley values further support the importance of the high-frequency transient, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating that the loudness and spectral content of the transient significantly influence the model’s output. The other features (StddevUnvoicedSegmentLength and mfcc1_sma3_amean) are less directly related to the observed anomaly but provide context for the overall acoustic profile.
+
+In summary, the audio contains a high-frequency transient in the final word, which is supported by multiple XAI methods as a key feature for the model’s classification. The anomaly is not present in the original speech and is likely the result of digital manipulation, making it a strong indicator of a deepfake.

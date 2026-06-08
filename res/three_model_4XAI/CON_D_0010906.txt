@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio contains a brief, high-frequency, synthetic-sounding artifact in the 4000–6000 Hz range between 1.0 and 1.5 seconds. This region is marked by a sharp, unnatural tonal quality that stands out from the otherwise natural speech, suggesting a digital or synthetic overlay. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify this time-frequency region as significant, indicating that the model detects this segment as anomalous. The LIME explanation for wav2vec also points to a very early time region, though less specific, which aligns with the presence of an early anomaly. No other models (Hubert, WavLM) or Shapley-based acoustic features provide supporting evidence for this region, and no other obvious audio artifacts are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the [1.0-1.5] seconds, [4000-6000] Hz region as anomalous, providing cross-model agreement. The LIME explanation for wav2vec also supports the presence of an early anomaly, though less precisely. No other models or acoustic features corroborate this finding, and the Shapley-based acoustic features do not point to this region. Thus, the evidence for this abnormality is based on consistent wav2vec model results, with no cross-model confirmation from Hubert or WavLM.

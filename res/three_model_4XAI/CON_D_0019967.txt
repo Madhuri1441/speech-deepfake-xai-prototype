@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp, high-frequency click at approximately 0.2 seconds, immediately followed by a short, low-pitched, breathy vocalization. This vocalization is characterized by a low fundamental frequency (around 100-200 Hz) and a harsh, raspy timbre, with a notable lack of natural speech rhythm or prosody. The acoustic event is abrupt and unnatural, lacking the smooth onset and decay typical of genuine human speech. The click and vocalization together suggest a possible digital artifact or manipulation, such as a forced edit or synthetic insertion. The subsequent speech ("There is my signature") is delivered in a neutral, flat tone, with no emotional inflection, and is acoustically clean, indicating a possible post-production overlay or replacement of the initial segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.2-0.4] seconds time range and [1000-3000] Hz frequency range using both Saliency and Integrated Gradients (IG), indicating strong agreement between these methods. The LIME explanation also supports the presence of an anomaly in the initial segment ([0.0-0.1] seconds), though it is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly in the initial segment, with high contributions from spectralFlux_sma3_amean and loudness_sma3_percentile80.0, indicating a sudden change in spectral and loudness characteristics. Overall, the wav2vec model's Saliency and IG provide the most consistent and detailed evidence of the abnormality, while other models and methods either do not detect it or provide less specific support.

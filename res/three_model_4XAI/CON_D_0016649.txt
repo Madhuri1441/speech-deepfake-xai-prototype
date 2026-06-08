@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.5-6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a short, neutral statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 5.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.5 seconds. This artifact is characterized by a sharp, metallic timbre and a frequency content between 3000–4000 Hz, which is inconsistent with the natural speech spectrum and stands out as an unnatural addition. The artifact is not present in the original audio and is not attributable to any environmental or recording equipment issue. The rest of the audio remains free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [5.5-6] seconds time region and [3000-4000] Hz frequency region as the most salient, indicating a strong model response to the synthetic artifact. The IG method from wav2vec also highlights the [0-1] seconds region, but this aligns with the natural speech onset and is not anomalous. The LIME method from wav2vec supports the [0.5-1] seconds region, which is also consistent with the beginning of the speech. No other XAI methods (IG, Saliency, LIME) from Hubert or WavLM provide evidence for the artifact, and the Shap values do not directly correspond to the artifact’s frequency or timing. Thus, the anomaly is supported by wav2vec’s Saliency method alone, with no cross-model agreement. The artifact is not explained by any of the Shap values, which relate to general audio features rather than the specific anomaly.

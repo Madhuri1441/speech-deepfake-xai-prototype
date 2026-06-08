@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "Witnesses of foot potentially meaning a short term layoff for a significant case of foot off." The speech is generally natural, but at approximately 1.5–2.0 seconds, there is a subtle but noticeable disruption in the vocal texture. This region exhibits a slight pitch instability and a brief, unnatural break in the vocal flow, which is not present in the rest of the utterance. The acoustic environment is otherwise clean, with no background noise or environmental artifacts. The abnormality is not accompanied by any obvious emotional inflection or speech error, suggesting a possible synthetic or manipulated origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), while Saliency and LIME also point to the same time region, with Saliency extending slightly to [1-2] seconds and LIME narrowing to [1.5-2] seconds. These cross-model agreements strongly support the presence of an anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and loudness_sma3_percentile20.0, which are associated with vocal instability and acoustic irregularities. Overall, the evidence from wav2vec and its XAI methods, along with the Shapley values, indicates a synthetic or manipulated segment in the audio, specifically in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range.

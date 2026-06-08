@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.3-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "The issues are very in..." before being abruptly cut off mid-word. Immediately following the cutoff, a synthetic, high-frequency electronic tone appears, lasting for approximately 0.1 seconds. This tone is sharply defined, with a frequency content concentrated between 7000 Hz and 8000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environmental noise, but rather a digital artifact, likely introduced by a post-processing error or a model-generated anomaly. The abruptness of the cutoff and the unnatural insertion of the tone suggest a technical malfunction or a deepfake artifact, rather than a genuine interruption or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.3–1.4 second time region and 7000–8000 Hz frequency range, while LIME corroborates the time region at 1.0–1.1 seconds, which is adjacent and consistent with the observed tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values further support the presence of an abnormality, with high contributions from features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are associated with abrupt changes in sound and high-frequency content. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the presence of a synthetic tone artifact, while the lack of support from Hubert and WavLM suggests that the anomaly is not robustly detected by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice stating, "bin Laden is judged to be left-handed." The speech is clear and intelligible, but at approximately 1.5–2.1 seconds, there is a noticeable, unnatural high-frequency artifact in the 5000–7000 Hz range. This artifact manifests as a brief, sharp, and slightly distorted sound, inconsistent with typical human speech production. The artifact is not present in the surrounding speech and does not correspond to any natural phonetic event, suggesting it is an artificial insertion or a byproduct of digital processing. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both identify the same time and frequency region, indicating that the wav2vec model detects this segment as a key contributor to its prediction. The LIME explanation for wav2vec also points to the very beginning of the audio, but this is less specific and not corroborated by other models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and Saliency methods both independently identify the same abnormality in the 1.5–2.1 second, 5000–7000 Hz region, providing cross-model agreement. The LIME explanation for wav2vec also supports this, though less specifically. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not universally detected by all models. The SHAP values highlight acoustic features such as loudness and slope, but do not directly point to the artifact region, suggesting that the anomaly is not strongly captured by these global feature importance methods. Overall, the wav2vec model’s multiple XAI methods converge on the same suspicious region, making it the most reliable indicator of the audio anomaly.

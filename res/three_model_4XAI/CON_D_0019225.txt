@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation or artificiality. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 6000–7000 Hz, which is inconsistent with the natural frequency content of the speaker’s voice. The artifact is abrupt and does not blend with the surrounding speech, suggesting a digital or synthetic origin, such as a corrupted audio sample or a deepfake insertion. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as the most salient for its prediction, aligning precisely with the observed artifact. The wav2vec Saliency method also highlights a different region ([2.5-3.0] seconds, [1000-2000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The wav2vec LIME method identifies an extremely short region ([0.0-0.1] seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values point to features such as equivalentSoundLevel_dBp, mfcc1_sma3_amean, and StddevUnvoicedSegmentLength, but these are not directly tied to the observed artifact and may reflect general audio characteristics rather than the specific anomaly. Overall, the wav2vec IG result is the only one that directly supports the presence of the artifact, with no cross-model agreement.

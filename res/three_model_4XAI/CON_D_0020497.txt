@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a formal, narrative-style monologue in English. The speech is continuous, with no background noise, music, or environmental sounds, and is recorded in a quiet, acoustically dry environment. The content is coherent and grammatically correct, with no signs of linguistic or semantic anomalies. However, at approximately 4.5–5.5 seconds, a subtle but distinct acoustic anomaly occurs: a brief, high-frequency, synthetic-sounding artifact overlays the speech. This artifact is not present in the original voice and is not a natural part of the recording, suggesting a digital manipulation or insertion. The artifact is most prominent in the 2000–3000 Hz range, which is typical for midrange digital glitches or compression artifacts. This anomaly is not accompanied by any change in the speaker’s delivery, pitch, or prosody, indicating it is an external addition rather than a vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 4.5–5.5 seconds using Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range. The wav2vec model’s IG and Saliency methods both highlight the 2000–3000 Hz band, while LIME corroborates the time interval. In contrast, the Hubert and WavLM models do not detect any anomaly, as their IG, Saliency, and LIME methods return no evidence. The Shapley values further support the wav2vec findings, with the top three features (StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope) all indicating a significant deviation in the 4.5–5.5 second window. The cross-model agreement from wav2vec’s multiple methods, combined with the Shapley analysis, strongly supports the presence of a synthetic artifact in this region.

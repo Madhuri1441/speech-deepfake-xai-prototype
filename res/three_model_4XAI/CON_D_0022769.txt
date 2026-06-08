@@ -1,0 +1,15 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in English with a non-native accent. The speech is generally intelligible, but at approximately 3.5–4 seconds, there is a noticeable, abrupt change in the acoustic texture of the voice. This segment is marked by a harsh, metallic, and slightly distorted timbre, with a pronounced high-frequency component in the 6000–7000 Hz range. The change is sudden and does not correspond to any natural speech event, such as a change in word or phoneme, suggesting an artificial or manipulated insertion. The rest of the audio remains natural and consistent in both timbre and pitch, with no other obvious anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality at 3.5–4 seconds is supported by multiple independent XAI methods:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies this time-frequency region as highly salient, indicating a significant deviation from expected acoustic patterns.  
+- The wav2vec model’s Saliency method also highlights the 0–1 second region, but the IG result is more specific and directly aligns with the observed anomaly.  
+- The wav2vec model’s LIME method identifies a region at 2.0–2.5 seconds, which is close but not identical to the observed anomaly, suggesting some model-specific sensitivity to the change.  
+- The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not universally detected by all models.  
+- The SHAP analysis identifies three acoustic features with high importance: StddevUnvoicedSegmentLength, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and spectralFlux_sma3_amean, which collectively suggest a disruption in the natural speech rhythm and spectral characteristics, further supporting the presence of an artificial insertion.  
+- The cross-model agreement between wav2vec’s IG and the SHAP feature importance provides strong evidence for the anomaly at 3.5–4 seconds, while the lack of agreement from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

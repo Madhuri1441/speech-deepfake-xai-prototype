@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "This is the family, is whether it can be enforced." The speech is clear and intelligible, with a neutral, conversational tone and no signs of emotional distress or artificiality. However, at approximately 1.0–1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges. This artifact is a pure, steady tone at around 5 kHz, lacking any natural harmonic structure or modulation, and is acoustically inconsistent with the preceding speech. The artifact is not present in the original audio but appears as a result of post-processing or digital manipulation. The rest of the audio remains free of such anomalies, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time range and 4000–6000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no evidence. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most strongly associated with the anomaly, suggesting a deviation in the acoustic structure of the audio segment. The combined wav2vec evidence and Shapley analysis support the conclusion that the synthetic tone is an artificial insertion, not a natural part of the audio.

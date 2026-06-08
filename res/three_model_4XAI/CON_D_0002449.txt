@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "the recruiting" in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 0.85 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, unnatural sound in the 2000–3000 Hz range, which is inconsistent with the natural speech spectrum and suggests a digital glitch or editing artifact. The voice itself is abruptly cut off at this point, and the remainder of the audio is silent, further indicating a possible edit or corruption. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.85-1.0] seconds, [2000-3000] Hz), while LIME identifies a different, earlier time region ([0.0-0.1] seconds), which does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed artifact. The wav2vec model’s IG and Saliency results are the most consistent and directly support the presence of the artifact in the specified time and frequency range.

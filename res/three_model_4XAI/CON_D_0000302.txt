@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, monotone manner, with the phrase "team is due to not go for a spin" clearly audible. Immediately following this, a sharp, high-frequency electronic tone appears, lasting approximately half a second (1.5–2.0 seconds). This tone is distinctly artificial, with a piercing, buzzy timbre and a frequency content between 6000–7000 Hz, which stands out against the otherwise low-mid frequency speech. The tone is not a natural part of the speech or environment and is likely an artifact of digital processing or a synthetic overlay. The audio quality is otherwise clean, with no background noise or distortion, and the speech remains intelligible throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as salient, indicating that the model attributes the classification to this segment. The LIME explanation from wav2vec also points to a region around [3.5-4.0] seconds, which may correspond to a secondary anomaly or a different aspect of the audio. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency event in the audio. The agreement between IG and LIME from wav2vec supports the conclusion that the abnormality is a synthetic tone in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "This great picture of the game." The speech is intelligible and delivered in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 2.0 seconds, a sharp, high-frequency artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content in the 6000–8000 Hz range, which is inconsistent with the preceding speech. The artifact is abrupt in onset and offset, suggesting a digital splice or overlay rather than a natural acoustic event. There are no other obvious acoustic anomalies, such as clipping, distortion, or background noise, outside of this brief interval.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 2.0–2.5 seconds time window and the 6000–8000 Hz frequency range. The IG method also highlights a secondary region (1.25–1.75 seconds, 3000–4000 Hz), but this is less consistent and not corroborated by other methods. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope showing elevated values, suggesting a deviation from normal speech patterns. Overall, the evidence converges on the 2.0–2.5 seconds interval as the most suspicious, with strong cross-model agreement from wav2vec.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a formal, news-style narration. The speech is clear and intelligible, with a steady, low-pitched voice and no signs of emotional distress or vocal strain. The background is silent, and the recording quality is high, with no environmental noise or distortion. However, a subtle but noticeable anomaly occurs between 5.0 and 6.0 seconds, where the voice exhibits a slight pitch instability and a faint, high-frequency artifact in the 4000–8000 Hz range. This is accompanied by a brief, unnatural break in the vocal flow, suggesting a possible digital splice or editing artifact. The anomaly is not present in the surrounding speech, and the speaker resumes normal delivery immediately after. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [5.0-6.0] seconds time range and [4000-8000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a slightly earlier [4.5-5.0] seconds interval in the [3000-4000] Hz range. The LIME method supports the anomaly at [6.5-7.0] seconds, though this is less consistent with the other findings. The Hubert and WavLM models do not detect any abnormalities, and their IG, Saliency, and LIME results are all null. The Shap values indicate that the StddevUnvoicedSegmentLength feature is most strongly associated with the anomaly, suggesting a deviation in the statistical properties of unvoiced speech segments. The wav2vec IG result is the most robust and cross-validated by the Saliency method, indicating a high confidence in the [5.0-6.0] seconds interval as the primary region of concern.

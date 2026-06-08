@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, close-mic’d female voice saying, “Building up the last laugh.” The speech is delivered in a neutral, conversational tone, with no background noise or environmental cues. Immediately following the spoken phrase, a sharp, high-frequency click is heard, lasting less than a second. This click is acoustically distinct from the voice, with a frequency content concentrated between 4000–6000 Hz, and is not a natural part of speech or vocalization. The click is abrupt and lacks any reverberation or environmental context, suggesting it is an artifact or digital edit rather than a genuine sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as a salient region using both Integrated Gradients (IG) and Saliency methods, with the abnormality localized between 0.5–1.0 seconds and 4000–6000 Hz. The LIME method also supports this region, though with a narrower focus at 1.5–1.6 seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the click is not detected by these models. The Shapley values further support the presence of a high-frequency anomaly, with the F2bandwidth_sma3nz_amean feature showing a strong positive contribution, consistent with the presence of a sharp, high-frequency transient. The click is not explained by any of the acoustic features related to speech or voice, reinforcing the conclusion that it is an artifact. There is cross-model agreement between wav2vec’s IG and Saliency methods, as well as LIME, but no agreement from Hubert or WavLM.

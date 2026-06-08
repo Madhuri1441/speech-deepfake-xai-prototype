@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase "Bulla, all included five children." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic tone appears and persists until the end of the audio. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the natural speech. The tone is not modulated, does not vary in pitch or amplitude, and is not present in the original speech, indicating it is an artificial addition. The abrupt onset and unnatural character of this tone suggest it is a digital artifact, likely inserted post-recording, and not part of the original audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the time interval [1.0-2.0] seconds and the frequency range [4000-6000] Hz. The Saliency method further narrows the time to [0.5-1.0] seconds and the frequency to [2000-4000] Hz, which aligns with the observed synthetic tone. The LIME method also supports the abnormality, focusing on the time interval [0.45-0.55] seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shap values indicate that the synthetic tone is likely the primary contributor to the model's prediction, as the slopeUV0-500_sma3nz_amean feature has a high Shap value, suggesting a strong deviation from normal speech characteristics. The combination of wav2vec's multiple methods and the Shap value evidence supports the conclusion that the synthetic tone is the main anomaly in the audio.

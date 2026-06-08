@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, slightly muffled voice, speaking in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable acoustic anomaly occurs between 1.5 and 2.5 seconds, where the voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content (3000–6000 Hz). This region is marked by a momentary break in the natural vocal timbre, suggesting possible digital editing or synthesis. The anomaly is not accompanied by any environmental or background artifacts, and the rest of the audio remains stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the [2.0–2.5] seconds region and Saliency focusing on [1.5–2.0] seconds, both within the 3000–6000 Hz frequency range. These findings are consistent and indicate a high confidence in the presence of an anomaly in this region. The LIME method from wav2vec also supports the anomaly, though with less precision, identifying a broader [1.0–1.2] seconds window. In contrast, the Hubert and WavLM models do not provide any evidence of anomalies, as their IG, Saliency, and LIME results are all null. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which are indicative of pitch and voicing irregularities, further supporting the presence of an anomaly in the vocal segment. Overall, the wav2vec model’s multiple methods provide strong cross-model agreement on the anomaly, while the other models do not detect it.

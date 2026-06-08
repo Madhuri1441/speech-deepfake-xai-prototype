@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3200] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "process, but it's a fact twice before." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.95–1.05 seconds, a brief, high-frequency artifact is present, specifically in the 3000–3200 Hz range. This artifact manifests as a sharp, unnatural transient, likely a digital click or glitch, which is not part of the natural speech signal. The artifact is not accompanied by any change in the speaker’s delivery or background noise, suggesting it is an isolated, non-linguistic event. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the 0.95–1.05 second time region and 3000–3200 Hz frequency region as the most salient for the model’s prediction. This aligns with the observed transient artifact in the audio. The Saliency method from wav2vec also identifies a different region ([0.0–0.2] seconds, 1000–3000 Hz), but this does not correspond to any clear anomaly in the audio and is likely a spurious model artifact. The LIME explanation from wav2vec identifies a region ([1.8–2.0] seconds), which is not supported by the audio and may be a model-specific artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, but these do not directly correspond to the observed artifact. Overall, the only region supported by both audio evidence and XAI is the 0.95–1.05 second, 3000–3200 Hz transient, identified by the wav2vec IG method.

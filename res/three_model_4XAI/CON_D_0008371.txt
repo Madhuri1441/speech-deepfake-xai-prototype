@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, formal tone, delivering a short, composed statement in English. The speech is free of background noise, environmental sounds, or any vocal irregularities such as stutters, breaths, or emotional inflections. The only notable acoustic feature is a brief, high-frequency artifact occurring between 2.5 and 3 seconds, specifically in the 4000–6000 Hz range. This artifact manifests as a subtle, unnatural high-frequency resonance or digital artifact, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The rest of the audio is acoustically clean, with no signs of clipping, distortion, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([2.5-3] seconds, [4000-6000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not specifically localize the anomaly to the same region as the wav2vec evidence. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an acoustic anomaly in the specified time and frequency range.

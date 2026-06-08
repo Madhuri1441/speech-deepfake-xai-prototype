@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy human utterance, "He wouldn't could not," spoken in a neutral, conversational tone. The recording is of low fidelity, with a persistent background hiss and a slight room reverberation, suggesting a small, untreated indoor space. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting about 0.6 seconds. This transient is characterized by a piercing, metallic timbre with a strong presence in the 3000–8000 Hz range, and it stands out against the otherwise subdued and muffled background. The transient is not a natural part of speech or environmental noise, and its abrupt onset and unnatural spectral content suggest it is an artifact, possibly from digital editing or a synthetic sound insertion. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.1 second time window and the 3000–8000 Hz frequency range, while LIME identifies a much earlier, 0.0–0.1 second region, which is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values from the equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean features further support the presence of an anomaly in the 1.5–2.1 second window, as these features are sensitive to sudden changes in loudness and spectral content. The wav2vec model’s multiple, consistent findings across different XAI methods provide strong evidence for the abnormality, while the other models and features either do not detect it or provide less consistent support.

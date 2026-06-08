@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "Which is going right to the final whistle." The speech is clear, with no distortion or background noise, and is followed by a brief pause. At approximately 1.5 seconds, a sudden, high-frequency electronic tone appears, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is not present in the original audio before the anomaly. The tone is likely an artifact, possibly due to a digital glitch or post-processing error, rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and also highlights the region [0.5-1.0] seconds with Saliency, though this is less consistent with the observed anomaly. LIME from wav2vec supports the [1.5-2.0] seconds region. The Hubert and WavLM models do not provide any evidence for the anomaly, indicating that the wav2vec model is the primary source of detection. The SHAP values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and HNRdBACF_sma3nz_amean further support the presence of an abnormal event in the audio, particularly in the high-frequency range, aligning with the wav2vec findings. The agreement between wav2vec’s IG and LIME, as well as the SHAP values, confirms the anomaly in the [1.5-2.0] seconds, [4000-6000] Hz region.

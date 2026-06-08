@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "We went on to become very secretive to protect him." The speech is clear, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 2.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until the end of the clip. This tone is sharply distinct from the voice, with a frequency content in the 4000–8000 Hz range, and is acoustically inconsistent with the preceding speech. The tone is likely an artifact of digital editing or a deepfake overlay, as it does not correspond to any natural sound or environmental noise. The abrupt onset and unnatural spectral quality of this tone suggest deliberate insertion, possibly as a watermark or to mask or alter the original audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, 4000–8000 Hz). The IG and Saliency methods both highlight the same time and frequency range, while LIME provides a narrower but consistent time window ([2.5, 2.6] seconds). The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an abnormality, with significant contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and HNRdBACF_sma3nz_amean, which collectively indicate a sudden change in acoustic characteristics at the same time. This cross-model agreement from wav2vec confirms the presence of a synthetic or inserted sound artifact in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice speaking in a monotone, with the phrase "...we are... dot... is the... you know... dot... is...". The speech is heavily distorted, with a low signal-to-noise ratio and a persistent background hiss, making the words difficult to discern. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds, with a spectral peak between 6000–7000 Hz. This transient is acoustically distinct from the preceding speech, as it is much louder, more piercing, and lacks the low-frequency content of the voice. The transient is likely an artifact of digital clipping or a synthetic sound, rather than a natural vocal event. After the transient, the speech resumes with similar muffled quality and continues until the end of the clip. No other significant acoustic events are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The IG explanation from the wav2vec model identifies the [2.0-2.5] seconds time region and [6000-7000] Hz frequency region as salient, aligning with the observed high-frequency transient. The wav2vec Saliency explanation also points to a different region ([0.5-1.0] seconds, [2000-4000] Hz), but this is not supported by other models. The Hubert and WavLM models provide no saliency or IG evidence, and LIME explanations are inconsistent or absent. The Shap values indicate that the transient is associated with features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, further supporting the presence of a high-frequency, non-vocal event. The wav2vec IG explanation is the only one that directly matches the observed abnormality, and it is supported by the Shap value analysis. Thus, the final abnormality region is based on wav2vec IG evidence and Shap value alignment, with no cross-model agreement.

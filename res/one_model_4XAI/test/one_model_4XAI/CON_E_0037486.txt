@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with the phrase "...some mistake is still be there." The recording is of high fidelity, with no background noise or distortion. However, a subtle but distinct anomaly is present in the high-frequency region (6000–7000 Hz) during the time interval [1.0–1.2] seconds, coinciding with the end of the word "there." This region exhibits a faint, artificial-sounding artifact, likely a digital or synthetic overlay, which is not naturally produced by human speech. The anomaly is not perceptible to the human ear but is detectable through spectral analysis.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method highlights the same time and frequency region, indicating that this segment is a key contributor to the model’s classification of the audio as a deepfake. The Saliency map also identifies a broader but overlapping region ([0.75–1.25] seconds, [4000–6000] Hz), suggesting that the anomaly may extend slightly into the mid-frequency range, possibly due to the model’s sensitivity to subtle spectral changes. The LIME explanation, while less precise, points to a region around [0.4–0.5] seconds, which may correspond to the onset of the anomaly or a related artifact. The Shapley values further reinforce the importance of the high-frequency segment, with the equivalentSoundLevel_dBp value indicating a significant deviation in sound level, and the StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean values suggesting changes in the acoustic properties of the speech, likely due to the presence of the synthetic artifact.
+
+In summary, the audio contains a subtle but detectable high-frequency anomaly in the final syllable of the spoken phrase, which is supported by multiple XAI methods. The anomaly is not perceptible to the human ear but is captured by the model as a key indicator of synthetic origin.

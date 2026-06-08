@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp inhalation, followed by a female speaker who says, "This will help this stuff." The speech is somewhat muffled and delivered in a neutral, conversational tone. At approximately 3.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 4.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–8000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not present in the original audio but is introduced during the recording or post-processing, as evidenced by its abrupt onset and unnatural spectral profile. The remainder of the audio contains no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([3.0-4.0] seconds, [6000-8000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, as their XAI methods return no relevant evidence. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated during the artifact, further supporting the presence of an unnatural, high-intensity sound event. No other XAI sources corroborate this finding, and the artifact is not present in the original audio, confirming it as a post-processing or recording anomaly.

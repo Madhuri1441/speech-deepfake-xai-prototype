@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I think they are not go to school." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically inconsistent with the speaker’s voice or any natural background noise. The artifact is abrupt, with no gradual onset or offset, and stands out as a digital anomaly rather than a part of the original recording. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 0.8–1.2 second time region and 3000–4000 Hz frequency region as the most salient for its prediction, directly aligning with the observed artifact. The wav2vec Saliency method also highlights a different region (0.1–0.2 seconds, 2000–3000 Hz), but this does not correspond to any clear anomaly in the audio and is likely unrelated. The wav2vec LIME analysis identifies the 0.0–0.1 second region, which is also not supported by the audio evidence. The Hubert and WavLM models provide no saliency or IG explanations, and their LIME results are absent, indicating no strong model-based support for any region. The SHAP analysis identifies three features—equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean—but does not specify a time or frequency region, so it cannot be directly linked to the artifact. Overall, the wav2vec IG analysis is the only source that provides cross-model agreement with the observed acoustic anomaly, while other XAI evidence is either inconsistent or not supported by the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.95-2.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-pitched, and muffled utterance, "football clubs are part of Scottish hockey," spoken by a female voice. The speech is slow, monotonous, and lacks natural intonation, suggesting a synthetic or heavily processed origin. At approximately 1.95 seconds, a sharp, high-frequency transient occurs, lasting about 0.1 seconds. This transient is acoustically anomalous, as it is not present in the original speech and does not correspond to any natural articulation or environmental sound. The frequency content of this transient is concentrated between 6000–7000 Hz, which is atypical for human speech and suggests digital artifacting or post-processing interference. The rest of the audio remains consistent with the initial synthetic speech, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [1.95-2.05] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed transient in the audio. The wav2vec Saliency and LIME also point to the initial speech segment ([0.0-0.1] seconds, 4000-5000 Hz), but this is less anomalous and more consistent with the synthetic nature of the voice. The Hubert and WavLM models do not provide supporting evidence for the transient, indicating that the anomaly is specific to wav2vec. The SHAP values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the unnatural speech characteristics but do not directly correspond to the transient. Overall, the transient is the most strongly supported anomaly, with cross-model agreement limited to wav2vec’s IG explanation.

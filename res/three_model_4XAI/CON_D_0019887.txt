@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It is going to basic the company." The speech is abruptly interrupted by a loud, high-pitched, synthetic tone that starts at approximately 2.5 seconds and lasts until about 3.5 seconds. This tone is characterized by a harsh, buzzy timbre and a frequency content concentrated between 6000 Hz and 8000 Hz, which is distinctly different from the natural speech frequencies. The tone is not a natural part of the spoken content and appears to be an artificial artifact, possibly a system notification or error signal. The abrupt onset and offset of the tone, along with its unnatural spectral profile, suggest it is not a genuine part of the audio but rather an inserted or generated sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.5] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley value analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_stddevFallingSlope, which further support the presence of an unnatural, high-frequency sound event in the specified time range. The cross-model agreement from wav2vec confirms the region as the most likely source of the anomaly.

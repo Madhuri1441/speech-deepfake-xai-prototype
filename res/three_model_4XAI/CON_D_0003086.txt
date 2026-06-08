@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, high-frequency, synthetic-sounding tone in the 5000–7000 Hz range, lasting approximately one second. This tone is acoustically distinct from the rest of the recording, which features a male speaker with a clear, steady voice in a quiet, controlled environment. The tone does not correspond to any natural speech or environmental sound and appears abruptly, suggesting it may be an artifact or digital overlay. The presence of this tone is supported by multiple XAI methods: Integrated Gradients (IG) identifies this region as significant, and Saliency analysis also highlights a brief, high-frequency event around 1.5–2 seconds, though slightly offset, likely due to model interpretation differences. The LIME explanation for the wav2vec model also points to a short segment around 5.0–5.2 seconds, but this is less consistent with the observed tone and may reflect model-specific sensitivity to speech content rather than the initial anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by cross-model agreement: both Integrated Gradients and Saliency analysis from the wav2vec model identify the 0–1 second, 5000–7000 Hz region as anomalous. The LIME explanation for wav2vec also supports the presence of an unusual event, though it is less precisely aligned with the observed tone. The Hubert and WavLM models do not provide supporting evidence for this region, likely due to differences in their training or feature extraction. Overall, the convergence of IG and Saliency evidence from wav2vec strongly indicates the presence of an artificial or synthetic sound artifact at the start of the audio.

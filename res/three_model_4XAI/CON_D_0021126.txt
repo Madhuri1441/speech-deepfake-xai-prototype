@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard North American accent, delivering the phrase, "I want an all American to consider that." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.0 and 2.5 seconds, specifically in the 3000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [2.0-2.5] seconds time region and [3000-4000] Hz frequency region as the most salient, indicating a strong model response to the high-frequency artifact. The wav2vec Saliency method also highlights a region around [2.5-3.0] seconds, though at a lower frequency, which is less consistent with the observed artifact. The wav2vec LIME method identifies an early time region [0.0-0.1] seconds, which does not align with the artifact. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is uniquely sensitive to this region. The Shapley values do not directly indicate the artifact but instead highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are unrelated to the observed anomaly. Thus, the wav2vec IG explanation is the most reliable indicator of the artifact, with no cross-model agreement.

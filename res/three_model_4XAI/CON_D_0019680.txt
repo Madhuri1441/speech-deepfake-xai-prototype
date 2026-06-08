@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "tonight resigned as a member of the European Commission." The speech is delivered in a standard, formal tone, with no emotional inflection or background noise, and is acoustically clean. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic tone emerges and persists until the end of the audio. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is likely an artifact introduced during post-production or as a result of digital editing, rather than a natural part of the recording. The abrupt onset and unnatural character of this tone suggest it is not part of the original speech but was added later, possibly as a censor beep, watermark, or placeholder.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the frequency range of 4000–6000 Hz and the time range of 0.5–1.0 seconds, which aligns with the synthetic tone observed in the audio. The LIME explanation from wav2vec also supports this region, indicating a strong focus on the same time interval. The Shapley value analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are consistent with the presence of a non-vocal, high-frequency artifact. No other XAI models (Hubert, WavLM) provide supporting evidence, and their explanations are either absent or inconclusive. Thus, the wav2vec model’s IG and LIME results, along with the Shapley values, converge on the same abnormality, confirming the synthetic tone as the primary anomaly.

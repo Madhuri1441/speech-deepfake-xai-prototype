@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.5-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a monologue in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental cues. However, at approximately 5.5–6.0 seconds, a brief, unnatural vocal artifact occurs: a high-frequency, synthetic-sounding burst overlays the word "cover," making it acoustically distinct from the rest of the speech. This artifact is not present in the original utterance and is not attributable to the speaker’s natural voice or the recording environment. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency range as the most salient for its prediction, indicating that the model detects an anomaly here. The wav2vec Saliency method also highlights a related region (3.5–4.0 seconds, 2000–6000 Hz), but the IG result is more specific and directly supports the presence of an artificial vocal event. No other XAI methods or models provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Integrated Gradients (IG) method identifies the [5.5-6.0] seconds, [2000-3000] Hz region as the most salient for its prediction, directly aligning with the observed synthetic vocal artifact. The wav2vec Saliency method also points to a related region, but the IG result is more precise and corroborates the anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, and the Shapley values do not indicate any significant deviation in acoustic features. Thus, the evidence for the abnormality is based on cross-model agreement from wav2vec’s IG and Saliency methods, with no support from other models or acoustic features.

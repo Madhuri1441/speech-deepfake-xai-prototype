@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, slightly muffled voice, speaking in a neutral, narrative tone. The recording is of moderate fidelity, with a persistent low-level hiss and a subtle hum, likely from the recording environment or equipment. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, at approximately 2.5–3.0 seconds, there is a brief, unnatural pause or break in the speech, coinciding with a momentary drop in energy and a shift in the spectral content. This region is marked by a noticeable reduction in high-frequency detail and a slight pitch instability, suggesting a possible edit or digital artifact. The surrounding speech remains natural, with no signs of clipping, distortion, or compression. The acoustic environment is dry, with minimal reverberation, indicating a close-mic or studio-like setting.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.5-3.0] seconds region as abnormal, with a focus on the 1000-4000 Hz frequency band, while the Saliency method highlights the same time frame but in the 4000-6000 Hz range. These two independent XAI methods from wav2vec converge on the same temporal and spectral region, indicating a strong cross-model agreement. The LIME method from wav2vec also points to a slightly earlier time window ([1.25-1.35] seconds), but this is less consistent with the wav2vec Saliency and IG results. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the anomaly is not robustly detected by all models. The Shapley values indicate that the abnormality is likely related to spectral and loudness features, further supporting the presence of a subtle audio irregularity in the highlighted region.

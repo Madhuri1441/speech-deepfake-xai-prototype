@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and intelligible statement: "to have discussions with the Scottish executive about that." The speech is recorded in a quiet, acoustically neutral environment, with no background noise or distortion. The voice is steady, with natural intonation and no signs of emotional distress or artificiality. However, at approximately 2.5–3 seconds into the clip, a subtle but noticeable acoustic anomaly occurs. During this interval, a faint, high-frequency, synthetic-sounding artifact appears, most prominent in the 4000–6000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is brief and does not disrupt the intelligibility of the speech, but its unnatural spectral quality suggests it may be an artifact of audio processing or a digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.5-3] seconds time region and [4000-6000] Hz frequency region as salient for its prediction, supported by both Integrated Gradients (IG) and LIME. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly in this region, with the slopeUV0-500_sma3nz_amean feature showing a high positive contribution (7.5941), suggesting a significant deviation in the spectral envelope. The equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength features also indicate a change in acoustic characteristics, reinforcing the presence of an anomaly. The agreement between wav2vec’s IG and LIME, along with the Shapley values, provides strong evidence for the anomaly in the [2.5-3] seconds interval.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled male voice speaking the phrase, "It's half an inch in the middle of the floor at midnight." The voice is monotonous, with a flat, emotionless delivery and a slightly nasal, synthetic timbre, suggesting a text-to-speech or AI-generated origin. The background is silent, with no ambient noise or reverberation, indicating a controlled or digitally generated environment. At approximately 3.0 seconds, a sharp, high-frequency digital artifact appears, lasting about 0.1 seconds. This artifact is characterized by a piercing, static-like sound in the 4000–5000 Hz range, which is acoustically inconsistent with the preceding speech and does not resemble any natural sound or environmental noise. The artifact is abrupt, with no fade-in or fade-out, and is immediately followed by a return to the original speech. This anomaly is not present in the original audio but is introduced during post-processing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [3.0-3.1] seconds in the [4000-5000] Hz range using both Integrated Gradients (IG) and Saliency methods, while LIME also supports this region. The wav2vec model is the only one to provide consistent evidence for this anomaly, as Hubert and WavLM models do not detect any abnormality. The Shapley values further support the presence of a digital artifact, with features such as "slopeUV0-500_sma3nz_amean" and "loudness_sma3_meanFallingSlope" indicating a sudden change in spectral and amplitude characteristics at the same time. The combined evidence from wav2vec and Shapley values confirms the presence of a digital artifact at [3.0-3.1] seconds, with no cross-model agreement from Hubert or WavLM.

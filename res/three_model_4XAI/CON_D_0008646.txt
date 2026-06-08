@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a female voice saying, "It's been hard." The speech is clear, with a natural cadence and a slight upward inflection at the end, suggesting a genuine emotional tone. However, at approximately 1.5–2.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 6000–8000 Hz range. This anomaly is not masked by the speech and is clearly audible, indicating a possible digital manipulation or encoding error. No other obvious audio artifacts, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.5–2.0 second time region and the 6000–8000 Hz frequency range. The IG and LIME methods specifically highlight the high-frequency artifact, while Saliency supports the timing of the anomaly. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The SHAP analysis, which focuses on acoustic features, does not directly reference the artifact but instead highlights features like MeanUnvoicedSegmentLength and spectralFlux, which are unrelated to the observed anomaly. Thus, the evidence for the abnormality is supported by multiple wav2vec methods but not by other models or SHAP features.

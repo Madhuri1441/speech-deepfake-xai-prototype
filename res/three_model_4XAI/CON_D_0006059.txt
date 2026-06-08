@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "just happening the system is able to cope been too easy," followed by a brief pause and the phrase, "I'm feeling very..." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 4.0 seconds, a sudden, high-frequency, synthetic tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech, lacking any natural speech characteristics or environmental context. The tone is likely an artifact or overlay, not part of the original recording.
+
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [4.0-5.0] seconds time region and [3000-6000] Hz frequency region as critical for its prediction, aligning with the observed synthetic tone. The Saliency method from wav2vec also highlights the [0-1] seconds region, corresponding to the initial speech, but this is not considered abnormal. LIME analysis from wav2vec points to the [2.0-2.5] seconds region, which is a brief pause and not indicative of an anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME analysis is also absent, suggesting that the synthetic tone is not detected by these models. The Shapley values indicate that the synthetic tone is a significant feature, with equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope contributing to the model's prediction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis is the only source that identifies the [4.0-5.0] seconds time region and [3000-6000] Hz frequency region as abnormal, supported by the Shapley values. The Saliency and LIME methods from wav2vec provide additional context but do not confirm the anomaly. The Hubert and WavLM models do not provide any evidence for the abnormality, indicating that the synthetic tone is not detected by these models. The Shapley values further support the presence of the synthetic tone as a significant feature.

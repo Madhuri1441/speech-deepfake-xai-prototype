@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "been very busy, been play, addition, big can be too." The speech is generally intelligible, but the word "play" at approximately 1.0–2.0 seconds is acoustically anomalous. This segment exhibits a noticeable pitch drop and unnatural, robotic timbre, deviating from the natural vocal contour of the rest of the utterance. The anomaly is most prominent in the 2000–6000 Hz frequency range, where the spectral energy is unusually concentrated and the voice sounds less resonant, suggesting a synthetic or manipulated origin. The surrounding speech remains natural, with no other obvious signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.0-2.0] seconds time region and [5000-6000] Hz frequency region using Integrated Gradients (IG), while Saliency analysis highlights a broader [2000-6000] Hz range in the [1.0-1.5] seconds interval. LIME further supports the [1.5-2.0] seconds window. These cross-model and cross-method findings converge on the same time and frequency region, indicating a high-confidence anomaly. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further corroborate the presence of an abnormality in this region, as these features are sensitive to unnatural speech patterns and spectral irregularities.

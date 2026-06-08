@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "contractor" in a neutral, declarative tone. The recording is clean, with no background noise or distortion, and the speech is intelligible. Immediately following the spoken word, a synthetic, low-frequency electronic tone starts abruptly at 0.1 seconds and lasts for about 0.1 seconds, ending at 0.2 seconds. This tone is characterized by a stable pitch around 2000–3000 Hz, with a buzzy, harmonically rich timbre typical of a square or sawtooth waveform. The tone is sharply defined, with no fade-in or fade-out, and is acoustically distinct from the preceding speech. There are no other audible events or artifacts in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the 0.1–0.2 seconds time region and 2000–3000 Hz frequency region as salient, aligning with the synthetic tone’s acoustic properties. The IG method from wav2vec also highlights a region at 0.3–0.4 seconds, but this does not correspond to any clear acoustic event in the audio and is likely spurious. The LIME method from wav2vec identifies 0.4–0.5 seconds, which is not supported by the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the synthetic tone is not consistently detected by all models. The SHAP values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly linked to the synthetic tone but may reflect the overall audio characteristics. The final abnormality region is supported by the wav2vec Saliency method, with no cross-model agreement, and is based on single-model evidence.

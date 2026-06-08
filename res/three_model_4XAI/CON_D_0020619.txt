@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.75 seconds, a sharp, high-frequency transient occurs, lasting until about 1.25 seconds. This transient is characterized by a piercing, metallic, and synthetic timbre, with energy concentrated between 4000 Hz and 6000 Hz. The sound is abrupt, unnatural, and does not resemble any typical speech or environmental noise. It is likely an artifact of digital processing or a synthetic sound insertion, rather than a genuine acoustic event. The remainder of the audio consists of a low-pitched, monotone male voice saying "by insurance, but chance," with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.75–1.25 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports a related region (1.75–2.0 seconds, 3000–4000 Hz), though this is less consistent with the observed audio. The LIME method provides a much earlier and shorter time region (0.0–0.1 seconds), which does not align with the main anomaly. The Hubert and WavLM models do not provide any supporting evidence for the abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the presence of a loud, high-frequency transient. The cross-model agreement between wav2vec’s IG and the Shapley value analysis supports the conclusion that the anomaly is a synthetic or digitally inserted sound event.

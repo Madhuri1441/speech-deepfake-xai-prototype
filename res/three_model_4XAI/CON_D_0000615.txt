@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like timbre in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the rest of the audio, suggesting a localized anomaly. This is supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights the same time and frequency region as a key area of model attention, indicating that the model detects an unusual acoustic pattern here. The wav2vec Saliency and LIME also point to nearby regions, but the IG result is the most consistent and specific.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds, [4000-6000] Hz region as the most salient, with Saliency and LIME providing supporting but less precise evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the importance of the spectralFlux_sma3_amean and mfcc3V_sma3nz_amean features, which are likely affected by the high-frequency artifact. Overall, the wav2vec IG result is the strongest and most consistent evidence for the anomaly, with no cross-model agreement but strong alignment with the audio observation.

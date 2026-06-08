@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a recording artifact or handling noise, followed by a male voice saying, "He's a lovely man." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.00 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until 1.50 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing error rather than a natural sound event. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.00–1.50 seconds time window and 6000–7000 Hz frequency range, while LIME highlights a specific moment within this interval (1.75–1.80 seconds), likely due to its local approximation nature. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP analysis, which is feature-based rather than time-frequency, does not directly support the acoustic anomaly but may reflect underlying signal characteristics. Overall, the wav2vec model’s multiple XAI methods converge on the same abnormality, providing strong cross-model agreement for the identified artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "Women were mostly no gay yesterday since..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 3.0 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–7000 Hz range, which is acoustically distinct from the speaker’s voice and does not match any natural environmental or vocal sound. The artifact is abrupt in onset and offset, suggesting a digital or synthetic origin, and is not present in the rest of the audio. No other acoustic anomalies are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-3.0] second time region and [5000-7000] Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to the same interval. LIME also supports this region, though with a narrower focus at [2.0, 2.1] seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a high-frequency artifact. The wav2vec-based evidence is cross-model, as both Integrated Gradients and Saliency agree, while LIME provides single-model support. The absence of evidence from Hubert and WavLM suggests that the anomaly is not robustly detected by all models, but the wav2vec findings are consistent and supported by multiple methods.

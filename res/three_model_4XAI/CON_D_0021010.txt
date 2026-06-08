@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "We have been so... Who has he fought? You can understand that he would be spending a quiet day at home with family and friends." The speech is continuous, with no abrupt changes in pitch, volume, or timbre, and the background is silent except for a faint, steady hiss. The only notable acoustic anomaly occurs between 5.0 and 6.0 seconds, where a subtle, unnatural pitch shift is present. This is evidenced by a brief, high-frequency (3000–4000 Hz) artifact that disrupts the natural vocal texture, suggesting a digital manipulation or splice. The anomaly is not accompanied by any change in speech content or emotional tone, and the surrounding audio remains stable and natural. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [5.0-6.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while LIME also supports the [5.75-6.25] seconds interval. The wav2vec Saliency method, however, points to a different region ([0-1] seconds, 5000–6000 Hz), which is not corroborated by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec findings are the most reliable. The Shapley values highlight acoustic features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which are consistent with the presence of a subtle pitch shift and background hiss, further supporting the wav2vec findings. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the [5.0-6.0] seconds interval, making this the most credible region of abnormality.

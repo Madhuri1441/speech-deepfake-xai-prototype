@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "to be in Africa" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.6 seconds into the clip, a distinct, high-frequency, synthetic-sounding tone emerges and persists until about 1.2 seconds. This tone is not part of the natural speech and is acoustically anomalous, as it does not correspond to any environmental or vocal artifact. The tone is centered in the 2000–4000 Hz range, which is a region where human speech is less prominent, making the anomaly more noticeable. The synthetic nature of the tone suggests it may be an artifact of audio processing or a deepfake insertion, rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently point to the time interval [0.6-1.2] seconds and the frequency range [2000-4000] Hz, indicating strong cross-model agreement on the presence of an artificial or synthetic sound in this region. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may be indirectly related to the presence of the synthetic tone, but these do not directly localize the anomaly. Overall, the wav2vec-based evidence is robust and cross-validated, making it the most reliable indicator of the audio anomaly.

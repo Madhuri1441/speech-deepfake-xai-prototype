@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a factual statement about reported incidents. The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is present in the phrase "the last three years," specifically around the word "three." At approximately 1.5–2.0 seconds, the speech exhibits a slight pitch and timbre irregularity, with a brief, unnatural resonance in the 3000–4000 Hz range. This is not a typical vocal artifact and suggests possible digital manipulation or synthesis. The anomaly is brief and localized, not affecting the intelligibility of the speech but standing out as an acoustic irregularity. No other acoustic anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region using Integrated Gradients (IG), which is supported by Saliency and LIME methods. The Hubert and WavLM models do not detect any abnormalities, indicating that the anomaly is subtle and only captured by wav2vec. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may relate to the irregularity in the speech segment, but these do not pinpoint the exact time or frequency range. Overall, the wav2vec model's multiple XAI methods consistently identify the anomaly, while other models do not, suggesting that the anomaly is subtle and primarily detected by wav2vec.

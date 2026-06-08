@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase "by some as a charter for developed." The speech is clear and intelligible, but at approximately 1.0 seconds, a distinct, high-frequency, synthetic buzzing artifact emerges and persists until about 2.5 seconds. This artifact is not present in the original speech and is acoustically inconsistent with the natural voice, suggesting it is an artificial addition. The buzzing is centered in the frequency range of 4000–8000 Hz, which is above the typical fundamental frequency of human speech, and is likely a result of digital manipulation or encoding error. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 1.0–2.0 seconds in the 4000–6000 Hz range, and a Saliency region from 2.0–2.5 seconds in the 6000–8000 Hz range. These regions align with the observed synthetic buzzing artifact, providing cross-model agreement on the timing and frequency of the anomaly. The LIME explanation from wav2vec also supports the presence of an anomaly around 1.0 seconds. In contrast, the Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly by highlighting features such as spectral flux and shimmer, which are indicative of unnatural signal characteristics. Overall, the wav2vec model’s multiple XAI methods consistently identify the same region, while Hubert and WavLM do not, indicating that the anomaly is most reliably detected by wav2vec.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:  
+1. TIME_ABNORMALITY_RANGE: [0.1 - 0.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-level background hiss, followed by a short, low-pitched, and muffled male utterance that is difficult to discern. Immediately after the utterance, a sharp, high-frequency transient is heard, lasting less than a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 5000 Hz and 6000 Hz. The sound is acoustically distinct from the preceding speech and does not match typical environmental or vocal artifacts. The abruptness and unnatural spectral profile of this transient suggest it may be an artifact, possibly due to digital clipping, editing, or a synthetic overlay. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The Saliency method from the wav2vec model identifies the [0.1 - 0.2] seconds time region and [5000 - 6000] Hz frequency region as salient, aligning with the observed transient. The IG method from wav2vec also highlights a region at [0.8 - 1.0] seconds, but this is not supported by the audio evidence and may be spurious. The LIME method from wav2vec identifies an earlier region ([0.0 - 0.1] seconds), which does not correspond to any clear acoustic event. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis does not directly point to the transient but instead highlights features related to unvoiced segment length and loudness, which are not directly tied to the observed artifact. Overall, the transient is supported by wav2vec’s Saliency method, but not by other models or SHAP features.

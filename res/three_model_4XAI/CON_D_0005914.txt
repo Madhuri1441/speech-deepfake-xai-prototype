@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding male voice saying "take a look at it." Immediately following this, there is a brief, sharp, high-frequency electronic tone that lasts about 0.6 seconds. This tone is acoustically distinct from the speech, with a pitch around 3.5 kHz and a harsh, synthetic timbre, suggesting it is not a natural vocalization or environmental sound. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is not present in the original speech. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) identifies a salient region between 0.8-1.2 seconds in the 2000-4000 Hz range, while Saliency analysis highlights a slightly broader region from 1.2-1.4 seconds in the 1000-3000 Hz range. Both point to the presence of an artificial, non-speech sound in this interval. The wav2vec model, which is sensitive to such anomalies, flags this region as suspicious, while the Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or architectures. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region is supported by two independent XAI methods (IG and Saliency) from the wav2vec model, both identifying overlapping time and frequency ranges. This cross-model agreement strengthens the evidence for the presence of an artificial tone in the audio. The Hubert and WavLM models do not provide supporting evidence, likely due to their focus on different aspects of the audio or their inability to detect such synthetic artifacts. The Shapley values further support the presence of an unvoiced segment and spectral changes, consistent with the synthetic tone, but do not pinpoint the exact time or frequency range.

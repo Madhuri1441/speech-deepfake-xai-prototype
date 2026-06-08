@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp at the start, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 3.1 seconds. This artifact is characterized by a rapid, modulated, and slightly metallic timbre, resembling a digital glitch or a synthetic sound effect, and is not present in the original speech or background. The artifact overlays the speech, particularly during the phrase "...I haven't had a p... I felt it... we are for a while," and is most prominent in the 3000–7000 Hz frequency range. After 3.1 seconds, the audio returns to normal, with the hum and speech continuing without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.5–2.0 second region, Saliency focuses on 2.5–3.0 seconds, and LIME pinpoints 3.0–3.1 seconds, all within the 3000–7000 Hz frequency band. These findings are consistent and cross-validated, indicating a synthetic artifact in the specified time and frequency range. The Hubert and WavLM models do not detect any abnormalities, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of a synthetic anomaly, with the slopeUV0-500_sma3nz_amean feature showing a strong positive contribution, suggesting a sudden change in spectral slope typical of digital artifacts. No other XAI evidence contradicts this finding, and the audio itself clearly supports the presence of the synthetic sound.

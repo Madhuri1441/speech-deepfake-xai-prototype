@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Play someone else," followed by a male voice saying, "Cut call." Immediately after the male voice, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a static, unmodulated character and a harsh, buzzy timbre, lacking any natural speech or environmental cues. The tone is centered around 4000–6000 Hz, which is an unusual frequency range for human speech and suggests a digital artifact or synthetic overlay. The abrupt onset and sustained presence of this tone, especially after the spoken phrase, indicate a possible post-production edit or digital manipulation. The audio quality is otherwise clear, with no background noise or distortion, further highlighting the unnaturalness of the electronic tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the frequency range of 4000–6000 Hz during the time interval of 0.5–1.0 seconds, which aligns with the synthetic tone’s presence. The saliency analysis from wav2vec also highlights a brief region (0.0–0.1 seconds) with a frequency range of 2000–3000 Hz, likely corresponding to the male voice’s speech, but this is not considered suspicious. The LIME analysis from wav2vec further supports the abnormality at 1.4–1.5 seconds, which coincides with the tone’s sustained presence. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is the primary source of detection. The Shap values suggest that the abnormality is related to the equivalentSoundLevel_dBp, which is significantly higher than the original value, further supporting the presence of an unnatural, loud tone. There is no cross-model agreement, as only wav2vec provides evidence of the anomaly.

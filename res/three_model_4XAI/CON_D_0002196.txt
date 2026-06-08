@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "I agree he has to go back to basics and work it all out." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, where the speech exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content (4000–7000 Hz). This region is acoustically distinct from the rest of the utterance, which is otherwise smooth and natural. The anomaly is not perceptible to a casual listener but is detectable through careful analysis. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this time-frequency region, indicating that it is a key area of model attention and likely the source of the anomaly. The LIME explanation also supports this, though with a slightly different time window (0.9–1.0 seconds), suggesting a related but less precise focus. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG and Saliency methods both identify the same time-frequency region ([1.5-2.0] seconds, [4000-7000] Hz) as the most salient, indicating strong cross-model agreement on this anomaly. The wav2vec LIME explanation also supports this, though with a slightly different time window. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not directly reference this time-frequency area. Thus, the final abnormality region is supported by multiple wav2vec methods, with some additional support from wav2vec LIME, but not by other models or Shapley values.

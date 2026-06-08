@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "for a city asleep." The speech is delivered in a neutral, narrative tone, with no background noise or environmental sounds. The recording is of high fidelity, with a clean signal and no distortion. However, at approximately 0.8 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hiss, centered in the 4000–6000 Hz range, which is not present in the rest of the audio. The artifact is not a natural part of the voice or environment and is acoustically inconsistent with the rest of the recording, suggesting a possible digital manipulation or splicing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.8-1.2] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [1.5-2.0] seconds with the same frequency range using Saliency. LIME also supports the region at [0.8-0.9] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values highlight equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean as contributing features, but these do not directly pinpoint the artifact’s location. The wav2vec model’s multiple independent methods (IG, Saliency, and LIME) consistently identify the same time and frequency region, providing strong cross-model agreement for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice speaking in a neutral, formal tone, with no background noise or environmental cues. The first second of the audio (00:00–00:01) contains a pronounced, unnatural pitch shift and a slight digital artifact, which is acoustically anomalous. This is supported by the wav2vec model’s Integrated Gradients (IG) explanation, which highlights the [0-1] second time region and [2000-4000] Hz frequency band as critical for the model’s prediction. The wav2vec model’s Saliency and LIME also point to other regions ([5-6] seconds and [1.0-1.5] seconds), but these are less consistent and not corroborated by other models. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high positive contribution, suggesting a deviation in the acoustic structure of the audio. No other acoustic anomalies are evident in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG explanation provides the strongest and most consistent evidence for the anomaly in the [0-1] second, [2000-4000] Hz region. This is the only region supported by multiple XAI methods (IG, Saliency, LIME) from a single model. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is specific to the wav2vec model’s interpretation. The Shapley values corroborate the presence of an anomaly, but do not specify the exact region. Overall, the evidence points to a localized acoustic anomaly in the first second of the audio, primarily supported by wav2vec’s IG explanation.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "price. Then it's hard being a singer." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0–1.2 seconds, a subtle but distinct acoustic anomaly occurs. During this interval, a faint, high-frequency artifact emerges, most prominent in the 3000–4000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency region as a key contributor to its prediction, indicating that the model detects an unusual acoustic event here. The wav2vec Saliency analysis also highlights a brief, high-frequency event at 2.0–2.1 seconds, but this is less consistent with the audio and may be a secondary artifact. No other XAI models (Hubert, WavLM) or SHAP features provide supporting evidence for this region, and no other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Integrated Gradients (IG) and Saliency analyses both point to the 1.0–1.2 seconds, 3000–4000 Hz region as a suspicious acoustic event, with the IG result being more robust and directly supported by the audio. No other XAI sources corroborate this finding, and the SHAP values do not indicate any strong features related to this region. Thus, the anomaly is primarily supported by wav2vec’s IG analysis, with limited confirmation from wav2vec Saliency, but no cross-model agreement.

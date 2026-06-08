@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I have been a call," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 0.6 seconds. This artifact is characterized by a piercing, synthetic-sounding noise in the 3000–5000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and does not match the spectral profile of the voice or any environmental sound. This anomaly is not present in the original speech and is likely the result of digital editing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency point to the 0.4–0.6 seconds time window and 3000–5000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which may reflect changes in the audio’s acoustic structure due to the artifact, but these do not directly localize the anomaly. The cross-model agreement from wav2vec’s IG, Saliency, and LIME supports the conclusion that the artifact is a synthetic or digitally inserted sound, not a natural part of the speech.

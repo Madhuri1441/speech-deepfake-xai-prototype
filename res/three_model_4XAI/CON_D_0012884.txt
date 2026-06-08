@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the word "disgrace" in a neutral, conversational tone, followed by a brief pause and the phrase "but take policy requirement." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 3.0 seconds. This artifact is characterized by a piercing, static-like tone in the 7000–8000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.5-3.0] seconds with a frequency range of [7000-8000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a closely related time window at [2.1-2.2] seconds, indicating a high degree of cross-model agreement on the presence of an anomaly in this region. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of a sudden change in acoustic characteristics. Overall, the wav2vec model's evidence is the most consistent and robust, with strong cross-model agreement, while the other models do not detect the anomaly.

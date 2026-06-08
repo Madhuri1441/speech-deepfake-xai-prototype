@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, neutral tone, with clear and intelligible speech. The content is: "It's not an income disturbance zone, right? Inside by that..." The voice is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. At approximately 1.5 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the environment or the speaker’s voice, and its abrupt onset and offset suggest it is artificially inserted. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights the same time range, though with a slightly different frequency focus. LIME supports the time range [0.4-0.5] seconds, which is not directly related to the synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values point to features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and mfcc3V_sma3nz_amean, which are more related to speech characteristics and do not directly indicate the synthetic tone. The wav2vec model’s IG and Saliency results are the most consistent and directly support the presence of the synthetic tone in the specified time and frequency range.

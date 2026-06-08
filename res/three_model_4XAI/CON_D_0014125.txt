@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice delivering a news-like statement in a neutral, formal tone, with a slight echo suggesting a reverberant recording environment. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the frequency range of 2000–6000 Hz during the time interval of 3–4 seconds, coinciding with the phrase “great Britain.” This region exhibits a slight unnaturalness in the spectral envelope, possibly due to an artifact from voice synthesis or post-processing. The anomaly is not immediately obvious to a casual listener but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [3-4] second time region and [2000-6000] Hz frequency region as the most salient for the model’s prediction, indicating a strong focus on this segment. The wav2vec Saliency method also highlights a region around [0-1] seconds, but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME explanations are absent, suggesting that the wav2vec model is the most reliable in identifying the anomaly. The Shapley values further support the importance of the 2000–6000 Hz range, with features like slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp contributing to the model’s decision, reinforcing the presence of an abnormality in this frequency band. Overall, the wav2vec IG evidence is the most consistent and reliable indicator of the anomaly, with no cross-model agreement from Hubert or WavLM.

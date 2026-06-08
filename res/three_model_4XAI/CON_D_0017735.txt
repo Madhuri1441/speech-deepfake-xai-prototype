@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, coherent sentence: "Perhaps agent at cost, I haven't finished the first two races." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0–2.1 seconds, a subtle but distinct high-frequency artifact is present, perceptible as a brief, unnatural tonal burst in the 5000–6000 Hz range. This artifact is not part of the original speech and does not correspond to any natural vocalization or environmental sound. The wav2vec model's Integrated Gradients (IG) analysis identifies this exact time and frequency region as a key contributor to its prediction, suggesting the model detects an anomaly here. No other XAI methods or models corroborate this finding, and no other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the abnormality at [2.0-2.1] seconds in the [5000-6000] Hz range. This is the only XAI source that detects this region as anomalous; neither the Hubert nor the WavLM models provide supporting evidence. The Shapley values from the wav2vec model highlight features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, but these do not specifically point to the artifact region. Thus, the evidence for the anomaly is based solely on the wav2vec IG analysis, with no cross-model agreement.

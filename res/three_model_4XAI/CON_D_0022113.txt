@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a formal statement in English: "For this to thank judges, the affair is very delicate. I think we've..." The speech is generally intelligible, but at approximately 3.5–4.0 seconds, there is a noticeable disruption in the vocal signal. During this interval, the voice exhibits a sudden, unnatural drop in pitch and a loss of natural vocal timbre, accompanied by a subtle, artificial reverb or echo effect. This is not a natural pause or breath but rather a marked, abrupt change in the acoustic texture of the voice, suggesting a digital artifact or manipulation. The surrounding speech remains stable and natural, with no other signs of distortion or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the [3.5-4.0] seconds region as anomalous, with IG further specifying the frequency range of [2000-6000] Hz. The Saliency method from wav2vec also highlights a related but slightly earlier interval ([2-3] seconds), which may indicate a secondary or transitional anomaly. However, the Hubert and WavLM models do not detect any anomalies, as their IG, Saliency, and LIME methods return no significant regions. The SHAP analysis, which is based on acoustic features rather than temporal modeling, does not directly point to the same time interval but instead highlights features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, which may reflect broader signal-level irregularities. The strongest and most consistent evidence comes from wav2vec’s IG and LIME, which both point to the same time and frequency region, supporting the conclusion that this segment is the most likely site of audio manipulation.

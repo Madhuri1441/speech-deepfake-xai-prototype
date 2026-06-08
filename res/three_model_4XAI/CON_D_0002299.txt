@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.00-0.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "There's not gas money and so about the..." The speech is clear and intelligible, with a neutral, conversational tone. However, at the very start of the clip, from 0.00 to 0.25 seconds, there is a noticeable high-frequency, synthetic-sounding artifact. This artifact is not part of the natural speech and is characterized by a sharp, electronic timbre, likely resembling a digital glitch or a brief burst of static. The artifact is most prominent in the 1000–3000 Hz frequency range, which is typically associated with the midrange of human speech, but here it stands out as unnatural and unrelated to the speaker’s voice. This anomaly is not present in the rest of the audio, which remains clear and free of distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.00-0.25] seconds time region and [1000-3000] Hz frequency region as significant for the model’s prediction, indicating that this segment is likely contributing to the model’s classification of the audio as a deepfake. No other XAI methods (IG, LIME) or models (Hubert, WavLM) provide supporting evidence for this specific region, and the SHAP values do not directly reference this time or frequency range. Thus, the evidence for the anomaly is based solely on the wav2vec Saliency method, with no cross-model agreement. The artifact is not corroborated by other XAI sources, but its acoustic properties are consistent with synthetic or tampered audio, supporting the hypothesis of a deepfake origin.

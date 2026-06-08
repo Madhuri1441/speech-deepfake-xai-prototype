@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a statement about the North Sea oil and gas discovery. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, but no obvious digital artifacts or clipping. The speech is clear and intelligible, with no signs of pitch or timing manipulation. However, a subtle anomaly is present in the word "effectively" (around 3.5–4.0 seconds), where the mid-frequency energy (2000–3000 Hz) is unusually prominent and the spectral envelope appears slightly altered compared to the rest of the utterance. This region is marked by a brief, unnatural resonance and a subtle pitch shift, suggesting possible manipulation or synthesis. The acoustic environment remains otherwise stable, with no evidence of editing, splicing, or background interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [3.5-4.0] seconds time range and [2000-3000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a broader [0-1] seconds region with energy in the [2000-4000] Hz band. LIME analysis also supports the anomaly at [4.0-4.5] seconds, overlapping with the wav2vec result. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly in the acoustic features, particularly in the mid-frequency range. The wav2vec model’s IG and LIME results, along with the SHAP values, provide strong cross-model agreement on the [3.5-4.0] seconds region as the most likely area of manipulation.

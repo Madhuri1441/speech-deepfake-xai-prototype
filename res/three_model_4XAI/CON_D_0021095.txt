@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-frequency thump or click at 0.0 seconds, likely a recording artifact or mouth noise. From 0.5 to 1.0 seconds, a pronounced, unnatural high-frequency resonance is present, with energy concentrated between 3000–4000 Hz. This region is acoustically distinct from the rest of the speech, which is centered around 1000–2000 Hz and exhibits a natural, low-pitched male timbre. The unnatural resonance in this segment is not typical of human speech and suggests digital manipulation or insertion of a synthetic sound. The remainder of the audio is clear and intelligible, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the [1.0-1.2] seconds region with [3000-3500] Hz energy. The LIME explanation for wav2vec also points to the very beginning of the audio, but this is less specific. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of an unnatural, high-frequency event in the audio. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the [0.5-1.0] seconds region as the most likely area of manipulation.

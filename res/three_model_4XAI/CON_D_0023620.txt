@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a sentence in English: "This is a devastating but not unexpected by growth to farming in Scotland." The speech is abruptly cut off mid-word ("Scotland"), and the final syllable is heavily clipped, resulting in a harsh, unnatural cutoff. This truncation is acoustically evident as a sudden, unnatural silence following the word "Scotland," with no natural decay or fade-out. The frequency content in the abnormal region (1.5–2.0 seconds) is dominated by mid-to-high frequencies (3000–4000 Hz), corresponding to the clipped consonant and abrupt cessation of the voice. The audio quality is otherwise high, with no background noise or distortion, and the speech is intelligible until the abrupt end.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [3000-4000] Hz, aligning with the observed acoustic truncation. The Saliency method from wav2vec also highlights the same time region, reinforcing the presence of an anomaly. The LIME method from wav2vec identifies a separate region ([4.5-5.0] seconds), which does not correspond to any clear acoustic event and may be a spurious artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP values for features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an abrupt change in the audio, likely due to the truncation. Overall, the wav2vec model's IG and Saliency methods provide consistent evidence of the abnormality, while other models and methods do not corroborate this finding.

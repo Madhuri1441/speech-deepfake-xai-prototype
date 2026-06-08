@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, emotionally neutral statement: "We have hard chairs no longer in question, going to make it to today." The recording is of high fidelity, with no background noise, distortion, or environmental cues. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.0 and 2.0 seconds, specifically in the 4000–6000 Hz range. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, suggesting it is an artificial insertion rather than a natural part of the recording. The rest of the audio is clean and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 1.0–2.0 second, 4000–6000 Hz region as the most salient, indicating a strong model response to this segment. This is corroborated by the wav2vec Saliency method, which highlights a different but adjacent region (0.0–0.5 seconds, 1000–2000 Hz), and the wav2vec LIME method, which points to a very short segment (3.0–3.1 seconds). The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is most strongly detected by wav2vec. The Shapley values further support the presence of an anomaly, with high contributions from features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are sensitive to abrupt changes in the signal. The combined evidence from wav2vec and the Shapley values strongly supports the presence of an artificial insertion in the 1.0–2.0 second, 4000–6000 Hz region, while other XAI methods provide supplementary or less consistent evidence.

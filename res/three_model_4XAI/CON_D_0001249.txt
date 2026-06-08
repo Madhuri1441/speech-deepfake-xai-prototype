@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Last year my abo—" before being abruptly cut off. The speech is clear and intelligible, with a natural cadence and no signs of digital distortion or compression artifacts. However, the abrupt truncation of the word "about" at the end, with no natural fade or pause, is acoustically anomalous. This sudden cut is accompanied by a brief, high-frequency digital artifact (a click or pop) at the moment of truncation, which is not present in the rest of the audio. This artifact is most prominent in the frequency range of 2000–6000 Hz, corresponding to the upper-mid and treble frequencies, and is consistent with a digital editing error or waveform manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region from 0.5–1.0 seconds in the 2000–4000 Hz range and an IG region from 1.0–1.5 seconds in the 4000–6000 Hz range. These regions align with the observed speech and the abrupt digital artifact at the end of the clip. The LIME explanation from wav2vec further narrows the salient region to 0.85–0.9 seconds, reinforcing the presence of an anomaly during the speech. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, likely due to differences in their training or feature extraction. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a sudden, unnatural truncation and digital artifact. Overall, the wav2vec model's multiple XAI sources (IG, Saliency, and LIME) provide strong, cross-model evidence for the anomaly, while the other models do not detect it.

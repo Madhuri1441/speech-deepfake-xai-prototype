@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "could have stolen it then from a bag," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.00 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.25 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt, lacks any natural reverberation, and does not correspond to any environmental or vocal event, suggesting it is an artificial insertion or digital corruption. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.00-1.25] seconds, [4000-6000] Hz). The IG method highlights a specific time-frequency region, while the Saliency method independently confirms the same time interval, though with a slightly broader frequency range. The LIME method also supports the same time interval, though it does not specify frequency. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley value analysis does not directly indicate the artifact but instead highlights acoustic features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are not directly related to the observed transient. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods provides strong evidence for the presence of an artificial or corrupted segment in the audio, specifically in the 1.00–1.25 second interval.

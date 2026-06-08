@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice stating, "So I did. After making the video, I went to the inquiry." The speech is delivered in a neutral, conversational tone, with no emotional inflection or background noise. The recording quality is high, with no distortion, clipping, or environmental interference. However, at approximately 1.0–2.0 seconds into the clip, a subtle but noticeable anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight warble, accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range. This moment is acoustically distinct from the rest of the speech, which remains stable and natural. The anomaly is not accompanied by any change in volume, rhythm, or emotional tone, suggesting it is not a natural vocal variation but rather an artifact of digital manipulation. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [1.0-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [3.0-3.5] seconds with [6000-8000] Hz using Saliency. LIME also supports the [1.5-1.6] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting a deviation in the acoustic structure of the speech. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) converge on the [1.0-2.0] seconds region, making this the most reliable indicator of the anomaly. The evidence from wav2vec is cross-model agreement, while the other models do not support the finding.

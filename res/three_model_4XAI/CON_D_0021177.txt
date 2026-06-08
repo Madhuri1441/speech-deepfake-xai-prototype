@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1 - 0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled utterance, "Got this to get," spoken by a male voice. Immediately following this, a sharp, high-frequency transient is audible, lasting approximately 0.1 seconds and peaking in the 4000–6000 Hz range. This transient is acoustically anomalous, as it does not correspond to any natural speech or environmental sound and appears abruptly, suggesting a digital artifact or editing artifact. The transient is not present in the original utterance and is not masked by the speech, indicating it is an added or spliced element. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The saliency analysis from the wav2vec model identifies the 0.1–0.2 second time region and 4000–6000 Hz frequency region as salient, aligning with the observed transient. The LIME explanation from wav2vec also supports the 0.0–0.1 second region, which overlaps with the salient region. The Hubert and WavLM models do not provide any saliency or LIME evidence, and their IG results are absent. The SHAP values indicate that the equivalentSoundLevel_dBp feature is highly influential, suggesting the presence of a loud, possibly artificial sound event. The StddevUnvoicedSegmentLength and shimmerLocaldB_sma3nz_amean features also contribute, but their relevance is less clear. Overall, the wav2vec saliency and LIME evidence, combined with the SHAP analysis, support the presence of an anomalous transient in the 0.1–0.2 second range, with cross-model agreement limited to wav2vec.

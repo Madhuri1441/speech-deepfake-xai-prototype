@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short statement: "The decision was announced in fear about Scottish football." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle anomaly is present in the latter part of the utterance, specifically around the word "football." At approximately 2.5–3.0 seconds, a faint, high-frequency artifact emerges, lasting about half a second. This artifact manifests as a brief, unnatural, high-pitched resonance or digital shimmer, most prominent in the 4000–6000 Hz range, which is not typical of natural speech. The artifact is not present in the beginning of the clip and does not affect the intelligibility of the speech, but it stands out as an acoustic irregularity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, 4000–6000 Hz). The IG method highlights a broader region ([1.0-2.0] seconds, 3000–6000 Hz), but the more precise Saliency and LIME methods converge on the specific interval where the artifact is observed. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as spectral flux and F0semitone, which are associated with the timing and pitch of the speech, but do not directly pinpoint the artifact. Overall, the wav2vec model’s multiple XAI methods provide strong, cross-model agreement on the location of the anomaly, while other models do not corroborate this finding.

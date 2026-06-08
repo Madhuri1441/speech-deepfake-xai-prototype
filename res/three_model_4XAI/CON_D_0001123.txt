@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "They have shown a great... it is out there. We..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic-sounding tone appears, lasting until about 2.0 seconds. This tone is not part of the natural speech and is acoustically distinct from the speaker’s voice, with a frequency content between 3000–4000 Hz. The tone is abrupt in onset and offset, and its spectral characteristics are inconsistent with the speaker’s voice or any environmental background noise. This anomaly is not present in the original speech and is likely an artifact introduced during audio processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.5-2.0] seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this time-frequency region as significant for the model’s prediction. The Saliency method from wav2vec also highlights a different region ([0.0-0.5] seconds, 1000–2000 Hz), but this is not aligned with the observed synthetic tone. The LIME explanation from wav2vec further supports the [0.0-0.1] seconds region, but this is unrelated to the anomaly. The Hubert and WavLM models do not provide any explanations for the abnormality, indicating that the anomaly is not detected by these models. The SHAP values indicate that the abnormality is not strongly linked to the acoustic features analyzed (e.g., spectral flux, stddev of unvoiced segment length), suggesting that the synthetic tone is not a typical speech or environmental sound. Overall, the anomaly is primarily supported by the wav2vec model’s IG explanation, with no cross-model agreement.

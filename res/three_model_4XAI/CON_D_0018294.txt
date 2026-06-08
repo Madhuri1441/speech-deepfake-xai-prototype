@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "to be then not touched down." Immediately following this phrase, there is a brief, sharp, high-frequency transient sound at approximately 0.2–0.3 seconds, which is acoustically distinct from the speech. This transient is characterized by a piercing, synthetic timbre, likely a digital artifact or an unintended sound event, and is not part of the natural speech signal. The frequency content of this anomaly is concentrated between 1500–2500 Hz, which is outside the typical range of human speech and suggests a non-vocal origin. The rest of the audio is clean and free of distortion, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [0.2-0.3] seconds time region and [1500-2500] Hz frequency region as salient, indicating that this transient is a key feature in the model's prediction. The wav2vec Saliency method also highlights a different transient at [1.2-1.4] seconds, but this is not supported by other models or the audio itself, and is likely spurious. The wav2vec LIME method corroborates the [0.1-0.2] seconds region, which overlaps with the IG region and further supports the presence of an anomaly in this time frame. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, possibly due to differences in their training or architecture. The SHAP values for features like StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and spectralFluxUV_sma3nz_amean indicate that the model is sensitive to abrupt changes in the signal, which aligns with the presence of the transient. Overall, the wav2vec model's IG and LIME methods provide consistent evidence for the anomaly, while Hubert and WavLM do not detect it.

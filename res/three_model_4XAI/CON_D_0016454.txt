@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker saying, "I could not wait to see my son again." The speech is clear and intelligible, with a natural cadence and emotional tone. However, a subtle but noticeable abnormality occurs in the high-frequency region between 3000 Hz and 6000 Hz, specifically during the phrase "see my son again." This region is marked by a faint, artificial-sounding shimmer or digital artifact, which is not present in the rest of the audio. The abnormality is most pronounced between 1.5 and 2.1 seconds, where the voice transitions from "see" to "my." This artifact is not a natural part of the speaker’s voice and suggests possible digital manipulation or encoding error. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency regions: [1.5-2.0] seconds and [3000-4000] Hz for IG, [2.0-2.1] seconds and [5000-6000] Hz for Saliency, and [2.1-2.2] seconds for LIME. This cross-model agreement strongly supports the presence of an anomaly in the high-frequency region during the phrase "see my son again." The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The Shapley values further support the anomaly by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are sensitive to high-frequency content and voice quality. Overall, the wav2vec model’s consistent findings across multiple XAI methods indicate a high confidence in the identified abnormality.

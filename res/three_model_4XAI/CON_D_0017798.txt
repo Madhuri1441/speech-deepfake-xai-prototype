@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "funding has expected to make an announcement shortly." The speech is delivered in a standard, unaccented English, with a steady, professional tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or artifacts, and the voice is centered in the stereo field. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, specifically in the 4000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.5–2.0 second region in the 4000–6000 Hz range as suspicious, supported by both Integrated Gradients (IG) and Saliency methods. LIME also highlights a closely adjacent 2.0–2.1 second window, reinforcing the presence of an anomaly in this frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural audio characteristics. The combined evidence from wav2vec and LIME, along with the Shapley values, strongly suggests that the 1.5–2.0 second, 4000–6000 Hz region is the most likely location of the synthetic artifact.

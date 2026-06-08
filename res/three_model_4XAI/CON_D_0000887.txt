@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a male voice with a neutral, conversational tone says, "Abdul is getting old." The speech is clear, with no signs of emotional distress or unusual vocal characteristics. Immediately following the speech, from 2.0 to 2.5 seconds, a sharp, high-frequency click or pop is heard, which is acoustically distinct from the preceding speech and background noise. This click is abrupt, brief, and stands out in the frequency range of 5000–8000 Hz, suggesting a possible digital artifact or editing artifact. The click is not accompanied by any reverberation or environmental sound, indicating it is likely a post-production anomaly rather than a natural event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) region from 1.0–2.0 seconds in the 5000–7000 Hz range, and a Saliency region from 2.0–2.5 seconds in the 6000–8000 Hz range. These regions align with the speech and the subsequent click, respectively. The LIME explanation from wav2vec also supports the presence of an anomaly around 0.4–0.5 seconds, though this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight the importance of high-frequency features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which further support the presence of a high-frequency anomaly in the audio. Overall, the wav2vec model provides the most consistent evidence for the abnormality, with cross-model agreement limited to the wav2vec results.

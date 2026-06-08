@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "We'll put some color into Scottish history." The speech is clear and intelligible, with a standard Scottish accent. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until 1.25 seconds. This tone is not part of the natural speech and is acoustically distinct, with a frequency range of 4000–6000 Hz, which is well above the typical human speech range. The tone is steady, unmodulated, and does not interact with the speech, suggesting it is an artificial overlay rather than a natural acoustic event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.75-1.25] seconds, 4000–6000 Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the findings of wav2vec. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a deviation from normal speech patterns, likely due to the synthetic tone. Overall, the evidence converges on the same region, confirming the presence of an artificial overlay in the audio.

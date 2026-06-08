@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.2-3.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement: "which is no longer in question. Not to work in areas of cultural policy." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is evenly paced and natural, with no signs of emotional stress or artificiality. However, at approximately 3.2–3.4 seconds, a subtle but distinct high-frequency artifact emerges, audible as a faint, synthetic-sounding buzz or whine in the 3500–4000 Hz range. This artifact is brief, localized, and does not affect the intelligibility of the speech, but it stands out as an unnatural addition to the otherwise clean recording. The artifact is not present in the original audio, nor is it a result of the speaker’s voice or any environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [3.2-3.4] seconds with a frequency range of [3500-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also points to a closely related time window ([2.9-3.0] seconds), though with less precise frequency alignment. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly to a specific time or frequency range. The wav2vec model’s consistent identification of the artifact, corroborated by multiple XAI methods, provides strong evidence for the presence of a synthetic anomaly in the specified time and frequency range.

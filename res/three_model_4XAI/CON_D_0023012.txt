@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "thought I'd do all we can. They have two child tall if..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.5 seconds. This artifact is not part of the original speech and is acoustically distinct, resembling a digital glitch or a deepfake-generated overlay. The artifact is most prominent in the 2000–6000 Hz range, which is consistent with the frequency region identified by the wav2vec model's IG and Saliency explanations. The presence of this artifact is not supported by any XAI evidence from the Hubert or WavLM models, which report no abnormality. The Shap values for features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and spectralFlux_sma3_amean further support the presence of an anomaly in this time-frequency region, as these features are sensitive to sudden changes in loudness and spectral content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods both identify the [0.5-1.5] seconds time range and [2000-6000] Hz frequency range as abnormal, providing cross-model agreement. The LIME explanation from wav2vec also supports this region, though with a narrower time window. The Hubert and WavLM models do not detect any abnormality, and their explanations are consistent with a clean audio signal. The Shap values corroborate the wav2vec findings, indicating that the anomaly is likely a synthetic artifact introduced during deepfake generation. No other XAI sources provide conflicting evidence, and the audio itself clearly shows the presence of the artifact.

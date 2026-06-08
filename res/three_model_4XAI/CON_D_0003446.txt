@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "He wrote brother being only be...," followed by a brief pause and the word "detached." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural resonance, particularly in the 4000–7000 Hz range. This region is marked by a subtle, artificial shimmer or modulation, which is not present in the rest of the audio. The anomaly is not immediately obvious to a casual listener but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [1.0-2.0] seconds time range and the [4000-7000] Hz frequency range as significant for the model's prediction, indicating that this region is likely where the model detects an anomaly. The wav2vec model's LIME method, however, points to an earlier time range ([0.0-0.1] seconds), which is not corroborated by other methods and is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or that their explanations are less sensitive to the observed acoustic irregularity. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly in the [1.0-2.0] seconds range, as these features are sensitive to changes in voice quality and pitch stability. Overall, the wav2vec model's IG and Saliency methods provide cross-model agreement on the [1.0-2.0] seconds and [4000-7000] Hz region, indicating a high confidence in the presence of an acoustic anomaly in this interval.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, high-pitched, non-verbal vocalization ("ah-uh") at the start, followed by a short pause and then a female voice speaking in a neutral, conversational tone: "I only like by the stove, got to pay a little." The speech is clear, with no signs of emotional distress or unusual delivery. However, at approximately 1.0–1.5 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, lasting about half a second. This tone is sharply defined, with a frequency content between 6000–7000 Hz, and is acoustically inconsistent with the rest of the audio, which is dominated by the midrange frequencies of the human voice. The tone is not a natural part of speech or environmental sound, and its abrupt onset and unnatural timbre suggest it is an artifact, possibly from a digital glitch or post-processing error.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 1.0–1.5 seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which specifically identifies this time and frequency region as salient. The Saliency method from wav2vec also highlights a broader region (3.0–4.0 seconds), but the most consistent and specific evidence for the anomaly comes from the IG result. The Hubert and WavLM models do not provide any saliency or explanation for this region, and LIME explanations are either absent or less specific. The Shapley values indicate that the abnormal tone may be contributing to the model’s prediction, as the equivalentSoundLevel_dBp feature is significantly higher than its original value, suggesting the presence of an unusual sound event. Overall, the evidence for the anomaly is primarily from the wav2vec model’s IG analysis, with supporting context from the Shapley values, but no cross-model agreement.

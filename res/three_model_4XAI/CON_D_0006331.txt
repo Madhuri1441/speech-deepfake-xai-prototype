@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "time and the other visitors." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This buzzing is not a natural part of the speech or environment and is acoustically distinct from the voice, with a frequency content concentrated between 4000 Hz and 6000 Hz. The abrupt onset and unnatural timbre of this tone suggest it is an artificial artifact, likely inserted post-recording. The voice remains unaffected by the buzzing, indicating the artifact is layered on top of the original audio rather than being a result of recording or transmission issues. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-1.5] seconds, [4000-6000] Hz), where the synthetic buzzing tone begins. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values, while not directly identifying the buzzing, highlight features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may reflect the presence of the artificial tone but do not localize it. The cross-model agreement from wav2vec’s multiple methods provides strong support for the identified region as the source of the anomaly.

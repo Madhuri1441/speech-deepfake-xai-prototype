@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "It's not surprising, poacher towards it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 5000 Hz and 7000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is static in pitch and amplitude, with no modulation or fade, and is not present in the original audio before the 2.0-second mark. This abrupt onset and unnatural spectral quality suggest an artificial insertion, likely as a result of post-production editing or digital manipulation. The synthetic tone is not supported by any of the XAI explanations, indicating that it is not a feature the models were trained to recognize or emphasize.
+
+III. XAI AGGREGATION EXPLANATION:
+The only XAI evidence pointing to a specific abnormality is the Integrated Gradients (IG) explanation from the wav2vec model, which highlights the [2.0-3.0] seconds time region and [5000-7000] Hz frequency range. This aligns with the observed synthetic tone in the audio. However, the Hubert and WavLM models provide no supporting evidence, and their IG, Saliency, and LIME explanations are all absent. The Shapley values indicate that the synthetic tone is not captured by the model’s learned features, as the top contributing features (equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, mfcc2_sma3_amean) are unrelated to the high-frequency tone. Thus, the abnormality is identified solely through direct audio observation and supported by a single XAI source (wav2vec IG), with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "anywhere this hat go," followed by a male voice saying, "must go." Immediately after the male voice, a sharp, high-frequency click or pop is heard, lasting less than half a second. This click is acoustically distinct from the speech, with a frequency content concentrated between 3000–4000 Hz, and is not present in the original speech or background. The click is likely an artifact introduced during recording or post-processing, such as a digital glitch or editing error. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed click. The Saliency method from wav2vec also highlights a different region ([0.00-0.25] seconds, [1000-3000] Hz), but this does not correspond to any clear anomaly in the audio. The LIME explanation from wav2vec points to [1.0, 1.25] seconds, which is close to the click but not as precise. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME results are also absent. The SHAP analysis identifies features related to sound level and loudness, but does not directly point to the click. Overall, the click is supported by the wav2vec IG explanation and partially by wav2vec Saliency and LIME, indicating cross-model agreement on the abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "It has not yet opened. It did cause of..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment and appears abruptly, suggesting it may be an artifact or insertion. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG) and LIME, while Saliency analysis highlights a different region ([0.5-1.0] seconds, [3000-4000] Hz) that does not align with the observed synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, spectralFluxV_sma3nz_stddevNorm, and alphaRatioUV_sma3nz_amean, but these do not specifically localize the anomaly to the observed synthetic tone. The wav2vec model’s IG and LIME results are the only ones that support the presence of the synthetic tone, indicating cross-model agreement for this specific region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I had a good life at Rangers." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly occurs in the word "life," specifically between 1.0 and 1.5 seconds. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This is accompanied by a mild, high-frequency shimmer in the 2000–4000 Hz range, suggesting possible digital manipulation or artifacting. The rest of the audio is acoustically clean, with no background noise or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the same time and frequency range as the observed acoustic anomaly, with IG highlighting [1.0-1.5] seconds and [2000-4000] Hz, and Saliency pointing to [0.0-0.5] seconds and [1000-2000] Hz. LIME also supports the anomaly at [1.25-1.35] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an anomaly in the specified region, as these features are sensitive to changes in voice quality and spectral content. The agreement among wav2vec’s IG, Saliency, and LIME, along with the Shap values, strongly supports the conclusion that the anomaly is localized in the [1.0-1.5] seconds and [2000-4000] Hz range.

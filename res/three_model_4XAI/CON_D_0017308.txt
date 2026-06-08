@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "We have noticed this stuffs. There has not been..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like timbre, and its frequency content is concentrated between 4000 Hz and 6000 Hz, which is well above the typical range of human speech. The artifact is abrupt in onset and offset, and does not blend naturally with the surrounding speech, suggesting it is an inserted or generated sound rather than a natural acoustic event. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as significant, with IG and Saliency both pointing to this interval. The LIME explanation also supports this region, specifically at [2.6-2.7] seconds, which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not universally detected by all models. The Shap values for features such as slopeUV0-500_sma3nz_amean, loudness_sma3_percentile20.0, and equivalentSoundLevel_dBp further corroborate the presence of an abnormality in this time-frequency region, as these features are sensitive to sudden changes in signal characteristics. Overall, the wav2vec model’s IG, Saliency, and LIME explanations, along with the Shap values, consistently identify the [2.0-2.5] seconds interval as the most suspicious, supported by multiple independent XAI sources.

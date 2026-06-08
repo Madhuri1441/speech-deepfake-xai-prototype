@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "He's very excitable going to argue with the big man." The speech is clear, with no background noise or distortion, and the voice is centered in the stereo field. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic tone emerges and persists until 1.2 seconds. This tone is sharply defined, with a frequency content between 6000 Hz and 7000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is abrupt in onset and offset, suggesting digital insertion rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.8-1.2] seconds, [6000-7000] Hz], while LIME identifies a slightly earlier time ([1.5-1.6] seconds), which may be a secondary or related artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of sudden changes in sound level and spectral characteristics. The cross-model agreement from wav2vec confirms the synthetic tone as the primary anomaly, while the lack of evidence from Hubert and WavLM suggests that the anomaly is subtle or not universally detectable.

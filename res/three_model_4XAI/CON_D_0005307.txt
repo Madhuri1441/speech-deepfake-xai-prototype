@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "playing his deep...," but the utterance is abruptly cut off mid-word, with no natural fade or pause. Immediately following this, a synthetic, high-pitched electronic tone appears, lasting for about 0.25 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech, lacking any natural vocal characteristics or environmental context. The transition between speech and tone is unnatural and suggests an artificial insertion, likely indicative of tampering or deepfake manipulation. The tone’s spectral properties and abrupt onset are inconsistent with typical speech or environmental sounds, further supporting the presence of an artificial artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.00-1.25] seconds time region and [4000-6000] Hz frequency region as significant, aligning with the observed synthetic tone. The Saliency method from wav2vec also highlights the [0.00-0.25] seconds region, which corresponds to the abrupt end of the speech, though this is less specific. The LIME method from wav2vec supports the [0.00-0.15] seconds region, again pointing to the speech termination. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further reinforce the presence of an anomaly, with features such as spectral flux and unvoiced segment length indicating a deviation from normal speech patterns. Overall, the wav2vec model’s multiple methods consistently identify the abnormal region, while other models do not contribute additional evidence.

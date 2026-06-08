@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "We would much rather it did not...". The first half of the utterance, specifically from 0.0 to 0.5 seconds, exhibits a noticeable drop in pitch and a slight increase in breathiness, suggesting a possible emotional shift or hesitation. This segment is acoustically distinct from the rest of the speech, which resumes with a more stable and clear tone. The frequency content in this region is concentrated between 2000-4000 Hz, corresponding to the midrange of the speaker’s voice, and is marked by a subtle breathy quality. This acoustic anomaly is not present in the remainder of the audio, which maintains a consistent pitch and clarity. No other obvious audio artifacts, such as clipping or distortion, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.0-0.5] seconds region as significant, with a frequency focus of [2000-4000] Hz, aligning with the observed acoustic anomaly. The LIME explanation for wav2vec also supports this region, specifically highlighting the [0.3-0.4] seconds sub-interval. The wav2vec saliency further corroborates this, indicating the same time and frequency range. In contrast, the Hubert and WavLM models do not provide any supporting evidence for this region, as their explanations are entirely absent. The Shapley values, while not directly tied to a specific time-frequency region, suggest that features like StddevUnvoicedSegmentLength and loudness_sma3_stddevFallingSlope are relevant, which may indirectly relate to the observed breathiness and pitch instability in the first half of the utterance. Overall, the wav2vec model’s multiple independent explanations (IG, saliency, and LIME) converge on the [0.0-0.5] seconds region, making this the most supported area of abnormality.

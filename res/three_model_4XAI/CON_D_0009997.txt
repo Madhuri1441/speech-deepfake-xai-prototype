@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "My coach is not a package was a bit about port." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 3000–6000 Hz range. The artifact is abrupt in onset and offset, with no natural fade or overlap with the speech, suggesting it is a digital insertion or overlay rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. IG highlights the 1.5–2.0 second time region and 3000–6000 Hz frequency region, while Saliency points to an earlier, less prominent region (0.0–0.5 seconds, 1000–2000 Hz). LIME also supports the 1.5–2.0 second region, though with a narrower focus (0.6–0.7 seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to overall audio energy or spectral flux, but rather to the presence of a specific, high-frequency synthetic event. The cross-model agreement between wav2vec’s IG and LIME, as well as the frequency and temporal alignment, strongly supports the conclusion that the artifact is a synthetic overlay inserted into the audio.

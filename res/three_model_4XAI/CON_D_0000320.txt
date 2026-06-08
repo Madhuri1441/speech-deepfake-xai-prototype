@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Tonight we have the irony." The speech is clear and intelligible, with a neutral, slightly formal tone. However, at approximately 1.25 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 2.00 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered in the 3000–8000 Hz range, which is well above the typical fundamental frequency of human speech, and its timbre is consistent with a digital artifact or a synthetic overlay. The voice continues uninterrupted, suggesting the buzzing is an added post-production element rather than a genuine environmental sound. There are no other obvious acoustic anomalies, such as clipping, distortion, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time-frequency region ([1.25-2.00] seconds, [3000-8000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, likely because they are not sensitive to this type of synthetic overlay or because the anomaly is outside their detection scope. The Shapley values further support the presence of an abnormality by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are associated with the synthetic buzzing. The convergence of wav2vec’s multiple XAI methods on the same region provides robust evidence for the presence of a synthetic overlay in the audio.

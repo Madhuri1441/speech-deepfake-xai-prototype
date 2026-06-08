@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking in a neutral, formal tone, with a clear and steady delivery. The speech is intelligible and lacks any obvious signs of digital manipulation, such as pitch warbling, unnatural pauses, or abrupt volume changes. However, a subtle anomaly is observed in the frequency range of 2000–4000 Hz during the time interval of 0.5–1.0 seconds, where the voice exhibits a slightly unnatural resonance or tonal quality. This region corresponds to the word "rehearsals," which is spoken with a slightly elevated pitch and a less natural timbre compared to the rest of the sentence. The anomaly is not severe enough to disrupt intelligibility but is perceptible to a trained ear. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the most salient region for its prediction in the 0.5–1.0 second interval, specifically highlighting the 2000–4000 Hz frequency band. This aligns with the observed acoustic anomaly in the word "rehearsals." The IG and Saliency methods from wav2vec both point to this region, indicating cross-model agreement within wav2vec. The LIME method also supports this interval, though with a narrower focus on 0.5–0.6 seconds. In contrast, the Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not strongly detected by these models. The Shapley values further support the presence of an anomaly in the 0.5–1.0 second range, with the StddevUnvoicedSegmentLength feature showing a high shap value, indicating a deviation in the acoustic properties of the voiced segment. Overall, the wav2vec model's multiple methods and the Shapley values provide consistent evidence for the anomaly, while Hubert and WavLM do not detect it.

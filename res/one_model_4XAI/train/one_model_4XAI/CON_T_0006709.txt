@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking the phrase "by Ross, believed to be left-handed." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0–1.5 seconds into the clip, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency, synthetic-sounding artifact that overlays the spoken word "Ross." This artifact is not a natural part of the voice or environment and is perceptible as a sharp, digital "blip" or "click," most prominent in the 2000–4000 Hz frequency range. This region of the audio is marked by a sudden, unnatural increase in high-frequency content, inconsistent with the rest of the speech, which is otherwise clean and free of distortion.
+
+The Integrated Gradients (IG) explanation supports this observation, highlighting the [1.0–1.5] seconds time region and [2000–4000] Hz frequency region as critical for the model’s decision, indicating that these features are atypical and likely artificial. The Saliency method further corroborates this by pointing to a [0.75–1.25] seconds time window and [4000–6000] Hz frequency band, overlapping with the observed artifact. The LIME explanation identifies a specific point at [1.75–1.80] seconds, which may correspond to a secondary or residual artifact following the main anomaly. The Shapley values reinforce the significance of the anomaly, with the StddevUnvoicedSegmentLength feature showing a large positive contribution (3.1349), indicating a deviation from expected speech patterns, and the equivalentSoundLevel_dBp (2.3700) and loudness_sma3_meanFallingSlope (1.0940) features also supporting the presence of an unnatural acoustic event. No other anomalies are present in the audio, and the rest of the speech is consistent with natural human production. 
+
+In summary, the audio contains a brief, high-frequency synthetic artifact during the word "Ross," which is supported by multiple XAI methods and features, indicating a likely deepfake or post-processing manipulation.

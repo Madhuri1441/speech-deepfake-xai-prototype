@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "contract" in a standard North American accent, with no background noise or distortion. Immediately following the spoken word, a sharp, high-frequency transient artifact is present, lasting approximately 0.1 seconds. This artifact is characterized by a piercing, synthetic timbre and a frequency content concentrated between 4000 Hz and 6000 Hz, which is inconsistent with the natural acoustic profile of the preceding speech. The artifact is abrupt and does not fade naturally, suggesting it is not a product of the original recording but rather an insertion or manipulation. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.1-0.2] seconds, 4000-6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are all associated with the presence of a sudden, high-frequency transient. The combined evidence from wav2vec and SHAP supports the conclusion that the artifact is a synthetic insertion, not a natural part of the audio.

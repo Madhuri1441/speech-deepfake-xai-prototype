@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.25-0.75] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a single female voice speaking the phrase, "I get that with very good people." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (6000–7000 Hz) during the time interval [0.25–0.75] seconds, corresponding to the word "that." This region exhibits a faint, artificial-sounding resonance or tonal artifact, which is not typical of natural human speech and may indicate digital manipulation or synthesis. The rest of the audio is acoustically clean, with no background noise, distortion, or clipping.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model's Integrated Gradients (IG) method identifies the [0.25–0.75] seconds time region and [6000–7000] Hz frequency region as the most salient for the model's prediction, indicating that this segment is critical to the model's classification of the audio as a deepfake. The Saliency method from wav2vec also highlights a different region ([0.75–1.0] seconds, [4000–6000] Hz), but this is less consistent and not corroborated by other models. The LIME method from wav2vec identifies an even earlier segment ([0.0–0.1] seconds), but this is not supported by other XAI methods. The Hubert and WavLM models do not provide any saliency or attribution evidence, suggesting that the wav2vec model is uniquely sensitive to the anomaly. The SHAP analysis reveals that features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp are significant, but these are global features and do not localize the anomaly to a specific time or frequency range. Thus, the wav2vec IG result is the most reliable indicator of the deepfake artifact, supported by its consistent identification of the [0.25–0.75] seconds, [6000–7000] Hz region.

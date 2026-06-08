@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "Kolga gasp" in a neutral, conversational tone. At approximately 2.0 seconds, the voice is abruptly interrupted by a loud, synthetic, high-frequency electronic tone that lasts until about 2.5 seconds. This tone is sharply defined, with a frequency content in the 4000–6000 Hz range, and is acoustically distinct from the preceding speech, lacking any natural vocal characteristics or environmental context. The transition is instantaneous, with no fade or overlap, and the tone is consistent with a digital artifact or post-production edit rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as critical for its prediction, aligning with the observed synthetic tone. The LIME method from wav2vec also supports this region, specifically highlighting [2.1-2.3] seconds. The Hubert and WavLM models do not provide any salient or interpretable regions, indicating that the anomaly is not detected by these models. The Shapley values from the wav2vec model further support the importance of the high-frequency region, with the equivalentSoundLevel_dBp feature showing a large positive contribution, suggesting the presence of a loud, high-frequency event. The combination of Saliency and LIME evidence from wav2vec, along with the Shapley value analysis, confirms the synthetic tone as the primary anomaly. No other XAI sources corroborate this finding, and the anomaly is not supported by Hubert or WavLM models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice stating, "Bull gap markets will be watching closely." The speech is delivered in a neutral, professional tone, with no emotional inflection or background noise, and is recorded in a controlled, acoustically dry environment. However, at the very start of the clip (0.0–0.5 seconds), there is a subtle but noticeable high-frequency artifact in the 1000–2000 Hz range. This artifact manifests as a faint, unnatural hiss or digital noise, which is not present in the rest of the recording and does not correspond to any natural speech or environmental sound. The remainder of the audio is clean and free of distortion, suggesting the anomaly is localized to the initial segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.0–0.5 seconds time region and 1000–2000 Hz frequency region as salient, indicating that this segment is critical for the model’s prediction. The LIME explanation for wav2vec also supports this, highlighting the 0.0–0.1 seconds interval. The wav2vec model’s IG explanation further corroborates the 1.2–1.4 seconds region, but this is not supported by other models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values indicate that the equivalentSoundLevel_dBp feature is highly influential, which aligns with the presence of the high-frequency artifact at the start of the audio. Overall, the wav2vec model’s saliency and LIME explanations provide consistent evidence for the initial segment as the region of interest, while other models do not support this finding.

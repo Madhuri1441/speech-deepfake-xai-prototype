@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 2.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second, with a spectral peak between 7000–8000 Hz. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a calm, neutral tone: "It's got to have both sides." The voice is clear, with no signs of digital processing or distortion, and is centered in the mid-frequency range (2000–4000 Hz). The transient does not correspond to any natural speech or environmental sound, and its abrupt onset and unnatural spectral content suggest it may be an artifact or an anomaly. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [2.5-3.0] second time region and [7000-8000] Hz frequency region as salient. This is corroborated by the wav2vec model's LIME analysis, which highlights the [1.2-1.3] second region, though this is not directly aligned with the main anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, as their IG, Saliency, and LIME analyses yield no relevant findings. The SHAP analysis identifies three features—equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength—with positive contributions, but these do not directly pinpoint the anomalous region. Overall, the wav2vec model's IG and LIME results provide the strongest and most consistent evidence for the anomaly, while other models and features do not independently confirm it.

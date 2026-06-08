@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, low-frequency thump, likely from a microphone bump or device handling. At approximately 0.8 seconds, a sharp, high-frequency transient occurs, lasting until about 1.2 seconds. This transient is characterized by a piercing, metallic, and abrasive timbre, with energy concentrated between 3000 Hz and 6000 Hz. The sound is abrupt, unnatural, and does not resemble any typical speech or environmental noise, suggesting it is an artifact of digital manipulation or a synthetic overlay. The transient is followed by a brief period of silence, with no further speech or background activity.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 0.8–1.2 second time window and 3000–6000 Hz frequency range as the most salient region, indicating that this segment is critical for the model’s classification of the audio as a deepfake. The Saliency map also identifies a similar region (0.2–0.4 seconds, 3000–5000 Hz), though it is less precise, and LIME points to an earlier, less prominent transient (0.0–0.1 seconds), likely corresponding to the initial thump. The Shapley values further reinforce the importance of the high-frequency transient, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating the presence of an unusually loud, high-frequency event. The other features (StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope) are less relevant to this specific anomaly.
+
+In summary, the audio contains a distinct, high-frequency transient between 0.8 and 1.2 seconds, which is strongly supported by multiple XAI methods as a key indicator of deepfake manipulation. No other significant acoustic anomalies are present, and the rest of the audio is consistent with a quiet, low-fidelity recording.

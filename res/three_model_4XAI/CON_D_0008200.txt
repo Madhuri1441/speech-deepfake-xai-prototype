@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotone, robotic delivery, lacking natural intonation and breathiness. The most prominent acoustic anomaly occurs between 0.5 and 1.5 seconds, where the voice exhibits a harsh, metallic timbre and a pronounced high-frequency resonance in the 3000–4000 Hz range. This region is marked by a sudden, unnatural shift in pitch and a loss of vocal warmth, consistent with digital artifacts or waveform manipulation. The voice remains unnaturally steady and lacks the subtle pitch and amplitude modulations typical of human speech. The background is silent, with no environmental or ambient noise, further suggesting a digitally generated or heavily processed source. The final word, "pod," is cut off abruptly, indicating possible truncation or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.5 second region as anomalous, with a frequency focus of 3000–4000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a closely overlapping 0.8–1.2 second window, reinforcing the presence of an anomaly in this interval. In contrast, the Hubert and WavLM models do not detect any abnormality, as their IG, Saliency, and LIME methods return no significant regions. The SHAP analysis, while not directly identifying a time or frequency region, points to features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may reflect the unnatural, unvoiced quality and abrupt loudness changes in the audio. The cross-model agreement between wav2vec’s IG and Saliency, along with LIME, provides strong evidence for the anomaly in the 0.5–1.5 second window, while the absence of such evidence in Hubert and WavLM suggests the anomaly is not universally detectable.

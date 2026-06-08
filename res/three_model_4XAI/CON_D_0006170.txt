@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "...degrees of injury." The speech is clear and natural, with no obvious signs of tampering. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting until about 2.0 seconds. This transient is characterized by a piercing, metallic, and synthetic timbre, with energy concentrated between 6000 Hz and 8000 Hz. The sound is abrupt, unnatural, and does not resemble any typical environmental or vocal artifact. It stands out acoustically from the rest of the audio, which is dominated by the low-mid frequencies of the speaker’s voice. The transient is not present in the original waveform before the audio was processed, indicating it is an artifact introduced during or after the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.5-2.0] seconds, [6000-7000] Hz and [6000-8000] Hz, respectively). The LIME method, while using a slightly different time window ([0.4-0.5] seconds), still aligns with the presence of the transient, suggesting a consistent focus on the anomalous event. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values also support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant increase in loudness at the time of the transient. The combination of wav2vec’s multiple methods and the Shapley analysis provides strong, cross-model evidence for the abnormality in the specified region.

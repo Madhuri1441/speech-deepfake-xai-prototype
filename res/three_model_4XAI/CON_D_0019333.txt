@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying "very rewarding," but the utterance is abruptly cut off mid-word, with the final syllable "ing" truncated and replaced by a synthetic, low-frequency electronic tone. This tone is unnatural and does not match the acoustic environment of the rest of the audio, which features a clear, reverberant room tone and a second male speaker. The sudden appearance of this tone, coupled with the unnatural truncation of speech, strongly suggests an audio editing artifact or digital manipulation. The frequency range of the abnormality (2000–4000 Hz) aligns with the midrange of human speech, further supporting the idea that the original speech was digitally altered or replaced.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0-1] second time region and [2000-4000] Hz frequency range as significant, directly corresponding to the observed audio anomaly. The Saliency method from wav2vec also highlights a different region ([6-7] seconds, [0-2000] Hz), but this does not align with the main anomaly and is likely unrelated. The LIME explanation from wav2vec points to [4.5-5] seconds, which is not directly related to the main anomaly. The Hubert and WavLM models do not provide any supporting evidence for the anomaly. The SHAP values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which reflects the overall loudness of the audio, further supporting the presence of an unnatural tone. In summary, the wav2vec model's IG explanation is the only one that directly supports the observed audio anomaly, with no cross-model agreement.

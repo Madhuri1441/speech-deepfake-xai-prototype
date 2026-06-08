@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a sharp, high-frequency click or pop is heard, lasting about half a second. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, conversational tone. The click is not part of the speech and does not correspond to any natural vocal or environmental sound. The frequency content of this click is concentrated in the 4000–6000 Hz range, which is above the main energy of the voice and stands out against the background noise. This anomaly is not present in the original speech or ambient sound, suggesting it is an artifact introduced during recording or post-processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time window and 4000–6000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and MeanUnvoicedSegmentLength, which are sensitive to sudden changes in sound energy and spectral content. The combined evidence from wav2vec and Shapley values strongly supports the presence of a high-frequency transient artifact in the specified time and frequency range.

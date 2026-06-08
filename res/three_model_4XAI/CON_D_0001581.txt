@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It is the football get cleared a good label." The speech is intelligible and delivered in a standard, unaccented manner, with no background noise or environmental cues. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 5000 Hz and 7000 Hz, and is acoustically distinct from the preceding speech. The abrupt onset and unnatural timbre of this tone suggest it is not a natural part of the recording but rather an inserted artifact, likely the result of digital manipulation or a post-production error. The transition from speech to the buzzing tone is instantaneous, with no fade or overlap, further indicating an artificial edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the 0.2–0.4 second region, likely corresponding to the initial speech, while Saliency and LIME both point to the 0.8–1.2 second region, aligning with the onset of the synthetic buzzing tone. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope showing significant deviations from expected values, suggesting a disruption in the audio’s natural acoustic structure. The convergence of wav2vec’s IG, Saliency, and LIME evidence on the 0.8–1.2 second interval, combined with the Shapley analysis, strongly supports the conclusion that this is the region of synthetic insertion.

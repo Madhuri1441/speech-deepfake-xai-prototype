@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, but at approximately 1.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced high-frequency artifact in the 4000–6000 Hz range. This distortion is abrupt and persists until about 2.0 seconds, after which the voice returns to its original, clear quality. The unnatural quality of the voice during this interval is consistent with digital manipulation or deepfake generation, where the model attempts to reconstruct speech but introduces artifacts due to mismatched acoustic features or model limitations. The distortion is not present in the rest of the audio, indicating a localized anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), and the same region is confirmed by Saliency analysis at [5.5-6.0] seconds, though with a different frequency range. LIME also supports the [1.5-2.0] seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and F0semitoneFrom27.5Hz_sma3nz_percentile50.0, which may contribute to the model’s detection of the anomaly, though these do not directly pinpoint the abnormal region. Overall, the wav2vec model’s IG and LIME evidence, along with Saliency, provide cross-model agreement on the [1.5-2.0] seconds interval as the most likely region of abnormality.

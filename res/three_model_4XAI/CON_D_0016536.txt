@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "The favorite true stories." The speech is intelligible, with a neutral tone and no obvious emotional inflection. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not match typical background noise or environmental sounds. The artifact is abrupt in onset and offset, suggesting digital manipulation or a synthetic overlay rather than a natural event. The rest of the audio remains free of such anomalies, with no further signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency range ([0.75-1.0] seconds, [6000-7000] Hz), indicating strong cross-model agreement on the presence of an anomaly in this segment. The LIME method from wav2vec also identifies a region ([0.00-0.10] seconds), but this is not supported by other XAI methods and does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on different acoustic features or limitations in their analysis. The SHAP values highlight statistical features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the artifact, but these are not directly tied to the observed acoustic anomaly. Overall, the wav2vec model’s IG and Saliency results provide the most robust and consistent evidence for the anomaly, supported by the acoustic observation of the synthetic artifact.

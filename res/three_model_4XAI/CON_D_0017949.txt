@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "He was at the game, and he is indeed." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a high-frequency, synthetic-sounding tone abruptly appears and persists until 2.0 seconds. This tone is not part of the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The tone is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its sudden onset and unnatural timbre indicate it is likely a digital artifact or an insertion rather than a genuine environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), which highlights the 1.5–2.0 second time region and 4000–6000 Hz frequency region as suspicious. This aligns with the observed synthetic tone in the audio. The Saliency method from wav2vec also points to a different region (0.0–0.5 seconds, 1000–2000 Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The LIME explanation for wav2vec is limited to the first 0.1 seconds and does not support the presence of an abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The SHAP analysis identifies spectral and loudness features but does not localize the anomaly to a specific time or frequency range. Thus, the only consistent and supported evidence of abnormality comes from the wav2vec IG analysis, which matches the observed synthetic tone in the audio.

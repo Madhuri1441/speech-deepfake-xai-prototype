@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering the phrase: "They just difficult to exaggerate the negative consequences." The speech is generally intelligible, but at approximately 2.0–3.0 seconds, there is a noticeable distortion in the voice, manifesting as a harsh, metallic, and slightly clipped quality. This distortion is most prominent in the mid-to-high frequency range (4000–6000 Hz), where the voice exhibits unnatural resonance and a loss of natural vocal timbre. The distortion is not present at the beginning or end of the utterance, suggesting a localized artifact rather than a general recording flaw. The acoustic anomaly is not accompanied by any background noise, music, or environmental sounds, indicating the issue is likely related to the voice signal itself.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([2.0-3.0] seconds, 4000–6000 Hz). This cross-model agreement strongly supports the presence of an acoustic anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which may be indirectly related to the distortion but do not pinpoint the exact time or frequency range. Overall, the wav2vec-based XAI evidence is the most reliable indicator of the anomaly, supported by two distinct methods.

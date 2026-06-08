@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase, "We must not get the balance right." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady, with no signs of emotional stress or unnatural pacing. However, a subtle anomaly is observed in the acoustic profile during the word "balance," specifically between 1.0 and 1.5 seconds. During this interval, the spectral energy shifts upward, with a noticeable increase in high-frequency content (4000–6000 Hz), which is atypical for natural speech and may indicate digital manipulation or synthesis. This region is marked by a slight pitch instability and a subtle, unnatural resonance, suggesting possible deepfake generation. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region as anomalous, indicating strong cross-model agreement on this segment. The LIME method from wav2vec also highlights a nearby region ([1.8-2.0] seconds), but this is less consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec-based explanations are the most reliable in this case. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength, which are related to spectral and segmental irregularities, further supporting the presence of synthetic or manipulated speech in the highlighted region.

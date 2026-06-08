@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a news-style statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental cues. At approximately 3.5 seconds, the speaker utters the word "heart," which is followed by a brief pause and then the word "isn't." Immediately after "isn't," a sharp, high-frequency transient artifact is audible, lasting about half a second. This artifact is characterized by a piercing, synthetic timbre, with energy concentrated between 2000 Hz and 6000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original recording but appears to be an insertion or overlay, likely due to editing or digital manipulation. The remainder of the audio resumes normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [2000-6000] Hz frequency range as abnormal, with both Integrated Gradients and Saliency methods pointing to this interval. The LIME method also supports this region, though with a narrower focus at [5.0-5.1] seconds, which may correspond to the artifact’s tail. The Hubert and WavLM models do not provide supporting evidence, and their explanations are absent. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a sudden, high-frequency transient. The convergence of wav2vec’s multiple methods and the SHAP feature analysis strongly supports the conclusion that the artifact is a synthetic insertion, not a natural part of the speech. No other XAI sources corroborate this finding, and the artifact is not present in the original audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering a short, formal statement: "work concern. To win and we'd be working hard to achieve that, Mr. Russell said." The speech is in standard English with no regional accent, and the recording quality is high, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, centered around 3000–4000 Hz. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [3000-4000] Hz using Integrated Gradients (IG), and the same region is supported by Saliency analysis at [4.5-5] seconds with a frequency range of [6000-8000] Hz, though this second region is not clearly audible. LIME analysis also points to a region at [2.5-3] seconds, but this is not strongly supported by the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, which is consistent with the presence of a high-frequency artifact. Overall, the wav2vec model’s IG analysis provides the most consistent and cross-validated evidence for the abnormality at [1.5-2.0] seconds, supported by the synthetic-sounding artifact observed in the audio.

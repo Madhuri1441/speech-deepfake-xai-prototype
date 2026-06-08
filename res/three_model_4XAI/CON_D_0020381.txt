@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering the phrase, "Two position has struck a chord with the people of Scotland." The recording is of high fidelity, with a clear, steady voice and minimal background noise. However, a subtle but noticeable anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.0–2.0 seconds, specifically around the word "position." This region exhibits a faint, artificial-sounding shimmer or modulation, which is not typical of natural speech and may indicate digital processing or manipulation. The anomaly is not accompanied by any obvious distortion, clipping, or environmental artifacts, and the rest of the audio remains natural and consistent.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 1.0–2.0 second time range and 4000–6000 Hz frequency range as the most salient region, directly aligning with the observed acoustic anomaly. The Saliency method from wav2vec also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The LIME method from wav2vec points to a very narrow time window (3.0–3.1 seconds), which is not supported by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values suggest that features related to unvoiced segment length and sound level are present, but they do not directly support the identified anomaly. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by its alignment with the observed acoustic feature.

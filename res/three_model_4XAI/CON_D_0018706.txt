@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [7.5-8.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 7.5–8.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a sustained, pure tone in the 6000–8000 Hz range, sharply contrasting with the natural speech and background noise. The artifact is not present in the original audio and is not a product of the speaker’s voice or environmental sounds. Its sudden onset and unnatural timbre suggest digital manipulation or generation, likely as a result of a deepfake process. The speech before and after this interval remains natural, with no other obvious signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the Integrated Gradients (IG) explanation for the wav2vec model, which specifically highlights the [7.5-8.0] seconds time region and the [6000-8000] Hz frequency range. This aligns with the observed synthetic tone in the audio. The Saliency explanation for wav2vec also identifies a different region ([0-1] seconds), but this is not supported by the audio as being anomalous. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values point to acoustic features such as equivalentSoundLevel_dBp and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, but do not localize the anomaly to a specific time or frequency range. Thus, the most reliable evidence for the abnormality comes from the wav2vec model’s IG explanation, supported by the direct observation of the synthetic tone in the audio.

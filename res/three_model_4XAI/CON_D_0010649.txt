@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase: "job, we widespread support on all sides." The speech is generally intelligible, but at approximately 1.5–2.5 seconds, there is a noticeable disruption in the vocal signal. During this interval, the voice exhibits a sudden, unnatural drop in pitch and a harsh, metallic timbre, accompanied by a loss of natural vocal harmonics and a burst of high-frequency noise. This segment stands out acoustically from the rest of the speech, which is otherwise clean and free of artifacts. The anomaly is not present in the surrounding speech, suggesting a localized manipulation rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: [1.5-2.0] seconds in the 4000-6000 Hz range (via IG) and [2.3-2.5] seconds in the 7000-8000 Hz range (via Saliency). These regions align closely with the observed acoustic anomaly in the audio, where the voice becomes distorted and metallic. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this type of manipulation. The Shapley values further support the presence of an anomaly, with high contributions from features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are indicative of abrupt changes in voice characteristics and spectral content. The combined wav2vec evidence and Shapley values confirm the presence of a localized, unnatural vocal event in the specified time and frequency ranges.

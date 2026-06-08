@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a calm and composed statement: "They were very, very anxious and nervous about their personal safety." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is steady, with a moderate pitch and natural intonation, and the pacing is even and unhurried. There are no audible signs of distress, hesitation, or emotional agitation in the speaker’s delivery, which contrasts with the content of the statement. The only notable acoustic anomaly occurs between 2.5 and 3 seconds, where a brief, high-frequency artifact is present, likely a digital glitch or transient noise. This artifact is not accompanied by any speech or vocalization and stands out due to its sharp, unnatural quality. No other acoustic irregularities, such as clipping, distortion, or background interference, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 2.5–3 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method in the 0–1 second range and 2000–4000 Hz, and LIME at 4.0–4.1 seconds. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec findings are the most reliable. The Shapley values further support the presence of an anomaly, with high contributions from spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, all of which are consistent with the wav2vec results. The cross-model agreement from wav2vec and the Shapley values confirms the anomaly in the specified time and frequency range.

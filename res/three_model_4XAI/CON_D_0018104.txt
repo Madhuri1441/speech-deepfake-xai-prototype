@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4.5-6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and intelligible statement in a quiet, controlled environment. The speech is free of background noise, distortion, or artifacts, and the recording quality is high, with a full frequency range and no signs of compression or digital clipping. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 4.5 and 6 seconds, which is not present in the rest of the audio. This artifact is not a natural part of the speech or environment and is likely a digital artifact or post-production anomaly. The wav2vec model’s Saliency method identifies this region as the most salient, indicating that the model detects an anomaly here, while the IG method identifies a different region ([0-1] seconds, [2000-4000] Hz) as salient, which corresponds to the beginning of the speech and is not marked as anomalous by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support the anomaly region. The Shap values do not directly correspond to the artifact but instead reflect acoustic features of the speech itself, such as spectral flux and sound level, which are unrelated to the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method is the only source that identifies the [4.5-6] seconds, [7000-8000] Hz region as anomalous, with no cross-model agreement from Hubert or WavLM. The IG method from wav2vec identifies a different region ([0-1] seconds, [2000-4000] Hz), which is not corroborated by other models. LIME does not support any anomaly region. The Shap values are unrelated to the artifact and instead reflect speech characteristics. Thus, the anomaly is supported by a single model (wav2vec Saliency), with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I have two children, Jesus," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.5 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 2000–4000 Hz range. This anomaly is not present in the original speech and is likely the result of digital editing or a deepfake artifact. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.0-1.5] seconds time region and [2000-4000] Hz frequency region as the most salient, directly aligning with the observed synthetic artifact. The wav2vec Saliency analysis also highlights a region around [0.00-0.25] seconds, but this does not correspond to any clear anomaly in the audio and may reflect a model-specific sensitivity to initial speech onset. The wav2vec LIME analysis identifies a very short region ([0.35-0.4] seconds), which is not supported by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean do not point to any specific time or frequency region, suggesting that these features are not strongly associated with the observed artifact. Overall, the wav2vec IG analysis provides the most consistent and supported evidence for the abnormality, with no cross-model agreement from Hubert or WavLM.

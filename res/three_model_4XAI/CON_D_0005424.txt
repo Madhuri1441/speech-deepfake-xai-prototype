@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a distinct Scottish accent, delivering a short, conversational statement: "Raining champion maybe. Montgomery, I find a go in Russia problem. She's very distinct talk." The speech is clear, with no background noise or distortion, and the speaker's voice is steady and natural. However, at approximately 0.5–1.5 seconds, there is a subtle but noticeable change in the acoustic texture of the voice, particularly in the mid-frequency range (2000–4000 Hz). This region exhibits a slight unnatural smoothness and reduced micro-fluctuations, which may indicate digital manipulation or editing. The change is not accompanied by any obvious pitch or volume shift, but the spectral quality is subtly altered, suggesting a possible splice or artifact insertion. No other acoustic anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] second range and [2000-4000] Hz frequency band using both Integrated Gradients (IG) and Saliency methods, with LIME also supporting the [0.5-1] second region. These cross-model and cross-method confirmations strongly indicate that the wav2vec model detects a subtle anomaly in this segment. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed acoustic change and are not region-specific. Therefore, the wav2vec-based evidence is the most reliable indicator of the anomaly, supported by multiple methods and models.

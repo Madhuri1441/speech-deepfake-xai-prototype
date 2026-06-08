@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "It is not sure what's mad." The speech is delivered in a neutral, conversational tone, with no emotional inflection or background noise. However, at approximately 1.00 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the voice, lacking any natural speech characteristics or modulation. The abrupt onset and unnatural timbre of this tone suggest it is not part of the original recording but was added post-production, likely as an artifact or placeholder. The voice remains unaffected by the tone, indicating the two were not recorded together. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.00–1.50 second time range and 2000–4000 Hz frequency range. The IG and Saliency methods provide broader temporal and frequency support, while LIME offers a more precise but consistent localization. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone, but these do not specify the exact time or frequency of the anomaly. The cross-model agreement from wav2vec confirms the presence of an artificial tone in the specified region, while the lack of evidence from other models suggests the anomaly is subtle or not captured by all detection methods.

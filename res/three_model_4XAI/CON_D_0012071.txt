@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "and won't be rushed," followed by a brief pause and the word "season." The speech is delivered in a neutral, conversational tone, with no apparent emotional inflection or background noise. However, at approximately 1.8 seconds, a sudden, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 1000 Hz and 7000 Hz, and is markedly different from the natural speech preceding and following it. The artifact is not a product of the speaker’s voice or any environmental sound, and its abrupt onset and unnatural spectral profile suggest it is an artificial insertion, likely a result of digital manipulation or a deepfake process. The rest of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.8-2.5] seconds, [1000-7000] Hz). The IG method highlights the region [1.8-2.3] seconds, while Saliency and LIME further confirm the anomaly in the overlapping interval [2.3-2.5] seconds. The Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no evidence. The SHAP analysis supports the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural audio characteristics. The cross-model agreement from wav2vec provides strong evidence for the presence of a synthetic artifact in the specified region.

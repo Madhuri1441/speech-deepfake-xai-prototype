@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "This is our appeal to the Supreme Court against that decision." The speech is delivered in a standard, formal tone, with no emotional inflection or background noise, and is acoustically clean. However, at approximately 1.25 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until 1.75 seconds. This artifact is a sharp, synthetic-sounding burst in the 3000–4000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the original utterance and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region as [1.25-1.75] seconds in the frequency range [3000-4000] Hz using Integrated Gradients (IG). This is corroborated by the wav2vec Saliency method, which highlights the same time interval [1.0-1.5] seconds and a slightly broader frequency range [2000-4000] Hz. LIME also supports the anomaly, pinpointing the region at [1.5, 1.6] seconds. The Hubert and WavLM models do not detect any abnormality, as their IG, Saliency, and LIME methods return no evidence. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 indicating deviations from expected speech patterns. The cross-model agreement between wav2vec’s IG, Saliency, and LIME confirms the presence of a synthetic artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "The men will lead the way while women and..." The speech is clear and intelligible, with a natural cadence and standard English pronunciation. However, at approximately 2.3 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a pronounced digital artifact. This distortion persists until about 3.0 seconds, after which the audio returns to its original, clear state. The abrupt onset and offset of the artifact, along with its unnatural frequency content (notably in the 2000–8000 Hz range), suggest a digital manipulation or deepfake insertion. The distortion is not present in the original speech and does not match typical recording or environmental noise, indicating a synthetic or tampered segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the [2.3-2.5] seconds region, Saliency analysis focuses on [2.5-3.0] seconds, and LIME points to [1.8-2.0] seconds. These regions collectively confirm the [2.3-3.0] seconds interval as the most likely area of manipulation. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is uniquely sensitive to this type of digital artifact. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp and alphaRatioUV_sma3nz_amean showing significant deviations, consistent with the observed distortion. The combined evidence from wav2vec and the Shapley analysis strongly supports the conclusion that the audio contains a deepfake or synthetic insertion in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "by the Jeff had killed" in a neutral, declarative tone. The speech is clear and intelligible, with no background noise or environmental sounds. The acoustic environment is dry, with no reverberation or echo, suggesting a close-mic or studio setting. The voice is centered in the stereo field and remains stable throughout. The most notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 0.2 and 0.4 seconds, which is not part of the natural speech. This artifact is characterized by a sharp, electronic timbre and a frequency range of 1500–3000 Hz, standing out against the otherwise clean and natural voice. The rest of the audio is free from distortion, clipping, or other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.2-0.4] seconds with a frequency range of [1500-3000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [1.2-1.4] seconds with a frequency range of [5000-6000] Hz. LIME supports the wav2vec findings by identifying a region at [0.5-0.6] seconds, though this is less precise. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shap values suggest that the abnormality is related to features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are associated with the presence of a synthetic or unnatural sound. The wav2vec model's IG and Saliency methods, along with LIME, provide cross-model agreement on the [0.2-0.4] seconds region, making this the most supported abnormality.

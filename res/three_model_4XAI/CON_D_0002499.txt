@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, grammatically correct sentence: "Then Al play played about his activities while he was away." The speech is generally natural, but at approximately 4.0–4.5 seconds, a sharp, high-frequency artifact is audible, characterized by a brief, unnatural, and piercing sound in the 6000–8000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The artifact is abrupt, with a sudden onset and offset, and is acoustically distinct from the rest of the audio, suggesting a digital or synthetic origin. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([4.0-4.5] seconds, [6000-8000] Hz). The Hubert and WavLM models do not detect any abnormality in this region, but their lack of evidence does not contradict the wav2vec findings. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are consistent with the presence of a synthetic or anomalous sound event. The convergence of multiple wav2vec methods on the same region provides strong evidence for the artifact’s presence, while the absence of similar evidence from other models suggests that the anomaly is subtle or specific to the wav2vec model’s sensitivity.

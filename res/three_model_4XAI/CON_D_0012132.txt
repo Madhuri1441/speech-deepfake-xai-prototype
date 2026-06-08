@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, neutral statement in a quiet, acoustically dry environment. The recording is of high fidelity, with no background noise or distortion. The only notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where a subtle, high-frequency artifact is present in the 3000–4000 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, likely introduced during the deepfake generation process. The anomaly is not perceptible to the human ear but is detectable through spectral analysis. The rest of the audio is acoustically clean, with no other signs of tampering or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.5–2.0 second time region and 3000–4000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the 0–1 second region, which does not align with the observed artifact. LIME analysis supports the 2.0–2.1 second region, which is adjacent to the main anomaly. The Hubert and WavLM models do not provide any evidence of the anomaly, indicating that the wav2vec model is the most reliable in this case. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are indicative of subtle spectral irregularities. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the 1.5–2.0 second region, confirming the presence of the anomaly.

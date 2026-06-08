@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "You've got play up," followed by a brief pause and then, "It is a gap is." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5–1.0 seconds, there is a subtle but noticeable high-frequency artifact in the 6000–7000 Hz range. This artifact manifests as a faint, unnatural hiss or digital shimmer, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. This anomaly is not immediately obvious to casual listening but is supported by XAI analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), which highlights the 0.5–1.0 second time region and 6000–7000 Hz frequency region as salient. This is corroborated by the Saliency method, which points to a different but adjacent time-frequency region (0.0–0.2 seconds, 1500–3000 Hz), suggesting that the model is sensitive to subtle acoustic changes in the audio. The LIME method also supports the presence of an anomaly, though it localizes it to a slightly different time (2.1–2.2 seconds), which may reflect a secondary or related artifact. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is not universally detected across all models. The SHAP values further reinforce the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of changes in the audio’s spectral content. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the abnormality, with some support from LIME, while Hubert and WavLM do not detect the anomaly.

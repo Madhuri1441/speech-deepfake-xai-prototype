@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "Paris," followed by a brief pause and then the word "you mention." The speech is delivered in a neutral, conversational tone, with no apparent emotional inflection or background noise. At approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a sudden, unnatural spike in the upper frequency range (3000–6000 Hz), which is inconsistent with the natural acoustic profile of the voice. The artifact is not present in the initial or subsequent speech, suggesting it is an isolated anomaly rather than a natural part of the utterance. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 1.0–1.2 second time region and 3000–6000 Hz frequency range as significant, indicating that this transient is a key feature in the model's prediction. The wav2vec LIME explanation, however, points to the 0.0–0.1 second region, which does not align with the observed artifact and may reflect a different aspect of the audio. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the transient, but these do not directly pinpoint the artifact's location. Overall, the wav2vec IG and Saliency results provide the strongest and most consistent evidence for the abnormality, while other XAI sources either do not support this finding or point to unrelated regions.

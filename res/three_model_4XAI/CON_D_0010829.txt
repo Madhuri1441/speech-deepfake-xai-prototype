@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled male voice saying, "Tonight the in shock we blame done things." The speech is heavily distorted, with a low-frequency emphasis and a lack of high-frequency detail, resulting in a "boomy" and unclear sound. The most notable acoustic abnormality occurs between 0.5 and 1.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, clipped quality, accompanied by a burst of high-frequency noise. This segment is marked by a sharp, unnatural transition in both pitch and timbre, suggesting digital manipulation or synthesis. The background is silent, with no environmental cues, further highlighting the artificial nature of the vocalization. The utterance is delivered in a flat, emotionless tone, lacking natural speech rhythm and prosody, which is consistent with synthetic or deepfake-generated speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] second time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong cross-model agreement on this region. The LIME explanation for wav2vec, however, points to an earlier segment ([0.0-0.1] seconds), which is not supported by other XAI methods and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec model is the most sensitive to the anomaly. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the observed abrupt changes in pitch and timbre, further supporting the presence of synthetic manipulation in the specified time and frequency range.

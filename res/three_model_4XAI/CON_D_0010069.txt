@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "still agree I'm very sick almost p..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a high-frequency, synthetic-sounding artifact abruptly appears and persists until about 2.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 6000 Hz and 8000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio before or after this interval, and its sudden onset and unnatural spectral profile suggest it is an artificial insertion, likely a result of digital manipulation or a deepfake process. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.50-2.00] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a high-frequency artifact, further supporting the conclusion. The cross-model agreement from wav2vec provides strong evidence for the identified region, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled female voice saying, "That for a serious sleep is me that." The speech is heavily distorted, with a persistent low-frequency hum and a high-frequency hiss, indicating poor recording quality or digital compression artifacts. The most notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits unnatural pitch modulation and a synthetic, robotic timbre, especially in the phrase "serious sleep." This segment is marked by a pronounced, unnatural resonance and a lack of natural vocal dynamics, suggesting digital manipulation or deepfake generation. The frequency range of 3000–6000 Hz is particularly affected, with an unnatural emphasis and a lack of smoothness, further supporting the presence of synthetic artifacts. The overall speech is monotone and lacks the natural inflection and breathiness of genuine human speech, reinforcing the suspicion of a deepfake.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 3000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), indicating some inconsistency. The LIME method supports the 0.0–0.1 second region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, suggesting that the wav2vec model is the most reliable in identifying the anomaly. The SHAP values indicate that the abnormality is linked to acoustic features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are associated with unnatural vocal characteristics. The cross-model agreement is limited, with wav2vec being the primary source of evidence for the abnormality.

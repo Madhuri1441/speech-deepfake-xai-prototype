@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice saying, "told to concessions had go in actions with fun." The speech is abruptly cut off mid-word ("actions") at approximately 1.5 seconds, with no natural fade or pause, indicating a hard edit. Immediately following this, a loud, synthetic, low-frequency electronic tone (around 4000–6000 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is highly unnatural, with a static, unmodulated quality, and is acoustically inconsistent with the preceding speech, suggesting it is an artificial insertion rather than a natural sound event. The abrupt transition and the presence of the electronic tone are clear indicators of audio tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a brief [2.3-2.5] seconds region in the [6000-8000] Hz range. LIME analysis also supports the [2.0-2.1] seconds region. However, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The wav2vec IG result is the most robust and directly aligns with the observed audio anomaly, where the synthetic tone begins. The other XAI results are less consistent and may reflect secondary or less significant features. Thus, the primary abnormality is supported by wav2vec IG, with some additional, less consistent evidence from wav2vec Saliency and LIME.

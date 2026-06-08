@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "He was one of our best staff back..." in a neutral, conversational tone. At approximately 1.5 seconds, a sharp, high-frequency click or pop is heard, lasting about half a second, which is acoustically inconsistent with the speech and background. This click is most prominent in the 3000–4000 Hz range, suggesting a digital or mechanical artifact rather than a natural sound. The speech continues without interruption, but the click stands out as an anomaly. No other obvious acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click at 1.5–2.0 seconds in the 3000–4000 Hz range as a key abnormality using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights a different but adjacent region (4.5–5.0 seconds, 6000–8000 Hz), likely due to the model’s sensitivity to different acoustic features. The LIME method also supports the presence of an anomaly at 2.0–2.1 seconds, though it does not specify frequency. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the click is not consistently detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are associated with the click’s acoustic properties. Overall, the click at 1.5–2.0 seconds is the most consistently supported abnormality across multiple XAI methods, particularly wav2vec’s IG and LIME.

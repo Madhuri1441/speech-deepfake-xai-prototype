@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "came to do it good." Immediately following the speech, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a static pitch and amplitude, and lacks any modulation or environmental context, strongly suggesting it is an artificial insertion rather than a genuine background sound. The transition from speech to tone is abrupt and unsmoothed, further indicating a digital edit or overlay. The tone is present in the frequency range of 2000–8000 Hz, which is consistent with the mid-to-high frequency content of the voice, but the tone’s timbre and lack of acoustic variation make it stand out as an anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an initial brief region ([0.0–0.1] seconds) and a more prominent region ([0.8–1.4] seconds) with a frequency range of [2000–4000] Hz. The saliency analysis from wav2vec further supports the [1.0–1.4] seconds region with a frequency range of [5000–8000] Hz, aligning with the synthetic tone’s frequency content. The LIME explanation from wav2vec also points to the [0.0–0.1] seconds region, but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or LIME evidence, and their IG results are absent, indicating they do not detect the anomaly. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are more related to the speech segment and do not directly support the synthetic tone. The wav2vec saliency and IG results are the only ones that consistently identify the synthetic tone region, making this the most reliable evidence.

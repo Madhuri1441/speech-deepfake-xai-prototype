@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "going club to make money." Immediately following the word "going," there is a brief, unnatural pause or break in the vocalization, which is acoustically inconsistent with normal speech flow. This break is accompanied by a subtle, high-frequency artifact in the 3000–4000 Hz range, which is not present in the rest of the recording. The artifact is most prominent during the pause and is not attributable to the speaker’s voice or any environmental noise. This suggests a possible digital splice or editing artifact, as the voice resumes with a slightly altered timbre and pitch, indicating a potential mismatch between the two segments.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.00-1.25] seconds, 3000–4000 Hz). The Hubert and WavLM models do not detect any abnormalities in this region, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a deviation from typical speech patterns. The combined evidence from wav2vec and the Shapley values strongly supports the conclusion that the audio contains a suspicious artifact in the specified region.

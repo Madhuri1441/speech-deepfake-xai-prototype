@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced high-frequency whine, most prominent between 3000-4000 Hz. This distortion persists until about 1.5 seconds, after which the audio returns to its original, clear state. The abruptness and unnatural quality of this transition, along with the presence of a high-frequency artifact, suggest a digital manipulation or deepfake insertion. The speech content is partially intelligible, but the distortion at the start masks the beginning of the phrase, making it difficult to discern the exact words spoken during the abnormality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. IG highlights the time-frequency region [0.5-1.5] seconds and [3000-4000] Hz, while Saliency points to a different region ([4.0-4.5] seconds, [7000-8000] Hz), indicating a secondary anomaly. LIME also supports the first region with a time window of [1.0-1.2] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec model is the most sensitive to the anomaly. The Shapley values further support the presence of an anomaly, with significant contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden changes in audio characteristics. The cross-model agreement between wav2vec’s IG and LIME methods confirms the primary abnormality at [0.5-1.5] seconds and [3000-4000] Hz.

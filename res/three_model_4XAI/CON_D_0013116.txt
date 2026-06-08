@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.35-0.45] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It is quite simple." The speech is clear and natural, with no obvious signs of tampering or distortion. However, a subtle but noticeable anomaly is present in the high-frequency range (3000–4000 Hz) during the time interval [0.35–0.45] seconds. This region contains a faint, artificial-sounding artifact that is not present in the rest of the audio, suggesting a possible manipulation or synthesis artifact. The anomaly is not perceptible to casual listening but is detectable through detailed acoustic analysis. No other suspicious regions are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.35–0.45] seconds time region and [3000–4000] Hz frequency region as the most salient for the model’s prediction. This is the only XAI method that provides a consistent and specific region of abnormality. The IG and LIME methods from wav2vec point to different regions ([0.75–0.85] seconds and [0.6–0.7] seconds, respectively), which are not supported by other models or by the audio itself. The Hubert and WavLM models do not provide any salient regions, and the SHAP values do not directly indicate a specific time or frequency region but rather highlight features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are not directly tied to the observed anomaly. Therefore, the final abnormality region is based on cross-model agreement from the wav2vec Saliency method alone.

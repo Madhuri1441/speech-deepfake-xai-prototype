@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "They should take their mobile phones." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.25 seconds, a high-frequency, synthetic-sounding artifact appears, lasting until 1.50 seconds. This artifact is a sharp, buzzing tone in the 6000–7000 Hz range, which is acoustically distinct from the speaker’s voice and does not correspond to any natural sound or environmental noise. The artifact is abrupt in onset and offset, and its spectral content is consistent with digital or synthetic audio manipulation, such as a watermark, overlay, or post-production effect. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.25-1.50] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec model’s Saliency and LIME also point to nearby time regions, but the IG result is the most precise and directly matches the artifact. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME analyses return no significant findings. The Shapley values from the model also highlight spectral features (spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, spectralFluxUV_sma3nz_amean) that are consistent with the presence of a synthetic overlay, further supporting the conclusion that the audio contains an artificial insertion. The cross-model agreement is limited to wav2vec’s IG analysis, with no corroborating evidence from Hubert or WavLM.

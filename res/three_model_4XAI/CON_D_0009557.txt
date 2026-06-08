@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "She's very distinct day, you should come to did you create." The speech is generally intelligible, with a slight stutter or repetition on "did you create." The background is quiet, with a faint electronic hum and a subtle hiss, typical of a low-fidelity recording. At approximately 4.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.5 seconds. This artifact is not part of the natural speech and is acoustically distinct from the speaker’s voice, suggesting a digital or synthetic origin. The artifact is not present in the original audio but is likely introduced during the deepfake generation process. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [4.5-5.0] seconds time range and [6000-8000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method for wav2vec also supports this region, though with a slightly different time window ([1.25-1.75] seconds), which may reflect a secondary or less prominent anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values, while not directly indicating the abnormality, provide context on the acoustic features of the audio, such as equivalentSoundLevel_dBp and alphaRatioUV_sma3nz_amean, which may relate to the overall audio quality but do not pinpoint the specific artifact. The cross-model agreement between wav2vec’s IG and Saliency methods strengthens the evidence for the abnormality in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "put on the internet" in a neutral, conversational tone. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 0.5 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, masking the remainder of the speech. The tone is acoustically distinct from the voice, with a frequency range of 2000–4000 Hz, and its abrupt onset and unnatural timbre suggest it is not part of the original recording but was added or inserted later. The transition from speech to tone is instantaneous, with no fade or overlap, indicating a digital edit or overlay. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, which aligns with the onset and spectral content of the electronic tone. The saliency analysis from wav2vec also highlights the initial speech segment [0.0-0.25] seconds, but this is not supported by other models. The IG, Saliency, and LIME explanations from Hubert and WavLM models do not indicate any abnormality, suggesting that the anomaly is not consistently detected by all models. The Shapley values point to features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic structure due to the tone, but these are not directly tied to the observed anomaly. The wav2vec model’s IG and LIME results provide the strongest evidence for the abnormality, with cross-model agreement limited to wav2vec alone.

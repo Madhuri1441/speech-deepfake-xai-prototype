@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a formal statement: "The proposals will now go to the Council of Ministers for approval." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is evenly paced and natural, with no signs of emotional inflection or artificiality. However, a subtle anomaly is present in the frequency range of 6000–7000 Hz during the time interval of 1.5–2.0 seconds, specifically around the word "Council." This region exhibits a faint, unnatural resonance or tonal quality, deviating from the expected acoustic profile of a human voice. The anomaly is not accompanied by any obvious speech errors, pitch jumps, or unnatural pauses, and the rest of the audio remains acoustically consistent with a real human speaker.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second interval, specifically in the 6000–7000 Hz frequency range, using Integrated Gradients (IG). This is corroborated by the wav2vec Saliency method, which highlights a broader region (3.0–3.5 seconds, 2000–8000 Hz), and LIME, which points to a very narrow window (3.5–3.6 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, suggesting a deviation in the acoustic structure of the voice, particularly in unvoiced segments. The combined wav2vec evidence, especially the IG and Saliency methods, supports the presence of an anomaly in the 1.5–2.0 second interval, while the lack of support from Hubert and WavLM suggests that the anomaly is not robustly detected by all models.

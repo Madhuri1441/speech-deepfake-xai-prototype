@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "The crowd was awesome." Immediately following this, a second, lower-pitched voice attempts to speak, but the utterance is heavily distorted and unintelligible, with a pronounced digital artifact that sounds like a burst of static or a clipped, synthetic noise. This distortion is most prominent between 1.0 and 2.5 seconds, with a frequency range of 3000–6000 Hz, and is accompanied by a harsh, unnatural timbre that disrupts the natural speech flow. The distortion is not present in the initial phrase, suggesting a sudden, artificial change in the audio signal. The abruptness and unnatural quality of the distortion, along with the lack of any environmental or acoustic cues, indicate a likely digital manipulation or deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.5] seconds, 3000–6000 Hz). The wav2vec model’s IG and Saliency methods both highlight the same time and frequency range, while LIME provides a more granular focus within this interval. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values further support the wav2vec findings, with the top three features (equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and spectralFluxUV_sma3nz_amean) indicating a significant deviation in the audio’s acoustic properties during the identified interval. This cross-model agreement from wav2vec, combined with the Shapley analysis, strongly supports the conclusion that the audio contains a deepfake artifact in the specified region.

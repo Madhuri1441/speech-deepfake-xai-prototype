@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "Councillor Beanie. We are now the king. It is the life..." The speech is delivered in a standard, unaccented English with a calm and declarative tone. At approximately 2.3 seconds, a sudden, high-frequency electronic tone appears, lasting until about 2.5 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the speech or environment, and its abrupt onset and offset suggest it is artificially inserted. The remainder of the audio continues with the original speech, which is otherwise unaltered, indicating the tone is an isolated artifact rather than a result of editing or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [2.3-2.5] seconds time region and [2000-4000] Hz frequency region as significant. This is corroborated by the wav2vec model's Saliency analysis, which points to a nearby time region [3.25-3.4] seconds, though this is not directly aligned with the observed tone. The LIME analysis from wav2vec also supports the presence of an anomaly in the vicinity of the tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values indicate that the abnormality is not related to overall audio energy or spectral characteristics, but rather to a specific, localized event. The cross-model agreement from wav2vec's IG and Saliency analyses, along with the LIME result, strongly supports the conclusion that the high-frequency tone is an artificial insertion, likely a deepfake artifact.

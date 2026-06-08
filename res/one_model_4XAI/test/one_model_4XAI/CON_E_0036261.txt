@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, high-pitched female voice saying, "This began as an accident." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. However, at approximately 0.8 seconds, a subtle but noticeable artifact emerges: a high-frequency, synthetic-sounding buzz or hum, centered around 5000–6000 Hz, which persists until about 1.2 seconds. This buzz is not present in the original speech and does not correspond to any natural acoustic event, suggesting an artificial insertion or manipulation. The buzz is abrupt in onset and offset, with no fade-in or fade-out, further indicating digital editing or generation.  
+
+The XAI evidence supports this observation:  
+- The Integrated Gradients (IG) analysis highlights the [0.8–1.2] second time region and [5000–6000] Hz frequency region as significant, indicating that these features are critical to the model’s classification of the audio as a deepfake.  
+- The Saliency map also identifies a [1.6–2.0] second time region and [5000–7000] Hz frequency region, which overlaps with the observed buzz, reinforcing the presence of an anomalous high-frequency component.  
+- LIME analysis points to the [1.4–1.5] second time region, further corroborating the timing of the anomaly.  
+- The Shapley values for features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean are all positive and significant, indicating that the audio deviates from natural speech patterns, particularly in terms of unvoiced segment length and spectral slope, which are consistent with synthetic or manipulated speech.  
+
+No other acoustic anomalies are present in the audio, and the buzz is the only clear indicator of manipulation. The combination of the observed buzz and the XAI evidence strongly suggests that the audio has been digitally altered, likely as part of a deepfake generation process.

@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Too close to be genuine," delivered in a neutral, conversational tone. Immediately following the spoken phrase, a synthetic, low-frequency electronic tone is introduced. This tone is abrupt, unwavering, and lacks any natural modulation or decay, standing out as an artificial artifact. The tone persists for approximately 0.5 seconds, ending sharply at the 2.0-second mark. The frequency content of this tone is concentrated between 3000 Hz and 6000 Hz, which is higher than typical human speech and more characteristic of electronic signals. This synthetic tone is acoustically anomalous, as it does not blend with the preceding speech and appears inserted post-production.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the [1.5-2.0] seconds time region and [3000-6000] Hz frequency range as the most significant for the model’s decision, indicating that this synthetic tone is a key feature in the audio’s classification as a deepfake. The Saliency analysis also points to the [0.5-1.0] seconds region, which overlaps with the tail end of the speech and the onset of the tone, further reinforcing the importance of this transition. The LIME analysis identifies the very beginning of the audio ([0.0-0.1] seconds) as a contributing factor, likely due to the initial speech onset. The Shapley values confirm the presence of a high-energy, unvoiced segment (likely the synthetic tone) and a high MFCC1 value, which is associated with the spectral characteristics of the tone. No other acoustic anomalies are present in the audio, and the speech itself is natural and unaltered.
+
+In summary, the synthetic tone introduced after the speech is the primary acoustic abnormality, and the XAI evidence consistently identifies this region and frequency range as critical to the model’s classification of the audio as a deepfake.

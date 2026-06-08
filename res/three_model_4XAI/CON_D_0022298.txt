@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a neutral, conversational tone, delivering the phrase: "It's going to be very hard to meet that team." The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. The speech is clear and intelligible, with no obvious signs of digital manipulation, clipping, or distortion. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency artifact in the 5000–7000 Hz range, which is not present in the rest of the audio. This artifact manifests as a faint, unnatural resonance or digital shimmer, possibly due to a momentary glitch in the recording or post-processing. The anomaly is not accompanied by any speech or vocal event, and the surrounding audio remains stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.0] seconds and frequency range [6000-7000] Hz using Integrated Gradients (IG), and in the narrower range [1.8-2.0] seconds and [5000-6000] Hz using Saliency. LIME also supports the region [1.5-1.6] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed artifact. The wav2vec-based evidence is consistent across multiple XAI methods, indicating a cross-model agreement on the presence of an acoustic anomaly in the specified time and frequency range.

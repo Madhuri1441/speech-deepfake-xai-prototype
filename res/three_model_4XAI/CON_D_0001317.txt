@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It was a poor performance." The speech is clear and intelligible, with a neutral, slightly disappointed tone. However, at approximately 1.0 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 1.5 seconds. This artifact is a sharp, synthetic-sounding tone, likely a digital glitch or artifact, which is not present in the original speech and does not match any natural acoustic event. The artifact is most prominent in the 2000–4000 Hz frequency range, as confirmed by the wav2vec Integrated Gradients (IG) explanation. The wav2vec Saliency analysis also highlights a brief, high-frequency anomaly at 2.3–2.5 seconds, but this is less consistent and may be a secondary artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG and Saliency methods both identify the 1.0–1.5 seconds region as anomalous, with the IG method specifically pinpointing the 2000–4000 Hz frequency range. The wav2vec LIME method, however, highlights the very beginning of the audio (0.0–0.1 seconds), which does not correspond to any observable anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the equivalentSoundLevel_dBp feature is most influential, which aligns with the presence of the high-frequency artifact. Overall, the wav2vec IG and Saliency methods provide the strongest and most consistent evidence for the anomaly, while other XAI methods either do not detect it or provide conflicting evidence.

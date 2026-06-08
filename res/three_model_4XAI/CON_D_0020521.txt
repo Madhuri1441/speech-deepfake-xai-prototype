@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free of background noise, suggesting a controlled recording environment. However, a subtle but noticeable anomaly is present in the high-frequency range (4000–6000 Hz) during the phrase "overnight complex," specifically between 2.0 and 3.0 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not accompanied by any obvious distortion, clipping, or background interference, and the rest of the audio remains acoustically clean. No other acoustic irregularities are apparent in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [2.5-3.0] and [2.0-2.5] second intervals, respectively, as regions of high importance, with a consistent frequency range of 4000–6000 Hz. These findings are corroborated by the LIME method, which, although focusing on a much earlier segment ([0.0-0.1] seconds), still highlights the presence of anomalous acoustic features. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis further supports the wav2vec findings by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are associated with the high-frequency anomaly. Overall, the wav2vec model's multiple methods and the SHAP analysis provide strong, cross-model evidence for the identified abnormality, while the Hubert and WavLM models do not detect it.

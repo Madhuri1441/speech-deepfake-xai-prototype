@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, speaking in English with a non-native accent. The recording is of moderate fidelity, with a low-level background hiss and a faint hum, but no significant distortion or clipping. The speech is continuous and intelligible, with no abrupt changes in volume or pitch. However, at approximately 2.5–3.0 seconds, a subtle but noticeable acoustic anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight break in articulation, accompanied by a momentary increase in high-frequency content (4000–6000 Hz). This is not present in the surrounding speech and does not correspond to any natural phonetic or prosodic feature. The anomaly is brief and localized, suggesting a possible digital manipulation or artifact rather than a genuine vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [4000-6000] Hz). The IG and Saliency methods provide broader temporal and spectral support, while LIME offers a more precise, localized confirmation. In contrast, the Hubert and WavLM models do not detect any abnormality in this region, as their XAI methods yield no relevant evidence. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are indicative of unnatural speech patterns. The convergence of wav2vec’s multiple XAI methods on the same region provides strong, cross-model evidence for the anomaly, while the absence of such evidence from Hubert and WavLM suggests the anomaly is subtle and may not be captured by all models.

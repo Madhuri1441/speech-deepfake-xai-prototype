@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "completely tomorrow for the benefiting excess from a was it." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time window and the 4000–6000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values indicate that the anomaly is likely related to high-frequency, static-like acoustic features, such as loudness and unvoiced segment length, which align with the observed artifact. The wav2vec model’s consistent findings across multiple XAI methods provide strong support for the presence of a synthetic artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, formal statement in English: "those who have, it shows a consensus as of great credit." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady, with natural intonation and no signs of emotional stress or artificiality. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency artifact in the 4000–6000 Hz range. This manifests as a faint, unnatural resonance or digital artifact, possibly due to a momentary glitch in the recording or post-processing. The anomaly is not accompanied by any speech or vocal event, and the surrounding audio remains clean and natural. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 1.5–2.0 seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and LIME supports this with a saliency peak at 2.5–2.6 seconds, though slightly later. The Hubert and WavLM models do not detect any anomalies, and their IG, Saliency, and LIME results are all null. The SHAP analysis highlights high values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these are global features and do not localize the anomaly to a specific time or frequency. The wav2vec IG and LIME evidence, both pointing to the same frequency range and a similar time window, provide cross-model agreement for the anomaly at 1.5–2.0 seconds in the 4000–6000 Hz range. This is the only region supported by multiple XAI sources.

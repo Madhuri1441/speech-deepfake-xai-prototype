@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Golf has lost a pretty good night." The speech is abruptly interrupted by a sharp, synthetic, high-frequency tone that starts at approximately 1.25 seconds and lasts until 1.50 seconds. This tone is distinctly artificial, with a piercing, unmodulated quality in the 4000–6000 Hz range, and is acoustically inconsistent with the preceding speech, suggesting it is a post-production artifact or digital overlay. The tone is not present in the original speech and does not correspond to any natural sound event, indicating a likely editing or generation error.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method highlights the [1.25-1.50] second time region and the [4000-6000] Hz frequency range as the most salient features for the model’s decision, indicating that the synthetic tone is a key factor in the audio’s classification as a deepfake. The Saliency method further corroborates this by identifying the [1.5-2.0] second region and a broader frequency range of [4000-8000] Hz, reinforcing the presence of an anomalous high-frequency event. The LIME method, while pointing to an earlier time ([0.45-0.55] seconds), does not contradict the main abnormality but may reflect the model’s sensitivity to subtle acoustic cues in the speech. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an unnatural acoustic event, as these features are significantly higher than their original values, indicating a sudden, high-intensity sound inconsistent with natural speech.
+
+In summary, the audio contains a clear, synthetic high-frequency tone between 1.25 and 1.50 seconds, which is not part of the original speech and is strongly supported by multiple XAI methods as a key indicator of the audio’s deepfake nature.

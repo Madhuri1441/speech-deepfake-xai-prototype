@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "close at certain times, disgrace." The speech is clear and intelligible, with a neutral, declarative tone. Immediately following the word "disgrace," there is a sharp, high-frequency electronic tone that lasts for about half a second. This tone is acoustically distinct from the speech, with a frequency content in the 4000–6000 Hz range, and is likely a system notification or error beep. The abrupt onset and offset of this tone, along with its unnatural spectral profile, suggest it is not part of the original speech but was added post-recording. The tone is not present in the original utterance and does not correspond to any natural vocal or environmental sound, indicating a possible editing artifact or digital overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (0.0–0.2 seconds, 1000–3000 Hz) and LIME points to an even earlier segment (0.0–0.1 seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that aligns with the observed electronic tone in the audio, making it the most reliable indicator of the anomaly. The other XAI results do not support the presence of an abnormality in the audio and may reflect model-specific sensitivities to speech features rather than actual artifacts.

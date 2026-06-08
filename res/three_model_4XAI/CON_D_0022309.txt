@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "This will help," followed by a brief pause and then the phrase, "be favorite back." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the final word "back" is acoustically anomalous: it is pronounced with a noticeably higher pitch and a strained, unnatural timbre, deviating from the natural cadence and vocal quality of the rest of the utterance. This suggests a possible vocal synthesis artifact or a deepfake-generated segment. The wav2vec model's Integrated Gradients (IG) analysis highlights a salient region between 1.0 and 1.5 seconds, corresponding to the onset of the word "back," with a frequency range of 4000–6000 Hz, which aligns with the observed pitch anomaly. The Saliency method from wav2vec also identifies a region around 2.5–3 seconds, which may correspond to the tail of the word "back," though this is less certain. The LIME method from wav2vec further supports this, identifying a time window around 2.3–2.4 seconds, consistent with the end of the word. No other models (Hubert, WavLM) provide supporting evidence, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all independently identify the time interval around 1.0–1.5 seconds as the most suspicious, with frequency support in the 4000–6000 Hz range. This cross-model agreement from wav2vec provides strong evidence for the presence of an anomaly in the word "back." The other models (Hubert and WavLM) do not provide any supporting evidence, and the SHAP values do not directly correspond to the observed anomaly. Thus, the final abnormality region is based on consistent wav2vec evidence, with no cross-model agreement from other models.

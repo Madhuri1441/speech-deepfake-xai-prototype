@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "just happening in the richard different." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 2.5 seconds. This buzzing is not part of the natural speech and is acoustically distinct, with a harsh, electronic timbre and a frequency content between 3000 Hz and 8000 Hz. The buzzing overlays the speech, causing a noticeable disruption in the audio signal. After 2.5 seconds, the buzzing ceases, and the speech resumes its natural quality. This abrupt onset and offset of the buzzing, along with its unnatural spectral characteristics, indicate an artificial insertion rather than a genuine environmental or vocal artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time interval ([1.5-2.5] seconds) and frequency range ([3000-8000] Hz], providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values further support the presence of an anomaly, with spectralFlux_sma3_amean showing a high positive contribution, indicating a significant change in spectral flux during the abnormal period. The combination of wav2vec’s multiple XAI methods and the Shapley analysis confirms the presence of a synthetic buzzing artifact in the specified time and frequency range.

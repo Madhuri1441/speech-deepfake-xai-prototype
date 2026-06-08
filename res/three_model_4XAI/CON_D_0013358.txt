@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I can't wait to do that." The speech is intelligible, with a neutral, conversational tone and no detectable background noise or distortion. However, at approximately 3.5 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 4.0 seconds. This artifact is acoustically distinct from the speech, with a harsh, electronic timbre and a frequency range of 2000–6000 Hz, which is not present in the original voice. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 3.5–4.0 second time region and 2000–6000 Hz frequency range, while LIME identifies a different region (0.9–1.1 seconds), which is not supported by other methods or the audio evidence. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The SHAP analysis highlights three features—equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength—with positive SHAP values, indicating increased energy and variability in the signal, but these do not localize the anomaly to a specific time or frequency. The wav2vec model’s consistent identification of the 3.5–4.0 second, 2000–6000 Hz region is the strongest evidence for the synthetic artifact, supported by multiple XAI methods.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "No." Immediately following this, a brief, high-pitched, synthetic-sounding vocalization occurs, lasting approximately half a second (0.5–1.0 seconds). This vocalization is distinctly unnatural, with a mechanical timbre and a frequency content concentrated between 2000–4000 Hz, deviating sharply from the natural speech preceding it. The synthetic sound is abrupt, lacks the organic variation of human speech, and is acoustically inconsistent with the rest of the audio, suggesting it is a deepfake artifact. The subsequent speech ("to say anything across the line and said you...") resumes a natural cadence and pitch, indicating the anomaly is localized to the synthetic vocalization.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the synthetic vocalization as anomalous through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.5-1.0] seconds, 2000–4000 Hz). The LIME method also supports this region, though with a narrower focus at [3.1, 3.2] seconds, which may correspond to a secondary artifact or a misalignment in the explanation. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is most strongly supported by wav2vec. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc3V_sma3nz_amean further corroborate the presence of an unnatural acoustic event in this region, as these features are sensitive to abrupt changes in sound level and spectral content. Overall, the wav2vec-based evidence is consistent and robust, while the other models do not contradict but provide less direct support.

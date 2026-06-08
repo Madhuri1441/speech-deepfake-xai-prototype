@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "This fact, reported by audience research," in a clear, neutral tone, with a slight room reverberation and a low-level electronic hiss. At approximately 4.0 seconds, a sharp, high-frequency click or pop is heard, lasting about half a second. This click is acoustically distinct from the preceding speech, with a prominent energy peak in the 4000–6000 Hz range and a brief, percussive attack. The click is not a natural part of speech or environmental noise, and its abruptness and spectral content suggest a digital artifact, such as a buffer glitch or file corruption. The audio then returns to the background hiss, with no further speech or events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as an anomaly, with Integrated Gradients (IG) highlighting the 2.5–3.0 second region and Saliency and LIME both pointing to the 4.0–4.5 second region. The wav2vec LIME explanation specifically isolates the click at 4.0–4.5 seconds, aligning with the observed acoustic event. In contrast, the Hubert and WavLM models do not detect any abnormality, as their IG, Saliency, and LIME explanations return no significant regions. The SHAP analysis, which focuses on acoustic features rather than time, identifies high contributions from equivalentSoundLevel_dBp, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and spectralFlux_sma3_amean, but does not provide temporal localization. The wav2vec model’s multiple, consistent time-based explanations, especially the LIME result, provide strong cross-model support for the click at 4.0–4.5 seconds as the primary anomaly.

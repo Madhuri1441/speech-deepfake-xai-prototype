@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral accent, delivering a short, coherent statement in English. The speech is generally intelligible, with a steady, conversational tone and no obvious signs of emotional distress or artificiality. However, at approximately 5.0–6.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present, most likely a digital glitch or artifact introduced during the generation or post-processing of the audio. This artifact is not present in the original speech content and does not correspond to any natural speech or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency range as a region of high salience, indicating that the model detects an anomaly in this segment. The Saliency method from wav2vec also highlights a nearby region (6.0–7.0 seconds), but the most consistent and specific evidence comes from the IG analysis. No other XAI methods (Hubert, WavLM) or Shapley values provide supporting evidence for this region, and no other acoustic anomalies are apparent in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [5.0-6.0] seconds, [3000-4000] Hz region as the most suspicious, with the Saliency method providing partial support for a nearby region. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not point to any specific acoustic feature anomaly. Thus, the final abnormality is supported by a single model (wav2vec) using two different XAI methods, with no cross-model agreement.

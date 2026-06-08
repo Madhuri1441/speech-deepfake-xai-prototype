@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral utterance of the word "great" spoken by a female voice, with no notable acoustic anomalies. However, at approximately 3.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until 4.0 seconds. This artifact is characterized by a piercing, static-like tone in the 2000–3000 Hz range, which is acoustically distinct from the natural speech and does not resemble any typical background noise or environmental sound. The artifact is abrupt in onset and offset, suggesting digital manipulation or insertion rather than a natural event. This anomaly is not present in the original speech and is not masked by it, indicating a post-production edit or deepfake insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The suspicious region [3.5-4.0] seconds and frequency range [2000-3000] Hz is supported by multiple independent XAI sources: the Saliency method from the wav2vec model, the LIME method from the wav2vec model, and the SHAP values for the feature "slopeUV0-500_sma3nz_amean." These sources consistently highlight this region as significant for the model's prediction, indicating that the anomaly is not an artifact of a single model but is robustly detected across different interpretability methods. The wav2vec model is the only one to provide such consistent evidence, while the Hubert and WavLM models do not identify any abnormal regions. The SHAP analysis further supports the presence of an anomaly by highlighting a significant change in the "slopeUV0-500_sma3nz_amean" feature, which is associated with spectral slope and likely reflects the synthetic nature of the artifact.

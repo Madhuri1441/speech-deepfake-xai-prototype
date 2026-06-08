@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "disabled he yard" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.95 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.05 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the preceding speech and does not resemble any natural vocal or environmental sound. The artifact is abrupt and does not fade naturally, suggesting a digital glitch or editing error rather than a genuine acoustic event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region using two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency range ([0.95-1.05] seconds, 4000–6000 Hz). The LIME method from wav2vec also highlights a brief region ([0.0-0.1] seconds), but this is not supported by other models and is not aligned with any observable anomaly in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The Shapley values indicate that the model is sensitive to certain acoustic features (slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, alphaRatioUV_sma3nz_amean), but these do not directly correspond to the observed artifact. The wav2vec IG and Saliency results are in strong agreement, providing cross-model evidence for the artifact’s location and frequency.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled male utterance, "plot is minimal," spoken in a neutral, declarative tone. Immediately following this, a sharp, high-frequency transient is audible, lasting approximately 0.1 seconds and peaking between 5000–6000 Hz. This transient is acoustically anomalous, as it does not correspond to any natural speech or environmental sound and is inconsistent with the preceding vocalization. The transient is likely an artifact, possibly due to digital clipping, editing error, or an unintended sound event. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous transient using both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.1-0.2] seconds, [5000-6000] Hz]). The LIME method also supports this region, though with a slightly narrower time window ([0.15-0.2] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The SHAP analysis does not directly indicate the transient but highlights other acoustic features, such as StddevUnvoicedSegmentLength, shimmerLocaldB_sma3nz_amean, and loudness_sma3_amean, which are unrelated to the observed anomaly. Thus, the evidence for the abnormality is cross-model agreement from wav2vec (IG, Saliency, and LIME), while Hubert and WavLM do not support the finding.

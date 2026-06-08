@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "This leave discussions for all as a or the board." The speech is generally intelligible, but the word "leave" is pronounced with a noticeable vocal fry or creaky voice quality, especially at the end of the word. This is most prominent between 3.5 and 4.0 seconds, where the pitch drops and the voice becomes breathy and raspy, accompanied by a subtle high-frequency noise in the 6000–8000 Hz range. This acoustic anomaly is not present in the rest of the audio and is not typical of natural speech, suggesting possible digital manipulation or artifacting. The rest of the audio is clean, with no background noise or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [3.5-4.0] seconds time region and the [6000-8000] Hz frequency region as abnormal, indicating strong cross-model agreement on the vocal fry artifact. The LIME method for wav2vec also points to a nearby region ([1.5-2.0] seconds), but this is less consistent and not corroborated by other models. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the anomaly is subtle and only detectable by certain models. The SHAP values further support the presence of an abnormality, with high values for StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, indicating changes in voice texture and spectral dynamics consistent with vocal fry. Overall, the wav2vec model's multiple methods agree on the abnormality, while other models do not detect it, suggesting the anomaly is subtle but present.

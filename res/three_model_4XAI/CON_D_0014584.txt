@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.35-0.45] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "by the news," followed by a brief pause and then "they said." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 0.35–0.45 seconds, there is a subtle but noticeable acoustic anomaly: a faint, high-frequency artifact appears, which is not present in the rest of the recording. This artifact is a sharp, transient sound, likely a digital click or glitch, and is most prominent in the 3500–4500 Hz range. This region is not typical of human speech and does not correspond to any natural phonetic content. The anomaly is brief and isolated, suggesting a possible digital editing artifact or encoding error.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.35-0.45] seconds time region and [3500-4500] Hz frequency region as the most salient for the model’s prediction, indicating that this is where the model detects an anomaly. The Saliency method from wav2vec also identifies a different but adjacent region ([1.00-1.25] seconds, [6000-8000] Hz), but this is not supported by other XAI methods. The LIME explanation from wav2vec points to a very narrow time window ([1.25-1.30] seconds), which is not corroborated by other methods. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed artifact. Overall, the cross-model agreement is limited to the wav2vec IG explanation, which identifies the [0.35-0.45] seconds, [3500-4500] Hz region as the most suspicious.

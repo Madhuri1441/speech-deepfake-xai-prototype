@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, steady voice, but at approximately 4.5–5.0 seconds, there is a noticeable disruption in the speech. The phrase "I'm have back drivers were told not is for the single vaccines" is delivered with a sudden, unnatural break in rhythm and articulation, particularly around the word "drivers." This segment is marked by a sharp, high-frequency artifact in the 6000–8000 Hz range, which is acoustically inconsistent with the rest of the recording. The voice in this region sounds slightly distorted, with a loss of natural vocal timbre and a subtle digital "click" or "pop," suggesting a possible splice or editing artifact. The surrounding speech is otherwise clear and intelligible, with no other obvious signs of tampering or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 4.5–5.0 seconds is supported by multiple independent XAI methods: Integrated Gradients (IG) identifies this time-frequency region as significant, and Saliency analysis also highlights a similar time window (1.5–2.0 seconds, though less precisely aligned). LIME corroborates the anomaly at 5.0–6.0 seconds, overlapping with the IG region. The wav2vec model, which is trained on speech, provides the strongest cross-model agreement, while the Hubert and WavLM models do not detect this region, likely due to their different training objectives. The Shapley values further support the presence of an anomaly, with features like equivalentSoundLevel_dBp and loudness_sma3_percentile20.0 indicating a sudden change in acoustic properties at this point. Overall, the convergence of IG, Saliency, and LIME evidence from the wav2vec model, along with the Shapley values, strongly supports the presence of an audio anomaly in the specified region.

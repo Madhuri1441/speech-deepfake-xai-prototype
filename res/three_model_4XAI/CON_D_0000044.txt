@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a sharp, high-frequency transient is heard, lasting about half a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 6000 Hz and 7000 Hz. The sound is acoustically distinct from the preceding speech and background noise, and it does not match any natural or environmental sound present in the rest of the clip. The transient is followed by a brief, unnatural silence, after which the original background noise resumes. This abrupt interruption and the unnatural spectral content of the transient suggest a possible digital artifact or editing anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the frequency range of 6000–7000 Hz during the time interval of 1.5–2.0 seconds, using Integrated Gradients (IG) and LIME. The Saliency method from wav2vec also highlights a different region (0.5–1.0 seconds, 3000–4000 Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The SHAP analysis does not directly indicate the abnormality but provides context on the overall acoustic features of the audio. The cross-model agreement from wav2vec’s IG and LIME methods supports the conclusion that the transient at 1.5–2.0 seconds with energy between 6000–7000 Hz is the most likely region of concern.

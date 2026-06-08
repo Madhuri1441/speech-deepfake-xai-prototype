@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-frequency thump, likely from a microphone bump or handling noise, followed by a male voice speaking in a neutral, conversational tone: "Eight months late, we had the battle of Gotten." The speech is clear and intelligible, with no signs of emotional distress or artificiality. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, lasting about half a second. This tone is sharply defined, with a frequency content between 4000–6000 Hz, and is acoustically inconsistent with the natural speech and background. It stands out as an abrupt, unnatural addition, possibly a digital artifact or an inserted sound effect. The remainder of the audio returns to the original speech and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (0.9–1.1 seconds, 6500–7500 Hz), which does not align with the observed synthetic tone. LIME analysis from wav2vec also supports the 2.0–2.1 second region, which is adjacent to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP values suggest that features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength are significant, but these are not directly linked to the observed synthetic tone. Overall, the wav2vec model’s IG and LIME results provide the strongest evidence for the anomaly, with cross-model agreement limited to wav2vec alone.

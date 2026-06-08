@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "It was based on a true story." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.5 seconds, a subtle but noticeable anomaly emerges: a faint, high-frequency, synthetic-sounding artifact overlays the voice, most prominent between 2000–4000 Hz. This artifact is not present in the initial portion of the audio and is not part of the speaker’s natural vocal spectrum. The artifact persists until about 1.0 seconds, after which the audio returns to normal. This brief anomaly is not accompanied by any change in speech content or delivery, suggesting it is an audio-level artifact rather than a vocal event. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency peak at [0.5-1.0] seconds in the 2000–4000 Hz range, and a secondary peak at [1.5-2.0] seconds in the 3000–6000 Hz range. The LIME explanation for wav2vec highlights a very short region at [0.0-0.1] seconds, which is not supported by other models. The Hubert and WavLM models do not provide any saliency, IG, or LIME evidence, indicating that the anomaly is not detected by these models. The Shap values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, but do not localize the anomaly in time or frequency. The wav2vec saliency region at [0.5-1.0] seconds, 2000–4000 Hz, is the only region supported by a single model and is consistent with the observed synthetic artifact in the audio. No cross-model agreement is present, and the anomaly is not corroborated by Hubert or WavLM.

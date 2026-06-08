@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Nothing is safe," followed by a brief pause and then, "She was that they should time together." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the wav2vec model's Integrated Gradients (IG) analysis highlights a salient region between 0.5 and 1.0 seconds, specifically in the frequency range of 2000–4000 Hz. This region corresponds to the end of the word "safe" and the beginning of the pause, suggesting that the model detects an anomaly in this segment. The Saliency method from wav2vec also identifies a region at 3.0–3.5 seconds, which aligns with the word "time," but this is less consistent with the audio's acoustic features. No other XAI methods (Hubert, WavLM) provide supporting evidence for this region, and the SHAP values do not directly indicate an anomaly in this segment. Overall, the wav2vec IG result is the most consistent with the audio, but the evidence is not corroborated by other models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Integrated Gradients (IG) method identifies the region [0.5-1.0] seconds in the frequency range [2000-4000] Hz as anomalous. This is the only XAI source that supports this specific region, with no cross-model agreement from Hubert or WavLM, which provide no evidence for this time or frequency range. The wav2vec Saliency method identifies a different region ([3.0-3.5] seconds), but this is not supported by other XAI methods. Therefore, the final abnormality region is based solely on wav2vec IG evidence.

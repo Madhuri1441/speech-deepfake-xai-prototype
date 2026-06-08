@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Well, pleased about the verdict." The speech is clear and intelligible, with a neutral, slightly low-pitched tone. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until 1.5 seconds. This artifact is not part of the original speech and is acoustically inconsistent with the natural voice, manifesting as a sharp, electronic buzz or hum in the 2000–6000 Hz range. This anomaly is not present in the original speech and is likely an artifact introduced during the deepfake generation process.
+
+The Integrated Gradients (IG) explanation identifies the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region as critical for the model’s decision, aligning with the observed synthetic artifact. The Saliency analysis further supports this by highlighting the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region, which overlaps with the artifact’s duration and frequency. The LIME explanation, while pointing to the very beginning of the audio, does not contradict the main anomaly but may reflect the model’s sensitivity to the initial speech segment. The Shapley values indicate that the equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean features are significant, suggesting the model is sensitive to both the overall loudness and the spectral characteristics of the audio, which are affected by the synthetic artifact.
+
+In summary, the primary acoustic abnormality is a synthetic buzz or hum in the 2000–6000 Hz range between 1.0 and 1.5 seconds, which is supported by multiple XAI methods. This artifact is not present in the original speech and likely results from the deepfake process. The Shapley values further confirm the model’s sensitivity to the audio’s spectral and loudness features, which are disrupted by the artifact.

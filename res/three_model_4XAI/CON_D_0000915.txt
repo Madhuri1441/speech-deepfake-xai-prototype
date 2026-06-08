@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint rustling sound, likely from clothing or handling the recording device, followed by a male voice speaking in a low, muffled tone. The speech is partially obscured by a persistent low-frequency hum and a high-frequency hiss, indicating poor recording quality and possible environmental noise. At approximately 2.0 seconds, a distinct, high-pitched, synthetic-sounding tone emerges, lasting until about 3.0 seconds. This tone is sharply defined, with a frequency content between 5000 and 7000 Hz, and stands out against the otherwise subdued and noisy background. The tone is not part of the speech and appears abruptly, suggesting it may be an artifact or an intentional overlay. The speech continues after the tone, but the overall audio remains muffled and lacks clarity, with no further notable events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [5000-7000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a slightly broader [0.5-1.0] seconds and [4000-6000] Hz region, and LIME points to a very narrow [2.0-2.1] seconds window. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated during the tone, and to a lesser extent with spectralFlux_sma3_amean and loudnessPeaksPerSec, suggesting a sudden increase in spectral energy and loudness at the time of the tone. The wav2vec IG and LIME results, along with the Shapley analysis, consistently point to the [2.0-3.0] seconds interval as the most suspicious region, supported by multiple independent XAI methods.

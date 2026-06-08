@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.2 seconds, a sharp, high-frequency transient is heard, lasting until about 0.4 seconds. This transient is characterized by a piercing, sibilant quality, with energy concentrated between 5000–6000 Hz, and is acoustically distinct from the rest of the audio, which features a low-pitched, muffled, and distorted male voice. The voice is heavily processed, with a low-pass filter effect, and is difficult to understand, though the phrase "fundraising" is partially discernible. The transient stands out as an abrupt, unnatural spike in high-frequency content, inconsistent with the otherwise degraded and low-fidelity speech. No other obvious artifacts, such as clipping or digital distortion, are present in the main speech segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the [0.2-0.4] seconds, 5000–6000 Hz region as the most salient, aligning with the observed high-frequency transient in the audio. The wav2vec IG method also points to a [1.0-1.2] seconds region, but this is not supported by other models or audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec Saliency result is the only cross-model agreement. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not correspond to the transient and instead reflect general audio characteristics. Thus, the wav2vec Saliency result is the most reliable indicator of the abnormality, supported by the acoustic observation of the high-frequency transient.

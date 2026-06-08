@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear female voice speaking in a neutral, conversational tone: "in our island to go out and play." The recording is clean, with no background noise, distortion, or environmental sounds, and the speech is delivered at a moderate pace with natural intonation. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 2.0 and 2.5 seconds, which is not present in the rest of the audio. This artifact manifests as a subtle, unnatural resonance or digital shimmer, suggesting a possible post-processing anomaly or minor digital artifact. No other acoustic irregularities, such as clipping, static, or abrupt volume changes, are present. The voice remains stable and natural throughout, with no signs of emotional manipulation or synthetic speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 2.0–2.5 second time region and 3000–4000 Hz frequency region as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation also points to a closely related time region (1.25–1.30 seconds), though this is not directly overlapping with the wav2vec findings. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the identified time or frequency region. Overall, the wav2vec model’s evidence is the most consistent and directly supports the presence of a high-frequency anomaly in the specified region, while other models and methods either do not detect the anomaly or provide less precise localization.

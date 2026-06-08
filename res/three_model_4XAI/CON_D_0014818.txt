@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "this long" in a neutral, conversational tone. Immediately following this, a sharp, high-frequency transient is heard, lasting approximately 0.4 seconds and peaking between 3000 Hz and 4000 Hz. This transient is acoustically distinct from the preceding speech, with a harsh, digital quality and a rapid onset and offset, suggesting a possible artifact such as a click, pop, or digital glitch. The transient is not a natural part of speech or environmental sound and stands out as an anomaly. No other obvious acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.8 - 1.2] seconds and frequency range [3000 - 4000] Hz using Integrated Gradients (IG), and also supports this with Saliency and LIME, though with slightly different time ranges. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight "equivalentSoundLevel_dBp" as the top contributor, suggesting that the anomaly is related to a sudden increase in sound level, which aligns with the observed transient. The combination of wav2vec's multiple XAI methods and the Shapley value evidence supports the conclusion that the transient is an acoustic anomaly.

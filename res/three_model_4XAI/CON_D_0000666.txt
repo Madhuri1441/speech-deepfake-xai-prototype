@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, indicating a quiet, controlled recording environment. At approximately 1.0 seconds, a female voice clearly says "cease of innovate trust" in a neutral, declarative tone. Immediately following this, at around 1.5 seconds, a sharp, high-frequency click or pop is heard, which is acoustically distinct from the preceding speech and background noise. This click is brief, with a frequency content concentrated between 6000–7000 Hz, and is not present in the original audio before the spoken phrase. The click is likely an artifact introduced during post-processing or editing, as it does not correspond to any natural sound event in the environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG) and LIME, while the Saliency method highlights a different region ([0.5-1.0] seconds, [2000-4000] Hz) that does not align with the observed click. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the click is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the click event. The click is supported by wav2vec’s IG and LIME, but not by other models, suggesting that the anomaly is primarily detected by wav2vec and not confirmed by Hubert or WavLM.

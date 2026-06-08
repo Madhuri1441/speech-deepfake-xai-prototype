@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "gold." Immediately following, a second female voice, slightly lower in pitch and with a different timbre, says, "We don't been offended, a team." The transition between the two voices is abrupt and unnatural, with no overlap or fade, suggesting a splice or digital editing. The second voice is accompanied by a faint, low-frequency hum and a brief, high-frequency hiss, both of which are not present in the first voice segment. The acoustic environment is dry and lacks reverberation, indicating studio or post-processed recording. The second voice is slightly muffled and exhibits a subtle pitch shift, further supporting the hypothesis of digital manipulation. The final word, "team," is cut off abruptly, with no natural decay or trailing sound, reinforcing the impression of an edited segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time region and [7000-8000] Hz frequency region using Integrated Gradients (IG), and the same time region is supported by Saliency analysis. LIME also points to a brief time interval around [1.0-1.1] seconds, which aligns with the transition between the two voices. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight spectral features such as slopeUV0-500_sma3nz_amean, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may reflect changes in spectral characteristics at the splice point. Overall, the wav2vec model's IG and Saliency analyses, along with LIME, provide cross-model agreement on the abnormality, while Hubert and WavLM do not detect it.

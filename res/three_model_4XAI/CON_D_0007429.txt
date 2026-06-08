@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.5 seconds. This artifact is characterized by a sharp, metallic, and slightly distorted timbre, with energy concentrated in the 2000–6000 Hz range. The artifact is not present in the original speech or background noise, and its abrupt onset and unnatural spectral profile suggest it is an artificial insertion rather than a natural acoustic event. The remainder of the audio, including the speech and background, remains unaffected and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies a salient region between 1.0–1.5 seconds in the 2000–6000 Hz frequency range. This aligns precisely with the observed synthetic artifact in the audio. The wav2vec model's Saliency and LIME methods also point to nearby time regions (2.5–3.0 seconds and 2.0–2.1 seconds, respectively), but these are not supported by the audio and are likely spurious or artifacts of the model's analysis. The Hubert and WavLM models do not provide any supporting evidence for the abnormality, as their IG, Saliency, and LIME analyses yield no relevant regions. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, further supporting the presence of an anomalous sound event in the audio. Overall, the wav2vec IG analysis is the only source that provides consistent and accurate evidence for the abnormality, with no cross-model agreement.

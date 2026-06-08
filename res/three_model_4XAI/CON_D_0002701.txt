@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "The council has been there is a picking is mine." The speech is generally intelligible, but the phrase "is a picking is mine" is notably unclear and possibly mispronounced or artificially altered. At approximately 3.5–4.0 seconds, a sharp, high-frequency artifact is present, with a frequency content between 7000–8000 Hz. This artifact manifests as a brief, unnatural, and abrupt sound, inconsistent with the natural speech signal, and is likely a result of digital manipulation or synthesis. The artifact is not present in the original speech and does not correspond to any natural phonetic or environmental sound. The wav2vec model’s saliency analysis highlights this exact time and frequency region, indicating that the model identifies this segment as anomalous. The wav2vec IG analysis also points to a different region (1.5–2.0 seconds, 3000–4000 Hz), but this is less consistent with the observed artifact. The Hubert and WavLM models do not provide supporting evidence for this region, suggesting that the anomaly is primarily detected by wav2vec.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec saliency analysis identifies the [3.5-4.0] seconds, [7000-8000] Hz region as anomalous, which aligns with the observed high-frequency artifact in the audio. This is the only XAI source that supports this specific region, as Hubert and WavLM do not provide any evidence for it. The wav2vec IG analysis points to a different region, but this is not supported by the audio artifact. The Shap values indicate that the equivalentSoundLevel_dBp feature is the most influential, but this does not directly correspond to the observed artifact. Therefore, the final abnormality region is based on wav2vec saliency evidence, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "be that a big program will deliver these improvements." The speech is clear and intelligible, with a neutral, professional tone. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (3000–6000 Hz) during the time interval [1.0–2.0] seconds, coinciding with the word "big." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a synthetic or manipulated segment, as evidenced by a subtle lack of natural vocal vibrato and a slightly abrupt transition in the acoustic profile. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [1.0–2.0] seconds time region and the [3000–6000] Hz frequency region as salient, indicating that this segment is critical for the model's prediction. The LIME method from wav2vec also supports this, focusing on a narrower interval [1.0–1.2] seconds. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not universally detected by all models. The Shapley values further support the importance of this region, with features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp showing high contributions, likely reflecting the unnatural acoustic properties in this segment. Overall, the wav2vec model's multiple XAI methods agree on the anomaly, while the other models do not provide supporting evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying, "just show you what it's a..." in a standard North American accent, with no background noise or distortion. At approximately 1.5 seconds, the voice is abruptly interrupted by a loud, synthetic, low-frequency electronic tone that lasts for about 0.5 seconds, peaking in volume and masking the speech. This tone is highly unnatural, with a harsh, buzzy timbre and a fundamental frequency around 100 Hz, accompanied by strong harmonics up to 8000 Hz. The tone is not present in the original audio and is likely an artifact of digital editing or a deepfake insertion. The abrupt onset and offset of the tone, along with its unnatural spectral content, suggest it was artificially added to obscure or disrupt the original speech. After the tone, the audio resumes with the original speaker, but the phrase is incomplete and the context is lost.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.50-2.00] seconds and frequency range [7000-8000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this, identifying a narrower time window [1.80-2.00] seconds. The wav2vec model is the only one that provides consistent evidence across multiple XAI methods, indicating a strong cross-model agreement on the presence of the synthetic tone. The Hubert and WavLM models do not provide any evidence, suggesting they are less sensitive to this type of anomaly. The SHAP values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant increase, indicating a sudden loudness change consistent with the synthetic tone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Leave him on the...," followed by a brief pause and then the word "pubs." The speech is clear and natural, with no obvious signs of digital manipulation. However, a subtle but noticeable anomaly occurs in the region between 0.8 and 1.4 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural resonance. This is accompanied by a subtle, high-frequency artifact in the 4000–7000 Hz range, which is not typical of natural speech and may indicate digital processing or editing. The anomaly is brief and localized, suggesting a possible splice or artifact insertion rather than a continuous issue.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.25-1.4] seconds and frequency range [6000-7000] Hz, while the Saliency method from wav2vec highlights a broader region [0.8-1.2] seconds and [4000-6000] Hz. These two independent XAI methods from the same model agree on the presence of an anomaly in the 0.8-1.4 second window, with overlapping frequency ranges. The LIME method from wav2vec further supports this by pinpointing a specific time around 0.9-1.0 seconds. The Hubert and WavLM models do not provide any evidence of anomalies, and their explanations are absent. The SHAP values indicate that features like StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and shimmerLocaldB_sma3nz_amean contribute to the anomaly, suggesting a deviation in speech regularity and acoustic texture. Overall, the evidence from wav2vec’s multiple methods supports the presence of an anomaly in the specified region, while other models do not contradict this finding.

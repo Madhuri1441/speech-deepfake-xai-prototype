@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic tone, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual vocalization. At approximately 1.0–2.0 seconds, a distinct, high-frequency electronic tone emerges, lasting about one second and peaking in the 6000–7000 Hz range. This tone is sharply defined, with a clean onset and offset, and is acoustically distinct from the background hum and the voice. The tone is not present in the original audio but is introduced as an artifact, likely due to a digital overlay or editing error. The remainder of the audio is free from further anomalies, with the voice continuing in a natural cadence until the end.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 6000–7000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (3.5–4.0 seconds, 2000–6000 Hz) and LIME points to 2.5–3.0 seconds. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated during the tone, supporting the presence of an artificial high-frequency sound. The wav2vec IG explanation is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this cross-model agreement.

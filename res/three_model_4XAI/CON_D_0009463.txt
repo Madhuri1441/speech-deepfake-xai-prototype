@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a calm, narrative tone: "could begin in the autumn, she believes." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct anomaly is present in the high-frequency region around 4000–6000 Hz during the final seconds of the utterance, specifically between 1.8 and 2.0 seconds. This region exhibits a faint, unnatural shimmer or ringing, which is not typical of natural human speech and may indicate digital artifacting or post-processing. The anomaly is not perceptible to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([1.8-2.0] seconds, [4000-6000] Hz), while LIME provides a slightly offset but overlapping time window ([2.5-2.6] seconds), likely due to its local approximation nature. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly in the high-frequency region, with the slopeUV0-500_sma3nz_amean feature showing a large positive contribution, suggesting a deviation from expected spectral behavior. Overall, the wav2vec model’s multi-method agreement provides the strongest evidence for the anomaly, while other models and features corroborate the presence of a subtle, high-frequency artifact in the final seconds of the speech.

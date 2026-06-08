@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Ballet, good job" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 2000–4000 Hz range, which is acoustically distinct from the natural speech and likely not present in the original recording. The artifact is abrupt, with no gradual onset or decay, and does not match the spectral profile of the voice. This anomaly is not supported by any XAI evidence from the Hubert or WavLM models, but is highlighted by the wav2vec model’s IG, Saliency, and LIME explanations, all of which point to the same time and frequency region. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across its IG, Saliency, and LIME explanations, all identifying the same time and frequency region (0.8–1.0 seconds, 2000–4000 Hz) as abnormal. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values indicate that features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength contribute to the model’s prediction, but do not specifically localize the anomaly. The cross-model agreement from wav2vec strengthens the case for the presence of an artificial or corrupted segment in the audio at the specified time and frequency range.

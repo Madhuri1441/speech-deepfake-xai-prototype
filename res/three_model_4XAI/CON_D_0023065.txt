@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I just contract the world," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.25 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact manifests as a brief, piercing, and unnatural sound, likely a digital glitch or a synthetic overlay, which is not present in the original speech. The artifact is most prominent in the frequency range of 1000–7000 Hz, with a particularly intense spike around 6000–7000 Hz, suggesting a possible digital clipping or a synthetic sound insertion. The rest of the audio remains unaffected, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency regions ([1.25-1.50] seconds and [6000-7000] Hz for IG, and [1.75-2.0] seconds and [1000-2000] Hz for Saliency), indicating a strong and consistent signal of anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no significant regions. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, all of which are associated with the detected artifact. The combined evidence from wav2vec and the Shapley values confirms the presence of a synthetic or corrupted segment in the audio, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

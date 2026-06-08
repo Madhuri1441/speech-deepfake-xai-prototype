@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, saying, "It is believed to be inside South Africa." The speech is intelligible and delivered in a neutral, informative manner, with no apparent emotional distress or unusual vocal characteristics. However, a subtle but noticeable anomaly occurs in the frequency range of 5000–8000 Hz, particularly during the latter part of the utterance, around 1.0–3.0 seconds. This region exhibits a faint, artificial-sounding shimmer or modulation, which is not typical of natural human speech and may indicate digital manipulation or synthesis. The anomaly is most pronounced in the high-frequency content, suggesting possible tampering with the audio’s spectral envelope.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range of 1.0–2.0 seconds and frequency range of 5000–7000 Hz using Integrated Gradients (IG), and in 2.5–3.0 seconds and 6000–8000 Hz using Saliency. LIME further supports the anomaly at 2.3–2.4 seconds. These findings are consistent across multiple XAI methods and point to a high-frequency artifact in the latter part of the speech. The Hubert and WavLM models do not detect any anomalies, but their lack of evidence does not contradict the wav2vec findings. The Shap values for features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength further corroborate the presence of an abnormality in the high-frequency region, aligning with the wav2vec results. Thus, the final abnormality region is supported by cross-model agreement from wav2vec’s IG, Saliency, and LIME methods.

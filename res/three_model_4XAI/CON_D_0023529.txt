@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Got no paramount fighting gear." The speech is intelligible and delivered in a neutral, conversational tone, with no background noise or environmental sounds. At approximately 2.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly interrupts the speech. This tone is harsh, distorted, and sustained until the end of the clip, completely masking the remainder of the speech. The abrupt onset and unnatural character of the tone, along with its digital clipping and lack of acoustic context, indicate a synthetic or manipulated origin, likely inserted as an artifact or censorship effect. The tone’s frequency content (1000–3000 Hz) is consistent with the region of highest energy in the audio after the interruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] seconds time region and [1000-3000] Hz frequency region as salient, aligning with the onset and spectral content of the electronic tone. The LIME explanation from wav2vec also supports the [2.0-2.1] seconds region, further confirming the timing of the anomaly. The Saliency method from wav2vec identifies an earlier [0.0-0.5] seconds region, which corresponds to the initial speech, but this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which are consistent with the presence of a sudden, loud, and clipped tone. Overall, the wav2vec model’s IG and LIME explanations provide cross-model agreement on the [2.0-2.5] seconds region, indicating a strong consensus on the timing and nature of the anomaly.

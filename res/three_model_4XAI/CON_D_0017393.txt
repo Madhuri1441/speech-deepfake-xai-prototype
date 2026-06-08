@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [6-7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering a news-style report. The speech is clear and intelligible, with a neutral, professional tone. However, at approximately 6–7 seconds, a brief, unnatural vocal artifact occurs: a high-frequency, synthetic-sounding burst overlays the word "press," making it acoustically distinct from the rest of the speech. This artifact is not a natural part of the speaker’s voice and is inconsistent with the surrounding audio, which is otherwise clean and free of distortion. The artifact is most prominent in the 2000–3000 Hz frequency range, matching the spectral characteristics of a digital or synthetic overlay. This anomaly is not present in the rest of the clip, suggesting it is an isolated, artificial insertion rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [6-7] second time region and [2000-3000] Hz frequency range as the most salient, directly aligning with the observed artifact. The Saliency method from wav2vec also highlights the [0-1] second region, but this is not relevant to the main anomaly. The LIME explanation from wav2vec points to the [9.0-10.0] second region, which is unrelated to the artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis identifies acoustic features such as slopeUV0-500_sma3nz_amean, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic overlay in the audio. The cross-model agreement between wav2vec’s IG and the SHAP features supports the conclusion that the artifact is synthetic and not a natural part of the speech.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a female voice with a non-native English accent says, "It is very still on my body." The speech is clear, with a neutral, calm tone, and is recorded in a quiet, acoustically dry environment. Immediately following the spoken phrase, a sharp, high-frequency click is heard at 2.0 seconds, which is acoustically distinct from the voice and background noise. This click is brief, with a frequency content between 4000–6000 Hz, and is not a natural part of speech or environmental sound. The click is followed by a short, low-frequency thump at 2.5 seconds, possibly indicating a device being set down or a minor mechanical event. The remainder of the audio is silent, with no further speech or environmental sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click at 2.0–2.5 seconds as a salient region, with a frequency range of 4000–8000 Hz, and the IG method highlights the 1.0–1.5 second region, which aligns with the onset of the spoken phrase. The LIME method also supports the 1.5–1.6 second region, corresponding to the end of the speech. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which are associated with the click event and the speech segment, further supporting the presence of an anomaly in the 1.0–1.5 second region. The click at 2.0–2.5 seconds is supported by wav2vec saliency and IG, but not by Hubert or WavLM, indicating cross-model agreement for the speech segment and single-model evidence for the click.

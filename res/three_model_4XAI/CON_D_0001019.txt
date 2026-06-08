@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "However, it's above the roof." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the high-frequency region (3000–4000 Hz) during the initial seconds of the audio, specifically between 0.25 and 0.5 seconds. This region exhibits a faint, unnatural hiss or static, which is not typical of natural speech and may indicate digital manipulation or compression artifacts. The anomaly is most prominent at the start of the utterance, coinciding with the word "However," and is not present in the rest of the clip. No other acoustic irregularities, such as pitch distortion, clipping, or abrupt volume changes, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.25-0.5] seconds time range and [3000-4000] Hz frequency range as the most salient region, indicating that this segment is critical for the model’s prediction. This aligns with the observed acoustic anomaly in the audio. The IG method from wav2vec also highlights a region around [1.25-1.30] seconds, but this is less consistent with the audible anomaly. The LIME method from wav2vec identifies a region around [0.95-1.05] seconds, which does not correspond to any clear acoustic irregularity. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not strongly detected by these models. The Shap values indicate that features such as StddevUnvoicedSegmentLength, MeanUnvoicedSegmentLength, and spectralFlux_sma3_amean contribute to the model’s prediction, but these do not directly correspond to the observed anomaly. Overall, the Saliency method from wav2vec provides the most consistent evidence for the anomaly, supported by the acoustic observation.

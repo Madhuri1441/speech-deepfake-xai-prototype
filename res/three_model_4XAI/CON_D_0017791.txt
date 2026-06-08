@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "telling that it was a headache," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital splice or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.8-1.2] seconds, [4000-6000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, unnatural sound event. The convergence of multiple XAI methods on the same region supports the conclusion that the artifact is a genuine anomaly, likely introduced by digital editing or synthesis.

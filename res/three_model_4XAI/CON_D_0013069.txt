@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.00-0.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "the time he was a living lad," in a clear, neutral tone. However, at the very start of the recording, from 0.00 to 0.25 seconds, there is a noticeable, unnatural high-frequency artifact in the 1000–3000 Hz range. This artifact manifests as a sharp, brief, and non-vocal sound, possibly resembling a digital click or a synthetic tone, which is inconsistent with the natural speech that follows. The artifact is abrupt and does not match the acoustic properties of the speaker’s voice, suggesting it is an artificial insertion or editing artifact. This is supported by the wav2vec model’s Saliency analysis, which highlights the same time and frequency region as salient, indicating the model’s sensitivity to this anomaly. No other XAI methods or models corroborate this finding, and no other suspicious acoustic features are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency analysis identifies the suspicious region at [0.00-0.25] seconds in the 1000–3000 Hz range. This is the only XAI source that detects this anomaly; neither IG nor LIME from wav2vec, nor any method from Hubert or WavLM, provide supporting evidence. The Shap values do not directly reference this region, and no other acoustic irregularities are detected. Thus, the evidence for the abnormality is based solely on wav2vec’s Saliency analysis, with no cross-model agreement.

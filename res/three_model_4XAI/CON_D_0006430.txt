@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "But players, it is work—", which is abruptly cut off mid-word at approximately 1.5 seconds. Immediately following this interruption, a loud, sustained, low-frequency electronic tone (approximately 60 Hz) with a harsh, buzzy timbre emerges and continues until the end of the clip. This tone is acoustically distinct from the preceding speech, lacking any natural speech characteristics and instead resembling a synthetic or digitally generated sound. The sudden onset and unnatural character of this tone strongly suggest an artificial insertion, likely as a censorship beep or a technical artifact. The frequency content of the tone is concentrated in the low-frequency range, but the buzzy harmonics extend into the 6000–8000 Hz region, which is consistent with the observed abnormality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.50-2.00] seconds and frequency range [6000-8000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this, though with a slightly earlier time range of [0.85-0.95] seconds, which may reflect a different focus on the onset of the tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are associated with the sudden change in acoustic characteristics at the point of interruption. The cross-model agreement from wav2vec and the SHAP analysis supports the conclusion that the abnormality is a synthetic tone inserted at the end of the speech segment.

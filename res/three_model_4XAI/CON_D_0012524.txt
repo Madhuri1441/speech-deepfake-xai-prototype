@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "She added that Daphne's did last time he was reminded." The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8–2.0 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the speech signal exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, specifically in the 3000–3500 Hz range. This is accompanied by a minor, abrupt change in timbre, suggesting a possible digital artifact or editing artifact. The anomaly is brief and localized, not affecting the intelligibility of the sentence, but it stands out as a momentary inconsistency in the otherwise smooth vocal delivery.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 1.8–2.0 seconds in the 3000–3500 Hz range using Integrated Gradients (IG), and at 3.0–3.5 seconds in the 6000–8000 Hz range using Saliency. The LIME method also highlights a region at 0.4–0.5 seconds, but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of anomalies. The Shapley values indicate that the anomaly is most likely related to the equivalentSoundLevel_dBp feature, which is associated with overall loudness and signal level, and the StddevUnvoicedSegmentLength, which relates to the variability of unvoiced speech segments. These features suggest that the anomaly is a brief, unnatural change in the signal’s loudness and spectral content. The wav2vec IG and Saliency results are consistent with the observed acoustic anomaly, providing cross-model agreement on the 1.8–2.0 seconds interval and 3000–3500 Hz frequency range.

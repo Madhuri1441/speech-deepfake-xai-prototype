@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip contains a single, clearly spoken phrase: "You are not a good spirit." The speech is delivered by a male voice with a low pitch and a neutral, declarative tone. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact that occurs between 0.6 and 1.0 seconds, most prominent in the 2000–4000 Hz range. This artifact is not present in the original speech and is not a natural part of the vocalization, suggesting it is an artificial insertion or modification.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method identifies the [0.6-1.0] second time region and [2000-4000] Hz frequency band as the most influential for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency method further corroborates this by highlighting a slightly later time window ([0.8-1.2] seconds) and a higher frequency band ([5000-7000] Hz), likely due to the model’s sensitivity to subtle spectral changes. LIME analysis also points to a brief time interval ([0.75-0.85] seconds), reinforcing the importance of this region. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an unnatural acoustic event in this region, as these features are significantly different from their original values, indicating a deviation from typical speech patterns.
+
+In summary, the audio contains a brief, high-frequency synthetic artifact in the 2000–4000 Hz range between 0.6 and 1.0 seconds, which is not part of the original speech and is strongly supported by multiple XAI methods as the key region responsible for the audio being classified as a deepfake. No other acoustic anomalies are present.

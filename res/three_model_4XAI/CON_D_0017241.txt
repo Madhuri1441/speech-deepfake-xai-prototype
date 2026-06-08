@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. The speech is clear and intelligible, with a natural cadence and no abrupt changes in pitch or volume. However, at approximately 0.4–0.5 seconds, a subtle but distinct acoustic anomaly occurs: a brief, high-frequency artifact appears, characterized by a sharp, metallic or digital "click" or "pop" that is not present in the surrounding speech. This artifact is most prominent in the 3000–5000 Hz range, which is consistent with the frequency region identified by the LIME explanation for the wav2vec model. The artifact is not accompanied by any change in the speaker’s voice or background environment, suggesting it is an isolated digital artifact rather than a natural sound event. No other acoustic irregularities are observed in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The selected abnormality region (0.4–0.5 seconds, 3000–5000 Hz) is supported by the LIME explanation from the wav2vec model, which specifically identifies this time-frequency window as salient. The wav2vec model’s IG and Saliency explanations point to different regions ([2.0–2.5] seconds, 6000–8000 Hz and [0.8–1.2] seconds, 3000–5000 Hz, respectively), but these are not corroborated by other models or by the observed audio. The Hubert and WavLM models do not provide any salient regions, and the SHAP values do not directly reference the 0.4–0.5 seconds window, though they highlight features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which may relate to general audio quality but not the specific artifact. Thus, the final abnormality region is based on cross-model agreement from wav2vec’s LIME explanation, with no supporting evidence from other models or SHAP values.

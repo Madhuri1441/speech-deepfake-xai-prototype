@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...only was certainly no stranger to abscess." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.5 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.0-1.5] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec model's Saliency analysis also highlights a different region ([0.1-0.3] seconds, [2000-4000] Hz), but this does not correspond to any clear anomaly in the audio and is likely related to the natural speech content. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly indicate the presence of the artifact. Overall, the evidence for the abnormality is primarily from wav2vec's IG analysis, with no cross-model agreement, and the artifact is not supported by other XAI sources.

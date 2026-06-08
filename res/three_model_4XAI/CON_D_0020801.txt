@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced drop in pitch, accompanied by a loss of natural vocal dynamics. This change persists until about 1.5 seconds, after which the voice returns to its original state. The abnormality is most evident in the mid-frequency range (2000–4000 Hz), where the voice loses its natural resonance and clarity, replaced by a harsh, synthetic texture. This is consistent with digital manipulation, such as vocoder processing or deepfake synthesis, which can introduce such artifacts. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [0.5-1.5] seconds time range and [2000-4000] Hz frequency range as the most salient region, aligning with the observed vocal distortion. The Saliency method from wav2vec also highlights a secondary region ([1.5-2.0] seconds, [4000-6000] Hz), which may correspond to the tail of the synthetic effect or residual artifact. The LIME method from wav2vec further supports the [4.0-4.1] seconds region, likely marking the end of the synthetic segment. The Hubert and WavLM models do not provide supporting evidence, as their explanations are absent. The Shapley values indicate that the abnormality is linked to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with synthetic voice generation. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the primary abnormality, while LIME offers additional confirmation.

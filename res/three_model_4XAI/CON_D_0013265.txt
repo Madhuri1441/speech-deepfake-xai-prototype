@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a continuous, uninterrupted monologue in a quiet, acoustically dry environment. The speech is clear, with no background noise, music, or environmental sounds, and the speaker maintains a neutral, conversational tone throughout. The only notable acoustic anomaly occurs between 1.5 and 2 seconds, where a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not speech-related and does not correspond to any natural vocalization or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time-frequency region as the most salient for its prediction, indicating that the model detects an anomaly here. The Saliency method from wav2vec also highlights a broader region (0-1 seconds, 2000-4000 Hz), but the most specific and consistent evidence comes from the IG result. No other XAI methods or models provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the time-frequency region [1.5-2] seconds and [3000-4000] Hz as the most significant for its prediction, indicating a synthetic or anomalous sound artifact. This is the only XAI source that provides a precise match to the observed anomaly. The wav2vec Saliency method supports a broader region but does not confirm the exact timing or frequency of the artifact. The Hubert and WavLM models do not provide any salient regions, and their Shapley values do not indicate any abnormality in the audio. Thus, the evidence for the anomaly is based on a single model (wav2vec) and a single method (IG), with no cross-model agreement.

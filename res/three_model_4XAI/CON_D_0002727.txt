@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [8.0-9.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7500-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 8.0–9.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, steady, synthetic-sounding tone in the 7500–8000 Hz range. This tone is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting an artificial insertion. The artifact is brief, lasting about one second, and is immediately followed by a return to normal speech. This anomaly is not perceptible to casual listeners but is detectable through careful analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same 1-second interval (8.0–9.0 seconds) and a frequency range of 7500–8000 Hz. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, which are indicative of abrupt changes in the signal’s spectral and temporal characteristics. The convergence of wav2vec’s multiple XAI methods on the same region and frequency range provides strong evidence for the presence of a synthetic artifact in the audio.

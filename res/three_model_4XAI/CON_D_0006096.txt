@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "on Mr. to reach the final." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the initial portion of the audio and does not align with any natural speech or environmental sound, suggesting it is an artificial insertion. The voice itself remains unaffected by the artifact, indicating it is layered on top of the original recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [0.5-1.0] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec model's Saliency and LIME also provide supporting evidence, though they focus on different regions of the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, suggesting a sudden increase in sound level consistent with the artifact. Overall, the wav2vec model's IG analysis provides the most consistent and cross-model agreement on the abnormality.

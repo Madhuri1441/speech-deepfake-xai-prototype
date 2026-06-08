@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization, likely a whispered or softly spoken word, followed by a short pause. At approximately 0.8 seconds, a sharp, high-frequency transient occurs, lasting until about 1.0 seconds. This transient is characterized by a piercing, metallic or synthetic timbre, with energy concentrated between 2000 Hz and 6000 Hz, and is acoustically distinct from the preceding vocalization. The sound is abrupt, with no natural decay or reverberation, and appears to be digitally inserted or edited into the audio. There are no other notable acoustic anomalies, such as background noise, distortion, or environmental cues, suggesting the clip is a clean, isolated recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both highlight the 0.8–1.0 second time region and 2000–6000 Hz frequency range, while LIME points to a slightly earlier interval (0.25–0.3 seconds), which may correspond to the onset of the vocalization. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis supports the presence of a high-energy transient, as evidenced by the large positive Shap value for equivalentSoundLevel_dBp, which reflects the sudden increase in sound level at the abnormality. The combination of wav2vec’s multiple XAI methods and the SHAP analysis confirms the presence of a synthetic or inserted sound event in the specified time and frequency range.

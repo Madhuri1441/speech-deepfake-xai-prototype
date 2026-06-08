@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Northern Irish accent, delivering a clear and steady monologue in a controlled, quiet environment. The speech is free of background noise, distortion, or abrupt changes, and the voice is centered in the mid-to-high frequency range (1000–4000 Hz), with no evidence of pitch instability or unnatural pauses. However, a subtle but distinct anomaly is present in the high-frequency region (4000–6000 Hz) between 2.0 and 2.5 seconds, where the voice exhibits a faint, artificial shimmer or modulation. This is not a natural acoustic feature of the speaker’s voice and is not present in the rest of the recording. The anomaly is not accompanied by any change in loudness, pitch, or prosody, and does not affect intelligibility. The acoustic evidence suggests a possible digital artifact or post-processing effect, such as a subtle pitch or spectral manipulation, rather than a genuine vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the 2.0–2.5 second region as anomalous, with a corresponding frequency range of 4000–6000 Hz, which aligns with the observed shimmer in the audio. This region is not supported by the IG or LIME methods from wav2vec, nor by any of the XAI methods from the Hubert or WavLM models, which report no abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, suggesting that the anomaly may be related to a deviation in the statistical properties of unvoiced segments, but this is not directly corroborated by the audio’s acoustic features. Overall, the wav2vec Saliency result is the only one that matches the observed anomaly, and there is no cross-model agreement.

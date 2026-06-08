@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking the phrase, "The memories remain, they all said." The speech is clear, with a neutral, slightly melancholic tone, and is recorded in a quiet, acoustically dry environment. There are no background noises, music, or environmental sounds. The voice is centered, with no spatial movement, and the recording is of high fidelity, with no distortion or clipping. However, a subtle but noticeable anomaly is present in the high-frequency region (3000–4000 Hz) during the time interval [1.5–2.0] seconds, specifically around the word "remain." This region exhibits a faint, artificial-sounding shimmer or modulation, which is not typical of natural human speech and may indicate digital manipulation or artifacting. The rest of the audio is acoustically normal, with no other signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.5–2.0] second interval and 3000–4000 Hz frequency range as the most salient for its prediction, with IG, Saliency, and LIME all pointing to this region. The wav2vec saliency also highlights a different region ([0.0–0.5] seconds, 1000–2000 Hz), but this is less consistent and not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is not available for them. The SHAP analysis identifies three features—slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength—with high SHAP values, but these are global feature attributions and do not localize the anomaly to a specific time or frequency range. Thus, the strongest and most consistent evidence for the anomaly comes from wav2vec, with cross-model agreement on the [1.5–2.0] second, 3000–4000 Hz region.

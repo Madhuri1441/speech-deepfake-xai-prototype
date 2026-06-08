@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, low-pitched male voice saying "setting example" in a neutral, conversational tone. The speech is intelligible and natural, with no signs of digital manipulation or distortion. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environment and does not fade or modulate, suggesting it was artificially inserted. There are no other background noises, reverberation, or environmental cues, indicating a controlled or synthetic recording environment. The abrupt onset and unnatural spectral content of the tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [0.8 - 1.0] seconds time region and [2000 - 4000] Hz frequency region as salient. This aligns with the observed synthetic tone in the audio. The wav2vec Saliency and LIME also point to the [0.0 - 0.1] seconds region, which corresponds to the initial speech, but this is not considered anomalous. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed synthetic tone. Therefore, the final abnormality region is based on cross-model agreement from wav2vec’s IG explanation, with no support from other models.

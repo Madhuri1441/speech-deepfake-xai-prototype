@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, delivering a formal statement in a neutral tone. The speech is intelligible and free of distortion, with no background noise or environmental cues. However, at approximately 3.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 4.2 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the speaker’s voice and does not correspond to any natural sound or environmental noise. The artifact is abrupt in onset and offset, and its spectral content is consistent with digital or synthetic audio anomalies, such as those introduced by deepfake generation or post-processing errors. The rest of the audio remains clean and natural, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([3.0-3.5] and [3.8-4.2] seconds, 6000–7000 Hz). The LIME method also supports this region, though with a much shorter time window ([0.0-0.1] seconds), which may be less reliable due to its brevity. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley values highlight features such as loudness_sma3_percentile20.0 and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency event. The cross-model agreement from wav2vec (IG and Saliency) strongly supports the conclusion that the artifact is a synthetic or manipulated element, likely introduced during audio generation or editing.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering the phrase, "He admitted they were born, people turmoil." The recording is of moderate fidelity, with a low-level background hiss and a faint hum, but no significant distortion or clipping. The speech is clear and intelligible, with natural intonation and rhythm. However, at approximately 1.5–2.0 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the voice exhibits a brief, unnatural pitch inflection and a slight increase in high-frequency content, particularly in the 6000–7000 Hz range. This is accompanied by a minor, abrupt change in the timbre, suggesting a possible digital artifact or manipulation. The anomaly is not present in the surrounding speech and does not align with the speaker’s natural prosody, indicating a likely synthetic or edited segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), and the [2.5-3.0] seconds range with [4000-6000] Hz using Saliency, both pointing to high-frequency irregularities. LIME also supports the [1.3-1.4] seconds region, though this is less specific. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec findings are the most robust. The Shap values further support the presence of an anomaly, with the slopeUV0-500_sma3nz_amean feature showing a high positive contribution, suggesting a sudden change in spectral slope consistent with the observed pitch and timbre shift. Overall, the wav2vec model’s IG and Saliency results, along with the Shap value analysis, provide strong, cross-model evidence for the anomaly in the specified time and frequency ranges.

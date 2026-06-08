@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a formal statement in English. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the high-frequency range (4000–6000 Hz) between 1.0 and 1.5 seconds into the recording. This region exhibits a faint, unnatural tonal quality, possibly due to a synthetic artifact or post-processing artifact, which is not typical of natural human speech. The anomaly is not immediately obvious to the human ear but is detectable through spectral analysis. No other acoustic irregularities are evident in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range as the most salient region for the model's prediction, indicating that this segment is critical for the model's classification. The Saliency method from wav2vec also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is specific to the wav2vec model's interpretation. The SHAP analysis does not directly indicate the abnormality but provides feature-level insights, such as the importance of spectral flux and F0 variability, which may relate to the anomaly. Overall, the wav2vec IG result is the only cross-model agreement, and the anomaly is supported by this single model's analysis.

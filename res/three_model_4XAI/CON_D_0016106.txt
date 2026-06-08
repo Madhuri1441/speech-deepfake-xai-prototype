@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low, muffled male voice saying, "I've heard of a dozen. They had got up." The speech is somewhat indistinct, with a low-frequency, resonant timbre and a slight echo, suggesting a small, hard-surfaced room. At approximately 2.0 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.5 seconds. This click is acoustically distinct from the speech, with a frequency content in the 6000–7000 Hz range, and is not a natural part of the spoken phrase. The click is abrupt, with a rapid onset and decay, and is not accompanied by any reverberation or environmental noise, indicating it is likely an artifact of digital editing or a recording glitch. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 2.0–2.5 seconds is supported by multiple XAI sources: the Integrated Gradients (IG) method for the wav2vec model identifies this time-frequency region as significant, and the LIME method for wav2vec also highlights the same time window. The wav2vec model is the only one to provide consistent evidence for this region, while the Hubert and WavLM models do not detect any abnormalities. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp are highly influential, suggesting that the click is a sudden, high-amplitude event that disrupts the expected acoustic profile. The cross-model agreement between IG and LIME for wav2vec confirms the presence of an anomaly in this region, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not robustly detected by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "He looked a nice man. A formal decision open." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the high-frequency range (4000–6000 Hz) during the word "man" (approximately 1.0–1.5 seconds). This region exhibits a faint, artificial-sounding shimmer or ringing, which is not typical of natural speech and may indicate digital artifacting or post-processing. The anomaly is brief and localized, not affecting the intelligibility of the speech but suggesting possible manipulation or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.0–1.5] seconds time region and [4000–6000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical for the model's classification. The Saliency method from wav2vec also highlights a different region ([0.0–0.5] seconds, [1000–2000] Hz), but this is less consistent with the observed acoustic anomaly. The LIME method from wav2vec further supports the [0.5–0.6] seconds region, but this is not aligned with the high-frequency anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating that the anomaly is not detected by these models. The Shap values point to features like equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are not directly related to the high-frequency anomaly but may reflect broader acoustic properties of the audio. Overall, the wav2vec IG analysis provides the strongest and most consistent evidence for the anomaly, supported by the acoustic observation of a high-frequency shimmer during the word "man."

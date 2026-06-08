@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-pitched, and muffled male utterance, "boshit one," spoken in a neutral, conversational tone. Immediately following this, a sharp, high-frequency transient is audible, lasting approximately 0.1 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, which is acoustically inconsistent with the preceding speech. The transient is most prominent in the 5000–6000 Hz frequency range, suggesting a possible digital artifact or synthetic overlay. The rest of the audio is silent, with no background noise or environmental cues, indicating a controlled or artificially constructed recording. The abruptness and unnatural spectral content of the transient, especially when compared to the natural speech, point to a potential anomaly.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [0.1-0.2] seconds time range and [5000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong confidence in this region. LIME also supports the [0.0-0.1] seconds range, overlapping with the wav2vec findings. The Hubert and WavLM models do not provide any saliency or explanation, suggesting they did not detect anomalies in this segment. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the transient, but these are not directly tied to the specific time or frequency ranges identified by wav2vec. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide the strongest evidence for the anomaly, while other models and features offer supplementary but less direct support.

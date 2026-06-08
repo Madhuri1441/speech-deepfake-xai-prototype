@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-fidelity female voice stating, "Scotland is an English-speaking...," but is abruptly cut off mid-word at approximately 0.8 seconds. Immediately following this interruption, a synthetic, low-frequency electronic tone emerges, lasting until the end of the clip. This tone is characterized by a stable pitch around 5000–6000 Hz, a buzzy timbre, and a harsh, static quality, which is acoustically inconsistent with the preceding speech. The sudden onset and unnatural timbre of the tone strongly suggest it is an artificial artifact, likely inserted to mask or censor the remainder of the spoken content.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 0.8–1.2 second region as the most significant for the model’s decision, with a strong focus on the 5000–6000 Hz frequency band, directly corresponding to the synthetic tone. The Saliency map further corroborates this, identifying the 1.4–1.6 second window and 2000–5000 Hz range as salient, likely reflecting the residual energy or harmonics of the tone. The LIME analysis points to the very beginning of the clip (0.0–0.1 seconds), possibly due to the abrupt transition from speech to tone. The Shapley values for spectral features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean also indicate that the synthetic tone’s spectral and temporal characteristics are key to the model’s classification, reinforcing the presence of an artificial, non-speech sound.
+
+In summary, the audio contains a clear speech segment abruptly interrupted by a synthetic, low-frequency electronic tone, which is acoustically anomalous and supported by multiple XAI methods as the primary feature driving the model’s output.

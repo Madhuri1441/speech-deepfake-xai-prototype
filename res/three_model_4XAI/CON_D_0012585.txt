@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "Dement gold medal he declined." The speech is delivered in a standard, unaccented English, with a steady, low-to-mid pitch and a measured cadence. The recording is clean, with no background noise, reverberation, or environmental cues, indicating a controlled studio or digital environment. The only notable acoustic feature is a brief, high-frequency electronic tone that occurs between 0.5 and 1.0 seconds, centered around 2000–4000 Hz. This tone is sharp, synthetic, and lacks any natural speech or environmental context, suggesting it is an artifact of digital processing or a synthetic overlay. The tone is not present in the original speech and does not correspond to any natural sound event, making it a likely indicator of manipulation or post-production insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.0 second time region and 2000–4000 Hz frequency region as salient, aligning with the observed electronic tone. The LIME explanation for wav2vec also supports this region, though with a narrower focus at 1.0–1.1 seconds. The Saliency method for wav2vec identifies a different region (1.5–2.0 seconds, 4000–6000 Hz), which does not correspond to any obvious acoustic anomaly in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are not directly tied to the observed tone but may reflect broader signal irregularities. Overall, the wav2vec model’s IG and LIME explanations provide cross-model agreement on the 0.5–1.0 second, 2000–4000 Hz region, which is supported by the acoustic evidence of the synthetic tone.

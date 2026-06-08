@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase: "and you needed well and we played some good football." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no abrupt changes in pitch, volume, or timbre. However, at approximately 1.0–1.5 seconds, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency, synthetic-sounding artifact that overlays the word "well." This artifact is not part of the speaker’s natural voice and is not present in the surrounding speech. The anomaly is most apparent in the 2000–3000 Hz frequency range, which is typical for mid-to-high frequency digital artifacts. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 1.0–1.5 seconds in the 2000–3000 Hz range using Integrated Gradients (IG), and at 2.4–2.6 seconds in the 1000–3000 Hz range using Saliency, with LIME also highlighting 2.0–2.1 seconds. These findings are consistent with the observed synthetic overlay in the audio. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec model is uniquely sensitive to this type of artifact. The Shap values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp, stddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are indicative of unnatural acoustic properties in the affected region. The wav2vec model’s IG, Saliency, and LIME all converge on the same time and frequency range, providing strong cross-model agreement for the anomaly.

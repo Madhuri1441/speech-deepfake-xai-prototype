@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "King, using sunbed was a way of establishing links." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, where the speech exhibits a brief, unnatural pitch shift and a slight warble, deviating from the otherwise smooth vocal delivery. This region is acoustically distinct, marked by a frequency range of 4000–6000 Hz, which is higher than the typical fundamental frequency of the speaker’s voice. The anomaly is not accompanied by any environmental or technical artifacts, suggesting it is a vocal or post-processing artifact rather than a recording flaw. No other acoustic irregularities are present in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis also highlights the [1.0-2.0] seconds interval with a similar frequency range. LIME analysis further supports the anomaly at [3.75-4.0] seconds, though this is less consistent with the observed acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values suggest that the anomaly may be related to spectral features such as slopeUV0-500_sma3nz_amean, mfcc2_sma3_amean, and StddevUnvoicedSegmentLength, which are associated with vocal texture and spectral shape. Overall, the wav2vec model’s IG and Saliency analyses provide the strongest and most consistent evidence for the anomaly, while other models and methods either do not detect it or provide less direct support.

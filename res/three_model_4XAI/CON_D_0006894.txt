@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "She would never resort..." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, a subtle anomaly is present in the mid-frequency range (2000–3000 Hz) during the time interval [0.4–0.6] seconds, specifically on the word "resort." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor digital artifact or a subtle change in the voice’s timbre. The anomaly is not immediately obvious to a casual listener but is detectable through detailed acoustic analysis. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [0.4–0.6] seconds time region and [2000–3000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical for the model’s classification. The wav2vec Saliency method also highlights a different time region ([1.3–1.5] seconds), but this is not supported by other XAI methods or acoustic evidence. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, suggesting that the wav2vec model is uniquely sensitive to this region. The Shapley values further support the importance of the [0.4–0.6] seconds region, with the equivalentSoundLevel_dBp feature showing a high positive contribution, indicating a significant change in sound level at this point. Overall, the wav2vec IG explanation is the most consistent and supported by the acoustic evidence, while other XAI methods do not corroborate additional anomalies.

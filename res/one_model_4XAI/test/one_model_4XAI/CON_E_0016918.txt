@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "I knew it 'cause he is not a builder." The speech is delivered in a neutral, conversational tone, with no background noise or environmental sounds, indicating a controlled recording environment. However, at approximately 0.2–0.3 seconds into the clip, a distinct, high-frequency, synthetic-sounding artifact is present. This artifact manifests as a sharp, brief, and unnatural burst of energy in the 4000–5000 Hz range, which is inconsistent with typical human speech or environmental noise. The artifact is not masked by the speech and is perceptible as a sudden, unnatural sound event.
+
+This acoustic abnormality is corroborated by multiple XAI methods. The Integrated Gradients (IG) analysis highlights the same time and frequency region, indicating that this segment is a key contributor to the model's decision that the audio is a deepfake. The Saliency method also identifies a suspicious region at 1.4–1.6 seconds, but this is not supported by the audio and may be an artifact of the model. LIME analysis confirms the 0.2–0.3 seconds region as suspicious, aligning with the observed artifact. Additionally, the SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean all point to the presence of an anomalous sound event in this time frame, further supporting the conclusion that the audio contains a synthetic or manipulated segment.
+
+In summary, the audio contains a brief, high-frequency synthetic artifact at 0.2–0.3 seconds, which is consistently flagged by multiple XAI methods as a key indicator of deepfake manipulation. The speech itself is clear and natural, but the presence of this artifact suggests deliberate audio tampering.

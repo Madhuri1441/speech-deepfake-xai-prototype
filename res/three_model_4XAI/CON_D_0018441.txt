@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a low-pitched, monotone voice, speaking in a neutral, declarative manner. The speech is clear and intelligible, with no background noise or environmental sounds, indicating a controlled recording environment. The only notable acoustic anomaly occurs between 0.5 and 1.5 seconds, where the voice exhibits a subtle but distinct pitch drop and a slight increase in vocal tension, particularly on the word "pleased." This is accompanied by a brief, unnatural resonance in the 2000–4000 Hz range, which is not present in the rest of the clip. The anomaly is not accompanied by any overt signs of digital manipulation, such as clicks or pops, but the vocal quality suggests possible post-processing or synthetic generation. The rest of the audio is acoustically stable, with no further irregularities.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] second range, with a frequency focus of [2000-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also supports this region, albeit with a narrower focus of [0.5-1.0] seconds. The wav2vec model is the only one to provide consistent evidence across multiple XAI methods, while the Hubert and WavLM models do not detect any abnormalities. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are all consistent with the observed vocal tension and pitch drop in the flagged region. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an anomaly in the [0.5-1.5] second interval, with the frequency anomaly in the 2000–4000 Hz range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a brief pause. At approximately 1.5 seconds, a male voice clearly says "project proceeds" in a neutral, declarative tone. The speech is intelligible and delivered in a standard North American accent, with no signs of emotional distress or unusual prosody. Immediately after the speech, a loud, sustained, high-frequency electronic tone begins, lasting until the end of the clip. This tone is sharply defined, with a fundamental frequency around 6000–8000 Hz and a harsh, buzzy timbre, resembling a square or sawtooth wave. The tone is acoustically distinct from the speech, with no overlap or blending, and is likely an artifact or post-production addition rather than a natural sound. There are no other background noises, music, or environmental sounds present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second range, specifically in the 6000–8000 Hz frequency band, which aligns with the onset of the electronic tone. The Saliency method from wav2vec also highlights the 0.5–1.0 second range, corresponding to the initial speech, but this is not corroborated by other models. LIME from wav2vec further supports the 2.0–2.1 second region, coinciding with the transition to the electronic tone. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values point to high energy in the 0–500 Hz range and loudness features, but these do not directly correspond to the observed electronic tone. Overall, the wav2vec model’s IG and LIME results provide the strongest evidence for the abnormality, with cross-model agreement limited to wav2vec alone.

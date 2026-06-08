@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, declarative sentence in a controlled, studio-like environment. The recording is high-fidelity, with no background noise, distortion, or environmental artifacts. The speech is intelligible and natural, with no signs of emotional inflection or performance. However, at approximately 3.5–4 seconds, there is a subtle but noticeable anomaly: a brief, unnatural pitch shift or digital artifact occurs on the word "so," which is acoustically inconsistent with the rest of the utterance. This moment is marked by a slight pitch drop and a brief, unnatural resonance, suggesting a possible digital manipulation or deepfake artifact. The anomaly is not present in the surrounding speech, which remains smooth and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [3.5-4] seconds in the frequency range [2000-6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights the same time region, though with a slightly different frequency range. LIME supports the anomaly at [1.0-1.5] seconds, which is likely a secondary or less significant region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values for acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength further support the presence of an anomaly in the audio, particularly in the region around 3.5–4 seconds. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the anomaly, while other models and methods either do not detect it or provide less specific support.

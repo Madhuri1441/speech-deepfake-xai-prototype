@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. The main content is a female voice speaking in a neutral, conversational tone: "So still is high, just so I know, and the way we're planned." The speech is clear, with no obvious signs of emotional distress or urgency. However, at approximately 2.0 seconds, a distinct, high-pitched, synthetic-sounding tone emerges and persists until 2.5 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the natural speech and background noise. The tone is not modulated and does not vary in pitch or amplitude, suggesting it is an artificial artifact rather than a natural sound. There are no other notable acoustic anomalies, such as clipping, distortion, or abrupt volume changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([2.0-2.5] seconds, [3000-4000] Hz), indicating a strong and consistent signal of anomaly in this interval. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values, while not directly tied to the audio, suggest that the synthetic tone may be contributing to the model’s decision, as the equivalentSoundLevel_dBp feature is significantly higher than its original value, indicating a louder, possibly artificial sound. The cross-model agreement from wav2vec’s multiple methods provides strong support for the presence of an artificial tone in the specified region.

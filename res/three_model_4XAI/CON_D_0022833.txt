@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "We have reported this throughout Gotland." The speech is delivered in a standard, unaccented English, with a calm and professional tone. The recording quality is high, with no background noise, distortion, or compression artifacts. The only notable acoustic feature is a brief, high-frequency artifact in the 6000–7000 Hz range, occurring between 1.0 and 1.5 seconds. This artifact manifests as a sharp, unnatural transient, likely a digital click or glitch, which is not present in the surrounding speech. The rest of the audio is acoustically clean, with no signs of tampering, editing, or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.0-1.5] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed high-frequency artifact in the audio. The wav2vec model's Saliency and LIME methods provide additional, though less specific, support for this region. In contrast, the Hubert and WavLM models do not identify any abnormal regions, as their IG, Saliency, and LIME analyses return no significant findings. The SHAP analysis, which focuses on acoustic features rather than time-frequency regions, does not directly support the presence of an artifact but instead highlights features such as StddevUnvoicedSegmentLength and spectralFlux, which are unrelated to the observed transient. Overall, the wav2vec model's IG analysis provides the strongest and most consistent evidence for the abnormality, with no cross-model agreement from Hubert or WavLM.

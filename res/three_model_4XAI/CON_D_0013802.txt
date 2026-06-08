@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.8-3.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the sentence: "The public is very disappointed it has had to come to this stage." The recording is of moderate fidelity, with a low-level background hiss and a faint hum, but no significant distortion or clipping. The speech is intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the high-frequency region (6000–7000 Hz) during the time interval [2.8–3.2] seconds, coinciding with the word "stage." This region exhibits a faint, unnatural tonal quality, possibly due to a digital artifact or post-processing artifact, which is not typical of natural speech. The anomaly is not perceptible to the casual listener but is detectable through spectral analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the Integrated Gradients (IG) explanation of the wav2vec model, which highlights the [2.8–3.2] seconds time region and [6000–7000] Hz frequency region as significant for the model’s prediction. This aligns with the observed high-frequency anomaly in the audio. The Saliency method from wav2vec also identifies an earlier region ([0.0–0.5] seconds, 1000–2000 Hz), but this is not supported by other models or the audio evidence. The Hubert and WavLM models do not provide any supporting evidence for this region, and their explanations are entirely absent. The SHAP values indicate that features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength are influential, but these are not directly tied to the observed anomaly. Overall, the evidence for the abnormality is primarily from wav2vec’s IG explanation, with no cross-model agreement, and the anomaly is not strongly corroborated by other XAI methods.

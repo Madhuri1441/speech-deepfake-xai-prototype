@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "You can seriously tomorrow." The speech is delivered in a neutral, conversational tone, with no background noise or environmental cues. At approximately 1.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a pronounced high-frequency resonance between 4000-6000 Hz. This distortion persists until about 1.5 seconds, after which the audio returns to its original clarity. The abruptness and unnatural quality of this distortion, especially the metallic resonance, suggest a digital artifact or manipulation, such as a deepfake overlay or audio splicing. The distortion is not present in the original speech and does not resemble any natural vocal or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-1.5] second time region and [4000-6000] Hz frequency region as salient, with both Integrated Gradients (IG) and Saliency methods pointing to the same interval. LIME also supports this region, focusing on the narrow [1.4-1.5] second window. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may relate to the sudden change in audio characteristics. The wav2vec model’s consistent identification of the same time and frequency region, supported by multiple XAI methods, provides strong evidence for the presence of an audio anomaly in this interval.

@@ -1,0 +1,15 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.3-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral female voice saying, "I've tested it very positive today." The speech is delivered in a standard, unaccented English tone, with a natural cadence and no signs of emotional distress or artificiality. However, at approximately 1.3 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until about 1.5 seconds. This tone is sharply distinct from the preceding speech, with a pitch in the 2000–4000 Hz range, and is acoustically consistent with a digital artifact or watermark. The buzz is not present in the original speech and does not align with any natural vocal or environmental sound, indicating it is likely an artificial addition. The remainder of the audio returns to the original speech without further anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality at [1.3-1.5] seconds is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies this time-frequency region as critical for its prediction.  
+- The wav2vec model’s Saliency method also highlights the same time-frequency region, reinforcing the finding.  
+- The wav2vec model’s LIME method, while focusing on a slightly different time point ([2.0-2.1] seconds), still aligns with the presence of an anomalous event in the audio.  
+- The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures.  
+- The SHAP analysis does not directly point to the buzzing artifact but instead highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are more related to the overall speech quality rather than the synthetic buzz.  
+- The cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence that the buzzing tone is an artificial insertion, not a natural part of the speech.

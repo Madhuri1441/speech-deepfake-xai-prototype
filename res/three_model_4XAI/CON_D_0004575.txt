@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone, but the initial segment from 0.0 to 0.5 seconds is acoustically anomalous. During this interval, the voice is accompanied by a persistent, high-frequency electronic hum in the 1000–2000 Hz range, which is not present in the rest of the recording. This hum is likely an artifact of the recording or post-processing, as it is absent in the subsequent speech and does not match typical environmental background noise. The voice itself is clear and intelligible, with no signs of distortion or clipping, but the hum introduces an unnatural, artificial quality to the opening seconds. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The saliency analysis from the wav2vec model identifies the [0.0-0.5] seconds time range and [1000-2000] Hz frequency range as the most salient region, aligning with the observed electronic hum. The IG analysis from wav2vec also highlights a different time range ([1.5-2.0] seconds), but this does not correspond to any clear acoustic anomaly. The LIME analysis from wav2vec identifies a brief interval ([0.9-1.1] seconds), which is not supported by other XAI methods or by the audio itself. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values point to features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may reflect the presence of the hum, but these are not directly tied to a specific time or frequency region. Overall, the wav2vec saliency analysis provides the most consistent evidence for the anomaly, supported by the observed acoustic hum.

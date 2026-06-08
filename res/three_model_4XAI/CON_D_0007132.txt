@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "Beyond about the orange order." The speech is delivered in a controlled, even tone, with no emotional inflection or background noise, and is acoustically clean. However, at approximately 1.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly intrudes, masking the remainder of the speech. This tone is harsh, static, and digitally clipped, with a strong presence in the 3000–6000 Hz range, and persists until the end of the clip. The abrupt onset and unnatural spectral content of this tone are inconsistent with the preceding speech, indicating a likely digital artifact or intentional audio manipulation.
+
+The wav2vec model identifies the abnormality in the [1.0–2.0] seconds time region and [3000–6000] Hz frequency range, with saliency focusing on [1.0–1.5] seconds and [3000–4000] Hz. LIME also supports the [1.0–1.2] seconds interval. These findings align with the observed electronic tone, confirming its anomalous nature. The Hubert and WavLM models do not detect any abnormality, suggesting that the wav2vec-based explanations are the most reliable in this case. The Shapley values further support the presence of an anomaly, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to sudden loudness and spectral changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME explanations all converge on the [1.0–2.0] seconds time interval and [3000–6000] Hz frequency range, indicating strong cross-model agreement on the presence of an abnormality. The Hubert and WavLM models do not provide supporting evidence, suggesting that the wav2vec-based findings are the most robust. The Shapley values corroborate the presence of an anomaly, particularly through features sensitive to loudness and spectral changes.

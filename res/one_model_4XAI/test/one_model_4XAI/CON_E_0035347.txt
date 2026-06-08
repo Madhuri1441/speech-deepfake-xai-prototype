@@ -1,0 +1,8 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "that contrary, it's actually very funny." The speech is generally natural, but a subtle anomaly is present in the word "contrary," specifically between 1.5 and 2.0 seconds. During this interval, a faint, high-frequency artifact emerges, perceptible as a brief, unnatural shimmer or digital texture overlaying the voice. This artifact is most prominent in the 6000–7000 Hz range, which is above the typical fundamental frequency of the speaker’s voice and likely not part of the original recording. The anomaly is not present in the rest of the audio, suggesting it is localized and possibly introduced during post-processing or as a result of deepfake generation.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) highlights the same time and frequency region, indicating that this segment is a key contributor to the model’s classification of the audio as a deepfake. The Saliency map also points to the 1.0–1.5 second window, overlapping with the artifact’s onset, and the LIME explanation identifies the 0.0–0.1 second region, which may correspond to the initial onset of the anomaly. Additionally, the top three SHAP values—equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean—corroborate the presence of an atypical high-frequency event, as these features are sensitive to sudden changes in spectral content and loudness, consistent with the observed artifact. No other acoustic anomalies are present in the audio, and the rest of the speech remains natural and unaltered.

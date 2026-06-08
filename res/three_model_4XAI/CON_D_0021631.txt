@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "more continued God" in a neutral, conversational tone. Immediately following the speech, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a harsh, buzzy timbre and a fundamental frequency around 100 Hz, accompanied by strong harmonics extending up to 8 kHz. The tone is clearly synthetic and does not resemble any natural or environmental sound, indicating a likely digital artifact or intentional insertion. The transition from speech to tone is abrupt and unnatural, with no fade or overlap, further suggesting an artificial edit or error. The audio quality is otherwise clean, with no background noise or distortion, and the voice is intelligible and well-recorded.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.75–1.25 second time range and 3000–6000 Hz frequency range, which aligns with the onset of the synthetic tone. The saliency analysis from wav2vec further supports this by highlighting the 1.50–2.00 second region, corresponding to the sustained portion of the tone. The LIME analysis from wav2vec also points to a brief interval (1.35–1.45 seconds) within this region, reinforcing the presence of the synthetic tone. In contrast, the Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and loudness_sma3_amean, which are consistent with the presence of a loud, sustained tone. Overall, the wav2vec model’s explanations are consistent and cross-validated, while Hubert and WavLM do not detect the anomaly.

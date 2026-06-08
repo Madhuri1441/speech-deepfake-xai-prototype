@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.3-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, guttural vocalization, likely a throat-clear or suppressed cough, followed by a short, sharp, high-frequency click or pop. This click is acoustically anomalous, as it is abrupt, lacks the natural decay of a typical human vocalization, and stands out against the otherwise quiet background. The click occurs at approximately 0.3–0.4 seconds and is centered in the 2000–3000 Hz frequency range, which is consistent with the spectral characteristics of a transient, non-vocal artifact. The rest of the audio is silent, with no discernible speech, environmental sounds, or background noise, further highlighting the unnaturalness of the click. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [0.3-0.4] seconds and [2000-3000] Hz using Integrated Gradients (IG) and LIME, while Saliency analysis points to a different region ([0.1-0.2] seconds, [4000-5000] Hz), which does not align with the observed click. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the click and may reflect general audio characteristics rather than the specific anomaly. The wav2vec model’s IG and LIME results are the only ones that support the click as an anomaly, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "perfection" in a neutral, low-pitched tone, followed by a brief pause and a sharp, high-frequency electronic beep. The beep is the only non-speech event and is acoustically anomalous due to its abrupt onset, high pitch (~3000–6000 Hz), and unnatural timbre, which stands out against the otherwise clean and dry vocal recording. The beep is likely synthetic, possibly a system notification or error tone, and is not a natural part of speech or environmental sound. The voice itself is clear and free of distortion, with no background noise or reverberation, suggesting a controlled recording environment. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [0.8 - 1.2] seconds in the frequency range [3000 - 6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a brief region at [0.1 - 0.2] seconds in the [1000 - 2000] Hz range, which does not align with the beep. LIME supports the [0.1 - 0.2] seconds region but not the beep. The Hubert and WavLM models do not provide any saliency or IG evidence for the beep. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, suggesting the presence of a loud, high-frequency event, which aligns with the beep. The stdUnvoicedSegmentLength and mfcc1_sma3_amean features are less relevant to the beep. The wav2vec IG result is the only one that directly supports the beep as an anomaly, with no cross-model agreement.

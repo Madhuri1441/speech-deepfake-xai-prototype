@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "The most important thing is..." in a neutral, conversational tone. At approximately 0.9 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content concentrated between 3000 Hz and 6000 Hz. The artifact is not present in the original speech and does not match any natural acoustic event, suggesting it is an artificial insertion or digital corruption. The voice continues uninterrupted, indicating the artifact is not a result of vocal production but rather an external addition or modification. The abrupt onset and offset of the artifact, along with its unnatural spectral profile, strongly indicate a digital or synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.9–1.2 second time region and 3000–6000 Hz frequency range, while LIME supports the 1.2–1.3 second window. These findings are consistent and cross-validated, indicating a high-confidence region of abnormality. The Hubert and WavLM models do not provide any supporting evidence, as their XAI methods return no regions. The Shapley values further corroborate the anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and slopeUV0-500_sma3nz_amean, which are associated with the presence of the artifact. Overall, the wav2vec model’s multiple XAI methods converge on the same region, providing strong evidence for the observed acoustic anomaly.

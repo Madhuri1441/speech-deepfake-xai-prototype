@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There was a power auction," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with a frequency content concentrated between 3000 Hz and 6000 Hz. The artifact is abrupt, with no gradual onset or decay, and is acoustically inconsistent with the preceding speech, suggesting it is not a natural part of the recording. The remainder of the audio is silent, with no further speech or background sounds.
+
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.5-2.0] second time region and [3000-6000] Hz frequency range as the most salient for its prediction, directly aligning with the observed artifact. The wav2vec Saliency method also highlights a region around [0.5-1.0] seconds, which corresponds to the tail end of the spoken phrase and may reflect the model's sensitivity to the transition between speech and the artifact. The wav2vec LIME analysis, however, points to an earlier, very brief region ([0.0-0.1] seconds), which is less consistent with the main anomaly. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the artifact is not detected by these models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [1.5-2.0] second time region and [3000-6000] Hz frequency range as the most significant for the anomaly, providing cross-model agreement. The wav2vec LIME analysis offers a less consistent, earlier time region, while the Hubert and WavLM models do not detect the anomaly. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, further supporting the presence of a high-frequency artifact in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched, synthetic-sounding vocalization ("in") at the start. The main content is a female voice saying, "constantly surprised," with the word "surprised" pronounced in a flat, monotonous tone, lacking natural intonation or emotional inflection. At approximately 1.5–2.0 seconds, a sharp, high-frequency artifact is present, coinciding with the word "constantly." This artifact is a brief, unnatural, high-pitched sound, likely a digital glitch or synthetic overlay, which stands out from the otherwise clean, low-noise background. The acoustic environment is dry and lacks reverberation, suggesting a studio or digitally processed setting. The voice is clear and intelligible, but the unnatural delivery and the presence of the artifact indicate possible synthetic generation or post-processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([2.5-3.0] seconds, [1000-2000] Hz), which does not align with the observed artifact. LIME analysis points to the very beginning of the audio ([0.0-0.1] seconds), which is not supported by other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the presence of the high-frequency artifact. The wav2vec IG result is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this cross-model agreement.

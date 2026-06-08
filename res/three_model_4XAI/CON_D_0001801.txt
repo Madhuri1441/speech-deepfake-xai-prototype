@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "paying the prepayment," spoken in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-professional recording environment. At approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.2 seconds. This transient is acoustically distinct from the speech, with a frequency content concentrated between 3000–4000 Hz, and is not present in the original speech or background. The click is abrupt, lacks any natural decay, and is inconsistent with typical vocal or environmental sounds, indicating a possible digital artifact or editing error. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as a significant anomaly using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.2] seconds, 3000–4000 Hz). The Hubert and WavLM models do not detect any anomalies in this region, likely due to differences in their training or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a sudden increase in sound level at the click, while other features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope also suggest a deviation from normal speech patterns. The convergence of wav2vec’s multiple XAI methods and the supporting Shapley values confirm the click as a genuine anomaly, while the lack of detection by Hubert and WavLM suggests this artifact may be subtle or context-specific for those models.

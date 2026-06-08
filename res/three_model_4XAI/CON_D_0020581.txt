@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We're here for the day," in a neutral, conversational tone. Immediately following this, a second female voice, with a noticeably different timbre and pitch, says, "The stock just fell." The transition between the two voices is abrupt and unnatural, lacking any overlap, fade, or acoustic continuity. This sudden switch is accompanied by a brief, high-frequency, synthetic-sounding artifact in the 2000–4000 Hz range, which is not present in the original speech and appears to be a digital splice or overlay. The second voice is also slightly louder and more reverberant than the first, suggesting it was added in post-production. The audio ends abruptly after the second phrase, with no natural fade or ambient decay, further indicating editing or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 2000–4000 Hz frequency range, which aligns with the observed synthetic artifact and abrupt voice transition. The saliency analysis from wav2vec further supports this by highlighting a brief, high-frequency anomaly at 1.8–2.0 seconds, likely corresponding to the artifact. The LIME explanation for wav2vec points to the very beginning of the audio (0.0–0.1 seconds), which may reflect the model’s sensitivity to the initial speech onset. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight the equivalentSoundLevel_dBp as the most influential feature, suggesting a significant change in overall loudness or energy at the splice point, which supports the presence of an unnatural edit.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "presents a huge list, distant talented, but I am an S..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice becomes slightly muffled and less resonant, with a reduction in high-frequency content. This change persists until about 1.5 seconds, after which the voice returns to its original clarity. The frequency range of this abnormality is centered around 2000–4000 Hz, corresponding to the mid-to-high frequencies that affect speech clarity and timbre. This acoustic anomaly is not accompanied by any background noise, distortion, or environmental cues, suggesting it is a localized artifact rather than a recording issue.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and also detects a secondary abnormality at [2.5-3.0] seconds in the [4000-6000] Hz range using Saliency. LIME supports the wav2vec findings by highlighting the [0.8-1.2] seconds interval, which overlaps with the primary abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The SHAP values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength further support the presence of an acoustic anomaly, as they indicate a significant deviation from the expected signal characteristics. Overall, the wav2vec model’s IG and LIME results, along with the SHAP values, provide strong evidence for the observed abnormality, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-specific.

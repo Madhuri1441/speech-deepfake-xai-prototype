@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 2.5–3 seconds, there is a noticeable and abrupt change in the acoustic environment. The speaker’s voice, which is otherwise natural and intelligible, becomes heavily distorted and muffled, with a loss of high-frequency content and a “watery” or “phasey” quality. This distortion is not present before or after this interval, indicating a localized artifact. The change is abrupt, suggesting a digital glitch or editing error rather than a natural environmental shift. The speech remains intelligible, but the clarity and timbre are degraded, consistent with a digital artifact such as a buffer error or corrupted audio segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [2.5-3] second time region and [4000-6000] Hz frequency range as the most salient for its prediction, indicating that this segment is critical to the model’s classification of the audio as a deepfake. This aligns with the observed acoustic anomaly, where the voice becomes distorted and loses high-frequency content. The wav2vec Saliency and LIME methods also point to the same time region, reinforcing the consistency of this finding. In contrast, the Hubert and WavLM models do not provide any saliency or IG evidence, suggesting that they are less sensitive to this specific artifact or that the anomaly is not prominent in their feature space. The Shapley values further support the importance of the voiced segment and spectral characteristics, but do not directly pinpoint the artifact. Overall, the wav2vec model’s multiple independent methods converge on the same region, providing strong cross-model agreement for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "He's scared of Capita." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.9 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.2 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone with a frequency content between 3000 Hz and 6000 Hz. The artifact is abrupt in onset and offset, with no natural fade-in or fade-out, and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original speech and is likely an insertion or overlay, possibly due to editing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.9-1.2] seconds, [3000-6000] Hz). The IG method highlights a specific time-frequency window, while the Saliency method corroborates this with a slightly broader frequency range. The LIME method, however, identifies a different, earlier time window ([0.25-0.3] seconds), which does not align with the observed artifact and is likely unrelated. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no significant regions. The SHAP analysis, while not directly identifying the artifact, highlights features such as spectral flux and unvoiced segment length, which may be indirectly related to the presence of the synthetic tone. Overall, the wav2vec model’s IG and Saliency methods provide consistent, cross-validated evidence of the abnormality, while other models and methods do not support this finding.

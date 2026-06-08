@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker delivering a clear, neutral statement: "We have but a place in a difficult courtroom because we wanted this service to continue." The speech is intelligible and exhibits natural prosody, with no signs of emotional distress or artificiality. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 5000–6000 Hz, and is acoustically distinct from the speech, lacking any natural reverberation or environmental context. The tone is static and unmodulated, suggesting it is a digital artifact rather than a natural sound. The abrupt onset and unnatural spectral quality of this tone are the primary acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [5000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency and LIME methods also point to the same time interval, though with slightly different frequency ranges. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone but do not specify the exact time or frequency. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the conclusion that the synthetic tone is the primary anomaly, while the absence of evidence from Hubert and WavLM suggests that the anomaly is not universally detected by all models.

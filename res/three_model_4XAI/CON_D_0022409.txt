@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a female voice speaking in a neutral, slightly high-pitched tone: "Princess, the truth about the cow." The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 2.0–2.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting about 0.5 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 4000–6000 Hz, and is not present in the original speech or background. The artifact is abrupt in onset and offset, suggesting digital manipulation or a synthetic overlay rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.5] seconds, [4000-6000] Hz). The IG and LIME methods provide consistent evidence, while Saliency supports the same region, albeit slightly later ([3.5-4.0] seconds, [2000-3000] Hz), which may reflect a secondary or overlapping artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of a high-frequency anomaly, with spectralFlux_sma3_amean showing a significant deviation, indicating a sudden change in spectral content. The combination of wav2vec’s multiple methods and the Shapley analysis confirms the presence of a synthetic artifact in the specified region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, formal statement in English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, such as unnatural pauses, pitch jumps, or abrupt volume changes. The only notable acoustic feature is a brief, high-frequency transient at approximately 0.5–1.0 seconds, which is not present in the surrounding speech. This transient is a sharp, high-pitched sound, likely a digital artifact or a minor recording glitch, and does not correspond to any spoken content or environmental sound. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region in the audio at [0.5-1.0] seconds, with a frequency range of [2000-4000] Hz, which aligns with the observed high-frequency transient. This region is also supported by the LIME explanation from wav2vec, which points to a time window of [3.5-4.0] seconds, though this does not correspond to any clear acoustic anomaly and may be a model-specific artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed transient. Overall, the wav2vec model’s explanation is the only one that supports the presence of an acoustic anomaly, and this is based on cross-model agreement within wav2vec itself (IG and LIME).

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "that things," followed by a male voice saying, "I felt it." The female voice is clear and natural, but the male voice is noticeably lower in pitch, has a slower cadence, and a slightly muffled timbre, suggesting a possible voice synthesis or manipulation. At approximately 1.0–2.0 seconds, the male voice exhibits a subtle but distinct pitch instability and a slight warble, which is acoustically anomalous compared to the rest of the recording. This region is marked by a frequency range of 4000–6000 Hz, where the wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight a significant anomaly, indicating that this frequency band is critical for the model’s detection of a potential deepfake. The LIME method also supports this region, though with a narrower focus at 2.0–2.1 seconds. The Shapley values further corroborate this, with the equivalentSoundLevel_dBp feature showing a strong positive contribution, suggesting that the abnormality is related to the overall loudness or energy in this segment. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all converge on the 1.0–2.0 second region, with a focus on the 4000–6000 Hz frequency band, providing strong cross-model agreement. The Shapley value analysis supports this by highlighting the equivalentSoundLevel_dBp feature, which is most active in this region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specific to the wav2vec model’s analysis. The combined evidence from multiple wav2vec methods and Shapley values strongly supports the presence of an acoustic anomaly in the male voice segment, likely due to voice synthesis or manipulation.

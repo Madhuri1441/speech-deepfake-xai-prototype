@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.2 seconds, a sharp, high-frequency transient is heard, lasting until about 0.4 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, which is acoustically inconsistent with the preceding and following speech. The transient is not masked by the speech and is clearly audible, suggesting it is not a natural part of the vocalization. The remainder of the audio consists of a male voice saying "would help" in a neutral, conversational tone, with no further anomalies detected. The acoustic properties of the transient—its frequency content, abruptness, and unnatural timbre—strongly suggest it is an artifact, possibly from digital editing or an unintended recording event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.2-0.4] seconds time range and [5000-6000] Hz frequency range using Integrated Gradients (IG), and the same region is confirmed by Saliency analysis. LIME also supports this region with a slightly narrower window of [0.25-0.3] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating deviations from expected speech patterns. The cross-model agreement between wav2vec’s IG, Saliency, and LIME analyses confirms the [0.2-0.4] seconds interval as the most likely region of acoustic abnormality.

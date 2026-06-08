@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "And then he also insisted that no, he's not..." The speech is abruptly cut off mid-word ("not"), with no natural fade or pause, indicating a possible editing artifact. The recording is of high fidelity, with no background noise, distortion, or environmental cues. The only notable acoustic irregularity is a brief, high-frequency, synthetic-sounding artifact in the 6000–7000 Hz range, occurring between 1.5 and 2.0 seconds. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The abrupt cut-off and the presence of this artifact are the only clear signs of manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.5–2.0 second region as suspicious, specifically highlighting the 6000–7000 Hz frequency band, which aligns with the observed synthetic artifact. The wav2vec saliency method also points to the 0–1 second region, but this is less relevant as it corresponds to the beginning of the speech and does not show any clear anomaly. The wav2vec LIME method identifies a region at 4.5–5 seconds, which is not supported by the audio evidence and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp and F0-related features, but these do not directly correspond to the observed artifact. Overall, the wav2vec IG explanation is the only one that aligns with the audio evidence, and thus the final abnormality region is based on this single-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "truly awful," followed by "post-op head problems." The speech is clear and intelligible, with a neutral, slightly somber tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is not part of the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the mid-to-high frequency range (1000–7000 Hz), with a harsh, electronic timbre, and is not present in the original speech. The abrupt onset and unnatural character of this tone indicate it is likely a post-production addition, possibly due to a technical error or deliberate editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 1.5–2.0 seconds in the 6000–7000 Hz range, and a Saliency region from 2.0–2.5 seconds in the 1000–4000 Hz range. These regions align with the appearance and persistence of the synthetic buzzing tone, providing cross-model agreement on the timing and frequency of the anomaly. The Hubert and WavLM models do not provide any abnormality evidence, and the LIME explanations are either absent or not aligned with the observed artifact. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may reflect the presence of the synthetic tone but do not directly localize it. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the abnormality, supported by the acoustic observation of the buzzing tone.

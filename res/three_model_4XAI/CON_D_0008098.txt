@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "Western by Turkel job to come and watch and we want to maximize the day." The speech is generally intelligible, with no obvious signs of digital corruption, clipping, or background noise. However, at approximately 3.5–4.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present. This artifact manifests as a sharp, unnatural, and non-vocal sound, likely a digital glitch or artifact, which is inconsistent with the natural acoustic environment of the rest of the recording. The artifact is not a part of the speaker’s voice and does not correspond to any expected environmental or vocal event. The frequency range of this anomaly (6000–7000 Hz) is higher than typical human speech and is not present in the surrounding audio, suggesting a technical or synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 3.5–4.0 seconds in the 6000–7000 Hz range using both Integrated Gradients (IG) and Saliency methods, indicating a strong, consistent signal in this region. The LIME method from wav2vec also supports this, though with a slightly earlier start time (3.0–3.5 seconds). In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values from the audio features do not directly indicate the presence of an artifact, as they relate to general acoustic properties rather than specific anomalies. Therefore, the final abnormality region is supported by wav2vec’s multiple methods, with cross-model agreement limited to wav2vec alone.

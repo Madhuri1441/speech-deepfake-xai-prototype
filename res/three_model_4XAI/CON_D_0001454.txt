@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, muffled utterance that is difficult to discern, likely due to low recording quality or intentional masking. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, standing out distinctly from the rest of the audio. The frequency content of this event is concentrated between 6000 and 7000 Hz, which is unusually high for typical human speech and suggests a non-vocal, possibly synthetic or digitally manipulated source. The remainder of the audio returns to the low-level hiss and muffled speech, with no further notable events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time-frequency region ([1.5-2.0] seconds, [6000-7000] Hz), indicating strong cross-model agreement on the presence of an anomalous event. The LIME method from wav2vec also highlights a brief time window ([0.75-0.8] seconds), but this is not supported by other XAI methods or the audio evidence, and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for this region, as their XAI methods yield no salient regions. The SHAP analysis, while not directly identifying the time-frequency region, highlights features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may be indirectly related to the transient event but do not provide precise localization. Overall, the wav2vec IG and Saliency results provide the most robust and consistent evidence for the abnormality, supported by cross-model agreement.

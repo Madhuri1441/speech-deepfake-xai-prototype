@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "I have a going out contract, but that also depends on promotion." The speech is generally natural, but a subtle anomaly is observed in the phrase "going out contract," specifically around the word "contract." From 2.0 to 3.0 seconds, the audio exhibits a noticeable high-frequency shimmer or warble, with energy concentrated between 3000–8000 Hz. This artifact is not present in the rest of the clip and is inconsistent with typical speech or environmental sounds, suggesting a possible digital manipulation or deepfake artifact. The anomaly is most pronounced in the latter part of the word "contract," where the pitch and timbre appear unnaturally modulated, possibly due to waveform interpolation or model-generated artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [2.5-3.0] seconds and frequency range [6000-8000] Hz, while the Saliency method highlights a broader region [2.0-2.5] seconds and [3000-4000] Hz. LIME also supports the anomaly in the vicinity of [2.1-2.3] seconds. These cross-model and cross-method agreements strongly indicate that the region around "contract" is the source of the anomaly. The Hubert and WavLM models do not provide any evidence, likely due to their different training objectives or feature extraction methods. The Shap values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which are indicative of unnatural speech patterns. Overall, the convergence of wav2vec, Saliency, and LIME evidence confirms the anomaly in the specified time and frequency ranges.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "brightest go for us." Immediately following the spoken phrase, a sharp, high-frequency transient is audible, lasting approximately 0.4 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 4000 Hz and 6000 Hz. The sound is acoustically distinct from the preceding speech and does not resemble any natural vocal or environmental artifact. Instead, it closely resembles a digital click or artifact, likely resulting from a sudden change in audio signal, such as a buffer glitch or a digital editing error. This transient is not present in the original speech and appears abruptly, suggesting it is an artifact introduced during audio processing or transmission.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.8-1.2] seconds, 4000-6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality in this region, indicating that the anomaly is not detected by all models. The Shap values, while not directly tied to the transient, highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which may reflect the presence of a sudden, high-frequency event in the audio. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the transient’s abnormality, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

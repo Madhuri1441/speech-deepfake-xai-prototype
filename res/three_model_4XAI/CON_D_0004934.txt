@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "So, I'm deeply is an impasse." The speech is clear and intelligible, with a neutral, slightly resigned tone. However, at approximately 1.8 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment and does not match any typical background noise or artifact. Its abrupt onset and offset, as well as its spectral purity, suggest it is artificially inserted, possibly as a placeholder, censor beep, or digital artifact. The remainder of the audio returns to normal speech and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.8-2.0] seconds and frequency range [3000-4000] Hz using Integrated Gradients (IG), and also highlights the same time range with Saliency in a slightly broader frequency band [5000-6000] Hz. LIME further supports the time region [0.9-1.1] seconds, which is adjacent to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency tone. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) converge on the same time region, providing strong cross-model agreement for the anomaly at [1.8-2.0] seconds.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and natural intonation. The speech is intelligible and free of distortion, static, or background noise, indicating high recording quality. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until 1.0 seconds. This tone is sharply defined, with a frequency content between 6000–7000 Hz, and is acoustically distinct from the preceding speech. The buzzing is not a natural artifact of the voice or environment, and its abrupt onset and offset suggest it is artificially inserted. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), which is supported by the LIME explanation at [0.7-0.8] seconds. These two independent XAI methods both point to the same region, confirming the presence of an artificial anomaly. The Saliency method also identifies a different, earlier region ([0.0-0.1] seconds, [2000-3000] Hz), but this is not corroborated by other methods and does not align with the observed buzzing tone. The Hubert and WavLM models do not provide any evidence of abnormality, and the Shapley values do not directly indicate the buzzing event, instead highlighting acoustic features unrelated to the anomaly. Thus, the consensus from wav2vec’s IG and LIME supports the conclusion that the buzzing tone is the primary anomaly.

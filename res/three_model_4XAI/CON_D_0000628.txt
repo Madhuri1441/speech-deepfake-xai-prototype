@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.7-1.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a neutral, conversational tone: "I still can't walk, there will be a benefit." The speech is clear, with no background noise or environmental sounds, and the recording quality is high, indicating a controlled setting. The only notable acoustic feature is a brief, high-frequency artifact in the 5000–6000 Hz range between 0.7 and 1.3 seconds, which is not present in the rest of the audio. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or editing artifact, and is not part of the speaker’s voice or any environmental noise. The rest of the audio is acoustically clean, with no signs of distortion, clipping, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.7–1.3 second region in the 5000–6000 Hz range as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation also points to a specific time (1.4–1.5 seconds), but this is not corroborated by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength and spectralFlux, which are not directly tied to the observed artifact but may reflect underlying model sensitivities. Overall, the wav2vec model’s identification of the high-frequency artifact is the most robust and cross-validated evidence, while other XAI sources either do not support this finding or provide conflicting information.

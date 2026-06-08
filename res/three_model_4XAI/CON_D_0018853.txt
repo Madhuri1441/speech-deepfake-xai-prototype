@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a short, emotionally charged statement: "My father transferred us. There is a job there." The speech is clear and intelligible, with a natural rhythm and emotional inflection. However, at approximately 2.5–3.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a brief, non-vocal, electronic tone, likely a digital glitch or artifact from audio processing, and is not present in the original speech. The tone is sharply defined, with a frequency content between 4000–6000 Hz, and is acoustically inconsistent with the surrounding speech, suggesting it is not a natural part of the recording. No other obvious audio artifacts or background noises are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent methods: Integrated Gradients (IG) highlights the 2.5–3.0 second region with a frequency range of 4000–6000 Hz, while Saliency and LIME also point to this time-frequency region, though with slightly different granularity. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile80.0, all of which are associated with the 2.5–3.0 second region. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods, along with the Shapley value evidence, strongly supports the conclusion that the abnormality is a synthetic tone in the specified time and frequency range.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [500-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a male voice with a Scottish accent starts speaking, saying, "world leaders are playing their sympathy." The voice is clear, with a natural cadence and no signs of digital manipulation. However, at around 1.5 seconds, a brief, unnatural vocal artifact occurs: the voice exhibits a sudden, sharp pitch drop and a harsh, metallic timbre, lasting about 0.5 seconds. This artifact is not present in the rest of the audio and is inconsistent with the speaker’s natural speech patterns. The remainder of the audio returns to normal, with no further anomalies.
+
+The wav2vec model’s Integrated Gradients (IG) analysis highlights the [1.0-2.0] second time region and [500-6000] Hz frequency range as significant, aligning with the observed vocal artifact. The Saliency method from wav2vec also identifies a high-frequency anomaly in the [5000-6000] Hz range during [0.7-1.2] seconds, further supporting the presence of an unnatural sound event. LIME analysis from wav2vec points to a specific moment at [2.7-2.8] seconds, which may correspond to the artifact’s tail or a related acoustic anomaly. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is not consistently detected across all models. The Shap values for slopeUV0-500_sma3nz_amean, alphaRatioUV_sma3nz_amean, and shimmerLocaldB_sma3nz_amean suggest changes in pitch, spectral tilt, and shimmer, which are consistent with the observed vocal artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [1.0-2.0] second time region and [500-6000] Hz frequency range as abnormal, with Saliency further narrowing the frequency to [5000-6000] Hz. LIME analysis from wav2vec also supports the presence of an anomaly at [2.7-2.8] seconds. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The Shap values for pitch, spectral tilt, and shimmer further corroborate the presence of a vocal artifact in the specified time and frequency ranges.

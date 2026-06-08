@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "or so we thought," in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is clear and intelligible. However, at approximately 1.25 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.50 seconds. This artifact manifests as a brief, sharp, and unnatural sound, likely a digital glitch or a synthetic overlay, which is not part of the original speech. The frequency range of this anomaly is concentrated between 3000 Hz and 4000 Hz, which is higher than the typical speech spectrum and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original speech and appears abruptly, suggesting it is an artificial addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. IG highlights the time-frequency region [1.25-1.50] seconds and [3000-4000] Hz, while Saliency points to a slightly later region [1.75-2.0] seconds and [6000-8000] Hz, indicating a possible secondary artifact. LIME also supports the presence of an anomaly at [0.75-0.8] seconds, though this is less consistent with the observed artifact. The Hubert and WavLM models do not detect any abnormalities, suggesting that the wav2vec model is the most sensitive to this type of anomaly. The Shap values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of unnatural audio characteristics. Overall, the wav2vec model's IG and Saliency methods provide strong cross-model agreement on the primary abnormality, while other evidence is less consistent or absent.

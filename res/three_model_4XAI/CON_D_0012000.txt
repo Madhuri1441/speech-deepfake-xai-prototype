@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled utterance, "It's been replaced by us," spoken by a female voice in a neutral, declarative tone. The recording quality is low, with a persistent background hiss and a limited frequency range, suggesting a compressed or low-bitrate source. At the very start of the clip, specifically in the first 0.1 seconds, there is a subtle but noticeable acoustic anomaly: a faint, high-frequency artifact in the 2500–3000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is most likely a digital artifact, possibly introduced during encoding, compression, or post-processing, and is not perceptible to the human ear but detectable by sensitive audio analysis tools.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 0.0–0.1 seconds and 2500–3000 Hz is supported by the Saliency method from the wav2vec model, which identifies this region as salient for its prediction. No other XAI methods (IG or LIME) from wav2vec, nor any from Hubert or WavLM, provide supporting evidence for this specific region. The Shapley values indicate that features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 are important for the model’s decision, but these are global features and do not localize the anomaly to a specific time or frequency range. Thus, the evidence for the anomaly is primarily from a single XAI method (Saliency) and a single model (wav2vec), with no cross-model agreement.

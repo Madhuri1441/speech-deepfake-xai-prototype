@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.30] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2800-3200] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "as confusing" in a neutral, conversational tone. Immediately following the word "confusing," there is a brief, high-frequency, synthetic-sounding artifact that lasts about 0.05 seconds. This artifact is not part of the natural speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 2800–3200 Hz range. The artifact is not present in the original speech and does not correspond to any natural vocalization or environmental sound. This anomaly is supported by multiple XAI methods: the wav2vec model's Integrated Gradients (IG) and LIME both highlight the [1.25-1.30] second region, while the Saliency method identifies a nearby [1.95-2.05] second region with a different frequency range, likely due to the model's sensitivity to different acoustic features. The wav2vec model's consistent identification of the artifact region across multiple XAI methods suggests a high confidence in the anomaly. The Hubert and WavLM models do not provide supporting evidence, but this is not unusual given their different training objectives and architectures.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and LIME methods both identify the [1.25-1.30] second region as anomalous, with a frequency range of [2800-3200] Hz. This cross-model agreement strengthens the case for the presence of an artificial artifact in this region. The wav2vec Saliency method identifies a nearby region ([1.95-2.05] seconds) with a different frequency range, but this is likely due to the model's sensitivity to different acoustic features rather than a separate anomaly. The Hubert and WavLM models do not provide supporting evidence, but this is not unusual given their different training objectives and architectures.

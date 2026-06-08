@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's about this, a history." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.95 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact manifests as a brief, unnatural, high-pitched sound, likely a digital glitch or a synthetic overlay, which is not present in the original speech. The artifact is most prominent in the frequency range of 2500–4000 Hz, which is above the typical human speech range and suggests a non-vocal origin. This anomaly is not present in the original audio, indicating it may be the result of post-processing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([0.95-1.2] seconds, [2500-4000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, likely due to their different training objectives or sensitivity to such artifacts. The SHAP values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in sound energy in the high-frequency range. This aligns with the observed artifact. No other XAI sources corroborate this finding, but the wav2vec evidence is robust and consistent.

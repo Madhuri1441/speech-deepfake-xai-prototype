@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9 - 1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, conversational phrase in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental sounds. However, at approximately 0.9–1.1 seconds, a sharp, high-frequency transient artifact is present, lasting about 0.2 seconds. This artifact manifests as a brief, unnatural, high-pitched click or pop, with energy concentrated between 5000–7000 Hz, and is acoustically inconsistent with the surrounding speech. The artifact is not present in the original waveform, nor does it correspond to any natural speech or environmental sound, suggesting it is an artificial insertion or editing error. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 0.9–1.1 second time region and 5000–7000 Hz frequency region as the most salient for its prediction, indicating that this transient is a key feature in the model’s decision-making. The wav2vec Saliency and LIME methods also point to the same time region, though with slightly different frequency ranges, further supporting the presence of an anomalous event. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are not directly related to the transient artifact but may reflect broader signal irregularities. Overall, the wav2vec model’s multiple independent explanations converge on the same time and frequency region, providing strong evidence for the presence of an artificial transient artifact in the audio.

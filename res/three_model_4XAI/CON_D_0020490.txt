@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The Gotland, however, died." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.5 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 7000 Hz and is acoustically distinct from the voice, lacking any natural speech harmonics or modulation. The buzzing is consistent in pitch and amplitude, with no dynamic variation, and is not present in the initial portion of the audio. This sudden onset and unnatural character of the tone suggest an artificial or digitally inserted artifact, likely a result of a technical malfunction or post-production error. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [6000-8000] Hz frequency range using Integrated Gradients (IG), which is supported by Saliency and LIME methods from the same model. These multiple XAI techniques converge on the same region, indicating a high-confidence detection of the synthetic buzz. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than non-speech artifacts. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and logRelF0-H1-H2_sma3nz_stddevNorm indicating deviations from expected speech patterns, particularly in the latter part of the audio. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the synthetic buzz, while other models and features corroborate the presence of an anomaly in the audio.

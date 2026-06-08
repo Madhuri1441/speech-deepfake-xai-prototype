@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying, "You have... you could..." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural artifact appears: a high-frequency, synthetic buzzing or static-like sound overlays the speech. This artifact persists for about 0.2 seconds, peaking in intensity around 1.1 seconds, and is characterized by a harsh, electronic timbre with energy concentrated between 3000 Hz and 6000 Hz. The artifact is not present in the original speech and does not match typical environmental or recording noise, suggesting it is an artificial insertion. The audio then returns to normal speech, with no further anomalies. This abrupt, high-frequency overlay is acoustically inconsistent with the rest of the recording and is likely a sign of tampering or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.2] seconds, [3000-6000] Hz). The IG and Saliency methods provide consistent evidence of the anomaly, while LIME, though less precise, supports the same region. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant evidence. The Shapley values further corroborate the anomaly by highlighting features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, which are associated with the presence of the synthetic artifact. The convergence of wav2vec’s multiple XAI methods and the Shapley values strongly supports the conclusion that the audio contains a digitally inserted artifact in the specified region.

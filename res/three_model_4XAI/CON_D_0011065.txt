@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "In fact, he was far too late for the survival business." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is evenly paced and natural, with no signs of emotional stress or artificiality. However, a subtle anomaly is detected in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds, specifically around the word "far." This region exhibits a slight unnatural resonance or tonal shift, which is not present in the rest of the audio. The anomaly is not perceptible to a casual listener but is highlighted by the wav2vec model’s Integrated Gradients (IG) analysis, which identifies this region as a key contributor to the model’s prediction. No other XAI methods or models detect this region, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the time-frequency region [1.5-2.0] seconds and [4000-6000] Hz as the most suspicious, corresponding to the word "far." This is the only XAI source that detects this region, with no supporting evidence from Saliency, LIME, or other models. The Shapley values from wav2vec also highlight features related to spectral slope and MFCCs, but these do not localize to a specific time-frequency region. Thus, the anomaly is supported solely by wav2vec’s IG analysis, with no cross-model agreement.

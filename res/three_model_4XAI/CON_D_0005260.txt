@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9 - 1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "question of Islam." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 0.9 to 1.1 seconds, a sharp, high-frequency transient is present, which is acoustically anomalous. This transient is not part of the natural speech and stands out due to its abruptness and spectral content in the 3000–4000 Hz range. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency region as the most salient for its prediction, indicating that this transient is a key feature in the model’s decision-making. The wav2vec Saliency analysis also highlights a different, earlier region (0.0–0.2 seconds, 1000–2000 Hz), but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is specific to the wav2vec model’s interpretation. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency analyses both point to the presence of an anomalous transient in the 0.9–1.1 second, 3000–4000 Hz region, with IG providing the most direct evidence. The Hubert and WavLM models do not support this region, indicating that the anomaly is not universally recognized across all models. The wav2vec Saliency analysis identifies a different region (0.0–0.2 seconds, 1000–2000 Hz), but this is not strongly supported by the audio evidence. The Shap values do not provide direct evidence for the anomaly, as they relate to global feature importance rather than localized acoustic events. Thus, the final abnormality is supported by wav2vec’s IG analysis, with limited cross-model agreement.

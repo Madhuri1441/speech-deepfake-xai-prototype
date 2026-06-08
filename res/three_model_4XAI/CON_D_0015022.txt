@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, close-mic’d male voice saying "Sure, come forward." The speech is delivered in a neutral, conversational tone, with no background noise or environmental cues. Immediately following the speech, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is monophonic, static in pitch and amplitude, and lacks any modulation, harmonics, or environmental interaction, strongly suggesting it is artificially inserted rather than naturally occurring. The transition from speech to tone is instantaneous and unnatural, with no fade or overlap, indicating a digital splice or post-production edit. The synthetic tone is acoustically distinct from the preceding speech, with a frequency content concentrated between 2000–6000 Hz, and is likely intended as a censor beep or placeholder. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by cross-model agreement from the wav2vec model, which identifies the synthetic tone region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently point to the same time and frequency region ([1.00-1.50] seconds, [2000-6000] Hz), indicating a high-confidence detection of the synthetic tone. The Hubert and WavLM models do not provide any supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of a synthetic tone by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are characteristic of abrupt, non-vocal sound events. Overall, the evidence converges on the synthetic tone as the primary anomaly, with strong cross-model agreement from wav2vec.

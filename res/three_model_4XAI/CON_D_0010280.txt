@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single adult male speaker with a clear, neutral accent, speaking in a quiet, acoustically dry environment. The speech is continuous and intelligible, with no background noise or environmental sounds. The only notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the speaker’s voice and is acoustically distinct from the natural speech, manifesting as a short, high-pitched, and slightly distorted sound. This anomaly is not present in the original audio but is introduced during the deepfake process, likely as a result of model-generated artifacts or post-processing errors. The rest of the audio is free from such anomalies, with no evidence of clipping, distortion, or other digital artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.0-2.0] seconds time region and [3000-6000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec Saliency analysis also highlights a different region ([0.0-0.5] seconds), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating deviations from expected speech patterns. Overall, the wav2vec IG analysis provides the most reliable evidence for the abnormality, supported by the Shapley values, while other models and analyses do not corroborate this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:  
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.8 seconds, a sharp, high-frequency transient occurs, lasting until about 1.2 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset, with energy concentrated between 3000 Hz and 6000 Hz. The sound is abrupt and unnatural, lacking the gradual attack or decay typical of human speech or environmental sounds. Immediately following this transient, the audio resumes with a faint, low-pitched male voice saying, "There was no job loss of..." The voice is muffled and partially masked by the preceding artifact, suggesting the transient may have been digitally inserted or edited into the recording. No other obvious acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.8–1.2 second time region and 3000–6000 Hz frequency range, while LIME supports the 0.7–0.8 second window, which overlaps with the main anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this artifact. The SHAP analysis highlights spectral features such as spectral flux and alpha ratio, which are consistent with the presence of a high-frequency transient. The combined evidence from wav2vec’s multiple methods and the SHAP values strongly supports the conclusion that the audio contains a digitally inserted or edited artifact in the 0.8–1.2 second range, with no corroborating evidence from other models.

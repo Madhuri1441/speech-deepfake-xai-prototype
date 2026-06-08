@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We're all... she's very distinction case coat... the guy just..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second (up to 2.0 seconds). This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically distinct from the natural speech. It does not resemble any typical environmental or vocal noise, and its abrupt onset and unnatural spectral profile suggest digital manipulation or insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, [4000-6000] Hz). The IG and Saliency methods provide continuous time-frequency support, while LIME offers a discrete time point within the region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope indicating deviations from expected speech patterns, though these do not localize the anomaly as precisely as the wav2vec methods. Overall, the wav2vec model’s consistent, multi-method detection of the artifact region is the strongest evidence for the anomaly.

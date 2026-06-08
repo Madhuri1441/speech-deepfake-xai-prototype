@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Some may end up successful," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until about 1.5 seconds. This artifact is characterized by a sharp, buzzing timbre in the 2000–4000 Hz range, which is acoustically inconsistent with the natural speech preceding it. The artifact is not a typical environmental noise or recording artifact, but rather resembles a digital glitch or a synthetic overlay, suggesting possible tampering or deepfake generation. The voice itself remains unaffected by this artifact, indicating it was likely added post-speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-1.5] seconds in the 2000–4000 Hz range using Integrated Gradients (IG), and the LIME method also supports this region at [1.5, 1.6] seconds, indicating strong agreement between these two XAI methods. The Saliency method from wav2vec identifies a different region ([0.0-0.5] seconds, 1000–2000 Hz), but this is not corroborated by other models or methods. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, possibly due to differences in their training or feature extraction. The SHAP values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of unnatural segments or changes in sound level, but do not directly pinpoint the artifact’s location. Overall, the wav2vec IG and LIME results provide the most consistent evidence for the anomaly, while other models and methods do not support this finding.

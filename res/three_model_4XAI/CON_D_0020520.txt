@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4 - 0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled male utterance, "It's his book," spoken in a neutral, conversational tone. Immediately following the utterance, a sharp, high-frequency transient is audible, lasting less than a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 3000 Hz and 6000 Hz. The sound is acoustically distinct from the preceding speech and does not resemble any natural environmental or vocal artifact. Instead, it is consistent with a digital glitch, such as a buffer underrun or a synthetic artifact introduced during audio processing or editing. The abruptness and spectral profile of this transient suggest it is not a product of the original recording but rather an artifact introduced during post-production or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([0.4 - 0.5] seconds, [3000 - 6000] Hz), while LIME corroborates the time region ([0.3 - 0.4] seconds), which overlaps with the other findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may relate to the presence of the transient, but these are not directly tied to the specific time-frequency region identified by wav2vec. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the presence of a digital artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "The girl is a salvation she believes." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, a subtle but distinct anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 0.5–1.0 seconds. This region contains a faint, high-frequency artifact that is not typical of natural human speech and may indicate digital processing or tampering. The anomaly is not accompanied by any obvious distortion, clipping, or background noise, suggesting it is a subtle, possibly synthetic addition rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.5–1.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and also highlights a secondary anomaly at 1.95–2.05 seconds and 7800–8000 Hz using Saliency. LIME further supports the 0.5–1.0 second region with a time interval of 0.25–0.3 seconds, though this is less precise. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec model is the primary source of detection. The Shap values suggest that features related to unvoiced segment length and sound level are contributing to the model’s decision, but do not directly indicate the location of the anomaly. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the 0.5–1.0 second region, making this the most reliable indication of an anomaly.

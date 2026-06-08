@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "And he insisted the money was not..." The recording is of high fidelity, with a low noise floor and no obvious distortion or clipping. However, at approximately 3.5–4.0 seconds, a subtle but distinct acoustic anomaly occurs. During this interval, the speech is accompanied by a faint, high-frequency, synthetic-sounding artifact, which is not present in the rest of the recording. This artifact manifests as a brief, unnatural tonal overlay, likely a result of digital manipulation or deepfake generation. The anomaly is most prominent in the 2000–6000 Hz range, consistent with the frequency band of the wav2vec model’s Integrated Gradients (IG) explanation. The wav2vec model’s IG, Saliency, and LIME all point to this region, with IG and Saliency providing overlapping time and frequency evidence, while LIME corroborates the time interval. The Hubert and WavLM models do not detect this anomaly, suggesting that the wav2vec family is more sensitive to this specific type of synthetic artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients, Saliency, and LIME all independently identify the 3.5–4.0 second interval as anomalous, with IG and Saliency providing overlapping frequency and time evidence. This cross-model agreement strengthens the case for a synthetic artifact in this region. The Hubert and WavLM models do not detect the anomaly, indicating that the wav2vec family is more sensitive to this type of manipulation. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant deviation from the expected acoustic profile.

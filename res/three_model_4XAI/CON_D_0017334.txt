@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral British accent, delivering a formal statement: "Attendance at the project is a condition of the probation order." The speech is steady, with no emotional inflection, and is recorded in a quiet, acoustically dry environment. There are no background noises, music, or environmental sounds. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact in the 1000–3000 Hz range, occurring between 2.0 and 2.5 seconds. This artifact is not present in the speech itself but appears as a short, unnatural burst, likely a digital glitch or editing artifact. The rest of the audio is clean and natural, with no signs of distortion, clipping, or compression.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0-2.5] seconds in the 1000-3000 Hz range using Integrated Gradients (IG), and the Saliency method also highlights a region at [0.0-0.5] seconds in the 1000-2000 Hz range. The LIME method for wav2vec points to a very short interval at [0.0, 0.1] seconds, but this is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, suggesting a deviation in the acoustic structure of the audio, particularly in unvoiced segments. The spectralFlux_sma3_amean and slopeUV0-500_sma3nz_amean features further support the presence of an anomaly in the high-frequency region. The wav2vec IG and Saliency methods agree on the [2.0-2.5] seconds interval, making this the most reliable region of abnormality. The evidence from wav2vec is cross-model, while the other methods do not provide consistent support.

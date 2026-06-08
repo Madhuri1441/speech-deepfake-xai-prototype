@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a calm, measured tone: "Why we are here. If we go down, we will still survive." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a subtle but distinct anomaly emerges. The voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, most noticeable between 4000-6000 Hz. This region is marked by a momentary harshness and a loss of vocal warmth, suggesting a possible digital artifact or tampering. The anomaly is short-lived, lasting until about 2.0 seconds, after which the voice returns to its original timbre and pitch. No other acoustic irregularities are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the LIME method corroborates the time range with a narrower focus at [1.5, 1.6] seconds. The saliency method also detects a related anomaly at [3.0-3.5] seconds, but this is less consistent with the observed audio and is likely a secondary artifact. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec and LIME. The Shap values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are associated with the abnormal segment. Overall, the evidence from wav2vec and LIME provides strong cross-model agreement on the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range as the region of interest.

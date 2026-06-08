@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [7.5-8] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a male speaker with a Scottish accent, delivering a narrative in a calm, measured tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small, untreated indoor space. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, at approximately 7.5–8 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or whine in the 6000–8000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural sound or environmental noise. It is brief, isolated, and does not affect the intelligibility of the speech, but its unnatural spectral quality suggests it may be an artifact of digital processing or a deepfake generation artifact.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The saliency analysis from the wav2vec model identifies the [7.5-8] seconds time region and [6000-8000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification. This aligns with the observed high-frequency artifact in the audio, suggesting that the model is sensitive to this anomaly. The IG and LIME explanations from wav2vec do not support this region, and the Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec saliency result is the only cross-model agreement. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact. Thus, the wav2vec saliency result is the most reliable indicator of the anomaly, supported by the audio evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "But it cannot go on like this." The speech is clear and intelligible, with a neutral, slightly resigned tone. Immediately following the spoken phrase, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is monophonic, static in pitch and amplitude, and lacks any modulation, harmonics, or environmental reverberation, indicating it is likely a digitally generated artifact rather than a natural sound. The transition from speech to tone is abrupt, with no fade or overlap, suggesting a hard edit or insertion. The synthetic tone is acoustically anomalous due to its unnatural timbre, lack of spatial cues, and sudden onset, which is inconsistent with the preceding speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: a saliency region from 0.5–1.0 seconds (2000–4000 Hz) and an IG region from 1.00–1.25 seconds (4000–6000 Hz), both overlapping with the synthetic tone. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is not detected by these models. The SHAP analysis highlights high values for spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, which are all consistent with the presence of a sudden, static, low-frequency tone. The wav2vec saliency and IG regions, along with the SHAP values, collectively support the conclusion that the synthetic tone is the primary abnormality. The agreement between wav2vec saliency and IG, as well as the SHAP features, confirms the anomaly is not a model-specific artifact but a genuine acoustic event.

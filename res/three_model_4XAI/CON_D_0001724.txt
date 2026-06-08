@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, sharp, high-frequency click is heard, followed by a short, low-frequency thump, both of which are acoustically anomalous and do not correspond to any natural speech or environmental sound. Immediately after, a female voice with a Scottish accent begins to speak, but the phrase is abruptly cut off mid-word, with no natural fade or trailing noise. The voice itself is clear and intelligible, but the sudden truncation and the presence of the click and thump suggest an artificial interruption or editing artifact. The audio ends with a short, low-frequency electronic tone, which is not part of the speech and may indicate a system notification or end-of-recording signal. No other speech, music, or environmental sounds are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.0-2.0] seconds with a frequency range of [4000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, albeit with a narrower focus at [1.8-2.0] seconds. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, which may relate to the abrupt changes in the audio signal, but these do not directly pinpoint the anomalous region. The cross-model agreement from wav2vec’s IG and Saliency methods, along with LIME, strongly supports the presence of an acoustic anomaly in the specified time and frequency range.

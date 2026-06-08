@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "deep, very explosive." Immediately following the word "explosive," there is a sharp, high-frequency transient artifact in the 6000–7000 Hz range, lasting from approximately 0.85 to 1.0 seconds. This artifact is acoustically anomalous, as it does not correspond to any natural speech or environmental sound and is inconsistent with the preceding and subsequent audio. The transient is abrupt, with a rapid onset and offset, and its spectral content is concentrated in the upper midrange, suggesting a digital or synthetic origin. This is further supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this exact time and frequency region as the most salient for the model’s prediction, indicating that the model identifies this segment as a key anomaly. The LIME and Saliency methods from wav2vec also point to earlier time regions, but the IG result is the most consistent with the observed artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) analysis from the wav2vec model identifies the anomalous region at [0.85-1.0] seconds and [6000-7000] Hz, which aligns precisely with the observed acoustic artifact. The Saliency and LIME methods from wav2vec point to earlier time regions, but these are not supported by the other models. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec. Therefore, the final abnormality region is based on cross-model agreement from wav2vec’s IG analysis, with no supporting evidence from Hubert or WavLM.

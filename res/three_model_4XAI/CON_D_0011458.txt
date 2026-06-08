@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free of distortion, static, or background noise, indicating high recording quality. However, at approximately 3.5 to 4.0 seconds, a distinct, high-frequency artifact emerges, characterized by a sharp, synthetic buzz or tone in the 6000–8000 Hz range. This sound is abrupt, unnatural, and does not correspond to any part of the spoken content, suggesting it is an artificial insertion rather than a natural acoustic event. The artifact is not present before or after this interval, and its sudden onset and offset indicate deliberate editing or digital manipulation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [3.5-4.0] seconds with a frequency range of [6000-8000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a specific time point within this interval, reinforcing the presence of an anomaly. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The SHAP analysis further supports the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which collectively indicate a deviation from normal speech patterns. The cross-model agreement between wav2vec’s IG and Saliency, along with LIME, confirms the artifact’s presence, while the absence of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable by all models.

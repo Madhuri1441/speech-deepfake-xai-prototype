@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "patient beyond us to go through," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly occurs in the latter part of the utterance, specifically around the word "through." From approximately 0.5 to 1.25 seconds, the voice exhibits a high-frequency, synthetic-sounding artifact, with a tonal quality that is sharper and more mechanical than the rest of the speech. This artifact is most prominent in the 3000–5000 Hz range, which is outside the typical fundamental frequency of human speech and suggests a digital or synthetic overlay. The anomaly is not present in the initial portion of the audio, indicating a localized issue rather than a global degradation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.5-1.25] seconds, [3000-5000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, possibly due to differences in their training or feature extraction. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating deviations from expected speech patterns. Overall, the wav2vec model's consistent identification of the anomaly, supported by multiple XAI methods, provides the strongest evidence for the observed acoustic abnormality.

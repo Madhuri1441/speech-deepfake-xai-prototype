@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, somber tone: "She died later on Monday." The speech is clear and intelligible, with a natural cadence and emotional weight. However, at approximately 1.0 seconds, a distinct, high-frequency electronic tone abruptly appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the environment or the speaker’s voice, and its sudden onset and sustained presence suggest it is an artificial addition, likely inserted post-recording. There are no other notable acoustic anomalies, such as clipping, distortion, or background noise, and the speech remains unaffected by the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.1] seconds, [2000-3000] Hz) that does not align with the observed tone. The LIME method also points to the initial seconds but does not specify the frequency. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an abnormality, with features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0 showing significant deviations, suggesting a sudden change in the audio’s acoustic properties. The wav2vec IG result is the most consistent with the observed tone, and this is the only region supported by multiple XAI methods.

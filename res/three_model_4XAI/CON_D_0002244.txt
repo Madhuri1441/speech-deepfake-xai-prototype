@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "when the beginning was disastrous." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording is clean, with no audible artifacts such as clipping, static, or distortion. The voice is centered in the stereo field and occupies a frequency range of approximately 1000–3000 Hz, which is typical for human speech. There are no signs of digital manipulation, compression artifacts, or environmental interference. The acoustic environment is dry, with no reverberation or echo, suggesting a controlled studio or booth setting. The audio ends abruptly after the word "disastrous," with no trailing silence or fade-out, which may indicate intentional editing or truncation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region between 0.25–0.75 seconds in the 1000–3000 Hz frequency range, which aligns with the main speech content of the audio. This region is also supported by the wav2vec Saliency method, which highlights the same time and frequency range. The wav2vec LIME method, however, identifies a much shorter region (0.00–0.10 seconds), which does not correspond to any notable acoustic feature and is likely an artifact of the model’s interpretation. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is the only one detecting a meaningful anomaly. The Shap values for features such as StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and equivalentSoundLevel_dBp do not indicate any abnormality, as their values are consistent with normal speech characteristics. There is no evidence of manipulation or synthetic generation in the audio, and the wav2vec saliency region is the only one supported by multiple XAI methods.

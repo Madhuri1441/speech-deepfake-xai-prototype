@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice delivering a list of words and phrases, including "blood," "London," "marathon," "world's," "cross country," and "championships." The speech is monotonous, with a flat, robotic intonation and lacks natural prosody, breath, or emotional inflection. At approximately 1.0–1.5 seconds, a subtle but noticeable pitch shift and unnatural vocal quality occur, coinciding with the word "London." This segment is marked by a slight pitch drop and a thin, reedy timbre, deviating from the otherwise consistent synthetic voice. The frequency content in this region is concentrated between 6000–7000 Hz, which is unusually high for typical human speech and suggests digital artifacting or overtone manipulation. The overall audio is clean, with no background noise or environmental cues, further supporting the synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [6000-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. LIME also supports the abnormality in the [1.5-2.0] seconds range, overlapping with the wav2vec findings. The Hubert and WavLM models do not provide any evidence, suggesting that the anomaly is not detected by all models. The Shap values highlight features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are all related to acoustic and spectral irregularities, further supporting the presence of synthetic or manipulated speech in the identified region. The cross-model agreement between wav2vec and LIME strengthens the conclusion that the abnormality is genuine and not an artifact of a single model.

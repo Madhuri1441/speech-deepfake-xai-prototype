@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "but it would also..." in a neutral, conversational tone, followed by a brief pause and a low-pitched, non-verbal vocalization ("uhm" or "uh") that is abruptly cut off. Immediately after this, a synthetic, high-frequency electronic tone appears, lasting for about 0.2 seconds. This tone is centered around 5500 Hz and is acoustically distinct from the preceding speech, lacking any natural vocal harmonics or environmental context. The tone is sharply introduced and terminated, with no fade-in or fade-out, and is not present in the original speech or background. This abrupt, unnatural insertion is the primary acoustic anomaly.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 1.2–1.4 second region as significant, with a frequency range of 5000–6000 Hz, aligning with the synthetic tone. The LIME method also supports this region, though with a slightly different time window (0.0–0.1 seconds), likely due to its local approximation approach. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are more related to the speech content and background rather than the synthetic tone. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods, along with the LIME method, all point to the 1.2–1.4 second region as the most suspicious, with a frequency range of 5000–6000 Hz. This cross-model agreement strongly supports the presence of an artificial tone in this region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by these models. The SHAP analysis does not support the presence of an anomaly in this region, focusing instead on speech-related features. Therefore, the final abnormality is supported by multiple XAI sources, primarily from the wav2vec model.

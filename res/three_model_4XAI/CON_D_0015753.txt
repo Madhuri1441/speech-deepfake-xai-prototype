@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "You're not trusted to get a call ethic." The speech is delivered in a standard North American accent, with no apparent emotional inflection or background noise. However, at approximately 1.00 seconds, a distinct, high-frequency, synthetic tone emerges and persists until about 1.25 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically inconsistent with the natural speech preceding it. The tone is not a natural part of the vocalization and does not resemble any typical environmental or electronic artifact. Its sudden onset and unnatural spectral profile suggest it is an artificial insertion, likely intended to mask or obscure a portion of the original audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.00-1.25] seconds, [4000-6000] Hz), indicating strong cross-model agreement on the presence of an artificial tone. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The SHAP analysis highlights acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a synthetic tone disrupting the natural speech signal. The convergence of wav2vec’s multiple XAI methods on the same region, combined with the acoustic evidence, strongly supports the conclusion that the audio contains a synthetic insertion in the specified time and frequency range.

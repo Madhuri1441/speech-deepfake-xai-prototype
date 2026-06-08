@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Good evening. Our house is very noticeable." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the natural speech. The tone is unwavering in pitch and amplitude, lacking any modulation or environmental interaction, and is not present in the original speech. This abrupt onset and unnatural character suggest an artificial insertion, likely a watermark or digital artifact, rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [2.0-2.5] seconds time region and [3000-4000] Hz frequency region as significant. The Saliency method from wav2vec also highlights a related time region ([2.8-3.0] seconds) and frequency region ([5000-7000] Hz), though this is less consistent with the observed tone. The LIME method from wav2vec further supports the [2.15-2.30] seconds time region. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec-based methods collectively indicate the presence of an artificial tone in the specified time and frequency ranges. The Shap values for features like StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope also suggest the presence of an unnatural segment, reinforcing the conclusion of an artificial insertion.

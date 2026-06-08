@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice speaking in a neutral, narrative tone, with a low-level background hiss and a faint hum. The speech is clear and intelligible, with no obvious signs of digital corruption or overt manipulation. However, at approximately 2.0–2.5 seconds, there is a subtle but noticeable change in the acoustic texture of the voice. The timbre becomes slightly more nasal and the articulation less crisp, suggesting a possible shift in vocal production or a brief moment of vocal instability. This is accompanied by a mild increase in high-frequency content (1000–3000 Hz), which may indicate a momentary vocal fry or a slight break in the voice. No other acoustic anomalies, such as clipping, distortion, or abrupt pitch changes, are present.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.0–2.5] seconds time region and [1000–3000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical for the model’s classification. The Saliency method from wav2vec also highlights a different region ([0.0–0.5] seconds), but this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected across all models. The Shapley values further support the importance of the [2.0–2.5] seconds segment, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp showing significant contributions, reinforcing the acoustic anomaly in this region. Overall, the wav2vec IG analysis and Shapley values provide cross-model agreement on the [2.0–2.5] seconds region, while other evidence is either inconsistent or absent.

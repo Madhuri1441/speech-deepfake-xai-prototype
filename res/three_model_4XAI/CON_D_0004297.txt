@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.85-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Ultimately, it is a..." in a neutral, conversational tone, with clear and natural speech characteristics. At approximately 1.85 seconds, a sharp, high-frequency transient artifact appears, lasting until 2.00 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content in the 6000–8000 Hz range, which is inconsistent with the preceding speech. The artifact is abrupt, lacks any natural acoustic decay, and does not blend with the original audio, indicating a digital or synthetic origin. This anomaly is not present in the original speech and is likely the result of a post-processing error or deepfake manipulation. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.85-2.00] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values further support the presence of an anomaly, with the top feature "StddevUnvoicedSegmentLength" showing a high positive contribution, indicating a significant deviation in unvoiced segment characteristics at the identified time. The agreement among wav2vec’s multiple XAI methods confirms the region as the most likely site of manipulation, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not detectable by all models.

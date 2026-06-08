@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency rustling sound, likely from clothing or microphone handling, which is consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a female voice starts speaking in a neutral, declarative tone, with the phrase "So, tops, come out." The speech is clear and intelligible, with no signs of emotional distress or unusual vocal quality. Around 2.0 seconds, a sharp, high-frequency click or pop is heard, which is acoustically distinct from the preceding speech and background noise. This click is brief, transient, and occurs in the 5000–7000 Hz range, suggesting a possible digital artifact or editing artifact. The remainder of the audio continues with the speaker's calm delivery, and no further anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region between 1.0–2.0 seconds in the 5000–7000 Hz frequency range, which aligns with the observed click or pop in the audio. The Saliency method from wav2vec also highlights a region between 2.5–3.0 seconds, which may correspond to the tail of the click or a secondary transient event. The LIME method from wav2vec points to a specific moment at 1.5–1.6 seconds, likely capturing the onset of the click. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of a high-frequency transient event, as the loudness_sma3_percentile20.0 feature shows a significant deviation from its original value, suggesting a sudden increase in high-frequency content. Overall, the wav2vec model's multiple methods (IG, Saliency, LIME) converge on the same region, providing strong cross-model agreement for the anomaly.

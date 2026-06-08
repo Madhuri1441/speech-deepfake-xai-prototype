@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, breathy female voice saying "be," followed by a more prominent utterance, "Miss Fear was a like," spoken in a neutral, conversational tone. The recording is of low fidelity, with a persistent background hiss and a low-frequency hum, likely from a consumer-grade microphone or a noisy environment. At approximately 0.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second, which is acoustically anomalous. This transient is characterized by a piercing, sibilant quality, with energy concentrated between 4000–6000 Hz, and is not present in the rest of the audio. The sound is abrupt, unnatural, and does not correspond to any speech or environmental noise, suggesting it may be an artifact of digital processing or a synthetic overlay. The remainder of the audio returns to the original voice and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region through both Integrated Gradients (IG) and Saliency methods, both pointing to the 0.5–1.0 second time window and 4000–6000 Hz frequency range. The LIME method also supports this region, albeit with a slightly narrower window (0.9–1.1 seconds). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope indicating deviations from expected speech patterns. Overall, the wav2vec model’s multiple methods and the LIME method converge on the same region, providing strong evidence for the anomaly, while the absence of evidence from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

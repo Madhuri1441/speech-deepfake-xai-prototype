@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a clear, neutral tone, with a slight echo suggesting a small room or untreated recording space. The speech is intelligible and natural, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the frequency range of 4000–7000 Hz, particularly during the phrase “has to rise,” which occurs between 2.0 and 3.0 seconds. This region exhibits a faint, unnatural high-frequency shimmer or ringing, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is not accompanied by any obvious pitch or amplitude irregularities, but the spectral texture is inconsistent with the rest of the recording, suggesting possible digital manipulation or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5–3.0] seconds time region and [6000–7000] Hz frequency region, while the wav2vec Saliency method highlights the [2.0–2.5] seconds and [4000–6000] Hz region. These overlapping regions indicate a consistent focus on the 2.0–3.0 seconds interval and the 4000–7000 Hz frequency band, suggesting that the wav2vec model detects a subtle but persistent anomaly in this area. The Hubert and WavLM models do not provide any supporting evidence, as their explanations are all null. The SHAP analysis does not directly reference the acoustic anomaly but instead highlights statistical features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are not directly related to the observed frequency anomaly. Therefore, the final abnormality region is supported by wav2vec’s IG and Saliency methods, with no cross-model agreement from Hubert or WavLM.

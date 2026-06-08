@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement: "A final decision on the the scene is is expected next and we bring." The speech is interrupted by a brief, unnatural pause or glitch at approximately 1.25–1.75 seconds, during which a high-frequency, synthetic-sounding artifact appears in the 3000–3500 Hz range. This artifact is not present in the original speech and is acoustically distinct from typical background noise or room tone. The artifact is likely a result of digital manipulation or a deepfake insertion, as it does not correspond to any natural speech or environmental sound. The rest of the audio is clean and intelligible, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [1.25-1.75] seconds time region and [3000-3500] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The Saliency explanation from wav2vec also identifies a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The LIME explanation from wav2vec points to a very narrow time window ([3.1-3.2] seconds), which does not match any obvious anomaly. The Hubert and WavLM models do not provide any supporting evidence for the abnormality. The SHAP values indicate that the abnormality is not related to standard audio features like sound level or pitch, but rather to the presence of an unvoiced segment, suggesting a possible insertion or editing artifact. Overall, the cross-model agreement is limited, with only wav2vec’s IG explanation providing consistent evidence for the abnormality.

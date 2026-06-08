@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2800-3200] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I saw one body. Everything the walls of the studio, then not about..." The speech is clear and intelligible, with a neutral, narrative tone. However, at approximately 1.0–1.5 seconds, a distinct, high-frequency, synthetic tone emerges, centered around 3000 Hz. This tone is abrupt, unwavering, and lacks any natural acoustic decay or modulation, standing out starkly against the otherwise natural speech and room tone. The tone persists for about half a second before ceasing abruptly, with no fade or transition. This synthetic artifact is acoustically anomalous and does not correspond to any natural sound event or speech content. No other obvious audio artifacts, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.0-1.5] seconds time region and [2800-3200] Hz frequency range as salient. This aligns with the observed synthetic tone in the audio. The wav2vec Saliency and LIME methods also point to nearby time regions, though with less precision. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the synthetic tone and are not supported by the XAI methods. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by other wav2vec methods but not by Hubert or WavLM.

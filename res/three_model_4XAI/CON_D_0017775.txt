@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Also, play up my father, my grandfather." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is centered around 4000–6000 Hz, with a harsh, electronic timbre that is distinctly unnatural compared to the preceding speech. The buzzing is not modulated, does not vary in pitch or amplitude, and is acoustically unrelated to the voice, suggesting it is an artificial overlay or artifact. The abrupt onset and sustained presence of this tone, coupled with its spectral characteristics, indicate a possible post-production error, digital corruption, or deliberate insertion of a non-speech sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and corroborates this with Saliency analysis in the [2.5-3.0] seconds range and [6000-8000] Hz frequency range. LIME also supports the abnormality in the [1.25-1.35] seconds range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of a sudden change in acoustic properties. The cross-model agreement from wav2vec (IG, Saliency, and LIME) strongly supports the conclusion that the buzzing tone is an anomaly, while the lack of evidence from Hubert and WavLM suggests that the anomaly may not be universally detectable across all models.

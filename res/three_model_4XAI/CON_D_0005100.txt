@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp, high-frequency click at 0.0 seconds, followed by a female voice saying, "It's the same old story." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic tone in the 6000–7000 Hz range, which is acoustically inconsistent with the natural voice and background. The artifact is not present in the initial speech or the following silence, suggesting it is an isolated anomaly rather than a continuous background noise. The voice itself remains unaffected, with no pitch or timbre distortion, and the artifact does not interfere with intelligibility. This isolated, unnatural high-frequency sound is the primary acoustic abnormality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, 6000–7000 Hz). The IG and Saliency methods highlight the same time and frequency range, while LIME provides a narrower but consistent time window within this region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values for acoustic features such as MeanUnvoicedSegmentLength, mfcc2V_sma3nz_amean, and loudness_sma3_percentile80.0 are not directly linked to the observed artifact, as they do not correspond to the time or frequency range of the anomaly. Thus, the evidence for the abnormality is based on cross-model agreement from wav2vec, with no support from Hubert or WavLM.

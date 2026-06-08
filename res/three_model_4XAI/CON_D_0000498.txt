@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy intake of air, followed by a female voice saying, "Judge from the old media." The speech is clear, with a neutral, slightly formal tone, and is accompanied by a subtle, persistent background hiss. At approximately 2.4 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until 2.6 seconds. This artifact is characterized by a sharp, buzzing timbre in the 7000–8000 Hz range, which is acoustically inconsistent with the natural speech and background noise. The artifact is abrupt in onset and offset, with no gradual fade, and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original speech or background, suggesting it is an artificial insertion or digital corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [2.4-2.6] seconds time region and [7000-8000] Hz frequency region as salient. This aligns precisely with the observed synthetic artifact in the audio. The wav2vec model's Saliency and LIME methods also point to other regions ([0.1-0.2] seconds and [1.5-1.6] seconds), but these are not supported by other models and do not correspond to clear acoustic anomalies. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact. Therefore, the most reliable evidence for the abnormality comes from the wav2vec model's IG analysis, with no cross-model agreement.

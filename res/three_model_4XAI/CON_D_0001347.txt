@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying, "The staff and the prisoners," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 2000–6000 Hz range, and is not present in the rest of the recording. The artifact is not masked by the speech and is perceptible as a slight, unnatural overlay, suggesting a possible digital manipulation or deepfake artifact. The voice itself remains unaffected in terms of pitch, timbre, or rhythm, indicating the anomaly is not a vocal distortion but rather an added or altered signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.0–1.5 second region, Saliency points to 0.5–0.7 seconds, and LIME identifies 0.75–0.8 seconds, all within the 2000–6000 Hz range. These cross-model and cross-method confirmations strongly support the presence of an anomaly in the specified time and frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP values further support the anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean, which are elevated in the affected region, indicating a deviation from normal speech characteristics. No other acoustic anomalies are detected in the audio.

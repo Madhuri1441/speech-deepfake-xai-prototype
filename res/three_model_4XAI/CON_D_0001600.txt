@@ -1,0 +1,13 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's going to be tough," in a neutral, low-pitched tone. The speech is clear and intelligible, with no obvious signs of emotional distress or artificiality. However, a subtle but noticeable anomaly occurs in the word "tough," specifically in the time range of 1.0–1.2 seconds. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This brief segment stands out acoustically, suggesting a possible digital manipulation or artifact.
+
+The wav2vec model's Integrated Gradients (IG) analysis identifies this same time-frequency region ([1.0–1.2] seconds, [2000–3000] Hz) as the most salient, indicating that this segment is critical for the model's prediction. The Saliency method from wav2vec also highlights a broader region ([0.0–0.2] seconds, [1000–3000] Hz), which may correspond to the onset of the word "tough" and its initial phoneme, but the most specific and consistent evidence is the IG result. The LIME method from wav2vec further supports this, pointing to a very narrow time window ([1.3, 1.4] seconds), which aligns closely with the end of the word "tough." The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or is too subtle for them to capture.
+
+The SHAP values indicate that the acoustic features equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 contribute to the model's decision, with the first feature having the highest impact. These features likely reflect the abnormal energy and spectral characteristics in the highlighted region.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region ([1.0–1.2] seconds, [2000–3000] Hz) is supported by multiple wav2vec-based XAI methods: Integrated Gradients, Saliency, and LIME. This cross-model agreement strengthens the confidence in the identified anomaly. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is subtle and may not be captured by all models. The SHAP values further corroborate the importance of this region by highlighting the acoustic features most affected by the anomaly.

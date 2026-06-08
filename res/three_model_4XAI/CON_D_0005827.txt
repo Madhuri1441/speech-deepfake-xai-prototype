@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I didn't know she could do that," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice acquires a slightly artificial, metallic timbre, and the pitch and resonance become less natural, especially in the higher frequency range. This change persists until about 1.5 seconds, after which the voice returns to its original, natural quality. The acoustic anomaly is most apparent in the 2500–6000 Hz band, where the voice loses its natural warmth and clarity, suggesting possible digital processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.5-1.50] seconds time range and [2500-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement between these two XAI techniques. The LIME method, however, points to an earlier, much shorter interval ([0.0-0.1] seconds), which is not corroborated by other methods and is likely a false positive or artifact. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or that their explanations are less sensitive to the observed change. The SHAP values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with a change in the voice’s spectral characteristics and energy distribution, further supporting the presence of an anomaly in the identified time and frequency range.

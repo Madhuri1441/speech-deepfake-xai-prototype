@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There is no to get. Is it any good?" The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice acquires a slightly artificial, synthetic quality, particularly in the higher frequency range. This is most evident between 0.5 and 1.25 seconds, where the voice exhibits a thin, reedy timbre and a lack of natural vocal warmth, especially in the 2000–6000 Hz band. This change is not present in the initial portion of the audio, suggesting a possible digital manipulation or deepfake artifact. The voice then returns to its original quality after 1.25 seconds, indicating a localized anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, while the Saliency method extends the abnormality to [1.00-1.25] seconds and [2000-6000] Hz. The LIME method supports the abnormality in the narrower window of [0.65-0.75] seconds. These findings are consistent across multiple XAI methods, indicating a strong cross-model agreement on the presence of an anomaly in the specified time and frequency ranges. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec-based results. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an anomaly, as they indicate significant deviations from expected acoustic features during the abnormality window.

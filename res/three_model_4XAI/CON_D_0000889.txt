@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a short, muffled utterance of the word "being" spoken by a synthetic-sounding voice. Immediately after, a sharp, high-frequency click or pop is heard, which is acoustically inconsistent with the rest of the audio and suggests a digital artifact or editing error. This click is most prominent in the 1000–3000 Hz range and occurs between 0.2 and 0.4 seconds, aligning with the Saliency and IG explanations from the wav2vec model. The utterance itself is unnatural, with a robotic cadence and abrupt ending, further indicating synthetic generation. No other significant acoustic anomalies are present, and the background hum remains steady throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across multiple XAI methods (IG, Saliency, and LIME) that the region between 0.2–0.4 seconds and 1000–3000 Hz is critical for its prediction, likely due to the presence of the click artifact and the synthetic voice. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to this specific anomaly. The Shapley values highlight the importance of the equivalentSoundLevel_dBp feature, which is strongly affected by the click, further supporting the identification of this region as anomalous. There is clear cross-model agreement from wav2vec, while Hubert and WavLM do not contribute additional evidence.

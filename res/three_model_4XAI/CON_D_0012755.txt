@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features two speakers in a quiet, indoor environment, with the first speaker saying, "I could hardly move for the next day," and the second speaker responding, "I lost a year ago." The recording is clear, with no background noise or distortion, and both voices are intelligible. However, a subtle but noticeable anomaly occurs between 2.0 and 2.5 seconds, where the second speaker’s voice exhibits a brief, unnatural pitch shift and a slight digital artifact, likely due to a splice or editing error. This is supported by the wav2vec model’s Integrated Gradients (IG) explanation, which highlights a salient region in this time and frequency range, indicating a deviation from expected speech patterns. The wav2vec Saliency method also identifies a broader region (0.1–0.5 seconds) with similar frequency content, suggesting a possible mismatch in the audio’s acoustic features. The LIME explanation further corroborates the anomaly at 2.4–2.5 seconds, reinforcing the presence of an artificial or manipulated segment. No other XAI methods (Hubert, WavLM) or Shapley values provide supporting evidence for this region, and no other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG, wav2vec Saliency, and LIME explanations all point to the same time and frequency region (2.0–2.5 seconds, 3000–4000 Hz), indicating a cross-model agreement on the presence of an anomaly. This region is not supported by Hubert or WavLM models, nor by Shapley values, which focus on different acoustic features. The convergence of wav2vec-based methods provides strong evidence for an artificial or manipulated segment in the audio, likely due to editing or splicing.

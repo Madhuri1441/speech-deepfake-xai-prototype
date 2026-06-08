@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "The car driver was not injured." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0–1.5 seconds into the clip, a sudden, high-frequency, synthetic-sounding artifact appears. This artifact is a brief, harsh, and unnatural noise, likely a digital glitch or a deepfake-generated artifact, which overlays the speech. The artifact is not present in the original voice and does not correspond to any natural sound event. It is most prominent in the 4000–6000 Hz frequency range, which is outside the typical speech spectrum, and is perceived as a sharp, intrusive sound that disrupts the natural flow of the audio. This anomaly is not present in the original recording and is not attributable to any environmental or technical recording issue.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.0-1.5] seconds and frequency range [4000-6000] Hz, which aligns with the observed synthetic artifact. The LIME explanation for wav2vec also supports this region, indicating that the anomaly is localized around 0.8–1.2 seconds. The Hubert and WavLM models do not provide any explanations, suggesting that they did not detect the anomaly or that the anomaly is not captured by their feature representations. The SHAP values highlight "equivalentSoundLevel_dBp" as the most significant feature, indicating a sudden increase in sound level, which corresponds to the artifact’s presence. The "spectralFlux_sma3_amean" and "StddevUnvoicedSegmentLength" features also support the presence of an abrupt change in the audio signal. Overall, the wav2vec model’s explanations, supported by LIME, provide strong evidence for the abnormality, while Hubert and WavLM do not detect it.

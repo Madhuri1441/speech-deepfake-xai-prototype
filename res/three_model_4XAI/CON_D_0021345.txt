@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.9-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I got a yellow to make," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.9 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and does not match the spectral profile of the preceding speech. This anomaly is not present in the original utterance and is likely the result of digital editing or a synthetic overlay, rather than a natural acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.9-2.1] seconds, 5000–6000 Hz), indicating a strong, cross-model agreement on the presence of an anomalous event. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec model is uniquely sensitive to this artifact. The Shapley values further support the presence of a high-frequency anomaly, with the slopeUV0-500_sma3nz_amean feature showing a large positive contribution, consistent with the sudden appearance of a synthetic tone. No other XAI sources corroborate this finding, and the anomaly is not present in the original speech, confirming it as an artificial insertion.

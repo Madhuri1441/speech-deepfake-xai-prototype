@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "The stuff of apples out on TV." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.1 seconds. This artifact is acoustically distinct from the speech, manifesting as a brief, piercing, and unnatural sound, likely a digital glitch or a synthetic overlay. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The rest of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.1] seconds in the frequency range of [6000-7000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [2.5-3.0] seconds in the [4000-6000] Hz range, though this is less consistent with the observed artifact. LIME supports the [1.9-2.0] seconds region, aligning closely with the wav2vec IG result. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which are sensitive to sudden changes in the audio signal. The cross-model agreement between wav2vec and LIME, along with the Shapley value analysis, confirms the presence of an acoustic anomaly at [2.0-2.1] seconds in the [6000-7000] Hz range.

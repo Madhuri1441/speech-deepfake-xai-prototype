@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.7-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a female voice speaking the phrase, "the proof of the link is missing." The voice is clear, with a neutral, declarative tone, and is recorded in a quiet, acoustically dry environment. There are no signs of emotional inflection, background speech, or environmental sounds. The audio ends abruptly after the spoken phrase, with no fade-out or trailing noise.
+
+A notable acoustic anomaly occurs between 0.7 and 1.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact is not part of the natural speech and is characterized by a sharp, piercing timbre in the 2500–3000 Hz range, consistent with a digital glitch or post-processing error. The artifact is brief and does not overlap with the speech, suggesting it is an isolated event rather than a continuous issue.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.7-1.0] seconds and frequency range [2500-3000] Hz using Integrated Gradients (IG), and also highlights a separate region [1.4-1.6] seconds with frequencies [5000-7000] Hz using Saliency. LIME, however, points to a very early time region [0.0-0.1] seconds, which does not align with the observed artifact. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The wav2vec IG result is the only one that matches the observed high-frequency artifact in the audio, and this is the only cross-model agreement. The wav2vec Saliency result is not supported by the audio evidence, as no such artifact is present in the 5000–7000 Hz range. The SHAP values indicate that the StddevUnvoicedSegmentLength is the most influential feature, but this does not directly correspond to the observed artifact.

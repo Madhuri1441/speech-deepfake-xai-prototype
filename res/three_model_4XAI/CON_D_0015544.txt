@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Brother, no doubt in my mind about that." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 0.9–1.1 seconds, a sharp, high-frequency transient artifact is present, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–6000 Hz range, which is acoustically distinct from the voice and does not match any natural speech or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.9-1.1] seconds, [5000-6000] Hz). The LIME method also supports this region, albeit with a slightly different time window ([0.1-0.2] seconds), which may reflect a different approach to feature attribution but still aligns with the presence of an anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are sensitive to sudden changes in sound energy and spectral content. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, supported by LIME and Shapley values.

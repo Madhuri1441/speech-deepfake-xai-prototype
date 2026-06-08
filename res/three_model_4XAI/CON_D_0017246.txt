@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint rustling sound, likely from clothing or handling the recording device, followed by a male voice speaking in a neutral, slightly muffled tone: "thought it'd be the timetable for withdrawal." The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, at approximately 1.0–1.5 seconds, a distinct high-frequency artifact emerges, characterized by a sharp, metallic, and unnatural timbre in the 6000–7000 Hz range. This artifact is not present in the original speech and appears abruptly, suggesting a digital or synthetic origin. The artifact persists briefly before fading out, after which the speech resumes without further distortion. No other acoustic anomalies are present, and the remainder of the audio is free from noise, clipping, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time window and 6000–7000 Hz frequency range, while LIME corroborates the time region with a single point at 1.5–1.6 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from `equivalentSoundLevel_dBp`, `spectralFlux_sma3_amean`, and `F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope`, suggesting a sudden change in spectral content and energy. The cross-model agreement from wav2vec confirms the artifact’s presence, while the lack of evidence from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

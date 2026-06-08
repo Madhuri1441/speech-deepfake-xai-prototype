@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It was the very last pr—" before being abruptly cut off mid-word. Immediately following this, a loud, sustained, high-frequency electronic tone appears, dominating the frequency range of 4000–6000 Hz and persisting until the end of the clip. This tone is acoustically distinct from the speech, lacking any natural speech characteristics and instead resembling a synthetic or digitally generated artifact. The sudden onset and unnatural timbre of the tone, coupled with the abrupt truncation of speech, suggest a technical malfunction or digital corruption rather than intentional content. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–2.0 second time region and 4000–6000 Hz frequency range, while LIME corroborates the time region (1.5–2.0 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2V_sma3nz_amean, which are associated with the presence of the electronic tone, further supporting the conclusion that the abnormality is a synthetic artifact. The agreement among wav2vec’s methods confirms the region as the most likely source of the anomaly, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, close-mic’d female voice saying "pot" in a neutral, conversational tone. Immediately following, a second female voice, slightly more distant and reverberant, says, "I just want to have a look at the others." The speech is natural and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not part of the speech and does not match the acoustic environment of the room, suggesting it is an artificial insertion. The artifact is most prominent in the 4000–6000 Hz range, consistent with a digital or electronic sound, and is not present in the original speech or background. No other acoustic anomalies are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.5–2.0 second region as abnormal, with a frequency focus between 4000–6000 Hz, which aligns with the observed synthetic artifact. The saliency method from wav2vec also highlights a region at 4.5–5 seconds, but this does not correspond to any clear acoustic anomaly and may be spurious. The LIME method from wav2vec points to 3.5–4 seconds, which is also not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the slopeUV0-500_sma3nz_amean feature is most influential, but this is a high-level acoustic feature and does not directly pinpoint the artifact. Overall, the wav2vec model’s IG method provides the most consistent and supported evidence for the abnormality, with no cross-model agreement.

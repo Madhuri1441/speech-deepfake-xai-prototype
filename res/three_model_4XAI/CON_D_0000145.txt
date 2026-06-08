@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the rest of the audio. The artifact is not present in the original speech or background noise, and its abrupt onset and unnatural timbre suggest it is an artificial insertion rather than a genuine environmental sound. The remainder of the audio consists of a female voice speaking in a neutral, slightly robotic tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.5-1.0] seconds, [6000-7000] Hz], indicating strong cross-model agreement. The LIME explanation from wav2vec also supports this region, though with less precision. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP values, while not directly indicating the artifact, highlight features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which may reflect the presence of the artifact but do not localize it. Overall, the wav2vec model’s IG and Saliency results provide the most robust and consistent evidence for the abnormality.

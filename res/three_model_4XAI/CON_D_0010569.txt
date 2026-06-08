@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We have a equation to..." in a neutral, conversational tone. At approximately 1.5 seconds, a sharp, high-frequency, synthetic sound abruptly interrupts the speech. This sound is characterized by a piercing, static-like timbre, with energy concentrated between 4000–6000 Hz, and lasts until about 2.5 seconds. The synthetic sound is acoustically distinct from the natural speech, lacking any organic vocal qualities, and is likely an artifact of digital manipulation or a deepfake overlay. The speech resumes after the interruption, but the unnatural transition and the presence of the synthetic sound suggest tampering. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.5] seconds time range and [4000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also supports the [0.9-1.1] seconds region, but this is less consistent with the observed synthetic sound. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may relate to the synthetic sound’s characteristics, but these are not directly tied to the observed anomaly. The wav2vec model’s consistent identification of the synthetic sound region across multiple methods provides strong evidence for the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detectable by all models.

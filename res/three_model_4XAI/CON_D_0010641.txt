@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice speaking in a conversational tone. At approximately 1.0–1.2 seconds, the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, which is acoustically inconsistent with the rest of the speech. This segment is marked by a noticeable increase in high-frequency content, particularly in the 4000–6000 Hz range, and the voice sounds strained and digitally altered, suggesting a possible deepfake or voice synthesis artifact. The anomaly is brief and localized, after which the audio returns to normal speech. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the 1.0–1.2 seconds time region and 4000–6000 Hz frequency region as the most salient, aligning with the observed pitch shift and harshness in the audio. The wav2vec IG method also highlights a nearby time region (1.5–2.0 seconds) and a different frequency range (6000–7000 Hz), but this is less consistent with the main acoustic anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is the only one detecting the anomaly. The Shap values further support the presence of an abnormality, with the StddevUnvoicedSegmentLength feature showing a high SHAP value, suggesting a deviation in the acoustic structure of the speech. Overall, the wav2vec Saliency method provides the most consistent and cross-validated evidence for the anomaly.

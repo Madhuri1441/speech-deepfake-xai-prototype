@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "This is... it is not to deal with all age literature." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a brief, unnatural sound event occurs. This event is a high-frequency, synthetic-sounding artifact, lasting about 0.5 seconds, and is most prominent in the 3000–6000 Hz range. The artifact is not a natural part of the speech or environment and does not correspond to any expected vocal or environmental sound. It is likely a digital artifact, possibly introduced during audio processing or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Saliency. LIME also supports the abnormality at [2.3-2.4] seconds, though this is slightly later than the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the loudness_sma3_meanFallingSlope and StddevUnvoicedSegmentLength features are most influential, suggesting that the artifact affects the overall loudness and segment length characteristics of the audio. The wav2vec model’s IG and Saliency results provide strong, cross-model agreement on the abnormality’s location and frequency range, while LIME’s evidence is less precise but still consistent with the audio observation.

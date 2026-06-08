@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a male voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. The acoustic environment is quiet, with no background noise or reverberation, suggesting a controlled recording setting. At approximately 0.8–1.2 seconds, a subtle but distinct high-frequency artifact emerges, characterized by a brief, sharp, and unnatural sound that does not match the natural timbre of the voice or any expected environmental noise. This artifact is most prominent in the 3000–6000 Hz range, consistent with a digital glitch or compression artifact. The remainder of the audio returns to normal speech and background silence, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.8–1.2 second time range and 3000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the 2.0–2.5 second range, though this is not clearly visible in the audio. The LIME explanation for wav2vec is limited to the 0.0–0.1 second range, which does not correspond to any observable anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0 as key features, but these do not directly pinpoint the artifact’s location. Overall, the wav2vec model’s IG explanation is the most reliable indicator of the anomaly, supported by the Saliency method, while other models and features do not provide corroborating evidence.

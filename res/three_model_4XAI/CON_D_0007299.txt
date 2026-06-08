@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotonous, robotic delivery, lacking natural intonation and breath. The most prominent acoustic anomaly occurs between 2.5 and 3.0 seconds, where a high-frequency, metallic, and artificial timbre is present, likely due to a digital artifact or overtone. This is supported by the wav2vec model's Integrated Gradients (IG) analysis, which highlights this time-frequency region as a key contributor to the model's prediction of a deepfake. The wav2vec saliency analysis also points to a related region (3.5-4.0 seconds, 2000-3000 Hz), reinforcing the presence of unnatural acoustic features. The LIME analysis for wav2vec identifies an earlier region (0.0-0.5 seconds), but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide supporting evidence, and the SHAP values indicate that the deepfake classification is driven by features such as unvoiced segment length and F0 statistics, which are consistent with synthetic speech but do not pinpoint specific time-frequency regions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and saliency analyses both identify the 2.5-3.0 second, 4000-6000 Hz region as a key anomaly, providing cross-model agreement for this specific time-frequency segment. The wav2vec LIME analysis supports an earlier region, but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide supporting evidence, and the SHAP values indicate general features of synthetic speech but do not pinpoint specific regions.

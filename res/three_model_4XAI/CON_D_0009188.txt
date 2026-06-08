@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.1 seconds, a brief, high-frequency transient is audible, lasting about 0.1 seconds. This transient is characterized by a sharp, metallic or digital artifact, with energy concentrated between 4000 and 5000 Hz. The sound is abrupt and unnatural, lacking the gradual onset or decay typical of real-world events, and does not correspond to any speech or environmental sound. This transient is not present in the original audio but is introduced by the deepfake model, as indicated by the XAI evidence. The rest of the audio, including the spoken phrase "The last sighting drawer for us," is clear and natural, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the same time and frequency region ([0.5-1.0] seconds, [4000-6000] Hz) as contributing to the model's prediction, with Saliency providing a more precise localization ([0.1-0.2] seconds, [4000-5000] Hz). The LIME explanation from wav2vec also supports this region, though it is less precise. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model's interpretation. The Shapley values further support the importance of high-frequency content, with the top feature "equivalentSoundLevel_dBp" showing a large positive contribution, suggesting that the model is sensitive to the presence of this transient. The cross-model agreement between wav2vec's IG, Saliency, and LIME methods confirms the presence of an artificial high-frequency artifact in the audio, likely introduced by the deepfake process.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the sentence: "I'm delighted with about the result and the performance said Evans." The speech is generally intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable, unnatural break in the word "about." The syllable "a-" is pronounced with a normal pitch and timbre, but the following "-bout" is abruptly truncated, replaced by a synthetic, high-frequency, buzzing artifact in the 6000–7000 Hz range. This artifact is not present in the original speech and is acoustically inconsistent with the rest of the audio, suggesting a digital splice or editing error. The remainder of the audio is free from such anomalies, and the speaker’s voice remains stable and clear.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.0–2.0 second region, with IG and Saliency further specifying the 6000–7000 Hz frequency range. The wav2vec model’s SHAP analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are consistent with abrupt changes in speech and spectral content, further supporting the presence of an unnatural break. In contrast, the Hubert and WavLM models do not detect any abnormalities, as their IG, Saliency, and LIME methods return no evidence. The wav2vec model’s multiple, consistent findings across different XAI techniques provide strong support for the observed audio anomaly, while the lack of evidence from Hubert and WavLM suggests the anomaly is subtle or specific to certain model architectures.

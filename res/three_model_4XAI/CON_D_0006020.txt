@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "to be given back the mud." The speech is clear and natural, with no obvious signs of tampering or distortion. However, at approximately 0.6 seconds, a subtle but noticeable change occurs in the acoustic profile. The voice becomes slightly muffled, and a faint, high-frequency hiss emerges, most prominent between 3000-5000 Hz. This hiss is not present in the initial portion of the audio and is not part of the original speech. The change is abrupt and localized, suggesting an artificial insertion or modification of the audio signal. The voice itself does not exhibit any pitch or timbre changes, ruling out vocal manipulation. The hiss is consistent with digital noise or compression artifacts, which may indicate post-processing or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The wav2vec model identifies the region [0.6-1.0] seconds and [3000-5000] Hz as significant through Integrated Gradients (IG), while LIME also highlights the same time range. Saliency analysis from wav2vec further supports the presence of an anomaly in this region. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values indicate that features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength are altered, suggesting a change in the acoustic environment or signal quality. Overall, the evidence from wav2vec models provides strong, cross-model agreement on the abnormality, while other models do not contradict this finding.

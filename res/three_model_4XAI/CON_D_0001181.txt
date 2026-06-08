@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.8 seconds, a brief, high-pitched, synthetic-sounding electronic tone appears, lasting until about 1.2 seconds. This tone is sharply defined, with a clear onset and offset, and is centered in the mid-frequency range (1500–3000 Hz), standing out against the otherwise quiet background. The tone is not a natural sound and does not resemble any typical environmental or human-generated audio artifact. There are no other notable acoustic events or anomalies in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.8-1.2] seconds and frequency range [1500-3000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a similar time range [0.5-0.6] seconds with overlapping frequency content. LIME further supports the presence of an anomaly at [1.2, 1.3] seconds, which is adjacent to the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly identifying the time or frequency range, suggest that the abnormality is likely related to the equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and mfcc3V_sma3nz_amean features, which are associated with the presence of a sudden, high-frequency event. The cross-model agreement between wav2vec and LIME, along with the Saliency method, strongly supports the presence of an abnormal acoustic event in the specified time and frequency range.

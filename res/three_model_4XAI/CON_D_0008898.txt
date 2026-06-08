@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, steady, and neutral tone, delivering a continuous sentence in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic anomaly occurs between 3.5 and 4.0 seconds, where a sharp, high-frequency transient is present in the 6000–7000 Hz range. This transient is brief, distinct, and does not match the natural speech rhythm or prosody, suggesting it is an artificial insertion rather than a natural vocal or environmental sound. The rest of the audio is acoustically stable and consistent with a clean studio recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [3.5-4.0] seconds time region and [6000-7000] Hz frequency region as the most salient, indicating this segment is critical for the model’s prediction. The Saliency method from wav2vec also highlights the [0-1] seconds region, but this is less relevant to the anomaly. The LIME method from wav2vec supports the [3.0-3.5] seconds region, which overlaps with the anomaly region, further strengthening the evidence. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean do not directly point to the anomaly but reflect general acoustic properties of the audio. Overall, the anomaly is supported by multiple wav2vec methods, with cross-model agreement limited to wav2vec alone.

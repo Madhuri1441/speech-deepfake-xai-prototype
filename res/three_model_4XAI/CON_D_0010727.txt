@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "Sunday's, but he is not, and he is indeed." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a subtle but distinct anomaly emerges: a brief, high-frequency, synthetic-sounding artifact overlays the speech. This artifact is most prominent between 1.0 and 1.5 seconds and is centered in the 2000–4000 Hz range, which is typical for mid-to-high frequency digital artifacts. The artifact is not a natural part of the voice or environment and does not correspond to any expected acoustic event. It is likely a result of digital processing or tampering, such as compression, resampling, or model-generated artifacts. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-1.5] seconds time region and [2000-4000] Hz frequency region as salient for its prediction, as shown by both Integrated Gradients (IG) and Saliency methods. These findings are consistent and cross-model, indicating a strong agreement that this region contains an anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or that their explanations are less sensitive to this type of artifact. The Shapley values indicate that features related to unvoiced segment length and sound level are significant, but these do not directly correspond to the observed artifact and are not supported by XAI evidence. Overall, the wav2vec model's consistent identification of the artifact region is the most reliable indicator of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent saying, "club brought new life to the club." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [1.5–2.0] seconds, coinciding with the word "club." This region exhibits a slight unnaturalness in spectral texture, possibly due to a synthetic or manipulated segment. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the [1.5–2.0] seconds interval is supported by the Integrated Gradients (IG) method from the wav2vec model, which highlights this region as salient. The LIME method from wav2vec also identifies a closely overlapping interval ([1.8–2.0] seconds), reinforcing the suspicion. The wav2vec model’s Saliency method, however, points to an earlier interval ([0.5–1.0] seconds), which does not align with the observed acoustic feature. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, suggesting that the anomaly is related to the overall loudness or energy in the high-frequency band. Overall, the evidence from wav2vec’s IG and LIME methods, both pointing to the same time and frequency range, provides strong cross-model support for the identified abnormality.

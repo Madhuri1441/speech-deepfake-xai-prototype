@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "to be launched contrary," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.75 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.25 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 3000–4000 Hz, which is inconsistent with the natural frequency content of the voice. The artifact is abrupt and does not blend with the speech, suggesting a digital glitch or editing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.75-1.25] seconds, [3000-4000] Hz), indicating strong cross-model agreement. The LIME method from wav2vec also identifies a brief region ([0.0-0.1] seconds), but this is not supported by other XAI methods and is likely a minor, less significant artifact. The Hubert and WavLM models do not provide any salient regions, suggesting they did not detect the anomaly or were less sensitive to it. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the artifact, but these do not specify a time or frequency range. Overall, the wav2vec IG and Saliency results provide the most robust and consistent evidence for the identified abnormality.

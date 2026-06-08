@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "positive response code" in a neutral, clear tone, with no background noise or environmental sounds. The speech is abruptly cut off mid-word, with no natural fade or trailing silence, and is immediately replaced by a loud, synthetic, high-frequency electronic tone. This tone is centered around 6500 Hz and persists for about 0.4 seconds, ending sharply with no decay. The sudden onset and unnatural cutoff of the tone, as well as its artificial timbre, suggest it is not a naturally occurring sound but rather a digital artifact or alert signal. The transition from speech to tone is jarring and lacks any acoustic continuity, indicating a possible post-production edit or system-generated alert. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.8–1.2 second time region and 6000–7000 Hz frequency region using Integrated Gradients (IG), which is supported by the LIME explanation for the same time region (1.4–1.5 seconds), though slightly offset. The saliency method for wav2vec also identifies a different region (0.1–0.2 seconds, 1000–2000 Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as logRelF0-H1-H2_sma3nz_stddevNorm, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, which may relate to the unnatural transition and abrupt tone, but these are not directly mapped to the abnormal time or frequency regions. The cross-model agreement between wav2vec’s IG and LIME supports the conclusion that the abnormality is localized in the 0.8–1.2 second, 6000–7000 Hz region.

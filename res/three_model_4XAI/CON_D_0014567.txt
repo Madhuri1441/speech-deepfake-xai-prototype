@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "the industry will...". At approximately 1.0 seconds, the voice abruptly shifts to a synthetic, robotic-sounding male voice, which says, "Charles Ghetto for it." This transition is marked by a sudden change in timbre, pitch, and resonance, with the synthetic voice exhibiting a distinctly artificial, monotone quality and lacking the natural vocal inflections of the initial speaker. The synthetic voice is accompanied by a high-frequency, digital artifact in the 4000–8000 Hz range, which is not present in the original voice. This artifact is consistent with a deepfake or voice-cloning attack, where the synthetic voice is generated using a model that introduces digital noise and unnatural frequency content. The abruptness of the transition and the unnatural acoustic properties of the second voice segment are clear indicators of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [1.0-2.5] seconds time range and [4000-8000] Hz frequency range as abnormal, aligning with the observed synthetic voice and digital artifact. The IG method from wav2vec also highlights the [0.5-1.0] seconds transition period, further supporting the presence of an anomaly at the voice switch. However, the Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_stddevFallingSlope further reinforce the presence of an unnatural acoustic event, particularly in the transition region. Overall, the wav2vec model’s Saliency and IG methods provide cross-model agreement on the abnormality, while the Shap values corroborate the anomaly’s acoustic nature.

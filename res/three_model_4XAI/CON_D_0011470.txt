@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, intelligible female voice speaking in a neutral, conversational tone. However, at the very start (0-1 seconds), there is a noticeable, abrupt change in the acoustic environment. The voice exhibits a sudden shift in reverberation and frequency content, suggesting a digital splice or editing artifact. This is supported by the wav2vec model’s Integrated Gradients (IG) and Saliency analyses, which both highlight the 0-1 second region with a frequency range of 2000-7000 Hz as highly salient. The voice in this segment sounds more reverberant and slightly muffled compared to the rest of the clip, indicating a mismatch in the recording environment. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the 0-1 second region as anomalous, with overlapping frequency ranges (2000-7000 Hz). The LIME method from wav2vec also supports this, though with a slightly different time window (5.0-6.0 seconds), which may correspond to a secondary anomaly or be less reliable. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating no cross-model agreement for other regions. The Shapley values do not directly indicate the anomaly but provide context on the audio’s acoustic features. Overall, the strongest evidence for the anomaly comes from wav2vec’s multiple methods, indicating a high confidence in the 0-1 second region as the primary abnormality.

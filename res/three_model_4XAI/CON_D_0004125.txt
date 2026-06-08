@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "When do you do this stuff?" The speech is delivered in a standard, unaccented English tone, with a natural cadence and no signs of emotional distress or artificiality. However, at approximately 0.6 seconds into the clip, a sudden, high-frequency, synthetic tone emerges and persists until about 1.2 seconds. This tone is sharply defined, with a frequency content between 5000 Hz and 7000 Hz, and is acoustically distinct from the voice, lacking any natural speech harmonics or modulation. The tone is abrupt in onset and offset, with no fade-in or fade-out, and its spectral profile is consistent with a digitally generated artifact rather than a natural sound. There are no other audible anomalies, such as clipping, distortion, or background noise, and the voice remains unaffected by the synthetic tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the time interval [0.6-1.2] seconds and the frequency range [5000-7000] Hz. LIME also supports this region, focusing on the narrow interval [0.9-1.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a synthetic tone during the specified interval. The cross-model agreement between wav2vec’s IG, Saliency, and LIME confirms the region of interest, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not universally detected by all models.

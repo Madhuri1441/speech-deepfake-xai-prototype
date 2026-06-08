@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a brief exchange between two male speakers in a quiet, acoustically dry environment, with no background noise or environmental cues. The first speaker says, "was a lawyer," and the second responds, "He was. Blood samples for courtroom, well." The second speaker's voice is notably higher in pitch and thinner in timbre compared to the first, and the delivery is slightly unnatural, with a subtle, artificial reverb and a lack of natural vocal warmth. At approximately 1.5–2.0 seconds, the second speaker's voice exhibits a sudden, unnatural pitch shift and a brief, metallic resonance, which is acoustically inconsistent with the rest of the recording. This anomaly is most prominent in the 4000–6000 Hz frequency range, where the voice becomes harsh and thin, and the reverberation is abruptly truncated. These acoustic features suggest a digital artifact, likely caused by a deepfake or voice synthesis process, rather than a natural vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second region, with a frequency focus of 4000–6000 Hz, supported by both Integrated Gradients and Saliency methods. The LIME method from wav2vec also points to a slightly broader region (1.0–1.5 seconds), overlapping with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the observed pitch and timbre changes. The cross-model agreement from wav2vec (IG, Saliency, and LIME) strongly supports the presence of an artificial voice artifact in the specified time and frequency range.

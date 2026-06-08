@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and lacks any overt signs of emotional distress or unusual prosody. However, a subtle but noticeable acoustic anomaly is present in the frequency range of 6000–8000 Hz during the time interval of 2.0–2.5 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor artifact or digital processing artifact, though it does not significantly affect speech intelligibility. The anomaly is not accompanied by any obvious background noise, distortion, or clipping, and the rest of the audio remains natural and consistent.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the same time and frequency region ([2.0-2.5] seconds, [6000-8000] Hz) as the most salient for its prediction, indicating a strong cross-model agreement on this region. The LIME explanation from wav2vec also supports this, though it is less precise, identifying a broader time interval ([0.7-0.8] seconds) that does not overlap with the main anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not strongly captured by these models. The Shapley values from the audio features further support the importance of the 6000–8000 Hz range, with features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean showing high SHAP values, reinforcing the significance of this frequency band. Overall, the wav2vec model’s multiple XAI methods consistently point to the same region, making it the most reliable indicator of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 2.5–3 seconds, there is a noticeable shift in the acoustic texture. During this interval, the speech becomes muffled and less intelligible, with a marked reduction in high-frequency content, resulting in a “duller” or “thinner” timbre. This is accompanied by a subtle, unnatural pitch shift and a slight increase in background noise, suggesting a possible digital artifact or manipulation. The speech resumes clarity after this interval, indicating a localized anomaly rather than a continuous issue. This region is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both highlight the 2.5–3 second window and the 4000–6000 Hz frequency band, indicating that these features are critical for the model’s classification of the audio as a deepfake. LIME also points to this region, though with a narrower focus (2.0–2.1 seconds), reinforcing the suspicion of an anomaly in this time frame. No other XAI methods provide supporting evidence for this region.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 2.5–3 seconds and 4000–6000 Hz is supported by Integrated Gradients, Saliency, and LIME, all of which independently identify this region as significant for the model’s decision. This cross-model agreement strengthens the case for a genuine acoustic abnormality in this interval. The wav2vec model is the only one to provide such consistent evidence, while Hubert and WavLM do not highlight this region, indicating that the anomaly is more salient to wav2vec’s feature extraction process.

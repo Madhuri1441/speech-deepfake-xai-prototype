@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "The letters are going up." Immediately following this phrase, at approximately 1.0 seconds, a sharp, high-frequency transient is audible. This transient is characterized by a brief, piercing, and unnatural sound, lasting about 0.25 seconds, and is centered in the 3000–6000 Hz frequency range. The sound is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context, and appears abruptly without a fade-in or fade-out. This suggests an artificial insertion or manipulation, likely intended to mask, obscure, or alter the original audio content. The transient is not present in the original speech and does not correspond to any natural event or background noise, indicating a deliberate edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both highlight the 1.0–1.25 seconds time region and 3000–6000 Hz frequency range, while LIME corroborates the time region with a narrower focus at 1.00–1.05 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are associated with the high-frequency transient. This cross-model agreement from wav2vec confirms the presence of an artificial insertion in the audio at the specified time and frequency range.

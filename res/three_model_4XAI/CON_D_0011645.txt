@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, with clear and intelligible speech. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-studio environment. At approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content concentrated between 4000 Hz and 6000 Hz. The artifact is not present in the original speech and does not match any natural acoustic event, indicating a digital or post-processing anomaly. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method also points to a related region (2.5–3.0 seconds, 1000–4000 Hz), though this is less consistent. LIME supports the anomaly in the 0.8–1.2 second range, which is adjacent but not overlapping. The Hubert and WavLM models do not provide any evidence of the anomaly, indicating that the wav2vec model is the most reliable in this case. The Shapley values further support the presence of an anomaly, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to sudden changes in loudness and spectral content. The combined evidence from wav2vec and Shapley values confirms the presence of a synthetic, high-frequency artifact in the 1.5–2.0 second range, with strong cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "found my vision," followed by a brief pause and then, "his ankles and his feet." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, the segment from 0.5 to 1.0 seconds exhibits a subtle but noticeable high-frequency artifact, with a tonal quality in the 6000–7000 Hz range that is not present in the rest of the audio. This artifact is not a natural part of the voice or environment and may indicate a digital anomaly, such as a compression artifact or a synthetic overlay. The rest of the audio is acoustically clean, with no additional anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 0.5–1.0 second time region and 6000–7000 Hz frequency region as the most salient for its prediction, indicating that this segment is critical for the model's analysis. The Saliency method from wav2vec also highlights a different region (1.0–1.2 seconds, 3000–4000 Hz), but this is not supported by other models. The LIME method from wav2vec identifies a very narrow time window (2.5–2.6 seconds), which is not corroborated by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the presence of the high-frequency artifact, but this is not directly confirmed by the XAI methods. Overall, the wav2vec IG result is the most consistent and supported by the audio evidence, while other XAI findings are either inconsistent or not corroborated by the audio.

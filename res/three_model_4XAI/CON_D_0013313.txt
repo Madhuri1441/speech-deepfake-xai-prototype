@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a male voice saying, "I've seen it only as very in-". The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately after the cutoff, a synthetic, high-pitched electronic tone appears, lasting about 0.5 seconds. This tone is stable in pitch and amplitude, with a harsh, buzzy timbre characteristic of a square or sawtooth wave, and is acoustically distinct from the preceding speech. The tone is centered in the mid-to-high frequency range (4000–8000 Hz), and its sudden onset and unnatural spectral content strongly suggest it is an artifact of digital editing or a synthetic overlay, rather than a natural sound. The abrupt transition and the presence of the electronic tone are the primary acoustic anomalies in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 2.0–2.5 second region, Saliency focuses on 1.5–2.0 seconds, and LIME singles out 1.2–1.3 seconds, all pointing to the same time window where the synthetic tone appears. These cross-model and cross-method confirmations indicate a strong consensus that the anomaly occurs between 1.5 and 2.5 seconds, with the tone’s frequency content in the 4000–8000 Hz range. The Hubert and WavLM models do not provide any evidence, likely due to their design or training focus, but the wav2vec results are robust and consistent. No other XAI evidence supports alternative regions, and the Shapley values do not directly correspond to the observed anomaly, suggesting they relate to general audio characteristics rather than the specific edit.

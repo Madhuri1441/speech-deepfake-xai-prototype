@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, steady female voice speaking in a neutral, formal tone, with no background noise or distortion. The speech is intelligible and delivered in a standard British accent, with no signs of emotional distress or artificiality. However, at the very start of the clip (0.0–0.5 seconds), there is a brief, high-frequency, synthetic-sounding artifact in the 7000–8000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. It is likely a digital glitch or an artifact introduced during audio processing or editing. The rest of the audio is acoustically clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the 0.0–0.5 seconds time region and 7000–8000 Hz frequency region as suspicious, which aligns with the observed synthetic artifact. The IG method from wav2vec also identifies a different region ([1.5–2.0] seconds, 4000–6000 Hz), but this does not correspond to any clear anomaly in the audio. The Hubert and WavLM models do not provide any salient or IG evidence, and LIME does not support any region. The Shap values do not point to any specific time or frequency region, instead highlighting global acoustic features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are not directly tied to the observed artifact. Thus, the only consistent and supported evidence for an anomaly is the wav2vec Saliency result, which matches the observed high-frequency artifact at the start of the audio.

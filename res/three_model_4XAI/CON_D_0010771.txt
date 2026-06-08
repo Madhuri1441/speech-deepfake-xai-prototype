@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice speaking in English, with a neutral accent and steady delivery. The speech is intelligible and free from distortion, with a consistent low-level background hiss. At approximately 3.5 seconds, the audio abruptly shifts: the voice becomes heavily distorted, with a metallic, warbling, and unnatural timbre, and the pitch is noticeably altered. This distortion persists until about 4.0 seconds, after which the audio returns to its original, natural state. The abruptness and unnatural quality of the distortion, especially the warbling and metallic artifacts, strongly suggest a digital manipulation or deepfake insertion. The frequency range of the abnormality (6000-8000 Hz) aligns with the high-frequency content of the distortion, which is not present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.5-4.0] seconds, [6000-8000] Hz). The IG method highlights a broader region ([2.0-3.0] seconds, [4000-6000] Hz), but the Saliency and LIME methods narrow this to the precise moment of distortion. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is uniquely sensitive to this type of manipulation. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 indicating a significant deviation in acoustic structure during the abnormal segment. This cross-model agreement from wav2vec confirms the region as the most likely site of deepfake insertion.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no immediate signs of manipulation. At approximately 2.0 seconds, the speech is abruptly interrupted by a sharp, synthetic-sounding artifact—a brief, high-frequency burst that lasts until about 2.5 seconds. This artifact is acoustically distinct from the natural speech, characterized by a piercing, static-like timbre and a frequency range of 3000–4000 Hz, which is inconsistent with the preceding and following speech. The artifact is not a natural part of the vocalization and appears to be a digital glitch or an insertion of a non-speech sound. After this event, the speech resumes without any further anomalies. The abruptness and unnatural spectral content of the artifact strongly suggest a digital manipulation or encoding error.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.0-2.5] seconds time region and [3000-4000] Hz frequency region as the most salient for its prediction, directly aligning with the observed artifact. The wav2vec Saliency method also highlights a brief event at [4.0-4.2] seconds, but this is less consistent with the main anomaly. The LIME method for wav2vec identifies a very short region at [0.0-0.1] seconds, which does not correspond to any notable acoustic event. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a disruption in the audio’s natural structure, particularly around the artifact. Overall, the wav2vec IG analysis provides the most consistent and cross-model support for the identified abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "This about to find a technique I can use it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 4000–6000 Hz, is unwavering in pitch and amplitude, and is acoustically distinct from the voice, suggesting it is an artificial overlay rather than a natural sound. The tone is not present in the original speech and does not interact with it, indicating it was likely added post-recording. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the [2.8-3.0] seconds region with a lower frequency range of [1500-2000] Hz. LIME also highlights a brief [0.5-0.6] seconds region, but this is less consistent with the observed synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a synthetic overlay. The wav2vec model’s IG and Saliency results, along with the Shap values, provide strong cross-model agreement on the [1.5-2.0] seconds, [4000-6000] Hz region as the most likely location of the synthetic tone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I intended... they should for another club a long..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 1.5 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, which remains unaffected in pitch or timbre. The buzzing is centered in the mid-to-high frequency range (2000–6000 Hz), consistent with a digital artifact or overlay. There are no other background noises, and the voice is otherwise clean, suggesting the anomaly is not environmental but rather an insertion or corruption in the audio stream.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.5-1.5] seconds, [2000-6000] Hz). The IG method highlights the region as a key contributor to the model’s prediction, while the Saliency method confirms the same interval and frequency band. The LIME method, however, only flags the very beginning of the audio ([0.0-0.1] seconds), which does not align with the buzzing artifact. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are likely affected by the synthetic buzz. Overall, the wav2vec model’s dual-method confirmation provides strong evidence for the abnormality, while other models and methods do not corroborate this finding.

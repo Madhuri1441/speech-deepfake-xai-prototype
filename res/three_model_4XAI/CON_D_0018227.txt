@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, low-pitched male voice stating, "ban regime is finished." Immediately following this, a high-frequency, synthetic, and slightly distorted electronic tone emerges, lasting from approximately 1.0 to 2.0 seconds. This tone is not naturally produced by the speaker and is acoustically distinct from the preceding speech, suggesting an artificial insertion. The tone is centered in the 5000–6000 Hz range, which is outside the typical speech frequency band, and its abrupt onset and unnatural timbre indicate it is likely a digital artifact or post-production addition. The remainder of the audio continues with the speaker’s voice, which remains clear and unaffected by the tone. There are no other obvious acoustic anomalies in the clip.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.0–2.0 second time region and the 5000–6000 Hz frequency range as salient, indicating that this segment is critical for the model’s prediction. The LIME method from wav2vec also supports this region, though with a narrower focus at 2.8–3.0 seconds, which may reflect a secondary or overlapping event. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope indicating a deviation from normal speech patterns, likely due to the inserted tone. Overall, the wav2vec model’s multiple methods agree on the abnormality, while the other models do not detect it, indicating that the anomaly is primarily identified by wav2vec.

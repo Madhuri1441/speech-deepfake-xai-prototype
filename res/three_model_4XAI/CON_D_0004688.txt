@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, intelligible sentence: "called for a greater focus on the arts and sports." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.3 and 2.5 seconds, specifically in the 6000–7000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion or editing artifact. The rest of the audio is acoustically clean and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.3-2.5] seconds, 6000–7000 Hz). The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley value analysis highlights three acoustic features—equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean—whose values are significantly higher than their original values, indicating a sudden change in acoustic properties at the identified time range. This cross-model agreement from wav2vec, supported by Shapley values, confirms the presence of an artificial or anomalous event in the audio at the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, steady tone, with clear and intelligible speech. At approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears, lasting until about 2.0 seconds. This tone is sharply distinct from the natural speech, with a harsh, electronic timbre and a frequency content in the 6000–7000 Hz range, which is not present in the rest of the audio. The buzz is abrupt in onset and offset, suggesting digital insertion rather than a natural acoustic event. The speech resumes normally after the buzz, with no perceptible change in the speaker’s voice or environment, indicating the buzz is an isolated artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed synthetic buzz. The Saliency method from wav2vec also highlights the initial speech segment, but the buzz region is uniquely and strongly supported by IG. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME explanations are minimal or absent, indicating that the buzz is primarily detected by wav2vec’s IG method. The Shapley values further support the presence of an anomalous event, with the equivalentSoundLevel_dBp value indicating a significant increase in sound level during the buzz, consistent with the synthetic tone. Overall, the buzz is confirmed by both audio observation and wav2vec’s IG explanation, with no cross-model agreement but strong single-model evidence.

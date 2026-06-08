@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, natural voice, speaking in a neutral, conversational tone. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency transient occurring between 2.0 and 2.5 seconds, specifically in the 3000–4000 Hz range. This transient is a sharp, non-vocal sound, likely a digital artifact or editing artifact, as it does not correspond to any speech or environmental sound. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 2.0–2.5 second time range and 3000–4000 Hz frequency range using Integrated Gradients (IG), and the Saliency method also supports this region, though with a slightly different time window (0.5–1.0 seconds). The LIME method from wav2vec further corroborates the anomaly at 3.1–3.2 seconds, which is close to the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley values indicate that the abnormality is not related to overall audio energy or spectral slope, but rather to a specific, localized high-frequency event. The cross-model agreement from wav2vec’s IG and Saliency methods, along with LIME’s support, strongly indicates that the transient is the primary anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "I have psychoasigned as a member of Parisian commission." The speech is delivered in a steady, monotone manner, with no emotional inflection or variation in pitch. The voice is clean and intelligible, with no background noise or environmental artifacts. However, at approximately 1.25 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic buzz overlays the voice, most prominent between 3000–4000 Hz. This buzz is not present in the initial portion of the audio and persists until about 1.75 seconds, after which the voice resumes its original, unaltered quality. The buzz is consistent with digital artifacts or tampering, such as those introduced by audio editing or deepfake generation. No other acoustic irregularities are present, and the remainder of the audio remains natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.25-1.75] seconds, [3000-4000] Hz), indicating strong cross-model agreement on the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The SHAP analysis highlights features such as loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength, which may reflect changes in the audio’s acoustic structure, but these do not directly correspond to the observed buzz. Overall, the wav2vec model’s consistent findings across multiple methods provide the strongest evidence for the anomaly, while other models and features do not corroborate this finding.

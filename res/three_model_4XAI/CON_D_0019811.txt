@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio begins with a female voice speaking in a clear, neutral tone, but the first second (0-1 seconds) exhibits noticeable acoustic anomalies. There is a persistent high-frequency hiss in the 5000-6000 Hz range, which is not present in the rest of the recording. Additionally, the voice in this segment is slightly muffled and lacks the natural resonance and clarity found in subsequent speech, suggesting possible digital compression or low-fidelity processing. The abruptness of the transition into the next segment, where the voice becomes clearer and more resonant, further supports the presence of an artificial edit or processing artifact at the 1-second mark. No other obvious anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the first second of the audio as anomalous, with Integrated Gradients (IG) highlighting the 0-1 second time range and 5000-6000 Hz frequency range, and Saliency also pointing to 0-1 seconds and 2000-4000 Hz. LIME corroborates the time range (0.0-0.1 seconds), though it does not specify frequency. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The SHAP values indicate that the equivalentSoundLevel_dBp feature is significantly elevated in the first second, supporting the presence of an abnormal acoustic event. The combination of wav2vec’s multiple XAI methods and the SHAP feature values strongly supports the conclusion that the first second is anomalous, while the lack of evidence from Hubert and WavLM suggests this is a wav2vec-specific finding.

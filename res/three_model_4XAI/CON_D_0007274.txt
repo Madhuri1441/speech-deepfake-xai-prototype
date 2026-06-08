@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Psych, typical of me," in a conversational tone. Immediately following the speech, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural and does not resemble any typical background noise or environmental sound. The transition from speech to the electronic tone is abrupt and lacks any fade or natural decay, indicating a possible digital insertion or editing artifact. The tone is monophonic, with a stable pitch and amplitude, and is acoustically distinct from the preceding speech, suggesting it was added post-recording. The frequency content of the tone falls within the 3000–6000 Hz range, which is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.5 second time range, with salient frequency content between 3000–6000 Hz, aligning with the observed electronic tone. The LIME method also supports this region, focusing on the 1.0–1.1 second window, which corresponds to the onset of the tone. The Shapley value analysis highlights acoustic features such as MeanUnvoicedSegmentLength, loudness_sma3_stddevFallingSlope, and F2bandwidth_sma3nz_amean, which are consistent with the presence of a sudden, unnatural sound event. The Hubert and WavLM models do not provide supporting evidence, but the agreement between wav2vec, LIME, and Shapley values confirms the abnormality. The evidence is cross-model, with wav2vec and LIME both pointing to the same time and frequency region, and Shapley values corroborating the acoustic nature of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "in the journal" in a neutral, conversational tone, followed by a brief pause and a low-frequency electronic hum. The recording is clean, with no background noise or distortion. The only notable acoustic feature is a short, high-frequency, synthetic-sounding artifact occurring between 0.4 and 0.6 seconds, which is not part of the natural speech or background hum. This artifact is characterized by a sharp, buzzy timbre and is most prominent in the 2000–3000 Hz frequency range. The artifact is not present in the original speech or background, suggesting it is an artificial addition. No other acoustic anomalies are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [0.4-0.6] seconds time region and [2000-3000] Hz frequency region as the most salient, directly aligning with the observed synthetic artifact. The wav2vec Saliency analysis also highlights a high-frequency region ([4000-5000] Hz) at [0.1-0.2] seconds, but this does not correspond to any clear anomaly in the audio and is likely a model-specific artifact. The wav2vec LIME analysis identifies a single time point ([1.2-1.3] seconds), which does not match any notable acoustic feature. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating no strong model support for any specific region. The SHAP analysis highlights statistical features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, but these do not directly correspond to the observed artifact. Overall, the wav2vec IG analysis provides the most consistent and accurate evidence for the synthetic artifact, with no cross-model agreement, making it the primary indicator of the anomaly.

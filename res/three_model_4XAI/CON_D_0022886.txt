@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.75-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-quality female voice saying, "and his share of the house." The speech is natural, with a standard British accent and no detectable background noise or distortion. However, at approximately 1.75 seconds, a sudden, loud, high-frequency electronic tone appears, lasting until 2.00 seconds. This tone is sharply defined, with a frequency content between 4000 and 8000 Hz, and is acoustically distinct from the preceding speech. It is not a natural part of the spoken content and does not resemble any environmental or musical sound. The tone is abrupt in onset and offset, suggesting a digital artifact or synthetic insertion rather than a natural event. The rest of the audio remains clean and unaltered, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG highlights the time-frequency region [0.25-0.5] seconds and [1000-3000] Hz, which corresponds to the speech segment, while Saliency and LIME both point to the anomalous tone at [1.75-2.00] seconds and [4000-8000] Hz. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are consistent with the sudden appearance of a high-frequency tone. The final abnormality region is thus supported by wav2vec’s multiple methods, while other models and features corroborate the presence of an artificial or synthetic sound event.

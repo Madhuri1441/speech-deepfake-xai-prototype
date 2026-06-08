@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "He is a physician." Immediately following the spoken phrase, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is acoustically distinct from the speech, with a stable pitch and amplitude, and lacks any natural variation or environmental context. The transition from speech to tone is abrupt and unnatural, suggesting an artificial insertion or overlay. The tone is centered in the 4000–6000 Hz range, which is consistent with a synthetic or digitally generated sound, and its sudden onset and lack of fade-in or fade-out further indicate post-production manipulation. No other background noises or environmental cues are present, reinforcing the impression of an artificial edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.75–1.25 second time range and 4000–6000 Hz frequency range, with additional support from the Saliency method at 1.85–2.00 seconds and 7000–8000 Hz, and LIME at 0.75–0.8 seconds. The Hubert and WavLM models do not provide supporting evidence. The Shapley values highlight high contributions from equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean, which align with the presence of the loud, sustained tone. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) consistently point to the same time and frequency region, indicating strong cross-model agreement on the abnormality. The absence of evidence from Hubert and WavLM suggests that the anomaly is not detected by all models, but the wav2vec results are robust and consistent.

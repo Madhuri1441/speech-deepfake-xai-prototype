@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "He had been a singer." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 1.5 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone in the 2000–4000 Hz range. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The remainder of the audio is free from such anomalies, with the voice continuing normally after the artifact ceases.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time interval ([1.0-1.5] seconds) and frequency range ([2000-4000] Hz], providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, but their lack of evidence does not contradict the wav2vec findings. The SHAP analysis supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are indicative of sudden, unnatural changes in the audio signal. The combined evidence from multiple XAI methods confirms the presence of a synthetic artifact in the specified time and frequency range.

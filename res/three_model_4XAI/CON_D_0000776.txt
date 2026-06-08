@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation or artificiality. However, at approximately 1.2 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic timbre, with a frequency content concentrated between 3000–3500 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio but is introduced during the recording or post-processing, as evidenced by its abrupt onset and unnatural spectral profile. This anomaly is not masked by the speech and is clearly audible, suggesting a possible digital glitch or editing artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.2-1.4] seconds, [3000-3500] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant evidence. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a sudden increase in sound energy at the identified time and frequency. This cross-model and cross-method agreement confirms the artifact as a genuine anomaly in the audio.

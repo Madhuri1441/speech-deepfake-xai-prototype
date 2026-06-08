@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "That was a sick man. The world's..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding tone emerges and persists until about 1.5 seconds. This tone is not part of the natural speech and is acoustically anomalous, as it does not correspond to any expected vocal or environmental sound. The tone is centered in the 3000–4000 Hz frequency range, which is consistent with the region identified by the wav2vec Integrated Gradients (IG) explanation. The tone is abrupt in onset and offset, suggesting it may be artificially inserted or digitally generated, rather than naturally occurring. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG explanation identifies the 1.0–1.5 second time region and 3000–4000 Hz frequency region as significant, which aligns with the observed synthetic tone. The wav2vec Saliency and LIME explanations point to different time regions (2.4–2.6 seconds and 1.8–2.0 seconds, respectively), which do not correspond to any clear acoustic anomaly and are likely artifacts of the model’s analysis. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, as their explanations are all null. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, which is consistent with the presence of the synthetic tone, as it would increase the overall sound level. The other Shapley features (StddevUnvoicedSegmentLength and loudness_sma3_stddevFallingSlope) do not directly relate to the observed anomaly. The wav2vec IG explanation is the only one that supports the identified abnormality, and there is no cross-model agreement.

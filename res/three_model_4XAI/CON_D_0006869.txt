@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "We have balance right." The speech is followed by a brief pause, after which the speaker continues with, "Think contempt." The voice is steady, with a neutral tone and no signs of emotional distress or artificiality. However, at approximately 2.5 seconds, a high-frequency, synthetic tone abruptly appears and persists until the end of the clip. This tone is centered around 6500 Hz and is markedly different from the preceding speech in both timbre and loudness, suggesting an artificial or digitally inserted sound. The tone is not modulated and remains constant, indicating it is likely a test tone, error signal, or artifact rather than a natural part of the recording. There are no other background noises, environmental sounds, or signs of human interaction during the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.5-3.0] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method pointing to the same time range but a slightly lower frequency band ([1000-2000] Hz). LIME also supports the abnormality at [3.0, 3.1] seconds, though it does not specify frequency. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc2V_sma3nz_amean, which may relate to the presence of the synthetic tone, but these do not directly pinpoint the abnormality in time or frequency. Overall, the wav2vec model's IG and Saliency, along with LIME, provide cross-model agreement on the presence of the synthetic tone, while Hubert and WavLM do not detect it.

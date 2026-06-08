@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "That rugby is a wonderful thing." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 1.00 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until 1.25 seconds. This artifact is characterized by a piercing, static-like tone in the 3000–6000 Hz range, which is acoustically distinct from the natural speech and does not match any expected background noise or environmental sound. The artifact is abrupt in onset and offset, suggesting digital manipulation or a synthetic overlay rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.00-1.25] seconds time region and [3000-6000] Hz frequency region as significant, aligning with the observed synthetic artifact. The wav2vec Saliency method also highlights a related region ([1.75-2.00] seconds, [4000-6000] Hz), which may correspond to a secondary or residual artifact, though this is less clear. The wav2vec LIME method identifies a very early time region ([0.0-0.1] seconds), which does not correspond to any observable anomaly. The Hubert and WavLM models do not provide any supporting evidence for the artifact, as their IG, Saliency, and LIME methods return no significant regions. The Shap values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the anomaly is related to a sudden change in the acoustic properties of the audio, likely due to the synthetic overlay. Overall, the wav2vec IG evidence is the most consistent and directly supports the observed artifact, while other XAI methods either do not support it or provide less clear evidence.

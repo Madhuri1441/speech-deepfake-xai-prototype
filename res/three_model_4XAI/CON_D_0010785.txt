@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a Scottish accent, delivering a short, emotionally charged statement: "I'm just sorry the gate not get a Scottish for their effort club." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but notable acoustic anomaly occurs between 2.5 and 3 seconds, where the speaker utters the word "gate." During this interval, the audio exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, specifically in the 4000–6000 Hz range. This is accompanied by a minor distortion or artifact, which is not present in the rest of the clip. The anomaly is not immediately obvious to a casual listener but is perceptible upon close inspection. The rest of the audio remains natural and free from such artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG) and LIME, while Saliency analysis highlights a different region ([0-1] seconds, [2000-4000] Hz) that does not align with the observed anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shap values for slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and mfcc2V_sma3nz_amean do not directly correspond to the observed anomaly, suggesting that these features are not strongly associated with the specific acoustic irregularity. The wav2vec model's IG and LIME results are the most consistent and directly support the identified abnormality, indicating cross-model agreement for this specific region.

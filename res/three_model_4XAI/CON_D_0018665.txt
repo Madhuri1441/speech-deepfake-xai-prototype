@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched, synthetic-sounding female voice with a monotone delivery, stating, "Guests of the Northern Ireland said his kids would die." The speech is unnaturally smooth and lacks the typical cadence, breath, and micro-pauses of a human speaker. At approximately 1.5–2.0 seconds, there is a subtle but noticeable pitch and timbre shift, coinciding with the word "Northern." This moment is acoustically anomalous, as the voice exhibits a slight digital artifact or unnatural modulation, deviating from the otherwise consistent synthetic quality. The frequency region [3000-4000] Hz is particularly affected, suggesting a possible artifact from the text-to-speech synthesis process. No other acoustic anomalies are present, and the background is silent, indicating a controlled recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.5-2.0] seconds with a frequency range of [3000-4000] Hz using Integrated Gradients (IG), and LIME also highlights a specific time point (2.3–2.4 seconds) within this interval. The wav2vec Saliency method further supports the presence of an anomaly in the earlier part of the audio ([0.0-0.5] seconds), though this is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values suggest that features related to unvoiced segment length and sound level are present, but these do not directly correspond to the observed acoustic anomaly. Overall, the wav2vec model’s IG and LIME evidence, both pointing to the same time and frequency region, provide the strongest support for the identified anomaly.

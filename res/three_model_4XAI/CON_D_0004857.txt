@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. The main content is a single male voice, speaking in a neutral, conversational tone with a clear, standard British accent. The speaker says, "with Aston Villa, where we go for all teams." The speech is clear and intelligible, with no signs of emotional distress, hesitation, or unnatural delivery. There are no additional voices, music, or environmental sounds present.
+
+The only notable acoustic anomaly occurs between 0.5 and 1.0 seconds, where a brief, high-frequency artifact is present. This artifact manifests as a sharp, transient sound in the 3000–4000 Hz range, which is not part of the natural speech signal. The artifact is short-lived and does not affect the intelligibility of the speech, but it stands out as an unnatural addition to the otherwise clean audio. No other acoustic irregularities, such as clipping, distortion, or abrupt volume changes, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second range, specifically in the 3000–4000 Hz frequency band, using Integrated Gradients (IG). This is corroborated by the wav2vec Saliency method, which highlights the 1.0–2.0 second range, overlapping with the IG result. The LIME explanation for wav2vec is less specific, pointing to a very short interval (0.0–0.1 seconds), which does not align with the main anomaly. The Hubert and WavLM models do not provide any explanations, indicating that they did not detect the anomaly or were unable to localize it. The SHAP analysis does not directly reference the artifact but instead highlights acoustic features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean, which are unrelated to the observed artifact. Therefore, the primary evidence for the anomaly comes from wav2vec’s IG and Saliency methods, with no cross-model agreement from Hubert or WavLM.

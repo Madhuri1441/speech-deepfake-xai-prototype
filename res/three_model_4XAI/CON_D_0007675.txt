@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "been up and continue to review the situation." The speech is clear and intelligible, with a neutral, professional tone. However, at approximately 0.5 seconds into the clip, a high-frequency, synthetic-sounding artifact emerges and persists until about 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting digital manipulation or a synthetic overlay rather than a natural event. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [0.5-1.0] seconds time region and [6000-7000] Hz frequency region as salient for the model’s prediction. This aligns with the observed synthetic artifact in the audio. The Saliency method from wav2vec also identifies a different region ([0.00-0.25] seconds, [1000-2000] Hz), but this does not correspond to any clear anomaly in the audio and is likely related to the natural speech content. The LIME explanation from wav2vec identifies a very short region ([2.00-2.10] seconds), which is not supported by the audio evidence and may be spurious. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. Overall, the cross-model agreement is limited to the wav2vec IG explanation, which is strongly supported by the acoustic evidence.

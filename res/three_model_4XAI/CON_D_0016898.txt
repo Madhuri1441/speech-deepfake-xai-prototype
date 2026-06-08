@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "The justice minister" in a neutral, formal tone. The speech is well-articulated and free of background noise, with a natural cadence and no signs of digital manipulation. However, a subtle but noticeable anomaly is present in the first 0.4 seconds of the recording. During this interval, the voice exhibits a slightly unnatural, synthetic timbre, with a thin, reedy quality and a lack of the usual warmth and breathiness of a real human voice. This is most apparent in the mid-frequency range (1000–3000 Hz), where the spectral content is less rich and the articulation is slightly too precise, suggesting possible digital processing or synthesis. The anomaly is not present in the remainder of the clip, where the voice returns to a more natural, human timbre.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.2–0.4] seconds and frequency range [1000–3000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method, while using a different time window ([1.05–1.15] seconds), still supports the presence of an anomaly in the early part of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are consistent with a synthetic or processed voice, further supporting the presence of an anomaly in the initial segment. The cross-model agreement between wav2vec’s IG and Saliency methods, along with the SHAP feature analysis, strongly supports the conclusion that the first 0.4 seconds of the audio contain a synthetic or manipulated segment.

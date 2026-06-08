@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "contribute Paul group" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 2000–4000 Hz range, which is acoustically distinct from the natural speech and likely results from a digital glitch or editing error. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. After this brief period, the audio returns to normal speech until the end of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), and also highlights a secondary region [1.85-2.0] seconds in the [1500-2000] Hz range using Saliency. LIME further supports the primary region [0.8-1.0] seconds. These multiple, independent XAI methods converge on the same time and frequency region, indicating a strong cross-model agreement on the presence of an artificial or anomalous sound event. The Hubert and WavLM models do not provide any evidence of abnormality, but their lack of findings does not contradict the wav2vec results. The SHAP values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormal acoustic event in the specified region, as these features are sensitive to sudden changes in sound energy and spectral characteristics.

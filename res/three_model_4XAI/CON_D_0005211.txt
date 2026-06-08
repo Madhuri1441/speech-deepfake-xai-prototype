@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, steady tone, with the phrase "...the head god our business of government goes on." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, most prominent in the 2000–4000 Hz range, and is not present in the rest of the recording. The artifact is not a natural part of the voice or environment and does not correspond to any spoken content or environmental sound. It is likely a byproduct of audio processing or digital manipulation, such as compression, resampling, or model-generated artifacts. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.0] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and the saliency method also supports this region at [2.5-3.0] seconds, though this is outside the main abnormality range. The wav2vec model is the only one to provide consistent evidence for this region, with no supporting evidence from the Hubert or WavLM models. The Shapley values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean contribute to the model’s prediction, but these do not directly correspond to the observed artifact. The wav2vec model’s IG and saliency results are the primary indicators of the anomaly, with no cross-model agreement.

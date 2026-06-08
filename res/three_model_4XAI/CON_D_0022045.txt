@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I hope to work with," followed by a male voice stating, "He was talking about the..." The speech is abruptly cut off mid-word, with a sharp, unnatural edit at approximately 2.5 seconds. Immediately after the cut, a loud, sustained, high-frequency electronic tone (approximately 6000–7000 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is acoustically distinct from the speech, with a harsh, synthetic timbre and no natural reverberation, indicating it was added post-production. The sudden onset and offset of the tone, along with its spectral content, suggest it is an artifact of digital editing or a deliberate insertion, rather than a natural part of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an initial LIME-based saliency at 0.4–0.5 seconds and a more prominent IG-based saliency at 1.8–2.0 seconds, both in the 6000–7000 Hz range. The Saliency method further extends the abnormality to 2.5–3.0 seconds, aligning with the onset of the electronic tone. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight high contributions from `equivalentSoundLevel_dBp`, `StddevUnvoicedSegmentLength`, and `spectralFlux_sma3_amean`, which correspond to the sudden increase in loudness and spectral energy at the point of the edit. The wav2vec model’s IG and Saliency methods, along with the Shapley values, consistently point to the 1.8–3.0 seconds region as the most suspicious, supported by both acoustic and model evidence.

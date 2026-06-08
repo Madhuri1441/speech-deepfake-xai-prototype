@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a female voice speaking in a neutral, formal tone: "The MP is under fire." The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, at approximately 1.0–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a brief, unnatural shimmer or digital ringing in the upper-mid to high-frequency range (4000–6000 Hz). This artifact is not present in the initial or final portions of the audio and does not correspond to any natural speech or environmental sound. The artifact is most prominent during the phrase "The MP is under fire," suggesting it may be related to the vocalization or a post-processing anomaly. No other acoustic irregularities, such as clipping, static, or abrupt volume changes, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region (3.0–3.5 seconds, 7000–8000 Hz), and LIME points to a very narrow window (2.3–2.4 seconds). The wav2vec IG result is the most consistent with the observed artifact in the audio. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME results are inconsistent or absent. The SHAP analysis highlights spectral features such as spectralFlux_sma3_amean, loudness_sma3_meanFallingSlope, and loudness_sma3_percentile80.0, which may reflect the presence of the artifact but do not localize it to a specific time or frequency range. Overall, the wav2vec IG result is the only one that aligns with the observed acoustic anomaly, and no cross-model agreement is present.

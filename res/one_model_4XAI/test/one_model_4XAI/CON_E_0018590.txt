@@ -1,0 +1,6 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio exhibits a noticeable acoustic anomaly in the 1.0–2.0 second range, where the speech is abruptly cut off mid-word ("continue"), resulting in a hard, unnatural edit. This is accompanied by a high-frequency artifact in the 4000–6000 Hz range, likely due to digital clipping or a synthetic overlay. The XAI evidence supports this: Integrated Gradients (IG) highlights the same time and frequency region, indicating that these features are critical to the model's classification of the audio as a deepfake. Saliency analysis further confirms the anomaly at 2.3–2.7 seconds, aligning with the end of the clipped segment. LIME analysis identifies the 0.5–1.0 second region as suspicious, corresponding to the beginning of the abrupt edit. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean reinforce the presence of unnatural acoustic features, such as sudden loudness changes and spectral irregularities, consistent with digital manipulation. No other artifacts are present, and the anomaly is confined to the described region.

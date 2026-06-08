@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard British accent, delivering a short, emotionally neutral statement in a quiet, acoustically dry environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 4.0–5.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges. This artifact is a sustained, pure tone at around 6500 Hz, with a sharp onset and offset, and is acoustically inconsistent with the preceding speech. The tone is not present in the original audio and does not correspond to any natural vocal or environmental sound, indicating a likely post-production insertion or digital artifact. This anomaly is not supported by any of the XAI saliency or LIME explanations, which focus on different time and frequency regions or do not identify any abnormality.
+
+III. XAI AGGREGATION EXPLANATION:
+The only XAI evidence pointing to an abnormality is the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [4.0-5.0] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed synthetic tone in the audio. However, the Saliency and LIME explanations from wav2vec, as well as all explanations from Hubert and WavLM models, do not support this region, either by identifying different regions or by indicating no abnormality. The Shapley values from the WavLM model also do not point to this region, instead highlighting acoustic features unrelated to the observed artifact. Thus, the abnormality is supported by only one XAI source (wav2vec IG), with no cross-model agreement.

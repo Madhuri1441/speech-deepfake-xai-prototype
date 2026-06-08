@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a mouth or plosive sound, followed by a male voice saying "then would help" in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 1.0–1.2 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about 0.2 seconds. This artifact is characterized by a sharp, piercing timbre in the 5000–6000 Hz range, resembling a digital glitch or a brief burst of static, and is not present in the original speech or background. The artifact is abrupt, with no natural fade-in or fade-out, and stands out against the otherwise clean and dry acoustic environment. 
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method highlights the 1.0–1.2 second time region and 5000–6000 Hz frequency range as critical for the model’s decision, indicating that this segment is a key contributor to the audio’s classification as a deepfake. The Saliency method also identifies the same time and frequency region, reinforcing the presence of an anomalous signal. LIME analysis further corroborates this by pinpointing the 1.5–1.6 second region, which overlaps with the artifact’s tail, suggesting the model’s sensitivity to this segment. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_amean further support the presence of an abnormal acoustic event, as these features are elevated compared to their original values, indicating a sudden increase in high-frequency content and signal irregularity. No other acoustic anomalies are present in the audio, and the artifact is not explained by natural speech or environmental sounds. 
+
+In summary, the audio contains a brief, high-frequency synthetic artifact at 1.0–1.2 seconds, which is strongly supported by multiple XAI methods and acoustic feature analysis, indicating a likely deepfake manipulation.

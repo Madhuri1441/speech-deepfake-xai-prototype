@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "But I am not excuse us from me about and Jerry's." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal characteristics. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its onset is abrupt, suggesting an artificial insertion rather than a natural event. The background remains otherwise silent, with no environmental or ambient noise, further indicating that the buzzing is not a product of the recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights the [0.5-1.0] seconds region, though with a slightly different frequency range. The LIME method, however, only flags the very beginning of the audio, which is less consistent with the observed buzzing. The Hubert and WavLM models do not provide any evidence of abnormality, and the SHAP analysis does not directly reference the buzzing but instead highlights acoustic features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may be indirectly related to the presence of the synthetic sound. The most consistent and cross-model evidence points to the [1.0-2.0] seconds, [4000-6000] Hz region as the location of the anomaly, supported primarily by wav2vec’s IG and Saliency methods.

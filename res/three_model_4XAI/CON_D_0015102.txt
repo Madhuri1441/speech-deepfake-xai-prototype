@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "Keep the problem for the Scots." The speech is delivered in a neutral, conversational tone, with no apparent emotional inflection or background noise. However, at approximately 1.25 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 4000–6000 Hz, with a harsh, electronic timbre that is distinctly unnatural compared to the preceding speech. The sudden onset and unnatural quality of this tone suggest it is an artifact, likely introduced during post-production or as a result of digital manipulation. The voice remains unaffected by the tone, indicating it was not present during the original recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 1.25–1.30 seconds and a Saliency region from 1.50–2.00 seconds, both in the 4000–6000 Hz frequency range. These regions align with the onset and duration of the synthetic buzzing tone, providing strong evidence that the anomaly is a high-frequency artifact. The Hubert and WavLM models do not detect any abnormalities, likely due to their different training objectives or sensitivity to such artifacts. The Shap values for features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 suggest the presence of unnatural signal characteristics, further supporting the conclusion that the buzzing tone is an artificial addition. The agreement between wav2vec’s IG and Saliency methods confirms the region of interest, while the lack of support from Hubert and WavLM indicates that this is a single-model finding.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sudden and unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a pronounced high-frequency resonance in the 4000–6000 Hz range. This distortion persists until about 2.0 seconds, after which the audio returns to its original, clear state. The abruptness and unnatural spectral quality of this segment suggest a digital artifact, such as a buffer error, encoding glitch, or synthetic overlay, rather than a natural vocal event.
+
+The wav2vec model’s explanations (IG, Saliency, and LIME) all point to the 1.0–2.0 second region as the most salient, with a strong focus on the 4000–6000 Hz frequency band. This supports the hypothesis that the anomaly is a high-frequency digital artifact. The Hubert and WavLM models do not provide any salient regions, which may indicate that they are less sensitive to this type of transient distortion or that the anomaly is not captured by their feature spaces. The Shap values for StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope further suggest that the anomaly affects both the spectral and prosodic characteristics of the audio, reinforcing the presence of a non-natural event in the specified time and frequency range.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME explanations all independently identify the 1.0–2.0 second region with a frequency range of 4000–6000 Hz as the most abnormal. This cross-model agreement strengthens the evidence for a digital artifact in this segment. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly may not be captured by their respective feature spaces. The Shap values further support the presence of an abnormal event in this region, affecting both spectral and prosodic features.

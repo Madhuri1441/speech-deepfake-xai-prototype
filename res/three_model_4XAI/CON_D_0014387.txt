@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "Six of the asylum seekers left." Immediately following this, a distinct, high-frequency electronic tone emerges, lasting for approximately one second. This tone is sharply defined, with a fundamental frequency between 4000 and 6000 Hz, and is acoustically consistent with a synthetic beep or alert sound. The tone is abrupt in onset and offset, with no natural fade or environmental decay, and is acoustically isolated from the speech, suggesting it was artificially inserted rather than occurring naturally. The speech itself is clear and free of distortion, with no background noise or environmental cues, indicating a controlled recording environment. The sudden appearance of the electronic tone, especially after the spoken phrase, is highly unusual and suggests deliberate post-production editing or insertion of a synthetic sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) and LIME identifies a very short segment ([0.0-0.1] seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that aligns with the observed electronic tone in the audio, and this is the only region supported by multiple XAI methods (IG and Saliency, though the latter is in a different region). The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the presence of a loud, synthetic tone. The cross-model agreement is limited to wav2vec, with no support from Hubert or WavLM.

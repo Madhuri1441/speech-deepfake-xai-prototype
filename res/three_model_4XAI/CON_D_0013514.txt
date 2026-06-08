@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "My son is too... but when he left the result..." The speech is abruptly cut off mid-word ("too") at approximately 1.5 seconds, with no natural fade or pause. Immediately following this interruption, a loud, synthetic, low-frequency electronic tone (approximately 100–200 Hz) is introduced, which persists until the end of the clip. This tone is highly unnatural, lacking any acoustic variation or environmental context, and is clearly not part of the original recording. The sudden onset and unnatural character of this tone strongly suggest digital manipulation, such as a censorship bleep or an artificial overlay. The abruptness of the cut and the presence of the electronic tone are the primary acoustic abnormalities.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) highlights the 1.5–2.0 second region, and Saliency analysis identifies the 1.0–1.5 second region, both focusing on the 2000–6000 Hz frequency range. These findings align with the observed audio event, where the speech is cut off and replaced by a synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their design or training focus. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, loud, and unnatural sound event. The agreement between wav2vec’s IG and Saliency methods provides strong cross-model support for the abnormality in the 1.0–2.0 second range, with the synthetic tone being the most likely cause.

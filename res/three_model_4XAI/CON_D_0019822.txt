@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a male voice starts speaking in a neutral, conversational tone, saying, "We are all truly by us to be depression." The speech is clear and intelligible, with no obvious signs of emotional distress or unusual vocal characteristics. However, at around 1.5 seconds, a brief, unnatural vocal artifact occurs: the voice momentarily distorts, with a slight pitch shift and a "glitchy" quality, particularly noticeable in the mid-to-high frequency range (4000-6000 Hz). This artifact is not present in the surrounding speech and does not correspond to any natural speech variation or environmental noise. The remainder of the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [3.5-4.0] seconds with [6000-8000] Hz using Saliency. LIME also supports the region at [1.5-1.6] seconds. These findings are consistent with the observed vocal artifact in the audio, which occurs around 1.5 seconds and is most prominent in the 4000-6000 Hz range. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The Shap values for spectral features further suggest that the anomaly is related to spectral flux and unvoiced segment characteristics, aligning with the observed vocal glitch. There is no evidence of similar anomalies in other regions, and the rest of the audio appears normal.

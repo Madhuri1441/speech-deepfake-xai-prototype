@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "I am not obsessed with sex." Immediately following the word "sex," there is a noticeable, abrupt change in the acoustic environment. The voice becomes heavily distorted, with a harsh, metallic, and synthetic timbre, and the pitch drops significantly, producing a robotic, unnatural effect. This transformation is accompanied by a pronounced increase in high-frequency content, particularly in the 6000–8000 Hz range, which is not present in the initial portion of the audio. The distortion is not a natural vocal effect but rather an artificial, digital artifact, suggesting deliberate post-processing or manipulation. The change is sudden and localized, with no gradual transition, indicating a targeted edit or deepfake insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.5] seconds time range and [6000-8000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a slightly earlier [0.5-1.0] seconds region with [2000-4000] Hz content. LIME analysis further supports the abnormality at [1.8-2.0] seconds. These multiple, independent XAI methods converge on the same time and frequency region, indicating strong cross-model agreement. The wav2vec model is the only one providing this evidence; Hubert and WavLM models do not detect abnormalities. The SHAP values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 further corroborate the presence of a sudden, high-frequency, and loud event at the same time range, reinforcing the conclusion of a deepfake or synthetic insertion.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds, with a spectral peak between 4000–6000 Hz. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, conversational tone. The voice is clear and intelligible, with no signs of digital artifacts, clipping, or distortion. The transient stands out as an anomaly, as it does not correspond to any natural speech or environmental sound and is not present in the surrounding audio. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean and loudness_sma3_meanFallingSlope are elevated, suggesting a sudden change in spectral slope and falling loudness, which aligns with the transient’s abrupt onset and decay. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the abnormality in the [2.0-2.5] seconds time range and [4000-6000] Hz frequency range, which matches the observed transient. The Saliency method from wav2vec also highlights a region around [0.5-1.0] seconds, but this is not supported by other models and does not correspond to a clear acoustic anomaly. LIME from wav2vec and the Hubert and WavLM models do not provide supporting evidence for the transient. The Shapley values further corroborate the presence of a spectral change, with features such as slopeUV0-500_sma3nz_amean and loudness_sma3_meanFallingSlope indicating a sudden shift in spectral characteristics. The final abnormality is thus supported by wav2vec’s IG and Shapley values, with no cross-model agreement from Hubert or WavLM.

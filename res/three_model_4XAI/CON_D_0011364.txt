@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization ("da") followed by a short pause and then a phrase ("...for that future") spoken in a neutral, declarative tone. The speech is clear, with no background noise or environmental cues, and is delivered in a controlled, studio-like setting. However, at approximately 0.75 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.25 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered in the 4000–6000 Hz range, and is not present in the rest of the audio. The artifact is not a natural part of the voice or environment and is acoustically inconsistent with the rest of the recording, suggesting a possible digital manipulation or encoding error. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.75-1.25] seconds, 4000–6000 Hz). The LIME method, however, highlights a much earlier segment ([0.0-0.1] seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength, which are associated with the high-frequency region. Overall, the wav2vec model’s IG and Saliency results provide cross-model agreement on the abnormality, while the other models and LIME evidence are either absent or inconsistent.

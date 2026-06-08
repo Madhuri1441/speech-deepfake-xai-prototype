@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering the phrase: "We have not they are not poverty from the Irish." The speech is generally intelligible, but at approximately 1.0–1.5 seconds, there is a noticeable, unnatural break in the vocal signal. This segment is marked by a sharp, high-frequency transient (3000–4000 Hz) that is inconsistent with natural speech production, suggesting a digital artifact or editing error. The break is abrupt, with no corresponding change in the speaker’s articulation or prosody, and the surrounding speech remains unaffected. This anomaly is not present in the original audio but appears as a result of post-processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [1.0-1.5] seconds time region and [3000-4000] Hz frequency range as salient, indicating that this segment is critical for the model’s prediction. The LIME explanation for wav2vec, however, points to an earlier segment ([0.0-0.1] seconds), which is not corroborated by other methods or models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models or that their explanations are less sensitive to this type of artifact. The Shapley values highlight features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may relate to the unnatural break in the audio, but do not directly pinpoint the time or frequency range. Overall, the wav2vec model’s IG and Saliency methods provide consistent evidence for the abnormality, while other models and methods do not support this finding.

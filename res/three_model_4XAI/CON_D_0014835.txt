@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1-2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "West Lothian Education Service praised for its use of innovative pol...," but the word "policy" is abruptly truncated mid-syllable, with the final "-cy" sound cut off and replaced by a sharp, unnatural digital click. This click is acoustically distinct from the preceding speech, lacking any natural vocal or environmental decay, and is immediately followed by a brief, low-frequency electronic hum. The truncation and insertion of the click are highly suggestive of digital editing or tampering, as the transition is too abrupt and clean to be a natural recording artifact. The hum that follows is also inconsistent with the room tone of the speech, further indicating post-production manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1-2] second time region and [4000-5000] Hz frequency range as the most salient for the audio's classification, aligning with the observed click artifact. This region is also supported by the wav2vec Saliency method, which highlights the [0-1] second region, overlapping with the start of the speech and the onset of the anomaly. The LIME analysis for wav2vec further supports the [2.5-3] second region, which includes the click and the subsequent hum. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is most detectable by wav2vec. The SHAP analysis, while not directly identifying the click, highlights features such as StddevUnvoicedSegmentLength and MFCCs, which may be indirectly affected by the abrupt truncation and insertion of the click. Overall, the wav2vec model's multiple XAI methods consistently point to the [1-2] second region as the most suspicious, with the click artifact being the primary anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "I was brought to have both sides." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is centered around 6500 Hz and is markedly different from the natural speech, lacking any organic modulation or harmonics. The tone is steady, with no pitch or amplitude variation, and is acoustically consistent with a digital artifact or watermark, rather than a natural sound source. The presence of this tone is not explained by the speaker or any environmental context, and it overlays the speech without any perceptible interaction, suggesting it is an artificial addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–2.0 second time range and 6000–7000 Hz frequency region, while LIME supports the 1.75–2.0 second window. This cross-model agreement strongly indicates that the synthetic tone is the source of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely because they are less sensitive to such high-frequency artifacts or are trained on different features. The SHAP values further support the presence of a high-frequency, steady-state sound, as indicated by the slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp features, which are characteristic of synthetic tones. No other acoustic anomalies are present in the audio.

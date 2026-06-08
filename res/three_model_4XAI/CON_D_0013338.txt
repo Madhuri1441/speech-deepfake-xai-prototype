@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Was Peppa Pig never moved." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic timbre in the 3000–4000 Hz range, which is acoustically distinct from the voice and does not match any natural sound or environmental noise. The artifact is abrupt, with no fade-in or fade-out, and is immediately followed by a brief silence before the audio ends. This transient is not present in the original speech and is likely an insertion or corruption, possibly due to editing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-1.2] seconds, [3000-4000] Hz), indicating strong cross-model agreement on the presence of an anomalous event. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which may reflect changes in the audio’s spectral and temporal characteristics, but these do not directly pinpoint the artifact’s location. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the identified abnormality, while other models and features do not contradict this conclusion.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "to work for dancers who are also actors." The speech is clear and intelligible, with a neutral, conversational tone. However, during the segment from 1.0 to 2.0 seconds, the voice exhibits a noticeable pitch and timbral shift, accompanied by a harsh, metallic resonance and a slight increase in volume. This segment stands out acoustically from the rest of the speech, which is otherwise natural and unprocessed. The abnormality is most prominent in the frequency range of 3000–7000 Hz, where the voice acquires a synthetic, artificial quality, suggesting digital manipulation or insertion of a non-native sound. The rest of the audio, including the initial and final portions, is free from such artifacts and maintains a natural vocal timbre.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [3000-6000] Hz, while the Saliency method from wav2vec further supports the abnormality in the broader range [1.0-2.0] seconds and [5000-7000] Hz. These two independent XAI methods from the same model converge on the same region, indicating a high confidence in the anomaly. The LIME method from wav2vec also points to a specific time point (3.0-3.1 seconds), but this is less consistent with the observed acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shap values highlight features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are consistent with the presence of an unnatural, high-frequency, and loud segment in the audio. Overall, the wav2vec model’s IG and Saliency methods provide strong, cross-referenced evidence for the abnormality, while other models and methods do not support it.

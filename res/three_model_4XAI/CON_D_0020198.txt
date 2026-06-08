@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, unnatural pitch shift occurs in the speaker’s voice, specifically affecting the word “difficult.” This pitch shift is abrupt and does not follow the natural intonation of speech, suggesting digital manipulation. The shift is accompanied by a slight increase in high-frequency content, peaking between 4000–6000 Hz, which is atypical for natural speech and may indicate the insertion of a synthetic or altered vocal segment. The remainder of the audio returns to normal speech and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.5–2.0 second time region and 4000–6000 Hz frequency range as anomalous, with IG highlighting the pitch shift and Saliency emphasizing the high-frequency content. The LIME method from wav2vec also supports this region, though with a narrower time window. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is not universally detected by all models. The SHAP values for acoustic features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp further corroborate the presence of an abnormality in this region, as they reflect changes in pitch and loudness consistent with the observed pitch shift. Overall, the wav2vec model’s multiple independent methods agree on the anomaly, while other models do not provide supporting evidence.

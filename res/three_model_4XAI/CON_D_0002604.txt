@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly is present in the frequency range of 6000–7000 Hz during the time interval of 1.5–2.0 seconds. This region is marked by a faint, unnatural resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to the human ear as a distinct sound but is detectable through spectral analysis. This suggests a possible digital manipulation or artifact introduced during post-processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 1.5–2.0 second time region and 6000–7000 Hz frequency region as the most salient for the model's prediction, indicating that this area is critical for the model's classification of the audio as a deepfake. The Saliency method from wav2vec also highlights a different region (0–1 seconds, 2000–3000 Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support any region. The SHAP analysis, which is based on acoustic features rather than time-frequency regions, does not directly support the identified anomaly but provides context on the acoustic characteristics of the audio. Overall, the wav2vec IG result is the only one that is cross-model supported, as no other model provides evidence for the same region.

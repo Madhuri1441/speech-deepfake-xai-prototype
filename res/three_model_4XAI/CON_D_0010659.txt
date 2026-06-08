@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "Is there a new way forward?" The speech is clear and intelligible, with a neutral, inquisitive tone. Immediately following the speech, at approximately 1.0 seconds, a sharp, high-frequency electronic tone emerges. This tone is sustained for about 0.5 seconds, peaking in the 6000–7000 Hz range, and is distinctly artificial, lacking any natural acoustic decay or modulation. The tone is abrupt in onset and offset, suggesting a digital artifact or synthetic overlay rather than a naturally occurring sound. There are no other background noises, environmental cues, or speech present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the 1.0–1.5 second time region and 6000–7000 Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed electronic tone. The Saliency method from wav2vec also highlights a broader region (3.0–4.0 seconds, 2000–8000 Hz), but this does not correspond to any clear acoustic event in the audio and is likely an artifact of the model’s attention mechanism. The LIME explanation from wav2vec identifies a very narrow time window (2.0–2.1 seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected across all models. The Shapley values point to high contributions from acoustic features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a loud, high-frequency tone. Overall, the strongest and most consistent evidence for the abnormality comes from the wav2vec model’s IG explanation, which matches the observed electronic tone in both time and frequency.

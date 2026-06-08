@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "to a certain point, they will certainly be bad." The recording is of high fidelity, with no background noise or distortion. However, a subtle but noticeable anomaly occurs between 1.0 and 1.5 seconds, specifically during the word "certainly." At this point, the speech exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This brief segment stands out as acoustically inconsistent with the otherwise natural and smooth delivery. The anomaly is most apparent in the mid-frequency range (2000–4000 Hz), where the spectral content appears slightly altered, suggesting a possible digital artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME method from wav2vec also supports this, though with a slightly earlier time range ([0.5, 0.6] seconds), which may reflect a different focus but still aligns with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detectable by all models. The Shap values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of changes in loudness and spectral dynamics during the abnormal segment. Overall, the wav2vec model's multiple methods provide cross-model agreement on the [1.0-1.5] seconds interval, making this the most reliable region of abnormality.

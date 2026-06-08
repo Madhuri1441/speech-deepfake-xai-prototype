@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet indoor environment. At approximately 1.0 seconds, a female voice starts speaking in a neutral, conversational tone, saying, "They want... I was crying." The speech is clear and intelligible, with no signs of emotional distress or vocal strain. Around 2.0 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, synthetic, and sustained for about 0.5 seconds, masking the remainder of the speech and causing a noticeable drop in audio quality. The tone is not present in the original recording but is likely an artifact introduced during editing or transmission. The abrupt onset and unnatural timbre of the tone suggest it is not part of the original audio content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time range and [6000-7000] Hz frequency range, while the wav2vec saliency method highlights the [1.0-1.5] seconds range and [4000-6000] Hz frequency range. The LIME method for wav2vec also supports the [1.5-1.6] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is associated with high-frequency content and a sudden change in the audio signal, which aligns with the observed electronic tone. The wav2vec model's multiple independent methods (IG, Saliency, LIME) consistently point to the same time and frequency regions, indicating strong cross-model agreement on the presence of the synthetic tone. The Hubert and WavLM models do not detect any anomaly, suggesting that the abnormality is specific to the wav2vec model's analysis.

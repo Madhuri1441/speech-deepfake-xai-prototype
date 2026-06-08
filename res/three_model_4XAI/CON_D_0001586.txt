@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady pitch. The speech is intelligible and delivered at a moderate pace, with no obvious signs of emotional distress or artificiality. However, a subtle anomaly is present in the high-frequency range (3000–4000 Hz) during the phrase "this is their own fault," specifically around the word "fault." This segment exhibits a slight unnatural resonance and a brief, unnatural pitch inflection, which is not present in the rest of the audio. The acoustic environment is quiet, with no background noise or reverberation, suggesting a controlled recording setting. The anomaly is not perceptible to the human ear without close scrutiny, but it is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.5-3.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the [0-1] seconds range, which does not align with the observed anomaly. LIME analysis from wav2vec further supports the [3.0-3.1] seconds region, closely matching the timing of the anomaly. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is not consistently detected across all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and mfcc1_sma3_amean, which are consistent with the observed high-frequency anomaly. Overall, the wav2vec model's IG and LIME analyses provide cross-model agreement on the [2.5-3.0] seconds region, while Hubert and WavLM do not support this finding.

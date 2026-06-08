@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "bit right, but..." in a neutral, conversational tone, followed by a brief pause and a low-frequency electronic hum. The speech is clear and intelligible, with no signs of distortion or background noise. However, at approximately 0.75 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until 1.25 seconds. This tone is distinct from the preceding speech and hum, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically inconsistent with the rest of the audio, suggesting an artificial or digitally inserted artifact. The buzz is not present in the original speech or ambient noise, and its sudden onset and unnatural spectral profile indicate a possible digital glitch or tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the 0.75–1.25 second time range and 4000–6000 Hz frequency range, and Saliency pointing to an earlier segment (0.25–0.75 seconds) with a different frequency range. LIME from wav2vec also supports the 1.0–1.2 second window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values from the acoustic feature analysis further support the presence of an anomaly, with features such as shimmerLocaldB_sma3nz_amean and StddevUnvoicedSegmentLength showing elevated values, suggesting a disruption in vocal regularity and segment structure. The combined evidence from wav2vec and the acoustic features points to a high-frequency synthetic buzz between 0.75 and 1.25 seconds, which is not supported by Hubert or WavLM.

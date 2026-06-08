@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.75-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It is worth our plate. You get the cat." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.75 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until 2.0 seconds. This buzzing is sharply defined, with a fundamental frequency between 6000 and 8000 Hz, and is acoustically distinct from the preceding speech. The sound is not a natural artifact of speech or environment, but rather a digital overlay, likely inserted post-recording. The abrupt onset and offset of the buzz, along with its unnatural spectral content, suggest intentional editing or manipulation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [1.75-2.0] seconds time region and [6000-8000] Hz frequency region as salient. This aligns with the observed synthetic buzz in the audio. The wav2vec Saliency and LIME also point to earlier time regions ([0.00-0.25] and [0.00-0.10] seconds, respectively), but these are not corroborated by other models and do not match the observed buzz. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed buzz and are not supported by other XAI methods. Thus, the final abnormality region is based on cross-model agreement from wav2vec’s IG explanation.

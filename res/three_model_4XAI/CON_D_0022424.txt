@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "In those days, I am very angry." The phrase "I am very angry" is delivered with a noticeable rise in pitch and intensity, peaking around the word "angry." This emotional escalation is acoustically marked by a sharp increase in high-frequency energy (4000–8000 Hz) between 2.0 and 3.0 seconds, corresponding to the stressed syllable of "angry." The abruptness and unnaturalness of this pitch and loudness jump, along with a lack of natural vocal vibrato or breathiness, suggest the utterance may be artificially generated or manipulated. The emotional delivery is exaggerated and lacks the typical dynamic range of a genuine human voice, further supporting the suspicion of synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the [2.0–2.5] seconds region with high-frequency energy (4000–6000 Hz), Saliency analysis points to [2.5–3.0] seconds with even higher frequencies (6000–8000 Hz), and LIME identifies a brief [0.9–1.0] seconds region, likely corresponding to the onset of the emotional shift. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent and cross-validated. The Shapley values further support the anomaly by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are indicative of unnatural vocal intensity and abrupt transitions. The convergence of wav2vec’s IG, Saliency, and LIME methods on the [2.0–3.0] seconds interval with high-frequency energy provides strong evidence of synthetic manipulation in this region.

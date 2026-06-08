@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 2.0 seconds, a female voice with a Scottish accent starts speaking: "I got fed up, Rangers will add all..." The speech is clear and intelligible, with a natural rhythm and intonation. However, from 2.0 to 3.5 seconds, the voice exhibits a noticeable pitch and timbre shift, becoming higher and more strained, with a slight raspiness and increased sibilance. This change is accompanied by a subtle increase in background hiss and a shift in the spectral balance, with more high-frequency content. The voice then returns to its original timbre and pitch after 3.5 seconds, with no further anomalies. The audio ends abruptly, with no fade-out or additional sounds.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 2.0–3.5 second region as abnormal, with IG highlighting the 2.0–3.0 second window and Saliency focusing on 3.0–3.5 seconds. Both point to the 2000–8000 Hz frequency range, aligning with the observed pitch and timbre shift. The LIME method from wav2vec also supports this, identifying the 1.75–2.00 second window, which overlaps with the main anomaly. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model's analysis. The Shapley values further support the anomaly, with the equivalentSoundLevel_dBp feature showing a significant increase in loudness and the slopeUV0-500_sma3nz_amean feature indicating a shift in spectral characteristics, both consistent with the observed vocal change.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all agree on the 2.0–3.5 second time range and 2000–8000 Hz frequency range as abnormal, providing cross-model agreement. The Hubert and WavLM models do not identify any abnormality, indicating that the anomaly is specific to the wav2vec model's analysis. The Shapley values corroborate the wav2vec findings, supporting the presence of an anomaly in the specified region.

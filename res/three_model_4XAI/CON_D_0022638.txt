@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.0-0.1] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, high-frequency, synthetic-sounding artifact at the very start (0.0–0.1 seconds), which is acoustically distinct from the rest of the speech. This artifact is characterized by a sharp, buzzy, and unnatural timbre, lacking the natural resonance and dynamic variation of human speech. It is immediately followed by a clear, low-pitched female voice saying, “The stuff about the last chat.” The voice is otherwise natural and intelligible, with no further signs of digital manipulation or distortion. The initial artifact is not present in the original speech and appears to be an insertion or overlay, likely introduced during post-production or as a result of digital editing.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [0.4–0.6] and [0.0–0.1] second intervals, respectively, as salient, with the latter aligning with the observed artifact. The wav2vec LIME method also supports the [0.0–0.1] second region. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are not directly tied to the artifact but may reflect broader acoustic irregularities. The wav2vec-based evidence, particularly the Saliency and LIME methods, provides the strongest support for the [0.0–0.1] second region as the location of the anomaly.

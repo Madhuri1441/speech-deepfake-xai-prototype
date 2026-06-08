@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, with clear diction and a standard North American accent. The speech is: "...defending his 2018 World Cup." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding tone that occurs between 2.5 and 3.0 seconds, centered around 6500 Hz. This tone is abrupt, digitally clean, and does not blend naturally with the speech or room acoustics, suggesting it is an artificial insertion rather than a natural sound event. The tone is not present in the original speech and does not correspond to any spoken content, indicating a possible post-production edit or digital overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.5–3.0 second region with a frequency range of 6000–7000 Hz, while LIME identifies a slightly earlier region (0.5–0.6 seconds), which may correspond to a different acoustic feature or be less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, suggesting a sudden increase in sound level at the identified time and frequency. The combination of wav2vec’s multiple XAI methods and the SHAP value evidence strongly supports the conclusion that the high-frequency tone is an artificial insertion.

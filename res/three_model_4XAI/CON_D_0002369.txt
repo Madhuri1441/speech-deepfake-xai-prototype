@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "But it's a subtle... he was Tony Blair." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 4000–6000 Hz range, and is not present in the rest of the audio. The artifact is not masked by speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio generation or processing.
+
+The wav2vec model's explanations (IG, Saliency, and LIME) all point to the same time and frequency region, indicating a strong, consistent signal of abnormality. The wav2vec model is sensitive to subtle acoustic changes and is likely detecting the synthetic artifact. In contrast, the Hubert and WavLM models do not identify any abnormality, which may be due to their different training objectives or sensitivity to such artifacts. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and shimmerLocaldB_sma3nz_amean further support the presence of an anomaly, as these features are elevated during the suspicious interval, indicating a change in the audio's spectral and dynamic characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME explanations all agree on the abnormality occurring between 1.5–2.0 seconds in the 4000–6000 Hz range. This cross-model agreement strengthens the case for a genuine anomaly in this region. The Hubert and WavLM models do not detect any abnormality, which may be due to their different training objectives or sensitivity to such artifacts. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and shimmerLocaldB_sma3nz_amean further support the presence of an anomaly, as these features are elevated during the suspicious interval, indicating a change in the audio's spectral and dynamic characteristics.

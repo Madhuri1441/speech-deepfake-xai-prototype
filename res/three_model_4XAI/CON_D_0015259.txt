@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Otherwise, I'll be sitting here," in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of manipulation. However, at approximately 2.0–2.1 seconds, a sharp, high-frequency transient artifact is present, lasting about 0.1 seconds. This artifact is acoustically distinct from the speech, manifesting as a brief, unnatural, and piercing sound, likely a digital glitch or a synthetic overlay. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The rest of the audio remains free of such anomalies, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently point to the same time and frequency region ([2.0-2.1] seconds, [5000-6000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, but their lack of findings does not contradict the wav2vec results. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which may relate to the presence of unnatural speech or audio artifacts, but these do not directly pinpoint the artifact’s location. Overall, the wav2vec model’s multiple, consistent findings provide strong evidence for the presence of an acoustic anomaly in the specified region.

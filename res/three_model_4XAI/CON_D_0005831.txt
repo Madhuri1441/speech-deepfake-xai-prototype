@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.3-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.3 seconds, a brief, high-frequency transient is audible, characterized by a sharp, metallic or digital click. This transient is most prominent between 0.3 and 0.5 seconds and is accompanied by a noticeable increase in energy in the 2000–4000 Hz frequency range. The click is brief, non-reverberant, and does not correspond to any natural speech or environmental sound, suggesting it is an artifact of digital origin—possibly a buffer glitch, sample rate mismatch, or a minor encoding error. The remainder of the audio is dominated by a female voice speaking in a neutral, conversational tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.3–0.5 second region as abnormal, with a frequency focus of 2000–4000 Hz, which aligns with the observed transient click. The saliency method from wav2vec also highlights this region, reinforcing the presence of an anomaly. The LIME method from wav2vec identifies a separate region (1.8–2.0 seconds), which does not correspond to any clear acoustic event and may be less reliable. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values do not directly reference the transient click but instead highlight features related to sound level and segment length, which are not directly tied to the observed artifact. Overall, the wav2vec saliency and IG methods provide the strongest evidence for the transient click, while other models and Shap values do not corroborate this finding.

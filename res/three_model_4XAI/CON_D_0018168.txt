@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "being treated. Scotland is too scum..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing sound appears, lasting until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, with a frequency content in the 4000–6000 Hz range. The buzzing is abrupt in onset and offset, and its timbre is consistent with a digital artifact or a synthetic overlay, rather than a natural environmental sound. There are no other obvious audio anomalies, such as clipping, distortion, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and also highlights a secondary region (2.5–3.0 seconds, 1000–4000 Hz) with Saliency. The LIME explanation for wav2vec points to the very beginning of the audio (0.0–0.1 seconds), which is likely a false positive or noise artifact. The Hubert and WavLM models do not provide any explanations, indicating that they did not detect anomalies in the audio. The Shapley values suggest that the abnormality is not related to overall audio energy or spectral flux, but rather to a specific high-frequency event. The cross-model agreement from wav2vec’s IG and Saliency methods supports the conclusion that the buzzing sound is an anomaly, likely a synthetic overlay or digital artifact. The final abnormality region is thus [1.5–2.0] seconds, [4000–6000] Hz, with strong support from wav2vec’s IG and Saliency, and no contradictory evidence from other models.

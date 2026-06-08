@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a brief, high-pitched, and slightly distorted vocalization that sounds like "What?" or "Up?" The voice is abruptly cut off, and a loud, synthetic, low-frequency electronic tone immediately follows, lasting for about a second. This tone is harsh, static, and lacks any natural acoustic variation, strongly suggesting it is artificially generated rather than a real-world sound. The abrupt transition from the vocalization to the electronic tone, along with the unnatural cutoff of the voice, indicates a possible digital splice or editing artifact. The electronic tone is the most prominent abnormality, as it is acoustically inconsistent with the preceding speech and does not fade or decay naturally.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the abnormality in the frequency range of 4000–6000 Hz during the 1.5–2.0 second interval, which aligns with the synthetic tone’s spectral content. The Saliency method from wav2vec also highlights the 0.0–0.1 second region, corresponding to the initial thump, but this is less consistent with the main anomaly. The LIME explanation from wav2vec supports the 0.6–0.7 second region, which may correspond to the vocalization, but this is less definitive. The Hubert and WavLM models do not provide any supporting evidence for the abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the loudness of the synthetic tone. Overall, the primary abnormality is supported by the wav2vec model’s IG and Saliency methods, with the IG result being the most robust and cross-model consistent.

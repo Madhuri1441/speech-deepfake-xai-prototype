@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "It was frightening, my husband and his welcome to him." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–7000 Hz range, which is acoustically distinct from the speaker’s voice and background noise. The artifact is not present before or after this interval, and its sudden onset and unnatural timbre suggest it is not a natural part of the recording. The speaker’s voice remains unaffected by the artifact, indicating it is likely a post-production or digital overlay rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec model’s Saliency and LIME also point to nearby time regions, but the IG result is the most precise and directly matches the artifact. The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME analyses yield no relevant regions. The Shapley values further support the presence of an abnormality, with features like StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope indicating deviations from expected speech patterns, though these do not specify the exact time or frequency of the anomaly. Overall, the wav2vec IG result is the strongest and most consistent indicator of the artifact, with no cross-model agreement but strong alignment with the audio evidence.

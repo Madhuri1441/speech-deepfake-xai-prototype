@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "one is in this, sit go down that road." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–6000 Hz range, which is acoustically distinct from the speaker’s voice and background noise. The artifact is abrupt, with no gradual onset or decay, and is not present in the rest of the audio. This suggests a possible digital glitch or editing error, such as a buffer underrun or a corrupted audio segment, rather than a natural sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.5–2.2 second time region and the 3000–6000 Hz frequency range as salient, indicating that this segment is likely responsible for the model’s prediction. The LIME explanation for wav2vec also points to a brief time window around 0.4–0.5 seconds, but this is not supported by other models and is not clearly linked to the observed artifact. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not consistently detected across all models. The SHAP values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 further support the presence of an abnormal acoustic event in this region, as these features are elevated compared to the rest of the audio. Overall, the wav2vec model’s multiple independent explanations, combined with the SHAP analysis, provide strong evidence for the presence of an acoustic anomaly in the 1.5–2.2 second interval.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-fidelity female voice delivering a formal, neutral statement. However, the first second of the audio (0-1 seconds) exhibits a subtle but noticeable unnaturalness: the voice sounds slightly "thin" and lacks the expected warmth and fullness of a natural human voice, particularly in the mid-to-high frequency range (2000-6000 Hz). This is most evident in the initial syllable of "He," where the spectral energy is lower than expected, and the articulation is slightly imprecise. The remainder of the audio is acoustically clean and natural, with no further anomalies.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 0-1 second region as anomalous, with a focus on the 5000-6000 Hz and 2000-4000 Hz frequency bands, respectively. These findings align with the observed acoustic thinness and reduced spectral richness in the first second. The LIME method, which uses a different approach, also points to the 6.0-6.5 second region, but this is less consistent with the audio and may be a secondary or spurious anomaly. The Hubert and WavLM models do not flag any regions, suggesting that the anomaly is subtle and may not be captured by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are consistent with a slight reduction in vocal richness and energy in the first second, further supporting the wav2vec findings.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods both independently identify the 0-1 second region as anomalous, with overlapping frequency ranges (5000-6000 Hz and 2000-4000 Hz), indicating cross-model agreement on the presence of an acoustic anomaly in this segment. The LIME method also identifies a region (6.0-6.5 seconds), but this is less consistent with the audio and may be a secondary anomaly. The Hubert and WavLM models do not flag any regions, suggesting that the anomaly is subtle and may not be captured by all models. The SHAP analysis supports the wav2vec findings by highlighting features associated with reduced vocal richness and energy in the first second.

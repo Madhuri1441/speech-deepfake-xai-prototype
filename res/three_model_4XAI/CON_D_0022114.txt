@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a brief pause. The main content is a female voice speaking in a neutral, conversational tone: "It was, it was a, but we did have a lot of pay for the money." The speech is clear, with no obvious distortion or clipping, and the background is quiet except for a subtle, consistent hiss. The most notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a brief, metallic resonance, suggesting a digital artifact or manipulation. This is accompanied by a subtle, high-frequency shimmer in the 3000–6000 Hz range, which is not present in the rest of the clip. The anomaly is brief and localized, with no evidence of speech disruption or emotional change, indicating a possible edit or synthetic insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [1.5-2.0] seconds with a frequency range of [3000-6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights this region, though with a slightly different frequency range ([2000-3000] Hz). LIME supports the anomaly at [3.0-3.1] seconds, but this is less consistent with the audio and may be a secondary artifact. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shap values for spectralFlux_sma3_amean, loudness_sma3_percentile20.0, and loudness_sma3_percentile80.0 further support the presence of a localized acoustic change, particularly in the high-frequency range. Overall, the wav2vec model's IG and Saliency methods provide the strongest cross-model agreement on the anomaly at [1.5-2.0] seconds, with additional support from Shap values.

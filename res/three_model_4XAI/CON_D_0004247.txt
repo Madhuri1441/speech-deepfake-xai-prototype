@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, business-like tone, but at approximately 1.5 seconds, the speech becomes distorted and unnatural, with a noticeable drop in clarity and a shift toward a synthetic, robotic timbre. This distortion persists until about 2.5 seconds, after which the voice returns to a more natural, though still slightly processed, quality. The most prominent acoustic abnormality is a harsh, high-frequency artifact in the 3000–6000 Hz range, which overlays the speech and is especially noticeable during the period of vocal distortion. This artifact is not present in the initial or final segments of the audio, suggesting a localized anomaly. The speech content itself is coherent and appears to be a standard business phrase, with no semantic irregularities.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency regions ([1.5-2.5] seconds and [3000-6000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are associated with changes in speech characteristics during the abnormal segment. The convergence of wav2vec’s multiple XAI methods on the same region provides strong evidence for the presence of a synthetic or manipulated segment in the audio.

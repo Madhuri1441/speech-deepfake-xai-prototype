@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Mr. Monroe defended his select..." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording is of high fidelity, with a clean signal and no audible artifacts such as clipping, static, or distortion. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic-sounding tone appears and persists until 1.0 seconds. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the voice, suggesting it is an artificial overlay rather than a natural sound. The tone is not modulated, does not vary in pitch or amplitude, and does not interact with the speech, indicating it is likely a digital artifact or watermark. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region around [0.0-0.2] seconds, though this is less consistent with the observed tone. The LIME method from wav2vec supports the presence of an anomaly at [1.4-1.5] seconds, but this is not aligned with the observed tone and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The SHAP analysis does not directly indicate the abnormality but provides acoustic features that may be relevant to the model’s decision-making process. The wav2vec IG explanation is the most consistent with the observed synthetic tone, and thus, the final abnormality region is supported by wav2vec’s IG method.

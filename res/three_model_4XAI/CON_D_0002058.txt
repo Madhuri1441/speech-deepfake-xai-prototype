@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, intelligible sentence: "concerned and you can understand that. Wilkie was once so familiar." The speech is recorded in a quiet, acoustically dry environment, with no background noise or environmental cues. The only notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact manifests as a brief, sharp, and unnatural burst of energy in the 4000–6000 Hz range, which is inconsistent with the natural timbre of the speaker’s voice. The artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) identifies this region as significant, and Saliency analysis also highlights the same time and frequency range, indicating that the wav2vec model is particularly sensitive to this artifact. The presence of this artifact is not corroborated by the Hubert or WavLM models, which do not detect any abnormality in this region.
+
+III. XAI AGGREGATION EXPLANATION:
+The region [1.0-2.0] seconds, 4000–6000 Hz is supported by both Integrated Gradients and Saliency analysis from the wav2vec model, indicating cross-model agreement within wav2vec. The Hubert and WavLM models do not identify this region as abnormal, and their explanations are entirely absent. The Shapley values do not provide direct evidence for this region, as they focus on global acoustic features rather than localized anomalies. Thus, the strongest evidence for the anomaly comes from wav2vec’s IG and Saliency methods, which both point to the same time and frequency range.

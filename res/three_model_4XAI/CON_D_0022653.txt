@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "It's just time is up and our house big for a rack." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a sudden, high-frequency, synthetic tone appears, lasting until about 2.0 seconds. This tone is sharply distinct from the natural speech, with a frequency content between 4000–6000 Hz, and is acoustically inconsistent with the preceding vocalization. The tone is abrupt in onset and offset, with no fade-in or fade-out, and its spectral characteristics suggest it is not a natural part of the recording but rather an inserted artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] second time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method's focus on the [0-1] second range and [2000-3000] Hz frequency range, and LIME's emphasis on the [1.0-1.5] second range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may relate to the presence of the synthetic tone, but these are not directly time- or frequency-localized. The wav2vec model's IG and Saliency results, along with LIME's, converge on the [1.5-2.0] second interval, indicating a cross-model agreement on the presence of the synthetic tone.

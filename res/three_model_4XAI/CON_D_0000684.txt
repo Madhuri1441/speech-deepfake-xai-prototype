@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, muffled tone, with the phrase "...it is a good... that a good... project..." audible. The speech is heavily distorted, with a low-frequency, rumbling quality and a lack of high-frequency detail, making the words difficult to discern. At approximately 1.0–2.0 seconds, the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a noticeable increase in high-frequency content (4000–6000 Hz), which is inconsistent with natural speech. This segment is marked by a sharp, digital artifact, likely a result of waveform manipulation or synthesis. The remainder of the audio continues with the same low-fidelity, muffled voice, lacking any further pronounced anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0–2.0] seconds time range and [4000–6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([3.0–3.5] seconds, [6000–8000] Hz), suggesting a secondary anomaly. LIME analysis supports the [1.5–2.0] seconds interval, overlapping with the wav2vec IG result. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not consistently detected by all models. The Shapley values point to increased loudness and shimmer, which may correspond to the observed pitch drop and harshness, but do not specify a time range. The cross-model agreement between wav2vec and LIME on the [1.0–2.0] seconds interval, supported by the frequency shift, indicates a high-confidence region of abnormality.

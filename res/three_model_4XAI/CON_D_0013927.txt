@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, with no obvious signs of digital manipulation. However, at approximately 1.5–2.0 seconds, a brief, unnatural vocalization occurs. This segment is marked by a sudden, high-pitched, and slightly distorted sound that does not match the natural cadence or timbre of the speaker’s voice. The sound is abrupt, with a sharp onset and offset, and is acoustically distinct from the rest of the speech. This anomaly is most prominent in the frequency range of 4000–6000 Hz, where the spectral energy spikes unnaturally compared to the surrounding speech. The rest of the audio maintains a natural rhythm and pitch, with no further signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), which is supported by LIME’s focus on the same time interval. The Saliency method also highlights a different region ([0.0-0.5] seconds, 1000-2000 Hz), but this is less consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The SHAP values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, suggesting a sudden increase in loudness or energy in the audio. Overall, the wav2vec model’s IG and LIME results, along with the SHAP analysis, provide strong evidence for the anomaly in the specified time and frequency range.

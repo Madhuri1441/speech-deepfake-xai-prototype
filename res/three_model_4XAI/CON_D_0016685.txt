@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase "It's too slow, the audience is just that bad." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.25 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio but appears as a digital anomaly, likely introduced during processing or encoding. No other acoustic irregularities are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([0.75-1.25] seconds, [4000-6000] Hz), while LIME identifies a slightly earlier segment ([0.25-0.3] seconds), which may correspond to a minor transient or prelude to the main artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and spectralFlux measures, which are indicative of unnatural signal characteristics. The cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the identified abnormality, while the LIME result offers supplementary support.

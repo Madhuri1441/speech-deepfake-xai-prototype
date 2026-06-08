@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking the phrase, "He didn't know it'd take the blame." The speech is clear, with a neutral, declarative tone and no background noise or environmental cues. The only notable acoustic feature is a brief, high-frequency artifact occurring between 2.0 and 2.5 seconds, specifically in the 3000–4000 Hz range. This artifact manifests as a sharp, unnatural transient, likely a digital glitch or splicing artifact, which is inconsistent with the natural speech signal. The rest of the audio is acoustically stable, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 2.0–2.5 second range, specifically in the 3000–4000 Hz band, using Integrated Gradients (IG). This is corroborated by the Saliency method, which highlights a different but adjacent frequency region (5000–6000 Hz) at 1.2–1.4 seconds, and LIME, which points to a slightly earlier time (1.9–2.0 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high SHAP value, suggesting a deviation in the acoustic structure of the signal. Overall, the wav2vec IG result is the most consistent and directly supported by the audio evidence, while other XAI methods provide supplementary but less precise indications.

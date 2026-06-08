@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a narrative in a controlled, studio-like environment. The speech is continuous and intelligible, with no background noise or environmental artifacts. However, a subtle but distinct anomaly is present in the high-frequency range (6000–7000 Hz) during the time interval [3.5–4.5] seconds, coinciding with the phrase "...in value and children were forced to make the way towards the Albanian border." This region exhibits a faint, high-pitched, synthetic-sounding artifact, likely a digital artifact or a subtle overlay, which is not present in the rest of the audio. The anomaly is not perceptible to casual listening but is detectable through spectral analysis. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5–4.5] seconds region in the 6000–7000 Hz band as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. LIME also highlights the [3.0–4.0] seconds interval, overlapping with the wav2vec findings. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis further supports the wav2vec findings, with the top three features (F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0) all pointing to the same high-frequency anomaly. The cross-model agreement between wav2vec, LIME, and SHAP confirms the presence of a synthetic or digital artifact in the specified region.

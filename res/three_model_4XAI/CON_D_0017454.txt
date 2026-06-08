@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "day, trying really hard." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, a subtle but persistent high-frequency hiss is present throughout the recording, most noticeable in the background and during brief pauses. This hiss is centered in the 5000–7000 Hz range and is especially prominent between 0.4 and 1.2 seconds, coinciding with the end of the word "day" and the beginning of "trying." This region is marked by a slight increase in the hiss’s intensity, which may indicate a momentary change in the recording environment or a minor digital artifact. No other acoustic anomalies, such as clipping, distortion, or unnatural pauses, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.4-1.2] second time region and [5000-7000] Hz frequency region as salient, with both IG and Saliency methods pointing to this interval. The LIME method also supports this, highlighting a specific point at 1.6 seconds, which is close to the end of the abnormality window. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values for features like equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of subtle acoustic changes in this region, though they do not pinpoint the exact time or frequency. Overall, the wav2vec model’s evidence is the most consistent and directly aligns with the observed acoustic abnormality.

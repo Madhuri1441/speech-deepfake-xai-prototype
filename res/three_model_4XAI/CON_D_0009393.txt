@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, low-pitched male voice saying, "Keep this strong in the next season." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. At approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges, lasting until about 1.5 seconds. This buzzing is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The buzzing is not a natural artifact of speech or environment, and its abrupt onset and cessation suggest it is artificially inserted. The voice itself remains unaffected by the buzzing, indicating the anomaly is not a result of vocal production or recording equipment. There are no other notable acoustic irregularities in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-1.5] seconds, [4000-6000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, either through IG, Saliency, or LIME, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed buzzing sound and are not time-localized, suggesting they are not directly related to the anomaly. The wav2vec evidence is robust and consistent, while the other models and SHAP values do not support the presence of an anomaly in the audio.

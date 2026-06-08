@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio contains a female voice speaking the phrase "Jailton, it's been a long time for this." The speech is clear and intelligible, but at approximately 0.5–1.0 seconds, there is a noticeable, unnatural high-frequency artifact in the 4000–6000 Hz range. This artifact manifests as a brief, sharp, and synthetic-sounding burst, inconsistent with typical vocal or environmental noise. The artifact is not present in the rest of the audio and does not correspond to any natural speech or background sound.  
+
+The Integrated Gradients (IG) explanation identifies the same time and frequency region ([0.5-1.0] seconds, [4000-6000] Hz) as a key area of abnormality, indicating that this segment is likely responsible for the model’s classification of the audio as a deepfake. The Saliency map further supports this by highlighting a brief, high-frequency anomaly at 1.25–1.30 seconds, which aligns with the artifact’s timing. The LIME explanation, while pointing to an earlier segment ([0.0, 0.1] seconds), does not contradict the main abnormality but suggests additional subtle anomalies in the initial part of the audio.  
+
+The top three SHAP values—StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and loudness_sma3_percentile20.0—indicate that the model is sensitive to deviations in unvoiced segment length, spectral slope, and loudness, all of which are affected by the presence of the high-frequency artifact. These features collectively suggest that the audio’s unnatural acoustic properties, particularly the abrupt high-frequency burst, are the primary indicators of manipulation. No other significant acoustic anomalies are present in the audio, and the artifact is not explained by any natural speech or environmental sound.

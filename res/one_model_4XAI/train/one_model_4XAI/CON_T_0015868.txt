@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "is open this new service" in a neutral, declarative tone. The recording is of high fidelity, with no background noise or distortion, and the speaker is close to the microphone. At approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered around 3000–4000 Hz, which is not present in the rest of the recording. The artifact is not a natural part of the speech or environment and is acoustically inconsistent with the rest of the audio, suggesting an artificial insertion.
+
+This acoustic anomaly is corroborated by the Integrated Gradients (IG) explanation, which highlights the [1.0-1.5] seconds time region and [3000-4000] Hz frequency region as significant for the model’s decision, indicating that the model detects this segment as anomalous. The Saliency map further supports this by identifying a [1.8-2.0] seconds time region and [6000-7000] Hz frequency region as suspicious, though this is slightly later and higher in frequency than the observed artifact. The LIME explanation also points to the [1.0-1.2] seconds region, reinforcing the suspicion of an anomaly in this early segment. Additionally, the Shapley values for features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength are all positive, indicating that the model interprets the audio as deviating from expected patterns, likely due to the presence of the artifact.
+
+No other acoustic anomalies are present in the audio, and the rest of the recording remains natural and consistent with the speaker’s voice. The combination of the observed synthetic buzz and the XAI evidence strongly suggests that the audio has been manipulated, with the artifact likely introduced during post-processing or as part of a deepfake generation process.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.85-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's not really matters." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.85 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital or post-processing origin rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [1.85-2.0] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification. This is the only XAI method that provides a clear, consistent explanation for the anomaly, as both IG and LIME from wav2vec, as well as all methods from Hubert and WavLM, do not highlight any specific region. The Shapley values also do not point to this region, instead highlighting other acoustic features unrelated to the observed artifact. Therefore, the evidence for the anomaly is based solely on the wav2vec Saliency method, with no cross-model agreement.

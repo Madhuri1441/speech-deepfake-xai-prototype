@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is not part of the natural speech or background and is acoustically anomalous, resembling a digital glitch or a synthetic sound overlay. The artifact is most prominent in the 4000–6000 Hz frequency range, which is outside the typical speech spectrum and stands out against the otherwise clean background. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and the Saliency method also supports this region at [3.0-4.0] seconds, though with a slightly different frequency range. LIME corroborates the anomaly at [2.5-3.0] seconds, indicating a consistent focus on the same time interval. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not universally detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2V_sma3nz_amean, which are associated with the presence of the synthetic artifact. The agreement among wav2vec’s IG, Saliency, and LIME methods confirms the anomaly’s presence, while the lack of support from Hubert and WavLM indicates that the anomaly is not universally recognized.

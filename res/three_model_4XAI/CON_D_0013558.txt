@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no immediate signs of manipulation. However, at approximately 2.0 seconds, the voice abruptly changes: the pitch drops, the timbre becomes more resonant and artificial, and the delivery becomes monotone and robotic. This transition is accompanied by a noticeable increase in high-frequency content, with energy concentrated between 4000-6000 Hz, which is atypical for natural speech. The change is sudden and unnatural, suggesting a digital splice or voice synthesis artifact. The remainder of the audio continues in this synthetic voice, with no further transitions or anomalies. No other acoustic irregularities, such as background noise or compression artifacts, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), and the [1-2] seconds region using Saliency, indicating a strong focus on the transition period. LIME also supports the abnormality in the [0.5-1.0] seconds region, suggesting the change begins slightly earlier. The Hubert and WavLM models do not provide any evidence, likely due to their different training objectives or architectures. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with a sudden change in voice quality and spectral content. The convergence of wav2vec’s IG and Saliency, along with LIME, provides strong cross-model agreement on the abnormality occurring between 2.0-3.0 seconds, with a high-frequency shift.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, high-frequency, non-verbal sound that is not part of the speech, occurring between 0 and 1 seconds. This sound is sharp, synthetic, and lacks the natural timbre of human vocalization or environmental noise, suggesting it is an artifact of digital processing or a deepfake insertion. The sound is most prominent in the 5000–8000 Hz range, which is consistent with the high-frequency content of digital artifacts or synthetic noise. This anomaly is not present in the rest of the audio, which features a clear, albeit slightly muffled, female voice speaking in a neutral, narrative tone. The voice is intelligible and free of distortion, with no other obvious signs of tampering or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0-1] second time region and the [6000-8000] Hz frequency region as salient, with the IG and Saliency methods both pointing to this interval. The LIME method also supports this region, though slightly later at [2.5-3] seconds, which may reflect a secondary or related anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly indicating the time or frequency range, highlight features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which may relate to the presence of non-speech sound events or changes in audio texture, further supporting the presence of an anomaly in the initial seconds of the audio. Overall, the wav2vec model’s multiple methods and the LIME method’s alignment with the wav2vec findings provide strong cross-model support for the anomaly in the [0-1] second interval.

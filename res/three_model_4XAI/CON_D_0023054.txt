@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "The unpleasant," followed by a second male voice stating, "He hasn't been seen since." Both voices are clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the preceding speech and does not match any natural sound or environmental noise. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a genuine acoustic event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.8-1.2] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed artifact. The Saliency method from wav2vec also highlights the [0.0-1.5] seconds time region and [2000-6000] Hz frequency region, which includes the artifact but is broader. The LIME explanation from wav2vec further supports the artifact by focusing on the [0.6, 0.7] seconds time region, which overlaps with the artifact’s onset. The Hubert and WavLM models do not provide any saliency or explanation for the artifact, indicating that the anomaly is not captured by these models. The Shap values for the audio features do not directly reference the artifact, as they are based on pre-extracted features rather than raw audio. Overall, the wav2vec model’s IG and Saliency methods, along with LIME, consistently identify the artifact region, providing cross-model agreement for the anomaly.

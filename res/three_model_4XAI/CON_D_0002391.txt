@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I am activist to tackle poverty." Immediately following this, a distinct, high-frequency electronic tone emerges, lasting approximately 0.5 seconds and peaking in the 4000–6000 Hz range. This tone is acoustically anomalous, as it is not part of the natural speech signal and does not correspond to any expected background noise or environmental sound. The tone is sharp, synthetic, and abruptly ends, suggesting it may be an artifact of digital processing or a deliberate insertion. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The region [2.5-3.0] seconds and [4000-6000] Hz is supported by multiple independent XAI sources: the Integrated Gradients (IG) and LIME explanations from the wav2vec model both identify this time-frequency region as significant. The wav2vec model’s Saliency method, however, identifies a slightly different region ([4.0-4.5] seconds, [2000-3000] Hz), which does not align with the observed tone and is likely a spurious or less relevant artifact. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is most strongly captured by wav2vec. The Shapley values do not directly reference this region, but the presence of the tone is consistent with the overall acoustic profile of the audio. There is no evidence of cross-model agreement beyond wav2vec’s IG and LIME, so the final conclusion is based on single-model evidence.

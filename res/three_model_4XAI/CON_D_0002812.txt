@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "position. They are pretty decent," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.2–1.4 seconds, a subtle but distinct acoustic anomaly occurs. During this interval, a faint, high-frequency artifact emerges, most prominent in the 3000–4000 Hz range. This artifact manifests as a brief, unnatural resonance or tonal overlay, which is not present in the rest of the audio. The anomaly is not accompanied by any change in speech content or volume, suggesting it is an artifact rather than a natural part of the recording. The rest of the audio remains clean and free of distortion, with no other obvious signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 1.2–1.4 seconds in the 3000–4000 Hz range using Integrated Gradients (IG), and the Saliency method further supports this with a region at 2.0–2.5 seconds in the 6000–8000 Hz range, though this is less consistent with the observed artifact. LIME also highlights a region at 0.65–0.7 seconds, but this does not align with the main anomaly. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, indicating that the wav2vec model is the primary source of detection. The Shapley values suggest that the anomaly is related to acoustic features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which further supports the presence of an unnatural acoustic event in the specified time and frequency range. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent evidence for the anomaly, while other models and methods do not corroborate this finding.

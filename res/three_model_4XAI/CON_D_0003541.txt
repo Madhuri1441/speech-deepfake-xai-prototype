@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, conversational statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 1.5–2.0 seconds into the clip, a subtle but distinct acoustic anomaly is present: a brief, high-frequency, synthetic-sounding artifact overlays the word "process." This artifact is not a natural part of the speaker’s voice and is perceptible as a faint, high-pitched, and slightly metallic tone, likely introduced during post-processing or as a result of digital manipulation. The anomaly is most prominent in the 3000–4000 Hz frequency range, consistent with the spectral characteristics of a digital artifact or watermark. No other speech or environmental sounds are present, and the rest of the audio is free from distortion, clipping, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 1.5–2.0 seconds in the 3000–4000 Hz range using Integrated Gradients (IG), while Saliency and LIME also point to this region, though with slightly different time boundaries. The Hubert and WavLM models do not detect any anomaly, indicating that the wav2vec-based evidence is the most robust and cross-validated. The Shapley values further support the presence of an anomaly in this region, with high contributions from features such as slopeUV0-500_sma3nz_amean and spectralFlux_sma3_amean, which are sensitive to abrupt changes in spectral content. The convergence of wav2vec’s IG, Saliency, and LIME, along with the Shapley values, strongly supports the conclusion that the anomaly is a synthetic artifact introduced during audio processing, rather than a natural speech event.

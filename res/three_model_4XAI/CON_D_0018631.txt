@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance, "Good day to you," spoken in a neutral, formal tone. Immediately following this, a high-pitched, synthetic, and monotonic electronic tone is introduced, lasting for approximately 0.7 seconds. This tone is characterized by a stable pitch around 5500 Hz, a harsh and buzzy timbre, and a lack of natural modulation or vibrato, which is atypical for human speech or environmental sounds. The tone is abruptly cut off, and the audio ends. The synthetic nature of the tone is supported by its unnatural spectral content and abrupt onset/offset, which are not typical of real-world sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region from 0.5–1.0 seconds in the 3000–4000 Hz range and an IG region from 0.8–1.2 seconds in the 5000–6000 Hz range. These regions align with the synthetic tone’s presence and frequency content, indicating that the model detects the anomaly in this interval. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support the anomaly. The Shapley values highlight features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and equivalentSoundLevel_dBp, which are consistent with the presence of a synthetic tone but do not pinpoint a specific time or frequency range. The wav2vec saliency and IG regions are the only XAI sources that support the anomaly, and they agree on the time and frequency ranges of the synthetic tone.

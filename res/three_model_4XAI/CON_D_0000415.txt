@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, coinciding with the end of the phrase "totally destroyed." This click is acoustically anomalous, as it is not a natural part of speech or environmental noise and stands out due to its transient, high-frequency energy. Immediately following this click, the audio is abruptly cut off, with no natural decay or fade, indicating a possible digital edit or artifact. The click and abrupt termination are supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) and LIME highlight the [1.0-1.5] second region, with IG specifically identifying the [4000-6000] Hz frequency band, while the wav2vec Saliency also points to the same time window. The Hubert and WavLM models do not provide supporting evidence for this region, but the wav2vec results are robust and consistent. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and LIME both identify the [1.0-1.5] second time range as abnormal, with IG further specifying the [4000-6000] Hz frequency band. The wav2vec Saliency also supports the same time window. These findings are cross-model, as they come from different XAI methods within the wav2vec model. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values do not directly support this region, as they focus on global acoustic features rather than local time-frequency anomalies.

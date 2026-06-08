@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second, with energy concentrated between 6000 and 7000 Hz. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, conversational tone. The voice is clear and intelligible, with no signs of digital artifacts, clipping, or distortion. The transient stands out as an anomaly, as it does not correspond to any natural speech or environmental sound and is not present in the background hum or hiss. The rest of the audio remains stable and free from additional anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.5-2.0] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.1-0.3] seconds, [2000-4000] Hz) and LIME points to [0.0-0.1] seconds. The Hubert and WavLM models do not provide any evidence of anomalies. The only region supported by multiple XAI methods is the wav2vec IG result, which is the only cross-model agreement. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting the anomaly may relate to a brief, unvoiced segment, but this is not directly corroborated by the other XAI methods. Overall, the wav2vec IG evidence is the most consistent and reliable indicator of the anomaly.

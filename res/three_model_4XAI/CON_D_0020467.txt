@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "The claim has no foundation." Immediately following the word "foundation," there is a brief, unnatural silence or pause, which is acoustically inconsistent with natural speech rhythm. This silence is accompanied by a subtle, high-frequency electronic artifact in the 3000–4000 Hz range, which is not present in the rest of the audio. This artifact is likely a digital glitch or editing artifact, as it does not correspond to any natural speech or environmental sound. The rest of the audio is clean and free of distortion, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the time region [0.5-1.0] seconds and frequency region [3000-4000] Hz as the most salient for the model’s prediction, aligning with the observed acoustic anomaly. The Saliency method from wav2vec also highlights a region around [1.95-2.05] seconds, but this is not supported by other XAI methods and does not correspond to a clear acoustic abnormality. The LIME explanation from wav2vec identifies [0.95-1.05] seconds, which overlaps with the IG region and further supports the presence of an anomaly in this time frame. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the unnatural silence observed in the audio. Overall, the cross-model agreement from wav2vec’s IG and LIME methods supports the identification of the abnormality in the [0.5-1.0] seconds time range and [3000-4000] Hz frequency range.

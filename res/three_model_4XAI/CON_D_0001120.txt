@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "bitches of touch" in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.2–0.3 seconds into the clip, a subtle but distinct acoustic anomaly is present: a brief, high-frequency, synthetic-sounding artifact overlays the speech. This artifact is not part of the original voice and is acoustically inconsistent with natural speech, suggesting a digital manipulation or insertion. The artifact is most prominent in the 1500–3000 Hz range, which is typical for midrange vocal energy but here appears unnaturally sharp and transient. This anomaly is not present in the rest of the audio, which remains clean and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.2–0.3 second time range and 1500–3000 Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong, cross-model agreement on this region. The LIME method from wav2vec also supports the anomaly, though at a slightly later time (0.6–0.7 seconds), which may correspond to a secondary or residual artifact. The Hubert and WavLM models do not provide any saliency or attribution evidence, suggesting they did not detect the anomaly or were less sensitive to it. The SHAP analysis highlights features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may reflect changes in the audio’s acoustic structure due to the anomaly, but these do not directly localize the artifact in time or frequency. Overall, the wav2vec attribution methods provide the most consistent and detailed evidence for the anomaly, with cross-model agreement on the 0.2–0.3 second, 1500–3000 Hz region.

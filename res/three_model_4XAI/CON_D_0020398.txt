@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500 - 3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "Well, if you need..." in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 2500–3500 Hz range, which is acoustically distinct from the natural speech and does not match any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.8–1.0] seconds, [2500–3500] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME narrows the time window to [0.95–1.05] seconds, reinforcing the presence of the anomaly. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant regions. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the artifact in time or frequency. Thus, the evidence for the anomaly is strongly supported by wav2vec’s multiple XAI methods, while other models and methods do not corroborate the finding.

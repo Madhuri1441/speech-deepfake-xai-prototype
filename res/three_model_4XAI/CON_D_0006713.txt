@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "It will be very for the team may have to live outside the village." The speech is generally intelligible, but at approximately 2.5 seconds, a noticeable high-frequency artifact emerges, lasting until about 4.0 seconds. This artifact manifests as a sharp, synthetic-sounding buzz or whine, with energy concentrated between 4000 Hz and 8000 Hz, which is inconsistent with the natural acoustic profile of the speaker’s voice. The artifact is not present before or after this interval, and it does not correspond to any natural speech or environmental sound. The rest of the audio is clean, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-4.0] seconds, [4000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality in this region, indicating that the anomaly is not detected by all models. The Shapley values from the audio features also support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and alphaRatioUV_sma3nz_amean showing significant deviation, suggesting a disruption in the natural speech signal. The combined evidence from wav2vec and the Shapley values strongly supports the presence of an artificial or corrupted segment in the audio, likely introduced during processing or transmission.

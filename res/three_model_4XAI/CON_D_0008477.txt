@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The affair is very, but not a bad..." The speech is abruptly cut off mid-word, with no natural fade or pause, indicating a possible digital splice or editing artifact. The most notable acoustic abnormality occurs between 0.5 and 1.0 seconds, where the voice is accompanied by a high-frequency, synthetic-sounding buzz or hum in the 4000–6000 Hz range. This buzz is not present in the rest of the audio and does not match typical background noise or environmental sounds. The buzz is likely an artifact introduced during audio processing or editing, possibly due to a digital glitch or an unintended overlay. The abruptness of the cut and the unnatural presence of the buzz suggest tampering or manipulation of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the 1.00–1.25 second time range with a 2000–4000 Hz frequency region. The LIME method also supports the 1.25–1.30 second time range, though this is less consistent. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may relate to the abruptness and unnaturalness of the audio, but do not directly pinpoint the abnormality. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, while other models and methods either do not detect it or provide less consistent support.

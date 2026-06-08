@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "He may be on the ocean was, but he's a great lad." The speech is generally intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable acoustic anomaly. During this interval, the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a brief, high-frequency artifact that is not present in the rest of the audio. This region stands out as acoustically inconsistent with the rest of the speech, suggesting possible digital manipulation or synthesis artifacts. The anomaly is most prominent in the 3000–6000 Hz frequency range, where the voice’s spectral content becomes distorted and unnatural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME explanation for wav2vec, however, points to an earlier interval ([0.0-0.1] seconds), which does not align with the observed acoustic anomaly and is likely spurious. The Hubert and WavLM models do not provide any saliency or IG explanations, and their LIME results are also absent, suggesting they did not detect the anomaly. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean, but does not specify a time or frequency region, making it less directly relevant to pinpointing the anomaly. Overall, the wav2vec model’s IG and Saliency results provide the most robust and cross-validated evidence for the abnormality in the [1.0-2.0] seconds interval and [3000-6000] Hz frequency range.

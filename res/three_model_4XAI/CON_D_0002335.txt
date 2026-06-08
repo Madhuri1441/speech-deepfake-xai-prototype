@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4 - 0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "They are not li—" before abruptly cutting off mid-word. Immediately following this, a synthetic, high-frequency electronic tone appears, lasting for about 0.1 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of speech or environmental noise, but rather a digitally inserted sound, likely intended to mask or censor the remainder of the word. The abruptness and unnatural spectral quality of the tone, as well as its timing, suggest it is a post-production edit rather than a genuine recording artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 0.4–0.5 second time window and 3000–6000 Hz frequency range as salient, indicating that this region is critical for the model's prediction. The LIME method from wav2vec also highlights the 0.0–0.1 second window, which corresponds to the initial part of the speech, but this is less relevant to the abnormality. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP analysis supports the presence of an abnormality by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are associated with the synthetic tone. Overall, the wav2vec model's multiple XAI methods agree on the abnormal region, providing strong evidence for the presence of a digitally inserted tone.

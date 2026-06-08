@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker delivering the phrase, "It was a big tragedy for the family," in a neutral, somber tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, but no obvious digital artifacts or clipping. The most notable acoustic anomaly occurs between 3.0 and 3.5 seconds, where the word "family" is spoken. During this interval, the voice exhibits a subtle but distinct high-frequency shimmer or warble, particularly in the 6000–8000 Hz range, which is not present in the rest of the utterance. This anomaly is not due to the speaker’s natural vocal characteristics, as the rest of the speech is clear and stable. The anomaly is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this region, and the LIME method also identifies a very narrow window (3.0–3.1 seconds) within this interval. The wav2vec model’s SHAP values further corroborate this, with the spectralFlux_sma3_amean feature showing a positive contribution, indicating a change in spectral content consistent with the observed shimmer. No other models (Hubert, WavLM) provide supporting evidence, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region (3.0–3.5 seconds) is supported by multiple wav2vec-based XAI methods: Integrated Gradients, Saliency, and LIME, as well as by SHAP values. This cross-method agreement within the wav2vec model provides strong evidence for the anomaly. The Hubert and WavLM models do not provide any supporting evidence for this region, and no other regions are flagged by multiple methods. Thus, the conclusion is based on consistent wav2vec evidence, with no cross-model agreement.

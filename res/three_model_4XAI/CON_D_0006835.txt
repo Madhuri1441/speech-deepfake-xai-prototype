@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "We won. Another for young Paul Gallagher." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a distinct, high-frequency electronic tone emerges and persists until the end of the clip. This tone is centered in the 3000–6000 Hz range, is steady in pitch and amplitude, and is acoustically separate from the speech, suggesting it is an artificial overlay rather than a natural part of the recording. The tone is not present in the original speech and does not interact with it, indicating it was likely added post-recording. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 3000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency and LIME methods also point to the 2.0–2.1 second region, though with less frequency detail. The wav2vec model’s IG and Saliency methods both highlight the presence of the electronic tone, and LIME corroborates the timing. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than post-processing artifacts. The Shapley values indicate that the abnormal tone is not captured by acoustic features like equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, or StddevUnvoicedSegmentLength, suggesting the anomaly is not reflected in these features. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods supports the conclusion that the electronic tone is an artificial overlay, not a natural part of the audio.

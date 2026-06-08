@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "very nice" in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is clear and intelligible. However, at approximately 0.5–0.6 seconds into the clip, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency artifact appears in the 3000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. It is a short, sharp, and unnatural burst of energy, likely indicative of digital manipulation or editing. The rest of the audio remains unaffected, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.5–0.6] seconds and frequency range [3000–4000] Hz using Integrated Gradients (IG), and the same time range is supported by Saliency and LIME. The Hubert and WavLM models do not detect any abnormality, as their explanations are all "None." The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed artifact. The wav2vec model's multiple XAI methods (IG, Saliency, LIME) consistently point to the same time and frequency region, providing strong cross-model agreement for the anomaly.

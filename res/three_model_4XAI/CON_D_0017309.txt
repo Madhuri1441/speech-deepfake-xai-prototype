@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, but at approximately 1.5–2.0 seconds, there is a noticeable, abrupt change in the acoustic texture. The voice becomes harsher, with a sudden increase in high-frequency content, and the overall timbre shifts to a more strained, raspy quality. This change is not due to any natural speech inflection or emotional shift, as the speaker’s words and rhythm remain consistent. Instead, the altered segment sounds artificially processed, with a loss of natural vocal warmth and a mechanical edge, suggesting a digital artifact or manipulation. This is further supported by the presence of a faint, high-frequency hiss overlaying the voice, which is not present in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.5–2.0 second region as abnormal, with the Saliency method specifically highlighting the 4000–6000 Hz frequency band. The LIME method from wav2vec also supports this region, though with a narrower focus at 1.5–1.6 seconds. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is not consistently detected across all models. The SHAP analysis, while not directly identifying the time or frequency range, highlights features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which may relate to the unnatural vocal transition observed. Overall, the wav2vec model’s multiple methods converge on the 1.5–2.0 second interval as the most suspicious, while other models and methods do not corroborate this finding.

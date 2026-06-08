@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, low-pitched male voice saying "test." Immediately following this, a loud, synthetic, high-pitched electronic tone abruptly starts at 0.6 seconds and lasts until 0.8 seconds. This tone is sharply defined, with a frequency content concentrated between 5000 Hz and 7000 Hz, and is acoustically distinct from the preceding speech and background noise. The tone is unnatural, lacking any organic variation or environmental context, and is likely an artifact or digital overlay. The abrupt onset and offset, as well as the unnatural spectral profile, suggest the tone is not part of the original recording but was inserted or generated artificially.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [0.6-0.8] seconds time region and [5000-7000] Hz frequency region as the most salient for its prediction, directly aligning with the observed synthetic tone. The wav2vec Saliency analysis also highlights a region at [0.8-1.0] seconds, which overlaps with the tail end of the tone, further supporting the presence of an anomalous event. The wav2vec LIME analysis identifies [0.5-0.6] seconds, which is adjacent to the tone's onset, suggesting the model is sensitive to the transition into the abnormal region. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The Shapley values do not directly indicate the abnormal region but highlight features such as equivalentSoundLevel_dBp, which may be affected by the sudden loud tone. Overall, the wav2vec model's multiple independent analyses (IG, Saliency, LIME) consistently point to the same time and frequency region, providing strong cross-model agreement for the abnormality.

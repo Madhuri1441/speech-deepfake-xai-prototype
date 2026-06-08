@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-fidelity female voice saying, "was an out of letters and just a..." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately following the cutoff, a synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced. This tone is steady, unmodulated, and lacks any natural acoustic decay or environmental context, strongly suggesting it was artificially inserted rather than occurring naturally. The tone persists until the end of the clip, with no further speech or background noise. The abruptness of the edit and the unnatural insertion of the tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an IG-based explanation for the time interval [0.6-1.2] seconds and a frequency range of [3000-5000] Hz, and a Saliency-based explanation for [1.5-2.0] seconds and [4000-6000] Hz. The LIME explanation for wav2vec is less specific, covering [0.2-0.3] seconds. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and loudness_sma3_percentile20.0, which are associated with the abruptness and unnatural tone insertion. The wav2vec IG explanation aligns with the observed synthetic tone, suggesting that the model detects the anomaly in the specified time and frequency range. The lack of explanations from Hubert and WavLM indicates that the anomaly is not consistently detected across all models. The wav2vec IG explanation is the most robust, supported by the Shapley values, and is cross-model agreement within wav2vec.

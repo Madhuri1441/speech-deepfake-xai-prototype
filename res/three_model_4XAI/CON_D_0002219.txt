@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a short, neutral statement: "pink peeps, debt, carefully look build a money was involved." The recording is of moderate quality, with a low-level background hiss and a slight room reverberation, but no obvious distortion or clipping. The speech is clear and intelligible, with no signs of emotional distress or unusual vocal effort. The only notable acoustic anomaly occurs between 3.5 and 4.0 seconds, where a high-frequency artifact is present in the 6000–8000 Hz range. This artifact manifests as a brief, sharp, and unnatural sound, likely a digital glitch or artifact, which stands out from the otherwise smooth and natural speech. The rest of the audio is free from such anomalies, and the speech remains consistent in tone and delivery.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 3.5–4.0 second time range and 6000–8000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (1.5–2.0 seconds, 3000–4000 Hz) and LIME points to an earlier segment (0.5–1.0 seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the spectralFlux_sma3_amean feature is most influential, suggesting a change in spectral flux, which aligns with the high-frequency artifact detected by wav2vec. The cross-model agreement is limited to the wav2vec model’s IG evidence, which is the most consistent and directly supported by the audio observation. Other XAI sources do not corroborate this finding, and thus the final abnormality is based on wav2vec’s IG evidence.

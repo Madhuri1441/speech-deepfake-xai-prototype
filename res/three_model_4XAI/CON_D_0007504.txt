@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "The concept, it really is taking..." in a clear, conversational tone. At approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges, lasting until about 2.0 seconds. This buzzing is sharply distinct from the natural speech, with a frequency content between 5000-7000 Hz, and is acoustically inconsistent with the rest of the recording, which features only the speaker’s voice and a faint background hiss. The buzzing is not present in the original audio, nor does it correspond to any natural environmental or vocal artifact, indicating a likely synthetic or digitally inserted anomaly. The speech continues uninterrupted, suggesting the anomaly is not a result of the speaker’s vocalization but rather an external addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency range ([1.0-2.0] seconds, [5000-7000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The SHAP analysis supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are elevated during the buzzing interval, further corroborating the synthetic nature of the sound. Thus, the evidence from wav2vec and SHAP is consistent and robust, indicating a high confidence in the identified anomaly.

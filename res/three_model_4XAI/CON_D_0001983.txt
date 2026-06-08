@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic event occurs between 2.3 and 2.5 seconds, where a sharp, high-frequency transient is present. This transient is characterized by a brief, piercing, and unnatural sound, likely a digital artifact or a synthetic overlay, as it does not correspond to any natural speech or environmental sound. The transient stands out due to its abrupt onset and offset, and its spectral content is concentrated between 6000 and 8000 Hz, which is higher than the typical frequency range of human speech. This anomaly is not supported by any other acoustic evidence in the audio, such as clipping, static, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, with IG highlighting the region [1.0-1.5] seconds and Saliency focusing on [2.3-2.5] seconds, both within the 6000-8000 Hz range. LIME also supports the [2.5, 2.6] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, suggesting that the anomaly is related to a sudden change in sound level and spectral characteristics. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an abnormality in the [2.3-2.5] seconds region, while the lack of evidence from Hubert and WavLM suggests that this region is not universally detected by all models.

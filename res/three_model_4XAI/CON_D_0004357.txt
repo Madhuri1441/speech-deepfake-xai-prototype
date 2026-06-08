@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "or women deep," followed by a brief pause and a second male voice stating, "He said she was mad. Suddenly we have..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the first utterance ("or women deep") is acoustically anomalous: it is unusually low in pitch, muffled, and lacks the expected resonance and articulation of a natural male voice. This suggests the voice may have been artificially generated or altered. The anomaly is most pronounced in the frequency range of 2000–4000 Hz, where the voice lacks the expected energy and clarity, and the articulation is blurred. The second utterance is acoustically normal, with no such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the first utterance, specifically in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, using Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, focusing on [1.8-2.0] seconds, which overlaps with the end of the first utterance. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly in the first utterance, with high values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, suggesting a significant deviation from expected acoustic features. Overall, the wav2vec model's evidence is the most consistent and reliable, with LIME providing additional support. The anomaly is primarily localized to the first utterance, with no evidence of manipulation in the second.

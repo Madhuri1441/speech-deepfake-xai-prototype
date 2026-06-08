@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "The contracts, please." The speech is delivered in a calm, professional tone, with no emotional inflection or background noise. The recording quality is high, with a full frequency range and no distortion or artifacts. However, at approximately 0.6 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 1.2 seconds. This artifact is a sharp, synthetic, and static-like sound, distinct from the natural speech and not present in the original recording. It is acoustically inconsistent with the rest of the audio, suggesting an artificial insertion. The artifact is not masked by the speech and is clearly audible, indicating a post-production edit or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [0.6 - 1.2] second time region and [3000 - 7000] Hz frequency region as suspicious. The Saliency method from wav2vec also highlights a high-frequency region around [5000 - 6000] Hz, though at an earlier time, which is less consistent with the observed artifact. LIME from wav2vec points to a brief [0.3 - 0.4] second region, which does not align with the artifact’s timing. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean contribute to the anomaly, further supporting the presence of an artificial high-frequency event. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the [0.6 - 1.2] second, [3000 - 7000] Hz region as the most likely location of the anomaly.

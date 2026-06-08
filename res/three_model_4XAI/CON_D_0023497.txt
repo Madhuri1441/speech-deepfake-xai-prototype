@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "to be a breath one of time," in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-professional recording environment. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [0.8–1.2] seconds, coinciding with the end of the phrase. This region exhibits a faint, unnatural tonal quality that is not present in the rest of the audio, suggesting a possible synthetic or manipulated segment. The anomaly is not perceptible to casual listening but is detectable through spectral analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.8–1.2] seconds time range and [4000–6000] Hz frequency range using Integrated Gradients (IG), and also detects a salient region at [0.1–0.2] seconds in the [1000–2000] Hz range using Saliency. LIME further supports the [0.2–0.3] seconds interval, though this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic structure, but do not directly pinpoint the abnormal region. The wav2vec IG result is the most consistent and cross-validated evidence for the anomaly, while other findings are either less consistent or not corroborated by multiple models.

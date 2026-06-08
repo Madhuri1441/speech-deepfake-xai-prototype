@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "talented, great is being buried on that day." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but noticeable anomaly is present in the high-frequency range (3000–6000 Hz) during the time interval [1.5–2.1] seconds, coinciding with the word "buried." At this point, the voice exhibits a slight unnatural pitch inflection and a faint, artificial resonance, deviating from the natural timbre and prosody of the rest of the utterance. This suggests a possible digital manipulation or synthesis artifact, as the voice does not transition smoothly into the following word, and the acoustic texture is less organic than expected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5–2.1] second range, with IG highlighting [1.5–2.0] seconds and Saliency focusing on [2.0–2.1] seconds, both within the 3000–6000 Hz frequency band. LIME also supports this region with a time interval of [1.8–2.0] seconds. These multiple XAI sources from wav2vec converge on the same time and frequency region, indicating a strong cross-model agreement. The Hubert and WavLM models do not provide any supporting evidence, as their explanations are all "None." The Shap values further reinforce the anomaly by highlighting features related to unvoiced segment length and loudness, which are consistent with the observed acoustic irregularity. Thus, the evidence from wav2vec models and Shap values strongly supports the presence of an anomaly in the specified region.

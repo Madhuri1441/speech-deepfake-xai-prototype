@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, steady voice, delivering a short, positive statement in a quiet, acoustically neutral environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct anomaly is present in the high-frequency range (4000–6000 Hz) during the word "exciting" at approximately 1.5–2.0 seconds. This region exhibits a faint, artificial-sounding shimmer or tonal overlay, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. This anomaly is supported by multiple independent XAI methods: Integrated Gradients (IG) identifies this time-frequency region as critical for the model’s prediction, while Saliency analysis highlights a broader high-frequency region (3000–5000 Hz) around the same word, and LIME specifically isolates the 0.95–1.05 second window, which overlaps with the start of the anomaly. The consistency of these findings across different XAI methods suggests that the model is responding to an artificial or unnatural acoustic feature in this segment. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 1.5–2.0 seconds in the 4000–6000 Hz range is supported by cross-model agreement: Integrated Gradients (IG) from wav2vec, Saliency from wav2vec, and LIME from wav2vec all point to this region as significant. The Hubert and WavLM models do not provide supporting evidence for this region, but the wav2vec-based methods collectively confirm the anomaly. This cross-model agreement strengthens the case that the observed acoustic feature is a deepfake artifact, rather than a natural speech characteristic.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "Security is clearly capable." The speech is delivered in a controlled, professional manner, with no emotional inflection or background noise, suggesting a studio or controlled recording environment. However, at approximately 2.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges, lasting until about 3.0 seconds. This buzzing is sharply defined, with a fundamental frequency around 6500 Hz and strong harmonics extending up to 7000 Hz, and is acoustically distinct from the preceding speech. The buzzing is not a natural artifact of the voice or environment, and its abrupt onset and unnatural timbre suggest digital manipulation or insertion. The voice itself remains unaffected by the buzzing, indicating the artifact is layered on top of the original recording. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [6000-7000] Hz). The IG and LIME methods specifically highlight the buzzing artifact, while Saliency focuses on the voice but still aligns with the same time window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis further supports the presence of an anomaly by highlighting features such as spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are associated with the buzzing artifact. The agreement among wav2vec’s methods and the SHAP analysis confirms the presence of a synthetic buzzing artifact in the specified region.

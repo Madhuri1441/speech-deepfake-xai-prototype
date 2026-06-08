@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "before." Immediately following this, a second female voice, with a distinctly synthetic and monotone quality, states, "Charities want there was still work to do." The transition between the two voices is abrupt and unnatural, with no fade or overlap, and the second voice exhibits a robotic cadence and unnatural prosody. The synthetic voice is accompanied by a persistent, low-level electronic hum, which is most noticeable during the second speaker’s phrase. The synthetic voice is also slightly louder and more reverberant than the first, suggesting it was processed or generated separately. The audio ends with a sharp, digital click, indicating an abrupt cut or edit.
+
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the time interval [1.0-2.5] seconds and frequency range [4000-6000] Hz as abnormal, corresponding to the synthetic voice. The LIME explanation for wav2vec also points to the very beginning of the audio, likely due to the sudden change in voice quality. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the synthetic nature of the second voice is not detected by these models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean, which are all consistent with the presence of a synthetic voice and abrupt transitions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both agree on the abnormality occurring between [1.0-2.5] seconds and [4000-6000] Hz, corresponding to the synthetic voice. The wav2vec LIME explanation also supports this, though it is less specific. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the synthetic nature of the second voice is not detected by these models. The SHAP analysis further supports the presence of a synthetic voice through its feature values. The final abnormality region is thus primarily supported by wav2vec’s IG and Saliency methods, with additional support from wav2vec’s LIME explanation.

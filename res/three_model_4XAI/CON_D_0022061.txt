@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a continuous, well-paced sentence in a quiet, acoustically dry environment. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic anomaly occurs between 3.0 and 3.5 seconds, where a subtle, high-frequency, synthetic-sounding artifact is present. This artifact is not speech-related and does not correspond to any natural vocal event or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency range as a region of high salience, indicating that the model detects an anomaly in this segment. The wav2vec Saliency analysis also highlights a nearby region (4.0-4.5 seconds, 1000-2000 Hz), but this is less consistent with the observed artifact. No other XAI models (Hubert, WavLM) or Shap values provide supporting evidence for this specific anomaly, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec Integrated Gradients (IG) analysis is the only source that identifies the specific time and frequency range of the anomaly (3.0-3.5 seconds, 2000-4000 Hz). The wav2vec Saliency analysis provides a related but slightly offset region, but the IG result is more directly aligned with the observed artifact. The Hubert and WavLM models do not provide any evidence for this region, and the Shap values do not correspond to the identified anomaly. Thus, the evidence for the anomaly is based on a single model (wav2vec) with strong alignment between the IG and Saliency results, but no cross-model agreement.

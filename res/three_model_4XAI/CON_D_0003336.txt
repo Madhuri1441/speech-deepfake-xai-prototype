@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "positive response that is before," in a neutral, conversational tone. Immediately following this, a brief, high-frequency electronic tone is heard, lasting about half a second (0.5–1.0 seconds), with a pitch in the 2000–4000 Hz range. This tone is sharply distinct from the preceding speech, both in timbre and frequency, and is acoustically anomalous—suggesting a possible digital artifact or synthetic overlay. The tone is not a natural part of speech or environmental sound, and its abrupt onset and cutoff are inconsistent with typical audio transitions. No other obvious acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the anomalous tone as the most salient region, specifically in the time interval [0.5-1.0] seconds and frequency band [2000-4000] Hz. This is corroborated by the Saliency method, which also highlights a brief, high-frequency event at [1.95-2.05] seconds, though this is less consistent with the audio and may be a secondary artifact. The LIME method, however, points to an earlier, very short segment [0.0-0.1] seconds, which does not align with the observed tone and may reflect a different model interpretation. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values further support the presence of a high-frequency event, with the equivalentSoundLevel_dBp feature showing a large positive contribution, consistent with the presence of a loud, synthetic tone. In summary, the wav2vec IG and Saliency methods agree on the anomalous tone, while other models and methods provide less consistent or conflicting evidence.

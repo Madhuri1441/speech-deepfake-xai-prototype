@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "our injury job" in a neutral, conversational tone. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds. This transient is characterized by a piercing, sibilant sound, likely a plosive or a clipped consonant, and is accompanied by a brief, unnatural pitch drop and a harsh, digital artifact. The frequency content of this event is concentrated between 3000–4000 Hz, with a possible extension up to 6000 Hz, as indicated by the wav2vec saliency map. The transient is not present in the original speech and does not match typical acoustic properties of human speech, suggesting it is an artifact. The audio then resumes with the word "complete," spoken in a normal, unaffected tone. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and the [1.5-2.0] seconds range and [3000-6000] Hz range using Saliency. The LIME explanation for wav2vec is less specific, pointing to the very beginning of the audio. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency transient. The wav2vec IG and Saliency maps provide the most consistent and detailed evidence for the abnormality, while the other models and Shapley values support the presence of an anomaly but do not localize it as precisely.

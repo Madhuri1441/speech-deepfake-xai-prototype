@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "was vigorous in its defense of the labeling." Immediately following the word "labeling," there is a brief, unnatural silence, after which a synthetic, low-frequency electronic tone abruptly appears. This tone is monotonous, lacks any modulation or harmonic complexity, and persists for about 0.75 seconds, ending abruptly. The tone is acoustically distinct from the preceding speech, with a frequency content centered around 6000–7000 Hz, and its sudden onset and offset suggest digital insertion rather than a natural environmental sound. The voice itself is clear and free of distortion, but the transition to the electronic tone is jarring and unnatural, indicating a possible post-production edit or digital artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies a salient region between 1.00–1.25 seconds in the time domain and 6000–7000 Hz in the frequency domain, directly corresponding to the synthetic tone. This is the only XAI evidence that aligns with the observed acoustic abnormality. The Saliency and LIME explanations from wav2vec, as well as all explanations from Hubert and WavLM, do not support this region, indicating that the anomaly is detected by only one model. The Shap values for features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 suggest that the audio contains abrupt changes in spectral and loudness characteristics, which may be indicative of the synthetic tone, but these features do not localize the anomaly in time or frequency. Therefore, the final abnormality is supported by a single XAI source (wav2vec IG), with no cross-model agreement.

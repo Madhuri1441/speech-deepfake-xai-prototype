@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I think we still as high program with the mortgage. We could not handle." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 2.5 seconds, a sharp, high-frequency artifact emerges, lasting until about 3.0 seconds. This artifact is a brief, piercing, and unnatural sound, likely a digital glitch or encoding error, as it does not match the acoustic profile of the speaker’s voice or any environmental background. The artifact is not present in the original speech and stands out due to its abrupt onset and unnatural frequency content (6000–7000 Hz), which is higher than typical human speech and does not blend with the surrounding audio. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.5-3.0] seconds time region and [6000-7000] Hz frequency region as the most salient for its prediction, aligning precisely with the observed artifact. The wav2vec Saliency analysis also highlights a related region ([3.5-4.0] seconds, [1000-8000] Hz), which may correspond to residual effects or secondary anomalies, but the primary abnormality is best supported by the IG result. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis for wav2vec is inconclusive. The SHAP analysis does not directly reference the artifact but instead highlights unrelated acoustic features, such as StddevUnvoicedSegmentLength and loudness metrics, which are not directly connected to the observed anomaly. Thus, the wav2vec IG result is the most reliable indicator of the artifact, with no cross-model agreement but strong alignment with the audio evidence.

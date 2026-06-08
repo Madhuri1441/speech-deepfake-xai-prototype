@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "I've seen some of the submissions," in a clear, neutral tone. The speech is accompanied by a persistent, low-level electronic hiss, typical of a consumer-grade microphone or a noisy recording environment. The most notable acoustic anomaly occurs during the phrase "submissions," specifically between 1.0 and 2.5 seconds. During this interval, the voice exhibits a pronounced, unnatural high-frequency shimmer or warble, with energy concentrated between 6000 and 7000 Hz. This artifact is not present in the rest of the audio and is inconsistent with natural speech, suggesting digital manipulation or a deepfake artifact. The voice otherwise remains intelligible and free of distortion, with no other obvious anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([1.0-2.5] seconds, [6000-7000] Hz), while LIME provides a narrower but overlapping time window ([2.0-2.1] seconds). The Hubert and WavLM models do not detect any abnormalities, and their XAI methods yield no evidence. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, which aligns with the observed high-frequency shimmer. The agreement among wav2vec’s methods confirms the presence of a deepfake artifact in the specified region, while the lack of evidence from other models suggests the anomaly is subtle or localized.

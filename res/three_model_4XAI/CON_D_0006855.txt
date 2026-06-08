@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone: "Princess affliction because he is not a tournament." The speech is intelligible and delivered at a moderate pace, with no obvious emotional inflection. However, at approximately 2.5 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of the speaker or environment, and its abrupt onset and unnatural timbre suggest it is an artificial insertion, likely intended to mask or obscure the remainder of the audio. The speech is cut off mid-word ("tournament"), further supporting the hypothesis of intentional audio tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the audio is supported by multiple XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [2.5-3.0] seconds time region and [4000-6000] Hz frequency region as significant for the model's prediction, indicating that this segment is critical to the model's classification of the audio as a deepfake. The Saliency method from wav2vec also highlights the [0.0-0.5] seconds region, but this is less relevant to the abnormality in question. No other XAI methods (Hubert or WavLM) provide supporting evidence, and the SHAP values do not directly correspond to the observed abnormality. The convergence of IG evidence from wav2vec on the high-frequency tone strongly supports the conclusion that this segment is the primary source of the audio's anomalous nature.

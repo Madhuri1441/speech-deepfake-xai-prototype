@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 3.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until 4 seconds. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the speech or environment, and its abrupt onset and unnatural timbre suggest it is an artificial insertion, likely a watermark or digital artifact. The voice continues unaffected, indicating the tone is not a result of vocal manipulation but rather an overlay. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [3.5-4] seconds time region and [6000-7000] Hz frequency region as significant for the model’s prediction, indicating that this segment is a key feature in the model’s classification of the audio as a deepfake. The Saliency method from wav2vec also highlights the [0-1] seconds region, but this is less relevant to the main anomaly. The LIME explanation from wav2vec points to the [1.5-2] seconds region, which does not align with the observed synthetic tone. The Hubert and WavLM models do not provide any significant explanations, suggesting that the anomaly is primarily detected by wav2vec. The Shap values further support the importance of the synthetic tone, with high values for spectral features such as spectralFlux_sma3_amean and StddevUnvoicedSegmentLength, which are likely affected by the presence of the artificial tone. Overall, the cross-model agreement from wav2vec’s IG and the Shap values confirm the synthetic tone as the primary anomaly.

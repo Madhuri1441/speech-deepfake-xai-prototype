@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "You can't keep teetering about the reverses come time." The speech is generally intelligible, with a slight regional accent, and the recording is of moderate fidelity, containing a low-level background hiss. The most notable acoustic anomaly occurs in the final word, "time," which is abruptly truncated and replaced by a synthetic, low-frequency electronic tone. This tone is distinctly artificial, lacking the natural decay or resonance of a human voice, and is centered in the 1000–2000 Hz frequency range. The transition from speech to tone is instantaneous, with no fade or overlap, indicating a digital edit or insertion. This anomaly is not present in the original speech and is not attributable to natural speech production or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.0-3.5] seconds time range and [1000-2000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement on the synthetic tone’s presence. The LIME method also supports this region, though with a narrower focus around [0.9-1.1] seconds, which may correspond to the onset of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from expected speech patterns. The cross-model agreement between wav2vec’s IG and Saliency methods, along with LIME, confirms the synthetic tone as the primary abnormality.

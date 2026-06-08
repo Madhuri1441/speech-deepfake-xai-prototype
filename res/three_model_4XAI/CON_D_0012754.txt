@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "She had been sexually assaulted." The speech is clear and intelligible, with a neutral, declarative tone. However, during the latter part of the phrase, specifically around the word "assaulted," a distinct, high-frequency, synthetic-sounding artifact emerges. This artifact is not present in the initial portion of the audio and is characterized by a sharp, buzzing, or chirping quality, which is acoustically anomalous compared to the natural speech. The artifact is most prominent between 1.5 and 3.0 seconds, with energy concentrated in the 3000–6000 Hz range, and it overlays the end of the spoken phrase, making it acoustically inconsistent with the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time interval ([1.5-3.0] seconds) and frequency range ([3000-6000] Hz), indicating strong cross-model agreement on the presence of an anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of a sudden change in acoustic properties at the identified time and frequency range.

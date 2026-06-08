@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a calm, conversational tone, saying, "I don't in our island." The speech is clear and natural, with no obvious signs of manipulation. However, at approximately 3.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 3.5 seconds. This tone is distinctly artificial, with a pure, unmodulated pitch in the 7000–8000 Hz range, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the environment or speech and appears abruptly, suggesting it is an inserted artifact rather than a genuine sound event. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), highlighting the [3.0-3.5] seconds time region and the [7000-8000] Hz frequency region. This aligns precisely with the observed synthetic tone in the audio. The wav2vec model also provides Saliency and LIME explanations, but these focus on the initial speech segment and do not support the abnormality. The Hubert and WavLM models do not provide any explanations for the anomaly, indicating that the wav2vec model is uniquely sensitive to this type of synthetic insertion. The Shap values further support the presence of an anomaly, with significant contributions from features like equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength, which are likely affected by the sudden synthetic tone. Overall, the wav2vec model’s IG explanation is the primary evidence for the abnormality, with no cross-model agreement but strong alignment with the audio observation.

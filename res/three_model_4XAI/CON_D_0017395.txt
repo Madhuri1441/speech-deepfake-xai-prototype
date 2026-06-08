@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.3-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency rustling sound, likely from fabric or a microphone being handled, followed by a male voice saying, "I choose the former." The speech is clear, with a neutral, conversational tone and no signs of emotional distress or artificiality. However, at approximately 1.3–1.4 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.1 seconds. This artifact is not present in the original speech and is acoustically distinct from the natural voice, suggesting a digital manipulation or insertion. The artifact is most prominent in the 6000–7000 Hz range, which is outside the typical speech spectrum, and is not accompanied by any other environmental or vocal cues. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The LIME explanation from the wav2vec model identifies the [1.3–1.4] seconds time region as suspicious, and the IG explanation from the same model highlights the [6000–7000] Hz frequency range. These two independent XAI methods both point to the same acoustic anomaly, providing cross-model agreement. The wav2vec model’s Saliency method also identifies a different region ([0.0–0.5] seconds), but this is not supported by other models and is likely related to the initial rustling sound rather than the main anomaly. The Hubert and WavLM models do not provide any explanations, and the Shap values do not directly indicate the artifact but instead reflect general audio features. Thus, the most reliable evidence for the anomaly comes from the wav2vec model’s LIME and IG explanations, which align with the observed synthetic artifact in the audio.

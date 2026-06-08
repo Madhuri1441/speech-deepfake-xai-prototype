@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Surely the spectac—" before being abruptly cut off mid-word. Immediately following the speech, a loud, synthetic, low-frequency electronic tone (approximately 1000–3000 Hz) is introduced, lasting for about 0.25 seconds. This tone is highly unnatural, with a harsh, buzzy timbre and a static pitch, lacking any modulation or environmental context. The transition from speech to tone is abrupt and unnatural, suggesting a digital splice or insertion rather than a real-world event. The tone is not present in the original audio, and its sudden appearance is acoustically jarring, indicating a possible tampering or deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.25-0.5] seconds time range and [1000-3000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports the [0.00-0.50] seconds and [1000-2000] Hz range. LIME analysis from wav2vec further supports the [0.0-0.1] seconds region, though this is less specific. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and mfcc2V_sma3nz_amean, which are consistent with the presence of a synthetic tone. The wav2vec model’s multiple XAI methods (IG, Saliency, LIME) converge on the same abnormality region, providing strong cross-model agreement. The absence of evidence from Hubert and WavLM suggests that the anomaly is subtle or not captured by their feature representations.

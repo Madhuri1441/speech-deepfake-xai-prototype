@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...except the Taliban regime is finished." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 4000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt, with no gradual onset or decay, and does not match the spectral profile of the voice or any environmental sound. This anomaly is not present in the original speech and is likely the result of digital editing or synthesis, such as a splice or overlay of an unrelated sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time-frequency region ([1.5-2.0] seconds, 4000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by all models, but the wav2vec results are robust and consistent. The SHAP values further support the presence of an anomaly, with high contributions from spectral features such as spectralFlux_sma3_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which are indicative of sudden changes in spectral content and energy. These findings collectively confirm the presence of a synthetic or manipulated segment in the audio, specifically in the 1.5–2.0 second interval.

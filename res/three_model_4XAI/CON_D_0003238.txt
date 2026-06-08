@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "It's just that we see a process, but this isn't a...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a brief, high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a sharp, synthetic-sounding burst in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is not present in the original speech and is not masked by it, suggesting a possible insertion or editing artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [2.5-3.0] seconds with the same frequency range using Saliency. LIME also highlights a brief region at [0.0-0.1] seconds, but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a high positive value, suggesting a sudden increase in sound level at the identified time. The other features (mfcc1_sma3_amean and loudness_sma3_percentile20.0) also show positive contributions, supporting the presence of an anomalous event. The wav2vec model’s IG and Saliency results are consistent with the observed artifact, while the other models do not detect it. Thus, the wav2vec model provides the strongest and most consistent evidence for the abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "It's game is now o-". The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, lacking any acoustic or environmental context, and is highly atypical for a natural recording. The sudden transition and the unnatural, monotonous quality of the tone strongly suggest an artificial insertion or editing artifact, likely intended to mask or censor the remainder of the speech. The tone persists until the end of the clip, with no further speech or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two distinct regions of abnormality: a time region between 1.0-1.5 seconds and a frequency region between 6000-7000 Hz, supported by Integrated Gradients (IG) evidence. This aligns with the observed synthetic tone in the audio, which is both temporally and spectrally anomalous. The Saliency method from wav2vec also identifies a secondary region (1.8-2.0 seconds, 5000-6000 Hz), but this is less consistent with the main acoustic event. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which further support the presence of an abrupt, loud, and non-speech sound event. Overall, the wav2vec IG evidence is the most robust and cross-model consistent indicator of the anomaly, corresponding to the synthetic tone introduced after the speech.

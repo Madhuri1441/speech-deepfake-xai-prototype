@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "British Olympic" in a standard British accent, with no background noise or distortion. The speech is intelligible and natural, with a smooth, steady pitch and no signs of emotional stress or artificiality. However, at approximately 1.4 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 1.6 seconds. This tone is sharply defined, with a frequency content between 2000 and 3000 Hz, and is acoustically distinct from the preceding speech. It is not a natural part of the voice or environment, and its abrupt onset and offset suggest it is an inserted artifact rather than a genuine sound event. The tone does not interfere with the intelligibility of the speech but stands out as an unnatural addition. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 1.4–1.6 second time range and 2000–3000 Hz frequency range. The IG method specifically highlights this region, while Saliency also supports it, albeit with a slightly broader time window. The LIME method, though less precise, aligns with this region by indicating a salient event around 0.5–0.6 seconds, which is close to the observed anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values further support the presence of an anomaly, with features such as spectral flux and loudness showing elevated values, indicating a deviation from normal speech patterns. The cross-model agreement between wav2vec’s IG and Saliency methods, along with the LIME approximation, strongly supports the conclusion that the synthetic tone is an inserted artifact.

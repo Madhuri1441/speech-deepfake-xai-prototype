@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "We would much rather it music, it's too much." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but noticeable change occurs in the acoustic texture of the voice. The timbre becomes slightly thinner and less resonant, and a faint, high-frequency shimmer emerges, most prominent between 3000–4000 Hz. This change persists until about 1.0 seconds, after which the voice returns to its original quality. The transition is abrupt and unnatural, suggesting a possible digital artifact or editing artifact, such as a splice or resampling error. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method focusing on a brief [2.0-2.1] seconds interval and [5000-6000] Hz, though this is less consistent. LIME also highlights a region around [0.6-0.7] seconds, aligning with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP analysis does not directly indicate the abnormality but provides context on acoustic features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, which may be indirectly related to the observed change. Overall, the wav2vec model’s IG and LIME results, along with the Saliency method’s brief interval, provide cross-model agreement on the abnormality, while other models and SHAP values do not directly support this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "We have high hope in going on like this forever." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, at approximately 2.0–2.1 seconds, a subtle but distinct high-frequency artifact appears, manifesting as a brief, sharp, and unnatural tonal burst in the 5000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocalization or environmental sound, suggesting it is an artificial insertion. The rest of the audio remains unaffected, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.1] seconds in the 5000-6000 Hz range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.5-1.0] seconds, 2000-4000 Hz) and LIME points to [1.5-1.6] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that aligns with the observed artifact in the audio, indicating a cross-model agreement for the [2.0-2.1] seconds, 5000-6000 Hz region. No other XAI sources corroborate this finding, and the Shap values do not directly reference this specific region, though they highlight other acoustic features. Thus, the wav2vec IG result is the most reliable indicator of the anomaly.

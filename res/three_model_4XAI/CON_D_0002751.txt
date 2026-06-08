@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "job. This is a good performance." The speech is clear and natural, with no obvious signs of digital manipulation. However, a subtle but noticeable anomaly occurs in the frequency range of 4000–7000 Hz between 0.5 and 1.5 seconds. This region is marked by a faint, artificial-sounding hiss or static, which is not present in the rest of the audio. The hiss is not part of the original speech and does not correspond to any environmental or recording artifacts. This anomaly is supported by multiple XAI methods: the Saliency method identifies the same time and frequency region, while the IG method highlights a slightly broader interval (1.0–1.5 seconds) within the same frequency band. The LIME method also points to a specific moment (0.9–1.0 seconds) in this range, further corroborating the presence of an anomaly. No other acoustic irregularities are detected in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across three independent XAI methods (IG, Saliency, and LIME), all pointing to the same time and frequency region. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values indicate that the anomaly is not related to overall loudness or spectral flux but rather to a subtle change in the spectral envelope, as reflected by the equivalentSoundLevel_dBp feature. The cross-model agreement from wav2vec methods strongly supports the presence of an artificial or manipulated segment in the audio, likely introduced during post-processing or editing.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a clear, intelligible statement: "Gareth Cleave will not learn the lessons from this outbreak." The speech is recorded in a quiet, acoustically dry environment, with no background noise or distortion. The voice is centered in the mid-frequency range (300–3000 Hz), and the overall signal is clean and undistorted. However, a subtle but noticeable anomaly occurs between 1.4 and 1.6 seconds, where a faint, high-frequency artifact appears in the 3000–3500 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. It is likely a digital artifact, possibly introduced during editing or encoding, and is not perceptible to the human ear but is detectable by machine learning models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.4-1.6] seconds, [3000-3500] Hz). The Hubert and WavLM models do not detect any abnormality in the audio, as their XAI methods return no relevant regions. The SHAP analysis highlights three acoustic features—equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean—whose values deviate from the norm, but these do not localize the anomaly to a specific time or frequency range. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods provides strong evidence for the presence of a subtle, high-frequency artifact in the specified region, which is not supported by other models or SHAP values.

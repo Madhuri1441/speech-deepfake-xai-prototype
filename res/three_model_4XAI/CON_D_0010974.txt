@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in English, but the phrase "This would not have was very other country" is delivered with unnatural prosody and a slight robotic quality, suggesting synthetic generation. The most notable acoustic anomaly occurs between 0.5 and 1.0 seconds, where the speech exhibits a sudden, unnatural pitch shift and a brief, high-frequency artifact in the 3000–4000 Hz range. This is accompanied by a subtle, unnatural reverb and a lack of natural breath or mouth sounds, which are typical of deepfake audio. The voice then continues with a brief, abrupt cutoff at 2.9–3.1 seconds, where a high-frequency artifact (7000–8000 Hz) is present, further indicating synthetic generation. The overall speech is monotonic and lacks the natural cadence of human speech, reinforcing the impression of a deepfake.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: [0.5-1.0] seconds (3000–4000 Hz) and [2.9-3.1] seconds (7000–8000 Hz), both of which are supported by the saliency method. The LIME method also highlights a region around [1.5-2.0] seconds, though this is less distinct. The Hubert and WavLM models do not provide any abnormality regions, indicating that the wav2vec model is the most sensitive to the synthetic artifacts. The Shap values further support the presence of synthetic speech, with features like StddevUnvoicedSegmentLength and spectralFluxV_sma3nz_stddevNorm indicating deviations from natural speech patterns. The wav2vec model’s IG and saliency methods agree on the primary abnormality region, while LIME provides additional, less precise support. Thus, the wav2vec model’s evidence is the most reliable in identifying the deepfake audio.

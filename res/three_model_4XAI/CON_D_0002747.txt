@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker delivering a clear, natural-sounding line: "We must not, not even the Scottish Arts Council was interested in her." The speech is intelligible and exhibits normal prosody, with no obvious signs of digital manipulation or synthetic speech. However, at approximately 1.0–2.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, sustained, and unnatural electronic tone in the 3000–4000 Hz range. This tone is not present in the original speech and does not correspond to any environmental or vocal source, suggesting it is an artifact introduced during audio processing or editing. The tone persists briefly and then fades, with no further anomalies detected in the remainder of the clip. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–2.0 second time region and 3000–4000 Hz frequency region as anomalous using Integrated Gradients (IG), while Saliency analysis highlights a different region (4.0–5.0 seconds, 1000–2000 Hz) and LIME points to 3.0–3.5 seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that spectralFlux_sma3_amean, loudness_sma3_percentile80.0, and slopeUV0-500_sma3nz_amean are the top features contributing to the anomaly, with spectralFlux_sma3_amean showing the highest value, suggesting a strong presence of high-frequency content in the suspected region. The wav2vec IG result is the only one that aligns with the observed high-frequency artifact in the audio, and this is the only cross-model agreement. The other XAI findings do not correspond to any observable anomaly in the audio and are therefore disregarded.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a sharp, buzzing, and slightly distorted timbre, with a fundamental frequency around 2.5 kHz and strong harmonics up to 4 kHz. The sound is unnatural and does not resemble any typical speech or environmental noise, suggesting it is a digital artifact or a synthetic overlay. The remainder of the audio consists of a female voice speaking in a neutral, conversational tone, with no further anomalies detected. The voice is clear, with no signs of pitch manipulation or unnatural cadence, and the background remains quiet except for the initial artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.0] seconds in the frequency range of [2000-4000] Hz using Integrated Gradients (IG), and at [1.3-1.5] seconds using Saliency, both of which align with the observed synthetic artifact. LIME also supports the presence of an anomaly at [0.4-0.5] seconds, which is consistent with the onset of the artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which may be related to the presence of the artifact, but these are not directly tied to the specific time or frequency ranges. Overall, the wav2vec model’s IG and Saliency, along with LIME, provide cross-model agreement on the presence of the synthetic artifact in the specified time and frequency range.

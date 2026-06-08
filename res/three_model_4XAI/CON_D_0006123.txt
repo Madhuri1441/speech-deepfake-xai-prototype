@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice with a monotonous, robotic delivery, characteristic of a text-to-speech (TTS) system. The speech is: "If it can run a computer, you can talk to the world." The utterance is clear and intelligible, but the voice lacks natural intonation, breathiness, and emotional inflection. At approximately 1.5–2.0 seconds, there is a subtle but noticeable pitch and timbre shift, coinciding with the word "computer." This moment is acoustically anomalous, as the voice exhibits a slight digital artifact or unnatural modulation, deviating from the otherwise smooth and synthetic vocal quality. The frequency region [4000-6000] Hz is particularly affected, where the spectral content becomes slightly harsher and less natural, suggesting a possible artifact from the TTS synthesis process or a minor digital glitch.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.5-2.0] second time region and [4000-6000] Hz frequency region as anomalous using both Integrated Gradients (IG) and Saliency methods. These findings are corroborated by the LIME method, which highlights a narrower [2.4-2.5] second window, likely corresponding to the same acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec-based findings are the most reliable. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 showing elevated values, suggesting a deviation from typical speech patterns. Overall, the wav2vec model’s multiple XAI methods consistently identify the same acoustic region, providing strong cross-model agreement for the anomaly.

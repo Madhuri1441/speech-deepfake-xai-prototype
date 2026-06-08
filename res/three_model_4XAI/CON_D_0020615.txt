@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Some not used by Kenzie," in a neutral, conversational tone. Immediately following the speech, a persistent low-frequency hum is present throughout the recording, likely due to environmental or device noise. At approximately 1.5–2.0 seconds, a sharp, high-frequency click or pop is audible, which stands out against the otherwise steady background. This click is accompanied by a brief, high-pitched electronic tone, lasting about 0.5 seconds, which is not part of the speech or natural environment. The tone is centered in the 4000–6000 Hz frequency range, and its sudden onset and unnatural timbre suggest it is an artifact of digital processing or a synthetic sound inserted during editing. The click and tone are not present in the original speech and appear to be post-production additions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a slightly later region (2.9–3.1 seconds) in the 6000–7000 Hz range. LIME also supports the 1.8–2.0 second region. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is the primary source of evidence. The SHAP values further support the presence of an abnormality, with high contributions from equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope, all of which are associated with the sudden onset of the high-frequency tone. The cross-model agreement from wav2vec’s IG and LIME methods, along with the SHAP analysis, confirms the presence of an artificial sound event in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice speaking in a neutral, conversational tone, but at approximately 2.0 seconds, the speech is abruptly interrupted by a sharp, high-frequency digital artifact. This artifact manifests as a piercing, synthetic tone in the 4000–6000 Hz range, lasting about 0.5 seconds and ending suddenly at 2.5 seconds. The artifact is acoustically distinct from the preceding speech, lacking natural vocal timbre or modulation, and is consistent with a digital glitch or deepfake insertion. Immediately after the artifact, the speaker resumes with a slightly altered cadence, suggesting a possible edit or manipulation. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) method identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as salient, directly aligning with the observed digital artifact. The Saliency method from wav2vec also highlights a region at [3.0-3.5] seconds, which is close to the artifact and may reflect residual model sensitivity to the aftermath of the glitch. LIME from wav2vec identifies a brief region at [0.5-0.6] seconds, which does not correspond to any clear anomaly and may be a false positive. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which may reflect changes in speech continuity and spectral dynamics caused by the artifact, but these do not pinpoint specific time or frequency regions. Overall, the wav2vec IG and Saliency methods provide cross-model agreement on the artifact’s location, while other evidence is either inconsistent or not region-specific.

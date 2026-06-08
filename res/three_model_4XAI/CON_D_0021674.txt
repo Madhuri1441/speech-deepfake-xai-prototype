@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Edinburgh" in a neutral, clear tone, followed by a brief pause and a sharp, high-frequency click. The click is acoustically anomalous, standing out from the rest of the recording due to its sudden onset, high pitch, and short duration. It is not a natural part of speech or environmental sound, and its spectral content (2000–6000 Hz) is consistent with a digital artifact or editing artifact. The click is not masked by the voice and is perceptually distinct, suggesting it is not a result of the speaker’s utterance or microphone handling. The rest of the audio is clean, with no background noise or distortion, further highlighting the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [0.2-0.4] seconds time region and [2000-6000] Hz frequency region as salient, indicating that this click is a key feature for the model’s prediction. The LIME method, while focusing on a slightly narrower [0.8-0.9] seconds window, still supports the presence of a high-frequency event in the audio. The Hubert and WavLM models do not provide any saliency or explanation, likely because they are not sensitive to this type of artifact or because the click is not present in their training data. The Shapley values also point to high-frequency energy and acoustic irregularities, supporting the presence of an anomalous click. Overall, the wav2vec model’s multiple XAI methods agree on the anomalous region, while the other models do not contradict this finding.

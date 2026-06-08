@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral accent, delivering a calm, narrative statement in a quiet, acoustically dry environment. The speech is continuous and intelligible, with no background noise, music, or environmental sounds. The only notable acoustic event occurs between 3 and 5 seconds, where the speaker’s voice exhibits a sudden, unnatural drop in pitch and a marked increase in low-frequency content, accompanied by a harsh, raspy timbre. This change is abrupt and inconsistent with natural speech modulation, suggesting a possible digital manipulation or editing artifact. The voice then returns to its original quality, indicating a localized anomaly rather than a global change. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 3–5 second region as anomalous, with the Saliency method further specifying a frequency range of 2000–8000 Hz. The LIME method from wav2vec also supports this region, though with a narrower time window (4.0–4.1 seconds). The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The Shapley value analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which collectively suggest a disruption in the speech’s acoustic structure, particularly in the voiced segment and spectral content. The convergence of wav2vec’s multiple methods on the same time and frequency range, along with the Shapley feature analysis, strongly supports the presence of an anomaly in the 3–5 second interval.

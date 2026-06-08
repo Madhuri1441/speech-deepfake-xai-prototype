@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "that parliament. He he began just this morning." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 2.3 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds and peaking in the 6000–7000 Hz range. This artifact is acoustically distinct from the speech, sounding like a digital click or pop, and is not present in the original voice or background. The artifact is not masked by speech and is perceptible, suggesting it is an insertion or editing error rather than a natural part of the recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [2.3-2.5] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s analysis. The Saliency method from wav2vec also highlights the [2.5-3.0] seconds region, overlapping with the artifact, and the LIME explanation further supports the [2.5-2.6] seconds region. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is specifically detected by wav2vec. The SHAP values for features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and alphaRatioUV_sma3nz_amean further support the presence of an anomaly in this region, as these features are sensitive to abrupt changes in the signal. The combined evidence from wav2vec’s IG, Saliency, and LIME, along with the SHAP values, strongly supports the conclusion that the artifact is a significant anomaly in the audio.

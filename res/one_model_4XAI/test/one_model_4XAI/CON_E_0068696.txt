@@ -1,0 +1,12 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering a short statement: "They were defeated. It is legally binding. Alex Rowley." The speech is generally natural, but a subtle anomaly is present in the phrase "It is legally binding." Specifically, the word "binding" exhibits an unnatural, slightly artificial resonance and a brief, high-frequency shimmer in the 3000–4000 Hz range, lasting from approximately 1.5 to 2.0 seconds. This acoustic irregularity is not present in the rest of the audio and is inconsistent with typical human speech characteristics, suggesting a possible synthetic or manipulated segment.
+
+The Integrated Gradients (IG) analysis supports this observation, highlighting the 1.5–2.0 second time region and the 3000–4000 Hz frequency band as the most influential for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency analysis further corroborates this by identifying a 2.0–2.5 second region with a frequency range of 4000–6000 Hz, which overlaps with the anomalous segment and suggests additional high-frequency artifacts. The LIME analysis, focusing on the 3.0–3.1 second region, does not directly support the anomaly but indicates that the model is sensitive to subtle changes in the latter part of the audio, possibly due to the speaker’s name or final intonation.
+
+Shapley values provide further insight: the equivalentSoundLevel_dBp value of 8.7490 (original: -23.7427) indicates a significant increase in overall loudness in the anomalous segment, while the StddevUnvoicedSegmentLength value of 3.3258 (original: 0.0676) suggests a marked deviation in the duration of unvoiced sounds, likely corresponding to the unnatural resonance of "binding." The spectralFlux_sma3_amean value of 2.8999 (original: 0.2571) points to a sudden change in spectral content, reinforcing the presence of synthetic or manipulated audio in this region.
+
+In summary, the acoustic anomaly in the word "binding" is supported by multiple XAI methods, all pointing to a region with unusual frequency and loudness characteristics. The Shapley values further confirm the presence of synthetic manipulation, while the rest of the audio remains natural and unremarkable.

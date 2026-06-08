@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "whether he starts to share the charity also has a within the next good..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 3.5 seconds, a sudden, loud, and sustained electronic tone interrupts the speech. This tone is centered around 2000–8000 Hz, with a harsh, buzzy timbre and a strong presence of upper harmonics, resembling a square or sawtooth wave. The tone is significantly louder than the speech, masking the remainder of the utterance and continuing until the end of the clip. There are no other background noises, environmental sounds, or signs of editing or compression artifacts. The abrupt onset and unnatural character of the tone strongly suggest it is an artificial insertion, likely intended to censor or obscure the final portion of the speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the [3.5-4.0] second region, Saliency points to [2.0-2.5] seconds, and LIME identifies [1.3-1.4] seconds. The IG result directly aligns with the observed electronic tone, while the Saliency and LIME findings correspond to the tail end of the speech and the transition to the tone, respectively. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis identifies three features—equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength—whose values spike during the tone, further supporting the presence of a sudden, high-energy, non-speech event. The cross-model agreement from wav2vec’s IG method, combined with the SHAP feature analysis, confirms the electronic tone as the primary anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "I have worked with him on projects." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, specifically in the 3000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency point to the 1.5–2.0 second time window and 3000–4000 Hz frequency range, while LIME corroborates the time region (2.15–2.25 seconds), which overlaps with the IG/Saliency region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values do not directly indicate the abnormality but provide context on the acoustic features of the audio, such as equivalentSoundLevel_dBp and hammarbergIndexV_sma3nz_amean, which are consistent with a clean recording. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an artificial artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the sentence: "That's the only thing I will say, Campbell has taken this decision." The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is present in the mid-frequency range (4000–6000 Hz) during the time interval [2.0–3.0] seconds, specifically around the word "say." This region exhibits a slight unnaturalness in the spectral envelope, possibly due to a minor artifact or digital processing artifact, though it does not significantly affect intelligibility or emotional tone. The anomaly is not accompanied by any obvious speech or environmental cues, and the rest of the audio remains natural and consistent.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the frequency range [4000–6000] Hz during [2.0–3.0] seconds, with both Integrated Gradients (IG) and Saliency methods pointing to this region. LIME also supports this interval, specifically at [2.9–3.1] seconds, reinforcing the presence of an anomaly in this time frame. The Hubert and WavLM models do not provide any evidence of abnormality, and their explanations are absent. The SHAP analysis highlights features such as slopeUV0-500_sma3nz_amean, mfcc2_sma3_amean, and jitterLocal_sma3nz_stddevNorm, but these do not directly correspond to the observed acoustic anomaly. Overall, the wav2vec model's multiple independent methods (IG, Saliency, and LIME) provide strong cross-model agreement on the [2.0–3.0] seconds interval in the 4000–6000 Hz range as the region of interest.

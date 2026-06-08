@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "They need concern," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, lasting about half a second. This click is acoustically distinct from the speech, with a frequency content concentrated between 2000 Hz and 6000 Hz, and is not present in the original waveform before or after this interval. The click is abrupt and does not blend naturally with the speech, suggesting it is an artifact rather than part of the original recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region as salient, aligning with the observed click. The Saliency method for wav2vec also highlights the [1.5-2.0] seconds region, overlapping with the click. LIME for wav2vec supports the [0.8-1.2] seconds region, further corroborating the presence of an anomaly in this interval. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec-based methods collectively confirm the abnormality. The Shapley values indicate that the click is not related to typical speech features, as the top contributing features are unrelated to the vocal content. Thus, the click is an isolated artifact, not a natural part of the speech, and is consistently flagged by wav2vec’s XAI methods.

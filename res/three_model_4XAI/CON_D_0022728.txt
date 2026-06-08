@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "There might be a punishment, but it would also punish the patients." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency, synthetic-sounding tone abruptly appears. This tone is sharply defined, with a frequency content between 6000–7000 Hz, and is markedly different from the natural speech and background. It is sustained for about 0.5 seconds and then ceases abruptly, with no fade-out or natural decay. The tone is acoustically anomalous, as it does not resemble any typical environmental or vocal artifact and is likely an artificial insertion or digital artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time region and 6000–7000 Hz frequency range, while LIME corroborates the time region with a specific point at 2.3–2.4 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high positive contribution, suggesting a deviation from expected speech patterns. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence strongly supports the presence of an artificial tone in the specified time and frequency range.

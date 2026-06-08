@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "The West is good" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.6 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact appears, lasting until about 0.8 seconds. This artifact is not present in the original speech and is acoustically inconsistent with natural human vocalization, suggesting it may be an insertion or overlay. The artifact is most prominent in the 2000–4000 Hz range, which is typical for mid-to-high frequency digital artifacts or post-processing errors. The rest of the audio remains clean and natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.6 - 0.8] seconds and frequency range [2000 - 4000] Hz using Integrated Gradients (IG), and the Saliency method further supports this with a slightly broader frequency range [2000 - 6000] Hz. LIME also corroborates the time region [0.6, 0.7] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV500-1500_sma3nz_amean, which may be affected by the artifact, but these do not pinpoint the exact time or frequency of the anomaly. Overall, the wav2vec model’s IG and Saliency methods, along with LIME, provide consistent evidence of the anomaly, while Hubert and WavLM do not detect it.

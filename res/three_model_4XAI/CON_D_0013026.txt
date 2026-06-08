@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "contrary" in a neutral, declarative tone, followed by a brief pause and the word "nature." The speech is delivered in a controlled, formal manner, with no emotional inflection or background noise. The recording is of high fidelity, with a clean signal and no audible artifacts such as clipping, static, or distortion. The only notable acoustic feature is a faint, high-frequency hiss, likely from the recording equipment, but this is unobtrusive and does not interfere with speech intelligibility.
+
+The most suspicious acoustic region occurs between 0.85 and 1.2 seconds, where a subtle, high-frequency artifact is present. This artifact is not part of the spoken content and does not correspond to any natural speech or environmental sound. The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify this region as significant, with IG highlighting the 1.0–1.2 second interval and Saliency extending slightly earlier to 0.85 seconds. Both methods also point to a frequency range of 4000–6000 Hz, which is above the typical speech range and suggests a synthetic or digitally manipulated sound. The LIME method, however, identifies a much earlier region (0.0–0.15 seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not consistently detected across all models.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG and Saliency methods both independently identify the same time and frequency region (0.85–1.2 seconds, 4000–6000 Hz) as suspicious, providing cross-model agreement. This region is supported by two different XAI techniques within the same model, increasing confidence in the detection. The Hubert and WavLM models do not support this finding, and the LIME method's earlier region is inconsistent with the audio evidence. Therefore, the final abnormality is based on wav2vec's cross-model agreement, with no support from other models.

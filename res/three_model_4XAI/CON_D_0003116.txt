@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a calm, conversational statement: "as often as not, the average was three hours." The recording is of moderate fidelity, with a low-level background hiss and a faint, continuous low-frequency hum, likely from a nearby appliance or HVAC system. The speech is clear and intelligible, with no signs of digital compression artifacts, clipping, or distortion. The acoustic environment is dry, with minimal reverberation, suggesting a small, well-furnished room.
+
+A subtle but notable anomaly occurs between 2.0 and 2.5 seconds, where the speaker says "average." During this interval, the audio exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, particularly in the 4000–6000 Hz range. This is accompanied by a minor, unnatural rise in spectral flux and a brief, sharp increase in equivalent sound level, which is inconsistent with the speaker’s otherwise steady vocal delivery. These acoustic irregularities are not present in the rest of the recording and do not correspond to any natural speech variation or environmental change.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] second interval as anomalous, with a frequency focus in the 4000–6000 Hz range, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a different time-frequency region ([0.5-1.0] seconds, 2000–4000 Hz), but this is not corroborated by other models and does not align with the observed acoustic anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are not universally agreed upon. The SHAP analysis further supports the anomaly by highlighting a significant increase in StddevUnvoicedSegmentLength and spectralFlux_sma3_amean during the [2.0-2.5] second interval, which aligns with the wav2vec results. In summary, the wav2vec model’s findings are cross-model supported, while other XAI sources do not corroborate the anomaly, indicating a likely deepfake artifact in the specified region.

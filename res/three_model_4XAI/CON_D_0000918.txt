@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Commendable and we have the lad." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a noticeable drop in clarity. This distortion persists until about 2.0 seconds, after which the audio returns to its original quality. The abnormality is most prominent in the mid-frequency range (500–3000 Hz), where the voice loses its natural resonance and is replaced by a synthetic, abrasive sound. This suggests a digital artifact or manipulation, such as a sudden filter or encoding error, rather than a natural vocal change or environmental interference. No other acoustic anomalies, such as background noise or abrupt silences, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [500-3000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a narrower [1.2-1.6] seconds interval in the [4000-6000] Hz range. LIME analysis supports the anomaly at 2.0–2.1 seconds. The Hubert and WavLM models do not detect any abnormality, indicating that the wav2vec-based evidence is the most robust. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean further corroborate the presence of a sudden change in acoustic characteristics, aligning with the wav2vec findings. The cross-model agreement from wav2vec’s IG and LIME, along with the Shap value evidence, confirms the abnormality in the specified time and frequency ranges.

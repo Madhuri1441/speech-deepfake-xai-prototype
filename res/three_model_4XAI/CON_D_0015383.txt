@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 3.5 seconds, a sudden, high-frequency, synthetic-sounding artifact emerges. This artifact is a sustained, pure tone with a pitch around 6000–8000 Hz, lacking any natural speech harmonics or modulation. It persists until about 5.0 seconds, after which the audio returns to normal speech. The artifact is acoustically distinct from the speaker’s voice and background noise, suggesting an artificial insertion rather than a natural event. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) and Saliency both identify the 3.5–4.0 and 4.5–5.0 second intervals, respectively, with a frequency range of 6000–7000 Hz and 6000–8000 Hz, while LIME corroborates the 3.5–4.0 second window. The wav2vec model’s detection of this region aligns with the perceptual anomaly, indicating a significant deviation from expected speech patterns.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients, Saliency, and LIME all independently identify the 3.5–5.0 second interval as anomalous, with overlapping frequency ranges of 6000–8000 Hz. This cross-model agreement strongly supports the presence of an artificial artifact in this region. In contrast, the Hubert and WavLM models do not detect any abnormalities, likely due to differences in their training or sensitivity to such artifacts. The Shapley values further reinforce the anomaly by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are affected by the presence of the synthetic tone. No other acoustic anomalies are evident in the audio, and the identified region is not supported by Hubert or WavLM models.

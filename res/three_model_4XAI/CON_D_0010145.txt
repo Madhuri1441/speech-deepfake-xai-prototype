@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "In fact, we will... that we must not pin..." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 3.0 seconds, a distinct, high-frequency, synthetic-sounding tone abruptly appears and persists until 3.5 seconds. This tone is sharply defined, with a frequency content between 6000 and 7000 Hz, and is acoustically inconsistent with the preceding speech, which is centered in the lower frequency range. The tone is not a natural artifact of speech or environmental noise, and its sudden onset and unnatural timbre suggest it is an artificial insertion, likely indicative of a deepfake or audio tampering.
+
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [3.0-3.5] seconds time region and [6000-7000] Hz frequency region as highly salient, directly aligning with the observed synthetic tone. The Saliency method from wav2vec also highlights the [2.5-3.0] seconds region, which overlaps with the onset of the anomaly. LIME analysis from wav2vec further supports the [3.0-3.1] seconds interval, reinforcing the presence of an anomaly at this point. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is specifically detected by wav2vec. The SHAP values for acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further corroborate the presence of an anomaly in this region, as these features are sensitive to abrupt changes in speech characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all independently identify the [3.0-3.5] seconds time region and [6000-7000] Hz frequency region as anomalous, providing cross-model agreement. The Hubert and WavLM models do not detect any anomaly in this region, indicating that the wav2vec model is uniquely sensitive to this type of synthetic insertion. The SHAP values for acoustic features further support the presence of an anomaly in this region, as they reflect changes in speech characteristics consistent with the synthetic tone.

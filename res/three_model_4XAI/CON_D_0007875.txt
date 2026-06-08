@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "However, he is a figure..." The speech is clear and natural, but at approximately 0.95 seconds, a sharp, high-frequency artifact appears, lasting until about 1.05 seconds. This artifact is a brief, piercing, synthetic-sounding tone, likely a digital glitch or encoding error, which stands out against the otherwise clean speech. The tone is centered around 7500 Hz, consistent with the frequency range identified by the XAI models. This anomaly is not present in the original speech and does not resemble any natural vocal or environmental sound, indicating a technical issue in the audio file.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.95-1.05] seconds, [7000-8000] Hz), while LIME identifies a slightly different but adjacent time window ([1.5-1.6] seconds), which may reflect a secondary or related artifact. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec model is uniquely sensitive to this type of digital artifact. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from the norm, indicating a sudden increase in loudness at the artifact’s location. Overall, the wav2vec model’s multiple lines of evidence converge on the same region, providing strong support for the observed anomaly.

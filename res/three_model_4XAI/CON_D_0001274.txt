@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying, "The resemblance...," followed by a brief pause and then the word "contentious." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting about half a second. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 2000–6000 Hz range, and is not present in the rest of the recording. The artifact is not a natural part of the voice or environment and does not correspond to any spoken content or background sound. This anomaly is not immediately obvious to casual listening but is detectable upon close inspection.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the 1.0–1.5 second time window and the 2000–6000 Hz frequency range, indicating a strong, cross-model agreement on the location and nature of the anomaly. The LIME explanation also supports this region, though with a narrower focus at 1.5–1.6 seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is subtle and may not be easily detected by all models. The SHAP values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean showing elevated values, indicating a deviation from normal audio characteristics. Overall, the wav2vec model's IG and Saliency methods, along with LIME, provide consistent evidence of the anomaly, while Hubert and WavLM do not detect it.

@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "The psycho Owen to win this thing. Fun." The speech is generally natural, but at approximately 0.5–1.0 seconds, a subtle but noticeable digital artifact occurs. This artifact manifests as a brief, high-frequency, synthetic buzz or whine, most prominent in the 7000–8000 Hz range, which overlays the word "Owen." The artifact is not present in the rest of the audio and does not affect the intelligibility of the speech, but it is acoustically distinct from the speaker’s voice and background noise.
+
+This anomaly is corroborated by multiple XAI methods. The Integrated Gradients (IG) analysis highlights the same time and frequency region, indicating that this segment is a key contributor to the model’s classification of the audio as a deepfake. The Saliency method also identifies the 2.5–3.0 second window, which aligns with the artifact’s presence, and the LIME method isolates the 0.4–0.5 second mark, further supporting the suspicion of an anomaly in this region. The Shapley values reinforce this, with the "StddevUnvoicedSegmentLength" feature showing a high positive contribution, suggesting that the artifact introduces a deviation from expected speech patterns. The "slopeUV0-500_sma3nz_amean" and "loudness_sma3_meanFallingSlope" features also indicate changes in acoustic properties consistent with the presence of a synthetic overlay.
+
+No other obvious acoustic anomalies are present in the audio, and the artifact is not explained by natural speech or environmental factors. The alignment of multiple XAI methods on the same region strengthens the conclusion that this is a synthetic or manipulated segment, likely introduced during the deepfake generation process.

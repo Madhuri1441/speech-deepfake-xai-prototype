@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "bodies, the players should have a voice in these matters." The speech is delivered in a standard British accent, with a steady, conversational tone and no emotional inflection. The recording quality is high, with no background noise, distortion, or artifacts. However, at approximately 0.5–1.0 seconds into the clip, a subtle but noticeable anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight warble, accompanied by a mild, artificial-sounding reverberation. This moment stands out from the otherwise stable and natural vocal delivery, suggesting a possible digital manipulation or editing artifact. The anomaly is most prominent in the 2000–4000 Hz frequency range, which is typical for midrange vocal clarity and intelligibility. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.5–1.0 second range with a frequency focus of 2000–4000 Hz, using both Saliency and Integrated Gradients methods. This region aligns with the observed pitch shift and warble in the audio. The wav2vec model’s LIME explanation also points to the very beginning of the clip (0.0–0.1 seconds), but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is the only one detecting the anomaly. The SHAP analysis highlights acoustic features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are consistent with the presence of a brief, unnatural vocal event, further supporting the wav2vec findings. Overall, the wav2vec model’s multiple methods converge on the same region, providing strong cross-model agreement for the anomaly at 0.5–1.0 seconds.

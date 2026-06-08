@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and intelligible speech. The background is quiet, and the recording quality is high, with no obvious noise or distortion. However, at approximately 2.4 seconds, a sharp, high-frequency artifact appears, lasting about 0.1 seconds. This artifact is a brief, unnatural, high-pitched sound that does not match the acoustic profile of the voice or any expected environmental noise. It is acoustically distinct from the rest of the audio, with a frequency content in the 7000–8000 Hz range, and is not present in the original speech or background. This anomaly is not explained by any natural speech or environmental sound and is likely an artifact introduced during audio processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.4-2.5] seconds, [7000-8000] Hz). The Hubert and WavLM models do not detect any abnormality in this region, but their lack of evidence does not contradict the wav2vec findings. The Shapley values from the audio features also support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high SHAP value, indicating a deviation in the acoustic structure of the audio at this point. The combination of wav2vec’s multiple XAI methods and the supporting audio feature analysis provides strong evidence for the presence of an artificial or corrupted segment in the audio at the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "care about social issues today," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly is present in the frequency range of 1000–3000 Hz during the time interval of 0.2–0.4 seconds. This region corresponds to the initial part of the word "care," where the voice exhibits a slight unnaturalness or digital artifact, possibly due to a minor glitch or editing artifact. The rest of the audio remains natural and unaltered. No other acoustic irregularities are apparent.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.2-0.4] seconds time range and [1000-3000] Hz frequency range using Integrated Gradients (IG), and the saliency method further supports a related region at [1.35-1.45] seconds, though this is less consistent with the observed audio. LIME also highlights a brief region at [0.0-0.16] seconds, but this is not strongly supported by the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The SHAP values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting a change in overall loudness or energy in the audio, which aligns with the observed anomaly in the 1000–3000 Hz range. The final abnormality region is supported by wav2vec’s IG and saliency methods, indicating cross-model agreement.

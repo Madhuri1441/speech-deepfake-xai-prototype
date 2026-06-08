@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "There are people who are real artists to make..." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 0.8 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.2 seconds. This artifact is characterized by a piercing, synthetic tone in the 4000–6000 Hz range, which is acoustically distinct from the voice and does not follow any natural speech pattern. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.8-1.2] seconds in the 4000–6000 Hz frequency range using Integrated Gradients (IG), and also detects a secondary region at [0.0-0.2] seconds in the 1000–3000 Hz range using Saliency. LIME analysis from wav2vec further supports the [0.4-0.5] seconds region, though this is not directly aligned with the main artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight statistical features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the artifact but do not localize it in time or frequency. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the artifact, with cross-model agreement limited to wav2vec alone.

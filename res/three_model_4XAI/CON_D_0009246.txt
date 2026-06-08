@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "It was very different time before someone was treated." The recording is of moderate fidelity, with a persistent low-level hiss and a slight room reverberation, suggesting a non-professional recording environment. The speech is intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle but noticeable anomaly occurs in the frequency range of 4000–6000 Hz between 2.0 and 3.0 seconds, coinciding with the word "time." This region exhibits a faint, high-frequency shimmer or digital artifact, which is not present in the rest of the audio and is not attributable to the speaker’s voice or the recording environment. This anomaly is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify this time-frequency region as significant, and the Shapley value analysis highlights features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are consistent with the presence of a subtle, high-frequency artifact. No other XAI methods (Hubert, WavLM) or LIME evidence support this region, and no other acoustic anomalies are evident.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [2.0-3.0] seconds, [4000-6000] Hz region as anomalous, providing cross-model agreement. The Shapley value analysis further supports this by highlighting features associated with high-frequency content. The Hubert and WavLM models do not provide supporting evidence, and LIME evidence is inconclusive. Thus, the final abnormality region is based on consistent wav2vec evidence and corroborating Shapley values, with no strong support from other models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-toned female voice stating, "The South African call that on board." The speech is delivered in a standard, non-regional accent, with no background noise or environmental cues, indicating a controlled recording environment. However, at approximately 1.0–2.0 seconds into the clip, a distinct, high-frequency electronic tone emerges, centered around 4000–6000 Hz. This tone is not part of the natural speech and is acoustically anomalous, as it does not correspond to any expected vocal or environmental sound. The tone is sustained and unmodulated, suggesting it is an artifact rather than a natural part of the recording. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.0–2.0 second time interval and the 4000–6000 Hz frequency range. The IG and Saliency methods provide overlapping evidence, while LIME offers a more localized confirmation. In contrast, the Hubert and WavLM models do not detect any abnormalities, as their XAI methods yield no relevant evidence. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high positive value, indicating a deviation from expected speech patterns. The equivalentSoundLevel_dBp and loudness_sma3_percentile20.0 features also suggest an unusual acoustic event, though less prominently. Overall, the wav2vec model’s multi-method agreement provides strong evidence for the anomaly, while the other models do not contradict this finding.

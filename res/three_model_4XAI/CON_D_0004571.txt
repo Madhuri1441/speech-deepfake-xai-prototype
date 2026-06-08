@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-pitched, and muffled utterance, likely "creaky left," spoken by a female voice. Immediately following, a male voice says, "I was ready to shoot," in a clear, neutral tone. At approximately 0.75 seconds, a sharp, high-frequency, synthetic click or pop is heard, lasting until about 1.50 seconds. This sound is acoustically distinct from the speech, with a frequency content concentrated between 4000–6000 Hz, and is not present in the original recording. The click is abrupt, digitally clean, and lacks any natural reverberation or environmental context, suggesting it is an artifact introduced during post-processing or digital editing. The audio then returns to the male voice, which continues speaking until the clip ends. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.75-1.50] seconds, 4000–6000 Hz). The LIME method, however, highlights an earlier segment ([0.00-0.10] seconds), which does not correspond to any clear acoustic event and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of a sudden, high-frequency event, aligning with the click detected by wav2vec. Overall, the wav2vec model’s IG and Saliency results provide cross-model agreement on the abnormality, while the LIME result is inconsistent and likely spurious.

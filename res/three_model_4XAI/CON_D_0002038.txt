@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "to the families contact with their...". The speech is clear and intelligible, with a natural cadence and standard English accent. However, at approximately 0.5 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, synthetic, and sustained, with a fundamental frequency around 100 Hz and strong harmonics extending up to 4000 Hz. The tone is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context, and is immediately cut off at the end of the clip. This abrupt transition and the unnatural character of the tone strongly suggest an artificial insertion, likely as a censor beep or a technical artifact.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 0.5–1.0 second region as abnormal, with the Saliency method also highlighting the 0.0–0.5 second region. The LIME explanation for wav2vec further supports the abnormality at 2.0–2.1 seconds, which aligns with the onset of the electronic tone. The wav2vec model's SHAP values indicate that the abnormality is associated with high equivalentSoundLevel_dBp, suggesting a sudden increase in loudness, and elevated StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean, which point to a change in the acoustic texture and spectral slope. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model's analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients, Saliency, and LIME methods all agree on the abnormality in the 0.5–1.0 second region, with Saliency also highlighting the 0.0–0.5 second region. The SHAP values from wav2vec further support the presence of a sudden loudness increase and spectral change. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model's analysis.

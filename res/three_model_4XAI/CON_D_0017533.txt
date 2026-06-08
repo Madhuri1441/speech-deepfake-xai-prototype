@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of distress or artificiality. However, at approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until 2.0 seconds. This artifact is characterized by a sharp, metallic timbre and a frequency content between 3000 Hz and 4000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not present in the original audio and is not attributable to the speaker’s voice or any environmental noise. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency region as critical for the model’s prediction, and the wav2vec model’s saliency map also highlights a similar region at 4.0–4.5 seconds, though with a slightly different frequency range. The LIME explanation for wav2vec at 0.0–0.1 seconds is less relevant to this specific artifact. No other XAI methods (Hubert, WavLM) provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality at [1.5-2.0] seconds and [3000-4000] Hz is supported by both Integrated Gradients and wav2vec saliency, indicating cross-model agreement. The wav2vec saliency at [4.0-4.5] seconds and [7000-8000] Hz is a secondary, less consistent finding. The LIME explanation at [0.0-0.1] seconds does not align with the observed artifact and is likely unrelated. No evidence from Hubert or WavLM supports the anomaly, and the SHAP values do not directly correspond to the artifact but may reflect general audio characteristics. Overall, the strongest evidence for the anomaly comes from wav2vec’s IG and saliency, with no contradictory evidence from other models.

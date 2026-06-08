@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice stating, "We have a good, very good commitment." The speech is intelligible and delivered in a neutral, declarative tone. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–7000 Hz, particularly between 0.5 and 1.25 seconds. During this interval, the voice exhibits a slight unnaturalness or "glitchiness," with a faint warbling or digital artifact that is not present in the rest of the utterance. This is most apparent in the word "good," where the pitch and timbre momentarily shift in a way that is inconsistent with natural speech. The anomaly is not severe enough to obscure the message but is perceptible to a careful listener. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.5-1.25] seconds, 2000–7000 Hz), with IG and Saliency overlapping in both time and frequency, and LIME providing a narrower but consistent time window. The Hubert and WavLM models do not detect any abnormalities, as their XAI methods return no evidence. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are associated with the affected region. The convergence of multiple XAI methods from wav2vec, along with the Shapley values, provides strong evidence for the identified abnormality.

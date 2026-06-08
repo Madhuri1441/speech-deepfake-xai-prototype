@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "If Rangers won, got to...". The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered around 6000–7000 Hz, with a harsh, static timbre, and is likely an artifact introduced during post-processing or as a result of digital manipulation. The abrupt onset and unnatural character of this sound strongly suggest it is not a genuine environmental or vocal event, but rather an artificial overlay or corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [6000-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement on the presence of an anomalous event in this interval. The LIME method, while using a slightly later time window ([2.5-3.0] seconds), still supports the presence of an abnormality in the same frequency range. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no significant regions. The Shapley value analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are consistent with the presence of an unnatural, static sound overlay. Overall, the wav2vec model’s multiple methods and the LIME method from wav2vec provide cross-model agreement on the abnormality, while the other models do not detect it.

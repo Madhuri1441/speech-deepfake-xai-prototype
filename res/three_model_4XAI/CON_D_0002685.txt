@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "by Nick and Winnett" in a standard North American accent, with no background noise or distortion. The speech is intelligible and natural, with a smooth, steady pitch and no signs of emotional stress or artificiality. Immediately after the speech, a synthetic, high-pitched electronic tone appears, lasting about 0.4 seconds. This tone is sharply defined, with a stable pitch and amplitude, and is acoustically distinct from the preceding speech. Its spectral content is concentrated between 4000 Hz and 6000 Hz, and it is perceived as a pure, unwavering signal, lacking any modulation or environmental context. The abrupt onset and offset of this tone, as well as its unnatural spectral profile, suggest it is a digital artifact or watermark, not a naturally occurring sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.8–1.2 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports a region at 1.35–1.45 seconds in the 1000–2000 Hz range, though this is less consistent with the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed tone. The strongest and most consistent evidence comes from the wav2vec model’s IG analysis, which aligns with the synthetic tone’s timing and frequency. Therefore, the final abnormality is supported by cross-model agreement from wav2vec’s IG method, with no corroborating evidence from Hubert or WavLM.

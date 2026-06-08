@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "to provide another alternative explanation." The speech is delivered in a controlled, monotone manner, with a slightly robotic cadence and a subtle, artificial reverb, suggesting post-processing or digital enhancement. At approximately 1.5 seconds, a brief, high-frequency, synthetic artifact emerges, lasting about half a second and peaking in the 4000–6000 Hz range. This artifact is not present in the original speech and is acoustically distinct from the voice, resembling a digital glitch or a synthetic overlay. The remainder of the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and at [2.5-3.0] seconds in the 7000–8000 Hz range using Saliency. LIME also supports the [1.5-1.6] seconds region. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength, which may relate to the presence of synthetic or unvoiced segments, but do not directly pinpoint the artifact’s location. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) converge on the [1.5-2.0] seconds region, making it the most reliable indicator of the anomaly.

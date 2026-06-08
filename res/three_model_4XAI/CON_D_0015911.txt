@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "in our island," followed by a male voice saying, "It was born." Immediately after the male voice, there is a brief, high-frequency, synthetic tone that lasts about 0.25 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the spoken content and does not resemble any typical environmental or vocal artifact. Its sudden onset and unnatural spectral profile suggest it is an artificial addition, possibly inserted as a watermark, marker, or digital artifact. The tone is not present in the original speech and does not correspond to any natural sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies a salient region between 1.00-1.25 seconds in the 4000-6000 Hz frequency range, which aligns with the synthetic tone. The LIME method for wav2vec also highlights a region around 0.9-1.0 seconds, which is close to the onset of the tone. The wav2vec model is the only one that provides consistent evidence for this region, while the Hubert and WavLM models do not identify any abnormal regions. The SHAP values indicate that features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are significantly affected, suggesting the presence of an artificial sound event that disrupts the natural speech signal. The agreement between IG and LIME for wav2vec supports the conclusion that the synthetic tone is an anomaly, while the lack of evidence from Hubert and WavLM suggests that this anomaly is not universally detected across all models.

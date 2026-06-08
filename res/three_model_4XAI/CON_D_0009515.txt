@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, with clear and intelligible speech. The recording is of high fidelity, with no background noise or distortion. At approximately 2.0 seconds, the audio abruptly shifts: the voice is cut off mid-word, and a loud, synthetic, low-frequency electronic tone (around 1000–3000 Hz) is introduced. This tone is monophonic, static in pitch and amplitude, and persists until the end of the clip. The transition is instantaneous and unnatural, with no fade or overlap, indicating a digital splice or overlay. The synthetic tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics or environmental context. This abrupt change is the only observable anomaly in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time region, with a frequency focus of [1000-3000] Hz, aligning with the synthetic tone’s onset and spectral content. The Saliency method from wav2vec also highlights a [2.0-2.5] seconds region, but with a higher frequency focus of [7000-8000] Hz, which may reflect the model’s sensitivity to the sharpness of the transition. LIME from wav2vec supports the anomaly in the [1.75-2.0] seconds region, indicating the model’s attention to the transition point. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by these models. The Shap values indicate that the StddevUnvoicedSegmentLength and spectralFlux_sma3_amean features are most influential, which may relate to the sudden change in acoustic properties at the splice point. Overall, the wav2vec model’s multiple methods consistently identify the same time and frequency region, providing cross-model agreement for the anomaly.

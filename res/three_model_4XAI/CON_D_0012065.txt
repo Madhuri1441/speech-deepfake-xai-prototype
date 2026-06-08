@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, unnatural-sounding utterance ("not thing movie") that is acoustically inconsistent with the rest of the speech. This segment is marked by a high-frequency, synthetic timbre and lacks the natural resonance and articulation of human speech. The wav2vec model's Integrated Gradients (IG) and Saliency methods both highlight this region, indicating that it is a key feature in the model's classification of the audio as a deepfake. The LIME explanation also supports this, focusing on the first 0.5 seconds. The utterance is followed by a more natural-sounding phrase ("the result you've been here before"), which does not receive significant attention from the XAI methods, suggesting it is not anomalous. The abrupt transition from synthetic to natural speech, along with the high-frequency content in the initial segment, is a clear acoustic anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all agree on the [0-1] second time range and [2000-4000] Hz frequency range as the most suspicious region, indicating strong cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an anomaly in the initial segment, as these features are significantly different from their original values.

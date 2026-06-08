@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice saying, "William continues to improve." The speech is clear and intelligible, with a neutral, slightly formal tone. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable anomaly: a brief, unnatural pitch inflection and a slight increase in high-frequency content, particularly in the 4000–8000 Hz range. This region is marked by a momentary, artificial-sounding shimmer or digital artifact, which disrupts the otherwise smooth vocal contour. The anomaly is not present in the rest of the audio and does not correspond to any natural speech event.
+
+This acoustic abnormality is corroborated by multiple XAI explanations. The Integrated Gradients (IG) and Saliency methods both highlight the [1.5-2.0] seconds time window and the [4000-8000] Hz frequency range, indicating that these features are critical to the model’s decision that the audio is a deepfake. The LIME explanation, while pointing to an earlier time window ([0.0-0.1] seconds), does not contradict the main anomaly but suggests that the model also pays attention to the initial onset of the audio. Additionally, the Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an unnatural acoustic event in the highlighted region, as these features are sensitive to abrupt changes in loudness and spectral content.
+
+In summary, the audio contains a brief, unnatural pitch and spectral anomaly in the 1.5–2.0 second window, which is strongly supported by multiple XAI methods and acoustic features. This points to a likely deepfake artifact in the speech, with the model identifying this region as critical to its classification decision.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization that is abruptly cut off, immediately followed by a short, high-frequency, synthetic-sounding burst. This burst is sharply defined, with a frequency content concentrated between 5000–6000 Hz, and is acoustically inconsistent with natural speech or environmental sounds. The synthetic quality of this burst, along with its unnatural onset and offset, suggests digital manipulation or insertion. The subsequent speech is delivered in a monotone, robotic manner, lacking natural intonation and emotional inflection, which further supports the presence of a deepfake or AI-generated voice. The abrupt transition from the synthetic burst to the speech, and the overall unnatural cadence, indicate a possible tampering or editing artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial synthetic burst as anomalous, with Integrated Gradients (IG) highlighting the [0-1] second time region and [5000-6000] Hz frequency range, and Saliency also pointing to the [0-1] second time region with a broader frequency range of [2000-4000] Hz. LIME analysis further supports the anomaly in the [4.0-4.5] second region, which corresponds to a brief pause or transition in the speech. The wav2vec model’s multiple independent XAI methods (IG, Saliency, LIME) consistently identify the synthetic burst and the speech transition as abnormal, while the Hubert and WavLM models do not provide supporting evidence. The Shapley values also indicate that the anomaly is related to acoustic features such as spectral flux and F0, which are consistent with the synthetic burst’s unnatural characteristics. Thus, the wav2vec model’s cross-model agreement provides strong evidence for the presence of a deepfake or AI-generated artifact in the audio.

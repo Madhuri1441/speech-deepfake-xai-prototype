@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "quiet" in a neutral, conversational tone, followed by a brief pause and a second, lower-pitched female voice uttering "the eye, the bird." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately after this cut, a synthetic, high-frequency electronic tone emerges, lasting for about 0.25 seconds. This tone is sharply defined, with a frequency content between 6000 and 8000 Hz, and is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context. The sudden onset and unnatural character of this tone suggest it is an artifact of digital editing or a synthetic overlay, rather than a naturally occurring sound.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 1.50–1.75 second region as the most significant for the model’s decision, with a strong focus on the 6000–8000 Hz frequency band. This aligns precisely with the timing and spectral content of the synthetic tone. The LIME analysis further corroborates this, identifying the 1.50–1.55 second window as critical, and the Shapley values for spectral features (equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength) indicate that the model is particularly sensitive to the sudden, high-frequency energy introduced at this point. These features collectively point to the synthetic tone as the key anomaly, with the model likely flagging the audio as a deepfake due to the abrupt, unnatural transition and the presence of an artificial sound not present in the original speech.
+
+No other acoustic anomalies are evident in the audio, and the XAI evidence does not point to any other suspicious regions. The abrupt edit and synthetic tone are the only clear indicators of tampering, supported by both the acoustic analysis and the model’s feature importance.

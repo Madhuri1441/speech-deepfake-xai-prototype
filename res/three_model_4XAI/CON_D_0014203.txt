@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a news-style statement: "A man has been arrested in Woolcock. Both of those children should..." The speech is abruptly cut off mid-word ("children"), with no natural fade or pause, indicating a sudden edit. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approx. 100 Hz) is introduced, which is highly unnatural and inconsistent with the preceding speech. This tone is static, unmodulated, and persists until the end of the clip, masking any potential continuation of the speech. The abruptness of the edit and the presence of the electronic tone strongly suggest intentional tampering or censorship, rather than a natural recording or broadcast error.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: [3.5-4.0] seconds (IG) and [4.5-5.0] seconds (Saliency), both within the frequency range of 3000-7000 Hz. These regions correspond to the moment the speech is cut off and the synthetic tone begins, aligning with the observed acoustic anomaly. The LIME explanation from wav2vec also supports the [4.0-4.5] seconds region, further reinforcing the timing of the anomaly. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and alphaRatioUV_sma3nz_amean, which are consistent with the presence of a sudden loud tone and abrupt change in audio characteristics. The wav2vec model's multiple independent explanations (IG, Saliency, and LIME) converge on the same time and frequency regions, providing strong cross-model agreement for the anomaly.

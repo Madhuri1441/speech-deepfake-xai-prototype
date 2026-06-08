@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about half a second. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, standing out distinctly from the rest of the audio. The sound is not a natural part of speech or environmental noise, and its abruptness and spectral content suggest it may be an artifact or manipulation. The remainder of the audio returns to the initial quiet state, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a slightly earlier [0.5-1.0] seconds interval in the [4000-6000] Hz band. LIME analysis further supports the anomaly at [1.5, 1.6] seconds, indicating a brief but distinct event. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec-based findings are the most reliable. The SHAP values, particularly for equivalentSoundLevel_dBp, reinforce the presence of a sudden, high-amplitude event in the specified time and frequency range. Overall, the wav2vec model’s IG and Saliency analyses, along with LIME, provide cross-model agreement on the anomaly, while Hubert and WavLM do not detect it.

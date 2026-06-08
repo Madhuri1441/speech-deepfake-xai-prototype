@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, conversational sentence in a quiet, acoustically dry environment. The speech is intelligible and natural, with no obvious signs of digital manipulation or background noise. However, a subtle but distinct acoustic anomaly is present in the frequency range of 3000–4000 Hz during the time interval of 0.5–1.5 seconds. This region is marked by a faint, high-frequency artifact that is not typical of natural human speech and may indicate digital processing or synthesis artifacts. The anomaly is not accompanied by any obvious pitch or loudness irregularities, nor does it affect the intelligibility of the speech. No other acoustic irregularities are observed in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.5 second time region and 3000–4000 Hz frequency region as salient, with IG and Saliency both pointing to this interval. The LIME explanation also supports this region, though with a narrower time window (2.0–2.1 seconds), which may reflect a different focus within the same segment. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and loudness_sma3_percentile80.0, which are not directly tied to the observed frequency anomaly but may reflect broader speech characteristics. Overall, the wav2vec model’s IG and Saliency, along with LIME, provide cross-model agreement on the 0.5–1.5 second interval and 3000–4000 Hz frequency range, indicating a likely region of synthetic or processed speech.

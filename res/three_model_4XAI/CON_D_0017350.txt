@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.8 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.2 seconds. This artifact is characterized by a sharp, metallic timbre and a frequency content between 3000–4000 Hz, which is notably higher than the main speech frequencies. The artifact is not present in the original audio waveform and is not attributable to any natural speech or environmental sound. Immediately following this artifact, the speech continues without any perceptible disruption, indicating the artifact is likely a digital insertion or manipulation. No other obvious acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.8-2.0] seconds with a frequency range of [3000-4000] Hz using Integrated Gradients (IG) and LIME, and saliency analysis also highlights this region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is detected only by wav2vec. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_stddevFallingSlope, and StddevUnvoicedSegmentLength, which are associated with the artifact’s acoustic properties. The agreement between IG and LIME from wav2vec strengthens the conclusion that this region is anomalous.

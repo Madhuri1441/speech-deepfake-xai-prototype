@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone, but the first second (0-1 seconds) is marked by a noticeable digital artifact: a high-frequency, buzzing sound overlaying the speech. This artifact is most prominent in the 2000-6000 Hz range, consistent with a clipped or compressed digital signal, and is not present in the rest of the audio. The voice itself is clear and intelligible, with no signs of distortion or background noise outside this initial segment. The rest of the audio maintains a steady, low-level electronic hum, likely from a recording device or room environment, but no further speech or sound events occur.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the initial segment (0-1 seconds) as anomalous, with both Integrated Gradients (IG) and Saliency highlighting the 2000-6000 Hz frequency range. This aligns with the observed digital artifact in the audio. The LIME explanation for wav2vec also supports this region, though it is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The SHAP analysis does not directly reference the audio artifact but instead highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_stddevFallingSlope, which are unrelated to the observed digital artifact. Therefore, the primary evidence for the anomaly comes from wav2vec’s multiple XAI methods, with no cross-model agreement from Hubert or WavLM.

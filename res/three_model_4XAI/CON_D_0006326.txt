@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a brief, high-frequency transient is heard, lasting about 0.5 seconds and peaking in the 4000–6000 Hz range. This transient is acoustically distinct from the rest of the audio, which consists of a single, low-pitched, monotone male voice speaking the phrase "with life, plain to see." The voice is clear, steady, and lacks any emotional inflection, with no background noise or environmental cues present. The high-frequency transient stands out as an anomaly, as it does not correspond to any natural speech or environmental sound and is not present in the rest of the recording. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the high-frequency transient in the 4000–6000 Hz range during the 1.0–2.0 second interval as the most salient feature, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME explanation also supports this, highlighting the 0.0–0.1 second interval, which overlaps with the transient. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values further support the importance of the high-frequency transient, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating that the transient significantly influences the model’s prediction. Overall, the wav2vec model’s multiple XAI methods and the SHAP analysis converge on the 1.0–2.0 second, 4000–6000 Hz region as the most suspicious, while other models do not detect this anomaly.

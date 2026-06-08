@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, conversational phrase: "We must, to be honest, fill in our Edinburgh shoppish." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 3.0–3.5 seconds, a high-frequency, synthetic-sounding artifact is present, characterized by a sharp, buzzing timbre in the 4000–6000 Hz range. This artifact is not part of the original speech and appears abruptly, suggesting a digital anomaly such as a compression artifact, waveform glitch, or post-production error. The rest of the audio is acoustically normal, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 3.0–3.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), which is a strong indicator of the synthetic artifact. The Saliency method from wav2vec also detects a different region (0.0–0.5 seconds, 1000–2000 Hz), but this is not supported by other models and is likely unrelated to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the wav2vec IG result is the most reliable. The Shapley values indicate that the abnormality is not related to standard voice features like F0 or sound level, further supporting the conclusion that the anomaly is a non-linguistic, synthetic artifact. There is no cross-model agreement beyond wav2vec’s IG evidence, so the final abnormality is based on single-model evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a deep, resonant voice delivering the phrase, "She did not attend before brother." The recording is of high fidelity, with a clear and steady vocal tone, and no background noise or environmental interference. The only notable acoustic anomaly occurs in the word "attend," specifically in the segment from 2.0 to 2.5 seconds. During this interval, the voice exhibits a subtle but distinct pitch drop and a brief, unnatural pause, which disrupts the otherwise smooth delivery. This is accompanied by a slight increase in high-frequency content (4000–6000 Hz), suggesting a possible digital artifact or editing artifact. The anomaly is not present in the rest of the audio, and the speaker’s tone remains otherwise neutral and unemotional.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.0-2.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG) and Saliency methods, both of which point to the same region. The LIME method also supports this, highlighting a specific time point at 2.5–2.6 seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, with a high positive SHAP value, suggesting a significant deviation in the vocal slope at the anomaly. The equivalentSoundLevel_dBp and shimmerLocaldB_sma3nz_amean features also show deviations, supporting the presence of an acoustic irregularity. Overall, the wav2vec model’s multiple methods consistently identify the anomaly, while the other models do not, indicating that the anomaly is likely localized and supported by cross-model agreement from wav2vec.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [5.5-6.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic female voice delivering a news-style narration in a monotone, with a slightly robotic cadence and unnatural pauses. The most prominent acoustic anomaly occurs between 5.5 and 6.5 seconds, where the word "linked" is spoken. During this interval, the voice exhibits a subtle but noticeable pitch instability and a slight break in vocal continuity, accompanied by a mild high-frequency artifact in the 3000–4000 Hz range. This is consistent with a momentary glitch or digital artifact typical of deepfake speech synthesis, where the model struggles to maintain smooth articulation and prosody. The overall audio quality is clean, with no background noise, but the unnatural rhythm and lack of emotional inflection further suggest synthetic origin. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [5.5-6.5] second region as anomalous, with a corresponding frequency range of [3000-4000] Hz, using Integrated Gradients (IG). This is supported by the Saliency method, which highlights the [0-1] second region, and LIME, which points to the [8.0-8.5] second region, though these are less consistent with the observed anomaly. The Hubert and WavLM models do not provide supporting evidence for this region. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the anomaly is related to the duration and variability of unvoiced segments, which aligns with the observed instability in the word "linked." The cross-model agreement from wav2vec’s IG and the Shapley analysis supports the conclusion that the anomaly is a genuine artifact of the deepfake synthesis process.

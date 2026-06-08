@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-quality female voice saying, "breathtaking moment actually made out of a day." The speech is delivered in a neutral, conversational tone, with no background noise or distortion. However, at approximately 1.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, masking the remainder of the speech and introducing a jarring, unnatural transition. The tone is acoustically distinct from the voice, with a frequency range of 3000–6000 Hz, and its abrupt onset and unnatural timbre suggest it is not part of the original recording but rather an inserted artifact. The audio quality is otherwise pristine, with no signs of compression, clipping, or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time region and [3000-6000] Hz frequency range using Integrated Gradients (IG), while LIME also supports the [1.8-2.0] seconds interval. Saliency analysis from wav2vec points to the initial segment [0.0-0.1] seconds, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are consistent with the presence of a sudden, loud, and sustained tone. The cross-model agreement from wav2vec (IG and LIME) confirms the [1.0-2.0] seconds interval as the most likely region of abnormality, supported by the acoustic evidence of the inserted electronic tone.

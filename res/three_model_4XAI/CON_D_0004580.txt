@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, coherent sentence: "is being buried the annoyance that they've lost the sponsor of the club game." The speech is recorded in a quiet, acoustically dry environment, with no background noise, reverberation, or environmental cues. The voice is steady, with no emotional inflection, and the recording quality is high, with no distortion or artifacts. However, at approximately 3.5–4.0 seconds, there is a subtle but noticeable anomaly: a brief, unnatural pitch shift or digital artifact occurs, coinciding with the word "annoyance." This is supported by the wav2vec model's Integrated Gradients (IG) analysis, which highlights this time-frequency region as suspicious. The wav2vec saliency map also points to a similar region, and LIME analysis further corroborates the anomaly at 3.8–4.0 seconds. The Hubert and WavLM models do not flag this region, but the wav2vec evidence is strong and consistent. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides multiple lines of evidence (IG, Saliency, and LIME) that all point to the same time-frequency region ([3.5-4.0] seconds, [2000-6000] Hz), indicating a cross-model agreement on the anomaly. The Hubert and WavLM models do not detect this region, but the wav2vec evidence is robust and consistent. The Shapley values suggest that the anomaly is not related to overall audio energy or segment length, but rather to a specific, localized acoustic change. Thus, the wav2vec findings are prioritized as the most reliable indicator of the anomaly.

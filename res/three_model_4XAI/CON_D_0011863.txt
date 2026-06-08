@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "by the sc... believed to be in South Africa." The speech is clear and intelligible, but at approximately 0.5 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a piercing, static-like tone in the 2000–7000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the rest of the audio, suggesting a localized anomaly. The wav2vec model’s Saliency and IG methods both identify this time-frequency region as suspicious, indicating that the model detects an anomaly in this segment. The LIME method also supports this, highlighting a specific time point (2.5–2.6 seconds) that may correspond to the artifact’s tail or a related event. No other XAI methods (Hubert, WavLM) or Shap values provide supporting evidence for this region, and no other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency and Integrated Gradients (IG) methods both identify the [0.5–1.5] seconds, [2000–7000] Hz region as anomalous, providing cross-model agreement. The wav2vec LIME method also supports this region, though at a slightly later time point (2.5–2.6 seconds), which may correspond to the artifact’s tail or a related event. The Hubert and WavLM models do not provide any evidence for this region, and the Shap values do not align with the observed artifact. Thus, the final abnormality is supported by multiple wav2vec methods, indicating a high-confidence cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched male voice speaking the phrase, "They failed in the past in the end." The recording is clean, with no background noise or environmental sounds, and the speech is clear and intelligible. However, at approximately 1.5 to 2.0 seconds into the clip, there is a subtle but noticeable high-frequency artifact in the 4000–6000 Hz range. This artifact manifests as a brief, unnatural tonal quality, possibly a digital artifact or a synthetic overlay, which is not present in the rest of the audio. The voice itself does not exhibit any signs of emotional distress, hesitation, or unnatural delivery, and the acoustic environment is consistent throughout. The anomaly is isolated to this brief frequency band and does not affect the intelligibility of the speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.5-2.0] seconds, 4000–6000 Hz), indicating strong cross-model agreement. The wav2vec model’s IG method specifically highlights this region, while Saliency and LIME corroborate the finding, though with slightly different time boundaries. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, indicating a possible change in the audio’s spectral characteristics. Overall, the wav2vec model’s multiple XAI methods converge on the same region, providing robust evidence of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Next past time we will be home." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 2.4 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.6 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, non-vocal sound in the 1000–3000 Hz range. This region is supported by multiple XAI methods: the wav2vec Integrated Gradients (IG) method identifies this time-frequency region as significant, and the wav2vec Saliency method also highlights a similar high-frequency region (7500–8000 Hz) at 3.0–3.1 seconds, suggesting a possible secondary anomaly. The LIME method for wav2vec identifies a very early time region (0.0–0.1 seconds), which may correspond to a minor artifact or noise at the start of the audio. No XAI evidence from Hubert or WavLM supports any abnormality, and the Shapley values indicate that the anomaly is not related to standard voice features like loudness or spectral flux, but rather to a specific, unvoiced segment length, suggesting a synthetic or inserted sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG and Saliency methods both identify the 2.4–2.6 seconds time range and the 1000–3000 Hz frequency range as abnormal, providing cross-model agreement. The wav2vec LIME method also supports an early anomaly, but this is less consistent with the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, and the Shapley values suggest the anomaly is not related to typical voice features but rather to a specific unvoiced segment length, further supporting the presence of a synthetic or inserted sound.

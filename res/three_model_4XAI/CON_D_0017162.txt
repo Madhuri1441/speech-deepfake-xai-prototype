@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "The client's insurance company contested the damages, not the restaurant." The speech is delivered in a standard British accent, with a steady, professional tone and no emotional inflection. The recording quality is high, with no background noise, distortion, or artifacts. However, at approximately 0.5–1.0 seconds into the clip, a subtle but noticeable acoustic anomaly occurs. During this interval, the voice exhibits a slight pitch and timbral shift, accompanied by a faint, unnatural resonance, which is not present in the rest of the audio. This anomaly is most prominent in the 4000–6000 Hz frequency range, suggesting a possible digital manipulation or artifact introduced during post-processing. No other acoustic irregularities are observed elsewhere in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.5–1.0 second range with a frequency focus of 4000–6000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The wav2vec model’s LIME explanation, however, points to a much earlier interval (0.0–0.1 seconds), which does not align with the observed acoustic anomaly and is likely spurious. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME explanations are all absent. The Shapley value analysis highlights spectral features such as spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and spectralFluxUV_sma3nz_amean, but these do not directly correspond to the observed anomaly and are not time-localized. Thus, the wav2vec model’s Saliency and IG results are the only ones that consistently support the acoustic abnormality in the 0.5–1.0 second interval.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "believe talent. My house was shak—" before abruptly cutting off mid-word. Immediately following this, a loud, synthetic, low-frequency electronic tone (approximately 50–150 Hz) is introduced, which is highly unnatural and inconsistent with the preceding speech. This tone is accompanied by a harsh, high-frequency digital artifact (3000–6000 Hz), which is not present in the original speech and appears abruptly at the same time as the electronic tone. The sudden onset and unnatural spectral content of these sounds suggest a post-production edit or digital manipulation, likely intended to obscure or censor the remainder of the speech. The abruptness and unnaturalness of the transition, as well as the presence of a synthetic tone and digital artifact, are clear acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an initial brief region ([0.0–0.1] seconds) and a more prominent region ([1.0–1.5] seconds) with high-frequency content ([3000–4000] Hz). The Saliency method further supports the abnormality in the [1.5–2.0] seconds range with high-frequency content ([3000–6000] Hz). The Shap values for equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and StddevUnvoicedSegmentLength also indicate significant deviations in the acoustic profile during the abnormal region, particularly in the high-frequency range. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec-based methods and Shap values collectively confirm the abnormality in the [1.0–2.0] seconds range with high-frequency content ([3000–6000] Hz). This region is supported by multiple independent XAI sources, indicating strong cross-model agreement.

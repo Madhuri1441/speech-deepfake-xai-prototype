@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Similar measures are at conflict, well..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 1.5 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its timbre is consistent with a digital artifact or a synthetic tone. There are no other obvious anomalies in the audio, such as clipping, distortion, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The suspicious acoustic region [1.0-1.5] seconds and [4000-6000] Hz Hz is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this time and frequency region as salient for the model’s prediction. The Saliency method from wav2vec also identifies a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this does not align with the observed buzzing. The LIME explanation from wav2vec identifies a region ([1.8-2.0] seconds), which is after the buzzing ends and is not relevant to the anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly point to the buzzing region. Overall, the buzzing anomaly is primarily supported by the wav2vec model’s IG explanation, with no cross-model agreement.

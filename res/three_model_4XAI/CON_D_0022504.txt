@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "plans to sell it. There's a golden jubilee we'll give you..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.5 seconds, a sudden, high-frequency, synthetic-sounding tone appears, lasting until about 3.0 seconds. This tone is not part of the original speech and is acoustically distinct from the speaker’s voice, suggesting it is an inserted artifact. The tone is centered in the 1000–2000 Hz range, which is within the mid-frequency band typical for human speech, but its timbre and abrupt onset/offset are inconsistent with natural speech or environmental sounds. There are no other obvious audio artifacts, such as clipping, distortion, or background noise, and the rest of the audio remains clean and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [2.5-3.0] seconds is supported by multiple XAI sources: the Integrated Gradients (IG) method for the wav2vec model, the Saliency method for the wav2vec model, and the LIME method for the wav2vec model. These methods all independently identify the same time and frequency region, indicating a strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP analysis does not directly reference this time segment, but it highlights features related to sound level and segment length, which may indirectly support the presence of an anomalous event. Overall, the convergence of wav2vec-based XAI methods on the same region provides robust evidence for the presence of an inserted synthetic tone during the specified interval.

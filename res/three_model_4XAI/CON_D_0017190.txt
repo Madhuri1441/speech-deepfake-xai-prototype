@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, coherent sentence in English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no abrupt changes in pitch, loudness, or timbre. However, at approximately 0.5–1.5 seconds, a subtle but noticeable high-frequency artifact appears, manifesting as a faint, synthetic-sounding buzz or hiss in the 6000–7000 Hz range. This artifact is not present in the surrounding speech and does not align with any natural vocal or environmental sound, suggesting a possible digital manipulation or encoding error. The rest of the audio remains clean and free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.5] seconds and [6000-7000] Hz using Integrated Gradients (IG), which is supported by Saliency and LIME, both pointing to the same time interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight acoustic features such as loudness_sma3_percentile20.0 and StddevUnvoicedSegmentLength, which may be related to the presence of the artifact, but these do not specify a time or frequency range. Overall, the wav2vec-based XAI methods provide the most consistent evidence for the anomaly, while other models and Shapley values offer supplementary but less specific support.

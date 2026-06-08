@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I intended Mark to be used club on loan." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the mid-frequency range (2000–4000 Hz) during the time interval [0.5–1.0] seconds, specifically around the word "intended." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor artifact or synthetic overlay, though it does not disrupt intelligibility. No other acoustic irregularities are apparent in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.5–1.0] seconds interval and 2000–4000 Hz frequency range as salient, with an additional IG-based region at [1.5–2.0] seconds and 4000–6000 Hz. The LIME explanation for wav2vec also supports the [0.5–0.6] seconds interval. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not robustly detected by these models. The Shapley values highlight acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which may relate to the unnatural spectral texture in the flagged region. The wav2vec saliency and LIME evidence are consistent, suggesting a cross-model agreement on the [0.5–1.0] seconds interval as the most likely region of acoustic abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "went on sale," followed by a brief pause and then the word "forward." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.2 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, suggesting it is an artificial insertion rather than a natural part of the recording. The artifact is characterized by a piercing, static-like timbre, likely due to a digital glitch or post-processing error. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [0.8-1.2] seconds time region and [4000-6000] Hz frequency region as the most salient, indicating that this segment is likely responsible for the model's prediction. The Saliency method from wav2vec also highlights a different region ([0.1-0.2] seconds, [3000-4000] Hz), but this is not supported by other models. LIME from wav2vec points to an even earlier segment ([0.0-0.1] seconds), which is not corroborated by other XAI methods. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, which may relate to the presence of the artifact. Overall, the wav2vec IG method provides the most consistent evidence for the abnormality, supported by the acoustic observation of the artifact.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "She says." Immediately following this phrase, there is a brief, sharp, high-frequency transient noise that occurs between 1.5 and 2.0 seconds. This noise is acoustically distinct from the preceding speech, characterized by a piercing, synthetic timbre and a frequency content in the 6000–7000 Hz range, which is not typical of human speech or natural background sounds. The noise is abrupt and does not fade naturally, suggesting it is an artificial insertion rather than a genuine environmental artifact. This anomaly is not present in the original speech and appears to be digitally spliced in, likely as a result of audio manipulation or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.8–2.0 second region with a frequency band of 6000–7000 Hz, Saliency points to the 0.0–0.1 second region (which is unrelated to the anomaly), and LIME identifies the 1.5–1.6 second region. The IG and LIME results both point to the same time and frequency range as the observed acoustic anomaly, providing cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, likely because they are less sensitive to such transient artifacts or were not trained to detect them. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, which may reflect the unnatural silence or abruptness introduced by the artifact. Overall, the wav2vec model’s multiple lines of evidence converge on the same region, indicating a high confidence in the presence of a synthetic audio artifact in the specified time and frequency range.

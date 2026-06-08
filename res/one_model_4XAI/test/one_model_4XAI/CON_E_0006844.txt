@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "He also was in debt. I'll probably..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5–1.0 seconds, a brief, unnatural vocal artifact is present. This artifact manifests as a sudden, high-frequency, synthetic-sounding burst, which is acoustically inconsistent with the natural speech preceding and following it. The artifact is most prominent in the 2000–4000 Hz frequency range, which is typical for sibilant speech sounds, but here it appears abruptly and without the expected articulatory context.
+
+This acoustic anomaly is corroborated by the Integrated Gradients (IG) explanation, which highlights the same time and frequency region as the most salient for the model’s decision. The Saliency and LIME explanations also point to the initial 0.0–0.1 seconds, suggesting the model is sensitive to the onset of the audio, but the IG result is more specific to the artifact’s location. The Shapley values further support the presence of an anomaly: the "StddevUnvoicedSegmentLength" feature, which measures the variability of unvoiced segments, has a high positive Shap value, indicating the presence of an atypical unvoiced segment (likely the artifact). The "slopeUV0-500_sma3nz_amean" and "spectralFlux_sma3_amean" features also show elevated values, suggesting a sudden change in spectral content and energy, consistent with the artifact’s appearance.
+
+No other obvious acoustic anomalies are present in the audio, and the rest of the speech is natural and unremarkable. The combination of the synthetic burst and the XAI evidence strongly suggests the audio has been manipulated, with the artifact likely introduced during post-processing or as a result of deepfake generation.

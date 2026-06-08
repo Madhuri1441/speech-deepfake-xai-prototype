@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, emotionally charged female voice saying, "Go looking big brother at my father, my grandfather." The speech is delivered in a controlled, narrative tone, with no background noise or environmental cues, indicating a studio or controlled recording environment. The most notable acoustic anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, deviating from the otherwise natural vocal quality. This region is marked by a sharp increase in high-frequency energy, particularly in the 3000–6000 Hz range, which is atypical for human speech and suggests digital manipulation or synthesis. The anomaly is brief and localized, with the remainder of the audio returning to a natural, unaltered vocal texture. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second range, with a frequency focus of 3000–6000 Hz, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a related region (3.5–4.0 seconds, 2000–8000 Hz), but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The SHAP values further support the presence of an anomaly, with high contributions from equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, all of which are elevated in the suspicious region. The wav2vec model’s IG and LIME results provide cross-model agreement, while the Saliency result is less consistent. The absence of evidence from Hubert and WavLM suggests that the anomaly is subtle and may not be captured by all models.

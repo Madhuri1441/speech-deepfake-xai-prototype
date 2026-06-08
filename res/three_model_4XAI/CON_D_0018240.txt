@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-fidelity female voice speaking in a monotone, with a slightly robotic and unnatural cadence. The speech is partially intelligible, with phrases such as "...last night to prepare in this... they want a team today... attempt being made in this..." The most notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre. This is accompanied by a high-frequency artifact in the 6000–7000 Hz range, which is not present in the rest of the audio. The anomaly is marked by a brief, unnatural break in the vocal flow, suggesting a digital splice or model-generated artifact. The overall audio quality is poor, with a persistent background hiss and a lack of natural reverberation, further supporting the hypothesis of a synthetic or manipulated source.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, 6000–7000 Hz). The IG and Saliency methods both highlight the same time and frequency region, while LIME provides a slightly different but overlapping time window ([4.0-4.1] seconds), which may correspond to a secondary anomaly or a related artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural speech patterns. The cross-model agreement from wav2vec’s multiple methods strengthens the conclusion that the identified region is a genuine anomaly.

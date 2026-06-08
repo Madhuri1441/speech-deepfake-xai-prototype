@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "We'll get there is a two minute to the family." The speech is generally intelligible, but at approximately 1.5–2.0 seconds, there is a noticeable, unnatural break in the audio. This break is marked by a sharp, high-frequency transient (4000–6000 Hz) that is inconsistent with the natural cadence of speech or environmental sounds. The transient is abrupt, lacks any natural reverberation or decay, and appears to be an artifact of digital editing or synthesis. This is further supported by the presence of a faint, low-frequency hum throughout the clip, which is typical of a quiet indoor recording environment. No other obvious audio artifacts, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([1.5-2.0] seconds, [4000-6000] Hz), while LIME identifies a different, earlier region ([0.1-0.2] seconds), which is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the presence of a sudden, high-amplitude transient. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the abnormality at [1.5-2.0] seconds, [4000-6000] Hz as the most reliable finding.

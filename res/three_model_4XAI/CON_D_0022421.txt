@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "That would have from the fire was huge." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, the initial segment of the audio, specifically from 0.0 to 0.5 seconds, exhibits a subtle but noticeable high-frequency artifact in the 1000–2000 Hz range. This region contains a faint, unnatural hiss or static that is not present in the rest of the recording, suggesting a possible digital anomaly or editing artifact. The rest of the audio is acoustically clean, with no further signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the most salient region for its prediction as [0.0-0.5] seconds in the 1000–2000 Hz frequency range, using both Integrated Gradients (IG) and Saliency methods. This aligns with the observed high-frequency artifact in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean, which are related to the acoustic properties of the audio, but these do not directly correspond to the observed artifact. Overall, the wav2vec model's evidence is the only one that supports the presence of an abnormality in the audio, and it is based on multiple XAI methods within the same model.

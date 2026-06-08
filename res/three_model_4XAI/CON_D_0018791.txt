@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It is not like working for a living." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.4 seconds, a subtle but noticeable artifact appears: a high-frequency, synthetic-sounding buzz or hum overlays the voice, most prominent between 3500 Hz and 4500 Hz. This buzz is not present in the original speech and is not a natural part of the recording environment. The buzz persists until about 0.6 seconds, after which the audio returns to normal. This brief anomaly is not accompanied by any change in the speaker’s delivery or background noise, suggesting it is an artificial insertion rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [0.4-0.6] second time region and [3500-4500] Hz frequency region as salient. This aligns with the observed synthetic buzz in the audio. The wav2vec Saliency method also highlights a different time-frequency region ([1.3-1.6] seconds, [4000-8000] Hz), but this does not correspond to any clear acoustic anomaly and may reflect model-specific sensitivity to speech features. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, but these do not directly indicate the presence of an artifact. Overall, the most reliable evidence for the anomaly comes from wav2vec’s IG analysis, supported by the direct observation of the synthetic buzz in the audio.

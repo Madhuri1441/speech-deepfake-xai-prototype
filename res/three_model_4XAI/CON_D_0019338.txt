@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "He denied calls, being to right." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 1.5 seconds. This artifact is a sharp, synthetic-sounding tone, likely a digital glitch or splicing error, which is acoustically inconsistent with the preceding speech. The tone is centered in the 2000–6000 Hz range, which is outside the typical speech spectrum and does not resemble any natural vocal or environmental sound. After this brief anomaly, the audio returns to normal speech until the end. No other obvious acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region as salient, directly aligning with the observed synthetic artifact. The wav2vec Saliency method also highlights a region at [1.50-2.00] seconds, which overlaps with the artifact's tail, further supporting the presence of an anomaly. The wav2vec LIME method, however, points to an earlier time region ([0.0-0.1] seconds), which is not supported by the audio evidence and is likely a false positive. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features related to unvoiced segment length and sound level, but these do not directly correspond to the observed artifact. Overall, the wav2vec IG and Saliency methods provide consistent, cross-model evidence for the abnormality, while other XAI sources either do not support it or provide conflicting information.

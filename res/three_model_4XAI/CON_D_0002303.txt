@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Got to look at the symptoms." The speech is intelligible and delivered in a neutral, conversational tone, with no background noise or environmental sounds. At approximately 1.0 seconds, a sudden, loud, low-frequency electronic tone (around 100 Hz) abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, masking the remainder of the speech and introducing a strong sense of digital distortion. The abrupt onset and unnatural timbre of the tone, along with its complete dominance over the vocal signal, indicate a deliberate insertion or overlay, likely as a censorship or redaction effect. The frequency range of the abnormality (3000–6000 Hz) aligns with the midrange of the voice and the upper harmonics of the electronic tone, suggesting that both the voice and the tone are present in this band.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while LIME supports the [1.6-2.0] seconds interval. The Saliency method also highlights the [0.0-0.5] seconds region, but this is less consistent with the observed event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are associated with the sudden loudness and spectral changes at the onset of the electronic tone. The cross-model agreement between wav2vec’s IG and LIME methods confirms the [1.0-2.0] seconds interval as the most likely region of abnormality.

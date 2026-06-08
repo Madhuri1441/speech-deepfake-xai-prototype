@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "the average was three hours playing so long." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound. After this brief interval, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0-2.5] seconds with a frequency range of [6000-7000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. This cross-model agreement strongly indicates that the synthetic artifact is the primary source of model confusion or anomaly detection. The wav2vec model’s LIME explanation, while less precise, also points to the early part of the audio, but does not specify the artifact. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to this type of synthetic anomaly. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect the presence of the artifact, but these are not directly tied to the specific time or frequency range. Overall, the wav2vec model’s consistent identification of the artifact region is the most reliable evidence for the anomaly.

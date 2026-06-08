@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "Today I will begin to help to not to argue." The speech is clear and intelligible, with a neutral, conversational tone. However, from approximately 2.5 to 4.0 seconds, a high-frequency, synthetic-sounding artifact overlays the speech. This artifact is not present in the original recording and is not a natural part of the speaker’s voice or the environment. The artifact manifests as a sharp, buzzing tone in the 6000–8000 Hz range, which is acoustically distinct from the speaker’s voice and background noise. This anomaly is not explained by any natural acoustic event or environmental interference, and its sudden appearance and unnatural spectral profile suggest it is an artificial insertion, likely the result of digital manipulation or a deepfake process.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-4.0] seconds, [6000-8000] Hz). The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The Shapley value analysis supports the presence of an anomaly by highlighting changes in acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are consistent with the introduction of a synthetic artifact. The convergence of multiple XAI methods on the same region provides strong evidence that the anomaly is a deepfake insertion, not a natural acoustic event.

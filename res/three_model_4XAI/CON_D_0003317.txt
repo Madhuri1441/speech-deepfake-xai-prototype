@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic, monotone female voice reading a short, disconnected phrase: "plans to sell a book, cars of golden jubilee, I proceed." The voice is highly artificial, with a flat, robotic intonation and unnatural cadence, lacking the dynamic pitch and rhythm of human speech. At approximately 3.5–4.0 seconds, a sharp, high-frequency artifact is audible, manifesting as a brief, piercing tone in the 6000–7000 Hz range. This artifact is not part of the original text and appears as a sudden, unnatural spike in the audio spectrum, likely due to a digital glitch or encoding error. The overall audio quality is low, with a persistent background hiss and a compressed, muffled timbre, further suggesting digital processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [3.5-4.0] seconds and [6000-7000] Hz using Integrated Gradients (IG), while the Saliency method highlights a different region ([0-1] seconds, [2000-4000] Hz) and LIME points to [2.0-2.1] seconds. However, the IG result is the only one that aligns with the observed high-frequency artifact in the audio. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The SHAP analysis does not directly reference the artifact but highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and F0semitoneFrom27.5Hz_sma3nz_percentile50.0, which are more related to the overall synthetic nature of the voice rather than the specific artifact. Thus, the final abnormality is supported by wav2vec’s IG method, with no cross-model agreement, and is based on a single-model finding.

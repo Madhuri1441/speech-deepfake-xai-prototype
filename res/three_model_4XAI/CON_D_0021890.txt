@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice stating, "They should be well bred to the area to make the project a success." The speech is delivered in a steady, conversational tone, with no background noise or environmental cues, indicating a controlled recording environment. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing artifact appears and persists until the end of the clip. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone centered around 4000–6000 Hz. The artifact is not masked by the speech and is clearly audible, suggesting it was introduced after the initial recording, likely as a result of digital manipulation or post-processing error. No other acoustic anomalies, such as clipping, distortion, or compression artifacts, are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–2.0 second time range and 4000–6000 Hz frequency range, while LIME corroborates the time range with a slightly later window (3.5–4.0 seconds), likely due to its local approximation nature. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no regions of interest. The Shapley values from the audio features also support the presence of an anomaly, with the slopeUV0-500_sma3nz_amean feature showing a high SHAP value, indicating a significant deviation in the audio’s spectral characteristics. The combined evidence from wav2vec’s multiple methods and the SHAP values strongly supports the conclusion that the synthetic buzzing artifact is the primary anomaly in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "and they are fantastic at invi-," which is abruptly cut off mid-word, followed by a male voice saying, "Mark." The most notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where the female voice is present but the speech is heavily distorted, with a harsh, metallic, and unnatural timbre. This distortion is accompanied by a strong, high-frequency artifact in the 4000–6000 Hz range, which is not typical of natural human speech. The abruptness of the cut and the unnatural quality of the voice strongly suggest a digital manipulation or deepfake insertion. The male voice at the end is clear and natural, indicating that the anomaly is localized to the female voice segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the female voice segment is supported by multiple XAI sources. The Integrated Gradients (IG) and Saliency methods from the wav2vec model both identify the [1.5-2.0] seconds time region and the [4000-6000] Hz frequency region as critical for the model’s prediction, indicating that these features are key to the model’s detection of the anomaly. The LIME explanation for wav2vec, however, points to an earlier time region ([0.0-0.1] seconds), which is not supported by other XAI methods and is likely a less reliable indicator. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is specifically captured by wav2vec. The Shap values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are indicative of unnatural audio characteristics. Overall, the cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the anomaly in the specified time and frequency range.

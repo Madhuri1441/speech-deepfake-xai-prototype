@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, intelligible female voice speaking in a neutral, declarative tone, with no background noise or distortion. The speech is continuous and natural, with no abrupt changes in pitch, volume, or timbre. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered around 5500 Hz, which overlays the ongoing speech. The buzz is not present in the initial or final portions of the audio, and its sudden appearance and disappearance suggest a digital or synthetic origin, possibly due to a processing error or deepfake artifact. The voice itself remains unaffected in terms of clarity or emotional tone, indicating the anomaly is external to the speech signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [5000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The IG method further narrows the time to [2.7-3.0] seconds and frequency to [6000-7000] Hz, but this is not corroborated by other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are not cross-model confirmed. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, but these do not directly correspond to the observed artifact. Thus, the wav2vec model’s identification of the [1.0-2.0] seconds, [5000-6000] Hz region is the most consistent and supported by multiple XAI methods, though it remains a single-model finding.

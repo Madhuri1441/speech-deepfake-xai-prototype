@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "promoters, Jack, desire and attitude." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the initial or final portions of the audio, suggesting it is an inserted or manipulated segment. The voice itself remains unaffected by the artifact, indicating it is a post-production addition rather than a recording flaw. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the [2.5-3.0] seconds region, though this is less consistent with the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a high-frequency artifact. The wav2vec model's IG and Saliency results, along with the Shapley values, converge on the [1.0-2.0] seconds interval and 4000–6000 Hz frequency range as the most likely region of abnormality. This cross-model agreement strengthens the conclusion that the artifact is a synthetic insertion rather than a natural acoustic event.

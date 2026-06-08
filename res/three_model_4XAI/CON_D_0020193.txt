@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "are both were involved with other matters." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the frequency range of 3000–4000 Hz during the time interval of 1.5–2.0 seconds, specifically around the word "involved." This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not obvious to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 1.5–2.0 second time window and 3000–4000 Hz frequency range as the most salient region, indicating this segment is critical for the model's prediction. The Saliency method from wav2vec also highlights a different region (0.0–0.5 seconds, 1000–2000 Hz), but this is less consistent with the observed anomaly. The LIME method from wav2vec further supports the 1.9–2.0 second window, reinforcing the importance of this segment. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The SHAP values, while not directly tied to time or frequency, suggest that features related to sound level and unvoiced segment length are important, but do not pinpoint the anomaly's location. Overall, the wav2vec model's IG and LIME methods provide consistent evidence for the 1.5–2.0 second, 3000–4000 Hz region as the most suspicious, supported by multiple independent XAI sources.

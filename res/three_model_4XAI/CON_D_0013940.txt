@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, steady voice, but at approximately 1.5–2.0 seconds, there is a noticeable, unnatural break in the speech. The phrase "in the field" is abruptly cut off, and the following word "but" is delivered with a slightly different timbre and pitch, suggesting a possible splice or digital editing artifact. This break is accompanied by a subtle, high-frequency artifact in the 3000–4000 Hz range, which is not present in the rest of the audio. The transition between the two speech segments is acoustically inconsistent, with a mismatch in prosody and a faint digital click, indicating a possible synthetic or manipulated origin. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as salient, aligning with the observed acoustic break and high-frequency artifact. The Saliency method from wav2vec also highlights a region at [4.5-5.0] seconds, but this does not correspond to any clear anomaly in the audio and is likely unrelated. The LIME explanation from wav2vec at [5.0-5.1] seconds is too narrow and does not match any observable event. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values indicate that the abnormality is likely due to changes in equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are consistent with a sudden change in audio energy and spectral content at the splice point. Overall, the cross-model agreement from wav2vec’s IG and the Shapley values strongly support the presence of an anomaly at [1.5-2.0] seconds, while other XAI evidence is either inconsistent or not supported by the audio.

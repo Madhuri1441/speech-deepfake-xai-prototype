@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "covered the mischief" in a neutral, conversational tone, with no apparent emotional inflection or background noise. The speech is clear and intelligible, with a natural cadence and no signs of digital manipulation or distortion. However, at approximately 0.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 0.6 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3500–4500 Hz range, which is acoustically distinct from the voice and does not match any natural speech or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural event. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [0.4-0.6] seconds time region and [3500-4500] Hz frequency region as salient. This aligns precisely with the observed transient artifact in the audio. The wav2vec model's Saliency and LIME methods also point to nearby time regions, but the IG result is the most specific and directly corroborated by the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed artifact and are not supported by the XAI methods. Thus, the final abnormality region is based on cross-model agreement from wav2vec's IG analysis, with no support from other models.

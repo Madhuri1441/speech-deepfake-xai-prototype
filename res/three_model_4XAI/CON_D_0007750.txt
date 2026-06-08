@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "That is industry." The speech is delivered in a standard, unaccented English tone, with no emotional inflection or background noise. The recording is of high fidelity, with a clean signal and no audible artifacts such as clipping, static, or distortion. The only notable acoustic feature is a brief, high-frequency transient occurring between 0.95 and 1.1 seconds, which is not part of the spoken content. This transient is characterized by a sharp, metallic or synthetic timbre, with energy concentrated between 3500 and 4500 Hz, and is not present in the original speech waveform. The transient is abrupt and does not blend naturally with the voice, suggesting it is an artificial addition rather than a natural acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through its Integrated Gradients (IG) method, which highlights the 0.95–1.1 second time region and 3500–4500 Hz frequency range as the most salient for the model’s prediction. This aligns with the observed transient in the audio. The wav2vec model also provides Saliency and LIME explanations, but these point to different, less consistent regions and do not corroborate the transient. The Hubert and WavLM models do not provide any salient regions, indicating that the transient is not a strong feature for these models. The SHAP analysis identifies three acoustic features with high impact: equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the transient and instead reflect general acoustic properties of the audio. The wav2vec IG explanation is the only one that directly supports the presence of the transient, and this is the only region identified by multiple XAI methods.

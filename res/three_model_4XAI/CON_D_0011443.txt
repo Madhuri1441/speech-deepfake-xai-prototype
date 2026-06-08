@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-pitched, and slightly muffled utterance of the word "can" spoken by a female voice. Immediately following this, a sharp, high-frequency click or pop is heard, lasting less than a second. This click is acoustically distinct from the voice, with a frequency content concentrated between 2000–4000 Hz, and is not a natural part of speech or vocalization. The click is abrupt, lacks any reverberation or environmental context, and stands out as an artifact rather than a genuine sound event. There are no other notable acoustic anomalies in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [0.1-0.2] seconds time range and [2000-4000] Hz frequency range using both Saliency and LIME methods, indicating strong agreement on the presence of an anomalous event in this region. The IG method from wav2vec also supports this, though with a slightly narrower frequency range ([2500-3500] Hz]). The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the click, but these are not directly tied to the time or frequency regions identified by wav2vec. Overall, the wav2vec model’s multiple methods consistently point to the click as the anomaly, while other models do not detect it, suggesting that the anomaly is subtle and primarily captured by wav2vec.

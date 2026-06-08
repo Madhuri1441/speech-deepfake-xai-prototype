@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "Rocks" in a neutral, declarative tone, with no background noise or distortion. Immediately following the word, at approximately 1.0 seconds, a sharp, high-frequency transient is heard, lasting about 0.4 seconds. This transient is characterized by a piercing, metallic, and abrasive timbre, with energy concentrated between 2000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The sound is abrupt, unnatural, and does not resemble any typical environmental or vocal artifact. The remainder of the audio is silent, with no further speech or background activity.
+
+This transient is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) highlights the [1.0-1.2] seconds region, while its Saliency method identifies [1.2-1.4] seconds, both within the 2000-4000 Hz frequency band. The Shapley values also point to this region, with the equivalentSoundLevel_dBp feature showing a strong positive contribution (1.9173), indicating a sudden increase in loudness. The wav2vec model's LIME method, though less precise, also aligns with this region. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are robust and consistent.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients, Saliency, and LIME methods all independently identify the [1.0-1.4] seconds region as anomalous, with consistent frequency support between 2000-4000 Hz. The Shapley value analysis corroborates this, highlighting a significant increase in loudness and spectral energy. This cross-model agreement from wav2vec, along with the Shapley values, strongly supports the presence of an artificial or manipulated sound artifact in this time-frequency window. The absence of similar evidence from Hubert and WavLM does not contradict this, as wav2vec's multiple methods converge on the same region.

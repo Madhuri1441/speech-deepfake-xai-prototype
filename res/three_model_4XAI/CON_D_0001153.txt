@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "It's a personal decision for me." The speech is intelligible and delivered in a neutral, conversational tone, with no background noise or environmental cues. However, at approximately 1.0 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.75 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, resembling a digital glitch or a corrupted audio segment. The artifact overlays the end of the spoken phrase, making the word "me" acoustically distorted and unnatural. The frequency content of this artifact is concentrated between 3000 Hz and 6000 Hz, which is atypical for natural human speech and suggests a digital or synthetic origin. After 1.75 seconds, the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.00-1.75] seconds, [3000-6000] Hz), indicating a strong and consistent signal of anomaly in this segment. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp showing significant deviations, suggesting a disruption in the natural speech pattern and acoustic energy. The convergence of wav2vec’s IG and Saliency, along with the Shapley values, confirms the region as the most likely source of the anomaly. No other XAI sources corroborate this finding, and the anomaly is not supported by Hubert or WavLM models.

@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely from a microphone bump or handling noise, followed by a male voice saying, "by saying lessons." The speech is clear and natural, with no signs of digital manipulation or distortion. However, at approximately 1.0–1.2 seconds, a distinct, high-frequency, synthetic buzz emerges, lasting about 0.2 seconds. This buzz is sharply defined, with a fundamental frequency around 4000–6000 Hz, and is acoustically inconsistent with the preceding speech or any natural background noise. The buzz is not present in the original audio and appears abruptly, suggesting it is an artificial insertion.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) and Saliency both highlight the 1.0–1.2 second time window and the 4000–6000 Hz frequency range, indicating that these features are critical to the model’s decision that the audio is a deepfake. LIME also identifies the same time region, reinforcing the suspicion. The Shapley values further corroborate this, with the equivalentSoundLevel_dBp feature showing a large positive value, indicating a significant increase in loudness at this point, and the StddevUnvoicedSegmentLength and loudness_sma3_amean features also contributing to the anomaly. These features collectively point to an unnatural, high-frequency sound event that disrupts the expected acoustic profile of the audio.
+
+No other acoustic anomalies are present in the audio, and the speech remains intelligible and unaffected by the buzz. The synthetic buzz is the only clear indicator of tampering, and the XAI evidence aligns precisely with its location and characteristics.

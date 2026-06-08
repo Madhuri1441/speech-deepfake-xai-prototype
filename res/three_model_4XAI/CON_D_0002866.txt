@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "So kind of playing long." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.6 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.6 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–8000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any typical environmental or vocal noise. The artifact is abrupt in onset and offset, suggesting digital manipulation or insertion rather than a natural event. After 1.6 seconds, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([0.6-1.6] seconds, [5000-8000] Hz), while LIME identifies a brief preceding region ([0.0-0.1] seconds), which may correspond to the onset of the artifact or a related transient. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are associated with the presence of the artifact, further supporting the conclusion that the anomaly is a synthetic sound event. The cross-model agreement from wav2vec provides strong evidence for the identified region, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-frequency click, followed by a male voice saying, "They were this... the less...". The speech is abruptly cut off mid-word, with no natural fade or trailing noise, indicating a hard edit. Immediately after the cutoff, a synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is acoustically distinct from the preceding audio, suggesting post-production insertion. The abrupt transition and unnatural tone are clear signs of digital manipulation.
+
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both highlight the 1.0–1.5 second region, with a frequency focus between 2000–6000 Hz, corresponding to the abrupt cutoff and the synthetic tone. The LIME method also supports this region, reinforcing the presence of an anomaly. The wav2vec model's SHAP values further corroborate this, with the slopeUV0-500_sma3nz_amean feature showing a strong positive contribution, indicating a sudden change in the signal's slope, likely due to the synthetic tone. The equivalentSoundLevel_dBp feature also supports this, as the sudden drop in sound level aligns with the abrupt edit. The mfcc2_sma3_amean feature, while less prominent, still suggests a change in the audio's spectral envelope. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all agree on the 1.0–1.5 second region, with a frequency focus between 2000–6000 Hz, indicating a strong cross-model agreement on the presence of an anomaly. The wav2vec SHAP values further support this region, while the Hubert and WavLM models do not provide evidence, suggesting that the anomaly is most reliably detected by wav2vec.

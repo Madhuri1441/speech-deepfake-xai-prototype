@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...that is my heart or resort industry for the big..." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 3000–4000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region via two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the 1.5–2.0 second time window and 3000–4000 Hz frequency range. The LIME method for wav2vec also highlights the 0.0–0.1 second region, but this is not supported by other XAI methods or acoustic evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but does not specify a time or frequency region, and thus does not directly support the identified anomaly. Overall, the wav2vec model’s IG and Saliency methods provide consistent, cross-model evidence for the abnormality, while other XAI sources do not corroborate this finding.

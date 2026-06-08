@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and natural speech rhythm. At approximately 0.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.5 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with a frequency content between 6000–7000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not present in the original audio and is not attributable to any natural speech or environmental sound. It is likely a digital artifact, possibly due to a deepfake model’s failure to reconstruct high-frequency details or an encoding/decoding error. The voice resumes naturally after the artifact, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [0.5-1.5] seconds time region and [6000-7000] Hz frequency region as salient, which aligns precisely with the observed artifact. The wav2vec Saliency method also highlights the [0-1] seconds region, which overlaps with the artifact’s onset. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis identifies acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and slopeUV0-500_sma3nz_amean, which are not directly linked to the artifact but may reflect broader speech irregularities. The wav2vec IG and Saliency results are the only ones that directly support the presence of the artifact, and their agreement strengthens the conclusion that the anomaly is a high-frequency digital artifact.

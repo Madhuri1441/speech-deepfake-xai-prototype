@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-0.6] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.5 seconds, a sharp, high-frequency transient is heard, lasting about 0.1 seconds. This transient is acoustically distinct from the rest of the audio, which consists of a single, clearly articulated female voice saying, "We needed the causeway." The transient is not a natural part of speech or environmental sound and stands out due to its abruptness and spectral content, which peaks in the 6000–7000 Hz range. This suggests a possible digital artifact, such as a click, pop, or editing artifact, rather than a genuine acoustic event. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality at [0.5-0.6] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), and at [0.9-1.0] seconds with [4000-5000] Hz using Saliency. LIME also supports the [0.5-0.6] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the anomaly may be related to a brief, unvoiced segment or a sudden change in the signal. The cross-model agreement between wav2vec’s IG and LIME, as well as the Shapley value analysis, supports the conclusion that the transient at [0.5-0.6] seconds is the most likely region of concern.

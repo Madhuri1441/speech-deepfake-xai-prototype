@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "...conditions. We have to train them to play in the Republic." The speech is clear and intelligible, with a natural cadence and no obvious signs of tampering. However, at approximately 2.5 seconds, a sharp, high-frequency artifact emerges, lasting until about 3.0 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, distinct from the speaker’s voice and the background. It is not a natural acoustic event, such as a cough or environmental noise, but rather a digital artifact, likely introduced during post-processing or as a result of a deepfake manipulation. The artifact is most prominent in the 6000–8000 Hz range, which is above the typical speech spectrum, and its abrupt onset and offset suggest it was inserted artificially. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.5-3.0] seconds, [6000-8000] Hz). The IG method highlights the same time and frequency region, while Saliency and LIME provide slightly different but overlapping time windows, all centered around the artifact. The Hubert and WavLM models do not detect any anomalies, likely due to their different training objectives or sensitivity to such artifacts. The SHAP analysis, which focuses on acoustic features rather than time-frequency regions, does not directly support the artifact’s presence but provides context on the audio’s spectral and loudness characteristics. Overall, the wav2vec model’s multiple XAI methods consistently identify the artifact, indicating strong cross-model agreement on the anomaly’s location and nature.

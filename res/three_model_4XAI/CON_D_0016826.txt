@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "in our island to be resolved." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but noticeable anomaly is present in the mid-frequency range (3000–4000 Hz) during the first 0.5 seconds of the utterance, specifically around the word "island." This region exhibits a slight unnatural resonance and a lack of typical vocal harmonics, suggesting possible digital manipulation or synthesis. The rest of the audio is acoustically clean, with no background noise or distortion. The anomaly is not perceptible to casual listening but is detectable through spectral analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [0.25-0.75] seconds time region and [3000-4000] Hz frequency region as the most salient for the model's prediction, indicating that this segment is critical for the model's classification. The Saliency method from wav2vec also identifies a different region ([1.80-2.00] seconds, [5000-6000] Hz), but this is less consistent with the observed acoustic anomaly. The LIME method from wav2vec identifies a very short initial segment ([0.00-0.10] seconds), which does not align with the main anomaly. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not captured by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed acoustic anomaly. Therefore, the primary evidence for the anomaly comes from the wav2vec IG method, with no cross-model agreement.

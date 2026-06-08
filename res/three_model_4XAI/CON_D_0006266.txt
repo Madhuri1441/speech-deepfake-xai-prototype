@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice speaking the phrase "the midnight potential on this river." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until about 1.5 seconds. This artifact is characterized by a piercing, static-like tone in the 2000–6000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is not present before or after this interval, suggesting a localized anomaly. The voice itself remains unaffected, with no clipping, distortion, or unnatural modulation, indicating the anomaly is likely a post-production artifact or digital overlay rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 seconds time region and 2000–6000 Hz frequency range, while LIME corroborates the time interval at 1.8–2.0 seconds, which overlaps with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a large positive SHAP value, suggesting a sudden increase in sound level in the specified region. The slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength features also contribute, but to a lesser extent. The cross-model agreement from wav2vec’s multiple methods strongly supports the presence of an abnormality in the 1.0–1.5 seconds interval, with the artifact being a high-frequency synthetic tone.

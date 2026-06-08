@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "them so much was very small." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until 3.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 3000–4000 Hz, and is acoustically inconsistent with the natural speech preceding it. The artifact is not a result of the speaker’s voice or any environmental noise, and its abrupt onset and unnatural spectral profile suggest digital manipulation or generation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [2.5-3.0] seconds time region and [3000-4000] Hz frequency region as salient, directly aligning with the observed synthetic artifact. The Saliency method from wav2vec also detects a secondary anomaly at [3.5-4.0] seconds, but this is not corroborated by other models or the audio itself, and is likely spurious. The LIME method from wav2vec identifies a region at [0.9-1.1] seconds, which is not supported by other XAI methods or the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_stddevFallingSlope, but these do not localize the anomaly to a specific time or frequency range. Overall, the wav2vec IG result is the most reliable indicator of the synthetic artifact, supported by its alignment with the audio evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "braid recording. It's better to get done for the single...". The speech is clear and intelligible, with no signs of emotional distress or unusual vocal quality. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.5 seconds. This tone is sharply defined, with a frequency content between 4000 and 6000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is abrupt in onset and offset, suggesting digital insertion rather than a natural event. After the tone ends, the speech resumes without interruption or change in delivery, indicating the tone is an overlay rather than part of the original recording. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the time interval [2.0-2.5] seconds and the frequency range [4000-6000] Hz. The LIME method from wav2vec also supports the region [1.5-2.0] seconds, overlapping with the other findings. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, all indicating a sudden change in the audio’s acoustic profile. The convergence of wav2vec’s IG, Saliency, and LIME methods on the same time and frequency region provides strong cross-model agreement, confirming the synthetic tone as the primary anomaly.

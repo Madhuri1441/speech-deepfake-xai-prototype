@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "We do not turmoil going on behind closed condition." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.8 seconds, a distinct, unnatural artifact appears: a high-frequency, synthetic buzz or hum, centered around 3500–4000 Hz, lasting for about 0.2 seconds. This buzz is not present in the original speech and does not correspond to any natural sound or environmental noise. The artifact is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically inconsistent with the rest of the audio, suggesting it is a digital manipulation or insertion. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. IG highlights the time-frequency region [1.8-2.0] seconds and [3500-4000] Hz, while Saliency points to a slightly broader region [1.0-1.5] seconds and [4000-6000] Hz, both of which align with the observed buzz artifact. LIME, however, only identifies a very short segment at the start of the audio, which does not correspond to the buzz. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp showing significant deviations, indicating a disruption in the audio’s natural acoustic structure. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the presence of the buzz artifact in the specified time and frequency range.

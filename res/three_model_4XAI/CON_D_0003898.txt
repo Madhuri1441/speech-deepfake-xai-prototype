@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "If you're going to... it is a... I am a wealthy..." The speech is abruptly cut off mid-word ("wealthy"), and a loud, sustained, low-frequency electronic tone immediately replaces the voice. This tone is monophonic, unmodulated, and has a harsh, buzzy timbre, characteristic of a square or sawtooth wave, and is centered around 4000–6000 Hz. The tone is significantly louder than the preceding speech and continues until the end of the clip. There are no other background noises, music, or environmental sounds, and the transition between speech and tone is instantaneous, with no fade or overlap. The abruptness and unnaturalness of the tone strongly suggest an artificial insertion, likely as a result of a technical malfunction, censorship, or deliberate editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the time interval [2.5–3.0] seconds and the frequency range [4000–6000] Hz. LIME also supports this region, though with a much earlier time window ([0.0–0.1] seconds), which may correspond to the initial speech segment. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is uniquely sensitive to the electronic tone. The Shapley values further support the presence of an abnormality, with high contributions from features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength, which are consistent with the sudden appearance of a loud, non-vocal sound. The combined evidence from wav2vec and Shapley values confirms the electronic tone as the primary anomaly, with strong cross-model agreement on the time and frequency ranges.

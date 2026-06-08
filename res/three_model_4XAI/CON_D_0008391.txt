@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a subtle but distinct anomaly emerges: a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not present in the original speech and is acoustically inconsistent with the natural voice, manifesting as a sharp, non-vocal sound in the 3000–4000 Hz range. The remainder of the audio returns to normal speech, with no further anomalies detected. This brief, unnatural sound is likely the result of a digital editing artifact or a deepfake model’s failure to perfectly reconstruct the audio at that point.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly at 1.5–2.0 seconds is supported by multiple XAI sources: the Integrated Gradients (IG) method for the wav2vec model identifies this time-frequency region as critical to the model’s prediction, and the Saliency method for wav2vec also highlights a related region (3–4 seconds, 2000–6000 Hz), suggesting a broader area of model sensitivity. The LIME method for wav2vec further corroborates the 2.0–2.1 seconds region, aligning closely with the observed artifact. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec-based methods collectively indicate the same time-frequency region as suspicious. The Shapley values, while not directly pointing to this region, suggest that the model is sensitive to acoustic features such as voiced/unvoiced segment lengths and spectral characteristics, which may indirectly relate to the anomaly. Overall, the wav2vec-based XAI methods agree on the suspicious region, providing cross-model support for the observed artifact.

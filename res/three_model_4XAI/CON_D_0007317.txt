@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice delivering a news report in a neutral, professional tone. The speech is clear and intelligible, with no obvious signs of digital compression or environmental noise. However, at approximately 5.0–6.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not present in the original speech and is acoustically inconsistent with the rest of the recording, suggesting it is an artificial insertion. The wav2vec model’s Integrated Gradients (IG) analysis highlights this exact time and frequency range, indicating that the model identifies this segment as anomalous. The wav2vec saliency analysis also points to a brief, low-frequency anomaly at 6.5–7.0 seconds, but this is less prominent and not corroborated by other models. The Shapley values further support the presence of an anomaly, with a large positive contribution from equivalentSoundLevel_dBp, indicating a sudden increase in loudness, and a spike in spectral flux, which suggests a rapid change in the frequency content of the audio at the same time.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and the Shapley value analysis both independently identify the 5.0–6.0 second, 4000–6000 Hz region as anomalous, providing cross-model agreement. The wav2vec saliency analysis also supports this, though it is less definitive. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The Shapley values corroborate the wav2vec findings, strengthening the case for a synthetic or inserted artifact in this region. No other models or methods provide supporting evidence for this specific anomaly.

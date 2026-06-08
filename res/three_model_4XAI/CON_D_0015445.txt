@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor recording environment. At approximately 1.0 seconds, a female voice starts speaking in a neutral, formal tone: "The decision was announced to those involved." The speech is clear, with no signs of emotional distress or urgency, and is delivered in a standard, non-regional accent. Around 1.5 seconds, a distinct, high-pitched, synthetic electronic tone abruptly overlays the speech. This tone is steady, unmodulated, and occupies the frequency range of 3000–6000 Hz, which is above the typical human speech range. The tone is not present in the background before or after the speech, and it does not interact with the voice, suggesting it is an artificial addition rather than a natural environmental sound. The voice continues unaffected, and the tone persists until the end of the clip. There are no other notable acoustic anomalies, such as clipping, distortion, or abrupt volume changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the [0.5-1.0] seconds range and [3000-4000] Hz frequency range. LIME analysis supports the [1.0-1.2] seconds time range. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley value analysis points to features such as equivalentSoundLevel_dBp, MeanUnvoicedSegmentLength, and mfcc1_sma3_amean, but these do not directly indicate the synthetic tone. The wav2vec model’s IG and Saliency results, along with LIME, consistently identify the presence of the synthetic tone in the specified time and frequency ranges, indicating cross-model agreement on the abnormality.

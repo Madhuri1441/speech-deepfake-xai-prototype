@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "too hard in this" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.00 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.25 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically distinct from the natural speech and does not match any expected environmental or vocal sounds. The artifact is abrupt, with no gradual onset or decay, and is not present in the surrounding speech, suggesting it is an artificial insertion or digital corruption rather than a natural event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.00–1.25 seconds time region and 3000–4000 Hz frequency range, while LIME supports the same time region but with a slightly different frequency focus. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an anomaly, with features such as slopeUV0-500_sma3nz_amean and loudness_sma3_meanFallingSlope showing significant deviations, suggesting a sudden change in signal characteristics at the identified time and frequency range. The agreement among wav2vec’s IG, Saliency, and LIME methods provides strong evidence for the presence of an artificial or corrupted segment in the audio, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

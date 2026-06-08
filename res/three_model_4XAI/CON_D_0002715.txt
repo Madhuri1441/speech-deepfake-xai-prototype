@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.30] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "but it would also ban regime is finished." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.25 seconds, a sharp, high-frequency artifact appears, lasting about 0.05 seconds. This artifact is characterized by a piercing, synthetic tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt and unnatural, suggesting a digital glitch or editing error rather than a genuine acoustic event. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.25-1.30] seconds, 6000–7000 Hz), indicating strong cross-model agreement. The IG method highlights the artifact as a region of high importance for the model’s prediction, while the Saliency method further confirms the same region as salient. The LIME method, however, identifies a different region ([0.0-0.1] seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any supporting evidence for this region, as their XAI methods return no relevant findings. The SHAP analysis does not directly reference the artifact but instead highlights acoustic features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may be indirectly related to the anomaly but do not pinpoint the artifact’s location. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and reliable evidence for the observed abnormality.

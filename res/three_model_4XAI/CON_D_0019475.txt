@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "then, which is patent, everything was gone." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.2 seconds, a subtle but distinct anomaly emerges: a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.6 seconds. This artifact is not part of the original speech and is acoustically inconsistent with the rest of the recording, which is otherwise clean and free of noise or distortion. The artifact is most prominent in the 2000–3000 Hz frequency range, suggesting a possible digital or synthetic origin, such as a watermark, overlay, or post-processing artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.2-1.6] seconds time range and [2000-3000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports this with a region at [2.3-2.5] seconds and [7000-8000] Hz, though this is less consistent with the observed artifact. LIME also highlights a brief region at [0.0-0.1] seconds, but this is not aligned with the main anomaly. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, indicating that the wav2vec model is the primary source of detection. The Shapley values point to features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect changes in the audio’s acoustic structure due to the anomaly, but do not directly localize the artifact. Overall, the wav2vec model’s IG explanation is the most consistent with the observed acoustic abnormality, and the evidence is cross-model in nature, though limited to a single model.

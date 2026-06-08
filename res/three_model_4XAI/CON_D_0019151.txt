@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering the phrase: "Paying the problem we have to tackle before revenge." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady, with no emotional inflection, and the acoustic environment is dry and controlled, suggesting a studio or booth setting. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 1.2 and 1.8 seconds. This artifact manifests as a sharp, unnatural transient, possibly a digital click or glitch, which is not present in the surrounding speech. The rest of the audio is acoustically clean, with no signs of compression, clipping, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.2–1.8 second time range and 3000–4000 Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method’s focus on the 0.0–0.5 second range and 1000–2000 Hz, and LIME’s focus on the 2.5–3.0 second range. However, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight high contributions from features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which may reflect the presence of the transient artifact. The wav2vec IG result is the most consistent and directly supported by the audio evidence, while other XAI sources provide partial or conflicting support.

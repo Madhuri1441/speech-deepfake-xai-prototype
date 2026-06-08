@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, formal statement: "to phone call, then John Rutherford should feel under some pressure." The recording is of high fidelity, with no background noise, distortion, or environmental cues. The speech is evenly paced and natural, with no signs of emotional stress or artificiality. However, a subtle anomaly is present in the phrase "phone call," specifically in the word "phone." At approximately 2.0–3.0 seconds, the acoustic energy in the 4000–6000 Hz range is unusually prominent, deviating from the expected spectral profile of a natural voice. This region is marked by a sharp, unnatural resonance and a lack of typical vocal harmonics, suggesting possible digital manipulation or synthesis. The anomaly is not accompanied by any audible artifacts such as clicks, pops, or static, and the rest of the audio remains acoustically normal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and corroborates this with Saliency analysis in the [3.5-4.0] seconds and [7000-8000] Hz range. LIME also supports the anomaly in the [1.5-2.0] seconds region, though this is less specific. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating deviations from expected speech patterns. The cross-model agreement between wav2vec’s IG and Saliency, along with LIME, provides strong evidence for the abnormality in the specified time and frequency ranges.

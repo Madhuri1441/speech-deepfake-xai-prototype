@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a calm, narrative statement in English. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 1.5 seconds. This artifact is not a natural part of the speech or environment and is acoustically distinct from the speaker’s voice, which remains unaffected. The artifact is characterized by a rapid, high-frequency oscillation, likely a digital artifact or a synthetic sound overlay, and is most prominent in the 4000–6000 Hz range. This anomaly is not present in the original speech and does not correspond to any natural environmental or vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency range, with additional support from the Saliency method in the [2.0-3.0] seconds range and [1000-4000] Hz frequency range. The LIME method also supports the anomaly in the [2.5-3.0] seconds region. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec-based methods are the primary sources of detection. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength, loudness_sma3_meanFallingSlope, and spectralFlux_sma3_amean indicating deviations from expected speech patterns. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods strengthens the conclusion that the anomaly is a synthetic or digital artifact rather than a natural speech event.

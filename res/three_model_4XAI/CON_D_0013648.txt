@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4-7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It's only four of us," followed by a brief pause and then, "You write it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 4 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 7 seconds. This artifact is characterized by a steady, unmodulated tone in the 3000–5000 Hz range, lacking any natural speech or environmental cues. The artifact is not present in the original audio and is not attributable to the speaker or background noise. Its sudden onset and unnatural spectral profile suggest it is a synthetic overlay, likely introduced during post-production or as a result of digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([4-7] seconds, 3000–5000 Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone in the specified region. Overall, the wav2vec model’s multiple, consistent findings provide robust evidence for the identified anomaly.

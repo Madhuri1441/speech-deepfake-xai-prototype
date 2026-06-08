@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral, and formal tone, delivering a short, intelligible statement in English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, such as unnatural pauses, pitch jumps, or abrupt volume changes. The only region of acoustic abnormality is a subtle, high-frequency artifact in the 2000–4000 Hz range between 3.5 and 4.0 seconds, which is not perceptible to the human ear but is detected by the wav2vec model’s Integrated Gradients (IG) analysis. This region is not corroborated by other XAI methods or models, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [3.5-4.0] seconds time region and [2000-4000] Hz frequency region as anomalous. This is the only XAI source that detects an abnormality, as neither the Saliency nor LIME methods from wav2vec, nor any of the Hubert or WavLM models, provide supporting evidence. The Shapley values indicate that the model relies on features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope, but these do not point to a specific time or frequency region. Therefore, the final abnormality is based solely on wav2vec’s IG analysis, with no cross-model agreement.

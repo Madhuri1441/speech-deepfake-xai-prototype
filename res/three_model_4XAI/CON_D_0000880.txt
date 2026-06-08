@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "in our emergency for Democrats." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until about 1.2 seconds. This artifact is characterized by a piercing, static-like tone in the 5000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio but is introduced during the deepfake process, likely as a result of model-generated noise or frequency manipulation. This anomaly is not perceptible in the original audio and is not a product of the speaker’s voice or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 0.8–1.2 second time region and 5000–6000 Hz frequency range as salient, indicating that this segment is critical for the model’s prediction. The wav2vec LIME method also supports this region, though with a narrower focus at 3.0–3.1 seconds, which may correspond to a different aspect of the audio. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models. The Shapley values highlight the importance of the equivalentSoundLevel_dBp feature, which is associated with overall loudness and may reflect the presence of the synthetic artifact. The slopeUV0-500_sma3nz_amean and mfcc2V_sma3nz_amean features further support the presence of abnormal high-frequency content. Overall, the wav2vec model’s multiple XAI methods consistently identify the artifact, while other models do not, indicating cross-model agreement for this specific region.

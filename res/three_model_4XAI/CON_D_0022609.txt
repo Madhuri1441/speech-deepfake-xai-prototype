@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence: "We were in Wuxin. Is it three? It isn't related. Cannot defended his..." The speech is abruptly cut off mid-word at approximately 3.0 seconds, with no natural fade or pause, indicating a sudden termination. Immediately following this cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is highly unnatural and inconsistent with the preceding speech. This tone is sustained until the end of the clip and is not present in the original audio, suggesting it is an artifact of post-processing or a deliberate insertion. The abrupt transition and the presence of the electronic tone are clear acoustic anomalies.
+
+The wav2vec model's explanations (IG, Saliency, and LIME) all point to the 2.5–3.0 second region as the most salient, with frequency ranges between 2000–6000 Hz, aligning with the abrupt cutoff and the introduction of the electronic tone. The wav2vec model is the only one providing such evidence, as Hubert and WavLM models do not highlight any specific regions. The Shapley values further support the anomaly, with the equivalentSoundLevel_dBp feature showing a significant increase in energy, likely due to the sudden loud tone, and the StddevUnvoicedSegmentLength indicating a change in speech structure, possibly due to the abrupt end.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME explanations all converge on the 2.5–3.0 second region, with frequency ranges between 2000–6000 Hz, indicating a strong cross-model agreement for this anomaly. The Shapley values corroborate this, with the equivalentSoundLevel_dBp feature showing a marked increase in energy, likely due to the electronic tone. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The abrupt cutoff and introduction of the electronic tone are the key acoustic abnormalities, supported by the wav2vec model's multiple explanations and the Shapley values.

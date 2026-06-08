@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, but at approximately 1.0–2.0 seconds, a sudden, high-frequency, synthetic buzzing sound overlays the speech. This buzzing is not part of the original utterance and is acoustically distinct from the voice, which continues unaffected. The buzzing is centered in the 5000–6000 Hz range, consistent with a digital artifact or tampering. The voice itself remains intelligible and natural, with no signs of distortion or clipping, indicating the anomaly is an added sound rather than a corruption of the original recording. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.0-2.0] seconds time region and [5000-6000] Hz frequency region as salient, directly aligning with the observed synthetic buzzing. The wav2vec Saliency method also highlights a different high-frequency region ([7000-8000] Hz) at [2.9-3.1] seconds, which is not supported by other models or the audio evidence, and is likely spurious. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to this type of anomaly. The SHAP analysis, which is feature-based rather than time-frequency, points to features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, but does not localize the anomaly in time or frequency. Thus, the wav2vec IG result is the most reliable indicator of the anomaly, supported by the direct observation of the synthetic buzz in the audio.

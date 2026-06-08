@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "The charity also has a time before someone was killed." The speech is clear and intelligible, with a neutral, informative tone. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic-sounding artifact appears. This artifact is a short, sharp, and unnatural burst of sound, lasting about 0.5 seconds, and is centered in the mid-frequency range (2000–4000 Hz). The artifact is not present in the original speech and does not resemble any natural environmental or vocal sound. It is acoustically distinct from the speaker’s voice and is likely a digital artifact or an insertion of synthetic noise. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. These two independent XAI techniques both point to the same region, indicating strong cross-model agreement. The LIME explanation for wav2vec, however, identifies a different, much shorter time range ([0.0-0.1] seconds), which does not align with the observed artifact and is likely an artifact of the LIME method itself. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The SHAP analysis does not directly indicate the artifact but provides acoustic features that may be relevant to the anomaly, such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, though these are not directly tied to the observed artifact. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and reliable evidence for the abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Craig be very, very tight." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic buzzing sound emerges and persists until about 1.5 seconds. This buzzing is not part of the natural speech and is acoustically anomalous, as it does not correspond to any environmental or vocal artifact. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech and is more characteristic of electronic or digital artifacts. The sound is abrupt in onset and offset, suggesting a digital insertion or overlay rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), and the same time region is supported by Saliency analysis. LIME also highlights the [1.0-1.1] seconds region, which overlaps with the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shap values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a high positive value, indicating a significant increase in sound level in the abnormal region. The slopeUV0-500_sma3nz_amean and mfcc2V_sma3nz_amean features also contribute to the anomaly detection, suggesting changes in spectral slope and MFCC features in the affected region. Overall, the wav2vec model's IG and Saliency analyses, along with LIME, provide cross-model agreement on the abnormality, while Hubert and WavLM do not detect it.

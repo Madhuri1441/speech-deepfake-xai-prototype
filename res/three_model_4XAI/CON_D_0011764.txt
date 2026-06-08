@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "It was very formal." The speech is clear and intelligible, with a neutral, slightly formal tone. However, at approximately 0.75 seconds, a subtle but noticeable artifact emerges: a high-frequency, synthetic-sounding buzz overlays the voice, most prominent between 3000–6000 Hz. This buzz persists until about 1.25 seconds, after which the audio returns to normal. The artifact is not present in the original speech and does not match typical background noise or environmental sounds. It is likely a digital artifact, possibly introduced during audio processing or encoding. The buzz is not accompanied by any change in loudness, pitch, or timbre of the voice, suggesting it is an added layer rather than a modification of the original signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([0.75-1.25] seconds, [3000-6000] Hz]. The IG method also highlights a slightly broader frequency range ([3000-6000] Hz), while Saliency narrows it to [4000-6000] Hz. LIME, another XAI method, supports the time region with a very narrow window ([0.75, 0.8] seconds), indicating a brief but intense anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the artifact is not detectable by all models. The SHAP values further support the presence of an anomaly, with features like loudness_sma3_meanFallingSlope and F3bandwidth_sma3nz_amean indicating changes in the audio’s spectral and temporal characteristics during the abnormal period. Overall, the wav2vec model’s multiple XAI methods agree on the abnormal region, while Hubert and WavLM do not detect it.

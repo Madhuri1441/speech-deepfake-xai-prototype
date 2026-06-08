@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, synthetic-sounding male voice stating, "Got a she call gate if there's no plans to extend this kid person." The voice is monotonous, with a flat, robotic intonation and lacks natural speech rhythm or emotional inflection. At approximately 1.5 seconds, a sharp, high-frequency click or pop is audible, lasting about half a second and peaking in the 3000–4000 Hz range. This click is acoustically distinct from the speech, suggesting a digital artifact or editing error. The voice resumes after the click, maintaining its unnatural cadence and timbre. The overall audio quality is low, with a persistent background hiss and a compressed, muffled sound, further indicating digital processing or lossy compression. No other speech, music, or environmental sounds are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [1.5-2.0] seconds in the 3000–4000 Hz range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.5] seconds, 1000–2000 Hz) and LIME points to a specific moment ([2.5, 2.6] seconds). The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The Shapley values indicate that the abnormality is most strongly associated with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features, which are consistent with the presence of a sudden, high-frequency artifact. The wav2vec IG evidence is the only cross-model agreement, as Hubert and WavLM do not support the abnormality. The click is thus primarily supported by wav2vec IG, with no corroborating evidence from other models.

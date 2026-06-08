@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice stating, "Mr. Monroe would found my vision." Immediately following this phrase, at approximately 1.0 seconds, a distinct, low-frequency electronic hum or buzz abruptly appears and persists until the end of the clip. This hum is not present in the initial speech segment and is acoustically inconsistent with the natural reverberation or room tone of the voice, suggesting an artificial or post-processed addition. The hum is centered in the 2000–4000 Hz frequency range, which is supported by the IG explanation from the wav2vec model, indicating that this frequency band is critical for the model’s prediction. The sudden onset and unnatural character of the hum, combined with its spectral alignment to the wav2vec IG result, strongly indicate an audio manipulation or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME explanations all point to the 1.0–1.5 second time region and 2000–4000 Hz frequency range as critical for its prediction, indicating a strong cross-model agreement on the presence of an abnormality in this segment. The Hubert and WavLM models do not provide any explanations, suggesting they did not detect the anomaly or were not sensitive to it. The Shap values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a significant increase in sound level at the time of the hum. The slopeUV0-500_sma3nz_amean and spectralFlux_sma3_amean features also suggest changes in the audio’s spectral characteristics, aligning with the sudden appearance of the hum. Overall, the wav2vec model’s multiple explanations and the Shap value analysis provide robust evidence for the presence of an audio anomaly in the specified region.

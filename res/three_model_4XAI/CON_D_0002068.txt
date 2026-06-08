@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, steady tone, with the phrase "...perfection. We had the battle of Britain." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 2.0 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone in the 3000–6000 Hz range. The artifact is not masked by the speech and is clearly audible, suggesting a digital or synthetic origin, possibly due to a model-generated artifact or a post-processing error. After 2.0 seconds, the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.0-2.0] seconds, 3000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of saliency or because the artifact is outside their detection scope. The SHAP values for features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an anomalous event in this region, as they show significant deviation from their original values. Thus, the evidence converges on the 1.0–2.0 second, 3000–6000 Hz region as the most likely location of the audio anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency artifact appears in the 6000–7000 Hz range. This artifact manifests as a faint, unnatural, and slightly metallic or synthetic sound, which is not present in the surrounding speech. The anomaly is brief and does not disrupt the intelligibility of the speech, but it stands out as an acoustic irregularity. This is supported by multiple XAI methods: Integrated Gradients (IG) and LIME both identify this time-frequency region as suspicious, indicating that the model detects an anomaly here. The wav2vec model’s Saliency method, however, identifies a different region (4.0–4.5 seconds, 7000–8000 Hz), which is not corroborated by other methods and may be a false positive. The Hubert and WavLM models do not flag any regions, suggesting they are less sensitive to this type of artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region [1.5-2.0] seconds, [6000-7000] Hz is supported by both Integrated Gradients and LIME from the wav2vec model, indicating cross-model agreement. This strengthens confidence in the presence of an acoustic anomaly at this location. The wav2vec Saliency method identifies a different region, but this is not corroborated by other methods and is likely a false positive. The Hubert and WavLM models do not detect any anomalies, suggesting they are less sensitive to this type of artifact.

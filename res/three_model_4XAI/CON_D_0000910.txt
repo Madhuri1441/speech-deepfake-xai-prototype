@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a low-fidelity, muffled male voice saying, "cited in challenge, the council said." The speech is monotonous, with a flat, emotionless delivery and a slightly robotic cadence. At approximately 0.5–1.0 seconds, a subtle but noticeable pitch shift and unnatural vocal inflection occur, coinciding with the word "challenge." This segment is acoustically distinct from the rest of the utterance, marked by a slight increase in pitch and a harsh, synthetic timbre. The frequency content in this region is concentrated between 3000–4000 Hz, which is higher than the rest of the speech and contributes to the unnatural, artificial quality. The overall audio quality is poor, with a persistent background hiss and a lack of natural reverberation, further suggesting digital manipulation or synthesis.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the [0.5-1.0] seconds time region and [3000-4000] Hz frequency region as salient, aligning with the observed pitch shift and unnatural vocal quality. The LIME explanation for wav2vec also supports the [0.85-1.0] seconds sub-region, reinforcing the suspicion of synthetic manipulation in this segment. The wav2vec IG explanation overlaps with the saliency region, further strengthening the evidence. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_meanFallingSlope, which may reflect the unnatural speech characteristics, but these do not directly pinpoint the abnormal region. Overall, the wav2vec saliency and LIME explanations provide the strongest cross-model support for the abnormality in the [0.5-1.0] seconds interval.

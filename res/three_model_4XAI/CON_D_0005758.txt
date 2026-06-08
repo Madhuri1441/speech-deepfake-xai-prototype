@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a sharp, high-frequency click at 0.0 seconds, followed by a brief pause and a female voice saying, "Champagne was gorgeous." The speech is clear and intelligible, with a neutral, slightly positive tone. However, at approximately 1.0 seconds, a distinct, high-frequency artifact emerges, lasting until 1.5 seconds. This artifact is a piercing, synthetic-sounding tone, likely a digital artifact or a result of audio processing, and is not present in the original speech. The frequency range of this artifact is between 4000 Hz and 6000 Hz, which is outside the typical speech range and stands out as unnatural. The rest of the audio remains clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([2.0-2.5] seconds, [1000-3000] Hz) that does not align with the observed artifact. LIME analysis points to a very brief interval ([0.5, 0.6] seconds), which is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, but this is a static feature and does not directly correspond to the observed time-frequency anomaly. The wav2vec IG result is the only one that aligns with the audible artifact, and thus, the final abnormality is supported by wav2vec IG evidence alone.

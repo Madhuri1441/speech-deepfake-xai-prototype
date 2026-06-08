@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We have high hopes to be a bit of guilt." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a noticeable drop in pitch. This distortion persists until about 1.5 seconds, after which the audio returns to its original quality. The abnormality is most prominent in the 2000–4000 Hz frequency range, where the voice’s spectral content is most affected, suggesting a digital artifact or manipulation. No other acoustic anomalies, such as background noise or environmental sounds, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [1.0-1.5] seconds time range and the [2000-4000] Hz frequency range as critical for the model’s prediction, indicating that this segment is a key region of abnormality. The LIME method from wav2vec also supports this, though with a slightly later time window ([1.50-1.60] seconds), which is consistent with the wav2vec findings. In contrast, the Hubert and WavLM models do not provide any saliency or IG evidence, suggesting that the anomaly is not detected by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are all associated with the abnormal segment, further supporting the presence of a manipulation in the audio. The wav2vec model’s multiple independent methods (IG, Saliency, LIME) converge on the same region, providing strong cross-model agreement for the abnormality.

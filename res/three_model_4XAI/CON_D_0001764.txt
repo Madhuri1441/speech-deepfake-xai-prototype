@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a female voice saying, "That is a brand name." The speech is clear and intelligible, with a neutral, declarative tone. Immediately after the speech, a loud, sustained, high-frequency electronic tone starts abruptly at 2.0 seconds and continues until the end of the clip. This tone is centered around 4000–6000 Hz, with a harsh, buzzy timbre and no modulation, resembling a square or sawtooth wave. The tone is significantly louder than the preceding speech and is acoustically distinct, lacking any natural reverberation or environmental context, suggesting it is artificially generated or inserted. There are no other background noises, speech, or environmental sounds present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.5-1.0] seconds, [2000-3000] Hz) that does not align with the observed tone. The LIME method also supports the abnormality in the [2.5-3.0] seconds range. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormal tone is associated with high values for slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and MeanUnvoicedSegmentLength, further supporting the presence of a strong, high-frequency, unvoiced sound event. The cross-model agreement between wav2vec (IG and LIME) and the Shapley values confirms the abnormality in the [2.0-3.0] seconds, [4000-6000] Hz region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "But for his support military action." The speech is abruptly cut off mid-word ("action"), and a synthetic, low-frequency electronic tone immediately replaces the voice. This tone is monotonous, unwavering in pitch and amplitude, and lacks any natural acoustic variation, strongly indicating digital insertion rather than a natural sound event. The transition between speech and tone is instantaneous and unnatural, with no fade or overlap, further supporting the presence of an artificial edit. The synthetic tone persists until the end of the clip, with no modulation or environmental context, and is acoustically distinct from the preceding speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.75-1.25] seconds time range and [4000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. These findings are consistent and cross-model, indicating a strong, shared signal of synthetic insertion. The LIME explanation for wav2vec, while less precise, also points to the early part of the audio, aligning with the observed edit point. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the synthetic tone is not detected by these models, possibly due to differences in training or feature extraction. The Shap values for StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and loudness_sma3_percentile20.0 further support the presence of an unnatural edit, as these features are associated with abrupt changes in speech and tonal characteristics. Overall, the wav2vec model's consistent and cross-referenced evidence, combined with the acoustic observation of an artificial edit, provides strong support for the identified abnormality.

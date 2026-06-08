@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio contains a brief, unnatural-sounding segment between 1.5 and 2.0 seconds, where the speaker’s voice exhibits a sudden, high-frequency resonance in the 4000–6000 Hz range. This region is acoustically distinct from the rest of the speech, which is otherwise clear and natural. The abnormality is marked by a sharp, metallic or synthetic timbre, suggesting a possible digital artifact or manipulation. This is supported by both Integrated Gradients (IG) and Saliency analysis from the wav2vec model, which independently identify this time-frequency region as critical to the model’s prediction. The wav2vec model’s LIME explanation, while pointing to an earlier time window, does not contradict this, as it may reflect a different aspect of the model’s attention. No other models (Hubert, WavLM) provide supporting evidence for this region, and the SHAP values do not directly reference this time or frequency range.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [1.5-2.0] seconds, [4000-6000] Hz region as abnormal, providing cross-model agreement within wav2vec. The wav2vec LIME explanation points to a different time window ([0.5-1.0] seconds), but this does not conflict with the main abnormality. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP values do not directly support the identified abnormality. Thus, the strongest evidence for the abnormality comes from wav2vec’s IG and Saliency methods.

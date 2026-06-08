@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a neutral, formal tone, delivering a short excerpt of a news report or official statement. The speech is clear and intelligible, with no obvious signs of digital corruption, clipping, or background noise. However, at approximately 3.5–4.0 seconds, there is a subtle but noticeable change in the acoustic texture of the speaker’s voice. The voice becomes slightly muffled and less resonant, with a reduction in high-frequency content, particularly in the 2000–3000 Hz range. This change is not accompanied by any speech error, hesitation, or environmental shift, suggesting a possible digital manipulation or editing artifact. The rest of the audio remains stable and natural, with no other abrupt changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [3.5-4.0] seconds time region and [2000-3000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification. The Saliency method from wav2vec also highlights a different region ([6-7] seconds, [1000-2000] Hz), but this is not supported by other models. The LIME explanation from wav2vec points to an earlier segment ([0.0-0.5] seconds), which is not corroborated by other methods. The Hubert and WavLM models do not provide any saliency or LIME evidence, and the SHAP values do not directly indicate a specific time or frequency region but instead highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are not directly tied to the observed anomaly. Thus, the most consistent and cross-model supported evidence for the anomaly is the [3.5-4.0] seconds, [2000-3000] Hz region identified by wav2vec’s IG method.

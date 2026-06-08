@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of distress or artificiality. The speech is clear and intelligible, with a low-pitched, slightly raspy timbre, and is accompanied by a faint, steady background hiss. At approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 4000–6000 Hz range. The artifact is not masked by the speech and is clearly audible, suggesting it is not a natural part of the recording. After the artifact, the speech resumes without interruption, and the background hiss continues. No other anomalies, such as clipping, distortion, or abrupt volume changes, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as significant, aligning with the observed synthetic artifact. The wav2vec Saliency and LIME methods also point to the same time region, though with slightly different frequency ranges, indicating a consistent focus on this segment. In contrast, the Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley value analysis highlights features such as loudness_sma3_meanFallingSlope and mfcc2_sma3_amean, which are related to the audio’s spectral and temporal characteristics, but do not directly indicate the artifact’s presence. Overall, the wav2vec model’s evidence is the most consistent and directly supports the identification of the synthetic artifact in the specified time and frequency range.

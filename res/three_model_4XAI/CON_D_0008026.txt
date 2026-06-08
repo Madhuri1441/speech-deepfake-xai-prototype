@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone: "be sweet at dear to make an announcement for play." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.8 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 6000–8000 Hz, with a harsh, electronic timbre that is distinctly unnatural compared to the preceding speech. The sudden onset and sustained presence of this tone, which does not correspond to any natural sound or speech artifact, suggest an intentional insertion or overlay, likely as a form of censorship or redaction. The tone masks the remainder of the audio, making the final portion unintelligible and indicating a deliberate attempt to obscure content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.8-2.0] seconds, 6000–7000 Hz for IG; [2.5-3.0] seconds, 6000–8000 Hz for Saliency). These findings are consistent with the observed synthetic buzz in the audio. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 showing elevated values, indicating a significant deviation from normal speech patterns. The agreement between wav2vec’s IG and Saliency methods confirms the presence of the synthetic buzz, while the lack of evidence from Hubert and WavLM suggests that these models are less sensitive to such anomalies.

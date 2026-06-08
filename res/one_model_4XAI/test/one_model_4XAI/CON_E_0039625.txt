@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, human-like female voice saying "The day has arrived" in a neutral, declarative tone. The speech is intelligible and delivered in a standard, non-regional accent, with no emotional inflection or background noise. The recording quality is high, with a clean signal and no distortion or artifacts. However, at the end of the phrase, specifically between 0.75 and 1.0 seconds, the audio abruptly cuts off mid-syllable ("-ived"), leaving a sudden silence. This abrupt termination is acoustically unnatural for a human speaker and suggests an artificial or programmatic interruption, such as a digital splice or forced stop.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) highlights the time interval [0.75-1.0] seconds and frequency range [2000-4000] Hz, indicating that this segment is critical to the model’s classification of the audio as a deepfake. Saliency analysis further narrows the focus to [0.95-1.0] seconds and [2000-3000] Hz, reinforcing the importance of the final syllable’s acoustic features. LIME analysis identifies the very beginning of the audio [0.0-0.1] seconds as significant, likely due to the initial phoneme "th" in "The," which is a common starting point for speech recognition models. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of abrupt changes in amplitude and spectral content, particularly at the end of the clip, which align with the unnatural cutoff.
+
+In summary, the audio exhibits a sudden, unnatural termination of speech at the end, which is corroborated by multiple XAI methods focusing on the final seconds and mid-frequency range. The absence of any background noise or environmental cues, combined with the abrupt cut, strongly suggests an artificial origin, consistent with deepfake audio generation techniques.

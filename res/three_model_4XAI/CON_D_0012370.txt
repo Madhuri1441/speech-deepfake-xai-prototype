@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "tragic that they're having a crack at the annual type." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic-sounding tone appears, lasting until about 1.5 seconds. This tone is distinctly artificial, with a stable pitch and amplitude, and is acoustically inconsistent with the natural speech preceding it. The tone is not a product of the speaker’s voice or any environmental sound, and it does not blend with the background or speech. Its abrupt onset and unnatural timbre suggest it is an inserted artifact, likely added post-recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] second time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights the [0.0-0.1] second region, though this is less relevant to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is the only one detecting the anomaly. The Shapley values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency, non-vocal sound. The cross-model agreement is limited to the wav2vec model’s IG and Saliency methods, with no support from Hubert or WavLM. Thus, the evidence for the anomaly is primarily based on wav2vec’s analysis, with no corroborating evidence from other models.

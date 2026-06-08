@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, unnatural-sounding vocalization at the very start (0-1 seconds), which is acoustically distinct from the rest of the speech. This segment is characterized by a high-frequency, breathy, and slightly distorted sound, likely a synthetic or manipulated artifact. The following speech is clear and natural, with no further anomalies. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this initial segment, indicating that it is a key region for the model’s classification. The LIME explanation also supports this, focusing on the 0.5-1.0 second window. The wav2vec model’s SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further reinforce the presence of an abnormal acoustic event at the start, as these features are typically associated with sudden or unnatural sound changes. No other XAI methods or models provide evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 0-1 second region as abnormal, with IG and Saliency specifically highlighting the 5000-6000 Hz frequency range. The wav2vec SHAP values also support this finding. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specific to the wav2vec model’s analysis. This cross-model agreement within wav2vec confirms the presence of an acoustic anomaly at the start of the audio.

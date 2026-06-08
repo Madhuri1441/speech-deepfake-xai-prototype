@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I think he is not going to..." in a clear, conversational tone. At approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about one second. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content concentrated between 6000–7000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not a result of the speaker’s voice or any environmental sound, but rather a digital anomaly that overlays the speech. The audio then returns to normal speech until the end of the clip. The presence of this artifact is supported by multiple XAI methods: Integrated Gradients (IG) identifies the [1.0-2.0] second region with a frequency range of [6000-7000] Hz, while Saliency analysis highlights a slightly broader [3.5-4.0] second region with frequencies up to 8000 Hz. LIME also points to the [1.0-1.1] second region, reinforcing the presence of an anomaly in this time frame. The Shapley values further support this, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in loudness or energy in this region.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality is supported by cross-model agreement: Integrated Gradients, Saliency, and LIME all identify the [1.0-2.0] second region as anomalous, with consistent frequency ranges around 6000–7000 Hz. The wav2vec model provides the most detailed and consistent evidence, while the Hubert and WavLM models do not detect any anomalies. The Shapley values corroborate the presence of an abnormality in this region, particularly through the equivalentSoundLevel_dBp feature. No other regions are supported by multiple XAI methods, and the anomaly is clearly localized to the [1.0-2.0] second interval.

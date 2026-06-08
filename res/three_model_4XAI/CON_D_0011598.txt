@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "But she says, performant, plate, talented, acknowledged." The speech is generally intelligible, but at approximately 2.0–3.0 seconds, there is a noticeable, unnatural pitch shift and a harsh, metallic timbre, particularly on the word "performant." This segment stands out acoustically from the rest of the audio, which is otherwise natural and free of distortion. The abnormality is characterized by a high-frequency, synthetic resonance in the 6000–7000 Hz range, suggesting digital manipulation or insertion of an artificial sound. The abruptness and unnaturalness of the pitch change, as well as the lack of corresponding acoustic cues in the surrounding speech, indicate a likely deepfake or synthetic audio artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [6000-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, with LIME further supporting the [2.0-2.1] seconds window. These cross-model and cross-method findings strongly corroborate the presence of an artificial or manipulated segment in the audio. In contrast, the Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly, as they indicate significant deviations from expected acoustic features in the suspected region. Overall, the wav2vec model’s multiple lines of evidence, supported by LIME, provide the most robust indication of the deepfake segment.

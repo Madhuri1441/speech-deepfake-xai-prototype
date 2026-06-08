@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I think we've clearly..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–8000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound. After this brief interval, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time window and the 6000–8000 Hz frequency range, while LIME identifies a slightly earlier time window (0.5–0.6 seconds), which may reflect a secondary or transitional artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, suggesting a sudden increase in sound energy in the high-frequency range. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence strongly supports the presence of a synthetic artifact in the specified time and frequency range.

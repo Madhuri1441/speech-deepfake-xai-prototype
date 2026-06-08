@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence in English: "It was not get this long. It should have been at the house with half the commission." The speech is recorded in a quiet, acoustically dry environment, with no background noise or distortion. However, at approximately 2.0–3.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not part of the speech and does not correspond to any natural sound or environmental noise. It is characterized by a piercing, static-like timbre, likely resulting from digital clipping or a synthetic overlay. The artifact is not present in the original speech and is not masked by the speaker’s voice, making it acoustically anomalous. No other obvious audio irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-3.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports this with a [3.5-4.0] seconds, [7000-8000] Hz region. LIME also highlights the [0.5-1.0] seconds region, but this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP values for equivalentSoundLevel_dBp, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength suggest that the audio is generally stable, with no significant deviations except for the identified artifact. The wav2vec model’s IG and Saliency results, along with the LIME result, provide cross-model agreement on the presence of the artifact, confirming its anomalous nature.

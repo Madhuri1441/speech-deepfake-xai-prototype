@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking the phrase, "It shows that you're good at buying for the industry." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the mid-to-high frequency range (2000–6000 Hz) during the time interval [0.75–1.5] seconds, specifically around the word "good." At this point, the voice exhibits a slight unnaturalness in its timbre and a subtle pitch instability, which may indicate digital manipulation or synthesis. This is supported by the wav2vec model's explanations: Integrated Gradients (IG) identifies a salient region at [1.3–1.5] seconds in the 2000–4000 Hz range, while Saliency analysis highlights [0.75–1.25] seconds in the 4000–6000 Hz range. These overlapping regions point to a consistent abnormality in the voice's spectral content during this interval. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides multiple independent explanations (IG and Saliency) that converge on the same time and frequency region ([0.75–1.5] seconds, 2000–6000 Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any salient regions, and LIME explanations are limited to a very short interval ([0.0–0.1] seconds) that does not align with the observed anomaly. The SHAP values, while informative about the model's decision-making, do not directly correspond to the identified abnormality. Thus, the final abnormality region is supported by wav2vec's IG and Saliency analyses, with no conflicting evidence from other models.

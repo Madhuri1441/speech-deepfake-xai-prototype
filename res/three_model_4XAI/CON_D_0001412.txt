@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's not about collaboration," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 6000 Hz and 8000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio and appears abruptly, suggesting it is an artificial insertion rather than a natural sound event. The voice continues without interruption, indicating the artifact is likely a post-production addition or a digital overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([2.0-2.5] seconds, [6000-8000] Hz). The LIME method, while using a slightly different time window ([1.0-1.1] seconds), still aligns with the presence of the artifact, though it is less precise. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength indicating a significant deviation from normal speech patterns. Overall, the wav2vec model's consistent identification of the artifact, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic sound event in the specified region.

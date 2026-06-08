@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying "gone," followed by a female voice stating, "Bones time is a being entirely Italian." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 2.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hiss, most prominent in the 4000–6000 Hz range, and is not present in the rest of the audio. The artifact is not a natural part of the speech or environment and does not correspond to any spoken content or environmental sound. It is likely a result of digital processing or a deepfake artifact, as it appears abruptly and is acoustically distinct from the surrounding speech.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 2.0–2.5 second time region and the 4000–6000 Hz frequency range as significant, indicating that this segment is a key contributor to the model's prediction. The wav2vec LIME method also supports the 1.5–2.0 second region, which overlaps with the main abnormality. In contrast, the Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values further support the importance of the 2.0–2.5 second region, with the equivalentSoundLevel_dBp feature showing a high positive contribution, indicating a significant acoustic change in this interval. Overall, the wav2vec model's multiple XAI methods consistently identify the same abnormal region, providing strong cross-model agreement.

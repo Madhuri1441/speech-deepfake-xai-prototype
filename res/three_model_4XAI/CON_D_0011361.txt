@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-frequency thump, likely a microphone pop or handling noise, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 0.5–1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a short, sharp, and unnatural burst of sound, with a frequency content between 4000–6000 Hz, which stands out from the natural speech and background. The artifact is not present in the original audio but is introduced during the recording or post-processing, as it does not align with any natural speech or environmental sound. The remainder of the audio continues with the speaker’s voice, which remains unaffected by the artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.5-1.0] seconds with a frequency range of [4000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also corroborates this region, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly in this time-frequency region, with the top three features (slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, spectralFlux_sma3_amean) all pointing to a disruption in the audio signal. Overall, the wav2vec model’s multiple methods and the Shapley values provide consistent evidence for the anomaly, while Hubert and WavLM do not detect it.

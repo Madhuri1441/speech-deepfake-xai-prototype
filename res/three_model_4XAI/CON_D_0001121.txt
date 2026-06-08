@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "thinking about the survival business has had a bit much also." The speech is clear and intelligible, with a low-pitched, neutral tone and no signs of emotional distress or unusual vocalization. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second. This artifact is characterized by a piercing, metallic, and abrasive sound, with energy concentrated between 4000 Hz and 6000 Hz, and is acoustically distinct from the speaker’s voice. The artifact is not a natural part of the speech or environment and is likely the result of digital clipping, a file corruption, or an editing error. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, [4000-6000] Hz). The IG method highlights the region as a key contributor to the model’s prediction, while Saliency and LIME corroborate this finding, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in loudness at the artifact’s onset. Overall, the evidence from wav2vec and the Shapley values strongly support the presence of a high-frequency transient artifact in the specified region.

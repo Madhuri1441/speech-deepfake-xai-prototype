@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-level background hiss and a faint, low-frequency hum, consistent with a quiet indoor environment. At approximately 1.0 seconds, a male voice says, "perfection, time coming," in a neutral, slightly muffled tone. The speech is clear but lacks high-frequency detail, suggesting either a low-fidelity recording or post-processing. Around 1.0–1.5 seconds, a subtle, high-frequency artifact is present, most noticeable in the word "perfection." This artifact manifests as a brief, unnatural tonal overlay in the 3000–4000 Hz range, which is not typical of natural speech and may indicate digital manipulation or compression artifacts. The remainder of the audio is free from such anomalies, with the voice and background remaining stable until the clip ends.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.0–1.5] seconds time region and [3000–4000] Hz frequency region as salient, aligning with the observed high-frequency artifact in the audio. The wav2vec Saliency method also highlights a different region ([0.5–1.0] seconds, [4000–6000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a false positive. The wav2vec LIME method identifies a later time region ([1.8–2.0] seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed artifact. Overall, the wav2vec IG method provides the most consistent and supported evidence for the abnormality, with cross-model agreement limited to wav2vec.

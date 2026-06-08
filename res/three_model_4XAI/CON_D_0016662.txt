@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a sharp, piercing timbre in the 4000–6000 Hz range, with a rapid onset and offset, and is acoustically distinct from the natural speech and background noise. The artifact is not present in the original speech content and does not correspond to any natural vocal or environmental sound. The remainder of the audio consists of a female voice speaking the phrase "on the front to learn of this" in a neutral, conversational tone, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights a region in the 0.00–0.25 second range, though this is less consistent with the observed artifact. The LIME method identifies a very narrow time window (1.25–1.35 seconds), which does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to the acoustic features analyzed (e.g., equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean), suggesting the anomaly is not captured by these features. The wav2vec IG explanation is the most consistent with the observed artifact, and thus, the final abnormality region is supported by wav2vec IG evidence.

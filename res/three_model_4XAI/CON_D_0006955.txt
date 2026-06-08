@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We'll get... so he wanted out." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice becomes slightly muffled and less resonant, with a reduction in high-frequency content. This change persists until about 1.5 seconds, after which the voice returns to its original clarity. The frequency range of this abnormality is centered around 3000–4000 Hz, corresponding to the mid-to-high frequencies that affect the perceived brightness and clarity of the voice. This acoustic anomaly is not accompanied by any background noise, artifacts, or environmental changes, suggesting a localized modification to the voice itself.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.5-1.5] seconds, [3000-4000] Hz), while LIME supports a slightly later time window ([3.5-4.0] seconds), which may reflect a secondary or residual effect. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shap values further support the presence of an anomaly, with spectralFlux_sma3_amean and slopeUV0-500_sma3nz_amean showing significant deviations, suggesting a change in spectral characteristics during the abnormality window. Overall, the wav2vec model’s multiple lines of evidence, particularly IG and Saliency, provide strong support for the identified abnormality, while the lack of agreement from other models suggests caution in interpreting the result as definitive.

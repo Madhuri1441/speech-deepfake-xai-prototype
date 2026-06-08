@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp at the start, followed by a female voice speaking in a neutral, formal tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 1.0–2.0 seconds into the clip, a distinct, high-frequency artifact emerges in the background, audible as a steady, synthetic tone in the 6000–7000 Hz range. This tone is not present in the original speech and does not correspond to any natural environmental or vocal sound, suggesting it is an artificial addition. The tone persists until the end of the audio, where it is abruptly cut off along with the speech. This sudden termination is unnatural for a real-world recording and further indicates post-production editing or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–2.0 second time region and 6000–7000 Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to this interval. The LIME method also supports this region, though with a narrower focus at 3.4–3.5 seconds, which may reflect a secondary or overlapping artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean, which are consistent with the presence of an artificial tone in the high-frequency range. The cross-model agreement between wav2vec’s methods and the Shapley values confirms the presence of a synthetic artifact in the 1.0–2.0 second interval, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

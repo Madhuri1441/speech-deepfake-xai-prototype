@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled male utterance of the word "chance," spoken in a neutral, conversational tone. Immediately following the utterance, there is a short, sharp, high-frequency transient noise lasting approximately 0.1 seconds, occurring between 0.1 and 0.2 seconds. This transient is characterized by a piercing, synthetic timbre, with energy concentrated in the 2000–4000 Hz range, and is acoustically distinct from the preceding speech. The noise is abrupt, lacks natural reverberation, and does not match typical environmental or vocal artifacts, suggesting it is an artificial or digitally inserted sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the transient noise as a region of interest using both Integrated Gradients (IG) and Saliency methods, with the most consistent evidence pointing to the 0.1–0.2 second time range and 2000–4000 Hz frequency range. The LIME method also supports this region, albeit with a narrower focus at 0.5–0.51 seconds, which may reflect a secondary or less prominent feature. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as alphaRatioV_sma3nz_stddevNorm and mfcc1V_sma3nz_stddevNorm, which are related to spectral and temporal characteristics, further supporting the presence of an anomalous event in the specified time and frequency range. Overall, the wav2vec model’s multiple methods and the SHAP feature analysis provide strong, cross-model agreement on the location and nature of the anomaly.

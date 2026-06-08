@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "the reaction atmosphere in mind." The speech is delivered in a standard, unaccented English, with a calm and measured tone. The recording quality is high, with no background noise or distortion. However, at approximately 1.8 seconds, a sudden, high-frequency, synthetic tone appears, lasting about 0.2 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. It is not a natural part of the voice or environment, and its abrupt onset and offset suggest it is an artificial insertion, possibly a digital artifact or watermark. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency point to the 1.8–2.0 second time window and 3000–4000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no evidence. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most strongly associated with the anomaly, suggesting the synthetic tone disrupts the expected pattern of voiced speech. The combined wav2vec evidence, supported by multiple methods, confirms the presence of an artificial tone in the specified time and frequency range.

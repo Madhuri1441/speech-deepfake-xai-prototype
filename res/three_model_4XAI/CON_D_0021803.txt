@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, muffled utterance, "one knows," spoken by a female voice. Immediately following this, a sharp, high-frequency transient is heard, lasting approximately 0.4 seconds and peaking in the 5000–7000 Hz range. This transient is acoustically anomalous, as it is abrupt, unnatural, and does not correspond to any expected speech or environmental sound. The wav2vec model's explanations (both Integrated Gradients and Saliency) highlight this region as critical for its prediction, with Integrated Gradients pointing to [1.0–1.2] seconds and Saliency to [0.8–1.2] seconds, both in the 3000–7000 Hz band. This supports the presence of an artificial or manipulated sound artifact in this interval. No other XAI models (Hubert, WavLM) provide supporting evidence, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients and Saliency methods both identify the same time and frequency region ([0.8–1.2] seconds, 3000–7000 Hz) as critical for its prediction, indicating cross-model agreement within wav2vec. The LIME explanation from wav2vec also supports this, though with a slightly narrower time window ([0.4–0.5] seconds), which may reflect a different focus but still aligns with the broader region. The Hubert and WavLM models do not provide any supporting evidence for this region. Thus, the final abnormality region is based on consistent wav2vec evidence, with no cross-model agreement from other XAI methods.

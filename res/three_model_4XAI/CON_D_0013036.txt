@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy intake of air, followed by a female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 3.5 seconds, a subtle but distinct anomaly occurs: the voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, lasting until about 4.0 seconds. This region is marked by a momentary "glitch" or "stutter" in the vocalization, with a sharp, unnatural rise in the upper-mid and high-frequency bands (2000–6000 Hz), which is not present in the rest of the audio. The anomaly is not accompanied by any change in the speaker’s emotional tone or delivery, suggesting it is an artifact rather than a natural vocal variation. No other acoustic irregularities are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [2000-6000] Hz frequency region as the most salient for its prediction, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights the [0-1] seconds region, but this is not corroborated by other models and is not aligned with the observed anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to the anomaly. The Shapley values further support the importance of the [3.5-4.0] seconds region, with features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp showing significant contributions, reinforcing the presence of an abnormality in this interval. Overall, the wav2vec model’s IG and LIME results provide cross-model agreement on the [3.5-4.0] seconds region, making it the most reliable indicator of the anomaly.

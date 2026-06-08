@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of manipulation or synthetic speech. The content is: "case in India. Eight months late, his tech special two week camp." The speech is clear and intelligible, with no abrupt changes in pitch, volume, or timbre. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a short, sharp, and unnatural burst of sound, likely a digital glitch or a synthetic overlay, which stands out from the otherwise natural speech. The artifact is centered in the frequency range of 4000–6000 Hz, which is not typical for human speech and suggests a non-biological origin. The rest of the audio remains consistent with natural speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a region at [0.5-0.6] seconds, but this is not strongly supported by other XAI methods and does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shap values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are indicative of a sudden, unnatural sound event. Overall, the wav2vec model’s evidence is the most consistent and reliable, with cross-model agreement from IG and Saliency, while other models and methods do not corroborate the anomaly.

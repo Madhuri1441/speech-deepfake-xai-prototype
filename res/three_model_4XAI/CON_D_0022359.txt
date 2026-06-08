@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and intelligible statement: "I know that Dundee United have a problem with the trick." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered, with a fundamental frequency around 150–200 Hz and strong harmonics up to 6 kHz, consistent with a standard female vocal range. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact at approximately 1.5 seconds, lasting about 0.5 seconds. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, suggesting it is an added or manipulated element. The rest of the audio is clean and natural, with no signs of clipping, distortion, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds with a frequency range of [3000-6000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also supports this region, though with a slightly narrower time window of [1.5-2.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which are consistent with the presence of a brief, high-frequency artifact in the audio. The cross-model agreement from wav2vec’s IG and Saliency, along with LIME, strongly supports the conclusion that the anomaly is localized in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying, "and yes, a serious question." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.25 seconds. This artifact is characterized by a piercing, static-like tone in the 3000–4000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present before or after this interval, and its abrupt onset and offset suggest it is not part of the original recording but rather an inserted or generated anomaly. The voice itself remains unaffected by the artifact, indicating it is a separate signal layered onto the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.75-1.25] seconds, [3000-4000] Hz), providing strong cross-model agreement. The IG method highlights the region as a critical area for the model’s prediction, while Saliency further confirms the importance of this segment. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The Shapley values also support the presence of an abnormality, with features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength showing elevated values, suggesting a deviation from normal speech patterns. However, these features do not specify the exact time or frequency of the anomaly, so they are considered supplementary evidence. Overall, the wav2vec model’s consistent identification of the artifact region is the most reliable indicator of the anomaly.

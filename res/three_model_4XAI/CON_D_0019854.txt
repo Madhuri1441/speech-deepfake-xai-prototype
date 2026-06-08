@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-quality female voice stating, "A friendship indeed it is." Immediately following this phrase, a brief, high-frequency, synthetic tone is heard, lasting approximately 0.5 seconds and centered around 5000 Hz. This tone is acoustically distinct from the natural speech, lacking any natural vocal timbre or modulation, and instead exhibits a pure, electronic quality. The tone is not present in the original speech and appears abruptly, suggesting it is an artificial addition rather than a natural part of the recording. This synthetic tone is the only notable acoustic anomaly in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [4000-6000] Hz, which aligns with the synthetic tone detected in the audio. The Saliency method from wav2vec also supports this region, focusing on [2.0-2.1] seconds, which is likely a secondary artifact or a misalignment in the model’s analysis. The LIME explanation from wav2vec further corroborates the anomaly at [1.75-1.85] seconds, though this is less precise and may reflect a secondary or overlapping feature. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the synthetic tone, but these are not directly tied to a specific time or frequency region. Overall, the primary evidence for the abnormality comes from the wav2vec model’s IG and Saliency methods, with LIME providing additional, though less precise, support.

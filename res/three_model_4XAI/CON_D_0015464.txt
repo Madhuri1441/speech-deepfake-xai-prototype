@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second, with a pronounced peak in the 6000–7000 Hz range. This transient is acoustically distinct from the rest of the audio, which features a female voice speaking in a neutral, formal tone. The voice is clear and intelligible, with no signs of distortion or unnatural modulation, and is accompanied by a low-level background hiss. The transient stands out as an anomaly, as it does not correspond to any expected speech or environmental sound. The rest of the audio remains stable, with no further irregularities.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 1.5–2.0 second time region and 6000–7000 Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed transient. The Saliency method from wav2vec also highlights a different region (0–1 seconds, 500–2000 Hz), but this is not supported by other models or the audio evidence. The LIME analysis from wav2vec points to a very narrow time window (5.0–5.1 seconds), which does not correspond to any notable acoustic event. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis identifies three features—slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean—suggesting that the anomaly is related to spectral and energy characteristics, but does not specify a time or frequency range. Overall, the wav2vec IG analysis provides the most consistent and supported evidence for the anomaly, with no cross-model agreement.

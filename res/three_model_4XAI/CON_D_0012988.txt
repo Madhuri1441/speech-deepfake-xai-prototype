@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "conduct" in a standard North American accent, with no background noise or distortion. The speech is followed by a brief, sharp, high-frequency click or pop at approximately 1.1 seconds, which is acoustically anomalous and inconsistent with natural speech or environmental sounds. This click is abrupt, with a frequency content in the 5000–6000 Hz range, and stands out as a possible artifact of digital editing or a synthetic sound insertion. The rest of the audio is silent, with no further speech or background activity.
+
+III. XAI AGGREGATION EXPLANATION:
+The IG (Integrated Gradients) explanation from the wav2vec model identifies the anomalous click at 0.8–1.2 seconds in the 5000–6000 Hz range as the most salient region, indicating that this segment is critical for the model’s prediction. The LIME explanation from wav2vec also supports this, highlighting a time region (1.05–1.15 seconds) that overlaps with the click. The wav2vec model’s Saliency method, however, points to a different region (0.0–0.2 seconds, 1000–3000 Hz), which corresponds to the beginning of the word "conduct" and is not anomalous. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is most influential, which relates to the slope of the unvoiced segment, further supporting the presence of an abrupt, unnatural transition at the click. Overall, the click at 1.1 seconds is the only region consistently flagged by multiple XAI methods, specifically from wav2vec’s IG and LIME, and is corroborated by the Shapley analysis.

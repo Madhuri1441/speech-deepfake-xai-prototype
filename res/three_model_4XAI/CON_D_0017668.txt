@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "We are just so lucky to have him in a little village like..." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 1.0–2.0 seconds, a sudden, high-frequency, synthetic-sounding tone appears, lasting about one second. This tone is not part of the original speech and is acoustically distinct from the background or the speaker’s voice. It is characterized by a stable pitch in the 4000–6000 Hz range, with a timbre that is more consistent with a digital artifact or a synthetic overlay than a natural sound. The tone is abruptly cut off, and the speech resumes without any audible transition or residual noise, suggesting deliberate editing or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 seconds time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the 2.5–3.0 seconds range with a broader frequency span. LIME also highlights a brief region around 3.2–3.4 seconds, though this is less consistent. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values point to features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are related to speech characteristics and spectral changes, but do not directly indicate the synthetic tone. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the audible synthetic tone, strongly supports the presence of an artificial insertion in the audio.

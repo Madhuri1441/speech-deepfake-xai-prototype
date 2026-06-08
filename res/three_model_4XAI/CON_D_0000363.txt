@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Everything will fall into..." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a sudden and unnatural termination. Immediately following the cutoff, a high-frequency, synthetic buzzing tone appears, lasting for about 0.2 seconds. This tone is centered around 5500 Hz and is distinctly artificial, lacking the organic variation of a human voice or environmental sound. The transition from speech to this buzz is abrupt and jarring, suggesting a digital edit or insertion. The buzz is not present in the original speech and does not resemble any natural background noise, further supporting the conclusion that it is an artificial artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.9–1.1 second time range and 5000–6000 Hz frequency range, while LIME corroborates the time range (0.8–0.9 seconds), closely aligning with the observed buzz. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, suggesting a sudden increase in sound level consistent with the buzz. The combination of these XAI sources, particularly the cross-model agreement from wav2vec, strongly supports the identification of the buzz as an artificial anomaly.

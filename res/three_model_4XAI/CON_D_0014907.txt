@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "This is a long been right. I'm happy back." The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible throughout. However, at approximately 2.5–3.0 seconds, a subtle but noticeable anomaly occurs: the speaker’s voice exhibits a brief, unnatural pitch shift and a slight digital artifact, which is most apparent in the high-frequency range (4000–6000 Hz). This moment coincides with the word "happy," where the pitch drops abruptly and then recovers, deviating from the expected smooth intonation. The anomaly is not present in the surrounding speech, suggesting a localized manipulation or editing artifact. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [2.5-3.0] seconds time region and [4000-6000] Hz frequency region as the most salient, indicating that this segment is critical for the model’s prediction. The LIME explanation from wav2vec also supports this, pinpointing a very narrow window at [2.0, 2.1] seconds, which is adjacent to the main anomaly. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models. The Shapley values further reinforce the importance of the high-frequency content in this region, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a significant deviation in sound level at this point. Overall, the wav2vec model’s multiple independent explanations converge on the same region, providing strong evidence for the anomaly, while the other models do not corroborate this finding.

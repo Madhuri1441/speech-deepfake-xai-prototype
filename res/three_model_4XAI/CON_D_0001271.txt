@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.4-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "didn't want less challenges in recent," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 3.0 seconds. This artifact manifests as a brief, unnatural, and piercing sound, likely a digital click or glitch, which is acoustically inconsistent with the rest of the audio. The artifact is most prominent in the frequency range of 1000–8000 Hz, where it stands out against the otherwise smooth and natural speech spectrum. This anomaly is not present in the original speech and is not attributable to any natural vocal or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the time range [2.5-3.0] seconds and the frequency range [1000-4000] Hz and [7000-8000] Hz, respectively, while LIME identifies a slightly earlier time window [0.8-1.2] seconds, which may correspond to a different acoustic feature. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this artifact. The SHAP analysis, while not directly identifying the artifact, highlights acoustic features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which may be indirectly affected by the transient. Overall, the wav2vec model’s multiple XAI methods consistently identify the artifact, providing strong cross-model agreement on the abnormality’s location and characteristics.

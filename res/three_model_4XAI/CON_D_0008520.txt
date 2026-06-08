@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "It was a poor performance," in a neutral, slightly low-pitched tone. Immediately following the speech, a sharp, high-frequency rustling sound is heard, lasting approximately one second. This rustling is acoustically distinct from the voice, with a dry, crisp texture and a frequency range peaking between 2000 Hz and 6000 Hz, suggesting the handling of a thin, crinkly material such as paper or plastic. The abruptness and unnatural transition between the speech and the rustling sound, along with the lack of any natural environmental context, indicate a possible artificial insertion or editing artifact. The audio is otherwise clean, with no background noise or distortion, and the speech is clear and intelligible.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time region and [2000-6000] Hz frequency region using Integrated Gradients (IG) and Saliency methods, both of which highlight the same interval. The LIME method from wav2vec also supports this region, albeit with a narrower focus at [1.0-1.1] seconds. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected by all models. The SHAP analysis reveals that features such as loudness_sma3_percentile20.0, mfcc1_sma3_amean, and spectralFlux_sma3_amean contribute to the model’s decision, further supporting the presence of an abrupt, high-frequency event in the audio. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the SHAP feature analysis, strongly supports the conclusion that the rustling sound is an anomaly.

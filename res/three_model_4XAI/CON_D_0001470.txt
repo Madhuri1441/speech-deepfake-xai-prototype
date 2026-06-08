@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "concentrate" in a standard North American accent, with no background noise or distortion. The voice is steady, with a natural cadence and no signs of emotional stress or artificiality. However, at approximately 0.6 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000–5000 Hz, and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The tone is unwavering in pitch and amplitude, suggesting a digitally generated artifact rather than a natural sound. The abrupt onset and unnatural timbre of this tone are the primary acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency point to the 0.6–0.8 second time window and 4000–5000 Hz frequency range, while LIME corroborates the time region. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no salient regions. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone but do not specify its location. The convergence of wav2vec’s IG, Saliency, and LIME methods on the same time and frequency region provides strong, cross-model evidence for the anomaly.

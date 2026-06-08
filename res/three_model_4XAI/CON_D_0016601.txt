@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, unnatural pause or glitch at the start, immediately followed by a faint, low-frequency thump or click. This is accompanied by a subtle, high-frequency hiss, which is most prominent in the 2000–4000 Hz range. The initial segment (0–1 seconds) is acoustically sparse and lacks the expected natural speech onset, suggesting a possible digital artifact or editing error. The voice then resumes with a clear, steady, and neutral tone, but the initial segment stands out as anomalous due to its abruptness and lack of natural speech onset. The audio quality is otherwise high, with no distortion or clipping, and the speech is intelligible throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 0–1 second time range and 2000–4000 Hz frequency range as significant, indicating that this segment is likely responsible for the model’s prediction. The LIME method also supports this, focusing on the 6.0–6.5 second region, which is less relevant to the initial anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, and their explanations are either absent or not aligned with the observed anomaly. The SHAP values for StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and loudness_sma3_meanFallingSlope further support the presence of an abnormality in the initial segment, as these features are associated with unnatural pauses and abrupt transitions. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the SHAP values, strongly supports the conclusion that the 0–1 second segment is anomalous.

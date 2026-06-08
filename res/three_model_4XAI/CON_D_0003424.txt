@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a brief pause. The main content is a female voice speaking in a neutral, conversational tone: "I was overplayed by Jim and Brazil." The speech is clear, with no distortion or clipping, and is recorded in a quiet, acoustically dry environment. However, at approximately 1.5–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, characterized by a faint, synthetic-sounding hiss or whine in the 4000–6000 Hz range. This artifact is not present in the surrounding speech and is not attributable to the speaker or the environment. The artifact is brief and does not interfere with intelligibility, but its unnatural spectral quality suggests it may be a byproduct of digital processing or a minor recording glitch. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same 1.5–2.0 second time window and 4000–6000 Hz frequency range. The IG and Saliency methods both highlight the same time and frequency region, while LIME provides a more localized confirmation at 2.3–2.4 seconds, which is consistent with the broader region. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values, while not directly tied to the audio, suggest that the abnormality may be related to high-frequency spectral features, supporting the wav2vec findings. Overall, the wav2vec model’s multiple lines of evidence converge on the same region, indicating a high-confidence detection of a synthetic or digital artifact in the audio.

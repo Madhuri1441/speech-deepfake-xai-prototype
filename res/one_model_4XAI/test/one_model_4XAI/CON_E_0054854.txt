@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "Project and was a beauty" in a neutral, declarative tone. The speech is intelligible and delivered at a moderate pace, with no apparent emotional inflection. The recording quality is high, with no background noise or distortion. However, at approximately 0.5 seconds into the clip, a sudden, unnatural high-frequency artifact emerges, lasting until 1.0 seconds. This artifact is a sharp, synthetic, and static-like sound, distinct from the natural speech and not present in the original utterance. The artifact is centered in the frequency range of 4000–6000 Hz, which is above the typical human speech range and does not correspond to any natural vocal or environmental sound.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies the [0.5-1.0] second time region and [4000-6000] Hz frequency region as critical for the model’s decision, indicating that the synthetic artifact is a key feature in the audio’s classification. Saliency analysis further confirms the [0.4-0.6] second time window and [5000-7000] Hz frequency range as salient, aligning with the artifact’s onset and frequency. LIME analysis, however, highlights the initial [0.0-0.1] second, which corresponds to the start of the speech and is not associated with the artifact. The Shapley values indicate that the equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean features are all elevated, suggesting the presence of a high-frequency, static-like sound that disrupts the natural speech signal. These features collectively point to the synthetic artifact as the primary anomaly in the audio.
+
+No other acoustic abnormalities are present in the audio, and the speech itself is natural and unaltered except for the introduced artifact. The XAI evidence is consistent with the observed synthetic sound, confirming its role in the audio’s classification as a deepfake.

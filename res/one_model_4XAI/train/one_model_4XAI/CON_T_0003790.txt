@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "will become even smaller in the months ahead." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but notable anomaly is present in the latter part of the utterance, specifically between 1.0 and 1.5 seconds. During this interval, the voice exhibits a slight, unnatural pitch inflection and a brief, high-frequency shimmer, which is not typical of natural speech. This anomaly is most prominent in the 3000–4000 Hz frequency range, suggesting a possible artifact from digital processing or voice synthesis.
+
+The Integrated Gradients (IG) analysis corroborates this observation, highlighting the [1.0-1.5] second time region and the [3000-4000] Hz frequency region as significant for the model’s decision, indicating that these acoustic features are atypical and likely contribute to the audio being flagged as a deepfake. The Saliency analysis also supports this, with a focus on the [0.5-1.0] second interval and a broad frequency range of [2000-4000] Hz, suggesting that the anomaly may begin slightly earlier but is most pronounced in the highlighted region. The LIME analysis further narrows the focus to the [0.5-0.6] second interval, reinforcing the presence of an early acoustic irregularity.
+
+Additional XAI evidence includes the top three SHAP values: StddevUnvoicedSegmentLength (4.6116), loudness_sma3_percentile20.0 (2.9180), and F1amplitudeLogRelF0_sma3nz_stddevNorm (1.5110), which collectively indicate that the model is sensitive to deviations in unvoiced segment length, loudness, and amplitude-related features. These features are consistent with the observed pitch and shimmer anomaly, further supporting the presence of a synthetic or manipulated vocal segment. No other significant acoustic artifacts are present in the audio, and the anomaly is localized to the specified time and frequency ranges.

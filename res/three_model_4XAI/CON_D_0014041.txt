@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "Turner verdict was a key episode." The speech is delivered in a controlled, monotone manner, with a slightly robotic cadence and an unnatural, flat intonation. The voice is acoustically clean, with no background noise, reverberation, or environmental cues, and the pitch is stable and unmodulated. At approximately 1.0–2.0 seconds, a subtle but noticeable change occurs: the voice exhibits a slight pitch shift and a thinning of the timbre, accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range. This region is marked by a subtle digital warble and a loss of natural vocal warmth, suggesting a possible splice or digital manipulation. The remainder of the audio returns to the original vocal quality, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-2.0] second time region and [4000-6000] Hz frequency region as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. This aligns with the observed acoustic anomaly in the audio, where a subtle pitch shift and thinning of the voice occur. The LIME method from wav2vec also identifies a later region ([2.75-3.0] seconds), but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is the most sensitive to the anomaly. The Shapley values further support the importance of the spectral flux and unvoiced segment length, which are consistent with the observed vocal thinning and pitch instability. Overall, the wav2vec model’s multiple methods agree on the [1.0-2.0] second region, making this the most reliable indicator of the anomaly.

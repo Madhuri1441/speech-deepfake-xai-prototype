@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying "So there." The phrase is delivered in a slow, slightly hesitant manner, with a subtle upward inflection at the end. Immediately following the word "there," a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is characterized by a sharp, metallic timbre and a frequency content in the 4000–6000 Hz range, which is inconsistent with the natural speech and background noise. The artifact is not present in the original audio and is likely a result of digital manipulation or a deepfake generation artifact. The subsequent word "still" is spoken with a similar breathy and hesitant tone, but no further anomalies are detected. The audio ends abruptly after "still," with no natural fade-out or trailing noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while LIME also supports the 1.8–2.0 second region. The Saliency method from wav2vec highlights a different region (0.1–0.3 seconds, 2000–4000 Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values suggest that the abnormality is not related to overall loudness or segment length but rather to a specific high-frequency event. The cross-model agreement between wav2vec’s IG and LIME supports the conclusion that the artifact is a synthetic addition, likely introduced during deepfake generation.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker delivering a formal statement in a clear, neutral tone, with no apparent emotional inflection or background noise. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, the wav2vec model's Integrated Gradients (IG) analysis highlights a specific time-frequency region between 3.5 and 4.0 seconds in the 2000–6000 Hz range as suspicious. This region corresponds to the word "acknowledged," which is spoken with a standard, unremarkable cadence and pitch. The Saliency method from wav2vec also identifies a separate region (4.5–5.0 seconds, 7000–8000 Hz) around the word "that," but this is less consistent with the IG result. No other XAI methods (Hubert, WavLM) or Shapley values indicate abnormalities, and the acoustic features (loudness, spectral flux, unvoiced segment length) do not deviate from expected norms. Thus, the only notable anomaly is the wav2vec IG result, which may suggest subtle irregularities in the spectral content of "acknowledged," though the audio itself does not reveal any overt signs of tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify suspicious regions, with IG focusing on the 2000–6000 Hz range during "acknowledged" and Saliency on a higher frequency range during "that." However, only the IG result is consistent across the analysis, while Saliency's finding is less supported. The Hubert and WavLM models do not detect any abnormalities, and Shapley values do not indicate any significant deviations. Therefore, the final abnormality is based on wav2vec's IG evidence, with no cross-model agreement.

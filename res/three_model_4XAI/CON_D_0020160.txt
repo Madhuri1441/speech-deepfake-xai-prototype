@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [6.5-7.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic, monotone female voice with a slightly robotic and unnatural cadence, consistent with a text-to-speech (TTS) system. The speech is clear and intelligible, but the delivery lacks natural intonation and emotional variation. At approximately 6.5–7.5 seconds, the voice exhibits a subtle but noticeable pitch and timbre shift, accompanied by a brief, unnatural resonance in the 4000–6000 Hz range. This region stands out as acoustically anomalous compared to the rest of the audio, which maintains a steady, low-mid frequency profile. The anomaly is not present in the original speech content, suggesting it is an artifact of the TTS synthesis process, possibly due to a model transition or phoneme boundary.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [6.5-7.5] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification of the audio as synthetic. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [500-2000] Hz), but this is less consistent with the observed acoustic anomaly. The LIME explanation from wav2vec points to [2.5-3] seconds, which does not align with the main anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec model is uniquely sensitive to the synthetic artifact. The Shapley values further support the importance of acoustic features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are likely affected by the synthetic nature of the audio. Overall, the cross-model agreement is limited, with the wav2vec IG explanation being the most robust indicator of the anomaly.

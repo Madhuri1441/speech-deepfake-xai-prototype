@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard British accent, delivering a sentence in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a subtle but noticeable artifact is present: a brief, high-frequency, synthetic-sounding noise overlaying the speech. This artifact is not part of the natural speech signal and is acoustically distinct from the speaker’s voice, manifesting as a short, sharp, and unnatural burst of energy in the 4000–6000 Hz range. This anomaly is not present in the original speech and does not correspond to any natural vocal or environmental sound. The artifact is brief and localized, suggesting a possible digital glitch or post-processing error.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as suspicious, indicating strong cross-model agreement on this artifact. The wav2vec Saliency method, however, identifies a different region ([4.0-4.5] seconds, [6000-8000] Hz), which is not corroborated by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, suggesting they did not detect anomalies in the audio. The SHAP analysis highlights features such as loudness_sma3_percentile20.0, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed artifact and are not supported by the XAI time-frequency regions. Thus, the most reliable evidence for the anomaly comes from wav2vec’s IG and LIME methods, which both point to the same time and frequency region.

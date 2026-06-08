@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker delivering a sentence in a neutral, conversational tone. At approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.5 seconds and peaking in the 6000–7000 Hz range. This artifact is acoustically distinct from the speech, manifesting as a brief, unnatural, and non-vocal sound, likely a digital glitch or editing artifact. The speech resumes after this anomaly, with no further disruptions. The audio quality is otherwise clear, with no background noise or distortion, and the voice remains intelligible throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.0-1.5] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed transient artifact in the audio. The wav2vec model's Saliency and LIME also provide supporting evidence, though at different time points, indicating a broader sensitivity to speech features. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to this specific anomaly. The SHAP values highlight acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, which may relate to the presence of the artifact, but these do not pinpoint the exact time or frequency of the anomaly. Overall, the wav2vec model's IG analysis provides the most consistent and cross-validated evidence for the abnormality, supported by other wav2vec features but not by Hubert or WavLM.

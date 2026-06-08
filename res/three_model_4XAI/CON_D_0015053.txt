@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 0.9 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.1 seconds. This artifact is characterized by a sharp, piercing tone in the 2500–3500 Hz range, with a timbre that is distinctly unnatural compared to the rest of the audio. The artifact is not present in the original speech or background noise, and its abrupt onset and offset suggest it is not a natural acoustic event. The remainder of the audio, including the spoken phrase "but continue at," is clear and free of distortion, with no other notable anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both of which point to the same time and frequency region ([0.9-1.1] seconds, 2500–3500 Hz). The IG method highlights the region as a key contributor to the model’s prediction, while the Saliency method corroborates this by identifying the same region as salient. The LIME method also supports this region, though with a slightly different time window ([0.5-0.6] seconds), which may reflect a different approach to local approximation. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values indicate that the abnormality is not related to overall sound level or voiced/unvoiced segment statistics, but rather to a specific, localized event. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an artificial or anomalous event in the specified time and frequency range.

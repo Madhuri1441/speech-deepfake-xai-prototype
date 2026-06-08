@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "Do you know, do you pay into what this..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the clip. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is not present in the initial portion of the audio, suggesting it is an artificial addition or corruption introduced after the original recording. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([0.5-1.0] seconds, 6000–7000 Hz), indicating strong cross-model agreement on the presence of the synthetic artifact. The LIME method from wav2vec also supports this region, albeit with a narrower focus at [0.75-0.8] seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values further support the presence of an anomaly, with the top feature (StddevUnvoicedSegmentLength) indicating a deviation in the acoustic structure of the audio, likely due to the synthetic artifact. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the identified abnormality, while the lack of support from Hubert and WavLM suggests the anomaly is subtle or not easily detectable by all models.

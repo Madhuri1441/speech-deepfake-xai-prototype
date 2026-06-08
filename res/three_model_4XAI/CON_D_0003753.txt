@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.45] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Chelsea was a... he's role." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 1.45 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 1500–7000 Hz range. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, indicating a possible digital manipulation or insertion. The voice resumes normally after the artifact ends, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.8-1.45] seconds, [1500-7000] Hz). The IG method specifically highlights the 1.35–1.45 second interval, while Saliency covers the broader 0.8–1.2 second window. LIME, another XAI method, identifies a much earlier, brief region ([0.0-0.1] seconds), which does not align with the observed artifact and is likely unrelated. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by all models. The SHAP values indicate that features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are significantly altered, supporting the presence of an artificial sound event. Overall, the wav2vec model’s consistent findings across IG and Saliency provide strong evidence for the identified abnormality, while other models and methods do not corroborate this finding.

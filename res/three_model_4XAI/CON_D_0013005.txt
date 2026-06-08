@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "They really did a kick this sp—" before being abruptly cut off mid-word. Immediately following the cutoff, a loud, sustained, low-frequency electronic tone (approximately 50–60 Hz) is introduced, which is acoustically distinct from the preceding speech. This tone is harsh, synthetic, and contains strong harmonics extending up to 6000 Hz, with a particularly prominent energy band between 4000–6000 Hz. The sudden onset and unnatural character of this tone, along with its complete lack of environmental context or fade-in, suggest it is an artificial insertion rather than a natural sound event. The abruptness of the transition and the unnatural spectral content of the tone are clear acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.00-1.25] seconds, 4000–6000 Hz). This cross-model agreement strongly supports the presence of an anomaly in this region, corresponding to the synthetic tone. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are elevated in the abnormal region, indicating a significant deviation from the expected acoustic profile.

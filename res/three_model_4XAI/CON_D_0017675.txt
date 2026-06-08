@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Please, a basketball." The speech is clear and intelligible, with a neutral, conversational tone. However, a notable acoustic anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 0.5–1.5 seconds. This region is marked by a subtle but distinct high-frequency artifact, which is not typical of natural human speech and may indicate digital manipulation or post-processing. The anomaly is most apparent during the word "basketball," where the spectral energy in this band is elevated compared to the rest of the utterance. No other obvious audio artifacts, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.5–1.5 second range with a frequency band of 4000–6000 Hz using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also highlights the 0.0–0.1 second region, but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The Shapley values from the audio features do not directly point to this frequency band, but the presence of high-frequency energy in the anomaly region may be indirectly related to features like loudness_sma3_amean or StddevUnvoicedSegmentLength. Overall, the wav2vec model’s multiple methods consistently identify the anomaly, while other models do not, suggesting that the anomaly is primarily detected by wav2vec.

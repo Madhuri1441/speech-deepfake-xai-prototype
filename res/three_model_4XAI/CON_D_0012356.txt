@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "clearly capably to be honest," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second (up to 1.5 seconds). This artifact is not part of the original speech and is acoustically distinct, resembling a digital glitch or a synthetic sound overlay. The wav2vec model's Integrated Gradients (IG) analysis highlights this exact time and frequency range, indicating that the model identifies this segment as anomalous. The wav2vec Saliency map also points to a high-frequency region (4000-5000 Hz) at the very start, but this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values for the audio features do not directly correspond to the observed artifact, as they relate to overall audio characteristics rather than specific time-frequency regions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis is the only source that identifies the suspicious region at [1.0-1.5] seconds in the [2000-4000] Hz range, which aligns with the observed synthetic artifact. The wav2vec Saliency map provides a less consistent signal at the start of the audio, but this does not match the artifact's characteristics. The Hubert and WavLM models do not detect any anomalies, and the SHAP values do not provide evidence for the specific artifact. Therefore, the wav2vec IG result is the primary evidence supporting the presence of an anomaly, with no cross-model agreement.

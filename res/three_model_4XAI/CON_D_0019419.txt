@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "Meantime, his up is emerging, been widely welcomed." The recording is of moderate fidelity, with a low-level background hiss and a subtle, low-frequency hum, likely from a computer or HVAC system. The speech is intelligible, with no obvious distortion or clipping. However, at approximately 3.5–4.1 seconds, a brief, unnatural high-frequency artifact is present, manifesting as a sharp, synthetic-sounding "click" or "pop" that is inconsistent with the natural speech flow. This artifact is most prominent in the 5000–8000 Hz range, suggesting a digital or synthetic origin, such as a waveform glitch or editing error. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([3.5-4.1] seconds, [5000-8000] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME narrows the time window to [4.0-4.1] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are consistent with the presence of a sudden, high-frequency event. The cross-model agreement from wav2vec methods strongly supports the conclusion that the artifact is a synthetic or digital anomaly, not a natural part of the speech or environment.

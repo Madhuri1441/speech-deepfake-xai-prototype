@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "She said a group that denied the claims." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a metallic, robotic timbre and a pronounced high-frequency artifact. This distortion persists until about 1.5 seconds, after which the audio returns to its original, natural quality. The abruptness and unnatural character of this distortion suggest a digital manipulation, such as a deepfake insertion or audio splicing. The frequency range of the anomaly (2000–6000 Hz) aligns with the region where the voice’s spectral content is most affected, indicating a possible artifact from waveform reconstruction or frequency-domain tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.0-1.5] seconds time range, with supporting evidence from both Integrated Gradients (IG) and Saliency methods, both pointing to the 2000–6000 Hz frequency band. LIME also supports this region, albeit with a slightly broader window of [0.75-1.25] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic properties during the anomaly. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the presence of an anomaly in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 1.5–2.0 seconds, a distinct, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the speaker’s voice and does not correspond to any natural speech or environmental sound. It manifests as a brief, high-pitched, and slightly distorted tone, likely a digital artifact or a synthetic overlay. This anomaly is not present in the original waveform but is introduced during processing or editing. The rest of the audio remains natural and free from such artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency range as the most salient for the model’s prediction. This is corroborated by the wav2vec model’s Saliency analysis, which highlights the [0-1] seconds region, and LIME, which points to [0.8-1.2] seconds, indicating a broader but overlapping region of interest. The Hubert and WavLM models do not provide supporting evidence for this region, as their IG, Saliency, and LIME analyses yield no significant findings. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength indicating deviations from expected acoustic patterns. Overall, the wav2vec model’s IG analysis provides the strongest and most consistent evidence for the abnormality, supported by Saliency and LIME, while Hubert and WavLM do not corroborate this finding.

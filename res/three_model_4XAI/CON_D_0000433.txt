@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. At approximately 2.3 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about 0.2 seconds. This artifact is characterized by a sharp, metallic, and slightly distorted timbre, with energy concentrated between 6000–7000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio, nor does it align with any expected speech or environmental sounds, suggesting it is an artificial insertion. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.3-2.5] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a broader [2.0-3.0] seconds and [5000-7000] Hz region. LIME analysis further narrows the anomaly to [2.8-3.0] seconds, reinforcing the presence of an artificial event in this interval. The Hubert and WavLM models do not detect any anomalies, indicating that the wav2vec-based evidence is the most robust. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a sudden, high-frequency event. Overall, the wav2vec model’s IG, Saliency, and LIME analyses converge on the same time and frequency region, providing strong cross-model agreement for the anomaly.

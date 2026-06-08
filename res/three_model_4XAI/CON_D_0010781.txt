@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a continuous, conversational monologue in English. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, at approximately 3.5–4.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, sustained, and unnatural electronic tone in the 6000–7000 Hz range. This tone is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, suggesting a possible digital artifact or editing artifact. The tone is brief and does not disrupt the intelligibility of the speech, but its unnatural spectral quality stands out against the otherwise clean and natural acoustic profile of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both point to the same time-frequency region ([3.5-4.0] seconds, [6000-7000] Hz), indicating a high-confidence detection of the anomaly. The LIME explanation for wav2vec, however, is less specific, only highlighting the very beginning of the audio. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME explanations are all absent. The SHAP analysis, which is based on acoustic features rather than direct audio analysis, does not directly reference this region but highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which may indirectly relate to the presence of the artifact. Overall, the wav2vec model’s cross-method agreement provides the strongest evidence for the anomaly, while other models and methods do not corroborate this finding.

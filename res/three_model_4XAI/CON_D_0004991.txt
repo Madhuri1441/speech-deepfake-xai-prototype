@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "challenge going to be complacent." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the mid-frequency range (2000–3500 Hz) during the time interval [0.5–1.4] seconds, coinciding with the phrase "challenge going to be complacent." This region exhibits a slight unnaturalness in the vocal timbre, possibly due to a synthetic or manipulated voice, which is not immediately obvious but detectable upon close listening. The anomaly is not accompanied by any background noise, distortion, or environmental cues, suggesting the issue is confined to the vocal signal itself.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the same time and frequency range as the observed acoustic abnormality, with both Integrated Gradients (IG) and Saliency methods pointing to [1.2–1.4] seconds and [3000–3500] Hz, and [0.5–1.0] seconds and [2000–4000] Hz, respectively. These findings are consistent with the observed vocal irregularity. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, likely due to differences in their training or feature extraction. The SHAP values highlight "equivalentSoundLevel_dBp" as the most influential feature, suggesting that the overall loudness or energy of the audio contributes to the model’s decision, while "StddevUnvoicedSegmentLength" and "mfcc3V_sma3nz_amean" also play minor roles. This supports the presence of an anomaly in the vocal segment, as these features are sensitive to changes in voice quality and energy. The agreement between wav2vec’s IG and Saliency methods strengthens the evidence for the anomaly in the specified time and frequency range.

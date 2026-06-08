@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying, "No one would believe him." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.5 seconds and peaking in the 6000–7000 Hz range. This artifact is acoustically distinct from the speech, manifesting as a brief, unnatural, and non-vocal sound, likely a digital glitch or editing artifact. The remainder of the audio is silent, with no further speech or background noise. The Shapley values indicate that features such as loudness_sma3_amean and MeanUnvoicedSegmentLength are significantly higher than their original values, suggesting the presence of an abrupt, high-energy event inconsistent with natural speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a related region at [1.8-2.0] seconds and [5000-6000] Hz. LIME also supports the presence of an anomaly at [1.5-1.6] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values further corroborate the presence of an abrupt, high-energy event, aligning with the wav2vec findings. The cross-model agreement from wav2vec and Shapley values strengthens the conclusion that the artifact is a genuine anomaly, not a natural speech feature.

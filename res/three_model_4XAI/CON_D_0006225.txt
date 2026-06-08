@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "This look, it is it is anything but open." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its onset is abrupt, suggesting digital insertion rather than a natural event. No other background noises or environmental sounds are present, and the voice remains unaffected by the buzzing, indicating the artifact is layered on top of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as critical for the model’s prediction, indicating that the synthetic buzz is a key feature in the model’s classification. The LIME method for wav2vec also points to a time region ([2.15-2.30] seconds) that overlaps with the buzzing onset, further supporting the presence of an anomaly. The Shapley values highlight features such as equivalentSoundLevel_dBp, which is strongly affected by the buzzing, and alphaRatioUV_sma3nz_amean, which reflects changes in the signal’s spectral characteristics due to the artifact. The Hubert and WavLM models do not provide supporting evidence, but the agreement between wav2vec’s IG, LIME, and Shapley values confirms the buzzing as a significant anomaly.

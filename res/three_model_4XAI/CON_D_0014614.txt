@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a Scottish accent, with a clear and steady delivery. The speech is abruptly interrupted by a loud, synthetic, high-pitched electronic tone that starts at approximately 2.5 seconds and lasts until the end of the clip. This tone is sharply defined, with a frequency content between 6000 Hz and 8000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of the recording environment or the speaker’s voice, and its sudden onset and unnatural timbre suggest it is a post-production addition or digital overlay. The tone is consistent with a censor beep or a technical alert, and its abruptness and spectral characteristics are not present in the original speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 0.25–0.35 second region, Saliency focuses on 2.9–3.1 seconds, and LIME points to 2.5–2.6 seconds, all within the same high-frequency range (6000–8000 Hz). These findings are consistent with the observed synthetic tone in the audio, which starts at 2.5 seconds and is most prominent in the 6000–8000 Hz range. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specifically detected by wav2vec. The SHAP values further support the presence of a high-frequency, high-amplitude event, as indicated by the large positive values for equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which correspond to the loudness and spectral change at the tone’s onset. There is no evidence of abnormality in the initial speech segment, and the XAI findings are strongly aligned with the observed synthetic tone.

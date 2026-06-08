@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female speaker saying, "My my voice had done firmly supporting." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.8 seconds, a distinct, high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a sharp, synthetic-sounding buzz or hum, centered around 3000–4000 Hz, which is acoustically inconsistent with the natural speech signal. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the rest of the audio, suggesting it is an isolated digital artifact rather than a genuine acoustic event.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.8-2.0] seconds, 3000–4000 Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean indicating a deviation from expected speech patterns. The combined evidence from wav2vec and Shapley values strongly supports the conclusion that the audio contains a synthetic or corrupted segment in the specified region.

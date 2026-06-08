@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "pub also went out really," delivered in a neutral, conversational tone. The speech is intelligible and natural, with no obvious signs of digital manipulation. However, at approximately 0.2 seconds into the clip, a brief, synthetic-sounding electronic tone appears, lasting until about 0.4 seconds. This tone is centered in the mid-frequency range (1000–3000 Hz), with a stable pitch and a slightly buzzy, harmonically rich timbre, resembling a square or sawtooth wave. The tone is abrupt in onset and offset, and its spectral content is distinct from the natural speech, suggesting it is an artificial artifact rather than a part of the original recording.
+
+This acoustic anomaly is corroborated by the Integrated Gradients (IG) XAI explanation, which highlights the same time and frequency regions as most influential for the model’s decision, indicating that the synthetic tone is a key feature in the audio’s classification. The Saliency method also identifies a secondary anomaly in the 1.3–1.5 second range, but this is not supported by any observable acoustic event in the audio and may be a spurious artifact of the model. The LIME explanation points to the very beginning of the audio (0.0–0.1 seconds), but no clear anomaly is present there. The Shapley values indicate that the synthetic tone’s presence is a significant factor in the model’s output, as reflected by the high shap values for spectral features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, all of which are affected by the sudden appearance of the electronic tone.
+
+In summary, the primary abnormality is a synthetic electronic tone in the 0.2–0.4 second range, centered at 1000–3000 Hz, which is both acoustically and computationally salient. No other clear anomalies are present in the audio, and the XAI evidence aligns with this observation.

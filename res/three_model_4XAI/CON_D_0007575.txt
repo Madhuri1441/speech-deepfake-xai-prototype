@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "very very solid argument," spoken in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.00 seconds, a sharp, high-frequency artifact emerges, lasting until 1.25 seconds. This artifact is characterized by a piercing, synthetic tone in the 2000–4000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural event. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time interval ([1.00-1.25] seconds) and frequency range ([2000-4000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormalities, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope indicating deviations from expected speech patterns, likely due to the artifact. Overall, the wav2vec model’s consistent identification of the artifact, supported by multiple XAI methods, provides high confidence in the abnormality’s location and nature.

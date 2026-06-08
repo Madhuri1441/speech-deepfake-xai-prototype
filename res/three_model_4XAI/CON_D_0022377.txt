@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I didn't need to watch it on the video." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 2000–4000 Hz range, and is not present in the rest of the recording. The artifact is not masked by speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. No other acoustic irregularities are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-1.5] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and the Saliency method further supports this with a slightly later time window of [1.75-2.00] seconds, still within the same frequency range. LIME also corroborates the time region [1.00-1.50] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, and their IG, Saliency, and LIME results are all null. The SHAP analysis highlights spectralFlux_sma3_amean as the top feature with a high SHAP value, indicating a significant change in spectral flux during the suspected interval, which aligns with the observed high-frequency artifact. The combination of wav2vec’s multiple methods and SHAP analysis provides strong, cross-model support for the abnormality in the specified time and frequency range.

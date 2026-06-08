@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-4.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a non-native English accent, delivering a short, coherent sentence: "It was a hit, grew down some community things, time to before withdrawal to the throat." The speech is clear and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, the final word "throat" is abruptly cut off, ending the audio mid-syllable, which is acoustically anomalous and suggests an incomplete or truncated recording. This abrupt ending is the only clear acoustic irregularity in the clip.
+
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) saliency peak between 2.5-3.0 seconds and a Saliency peak between 3.5-4.0 seconds, both in the frequency range of 1000-6000 Hz. These regions correspond to the latter part of the sentence, specifically the phrase "time to before withdrawal to the throat," which includes the abrupt cutoff. The LIME explanation further supports this by highlighting the time interval [4.1, 4.2] seconds, aligning with the final word "throat." The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The SHAP values for features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean further support the presence of an acoustic anomaly in the final seconds of the audio, particularly around the abrupt cutoff.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across multiple XAI methods (IG, Saliency, and LIME) that the anomaly occurs between 2.5-4.2 seconds, with a frequency range of 1000-6000 Hz. This region corresponds to the final part of the sentence and the abrupt cutoff of the word "throat." The Hubert and WavLM models do not detect any anomaly, indicating that the wav2vec model is the primary source of evidence. The SHAP values corroborate the wav2vec findings, highlighting acoustic features that are most affected by the anomaly in the final seconds of the audio.

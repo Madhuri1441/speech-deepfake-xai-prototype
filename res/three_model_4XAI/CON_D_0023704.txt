@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase: "heart been in good form for the last two years." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady and natural, with no signs of emotional stress or unnatural pacing. However, a subtle anomaly is present in the frequency range of 5000–7000 Hz during the time interval of 1.0–2.0 seconds, coinciding with the word "good." This region exhibits a slight, unnatural tonal quality, possibly due to digital processing or synthesis, which is not typical of natural human speech. The anomaly is not perceptible to the human ear but is detectable through detailed acoustic analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time region and [6000-7000] Hz frequency region using Integrated Gradients (IG), while Saliency analysis from the same model supports the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region. LIME analysis from wav2vec further narrows the abnormality to [1.8-2.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, but these do not directly correspond to the identified abnormality. The cross-model agreement from wav2vec’s IG, Saliency, and LIME analyses supports the conclusion that the anomaly is localized in the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region.

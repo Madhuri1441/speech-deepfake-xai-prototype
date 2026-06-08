@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6 - 0.8] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice saying, "pretty is owned with simple." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly occurs between 0.6 and 0.8 seconds, where the voice exhibits a brief, unnatural pitch inflection and a slight digital artifact, likely a result of waveform manipulation or synthesis. This is accompanied by a faint, high-frequency shimmer in the 5000–7000 Hz range, which is not typical of natural speech and suggests post-processing or deepfake generation.  
+
+The XAI evidence supports this observation:  
+- The Integrated Gradients (IG) method highlights a significant contribution in the [0.6–0.8] seconds time window and [5000–7000] Hz frequency range, indicating that these acoustic features are critical to the model’s classification of the audio as a deepfake.  
+- The Saliency map further corroborates this, showing elevated importance in the [0.6–1.2] seconds interval and [4000–8000] Hz band, with a peak at [0.9–1.0] seconds, aligning with the observed pitch anomaly.  
+- The LIME explanation also points to the [0.9–1.0] seconds region, reinforcing the suspicion of synthetic manipulation in this segment.  
+- The Shapley values for features like StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean are all elevated, indicating that the audio deviates from natural speech patterns in terms of segment variability, loudness distribution, and spectral dynamics.  
+
+No other acoustic anomalies are present in the audio, and the rest of the speech is consistent with natural human production. The combination of perceptual and XAI evidence strongly suggests that the audio is a deepfake, with the most suspicious region being the brief pitch and spectral anomaly between 0.6 and 0.8 seconds.

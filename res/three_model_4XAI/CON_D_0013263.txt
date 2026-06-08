@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "give the fight, parliament and energy of doubt." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at the very start of the audio, specifically in the first 0.1 seconds, there is a subtle but noticeable acoustic anomaly. This brief segment contains a low-frequency, slightly distorted sound that does not match the expected acoustic profile of the speaker’s voice. The anomaly is most prominent in the 500–2000 Hz range, which is a typical region for human speech, but the sound here is unnatural and does not align with the expected vocal characteristics. This suggests a possible digital artifact or editing artifact at the very beginning of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.0-0.1] seconds time range and [500-2000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. LIME also supports this region. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not consistently detected by all models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormality in the initial segment, as these features are significantly different from their expected values. The wav2vec model’s multiple independent methods (IG, Saliency, and LIME) provide strong cross-model agreement for the anomaly in the first 0.1 seconds, while the other models do not detect this region, suggesting that the anomaly is subtle and may not be captured by all XAI techniques.

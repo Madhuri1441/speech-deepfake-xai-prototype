@@ -1,0 +1,15 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.7-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, intelligible female voice saying, "report for the side entrance in this battle." The speech is delivered in a neutral, declarative tone, with no signs of emotional distress or urgency. The recording quality is high, with no background noise, distortion, or artifacts. However, at approximately 0.7 seconds, a sudden, high-frequency, synthetic tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency range of 6000–7000 Hz, and is acoustically distinct from the preceding speech. It is not a natural part of the voice or environment and does not blend with the speech, indicating an artificial insertion. The tone is consistent in pitch and amplitude, suggesting it is a digital artifact or watermark rather than a genuine environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The final abnormality region [0.7-1.0] seconds and [6000-7000] Hz Hz is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies this region as the most salient for its prediction, indicating that the synthetic tone is a key feature in the model’s decision-making.  
+- The wav2vec model’s LIME method also highlights the same time interval, reinforcing the importance of this region.  
+- The wav2vec model’s Saliency method, however, points to an earlier region ([0.0-0.2] seconds, [1500-3000] Hz), which corresponds to the initial speech and is not related to the synthetic tone.  
+- The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating that these models do not focus on the synthetic tone.  
+- The SHAP analysis identifies acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, but does not directly reference the synthetic tone.  
+Thus, the synthetic tone is primarily supported by wav2vec’s IG and LIME methods, with no cross-model agreement from Hubert or WavLM. The audio anomaly is confirmed by the synthetic tone’s presence and its alignment with wav2vec’s saliency maps, but not by other models or SHAP features.

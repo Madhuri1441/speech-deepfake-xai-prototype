@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice stating, "The plane crashed into a hillside." Immediately following the word "hillside," a brief, high-frequency, synthetic artifact is audible, lasting approximately 0.1 seconds and centered around 6500 Hz. This artifact is acoustically anomalous, as it does not correspond to any natural speech or environmental sound and is inconsistent with the preceding and following audio. The artifact is most prominent in the high-frequency range, which is not typical for human speech, and its sudden onset and offset suggest digital manipulation or insertion.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies a significant contribution in the [0.1-0.2] seconds time range and [6000-7000] Hz frequency region, indicating that this segment is critical to the model’s classification of the audio as a deepfake. Saliency analysis also highlights the [0.15-0.25] seconds interval, though at a lower frequency range ([3000-4000] Hz), which may reflect a secondary acoustic feature or a different model interpretation. LIME analysis points to the [0.0-0.1] seconds interval, likely corresponding to the initial part of the word "hillside," but does not capture the artifact itself. The Shapley values for features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean further support the presence of an unnatural segment, as these features are sensitive to abrupt changes in acoustic properties, which are present in the artifact.
+
+In summary, the audio contains a brief, high-frequency synthetic artifact immediately after the word "hillside," which is not present in the original speech and is supported by multiple XAI methods as a key indicator of manipulation.

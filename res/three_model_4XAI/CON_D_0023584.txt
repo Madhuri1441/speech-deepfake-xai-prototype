@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "It's not easy to get out," delivered in a slow, deliberate manner. The speech is somewhat distorted, with a low-fidelity, compressed quality and a persistent background hiss. The most notable acoustic abnormality occurs between 0.5 and 1.0 seconds, where a high-frequency, synthetic buzzing or tonal artifact is present. This artifact is not part of the original speech and is likely an artifact of the audio processing or a deepfake generation process. The buzz is centered around 3500 Hz and is clearly distinguishable from the speech content, which is concentrated in the lower frequency range (1000–3000 Hz). The presence of this artifact is supported by multiple XAI methods, including Integrated Gradients (IG), which specifically identifies this time and frequency region as abnormal.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the 0.5–1.0 second range, centered around 3500 Hz, is supported by Integrated Gradients (IG) from the wav2vec model, which identifies this region as a key area of abnormality. Saliency analysis from wav2vec also highlights a different region (0.00–0.25 seconds, 1000–3000 Hz), but this is less consistent with the observed buzz. LIME from wav2vec identifies a very narrow time window (0.75–0.8 seconds), which overlaps with the buzz region but is not as comprehensive. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the abnormality is primarily detected by wav2vec. The Shapley values further support the presence of abnormal spectral features, particularly in the high-frequency range, but do not specify the exact time interval. Overall, the cross-model agreement is limited to wav2vec’s IG and LIME, with IG providing the most robust evidence for the abnormality.

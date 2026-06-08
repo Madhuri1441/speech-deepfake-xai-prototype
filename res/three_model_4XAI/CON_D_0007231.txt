@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, close-mic’d female voice stating, “I was a sheep,” in a neutral, declarative tone. Immediately following, a second, more distant and reverberant female voice says, “She’s just a pig and I’m…” The second voice is noticeably lower in volume and clarity, suggesting it was recorded in a different acoustic space or with a different microphone setup. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds, with energy concentrated between 6000–7000 Hz. This transient is acoustically distinct from the speech, resembling a digital artifact or abrupt edit, and is not present in the original voices. The audio ends abruptly after this event, with no natural fade or ambient decay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.5] seconds and [6000-7000] Hz using Integrated Gradients (IG), while Saliency analysis highlights a brief event at [3.0-3.1] seconds and [2500-3000] Hz, likely corresponding to a different acoustic feature. LIME analysis also supports the presence of an anomaly at [1.8-2.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values point to features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_amean, which are consistent with the presence of a sudden, high-frequency transient. The cross-model agreement between wav2vec’s IG and LIME, as well as the Shapley value analysis, supports the conclusion that the high-frequency transient at [2.0-2.5] seconds is the most likely region of abnormality.

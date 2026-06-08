@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying, "He brings us to the Scottish connection." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the audio. This tone is centered around 4000–6000 Hz, with a harsh, electronic timbre that is distinctly unnatural compared to the preceding speech. The abrupt onset and sustained presence of this tone strongly suggest an artificial insertion, likely as a result of audio manipulation or post-production editing. There are no other notable acoustic anomalies, such as clipping, distortion, or background noise, apart from the synthetic buzz.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method focusing on the initial speech segment. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, likely due to their different training objectives or architectures. The SHAP analysis highlights statistical features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which may reflect changes in the acoustic structure caused by the synthetic tone, but these do not directly pinpoint the abnormality in time or frequency. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the clear acoustic evidence of the synthetic buzz, supports the conclusion that the abnormality is a post-production insertion of a high-frequency tone.

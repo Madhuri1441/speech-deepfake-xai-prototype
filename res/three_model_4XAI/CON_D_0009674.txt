@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a news report in a controlled studio environment. The recording is clear, with no background noise or distortion, and the speech is intelligible throughout. However, at approximately 2.5 seconds, a brief, unnatural vocal artifact occurs: a high-pitched, synthetic-sounding burst lasting about 0.5 seconds, which is acoustically inconsistent with the speaker’s natural voice. This artifact is most prominent in the 1000–4000 Hz frequency range and is not present in the surrounding speech. The artifact is not accompanied by any change in prosody, pitch, or volume, and does not align with any spoken content, suggesting it is an artificial insertion rather than a genuine vocal event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same 0.5-second region between 2.5 and 3.0 seconds, with the artifact concentrated in the 1000–4000 Hz range. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values further support the presence of an anomaly, with spectralFlux_sma3_amean and equivalentSoundLevel_dBp showing elevated values, indicating a sudden change in spectral content and sound level at the same time. The combined evidence from wav2vec and the Shapley values strongly supports the presence of an artificial vocal artifact in the specified region, while other models and features do not contradict this finding.

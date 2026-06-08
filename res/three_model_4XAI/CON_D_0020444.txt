@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, conversational sentence: "Well, he didn't know it at first, but it was quite..." The speech is abruptly cut off mid-word ("quite..."), with no natural fade or trailing sound, indicating an artificial edit. The recording is of high fidelity, with no background noise, distortion, or environmental cues, and the voice is centered and close-miked. The abrupt truncation at the end is the only clear acoustic anomaly, suggesting the audio was edited or truncated rather than naturally concluded. No other acoustic irregularities, such as pitch shifts, unnatural pauses, or artifacts, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies a salient region between 2.0-3.0 seconds in the frequency range of 5000-6000 Hz, which aligns with the abrupt truncation of the audio. This region is supported by the Saliency method (wav2vec), which highlights the 0-1 second range (2000-4000 Hz), and the LIME explanation (wav2vec), which points to 1.0-1.5 seconds, indicating a general sensitivity to the initial speech segment. The Hubert and WavLM models do not provide supporting evidence, as their IG, Saliency, and LIME explanations are all absent. The Shapley values further support the presence of an anomaly, with features like slopeUV0-500_sma3nz_amean and MeanUnvoicedSegmentLength indicating deviations from expected speech patterns, particularly in the latter part of the audio. The combination of these findings, especially the cross-model agreement from wav2vec, confirms the anomaly at 2.0-3.0 seconds, likely corresponding to the artificial cut-off.

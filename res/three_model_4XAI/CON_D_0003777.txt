@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "Paul is exceptional at it is extraordinary at the international level." The speech is generally intelligible, but at approximately 1.0–1.5 seconds, there is a noticeable disruption in the audio. During this interval, the voice exhibits a sudden, unnatural pitch drop and a brief, low-frequency, synthetic-sounding artifact, which is inconsistent with natural speech production. This anomaly is accompanied by a subtle, high-frequency digital artifact in the 3000–4000 Hz range, suggesting a possible digital manipulation or deepfake artifact. The rest of the audio remains clear and natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the [1.0–1.5] seconds time region and [3000–4000] Hz frequency region as the most salient for the model's prediction, indicating that this segment is critical for the model's classification. The Saliency method from wav2vec also highlights a different region ([1.5–2.0] seconds, [4000–6000] Hz), but the IG result is more strongly supported by the observed acoustic anomaly. The LIME method from wav2vec further corroborates the importance of the [0.8–1.2] seconds region, aligning with the observed disruption. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec. The SHAP values do not directly correspond to the acoustic anomaly but highlight unrelated features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are not relevant to the observed artifact. Thus, the final abnormality region is supported by wav2vec's IG and LIME methods, with no cross-model agreement.

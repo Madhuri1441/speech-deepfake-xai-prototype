@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "We mainly see people around campaign beachblums." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the speaker’s voice, suggesting an artificial insertion or overlay. The buzzing is centered in the 4000–6000 Hz range, which is consistent with the frequency region flagged by the wav2vec model’s IG and Saliency explanations. The presence of this artifact is not supported by the Hubert or WavLM models, which do not identify any abnormal regions, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [1.0-2.0] seconds time range and the [4000-6000] Hz frequency range as abnormal, indicating strong agreement between these two XAI techniques. The LIME explanation for wav2vec identifies a slightly later time window ([2.75-3.0] seconds), but this is not corroborated by other models or the audio itself. The Hubert and WavLM models do not detect any abnormalities, and the SHAP analysis does not provide time or frequency information, only feature-level contributions. Thus, the final abnormality region is supported by wav2vec’s IG and Saliency methods, with no cross-model agreement from Hubert or WavLM.

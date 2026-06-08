@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "that it will, things," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, centered in the 4000–6000 Hz range, which is not present in the rest of the recording. The artifact is not masked by the speech and is perceptible as a slight, unnatural overlay, suggesting a possible digital anomaly or post-processing artifact. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both point to the same time-frequency region ([1.5-2.0] seconds, [4000-6000] Hz), indicating strong cross-model agreement on the presence of an anomaly in this segment. The LIME explanation from wav2vec also supports this, though it is less precise, highlighting a single time point (3.5–3.6 seconds) that is outside the main abnormality region. The Hubert and WavLM models do not provide any supporting evidence for this region, as their IG, Saliency, and LIME methods return no relevant findings. The SHAP analysis, while not directly identifying the artifact, highlights acoustic features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which may be indirectly related to the anomaly but do not pinpoint the exact time or frequency range. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and reliable evidence for the observed abnormality.

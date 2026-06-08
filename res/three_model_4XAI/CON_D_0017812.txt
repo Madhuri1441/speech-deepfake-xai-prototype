@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I asked. There is a..." The speech is clear and natural, but at approximately 1.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears. This artifact is a sustained, pure tone in the 6000–7000 Hz range, lasting until about 2.0 seconds. The tone is acoustically distinct from the voice, with a sharp onset and offset, and is not present in the original speech. The voice continues without interruption, suggesting the artifact is an overlay rather than a vocalization. The unnatural, static nature of the tone, combined with its abrupt appearance and lack of modulation, strongly indicates a digital or synthetic origin, likely a result of audio manipulation or a deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, [6000-7000] Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values also support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation, further corroborating the synthetic nature of the artifact. The agreement among wav2vec’s methods provides strong evidence for the identified region, while the lack of support from other models suggests that the anomaly is subtle or specific to certain model architectures.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in standard English with a General American accent. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, such as unnatural pauses, pitch jumps, or abrupt volume changes. The only notable acoustic feature is a brief, high-frequency transient occurring between 2.0 and 3.0 seconds, which is not present in the surrounding speech. This transient is characterized by a sharp, metallic or digital artifact, likely a click or pop, and is most prominent in the 1000–6000 Hz range. This anomaly is not accompanied by any speech or vocalization and stands out as an isolated event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all of which point to the same time and frequency region ([2.0-3.0] seconds, [1000-6000] Hz). The IG method highlights a broader frequency band ([1000-2000] Hz), while Saliency and LIME narrow it down to [4000-6000] Hz and [2.0-2.1] seconds, respectively. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 showing elevated values, suggesting a deviation from normal speech patterns. The combined evidence from wav2vec and Shapley values indicates a localized, high-frequency transient event in the audio, likely a digital artifact, with no strong support from other models.

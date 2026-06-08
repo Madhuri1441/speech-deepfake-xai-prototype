@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering a short, formal statement: "Liaison officers are now working to support the family." The speech is recorded in a quiet, controlled environment, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency artifact occurring between 1.5 and 2.0 seconds, specifically in the 4000–6000 Hz range. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or editing artifact, which stands out from the otherwise clean speech. The rest of the audio is free from such anomalies, and the speech remains intelligible and unaffected by the artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and also highlights a secondary region at [2.5-3.0] seconds with [1000-2000] Hz using Saliency. LIME provides a less precise but consistent indication of a suspicious region at [0.0-0.1] seconds. The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the most robust and cross-validated, as it is supported by both IG and Saliency methods, and aligns with the observed high-frequency artifact in the audio. The LIME result is less precise and may be a false positive or less reliable. The absence of evidence from Hubert and WavLM suggests that the artifact is not consistently detected by all models, but the wav2vec findings are strong enough to indicate a likely anomaly.

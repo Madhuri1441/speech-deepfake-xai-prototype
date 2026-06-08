@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I was looking three dimension," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, lasting until the end of the clip. This tone is not part of the speech and is acoustically inconsistent with the natural voice, suggesting it is an artificial overlay or artifact. The tone is centered in the 3000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its timbre is smooth and unmodulated, resembling a sine wave or similar electronic sound. This anomaly is not present in the initial part of the audio, indicating it was introduced after the speech was recorded or edited in.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the 1.0–2.0 second time range, with IG and Saliency further specifying the 3000–6000 Hz frequency region. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The SHAP analysis highlights features such as equivalentSoundLevel_dBp, alphaRatioUV_sma3nz_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed synthetic tone. The strong cross-model agreement from wav2vec’s IG, Saliency, and LIME methods supports the conclusion that the synthetic tone is the primary anomaly in the audio.

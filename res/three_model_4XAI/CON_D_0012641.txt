@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, low-pitched male voice saying "left the offices." Immediately following this, a brief, high-frequency, synthetic-sounding artifact is audible between 0.1 and 0.2 seconds. This artifact is characterized by a harsh, buzzing timbre and a frequency content in the 2000–3000 Hz range, which is inconsistent with the natural speech and background. The artifact is not present in the original utterance and appears abruptly, suggesting it is an artificial insertion rather than a natural acoustic event. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The suspicious region [0.1-0.2] seconds and [2000-3000] Hz is supported by the Saliency explanation from the wav2vec model, which identifies this time-frequency region as salient for the model’s prediction. The wav2vec model’s IG explanation also points to a different region ([0.4-0.6] seconds, [5000-7000] Hz), but this does not align with the observed artifact. The Hubert and WavLM models do not provide any salient regions, and LIME explanations are limited to [0.0-0.1] seconds, which does not overlap with the artifact. The SHAP analysis does not directly reference the artifact but highlights features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the overall audio quality but do not specifically indicate the artifact. Thus, the primary evidence for the abnormality comes from the wav2vec Saliency explanation, with no cross-model agreement.

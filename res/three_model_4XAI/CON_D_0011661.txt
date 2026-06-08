@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "My father" in a neutral, conversational tone, followed by a male voice saying "I'm sorry" in a subdued, apologetic manner. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. The most notable acoustic abnormality occurs between 0.5 and 1.5 seconds, where the female speaker’s voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, deviating from the otherwise natural speech. This segment is marked by a frequency shift into the 2000–6000 Hz range, which is atypical for human speech and suggests digital manipulation or artifacting. The male voice, in contrast, remains natural and unaffected. No other acoustic anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method from the same model supports a slightly broader [0.5-1.5] seconds and [2000-4000] Hz range. The LIME method, though less precise, also points to a specific moment around 2.0–2.1 seconds, which may correspond to the end of the abnormal segment. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_amean, which are consistent with the observed pitch and timbre changes in the abnormal segment. The wav2vec model’s multiple XAI methods converge on the same region, providing strong cross-model agreement for the anomaly.

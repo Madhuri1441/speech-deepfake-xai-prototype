@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying, "potential on this river." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0–1.5 seconds into the clip, a distinct, high-frequency, synthetic-sounding artifact appears. This artifact is a brief, non-vocal, electronic tone, likely a digital glitch or artifact, which overlays the natural speech. The tone is centered in the 4000–6000 Hz range, which is above the typical human speech spectrum, and is not present in the original recording. This anomaly is not masked by the speech and is clearly audible, suggesting a post-production or digital manipulation issue. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region as the most salient for the model's prediction, aligning with the observed synthetic artifact. The Saliency method from wav2vec also highlights a different region ([0.5-1.0] seconds, [2000-4000] Hz), but this does not correspond to any clear anomaly in the audio. The LIME method from wav2vec identifies a very narrow time window ([2.0-2.1] seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The SHAP values point to acoustic features such as equivalentSoundLevel_dBp, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact. The wav2vec IG analysis is the only XAI source that supports the presence of the synthetic artifact, and this is the only region identified by multiple XAI methods.

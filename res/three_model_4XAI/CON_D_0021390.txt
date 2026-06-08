@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Does it play in this...," followed by a brief pause and then a second male voice saying, "It was a two..." The speech is abruptly cut off mid-word, with no natural fade or trailing silence, indicating a hard edit. Immediately after the cut, a synthetic, high-frequency electronic tone (approximately 6500 Hz) is introduced, lasting for about 0.2 seconds. This tone is sharply defined, with no modulation or environmental context, and is acoustically inconsistent with the preceding speech, suggesting it is an artificial insertion rather than a natural sound event. The tone is not present in the original recording and does not match the acoustic profile of the speech, making it a clear anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the [1.0-1.2] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed synthetic tone in the audio. The wav2vec model’s Saliency and LIME explanations point to a different time and frequency region ([0.0-0.1] seconds, [4000-5000] Hz), which corresponds to the initial speech but does not indicate an anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed synthetic tone. Therefore, the primary evidence for the anomaly comes from the wav2vec model’s IG explanation, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet indoor recording environment. At approximately 1.0 seconds, a pronounced, unnatural vocalization occurs: a brief, high-pitched, and slightly distorted sound that stands out from the rest of the speech. This vocalization is not a natural part of the spoken phrase, which is delivered in a neutral, formal tone and is free of emotional inflection or background noise. The anomaly is most prominent between 1.0 and 1.5 seconds, with a frequency content in the 3000–4000 Hz range, suggesting a synthetic or digitally manipulated artifact. The rest of the audio is clear and intelligible, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 3000–4000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the 2.5–3.0 second region with a frequency of 7000–8000 Hz, though this is not clearly visible in the audio. LIME also highlights the 0.75–1.25 second region, overlapping with the wav2vec IG result. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the anomaly is not related to overall sound level or segment length, but rather to a specific, localized acoustic feature. The wav2vec IG and LIME results, both pointing to the 1.0–1.5 second region, provide strong cross-model agreement for the observed vocalization artifact.

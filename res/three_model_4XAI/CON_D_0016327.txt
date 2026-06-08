@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [6.0-7.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, speaking in a conversational tone about community facilities. The recording is of moderate quality, with a low-level background hiss and some reverberation, suggesting a small indoor space. The speech is generally clear, but there is a noticeable break in intelligibility between 6.0 and 7.0 seconds, where the speaker says, "They are very community facilities and they might just sit there." During this segment, the voice becomes muffled and the articulation is less distinct, with a slight drop in volume and clarity. This is accompanied by a subtle, high-frequency artifact in the 3000–4000 Hz range, which may be due to digital compression or a minor recording glitch. No other obvious audio artifacts, such as clipping or distortion, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [6.0-7.0] seconds time region and [3000-4000] Hz frequency region as abnormal, supported by both Integrated Gradients (IG) and LIME. The wav2vec saliency analysis also highlights the [0-1] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any abnormality evidence for this segment. The Shapley values from the wav2vec model further support the significance of the [6.0-7.0] seconds region, with high contributions from spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp, indicating a notable change in spectral and acoustic characteristics during this interval. The wav2vec model’s multiple independent explanations (IG, LIME, and Shapley values) converge on this region, making it the most strongly supported by XAI evidence.

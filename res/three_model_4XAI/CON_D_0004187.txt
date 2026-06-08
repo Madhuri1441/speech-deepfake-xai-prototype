@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering a formal statement in English. The recording is of high fidelity, with a clear, steady voice and minimal background noise. However, a subtle but noticeable anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds. This region exhibits a faint, unnatural resonance or tonal quality that is inconsistent with the rest of the speech, which is otherwise natural and unprocessed. The anomaly is not accompanied by any obvious digital artifacts, such as clicks or pops, and does not affect the intelligibility of the speech. The acoustic irregularity is most likely attributable to a synthetic or manipulated segment, possibly introduced during the generation or editing of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and corroborates this with Saliency and LIME, which point to a slightly later time (3.5–4.1 seconds) and a higher frequency band (6000–7000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values from the wav2vec model further support the presence of an anomaly, with the top feature (slopeUV0-500_sma3nz_amean) showing a large positive contribution, suggesting a deviation from expected acoustic patterns. The agreement between wav2vec’s IG, Saliency, and LIME, as well as the Shapley value evidence, strengthens the case for a genuine anomaly in the specified region. However, the lack of support from Hubert and WavLM means the anomaly is not universally confirmed across all models.

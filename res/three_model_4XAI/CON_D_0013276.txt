@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a clear, neutral tone, with a brief pause at the end of the phrase "concessions had total self to the." Immediately following this pause, a distinct, high-frequency electronic tone emerges, lasting for approximately 0.5 seconds. This tone is sharply defined, with a pitch in the 6000–8000 Hz range, and is acoustically inconsistent with the preceding speech, lacking any natural speech-related harmonics or modulation. The tone is abrupt in onset and offset, suggesting a digital artifact or synthetic insertion rather than a natural sound event. The transition from speech to tone is unnatural, with no fade or overlap, and the tone itself is static and unmodulated, further indicating a synthetic origin. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 3.5–4.0 second time range and a frequency range of 2000–8000 Hz. The LIME method from wav2vec also supports the 3.0–3.1 second region, which overlaps with the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency tone following a pause in speech. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the LIME support, strongly indicates that the abnormality is a synthetic tone inserted at the end of the speech segment.

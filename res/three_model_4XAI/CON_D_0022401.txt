@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "by Ross." Immediately following this, a sharp, high-frequency click or pop is heard, lasting approximately 0.2 seconds and centered around 1.3 seconds. This click is acoustically distinct from the speech, with a frequency content in the 3000–6000 Hz range, and is not a natural part of the spoken phrase. The click is abrupt, lacks any reverberation or environmental context, and stands out as an artifact rather than a genuine sound event. There are no other obvious acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as an abnormality using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.2–1.4 second region with a frequency range of 3000–6000 Hz, while LIME corroborates the time region. The Hubert and WavLM models do not flag any abnormalities, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation from the original value, indicating a sudden increase in sound level at the click. The combination of multiple XAI methods from wav2vec, along with the Shapley analysis, provides strong evidence for the click being an artificial or corrupted segment in the audio.

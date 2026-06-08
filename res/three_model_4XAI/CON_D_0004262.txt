@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice speaking the phrase "bunk being very careful in my dad." The speech is intelligible and delivered in a neutral, conversational tone, with no apparent emotional distress or unusual prosody. The recording quality is moderate, with a slight background hiss and a low-frequency hum, likely from a consumer-grade microphone or recording environment. There are no obvious signs of digital manipulation, such as clipping, distortion, or abrupt edits. However, the utterance is abruptly cut off mid-syllable, with no natural fade or trailing noise, suggesting an artificial endpoint. This sudden termination is acoustically anomalous and may indicate tampering or an incomplete recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region as [1.0-2.5] seconds in the time domain and [4000-8000] Hz in the frequency domain, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, albeit with a narrower time window of [1.0-1.2] seconds. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, which may relate to the abrupt cutoff and spectral characteristics of the audio, but these are not directly mapped to the anomalous region. Overall, the wav2vec model's multi-method agreement provides the strongest evidence for the anomaly, while other models and features offer supplementary but less consistent support.

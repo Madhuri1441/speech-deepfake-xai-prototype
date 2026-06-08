@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "We are never going to give up group in the championship." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.8 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 1500–3000 Hz range. The artifact is not present in the original speech and does not correspond to any natural sound or environmental noise, suggesting it is an artificial insertion or modification. No other obvious audio anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the abnormality in the time range [1.8-2.0] seconds and frequency range [1500-3000] Hz, which aligns with the observed synthetic artifact. The Saliency method from wav2vec also highlights a region around [0.0-0.2] seconds, but this is consistent with the start of the speech and not an anomaly. The LIME method from wav2vec identifies a specific time point at [0.5, 0.6] seconds, which is also within the speech and not anomalous. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc3V_sma3nz_amean, but these are not directly tied to the observed artifact and do not indicate a specific time or frequency region. The only cross-model agreement is from wav2vec's IG method, which independently identifies the artifact region. Thus, the final abnormality region is supported by wav2vec's IG method, with no corroborating evidence from other models.

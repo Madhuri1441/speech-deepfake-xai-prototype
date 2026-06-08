@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, formal statement: "probably there is a need for massive capital investment." The speech is recorded in a quiet, controlled environment, with no background noise or distortion. However, at approximately 2.5–3.0 seconds, a distinct, high-frequency artifact emerges, lasting about half a second. This artifact manifests as a sharp, synthetic-sounding buzz or digital tone, centered around 6000–7000 Hz, which is acoustically inconsistent with the speaker’s voice or any natural background sound. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([2.5-3.0] seconds, [6000-7000] Hz). The IG method highlights a broader region ([1.0-1.5] seconds, [3000-4000] Hz), which may correspond to the tail of the speaker’s voice, but the Saliency method provides a more precise localization of the artifact. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no relevant evidence. The Shapley values from the audio features also support the presence of an anomaly, with features like "StddevUnvoicedSegmentLength" and "loudness_sma3_percentile20.0" indicating a sudden change in acoustic properties at the same time. The cross-model agreement between wav2vec’s IG and Saliency methods, along with the Shapley value evidence, strongly supports the conclusion that the artifact is a synthetic or digital anomaly occurring between 2.5 and 3.0 seconds.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a low, steady tone, with no apparent emotional inflection or background noise. The speech is clear and intelligible, with no signs of digital artifacts or distortion. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic-sounding tone emerges and persists until the end of the recording. This tone is not part of the speech and does not correspond to any natural acoustic event, suggesting it is an artificial overlay or insertion. The tone is centered in the 2000–6000 Hz range, which is consistent with the frequency region identified by the wav2vec model’s IG and Saliency methods. The abrupt onset and unnatural spectral content of this tone are the primary acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [0.5-1.0] seconds time range and the [2000-6000] Hz frequency range as salient, indicating that the synthetic tone is the main feature driving the model’s prediction. The LIME method for wav2vec identifies an earlier time region ([0.0-0.1] seconds), but this is likely due to the model’s sensitivity to the initial speech segment, which is not anomalous. The Hubert and WavLM models do not provide any salient regions, suggesting they are less sensitive to the synthetic tone or that the anomaly is not prominent in their feature space. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency event. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the anomalous region, while other models and methods do not support this finding.

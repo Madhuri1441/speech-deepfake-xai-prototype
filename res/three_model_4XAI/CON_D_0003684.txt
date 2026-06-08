@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "problem in Norway is outside the national..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0–1.5 seconds into the clip, a distinct, unnatural high-frequency artifact appears. This artifact manifests as a sharp, synthetic-sounding tone in the 2000–3000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is brief, lasting about half a second, and is not present in the rest of the audio. This anomaly is not a result of the speaker’s voice or any environmental sound, but rather a digital artifact, likely introduced during audio processing or editing. The rest of the audio remains natural and free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies a salient region between 1.0–1.5 seconds in the 2000–3000 Hz frequency range. This aligns precisely with the observed synthetic artifact in the audio. The wav2vec model’s Saliency and LIME methods also point to nearby time and frequency regions, though less precisely. In contrast, the Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and mfcc3V_sma3nz_amean showing elevated values, suggesting a deviation from normal speech patterns. Overall, the wav2vec model’s attribution is the most consistent and reliable indicator of the anomaly, while other models and features provide supplementary but less direct support.

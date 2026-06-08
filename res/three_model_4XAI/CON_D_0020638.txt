@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "several changing my event." The speech is delivered in a standard, unaccented English, with a steady, conversational tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact that occurs between 1.0 and 1.5 seconds, specifically in the 4000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial addition. The rest of the audio is acoustically clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method also points to a different but adjacent region (2.0–2.5 seconds, 6000–8000 Hz), indicating a possible secondary anomaly. However, the Hubert and WavLM models do not detect any abnormalities, and their explanations are all null. The LIME explanation for wav2vec supports the 0.75–1.25 second range, overlapping with the IG result. The SHAP analysis does not directly indicate the abnormality but provides unrelated acoustic features, suggesting the anomaly is not captured by global feature importance. The cross-model agreement between wav2vec’s IG and LIME methods confirms the 1.0–1.5 second, 4000–6000 Hz region as the most likely location of the synthetic artifact.

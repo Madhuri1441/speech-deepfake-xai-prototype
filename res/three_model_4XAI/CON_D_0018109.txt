@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It was a job-based..." The speech is abruptly cut off mid-word, with no natural fade or trailing silence, indicating a hard edit. Immediately following the cutoff, a synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is unnatural and inconsistent with the preceding speech. This tone persists until the end of the clip, with no modulation or environmental context, suggesting it is an artificial insertion rather than a genuine background sound. The abrupt transition and the presence of the electronic tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies a salient region between 0.4-0.6 seconds in the 3000-5000 Hz frequency range, which aligns with the onset of the synthetic tone. This is the only XAI evidence pointing to a specific abnormality, as both Hubert and WavLM models provide no salient regions. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are more related to speech characteristics and do not directly support the presence of the synthetic tone. Thus, the anomaly is primarily supported by the wav2vec IG explanation, with no cross-model agreement.

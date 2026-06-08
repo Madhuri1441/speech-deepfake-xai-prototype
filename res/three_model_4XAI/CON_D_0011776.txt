@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "I went to..." in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 0.2 seconds, a sudden, unnatural shift occurs: the voice is abruptly replaced by a synthetic, low-pitched, monotone electronic tone. This tone is stable in pitch and amplitude, with no modulation or variation, and persists until the end of the clip. The transition is instantaneous and lacks any fade or overlap, indicating a digital splice or replacement. The synthetic tone is acoustically distinct from the original voice, with a frequency content concentrated between 1000 Hz and 3000 Hz, and no speech-like qualities. This abrupt change is highly suggestive of a deepfake or audio manipulation, as the synthetic tone does not resemble any natural sound or artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.2-0.4] seconds and frequency range [1000-3000] Hz, which aligns with the observed synthetic tone. The saliency method from wav2vec also highlights the initial segment [0.0-0.1] seconds, corresponding to the natural speech, but the LIME method points to [0.4-0.5] seconds, which is less consistent. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP analysis reveals that the synthetic tone is characterized by high values for StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, further supporting the presence of an unnatural, unvoiced segment. The cross-model agreement between wav2vec’s IG and saliency methods confirms the abnormality in the specified time and frequency ranges.

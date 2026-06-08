@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with a low pitch and clear articulation. At approximately 1.0 seconds, the speech is abruptly interrupted by a loud, high-frequency electronic tone that lasts until about 2.0 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the environment or speech and appears to be artificially inserted, as it is not accompanied by any reverberation or environmental cues. After the tone ends, the speech resumes seamlessly, suggesting the tone is a post-production artifact rather than a live event. There are no other obvious acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while LIME also supports the [2.0, 2.1] seconds region, indicating a brief but consistent focus on the tone’s onset. Saliency analysis from wav2vec further supports the presence of the anomaly in the same time and frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, and their IG, Saliency, and LIME results are all null, indicating no support for the anomaly. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and F1amplitudeLogRelF0_sma3nz_stddevNorm, which are consistent with the presence of a sudden, high-frequency tone, but do not specify the exact time or frequency range. Overall, the wav2vec model’s IG and Saliency results, along with LIME, provide cross-model agreement on the [1.0-2.0] seconds and [3000-6000] Hz region, confirming the presence of an artificial tone.

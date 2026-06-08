@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.35] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "They failed in our state," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.25 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.35 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 6000–7000 Hz range, which is acoustically inconsistent with the preceding speech and does not match any natural vocal or environmental sound. The artifact is abrupt, with no gradual onset or offset, and stands out as a digital anomaly. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.25-1.35] seconds, 6000–7000 Hz). The LIME method for wav2vec also supports this region, though with a slightly different time window ([0.35-0.4] seconds), which may be due to model-specific feature extraction. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not localize to a specific time or frequency region and thus do not directly support the identification of the artifact. The wav2vec model’s consistent identification of the artifact, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic anomaly in the specified region.

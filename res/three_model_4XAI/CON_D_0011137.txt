@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "to shot to shot let's tell us about it." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, lacking any natural vocal harmonics or modulation. The buzzing is centered in the 6000–8000 Hz range, which is well above the typical fundamental frequency of human speech, and its timbre is consistent with a digital artifact or a synthetic overlay. The abrupt onset and offset of this sound, as well as its unnatural spectral content, suggest it is not a genuine environmental or vocal event but rather an artifact introduced during audio processing or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 6000–8000 Hz frequency range using Integrated Gradients (IG), which is a cross-model agreement. The Saliency and LIME methods from wav2vec also point to the 0.0–0.1 second region, but this is not supported by other models and does not align with the observed buzzing artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed buzzing artifact. Therefore, the most reliable evidence for the abnormality comes from the wav2vec model’s IG analysis, which is cross-model supported.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker delivering two short, emotionally charged statements in a quiet, acoustically dry environment. The first phrase, "It left me with a sadness," is spoken with a subdued, melancholic tone, while the second, "We took a full revenge," is delivered with a sharper, more forceful cadence. At approximately 3.0 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second and peaking in the 7000–8000 Hz range. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, suggesting post-production manipulation or digital editing. The artifact is not accompanied by any speech or environmental noise, and its abrupt onset and offset are inconsistent with natural sound events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.0-3.5] seconds time region and [7000-8000] Hz frequency range using Integrated Gradients (IG), Saliency, and LIME, all pointing to the same artifact. The Hubert and WavLM models do not detect any abnormality, likely due to their training focus on speech content rather than synthetic artifacts. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and mfcc1_sma3_amean, which are consistent with the presence of a non-speech, high-frequency event in the audio. The cross-model agreement from wav2vec provides strong evidence for the artifact’s presence, while the absence of such signals in Hubert and WavLM suggests the anomaly is outside their detection scope.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "You keep one's home in China." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [0.6–1.2] seconds, specifically around the word "keep." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor digital artifact or a synthetic overlay, though it does not disrupt intelligibility. The rest of the audio is acoustically clean, with no background noise or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.6–1.2] seconds time region and [4000–6000] Hz frequency region as salient, with both Integrated Gradients (IG) and Saliency methods pointing to this interval. The wav2vec saliency further narrows the region to [0.8–1.2] seconds and [3000–4000] Hz, overlapping with the IG result. The LIME explanation for wav2vec is less specific, highlighting only [0.0–0.1] seconds, which does not align with the main anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP values suggest that features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are influential, but these do not directly correspond to the observed acoustic anomaly. Overall, the wav2vec model's IG and Saliency results provide cross-model agreement on the [0.6–1.2] seconds and [4000–6000] Hz region, indicating a high-confidence anomaly in this interval.

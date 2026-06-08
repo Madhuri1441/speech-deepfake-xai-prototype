@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "People bring a bag. They have the people movement." The speech is generally intelligible, but at approximately 2.0–2.5 seconds, there is a noticeable shift in the acoustic texture. During this interval, the voice exhibits a sudden, unnatural pitch and timbral change, with a higher, more synthetic quality, accompanied by a subtle, high-frequency artifact in the 4000–7000 Hz range. This anomaly is not present in the rest of the audio and is inconsistent with natural speech variation. The abruptness and unnaturalness of the change suggest a possible digital manipulation or deepfake artifact, such as a splice or voice synthesis artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] seconds time region and [4000-7000] Hz frequency region as salient, with both IG and Saliency methods pointing to this interval. The LIME method also supports the [2.0-2.1] seconds sub-interval. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values highlight features such as alphaRatioUV_sma3nz_amean, equivalentSoundLevel_dBp, and F2bandwidth_sma3nz_amean, which may reflect changes in voice quality and spectral characteristics during the abnormal interval. The wav2vec-based evidence is cross-model (IG, Saliency, and LIME), while Hubert and WavLM provide no support. Thus, the [2.0-2.5] seconds interval is the most strongly supported by XAI evidence.

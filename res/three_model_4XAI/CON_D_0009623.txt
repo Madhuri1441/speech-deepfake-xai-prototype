@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "But pollution and the driving are beyond belief." The speech is clear, with no background noise or distortion, and is followed by a brief pause. At approximately 2.0 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the audio. This tone is harsh, static, and digitally clipped, with a fundamental frequency around 100 Hz and strong harmonics extending up to 6000 Hz. The tone is sustained for about 0.5 seconds, peaking in loudness and masking the speech, before cutting off sharply at 2.5 seconds. The abruptness and unnatural character of the tone, along with its digital distortion, suggest it is an artificial artifact rather than a natural sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) identifies the [2.0-2.5] seconds time region and [3000-6000] Hz frequency region as significant, while the Saliency method also highlights a nearby [3.0-3.5] seconds region, though this is less consistent. The LIME method from wav2vec points to a slightly earlier [1.25-1.35] seconds region, which is not directly related to the main anomaly. The Hubert and WavLM models do not provide supporting evidence for this region. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which reflects the overall loudness and energy of the audio, further supporting the presence of the loud, clipped tone. The cross-model agreement from wav2vec's IG and Saliency methods confirms the [2.0-2.5] seconds interval as the most suspicious region, while other evidence is either less consistent or not directly related to the anomaly.

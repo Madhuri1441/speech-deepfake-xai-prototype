@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-frequency thump, likely a mouth or handling noise, followed by a male voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or artificiality. However, at approximately 2.5 seconds, a subtle but noticeable change occurs: the voice exhibits a slight pitch drop and a brief, unnatural pause, accompanied by a faint, high-frequency artifact in the 2000–4000 Hz range. This region is marked by a subtle, synthetic-sounding resonance, which is not present in the rest of the audio. The acoustic anomaly is brief and localized, suggesting a possible digital manipulation or insertion of a synthetic sound. The rest of the audio remains natural and consistent with a standard conversational recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.5-3.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis also highlights the [0-1] seconds region, which is less relevant to the main anomaly. LIME analysis further supports the [3.0-3.1] seconds region, aligning with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The SHAP values for features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and mfcc3V_sma3nz_amean suggest that the anomaly is related to changes in voice segment length and spectral characteristics, further supporting the presence of a synthetic or manipulated segment. The cross-model agreement between wav2vec and LIME strengthens the conclusion that the anomaly is localized in the [2.5-3.0] seconds time range and [2000-4000] Hz frequency range.

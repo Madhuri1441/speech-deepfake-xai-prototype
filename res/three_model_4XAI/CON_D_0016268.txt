@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "There's been a big change in defense." The speech is intelligible and delivered in a standard British accent, with no apparent emotional inflection or background noise. However, at approximately 0.5 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, completely masking the remainder of the speech. The tone is acoustically distinct from the voice, with a frequency content concentrated between 2000 Hz and 4000 Hz, and it is not a natural artifact of the recording environment. The abrupt onset and unnatural character of the tone suggest deliberate insertion, likely as a censorship bleep or audio redaction, rather than a technical malfunction or environmental interference. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the [1.75-2.0] seconds range with [4000-6000] Hz, though this is less consistent with the audio. The LIME method identifies a very brief [0.00-0.10] seconds region, which does not align with the observed tone. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features, which are consistent with the presence of a sudden, loud, non-speech sound. The wav2vec model’s IG and Saliency results, both pointing to the same time and frequency range, provide cross-model agreement on the abnormality, while the other XAI methods do not corroborate this finding.

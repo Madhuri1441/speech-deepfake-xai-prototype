@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase, "My neighbors are horrified. These people." The recording is of high fidelity, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but distinct anomaly is present in the high-frequency range (4000–6000 Hz) during the word "horrified," specifically between 1.5 and 2.0 seconds. This region exhibits a faint, unnatural resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to the human ear as a disruption or error, but it is detectable through spectral analysis. This suggests a possible digital manipulation or artifact introduced during post-processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is a strong indicator of the anomaly. The Saliency method from wav2vec also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not supported by other models and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are associated with the high-frequency region of the audio. Overall, the wav2vec IG result is the most reliable indicator of the anomaly, supported by the SHAP analysis, while other evidence is either inconsistent or absent.

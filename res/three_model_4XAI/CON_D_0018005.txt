@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "He is in charge and the o- he is-". The speech is abruptly cut off mid-word at approximately 2.0 seconds, with a sharp, unnatural edit that leaves no trace of the original sound. Immediately following the cut, a synthetic, low-frequency electronic tone (around 2500–3000 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is acoustically distinct from the preceding speech, lacking any natural reverberation or environmental context, and is likely an artifact of digital editing or tampering. The sudden transition and the presence of the electronic tone are clear indicators of audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.0-2.1] seconds in the frequency range [2500-3000] Hz using Integrated Gradients (IG) and LIME, while the Saliency method highlights a different region ([0.8-1.2] seconds, [4000-6000] Hz) that does not align with the observed edit. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is the only one detecting the anomaly. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting a sudden change in audio energy at the edit point. The cross-model agreement is limited to the wav2vec model’s IG and LIME results, which both point to the same time and frequency region.

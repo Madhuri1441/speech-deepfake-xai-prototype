@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.9-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "for a steady state." The speech is intelligible and delivered in a neutral, conversational tone, with no signs of emotional distress or unusual prosody. The recording quality is high, with no background noise or distortion. However, at approximately 0.9 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is acoustically distinct from the speech, manifesting as a brief, piercing, and unnatural sound, likely a digital glitch or editing artifact. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The rest of the audio remains clean and free of anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.9-1.1] seconds and frequency range [2500-3500] Hz using Integrated Gradients (IG), which is supported by Saliency analysis in the range [0.0-0.2] seconds and [1000-2000] Hz, and LIME in the range [0.0-0.1] seconds. These multiple XAI methods from wav2vec consistently point to the presence of an anomaly in the audio, specifically in the high-frequency region around 0.9-1.1 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME results are all null. The Shapley values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, suggesting that the anomaly is related to a sudden, unvoiced, high-frequency event. The cross-model agreement from wav2vec confirms the presence of the artifact, while the lack of evidence from Hubert and WavLM does not contradict this finding.

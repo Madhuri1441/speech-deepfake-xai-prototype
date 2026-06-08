@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.30] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "places the long memory" in a controlled, studio-like environment. The speech is intelligible, with no background noise or distortion. However, at approximately 1.25 seconds, a sharp, high-frequency artifact appears, lasting about 0.05 seconds. This artifact is a piercing, synthetic-sounding tone, likely a digital glitch or artifact, and is not present in the original speech. The tone is centered around 6500 Hz, with a harsh, unnatural timbre that stands out against the otherwise clean audio. This anomaly is not present in the original speech and is not a natural part of the spoken phrase, suggesting a digital corruption or editing error.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.25-1.30] seconds, [6000-7000] Hz). The Hubert and WavLM models do not detect any abnormality, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a sudden change in acoustic properties at the same time. The cross-model agreement from wav2vec’s XAI methods provides strong evidence for the presence of a digital artifact in the specified region.

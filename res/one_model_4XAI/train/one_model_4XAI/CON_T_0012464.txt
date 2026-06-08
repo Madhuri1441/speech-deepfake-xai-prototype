@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, continuous sentence: "trouble king with some other athletes as the manager." The speech is generally smooth and natural, but at approximately 1.0–2.0 seconds, a subtle but noticeable artifact occurs. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural shimmer, which is most prominent in the high-frequency range (4000–6000 Hz). This artifact is not present in the rest of the audio and is inconsistent with typical human speech patterns, suggesting a possible digital manipulation or synthesis artifact.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) highlights the 1.0–2.0 second time region and 4000–6000 Hz frequency region as the most salient, indicating that these features are critical to the model’s decision that the audio is a deepfake. LIME also identifies the 1.5–2.0 second window as significant, reinforcing the temporal focus of the anomaly. Shapley values further corroborate this, with the equivalentSoundLevel_dBp feature showing a large positive deviation (4.6975 vs. original -27.5460), indicating an unusually high sound level in this region. The StddevUnvoicedSegmentLength (2.9940 vs. 0.0724) and loudness_sma3_percentile20.0 (1.1390 vs. 0.1030) also suggest abnormal acoustic properties, likely due to the presence of the artifact.
+
+No other obvious acoustic anomalies are present in the audio, and the rest of the speech is natural and free from distortion. The combination of the perceptible artifact and the XAI evidence strongly supports the conclusion that the audio is a deepfake, with the anomaly localized to the 1.0–2.0 second interval and its associated high-frequency content.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "free game is so hard" in a neutral, conversational tone. The speech is intelligible and delivered at a moderate pace, with no background noise or distortion. However, at approximately 1.2 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds and peaking in the 6000–7000 Hz range. This artifact is acoustically distinct from the speech, manifesting as a brief, unnatural, and digitally clipped sound, likely caused by a sudden spike in amplitude or a processing error. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. After the artifact, the audio resumes normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([1.2-1.4] seconds, [6000-7000] Hz). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values, while not directly identifying the artifact, highlight acoustic features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile80.0, which may be indirectly affected by the transient but do not pinpoint the artifact location. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods provides strong evidence for the presence of an acoustic anomaly in the specified region.

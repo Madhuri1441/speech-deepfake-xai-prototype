@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral accent, delivering a short, formal statement in English: "However, utter by belief was taken by John Day whether he should..." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is steady, with a mid-to-low pitch and a measured, declarative tone, suggesting a professional or archival context. The audio quality is high, with no distortion, clipping, or compression artifacts. However, at approximately 2.5–3.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting about half a second. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered in the 4000–6000 Hz range, and is not present in the surrounding speech. The artifact is not a natural part of the voice or environment and is likely the result of digital processing, such as a waveform glitch, encoding error, or post-production artifact. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [2.5-3.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and LIME also supports this region at [3.0, 3.1] seconds. Saliency analysis from wav2vec further corroborates the anomaly at [0.0-0.5] seconds, though this is not supported by other models. The Hubert and WavLM models do not detect any abnormalities, and their IG, Saliency, and LIME results are all null. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly to a specific time or frequency range. The final abnormality region is thus supported by wav2vec’s IG and LIME, with cross-model agreement from wav2vec only.

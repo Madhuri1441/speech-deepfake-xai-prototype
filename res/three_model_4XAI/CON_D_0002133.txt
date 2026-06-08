@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 2.5 seconds, a female voice says, "Sounds a bit of an own goal," in a neutral, conversational tone. The speech is clear and intelligible, with no signs of emotional distress or unusual vocal quality. Immediately following the speech, at around 3.0 seconds, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is harsh, static, and digitally clipped, with a fundamental frequency around 100 Hz and strong harmonics extending up to 4000 Hz, indicating a square or sawtooth waveform. The tone is significantly louder than the speech and background noise, and its sudden onset and unnatural timbre suggest it is an artificial artifact, possibly inserted as a censor beep or a technical error. There are no other notable acoustic events or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the region [2.5-3.0] seconds and [2000-4000] Hz as suspicious, with IG and LIME both pointing to this time-frequency window. The Saliency method also highlights a different region ([1.0-1.5] seconds, [4000-6000] Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values highlight acoustic features such as slopeUV0-500_sma3nz_amean, MeanUnvoicedSegmentLength, and loudness_sma3_amean, which are associated with the speech segment, but do not specifically point to the electronic tone. The wav2vec IG and LIME results are the only ones that align with the observed electronic tone, suggesting that this is the most reliable indicator of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "We live in shorthand." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–6000 Hz during the time interval of 0.5–1.5 seconds, coinciding with the spoken phrase. This region exhibits a slight unnatural smoothness and a lack of typical speech micro-fluctuations, suggesting possible digital manipulation or synthesis. The acoustic environment is otherwise clean, with no background noise or environmental cues, and the voice is centered and dry, indicating a studio or controlled recording setting. No other obvious audio artifacts are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the frequency range of 2000–6000 Hz during 0.5–1.5 seconds, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this, focusing on a narrower window of 0.95–1.05 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values further support the presence of an anomaly in this region, with high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_stddevNorm, and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, all of which are associated with the 2000–6000 Hz band. The agreement between wav2vec’s IG, Saliency, and LIME methods, along with the Shapley values, provides strong evidence for the anomaly in this frequency and time range.

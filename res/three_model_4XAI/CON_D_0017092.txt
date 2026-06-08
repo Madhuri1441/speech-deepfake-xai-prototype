@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We are even in the street," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice becomes slightly muffled and less natural, with a reduction in high-frequency content. This change persists until about 1.0 seconds, after which the voice returns to its original clarity. The acoustic anomaly is most evident in the frequency range of 2000–4000 Hz, where the spectral energy drops, suggesting a possible low-pass filtering or compression artifact. This brief period of degraded audio quality is not accompanied by any speech errors or background noise, indicating a localized, possibly synthetic, modification.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([2.5-3.0] seconds, [1000-4000] Hz), which does not align with the observed audio anomaly. LIME analysis from wav2vec also supports the [0.5-0.6] seconds region, though it is less precise. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no regions. The SHAP values indicate that features such as spectralFlux_sma3_amean and StddevUnvoicedSegmentLength are significant, but these do not directly correspond to the observed time or frequency range. Overall, the wav2vec model’s IG and LIME analyses provide consistent evidence for the abnormality in the [0.5-1.0] seconds range, while other models and methods do not support this finding.

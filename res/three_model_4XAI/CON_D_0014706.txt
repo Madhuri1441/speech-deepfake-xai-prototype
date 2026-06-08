@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "which is not easy. program with a mortgage." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 2.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.6 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 5000–8000 Hz range, which is acoustically inconsistent with the preceding speech and background. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and stands out as a distinct event in the audio. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.4-2.6] seconds, [5000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality in this region. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a large positive value, suggesting a sudden increase in sound level at the artifact’s onset. The StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope features also contribute, but to a lesser extent. The cross-model agreement from wav2vec’s multiple XAI methods strongly supports the presence of an artificial event in the specified region.

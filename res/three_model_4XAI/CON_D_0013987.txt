@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, sharp, high-frequency click at 0.0 seconds, likely a digital artifact or editing artifact. From 1.0 to 2.0 seconds, a female voice is heard saying, "She made no further clear on this issue." The speech is clear and intelligible, with a neutral, declarative tone. However, the voice exhibits a subtle but noticeable unnaturalness in its timbre and articulation, especially in the mid-to-high frequency range (5000–6000 Hz), which is atypical for a natural human voice. This unnaturalness is most pronounced in the phrase "further clear," where the sibilant consonants are overly crisp and the vowel transitions are slightly stilted, suggesting possible digital manipulation or synthesis. The background is otherwise silent, with no environmental or ambient noise, further highlighting the artificial quality of the voice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 seconds time range and 5000–6000 Hz frequency range using Integrated Gradients (IG), and also detects a salient region at 0.0–0.5 seconds (1000–2000 Hz) corresponding to the initial click. LIME further supports the 1.0–2.0 seconds region, indicating cross-model agreement on this segment. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec and LIME results. The Shapley values indicate that the abnormality is most strongly associated with the slopeUV0-500_sma3nz_amean feature, which reflects unnatural voice segment characteristics, further supporting the presence of synthetic or manipulated speech in the 1.0–2.0 seconds interval.

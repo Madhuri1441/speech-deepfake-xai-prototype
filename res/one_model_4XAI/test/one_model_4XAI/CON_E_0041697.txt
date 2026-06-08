@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clearly articulated female voice saying, "put my money on the Arthur's place." The speech is delivered in a neutral, conversational tone with no emotional inflection, and the recording is clean, with no background noise or distortion. The only notable acoustic feature is a brief, high-frequency artifact occurring between 0.5 and 1.0 seconds, characterized by a sharp, metallic, and unnatural timbre in the 4000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion or manipulation.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 0.5–1.0 second time region and 4000–6000 Hz frequency range as the most significant for the model’s decision, indicating that this segment is critical to the audio’s classification as a deepfake. The Saliency analysis further corroborates this by identifying a brief, high-frequency anomaly at 1.75–2.00 seconds, which, while not overlapping exactly with the artifact, reinforces the presence of unnatural acoustic features in the upper frequency spectrum. The LIME analysis, though less specific, points to the very beginning of the audio (0.0–0.1 seconds), possibly indicating subtle initial distortions. The Shapley values for spectral features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean further support the presence of unnatural acoustic properties, particularly in the high-frequency range, which are inconsistent with natural speech patterns.
+
+In summary, the audio contains a brief, high-frequency artifact between 0.5 and 1.0 seconds, which is supported by multiple XAI methods as a key indicator of manipulation. The absence of other anomalies and the clean nature of the speech suggest that this artifact is the primary source of suspicion, aligning with the deepfake classification.

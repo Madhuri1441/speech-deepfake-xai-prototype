@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "clear looking and he didn't feel the need to try to impress." The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is present in the segment from 1.5 to 2.0 seconds, where the voice exhibits a slight unnaturalness in the mid-to-high frequency range (3000–4000 Hz). This is most noticeable in the word "clear," where the sibilant consonants are slightly overemphasized and the timbre appears subtly synthetic, deviating from the natural speech pattern. This region is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency window as critical for the model’s prediction, and LIME independently highlights the same time range, reinforcing the suspicion of an anomaly. The wav2vec model’s saliency map also points to a different region ([0.0–0.5] seconds, 1000–2000 Hz), but this is less consistent with the observed acoustic irregularity. No evidence from Hubert or WavLM models supports this region, and the SHAP values do not directly correspond to the observed acoustic features.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region ([1.5–2.0] seconds, 3000–4000 Hz) is supported by both Integrated Gradients and LIME from the wav2vec model, indicating cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values do not directly align with the observed acoustic features. Thus, the anomaly is primarily corroborated by wav2vec’s IG and LIME methods.

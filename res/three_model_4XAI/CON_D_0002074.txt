@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a female voice speaking the phrase, “He wouldn’t be faked that.” The speech is clear, with a neutral, conversational tone and no signs of emotional distress or artificiality. However, at approximately 0.75 seconds, a sharp, high-frequency transient artifact appears, lasting until 1.25 seconds. This artifact is characterized by a piercing, metallic, and unnatural timbre, with energy concentrated between 4000 and 6000 Hz. The artifact is not present in the original speech and does not correspond to any natural sound or vocalization, suggesting it is an artificial insertion or digital corruption. The rest of the audio remains free of such anomalies, with no further distortion, clipping, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.75-1.25] seconds, [4000-6000] Hz), indicating strong cross-model agreement. The LIME method from wav2vec also supports this region, though with a narrower time window ([0.00-0.10] seconds), which may reflect a different focus on the initial part of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly to a specific time or frequency range. Overall, the wav2vec model’s IG and Saliency methods provide the most consistent and detailed evidence for the identified artifact.

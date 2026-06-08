@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "We have a free vote question of..." clearly audible. However, at approximately 0.0 seconds, a sharp, high-frequency transient artifact is present, lasting about 0.5 seconds. This artifact manifests as a brief, unnatural, and piercing sound, likely a digital click or pop, which is acoustically distinct from the natural speech and background. The artifact is most prominent in the 1000–2000 Hz frequency range, and its abrupt onset and offset suggest a digital glitch or editing error rather than a natural acoustic event. The remainder of the audio, from 0.5 seconds onward, returns to normal speech and background noise, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Saliency method identifies the [0.0-0.5] seconds time region and [1000-2000] Hz frequency region as salient, aligning with the observed transient artifact. The wav2vec IG method also highlights a region around [0.8-1.2] seconds, but this is not supported by the audio evidence and may be a false positive. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an abnormality in the initial segment, as these features are elevated compared to their baseline values. Overall, the wav2vec Saliency method provides the most consistent and reliable evidence for the anomaly, supported by the Shap values, while other models and methods do not corroborate the finding.

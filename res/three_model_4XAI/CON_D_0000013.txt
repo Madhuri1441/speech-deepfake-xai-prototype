@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.9 - 1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "He should have won," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.9 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.1 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, high-pitched tone in the 5000–6000 Hz range. This anomaly is not masked by the speech and is perceptible as a brief, unnatural sound overlay. The Shapley value analysis highlights StddevUnvoicedSegmentLength as the top contributor to the model’s prediction, suggesting that the presence of unvoiced segments (such as the artifact) is a key indicator of abnormality. The equivalentSoundLevel_dBp and mfcc3V_sma3nz_amean values further support the presence of an atypical acoustic event, as they deviate from the expected speech characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the 0.9–1.1 second time region and 5000–6000 Hz frequency range as abnormal, providing cross-model agreement. The Saliency method from wav2vec also identifies a different region (0.4–0.6 seconds, 2000–3000 Hz), but this is not supported by other models and is not strongly aligned with the observed artifact. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is most confidently detected by wav2vec. The Shapley value analysis corroborates the presence of an unvoiced segment, aligning with the observed high-frequency artifact. Thus, the final abnormality region is supported by multiple wav2vec methods and Shapley analysis, with no conflicting evidence from other models.

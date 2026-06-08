@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I couldn't really work outside Edinburgh." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 2.4 seconds, a high-frequency, synthetic-sounding artifact appears, lasting until about 2.6 seconds. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, manifesting as a brief, high-pitched, and unnatural tone. This anomaly is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency region as significant, and Saliency analysis highlights a related but slightly earlier region (0.9–1.1 seconds, 2500–3000 Hz), suggesting a possible precursor or related artifact. LIME also points to a nearby time window (1.75–2.0 seconds), indicating that the anomaly is not isolated but part of a broader pattern of synthetic or corrupted signal. The presence of this artifact is further corroborated by the SHAP analysis, which identifies spectral features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean as contributing to the model’s prediction, all of which are associated with the high-frequency region of the anomaly. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region (2.4–2.6 seconds, 3000–5000 Hz) is supported by cross-model agreement from Integrated Gradients (IG), Saliency, and LIME, indicating a high-confidence synthetic artifact. The SHAP analysis further supports this by highlighting spectral features consistent with the observed anomaly. While Hubert and WavLM models do not provide supporting evidence, the convergence of multiple XAI methods strengthens the conclusion that this region is anomalous.

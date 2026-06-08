@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "...of take some time to adjust to this." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the audio. This tone is sharply distinct from the voice, with a frequency content in the 2000–4000 Hz range, and is acoustically inconsistent with the preceding speech. The tone is likely an artifact of digital editing or a deepfake overlay, as it does not correspond to any natural sound or environmental noise. The abrupt onset and unnatural spectral quality of the tone suggest it was artificially inserted, possibly as a watermark or to mask or alter the original audio content.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. These findings are corroborated by the LIME method, which also highlights the [0.00-0.10] seconds region, though this is less specific and may reflect a different aspect of the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 showing significant deviations, suggesting a disruption in the natural speech signal. Overall, the wav2vec model's consistent identification of the abnormality, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic tone in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.5 seconds, a male voice with a Scottish accent starts to say, "It's been a..." but is abruptly cut off mid-word at 2.5 seconds. Immediately following this interruption, a loud, synthetic, low-frequency electronic tone (around 100 Hz) is introduced, which is harsh, buzzy, and clearly artificial, with a strong presence in the 3000–6000 Hz range. This tone is not present in the original audio and is likely inserted as a censorship bleep or an editing artifact. The tone continues until the end of the clip, masking any further speech or sound. The abruptness of the interruption and the unnatural onset of the electronic tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.5] seconds and frequency range [4000-6000] Hz, with both Integrated Gradients and Saliency methods pointing to this region. LIME also supports this, highlighting a narrower window [1.25-1.30] seconds, which aligns with the start of the speech interruption. The Hubert and WavLM models do not provide any evidence, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive value, indicating a significant increase in sound level at the time of the electronic tone. The slopeUV0-500_sma3nz_amean and loudness_sma3_amean features also contribute, suggesting changes in the spectral and loudness characteristics during the abnormality. Overall, the wav2vec model's evidence is consistent and supported by multiple XAI methods, while the other models do not detect the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female speaker with a clear, neutral accent, delivering a continuous, conversational statement. The speech is generally natural and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, a subtle anomaly is observed in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds. This region exhibits a slight, unnatural tonal quality, possibly due to an artifact or synthetic overlay, which is not present in the rest of the audio. The anomaly is not accompanied by any obvious speech disruption or background noise, suggesting it is a minor, localized artifact. No other acoustic irregularities are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the 1.5–2.0 seconds time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the same region is confirmed by Saliency analysis. LIME also supports this region, though with a slightly different time window (0.85–1.05 seconds), indicating a possible overlap or slight variation in detection. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shapley values further support the presence of an anomaly, with the top three features (StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean) indicating changes in spectral and temporal characteristics consistent with synthetic or manipulated audio. The wav2vec model’s IG and Saliency, along with LIME, provide cross-model agreement on the abnormality, while the other models do not detect it.

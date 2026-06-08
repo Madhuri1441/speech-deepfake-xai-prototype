@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with the phrase "...in agent, they will only be found in the wild." The recording is of moderate fidelity, with a persistent low-level hiss and a slight room reverberation, suggesting a non-professional recording environment. The most notable acoustic anomaly occurs between 0.5 and 1.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a brief, high-frequency artifact. This segment stands out from the rest of the speech, which is otherwise smooth and natural. The anomaly is supported by multiple XAI sources: the wav2vec model's Saliency method identifies this region as the most salient, with a frequency range of 2000–4000 Hz, and the IG method also highlights a region at 1.8–2.0 seconds, which overlaps with the observed anomaly. The LIME method, while less precise, also points to the initial seconds of the audio. No other XAI methods (Hubert, WavLM) provide supporting evidence, and the Shap values do not directly correspond to the observed anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Saliency and IG methods both identify the 0.5–1.0 second region as anomalous, with overlapping frequency ranges, indicating strong cross-model agreement. The wav2vec LIME method also supports this region, though less precisely. The Hubert and WavLM models do not provide any evidence for this region, and the Shap values do not directly align with the observed anomaly. Thus, the final abnormality region is supported by wav2vec's multiple methods, with no cross-model agreement from Hubert or WavLM.

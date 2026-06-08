@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 2.0 seconds, a subtle but distinct anomaly emerges: a low-frequency, synthetic hum or buzz overlays the speech, most noticeable in the 4000–6000 Hz range. This artifact is not present in the initial portion of the audio and persists until about 3.0 seconds, after which the voice resumes its natural cadence. The hum is consistent with digital artifacts or compression errors, and its abrupt onset and offset suggest it is not a natural part of the recording environment. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [2.0-3.0] seconds time region and [4000-6000] Hz frequency region as salient, aligning with the observed synthetic hum. The Saliency method from wav2vec also highlights a brief region ([4.5-5.0] seconds) in the [7000-8000] Hz range, which may correspond to a secondary artifact or transient noise, but this is less consistent with the main anomaly. The LIME method from wav2vec further supports the [4.0-4.1] seconds region, though this is not strongly corroborated by other methods. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values for slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope do not directly correspond to the observed anomaly, suggesting that these features are not strongly associated with the synthetic hum. Overall, the wav2vec model’s IG method provides the most consistent evidence for the anomaly, supported by Saliency and LIME, though the latter two are less robust.

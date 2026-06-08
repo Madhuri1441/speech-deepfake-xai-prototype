@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.60] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "as the pressure on" in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.25 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.60 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hiss, most prominent in the 2000–6000 Hz range, and is not present in the rest of the audio. The artifact is not masked by the speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio generation or processing pipeline. The rest of the audio remains clean and natural, with no further signs of manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.25-1.30] seconds, 2000–4000 Hz for IG; [1.25-1.50] seconds, 4000–6000 Hz for Saliency). LIME further corroborates this by highlighting the region [1.50-1.60] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values also support the presence of an anomaly, with features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength showing significant deviations, though these are not time-localized. Overall, the wav2vec model’s multiple independent methods and the LIME explanation provide strong, cross-model agreement on the abnormality in the specified time and frequency range.

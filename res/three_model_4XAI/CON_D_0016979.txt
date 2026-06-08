@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip contains a single, clearly spoken phrase: "The lesser can have position." The speech is delivered by a female speaker with a neutral, slightly monotone tone, and the recording is of moderate fidelity, with a low-level background hiss and no significant distortion or clipping. The most notable acoustic anomaly occurs between 1.0 and 2.5 seconds, where the voice exhibits a subtle but perceptible pitch instability and a slight wavering in the mid-to-high frequency range (5000–8000 Hz). This is most evident in the word "position," where the final syllable is pronounced with a slightly strained, rising inflection, and the vowel quality is less stable than in the rest of the utterance. The acoustic environment is dry, with no reverberation or echo, and the background noise remains constant throughout.
+
+The wav2vec model identifies this region as the most salient for its prediction, with Integrated Gradients (IG) highlighting the time interval [2.0–2.5] seconds and the frequency band [6000–8000] Hz, and Saliency analysis pointing to [1.0–2.0] seconds and [5000–6000] Hz. LIME also supports this region with a focus at [1.5–1.6] seconds. These findings are consistent with the perceptible instability in the speaker’s voice during this interval. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to this acoustic feature. The SHAP values further support the importance of this region, with the equivalentSoundLevel_dBp feature showing a high positive contribution, suggesting that the overall loudness and energy in this interval are key to the model’s decision.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME analyses all converge on the time interval [1.0–2.5] seconds and the frequency range [5000–8000] Hz, indicating strong cross-model agreement on the acoustic abnormality. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec model is uniquely sensitive to the instability in this segment. The SHAP values corroborate this, with the equivalentSoundLevel_dBp feature showing a high positive contribution, further supporting the importance of this region.

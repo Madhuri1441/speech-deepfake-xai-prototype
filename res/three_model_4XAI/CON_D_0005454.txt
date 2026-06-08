@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched electronic chirp, followed by a male voice saying, "He bet play James basic." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a distinct, high-frequency artifact emerges, lasting until about 2.5 seconds. This artifact manifests as a sharp, synthetic, and unnatural sound, with a frequency content between 6000 Hz and 8000 Hz, which is inconsistent with the natural speech and background hum. The artifact is not present in the original audio but is introduced during the deepfake process, likely as a result of model-generated or manipulated audio segments. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength are significantly affected, suggesting that the anomaly is related to changes in the acoustic texture and unvoiced segment characteristics, further supporting the presence of an artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.5] seconds, [6000-8000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values corroborate the presence of an acoustic anomaly, particularly in features related to unvoiced segments and spectral slope, aligning with the wav2vec findings. Thus, the final abnormality region is supported by cross-model agreement within wav2vec and Shapley value analysis, while Hubert and WavLM do not detect any anomaly.

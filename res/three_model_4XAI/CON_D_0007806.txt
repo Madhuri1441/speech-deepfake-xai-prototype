@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "Be under no illusion." The speech is delivered in a controlled, formal tone, with no background noise or environmental cues, suggesting a studio or controlled recording environment. The voice is centered in the mid-frequency range, with a fundamental pitch around 150–250 Hz and harmonics extending up to 6 kHz. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–6000 Hz range, occurring between 0.75 and 1.25 seconds, which is not present in the rest of the clip. This artifact is not a natural part of the voice and is likely an artifact of digital processing or editing, such as a transient or a clipped sample. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.75–1.25 second time region and 3000–6000 Hz frequency region as abnormal using Integrated Gradients (IG), and the Saliency method also highlights a different region (0.00–0.25 seconds, 1000–2000 Hz), but this is not supported by other models. LIME from wav2vec identifies a very short segment (0.35–0.4 seconds), which is not corroborated by other methods. The Hubert and WavLM models do not provide any abnormality evidence. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting a high-energy event in the audio, which aligns with the observed high-frequency artifact. The StddevUnvoicedSegmentLength and slopeUV500-1500_sma3nz_amean features are less influential but may relate to the abruptness of the artifact. The wav2vec IG result is the only one that is cross-model supported, as no other models provide evidence for the same region. Thus, the final abnormality is based on wav2vec IG evidence, with Shapley values providing additional support.

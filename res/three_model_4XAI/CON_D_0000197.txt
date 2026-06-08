@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-pitched, breathy vocalization that is abruptly cut off, followed by a short pause and then a higher-pitched, clipped, and distorted utterance. The most notable acoustic anomaly occurs between 0.5 and 1.2 seconds, where the audio exhibits a sharp, unnatural transition in pitch and timbre, accompanied by a noticeable high-frequency artifact in the 4000–6000 Hz range. This region is marked by a sudden increase in spectral energy and a harsh, digital quality, suggesting either a splice or a synthetic overlay. The utterance itself is fragmented and lacks natural prosody, further indicating manipulation. The abruptness and unnaturalness of the transition, along with the high-frequency distortion, are consistent with digital editing or deepfake generation.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [0.5-1.2] seconds time region and the [4000-6000] Hz frequency region as critical for the model’s prediction, indicating strong agreement between these two XAI techniques. The LIME method for wav2vec also points to a later time region ([2.5-3.0] seconds), but this is not supported by the other models and is less consistent with the observed audio anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the wav2vec model is uniquely sensitive to the anomaly. The SHAP values further support the presence of an abnormality, with features like StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean showing high influence, indicating a deviation from natural speech patterns. Overall, the wav2vec model’s IG and Saliency methods provide cross-model agreement on the [0.5-1.2] seconds and [4000-6000] Hz region, which aligns with the observed audio anomaly.

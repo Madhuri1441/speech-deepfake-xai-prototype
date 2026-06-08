@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice speaking in a neutral, slightly robotic tone: "Countries we have not... cannot... the reality is...". The speech is clear but lacks natural intonation and breathiness, suggesting synthetic generation. At approximately 2.0 seconds, a sharp, high-frequency artifact emerges, lasting until 3.0 seconds. This artifact is a piercing, static-like noise in the 5000–7000 Hz range, which overlays the speech and is not present in the original voice. The artifact is abrupt, with no gradual onset or offset, and is acoustically distinct from the speech, indicating a digital glitch or post-processing error. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 2.0–3.0 second time window and the 5000–7000 Hz frequency range. The IG method specifically highlights the 2.5–3.0 second interval, while Saliency covers the broader 2.0–3.0 second window. LIME, however, identifies a much earlier, brief artifact at 0.0–0.1 seconds, which is not corroborated by other methods and is not clearly audible in the audio. The Hubert and WavLM models do not detect any abnormalities, and their IG, Saliency, and LIME results are all null. The SHAP analysis identifies three features—StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean—each with positive SHAP values, indicating increased deviation from normal speech patterns, but these do not localize the anomaly to a specific time or frequency range. The wav2vec results are the only ones that cross-verify both time and frequency, making them the most reliable indicators of the artifact.

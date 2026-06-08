@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.0-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 5.0–6.0 seconds, a subtle but distinct anomaly occurs: the speaker’s voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, accompanied by a momentary loss of natural vocal timbre. This is most evident in the phrase “both of those groups,” where the voice sounds slightly “thin” and “mechanical,” lacking the expected warmth and resonance. The anomaly is not present in the surrounding speech, suggesting a localized digital manipulation. The acoustic evidence is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) highlights this region as critical for its prediction, while Saliency and LIME also point to the same time and frequency range, indicating a consistent, cross-model agreement on the abnormality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 5.0–6.0 second time range and 4000–6000 Hz frequency range as abnormal, providing strong cross-model agreement. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are indicative of unnatural vocal characteristics. Overall, the convergence of wav2vec’s multiple XAI methods, combined with the acoustic evidence, strongly suggests a localized deepfake artifact in the specified region.

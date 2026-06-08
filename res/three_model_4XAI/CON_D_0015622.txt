@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "process" in a neutral, conversational tone, followed by a brief pause and then the word "figure," which is spoken with a rising intonation typical of a question. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.95 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.1 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 2500–3500 Hz range, which is acoustically distinct from the natural speech and likely results from digital clipping, a sudden gain spike, or a synthetic overlay. The artifact is abrupt and does not blend with the natural speech, suggesting it is not part of the original recording but rather an artificial insertion or corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.95-1.1] seconds, [2500-3500] Hz). The wav2vec model’s consistent identification of this region across multiple methods provides strong evidence that the artifact is a significant deviation from the expected speech pattern. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that they do not detect the anomaly. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed artifact and are not supported by the XAI methods. Therefore, the final abnormality region is based on cross-model agreement from wav2vec, with no supporting evidence from Hubert or WavLM.

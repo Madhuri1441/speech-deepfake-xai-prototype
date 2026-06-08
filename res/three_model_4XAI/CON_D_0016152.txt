@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, conversational tone, saying, "Still, K-pop experience was amazing. Sad." The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, but no obvious digital artifacts or clipping. The most notable acoustic anomaly occurs between 2.0 and 2.5 seconds, where the word "amazing" is spoken. During this interval, the voice exhibits a subtle but perceptible pitch and timbre shift, with a slight increase in brightness and a possible hint of unnatural resonance, suggesting a potential synthetic or manipulated vocal segment. This is supported by the wav2vec model's Integrated Gradients (IG) analysis, which highlights the [2.0-2.5] second region and the [3000-4000] Hz frequency band as critical for its prediction. The Saliency method from wav2vec also identifies a broader [0.5-1.0] second region, but the IG result is more specific and directly aligns with the observed anomaly. No other models (Hubert, WavLM) provide supporting evidence, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [2.0-2.5] second region as significant, with IG providing a more precise alignment to the observed pitch and timbre anomaly. The LIME method from wav2vec also points to a narrow window around [2.3-2.4] seconds, reinforcing the importance of this interval. However, the Hubert and WavLM models do not provide any supporting evidence, and the SHAP values, while indicating the importance of certain acoustic features, do not directly correspond to the observed anomaly. Thus, the final abnormality region is based on cross-model agreement from wav2vec, with IG and LIME providing the strongest support.

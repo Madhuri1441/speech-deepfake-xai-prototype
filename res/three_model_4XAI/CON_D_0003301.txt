@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "by crying" in a neutral, declarative tone. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 0.6 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a fundamental frequency around 4000–6000 Hz and a harsh, buzzy timbre, resembling a square or sawtooth wave. The tone is not modulated, does not fade, and is acoustically distinct from the speech, suggesting it is an artificial overlay rather than a natural sound. The abrupt onset and unnatural spectral content of this tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.6 - 1.0] seconds and frequency range [2000 - 4000] Hz, while the IG method within wav2vec further extends the frequency range to [4000 - 6000] Hz, aligning with the observed synthetic tone. The LIME method, though less precise, also points to a region around [1.4 - 1.5] seconds, which overlaps with the synthetic tone’s presence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a synthetic overlay. The wav2vec model’s multiple XAI methods (IG, Saliency, LIME) converge on the same time and frequency ranges, providing strong cross-model agreement for the anomaly.

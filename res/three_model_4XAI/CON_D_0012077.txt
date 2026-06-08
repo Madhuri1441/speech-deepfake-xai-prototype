@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "to them on could be all down to turn out." The speech is delivered in a standard, unaccented English, with a steady, conversational tone and no emotional inflection. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact that occurs between 1.25 and 2.00 seconds, specifically in the 2000–8000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an IG-based explanation at [1.25-1.30] seconds in the 2000–4000 Hz range, and a Saliency-based explanation at [1.75-2.00] seconds in the 4000–8000 Hz range. Both of these regions align with the observed synthetic artifact in the audio, indicating that the model is detecting the unnatural high-frequency content as anomalous. The Hubert and WavLM models do not provide any explanations, suggesting that the anomaly is not captured by their feature representations. The Shapley values further support the presence of an anomaly, with high contributions from features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are sensitive to abrupt changes in spectral content and unvoiced segments, respectively. The combined evidence from wav2vec and the Shapley values confirms the presence of a synthetic artifact in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7500-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, high-frequency transient at the start (0.0–0.1 seconds), characterized by a sharp, metallic or digital artifact. This transient is not present in the rest of the audio and is acoustically distinct from the main speech content, which is a clear, intelligible female voice saying, "Thought the players did well." The transient is likely an artifact from digital editing or a synthetic overlay, as it does not match the natural acoustic profile of the voice or the room. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the transient as a salient region, with Saliency and LIME both pointing to the [0.0–0.1] seconds time window and [7500–8000] Hz frequency range. The wav2vec IG also highlights a different region ([1.0–1.2] seconds, [6000–7000] Hz), but this does not correspond to any observable anomaly in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis does not directly reference the transient, instead highlighting acoustic features related to unvoiced segments and loudness, which are not directly linked to the observed artifact. The wav2vec evidence is consistent and supported by multiple XAI methods, indicating a cross-model agreement on the transient as an anomaly.

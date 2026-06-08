@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [5.5-6.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a continuous, low-fidelity monologue in a quiet, acoustically dry environment. The speech is generally clear, with no obvious signs of digital manipulation, but a brief, unnatural vocal event occurs between 5.5 and 6.0 seconds. During this interval, the speaker’s voice exhibits a sudden, sharp pitch drop and a harsh, metallic timbre, accompanied by a brief, high-frequency transient. This anomaly is acoustically distinct from the rest of the speech, which is characterized by a steady, low-pitched, and slightly muffled tone. The abruptness and unnatural quality of the vocal event suggest a possible digital artifact or editing error, such as a splice or waveform glitch, rather than a natural vocalization.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([5.5-6.0] seconds, [1000-2000] Hz). The LIME method, while less precise, also supports this region. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further corroborate the presence of an anomaly by highlighting a significant increase in equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, all of which are consistent with a sudden, unnatural vocal event. The cross-model agreement from wav2vec strengthens the conclusion that this region is the most likely site of audio manipulation or artifact.

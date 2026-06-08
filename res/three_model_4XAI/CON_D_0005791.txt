@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "John" in a neutral, conversational tone, followed by a brief pause and then a sharp, high-pitched electronic beep. The beep is abrupt, digitally clipped, and lacks any natural decay or resonance, indicating it is likely a synthetic artifact inserted into the recording. This beep occurs between 0.95 and 1.2 seconds and spans a broad frequency range from 1000 Hz up to 8000 Hz, with the most salient energy in the 1000–3000 Hz band. The unnatural, static-like timbre and sudden onset/offset of the beep are inconsistent with typical speech or environmental sounds, suggesting it is a non-organic addition to the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.95–1.2 second time window and the 1000–8000 Hz frequency range, while LIME identifies a slightly earlier region (0.2–0.3 seconds), which may correspond to the tail of the preceding speech. The Hubert and WavLM models do not provide any supporting evidence, as their XAI methods return no regions. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a sudden increase in loudness at the time of the beep. The spectralFlux_sma3_amean and StddevUnvoicedSegmentLength features also contribute, suggesting a change in spectral content and increased variability in the audio signal. Overall, the wav2vec model’s multiple XAI methods consistently identify the beep as an anomaly, while other models do not provide supporting evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.75-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's not it, but it's effective." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 1.75 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not present in the original speech and does not match typical background noise or environmental sounds. Instead, it resembles a digital artifact, possibly a result of audio manipulation or deepfake generation. The artifact is most prominent in the 1000–2000 Hz range, which is consistent with the Saliency explanation from the wav2vec model, indicating that this frequency band is critical for the model’s detection of the anomaly. The wav2vec model’s IG and LIME explanations also point to this time-frequency region, further supporting the presence of an anomaly. No other XAI models (Hubert, WavLM) provide evidence for this region, and the SHAP values do not directly reference this specific time or frequency range, but they do highlight features like spectral flux and shimmer, which are related to speech quality and could be affected by such an artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME explanations all converge on the time-frequency region [1.75-2.0] seconds and [1000-2000] Hz, indicating strong cross-model agreement on the presence of an anomaly in this region. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values, while relevant to speech quality, do not directly confirm the anomaly. Therefore, the final identified abnormality is based on cross-model agreement from wav2vec, with no conflicting evidence from other models.

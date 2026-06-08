@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "I feel pleased" in a neutral, conversational tone. The recording is clean, with no background noise or distortion, and the speech is clear and intelligible. However, at approximately 0.85 seconds, a sharp, high-frequency artifact emerges, lasting until about 1.0 seconds. This artifact is a brief, unnatural, high-pitched sound, likely a digital glitch or a synthetic overlay, which is acoustically inconsistent with the preceding speech. The artifact is not a natural part of the voice or environment and stands out due to its abrupt onset and unnatural spectral content, specifically in the 2000–3000 Hz range. This anomaly is not present in the original speech and does not resemble any typical vocal or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.85-1.0] seconds, [2000-3000] Hz). The IG and Saliency methods provide precise alignment with the observed artifact, while LIME offers a slightly broader but consistent time window. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The SHAP analysis does not directly indicate the artifact but highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are unrelated to the observed anomaly. The wav2vec model’s cross-method agreement provides strong evidence for the presence of an artificial or synthetic sound in the specified region, while the lack of support from other models suggests this is a unique detection.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a male voice starts speaking the phrase, "My counter reaction was..." The voice is clear, with a mid-to-low pitch and a neutral, conversational tone. However, at around 1.0–1.5 seconds, the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a brief, high-frequency digital artifact. This anomaly is most prominent in the 2000–4000 Hz range, where the voice’s spectral energy is abruptly distorted, suggesting a possible digital clipping or manipulation. The remainder of the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [2000-4000] Hz frequency region as the most salient, aligning with the observed pitch drop and digital artifact. The Saliency method from wav2vec also highlights a region around [0.25-0.5] seconds, but this does not correspond to any clear anomaly in the audio and is likely unrelated. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values, while not directly indicating the anomaly, suggest that the audio’s acoustic features (e.g., equivalentSoundLevel_dBp, stddevUnvoicedSegmentLength) are within normal ranges, further supporting the conclusion that the anomaly is localized and isolated. The wav2vec IG result is the most reliable indicator of the anomaly, supported by the acoustic evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "paying the bill" in a neutral, conversational tone. The recording is of moderate fidelity, with a slight room reverberation and a low-level background hiss. At approximately 0.8 seconds, a sharp, high-frequency transient occurs, lasting about 0.4 seconds. This transient is acoustically anomalous, as it is not a natural part of speech or environmental sound. It is characterized by a piercing, metallic timbre and a rapid onset and decay, resembling a digital artifact or a synthetic sound effect. The frequency content of this transient is concentrated between 3000 Hz and 5000 Hz, which is outside the typical range of human speech and does not match the background noise profile. This anomaly is not present in the original utterance and appears abruptly, suggesting it is not a natural part of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using Integrated Gradients (IG), highlighting the time interval [0.8-1.2] seconds and the frequency range [3000-5000] Hz. This aligns with the observed transient in the audio. The wav2vec model also uses Saliency and LIME, which point to different time intervals ([0.15-0.25] seconds and [1.05-1.15] seconds, respectively), but these are less consistent with the main anomaly. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP values suggest that features related to unvoiced segment length and spectral characteristics are significant, but these do not directly correspond to the observed transient. The wav2vec IG explanation is the most consistent with the audio evidence, indicating a cross-model agreement for the identified anomaly.

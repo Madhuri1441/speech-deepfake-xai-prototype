@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "disgrace" in a low, clear, and emotionally charged tone, followed by a brief pause and then the word "overdue" with a rising inflection. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 1.0–1.2 seconds, a subtle but distinct high-frequency artifact emerges, characterized by a sharp, synthetic, and unnatural timbre in the 3000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The artifact is brief and fades quickly, but its unnatural spectral quality suggests digital manipulation or insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.0-1.2] seconds, 3000–4000 Hz), indicating a strong and consistent signal of anomaly in this region. The Hubert and WavLM models do not provide any supporting evidence, as their XAI methods return no regions of interest. The Shapley values further support the presence of an anomaly, with the top feature (StddevUnvoicedSegmentLength) indicating a deviation in the acoustic structure of the audio, likely due to the insertion of the artifact. The combined evidence from wav2vec and Shapley values confirms the presence of a synthetic, high-frequency artifact in the specified region, with no supporting evidence from other models.

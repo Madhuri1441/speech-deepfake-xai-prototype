@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.4-2.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The campaign..." in a neutral, conversational tone. At approximately 2.4 seconds, a sharp, high-frequency transient artifact occurs, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a strong presence in the 3000–4000 Hz range, and is acoustically distinct from the preceding speech. The artifact is not a natural part of the speech or environment and is likely the result of digital manipulation or a deepfake insertion. Immediately following this, the speaker resumes with "I want to..." before the audio abruptly ends. The artifact is not present in the original speech and is not supported by any acoustic cues in the environment, indicating a post-production anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact through multiple independent XAI methods: Integrated Gradients (IG) highlights the 1.0–1.5 second region, Saliency focuses on the 2.4–2.6 second region, and LIME corroborates the 2.5–2.6 second region. These findings are consistent and point to the same high-frequency transient artifact. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is uniquely sensitive to this type of synthetic artifact. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and slopeUV0-500_sma3nz_amean, which are indicative of sudden, unnatural changes in the audio signal. The cross-model agreement from wav2vec confirms the artifact’s presence, while the lack of evidence from Hubert and WavLM suggests that the anomaly is subtle or specific to certain model architectures.

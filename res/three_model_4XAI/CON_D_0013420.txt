@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, low-frequency, non-verbal vocalization ("down") that is abruptly cut off, immediately followed by a male voice speaking in a formal, measured tone. The initial vocalization is acoustically distinct from the subsequent speech, lacking the resonance and clarity of the main utterance. This vocalization is characterized by a low pitch and a muffled, breathy quality, with energy concentrated in the 1000–2000 Hz range. The transition from this vocalization to the main speech is unnatural and abrupt, suggesting a possible splice or editing artifact. The main speech is clear and intelligible, with no signs of distortion or background noise, indicating a high-quality recording environment. The vocalization at the start does not match the prosody or timbre of the following speech, further supporting the hypothesis of an artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.0-0.5] seconds time region and [1000-2000] Hz frequency region as significant, aligning with the observed vocalization. This is the only XAI source that highlights this region, with no supporting evidence from IG or LIME for wav2vec, nor any evidence from Hubert or WavLM models. The Shap values for features such as StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean also point to the initial vocalization as an anomaly, reinforcing the acoustic observation. The lack of cross-model agreement suggests this is a single-model finding, but the consistency between the acoustic analysis and Shap values strengthens the case for an artificial insertion at the start of the audio.

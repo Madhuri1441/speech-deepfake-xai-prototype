@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 0.5–1.5 seconds, there is a noticeable, unnatural break in the speech. The phrase "I'm not what" is abruptly cut off, and the following word "I" is delivered with a different pitch and timbre, suggesting a splice or digital editing artifact. This is further supported by a subtle, high-frequency artifact in the 3000–4000 Hz range, which is not present in the rest of the recording. The speech resumes with "I was living with my mum," but the transition is unnatural, and the voice sounds slightly altered, indicating a possible deepfake or synthetic origin. The audio quality is otherwise clean, with no background noise or distortion, and the speech is intelligible except for the abrupt change.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.5-1.5] seconds time region and [3000-4000] Hz frequency region as significant, aligning with the observed speech break and high-frequency artifact. The saliency analysis from wav2vec also highlights the [3-4] seconds region, which corresponds to the continuation of the unnatural speech transition. The LIME explanation from wav2vec further supports the [5.0-5.5] seconds region, likely due to the speaker’s next phrase being affected by the same anomaly. No XAI evidence from the Hubert or WavLM models supports this region, and the SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean do not directly indicate the specific abnormality but suggest general acoustic irregularities. Overall, the wav2vec model’s multiple XAI methods consistently identify the abnormal region, providing strong cross-model agreement.

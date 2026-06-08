@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase "many words to let us you can spend." The speech is generally intelligible, but the word "spend" is acoustically anomalous. From 1.5 to 2.0 seconds, the word "spend" exhibits a noticeable high-frequency artifact, with a harsh, metallic timbre and unnatural resonance, deviating from the natural speech pattern. This anomaly is most prominent in the 4000–6000 Hz range, where the spectral energy is unusually elevated and the sound appears digitally distorted, suggesting a possible deepfake or synthetic origin. The rest of the audio is clean and natural, with no other obvious artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using both Integrated Gradients (IG) and Saliency methods, both pointing to the [1.5-2.0] seconds time window and [4000-6000] Hz frequency range. LIME also supports this region, though with a slightly earlier start at [0.7-0.8] seconds, likely due to its local approximation approach. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which may be related to the unnatural speech characteristics in the anomalous region. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide strong evidence for the identified anomaly, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-dependent.

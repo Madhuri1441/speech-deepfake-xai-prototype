@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "pretty bad bend on is that" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.8 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 1.0 seconds. This artifact is characterized by a sharp, electronic timbre in the 2000–4000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio, suggesting it is an insertion or overlay, likely introduced during the deepfake generation process.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the 0.8–1.0 second time region and 2000–4000 Hz frequency range as the most significant for the model’s decision, indicating that this segment is critical to the deepfake classification. The Saliency map further corroborates this by identifying a 1.3–1.6 second region with high-frequency content (5000–8000 Hz), which may correspond to a secondary artifact or residual noise from the manipulation. The LIME analysis points to a 0.6–0.7 second region, possibly reflecting a transition or alignment artifact. The Shapley values for spectral features (equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength) indicate that the model is sensitive to changes in overall loudness, spectral flux, and unvoiced segment variability, all of which are affected by the presence of the synthetic artifact.
+
+In summary, the audio contains a brief, high-frequency synthetic artifact between 0.8 and 1.0 seconds, which is supported by multiple XAI methods as a key region for deepfake detection. The acoustic anomaly is not present in the original speech and is likely a byproduct of the deepfake generation process.

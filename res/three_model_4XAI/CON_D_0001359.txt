@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Now he is a fit and ha—", but the word "happy" is abruptly cut off mid-syllable, resulting in a sudden, unnatural silence. This truncation is acoustically jarring and inconsistent with natural speech, indicating a possible editing or generation artifact. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is monophonic, unmodulated, and lacks any natural acoustic decay or environmental context, strongly suggesting it was artificially inserted. The abrupt transition from speech to this tone, along with the unnatural silence, points to a deepfake or synthetic audio origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the [1.0-1.5] seconds time region and [3000-6000] Hz frequency region, while Saliency analysis points to [0.5-1.0] seconds and [2000-4000] Hz, and LIME identifies a narrow window at [1.25-1.30] seconds. These overlapping regions indicate a consistent focus on the time and frequency range where the speech is cut off and the synthetic tone begins. The Hubert and WavLM models do not provide any evidence, suggesting that the anomaly is specifically detected by wav2vec. The SHAP analysis further supports this by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural speech and abrupt transitions. The combination of these findings confirms the presence of a synthetic artifact in the audio, with wav2vec providing cross-model agreement on the abnormal region.

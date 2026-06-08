@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "You have done my face." Immediately following this phrase, a sharp, synthetic, high-frequency electronic tone is introduced, lasting for approximately 0.2 seconds. This tone is distinctly artificial, with a harsh, buzzy timbre and a frequency content centered around 4000 Hz, which is well above the typical range of human speech. The tone is abrupt in onset and offset, with no fade-in or fade-out, and its spectral profile is consistent with a square or sawtooth wave, not a natural acoustic artifact. This synthetic sound is not present in the original speech and appears to be an inserted digital artifact.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights a significant contribution to the model's decision in the time range of 0.4–0.6 seconds and frequency range of 3000–5000 Hz, directly corresponding to the synthetic tone. The Saliency analysis also identifies a region at 1.2–1.4 seconds and 5000–6000 Hz, which may reflect the tail or harmonic content of the same tone. The LIME analysis points to the very beginning of the audio (0.0–0.1 seconds), likely due to the sudden transition from speech to the synthetic tone. The Shapley values further reinforce the presence of an anomalous sound event, with high contributions from features such as equivalentSoundLevel_dBp, loudness_sma3_percentile20.0, and StddevUnvoicedSegmentLength, all of which are elevated due to the sudden, loud, and non-vocal nature of the inserted tone.
+
+In summary, the audio contains a clear, unnatural synthetic tone inserted after the spoken phrase, which is corroborated by multiple XAI methods that identify the same time and frequency regions as anomalous. No other acoustic artifacts are present, and the anomaly is not explained by natural speech or environmental sounds.

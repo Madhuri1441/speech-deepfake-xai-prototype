@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "any decision is," followed by a brief pause and then "the complacent." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, a subtle but notable acoustic anomaly occurs between 0.5 and 1.0 seconds, coinciding with the transition from "is" to "the." During this interval, a faint, high-frequency artifact is present, most prominent in the 2000–4000 Hz range. This artifact manifests as a brief, unnatural resonance or tonal overlay, which is not present in the rest of the clip. The anomaly is not perceptible to casual listening but is detectable through detailed acoustic analysis. No other acoustic irregularities are observed in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.5-1.0] seconds time region and [2000-4000] Hz frequency region using Integrated Gradients (IG), and the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region using Saliency. LIME also highlights a specific point at [2.7-2.8] seconds, though this is less consistent with the observed acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the anomaly is most strongly associated with the equivalentSoundLevel_dBp feature, suggesting a change in overall loudness or energy in the affected region. The wav2vec IG and Saliency results are in agreement, providing cross-model support for the anomaly in the [0.5-1.0] seconds interval. The LIME result at [2.7-2.8] seconds is not corroborated by other XAI methods and is likely unrelated to the observed acoustic event.

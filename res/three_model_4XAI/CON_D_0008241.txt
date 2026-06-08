@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I don't want... we're all going to... Eric..." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 1.0–1.5 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 6000–7000 Hz range. This anomaly is not supported by any other XAI evidence and does not align with the saliency or LIME regions from wav2vec, which focus on lower frequencies and different time intervals. The Shap values do not indicate any abnormality in this frequency range, suggesting the anomaly is not captured by the model-level features used in the analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The only XAI evidence pointing to the abnormality is the Integrated Gradients (IG) explanation from the wav2vec model, which identifies the 6000–7000 Hz region during 1.0–1.5 seconds as significant. No other XAI methods (Saliency, LIME, or Shap values) support this finding, and the Hubert and WavLM models do not provide any relevant explanations. Thus, the abnormality is based solely on wav2vec’s IG analysis, with no cross-model agreement.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, coinciding with the end of the phrase "mobile phones." This click is acoustically anomalous, as it is not a natural part of speech or environmental noise and stands out from the otherwise clean, low-noise background. Immediately following this click, the audio signal exhibits a brief, unnatural high-frequency burst in the 4000–6000 Hz range, lasting until about 1.5 seconds. This burst is not present in the original speech and is inconsistent with typical human vocalization or environmental sounds. The remainder of the audio is free from such anomalies, with the speech and background noise returning to normal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently highlight the 1.0–1.5 second time window and the 4000–6000 Hz frequency range, indicating strong cross-model agreement on the presence of an artificial or manipulated signal in this segment. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values, while not directly tied to the audio signal, suggest that features related to unvoiced segment length and MFCCs are altered, which may indirectly support the presence of an anomaly in the audio. Overall, the wav2vec model's multiple, consistent findings provide robust evidence for the identified abnormality, while the other models do not contradict this conclusion.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "The theft been overnight, but things won't get better." The speech is clear and intelligible, with a neutral, slightly resigned tone. However, a subtle but noticeable anomaly occurs between 1.5 and 2.5 seconds, where the voice exhibits a slight pitch instability and a brief, unnatural modulation, particularly in the word "overnight." This region is marked by a higher-frequency energy concentration in the 3000–6000 Hz range, which is atypical for natural speech and may indicate digital manipulation or synthesis artifacts. The acoustic environment is otherwise clean, with no background noise or environmental cues, suggesting a controlled or studio setting. The anomaly is not immediately obvious to a casual listener but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence of abnormality in the [1.5-2.5] seconds time range, with IG highlighting [1.5-2.0] seconds and Saliency highlighting [2.0-2.5] seconds, both in the 3000–6000 Hz frequency band. LIME also supports the [1.5-2.0] seconds interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values further support the presence of an anomaly in this region, with significant contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are associated with atypical acoustic properties. Overall, the wav2vec model's multiple XAI methods agree on the abnormality, while the other models do not detect it, suggesting that the anomaly is subtle and may be specific to certain model architectures.

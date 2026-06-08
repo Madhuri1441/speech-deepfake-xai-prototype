@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying "The last laugh" in a neutral, declarative tone, followed by a higher-pitched female voice stating "We must take one game at a time" in a similarly neutral manner. Both voices are clear, with no background noise or distortion, and the speech is evenly paced and intelligible. However, at approximately 1.5–2.0 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the female voice exhibits a slight pitch and timbral shift, with a brief, unnatural resonance and a hint of digital artifacting, suggesting possible manipulation or synthesis. This is further supported by a frequency anomaly in the 4000–6000 Hz range, which is not present in the rest of the clip. The anomaly is subtle and does not disrupt intelligibility, but it stands out as a potential sign of audio tampering.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 1.5–2.0 second interval with a frequency range of 4000–6000 Hz, using Integrated Gradients (IG) and LIME. The Saliency method also points to a different time-frequency region (3.0–3.5 seconds, 6000–8000 Hz), but this is less consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile80.0, which may reflect subtle changes in the audio’s acoustic properties, but these do not directly pinpoint the anomaly. Overall, the wav2vec model’s IG and LIME results provide the strongest cross-model agreement on the abnormality, while other models and methods either do not detect it or provide conflicting evidence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "However, almost we were in different location." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 3.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 4.5 seconds. This artifact is not part of the original speech and is acoustically inconsistent with the rest of the recording, which is otherwise clean and free of background noise or distortion. The artifact is characterized by a piercing, electronic timbre, likely a digital glitch or a deepfake-generated artifact, and is most prominent in the 1000–8000 Hz frequency range. This anomaly is not present in the original speech and is not attributable to environmental or recording artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time interval of [3.5-4.5] seconds and overlapping frequency ranges (1000–8000 Hz). The IG method specifically highlights the 7000–8000 Hz band, while Saliency focuses on 1000–2000 Hz, and LIME confirms the time interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and HNRdBACF_sma3nz_amean, which are associated with the abnormal region. The cross-model agreement from wav2vec’s methods provides strong evidence for the presence of a synthetic artifact in the specified time and frequency range.

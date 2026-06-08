@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. The speech is clear and intelligible, with a natural cadence and no abrupt changes in pitch or volume. However, at approximately 3.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 4.0 seconds. This tone is sharply defined, with a frequency content between 5000 and 8000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment and appears abruptly, suggesting it was artificially inserted. The transition into and out of this tone is unnatural, lacking the gradual fade or blending expected in authentic audio. After the tone, the audio returns to the original speech, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.0-4.0] seconds time range and [5000-8000] Hz frequency range using Integrated Gradients (IG), which is supported by the saliency method in the same region. These two independent XAI methods both point to the same acoustic anomaly, strengthening the evidence for a synthetic insertion. The LIME method, however, highlights a very brief region at the start of the audio, which does not align with the observed synthetic tone and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detectable by all models. The SHAP values indicate that the synthetic tone is likely associated with high-frequency energy and spectral flux, further supporting the presence of an artificial sound event. Overall, the wav2vec IG and saliency results provide cross-model agreement on the abnormality, while other evidence is either inconsistent or absent.

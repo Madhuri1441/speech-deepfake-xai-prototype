@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "that justice minister has refused to..." The speech is delivered in a standard Australian accent, with a steady, professional tone and no emotional inflection. The recording quality is high, with minimal background noise and a clean, dry acoustic environment, suggesting a studio or controlled setting. However, at the very start of the clip, specifically in the first 0.5 seconds, there is a subtle but noticeable acoustic anomaly: a faint, high-frequency, synthetic-sounding artifact overlays the initial speech. This artifact is most prominent in the 1000–2000 Hz range and is not present in the rest of the audio, nor does it resemble any natural vocal or environmental sound. The anomaly is brief and does not affect intelligibility, but its unnatural spectral quality suggests it may be an artifact of digital processing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.0–0.5 seconds time range and 1000–2000 Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME method from wav2vec also supports this, though with a narrower focus on the first 0.1 seconds. In contrast, the Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, suggesting they do not detect the anomaly. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed artifact and are not time-localized. Thus, the anomaly is supported by wav2vec’s multiple methods, but not by Hubert or WavLM, indicating cross-model agreement only within wav2vec.

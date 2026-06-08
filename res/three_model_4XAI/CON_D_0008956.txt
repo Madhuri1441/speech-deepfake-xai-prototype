@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation or background noise. The speech is clear and intelligible, with a natural cadence and no abrupt changes in pitch or volume. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or whine, most prominent in the 4000–6000 Hz range, and is not present in the rest of the audio. The artifact is not masked by speech and is perceptible as a slight digital distortion, suggesting a possible anomaly in the audio signal. No other acoustic irregularities are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-1.5] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and the Saliency method also points to a similar region at [2.0-2.5] seconds, though this is less consistent with the audio. The Hubert and WavLM models do not provide any evidence of abnormality, and LIME explanations are either absent or not aligned with the observed artifact. The Shapley values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, suggesting that the anomaly may be related to changes in the acoustic texture and overall loudness, but these do not directly pinpoint the artifact. The wav2vec IG explanation is the most consistent with the observed high-frequency artifact, and thus, the final abnormality region is supported by cross-model agreement from wav2vec’s IG method.

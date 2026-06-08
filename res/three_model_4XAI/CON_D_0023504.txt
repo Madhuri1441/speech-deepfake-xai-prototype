@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled male voice saying "parliament would have a difficult club," with the phrase "difficult club" sounding particularly unnatural and possibly mispronounced or synthesized. Immediately following this, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly regular, monophonic, and lacks any natural acoustic variation, strongly suggesting it is an artificial artifact rather than a real-world sound. The transition between the speech and the tone is abrupt and unnatural, with no fade or overlap, indicating a possible edit or insertion. The audio quality is poor, with a persistent background hiss and a limited frequency range, further supporting the likelihood of digital manipulation or low-quality recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two distinct abnormal regions: [0.75-1.0] seconds in the time domain and [6000-7000] Hz in the frequency domain, with the IG method highlighting this region. The Saliency method also identifies a separate region at [1.85-2.00] seconds, but this is not supported by other models. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the wav2vec findings are the only cross-model agreement. The Shapley values further support the presence of abnormality, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are associated with the synthetic tone. The combined evidence from wav2vec and Shapley values points to the synthetic tone as the primary anomaly, with the wav2vec IG method providing the most consistent cross-model support.

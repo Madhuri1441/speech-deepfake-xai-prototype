@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I didn't need domestic mark fishy was a..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0–2.0 seconds, a distinct, high-frequency, synthetic buzzing sound abruptly overlays the speech. This buzzing is not part of the original speech and is acoustically inconsistent with the rest of the audio, which is otherwise clean and free of background noise. The buzzing is centered in the 5000–7000 Hz range, characteristic of a digital artifact or post-production edit. The voice continues unaffected, suggesting the buzzing is a post-processed overlay rather than a recording flaw. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the 1.0–2.0 second time region and 5000–7000 Hz frequency region as significant for the model’s prediction, directly aligning with the observed buzzing artifact. The Saliency method from wav2vec also highlights a different time region (0.0–0.5 seconds), but this does not correspond to any clear anomaly in the audio. The LIME explanation from wav2vec points to a very narrow time window (2.9–3.0 seconds), which is not supported by the audio evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the presence of the buzzing sound, but this is not directly confirmed by the audio. Overall, the strongest evidence for the anomaly comes from the wav2vec model’s IG explanation, which is supported by the observable acoustic event.

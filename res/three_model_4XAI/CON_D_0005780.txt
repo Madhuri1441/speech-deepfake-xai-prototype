@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "company, we're certain insurance keep..." The speech is intelligible and delivered in a neutral, professional tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 3.0 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone in the 4000–8000 Hz range. The artifact is not masked by the speech and is clearly audible, suggesting it was introduced during or after the recording process. There are no other obvious audio anomalies, such as clipping, distortion, or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an IG saliency in the [1.5-2.0] seconds range at 4000–6000 Hz and a Saliency saliency in the [2.5-3.0] seconds range at 7000–8000 Hz. These regions align with the observed synthetic buzzing artifact in the audio. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME evidence is minimal and not consistent across models. The Shap values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean are elevated, which may correspond to the presence of the synthetic artifact, but these do not localize the anomaly as precisely as the wav2vec saliency maps. The wav2vec saliency evidence is the most robust and directly supports the presence of the synthetic buzzing artifact in the specified time and frequency ranges.

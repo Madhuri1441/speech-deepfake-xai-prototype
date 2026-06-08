@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice speaking the phrase, "A formal announcement." The voice is clear, with a neutral, formal tone, and is accompanied by a persistent, low-level electronic hiss throughout. At approximately 2.0 seconds, a distinct, high-frequency, synthetic-sounding tone emerges, peaking between 6000–7000 Hz and lasting until about 2.5 seconds. This tone is sharply defined, with a clean, digital timbre and no natural acoustic decay, suggesting it is artificially inserted rather than part of the original recording. The tone is not present in the original speech and does not correspond to any natural vocal or environmental sound, indicating a likely post-production addition or digital artifact. The remainder of the audio returns to the original speech and hiss, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights a different region ([0.2-0.4] seconds, [5000-6000] Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values suggest that the loudness and mean unvoiced segment length features are most influential, but these do not directly correspond to the observed synthetic tone. The wav2vec IG result is the only one that aligns with the audible synthetic tone, making it the most reliable indicator of the anomaly.

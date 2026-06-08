@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "There was a bit of chaos, well..." The speech is delivered in a calm, neutral tone, with a standard English accent. However, at approximately 1.0 seconds, a sudden, high-pitched, synthetic-sounding electronic tone emerges, lasting until about 1.5 seconds. This tone is sharply defined, with a frequency content between 4000 and 6000 Hz, and is markedly different from the natural speech preceding it. The tone is not a natural part of the spoken content and appears abruptly, suggesting an artificial insertion or overlay. The remainder of the audio returns to the original speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method in the same region. These two independent XAI methods from the same model converge on the same abnormality, strengthening the evidence. The LIME method from wav2vec, however, points to an earlier time range ([0.0-0.1] seconds), which does not align with the observed synthetic tone and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed synthetic tone and may reflect general audio characteristics rather than the specific anomaly. Overall, the wav2vec model's IG and Saliency methods provide consistent evidence for the synthetic tone, while other XAI sources do not support this finding.

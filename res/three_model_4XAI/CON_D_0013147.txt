@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, clear phrase: "It's a way of life, till I had enough money." The speech is recorded in a quiet, controlled environment, with no background noise or distortion. The voice is steady, with a low pitch and a measured, declarative tone. The only notable acoustic feature is a brief, high-frequency, non-speech sound occurring between 1.5 and 2.0 seconds, in the 4000–6000 Hz range. This sound is sharp, transient, and does not resemble any part of the spoken content, suggesting it may be an artifact or an unintended noise. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.5–2.0 second, 4000–6000 Hz region as suspicious using Integrated Gradients (IG), while the Saliency method highlights a different region (2.5–3.0 seconds, 1000–4000 Hz). The LIME method does not support any region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting the overall loudness of the audio is a key factor in the model’s prediction. However, this does not point to a specific abnormality. The only region supported by multiple XAI methods is the 1.5–2.0 second, 4000–6000 Hz segment, identified by wav2vec’s IG method. This is a cross-model agreement, as it is the only region flagged by more than one XAI technique.

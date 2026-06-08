@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "Go, code point." Immediately following the word "point," there is a brief, sharp, high-frequency transient sound, lasting approximately 0.1 seconds, which is acoustically distinct from the speech. This transient is characterized by a piercing, synthetic timbre and a frequency content concentrated between 6000 Hz and 7000 Hz, standing out against the otherwise clean and natural speech. The transient is not a natural part of the spoken phrase and does not resemble any typical vocal or environmental artifact. This acoustic anomaly is supported by multiple XAI methods: Integrated Gradients (IG) and LIME both identify the [0.95-1.05] seconds time region, with IG further specifying the [6000-7000] Hz frequency range. The wav2vec model's saliency analysis, while identifying a broader frequency range, also aligns with the timing of the anomaly. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region [0.95-1.05] seconds, [6000-7000] Hz is supported by cross-model agreement between Integrated Gradients and LIME from the wav2vec model, as well as by wav2vec's saliency analysis. This constitutes strong, multi-source evidence for the presence of an anomalous transient at the end of the spoken phrase. The absence of supporting evidence from Hubert, WavLM, and Shapley values for this region suggests that the anomaly is not captured by all models, but the consistency among wav2vec's methods provides high confidence in the identified region.

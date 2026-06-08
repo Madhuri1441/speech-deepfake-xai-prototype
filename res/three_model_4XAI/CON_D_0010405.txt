@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features two male speakers in a conversational exchange, with the first speaker saying, "I hope that the supporters will be with us as they have..." and the second speaker responding, "We have to create a few matches." The recording is of moderate fidelity, with a persistent low-level hiss and a slight room reverberation, suggesting a non-studio environment. The most notable acoustic anomaly occurs between 2.0 and 3.0 seconds, where the audio exhibits a sudden, unnatural drop in high-frequency content (4000–6000 Hz), resulting in a muffled, low-passed quality. This is accompanied by a subtle pitch shift and a loss of natural vocal timbre, which is inconsistent with the rest of the clip. The anomaly is not present in the initial or final segments, indicating a localized artifact. No other obvious audio issues, such as clipping or distortion, are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-3.0] seconds, [4000-6000] Hz). The IG and Saliency methods provide high-resolution localization, while LIME offers a broader but consistent indication. The Hubert and WavLM models do not detect any abnormalities, as their explanations are entirely absent. The Shapley values for spectral features (StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, loudness_sma3_percentile20.0) further support the presence of a localized anomaly, as these features are sensitive to changes in spectral content and voice quality. The convergence of wav2vec’s multiple methods and the Shapley values confirms the anomaly, while the absence of evidence from Hubert and WavLM suggests the artifact is subtle and not universally detected.

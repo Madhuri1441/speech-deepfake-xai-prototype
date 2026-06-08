@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.05] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Got nope's of the decision, I heart to call." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, with a frequency content between 6000–8000 Hz. The tone is steady, unmodulated, and masks the remainder of the speech, making it unintelligible. The abrupt onset and unnatural character of the buzzing strongly suggest an artificial insertion, likely as a result of audio tampering or post-production editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the time interval [1.95-2.05] seconds and frequency range [7000-8000] Hz. The Saliency method further extends the time region to [1.50-2.00] seconds, overlapping with the observed buzzing tone. LIME, another XAI method, identifies a brief region at the start of the audio, but this is not supported by other methods or the acoustic evidence. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on different features or limitations in their analysis. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency artifact. The convergence of wav2vec’s IG and Saliency methods on the buzzing tone, combined with the acoustic observation, provides strong evidence of tampering in the specified time and frequency range.

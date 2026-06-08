@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "The open pump place by net to run up." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 1000 Hz and 4000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the environment or speech and appears abruptly, suggesting it was artificially inserted. The transition between speech and the synthetic tone is abrupt, with no fade or overlap, further indicating post-production editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the time region [1.75-2.0] seconds and frequency region [3000-4000] Hz, Saliency identifies [0.25-0.5] seconds and [1000-3000] Hz, and LIME identifies [1.50-1.75] seconds. These regions collectively point to the synthetic tone as the anomaly, with the strongest agreement on the time interval [1.50-2.0] seconds and frequency range [1000-4000] Hz. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their design or training focus. The Shapley values indicate that the synthetic tone is the dominant feature driving the model’s prediction, with equivalentSoundLevel_dBp showing the highest impact. The combined evidence from wav2vec’s multiple methods and the Shapley values supports the conclusion that the synthetic tone is the primary anomaly in the audio.

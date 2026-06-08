@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "People tended to stay there for some time." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but noticeable anomaly occurs in the frequency range of 4000–6000 Hz during the time interval of 2.0–2.5 seconds. This region is marked by a faint, high-frequency artifact that is not present in the rest of the audio, suggesting a possible digital or synthetic artifact. The anomaly is not perceptible to the human ear but is detectable through spectral analysis. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 4000–6000 Hz frequency range during 2.0–2.5 seconds as the most salient region, indicating a strong model response to this segment. The Saliency method from wav2vec also highlights a different time-frequency region (0.5–1.0 seconds, 2000–4000 Hz), but this is not supported by other models. The LIME method from wav2vec points to 1.75–2.0 seconds, which is close to the IG region but not identical. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is primarily detected by wav2vec. The SHAP values further support the importance of spectral features, particularly spectralFlux_sma3_amean, loudness_sma3_stddevFallingSlope, and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, but do not localize the anomaly to a specific time-frequency region. Overall, the cross-model agreement is limited to wav2vec's IG method, which consistently identifies the 4000–6000 Hz region during 2.0–2.5 seconds as anomalous.

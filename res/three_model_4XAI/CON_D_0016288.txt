@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with no obvious signs of emotional distress or artificiality. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, where the speech segment "ended up times" exhibits a slight pitch instability and a faint, unnatural resonance. This is accompanied by a mild, high-frequency shimmer in the 4000–6000 Hz range, which is not present in the rest of the audio. The anomaly is brief and localized, suggesting a possible digital artifact or manipulation, such as a splice or re-synthesis, rather than a natural vocal variation. No other acoustic irregularities are evident in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this segment. The LIME explanation for wav2vec, however, points to an earlier segment ([0.0-0.1] seconds), which is not corroborated by other methods or models and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models, possibly due to differences in training or feature extraction. The Shap values highlight the importance of the equivalentSoundLevel_dBp feature, which is significantly higher in the anomaly region, supporting the presence of an abnormal acoustic event. Overall, the wav2vec model's IG and Saliency results provide the most reliable evidence for the anomaly, with cross-model agreement limited to wav2vec alone.

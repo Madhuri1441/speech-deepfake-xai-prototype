@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "time is up" in a neutral, slightly formal tone, followed by a male voice saying "tries" and "just read" in a more casual, instructional manner. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until the end of the clip. This tone is centered around 6500 Hz and is acoustically distinct from the speech, lacking any natural harmonic structure or modulation. The sudden onset and unnatural timbre of this tone suggest it is an artificial artifact, likely inserted post-recording. The tone is not present in the original speech and does not correspond to any environmental or technical sound, indicating a deliberate addition.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the abnormality in the frequency range of 6000–7000 Hz and the time range of 2.0–2.5 seconds, which aligns precisely with the observed synthetic buzzing tone. The Saliency method from wav2vec also highlights a region around 1.0–1.2 seconds, but this is less consistent with the main anomaly. The LIME method from wav2vec points to the very beginning of the audio, which is not supported by other evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values further support the presence of an abnormality, with high values for equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, suggesting a significant deviation from normal speech characteristics. The cross-model agreement between wav2vec's IG and the acoustic observation confirms the synthetic tone as the primary anomaly.

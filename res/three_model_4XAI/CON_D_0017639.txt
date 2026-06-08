@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I'm so pleased the show has won a prize." The speech is clear and intelligible, with a neutral, slightly formal tone. However, the initial segment of the audio, specifically from 0.0 to 0.5 seconds, exhibits a subtle but noticeable acoustic anomaly. During this interval, the voice is accompanied by a faint, high-frequency hiss or static, which is not present in the rest of the clip. This hiss is most prominent in the 1000–2000 Hz range, suggesting a possible artifact from digital processing or a low-fidelity recording. The rest of the audio is clean, with no further signs of distortion, clipping, or background noise. The anomaly is isolated to the very beginning of the speech, and the remainder of the utterance is free from such artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time interval (0.0–0.5 seconds) and frequency range (1000–2000 Hz), indicating a high-confidence region of abnormality. The Hubert and WavLM models do not provide any evidence of anomalies, as their explanations are all null. The Shapley values also support the presence of an anomaly in this region, with spectralFlux_sma3_amean and spectralFluxUV_sma3nz_amean showing elevated values, suggesting increased spectral flux and unvoiced segment activity consistent with the observed hiss. The agreement among multiple wav2vec-based methods, combined with the Shapley value evidence, strongly supports the conclusion that the anomaly is localized to the initial segment of the audio.

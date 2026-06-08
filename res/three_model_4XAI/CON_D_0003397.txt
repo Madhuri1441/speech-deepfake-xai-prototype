@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a calm, conversational tone, with a low pitch and clear articulation, suggesting a natural, unscripted delivery. The speech is accompanied by a faint, steady background hiss, likely from the recording equipment or environment. At approximately 1.5 seconds, a distinct, high-frequency, synthetic tone emerges and persists until 2.0 seconds. This tone is sharply defined, with a frequency content between 4000 and 6000 Hz, and is acoustically inconsistent with the preceding speech or ambient noise. The tone is not modulated, does not vary in pitch or amplitude, and stands out as an artificial artifact rather than a natural sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, 4000-6000 Hz). The IG and Saliency methods highlight the synthetic tone as a significant deviation from expected speech patterns, while LIME confirms the temporal localization of the anomaly. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no relevant evidence. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which collectively indicate a sudden change in acoustic characteristics at the identified time and frequency range. The agreement among wav2vec’s XAI methods provides strong evidence for the synthetic tone as the primary anomaly in the audio.

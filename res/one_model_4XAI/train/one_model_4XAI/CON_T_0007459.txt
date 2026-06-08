@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "This is a good performance," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges and persists until 1.5 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically inconsistent with the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital or synthetic origin rather than a natural environmental sound.
+
+The Integrated Gradients (IG) explanation supports this observation, highlighting the [1.0-1.5] seconds time region and [6000-7000] Hz frequency region as critical for the model’s decision, indicating that this segment is a key contributor to the audio’s classification as a deepfake. The Saliency analysis further corroborates this by identifying a [1.75-2.0] seconds time region and [6000-8000] Hz frequency region, which may correspond to the tail end of the artifact or a related synthetic component. The LIME explanation, while pointing to the very beginning of the audio, does not contradict the presence of the artifact but may reflect the model’s sensitivity to initial speech characteristics.
+
+Shapley values provide additional insight: the spectralFlux_sma3_amean feature, which measures the average spectral flux (a proxy for sudden changes in spectral content), has a high positive Shap value, indicating that the artifact’s spectral instability is a major factor in the model’s decision. The StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features also contribute, suggesting that the artifact’s deviation from normal speech patterns and its loudness relative to the background are significant. No other acoustic anomalies are present in the audio, and the artifact is the only region flagged by both audio analysis and XAI methods.

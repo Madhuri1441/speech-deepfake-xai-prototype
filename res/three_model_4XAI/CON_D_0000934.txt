@@ -1,0 +1,13 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a single, clearly articulated phrase spoken by a female voice: "formation campaign conduct." The speech is delivered in a neutral, declarative tone, with a standard North American English accent and no discernible emotional inflection. The recording is of moderate fidelity, with a frequency range focused on the midrange (approximately 100–8000 Hz), and lacks deep bass or extended treble. There are no environmental sounds, music, or other voices present.
+
+At approximately 1.0–1.5 seconds, a subtle but distinct high-frequency artifact emerges, characterized by a sharp, metallic, and slightly distorted sound. This artifact is not present in the original speech and does not correspond to any natural acoustic event. The artifact is brief, lasting about half a second, and is accompanied by a mild, unnatural pitch shift and a harsh, buzzing timbre, suggesting digital manipulation or synthesis. The artifact is not masked by the speech and is clearly audible, indicating it was introduced after the original recording or during post-processing.
+
+No other acoustic anomalies are present in the audio. The speech remains intelligible and undistorted outside the artifact region, and there are no signs of clipping, compression, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time window and the 4000–6000 Hz frequency range, while LIME corroborates the time region with a narrower focus at 1.35–1.45 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no salient regions. The Shapley value analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the artifact region and are not supported by the XAI methods. The wav2vec model’s consistent identification of the artifact region across multiple XAI methods provides strong evidence for the presence of a synthetic or manipulated segment in the audio, specifically between 1.0–1.5 seconds and in the 4000–6000 Hz frequency range.

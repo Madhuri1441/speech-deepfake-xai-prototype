@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a sentence in English: "His father and mother are in film production, which she denied." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The only notable acoustic feature is a brief, high-frequency, synthetic tone that appears abruptly at approximately 4.0 seconds and lasts until 5.0 seconds. This tone is centered in the 3000–6000 Hz range, with a sharp, clean attack and decay, and is acoustically distinct from the speech, suggesting it is an artificial artifact rather than a natural sound. The tone does not interfere with speech intelligibility but is clearly an anomaly in the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [4.0-5.0] seconds time region and [3000-6000] Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to this interval. LIME also supports the [4.0-4.5] seconds window. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, hammarbergIndexV_sma3nz_amean, and loudness_sma3_stddevFallingSlope, which are all related to spectral and loudness characteristics, further supporting the presence of a high-frequency artifact in the specified time range. The cross-model agreement between wav2vec’s methods and LIME confirms the [4.0-5.0] seconds region as the most likely location of the anomaly.

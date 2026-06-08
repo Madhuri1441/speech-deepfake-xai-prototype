@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and muffled utterance that sounds like "draw a go" or "draw a girl," spoken by a child or young adult in a neutral, declarative tone. The recording is of low fidelity, with a persistent background hiss and a low-frequency hum, likely from a consumer-grade microphone or a noisy environment. The utterance is followed by a short, sharp, high-pitched electronic beep, which is abrupt and digitally clipped, suggesting a system notification or error sound. The acoustic environment is dry, with no reverberation or echo, indicating a small, acoustically treated space or close-mic recording.
+
+The most notable acoustic anomaly occurs between 0.25 and 0.4 seconds, where the utterance exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, deviating from the expected smoothness and natural resonance of a human voice. This region is marked by a brief, high-frequency burst and a loss of vocal warmth, consistent with digital manipulation or synthesis. The electronic beep at the end is also highly artificial, with a pure, static tone and no natural decay, further suggesting a synthetic or system-generated sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.25–0.4 second time region and 1000–3000 Hz frequency range using Saliency analysis, which highlights the unnatural pitch drop and metallic timbre. This is the only XAI source that provides a specific region for the anomaly, as both Hubert and WavLM models report no salient regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, suggesting that the anomaly is related to the statistical properties of unvoiced segments in the audio, which may be disrupted by synthetic or manipulated speech. The loudness_sma3_meanFallingSlope and alphaRatioUV_sma3nz_amean features further support the presence of unnatural acoustic transitions and spectral characteristics. The wav2vec Saliency analysis is the primary evidence for the anomaly, with no cross-model agreement, but the Shapley values corroborate the synthetic nature of the audio.

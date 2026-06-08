@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, neutral statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, a subtle but noticeable anomaly occurs between 3.0 and 4.0 seconds, where the voice exhibits a slight pitch and timbre shift, accompanied by a faint, unnatural resonance in the 2500–3500 Hz range. This region is marked by a brief, artificial-sounding vibrato or modulation, which is inconsistent with natural speech and suggests digital manipulation. The anomaly is not immediately obvious to a casual listener but is perceptible upon close scrutiny, especially in the mid-to-high frequency range. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.0-4.0] second region as anomalous, with a frequency focus between 2500–3500 Hz, supported by both Integrated Gradients (IG) and LIME. The saliency analysis from wav2vec also highlights the [0-1] second region, but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of an anomaly in this region, with significant contributions from equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, all of which are characteristic of speech manipulation. The agreement between wav2vec’s IG and LIME, along with the Shapley values, strongly indicates that the [3.0-4.0] second region is the most suspicious part of the audio.

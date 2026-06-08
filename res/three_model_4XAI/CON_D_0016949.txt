@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.8-2.1] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice speaking in a clear, conversational tone, with a natural cadence and no obvious signs of digital manipulation. However, a subtle but noticeable anomaly occurs between 1.8 and 2.1 seconds, where the voice exhibits a brief, unnatural pitch inflection and a slight increase in high-frequency content (4000–7000 Hz). This region is acoustically distinct from the rest of the speech, which is otherwise smooth and consistent. The anomaly is not accompanied by any background noise, artifacts, or abrupt transitions, suggesting it is a localized, possibly synthetic modification rather than a recording flaw.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [1.0–2.0] and [1.8–2.0] second intervals, respectively, with a corresponding frequency range of 5000–7000 Hz and 4000–5000 Hz, indicating heightened sensitivity to this region. LIME further corroborates this by highlighting the [2.0–2.1] second window. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec results are consistent across multiple XAI methods, strengthening confidence in the anomaly’s location. The Shapley values, while not directly tied to time or frequency, suggest that features related to unvoiced segment length and loudness are contributing to the model’s decision, which may reflect the presence of an atypical acoustic event in the highlighted region.

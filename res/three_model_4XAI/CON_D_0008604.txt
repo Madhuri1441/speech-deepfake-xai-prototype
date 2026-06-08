@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering a formal statement in English. The speech is intelligible and lacks any signs of emotional distress, hesitation, or unnatural pacing. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, in the 2000–4000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it may be an insertion or editing artifact. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds in the 2000–4000 Hz range using Integrated Gradients (IG), and also highlights a region at [0.9-1.1] seconds in the 4000–5000 Hz range using Saliency. LIME further supports the [2.9-3.0] seconds region, though this is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME results are absent for these models. The SHAP analysis does not directly indicate the artifact but instead points to acoustic features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and equivalentSoundLevel_dBp, which are not directly linked to the observed artifact. The most consistent and cross-model supported region is [1.5-2.0] seconds, primarily identified by wav2vec’s IG and Saliency methods.

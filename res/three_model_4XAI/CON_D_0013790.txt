@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase: "They are the innocent victims, but not chosen before September." The speech is generally intelligible, with a steady pitch and natural cadence. However, a subtle but noticeable anomaly occurs between 1.0 and 1.5 seconds, where the audio exhibits a brief, unnatural pitch shift and a slight distortion in the mid-to-high frequency range (3000–4000 Hz). This region is marked by a momentary break in the speaker’s voice, with a faint, artificial-sounding artifact that does not align with the natural speech flow. The anomaly is not accompanied by any background noise or environmental cues, suggesting it is an isolated digital artifact rather than a recording flaw. The Shapley values for StddevUnvoicedSegmentLength, mfcc3V_sma3nz_amean, and spectralFlux_sma3_amean further support the presence of an abnormality in this region, as these features are sensitive to abrupt changes in speech characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the [1.0-1.5] seconds time range and [3000-4000] Hz frequency range is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model identifies this region as significant, and the Saliency method from the same model also highlights the [0.0-0.5] seconds range, which overlaps with the anomaly. The Shapley values for StddevUnvoicedSegmentLength, mfcc3V_sma3nz_amean, and spectralFlux_sma3_amean corroborate the presence of an abnormality in this region. The Hubert and WavLM models do not provide supporting evidence, but the cross-model agreement between wav2vec’s IG and Saliency methods strengthens the conclusion. Thus, the final abnormality region is determined by cross-model agreement from wav2vec.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, and slightly muffled utterance, "still for a be," spoken by a female voice in a neutral, conversational tone. Immediately following this, a sharp, high-frequency click or pop is heard at approximately 0.1 seconds, lasting about 0.1 seconds. This click is acoustically distinct from the speech, with a frequency content concentrated between 4000 and 5000 Hz, and is not present in the original voice or any natural background. The click is abrupt, lacks any reverberation or environmental context, and stands out as an artifact rather than a natural part of the audio. No other obvious anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 0.1–0.2 seconds and 4000–5000 Hz is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) and LIME both identify this region as significant, with IG highlighting the frequency band and LIME the time interval. The wav2vec model's Saliency also identifies a different region (0.7–0.8 seconds, 2000–4000 Hz), but this is not corroborated by other models and is not supported by the audio evidence. The Hubert and WavLM models do not provide any supporting evidence for this region. The SHAP analysis does not directly reference the click, but the high Shap value for equivalentSoundLevel_dBp suggests the presence of an anomalous sound event that increases overall loudness, which aligns with the click. Thus, the click at 0.1–0.2 seconds and 4000–5000 Hz is the most strongly supported abnormality, with cross-model agreement from wav2vec’s IG and LIME.

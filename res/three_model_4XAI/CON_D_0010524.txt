@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying, “So I did the big premises.” The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.25 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio but appears abruptly, suggesting a digital manipulation or insertion. The voice continues unaffected, indicating the artifact is not part of the original recording but rather an overlay or post-processing artifact.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [0.75-1.25] second time region and [4000-6000] Hz frequency region as salient. This aligns with the observed synthetic artifact in the audio. The wav2vec Saliency analysis also highlights a different region ([0.00-0.25] seconds, [1000-3000] Hz), but this does not correspond to any clear anomaly in the audio and is likely a model-specific artifact. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values for features like equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean do not directly point to the artifact but may reflect changes in the audio’s acoustic properties due to the overlay. Overall, the wav2vec IG analysis provides the most reliable evidence for the abnormality, supported by the direct observation of the synthetic artifact in the audio.

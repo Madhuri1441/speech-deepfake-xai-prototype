@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "police" in a standard North American accent, followed by a brief pause. The speaker then continues with "that clubs could be," but the word "clubs" is abruptly cut off mid-syllable, with no natural fade or vocal decay. Immediately after, the speaker says "However," with a slight rise in pitch and a more formal tone, but the word "However" is also truncated mid-syllable, with no natural ending. The audio ends with a sharp, unnatural cutoff, leaving no residual sound or room tone. This abrupt termination is acoustically inconsistent with natural speech and suggests an artificial edit or digital manipulation. The frequency content in the abnormal region (3000–7000 Hz) is dominated by the mid-to-high frequencies of the truncated speech, with no evidence of background noise or environmental sound, further supporting the artificial nature of the edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: a saliency region at [2.0-2.5] seconds and an IG region at [3.0-3.5] seconds, both within the frequency range of 3000–7000 Hz. These regions correspond to the abrupt truncation of the words "clubs" and "However," respectively. The wav2vec saliency and IG explanations are consistent with each other and with the observed acoustic anomaly. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values highlight features such as StddevUnvoicedSegmentLength and loudness_sma3_stddevFallingSlope, which are associated with the unnatural speech transitions and abrupt cutoffs. The wav2vec saliency and IG regions are the only ones supported by multiple XAI sources, and their alignment with the audio strongly supports the conclusion of an artificial edit.

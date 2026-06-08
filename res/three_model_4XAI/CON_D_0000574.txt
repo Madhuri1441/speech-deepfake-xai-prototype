@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.8-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "We have achieved one," followed by a brief pause and then the word "the blame." The speech is delivered in a controlled, emotionally flat manner, with no background noise or environmental cues, suggesting a studio or digitally generated setting. Immediately after the word "the," a sharp, synthetic, high-frequency electronic tone abruptly appears, lasting for about 0.7 seconds. This tone is acoustically distinct from the speech, with a piercing, static timbre and no natural decay, strongly indicating digital insertion or post-production editing. The tone is centered in the mid-to-high frequency range (1000–4000 Hz), and its sudden onset and offset are unnatural compared to typical speech or environmental sounds. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [2.8-3.5] seconds time region and the [1000-4000] Hz frequency range as salient, indicating that the model attributes the classification decision to this segment. The LIME explanation for wav2vec also points to a brief region around [1.0-1.1] seconds, which may correspond to the transition between the two spoken words, but this is less consistent with the observed electronic tone. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values further support the importance of the loudness features in the [1000-4000] Hz range, reinforcing the acoustic abnormality. Overall, the wav2vec model's consistent identification of the electronic tone region provides strong cross-model agreement for the anomaly.

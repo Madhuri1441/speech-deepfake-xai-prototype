@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, controlled recording environment. At approximately 1.0 seconds, a female voice clearly says, "continue into hostility," with the word "hostility" pronounced in a neutral, declarative tone. The speech is clean, with no background noise or distortion, and the acoustic environment is dry, lacking reverberation or echo. Immediately following the spoken phrase, a sharp, high-frequency click or pop is heard, lasting less than 0.1 seconds. This click is acoustically distinct from the speech, with a frequency content centered around 3000–4000 Hz and a transient, percussive quality. The click is not a natural part of the speech or environment and is likely an artifact introduced during editing or digital processing. No other anomalies, such as clipping, distortion, or abrupt volume changes, are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, with LIME further supporting the [1.25-1.30] seconds sub-region. These findings align with the observed high-frequency click following the spoken phrase. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which may reflect the presence of the click, but these are not directly tied to the specific time or frequency region. Overall, the wav2vec model's multiple XAI methods consistently identify the click as the anomaly, while other models do not detect it.

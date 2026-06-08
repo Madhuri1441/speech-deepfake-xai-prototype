@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "I then attended yesterday. This could happen." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a distinct, high-frequency electronic tone emerges and persists until the end of the audio. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the voice, suggesting it is an added artifact rather than a natural part of the recording. The tone is steady and unmodulated, resembling a synthetic beep or alert, and does not interact with the speech in any way. There are no other notable acoustic anomalies, such as clipping, distortion, or abrupt volume changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (0.5–1.0 seconds, 7000–8000 Hz), which does not align with the observed tone. LIME also points to a brief interval (1.0–1.1 seconds) but does not specify frequency. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is consistent with the presence of a high-frequency tone. The wav2vec IG result is the only one that directly supports the observed tone, and there is no cross-model agreement. Thus, the final abnormality region is based on wav2vec IG evidence, with no support from other models.

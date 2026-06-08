@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "She received a paper in treason," followed by a brief, artificial-sounding round of applause. The speech is clear and intelligible, but the applause is highly suspicious: it is unnaturally uniform, lacks the natural variation of real applause, and is abruptly cut off. The most notable acoustic anomaly occurs between 1.0 and 1.5 seconds, where the applause exhibits a sharp, high-frequency peak in the 4000–6000 Hz range. This is inconsistent with genuine audience reactions, which typically have a broader, more diffuse frequency profile. The wav2vec model’s Integrated Gradients (IG) analysis highlights this specific time-frequency region as a key contributor to its deepfake prediction, indicating that the model identifies this unnatural acoustic feature as a sign of manipulation. No other XAI methods or models corroborate this finding, and no other audio anomalies are evident.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the time-frequency region [1.0-1.5] seconds and [4000-6000] Hz as the most suspicious, with no supporting evidence from the Hubert or WavLM models. The Shapley values also point to acoustic features related to unvoiced segments and spectral slope, but these do not localize to a specific time-frequency region. Thus, the final abnormality is based solely on wav2vec’s IG evidence, with no cross-model agreement.

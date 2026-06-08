@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched male voice speaking in a neutral, formal tone, with no background noise or environmental sounds. The speech is clear and intelligible, with no signs of digital compression or distortion. However, at approximately 3.5–4.1 seconds, there is a subtle but noticeable anomaly: the voice exhibits a slight pitch and timbral shift, accompanied by a faint, unnatural resonance, which is inconsistent with the rest of the speech. This region is marked by a brief, high-frequency artifact (2000–4000 Hz) that does not align with the speaker’s natural vocal characteristics. The anomaly is not present in the surrounding speech, suggesting a localized manipulation or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [3.5-4] seconds time range and [2000-3000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights the [0-1] seconds region, which is unrelated to the observed anomaly. LIME analysis from wav2vec further supports the [4.0-4.1] seconds region, aligning with the observed pitch and resonance shift. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by these models. The SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean are all positive, suggesting increased energy and spectral changes in the anomaly region, which supports the presence of an artificial insertion. Overall, the wav2vec model’s IG and LIME analyses provide cross-model agreement on the [3.5-4.1] seconds region, while Hubert and WavLM do not detect the anomaly.

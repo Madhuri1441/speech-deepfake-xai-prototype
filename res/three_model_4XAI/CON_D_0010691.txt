@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice delivering a short, neutral statement: "participate as a member of the defending his career in running last." The speech is clear and intelligible, with a monotone, slightly robotic cadence and a subtle, persistent background hiss. At approximately 1.5–2.0 seconds, there is a noticeable, unnatural pitch drop and a brief, abrupt change in timbre, coinciding with the word "participate." This moment is acoustically anomalous, as the voice exhibits a sudden, unnatural lowering of pitch and a harsh, digital quality, deviating from the otherwise smooth and consistent vocal texture. The frequency region [4000-6000] Hz is particularly affected, with a marked increase in high-frequency energy and a loss of natural vocal harmonics, suggesting a digital artifact or manipulation. No other obvious audio artifacts, such as clipping or distortion, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as abnormal using Integrated Gradients (IG), while Saliency and LIME also point to the same time region, though with slightly different frequency ranges. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values further support the presence of an anomaly in this region, with features such as slopeUV0-500_sma3nz_amean and loudness_sma3_percentile20.0 showing significant deviation. The cross-model agreement from wav2vec’s IG, Saliency, and LIME, along with the Shapley values, strongly supports the conclusion that the audio is manipulated in the [1.5-2.0] seconds interval.

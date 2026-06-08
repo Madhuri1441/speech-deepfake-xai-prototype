@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "brought too much work" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 0.6 seconds. This artifact is characterized by a piercing, metallic timbre in the 5000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any expected vocal or environmental sound. The artifact is abrupt, with a sudden onset and offset, and is not present in the surrounding speech. This anomaly is not masked by the voice and is perceptually jarring, suggesting a possible digital editing error or audio corruption.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [0.4-0.6] seconds time region and [5000-7000] Hz frequency region as salient. This aligns with the observed transient artifact in the audio. The wav2vec model's Saliency analysis also highlights a region at [0.85-1.0] seconds, but this does not correspond to any clear acoustic anomaly and may be a secondary artifact or noise. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean suggest that the audio contains atypical acoustic properties, but these do not directly pinpoint the artifact. Overall, the wav2vec IG analysis provides the most robust and cross-validated evidence for the abnormality, supported by the perceptual observation of the transient artifact.

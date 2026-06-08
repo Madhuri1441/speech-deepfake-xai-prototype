@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, low-frequency hum, followed by a short, muffled utterance that sounds like "busy, the journey." The speech is low in volume, slightly distorted, and lacks natural reverberation or environmental cues, suggesting it was artificially generated or heavily processed. The most notable acoustic anomaly occurs between 0.2 and 0.4 seconds, where a sharp, high-frequency transient is present, peaking in the 1500–3000 Hz range. This transient is abrupt, unnatural, and does not match the expected acoustic profile of human speech, indicating a possible artifact from digital synthesis or editing. The rest of the audio is dominated by a low-frequency hum and a persistent background hiss, with no further speech or environmental sounds. The overall quality is low, with a limited frequency range and a lack of dynamic variation, further supporting the hypothesis of synthetic or manipulated audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.2–0.4 second range with a frequency focus of 1500–3000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a region at 0.7–0.8 seconds, but this is less consistent with the observed transient. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not detected by these models. The SHAP analysis identifies three features—equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope—with positive contributions, but these do not directly pinpoint the transient. The wav2vec model’s IG and Saliency evidence, both pointing to the same time and frequency range, provide the strongest cross-model agreement for the observed anomaly.

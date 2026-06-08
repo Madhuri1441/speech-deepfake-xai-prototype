@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, conversational tone, but at approximately 1.0 seconds, a sudden and unnatural shift occurs. The voice becomes distorted, with a metallic, robotic timbre and a pronounced high-frequency resonance between 4000-6000 Hz, which is not present in the rest of the audio. This artifact is most prominent between 1.0 and 2.0 seconds, after which the voice returns to its original quality. The abruptness and unnatural frequency content of this segment strongly suggest a digital manipulation or deepfake artifact, likely introduced during voice synthesis or post-processing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-2.0] seconds, [4000-6000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values for acoustic features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and slopeUV0-500_sma3nz_amean are not directly linked to the observed artifact, suggesting that the anomaly is not captured by these global acoustic features. The cross-model agreement from wav2vec confirms the presence of a deepfake artifact in the specified region.

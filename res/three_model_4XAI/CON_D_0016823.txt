@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.3-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or device handling. The main content is a single, low-pitched, monotone utterance of the phrase "beam and day opinion of the," spoken by a synthetic-sounding voice with a flat, robotic cadence and no emotional inflection. The voice is highly processed, with a distinctly artificial timbre and unnatural pitch transitions, lacking the subtle vibrato and dynamic range of a human speaker. At approximately 0.3–0.4 seconds, a sharp, high-frequency transient spike occurs, peaking in the 4000–5000 Hz range. This transient is abrupt, digitally clipped, and does not correspond to any natural speech event, suggesting a digital artifact or editing error. The remainder of the audio is dominated by the synthetic voice, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the transient spike at 0.3–0.4 seconds in the 4000–5000 Hz range as the most salient region, supported by both Integrated Gradients (IG) and Saliency methods. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and equivalentSoundLevel_dBp, but these do not directly correspond to the transient spike and instead reflect broader acoustic properties of the audio. The wav2vec evidence is the only one that aligns with the observed transient, and thus, the final abnormality is based on cross-model agreement from wav2vec alone.

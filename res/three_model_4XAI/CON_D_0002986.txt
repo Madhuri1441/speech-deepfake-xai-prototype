@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, monotone voice, speaking in a formal, declarative style. The speech is clear and intelligible, with no background noise or environmental sounds, indicating a controlled recording environment. The most notable acoustic anomaly occurs between 3.0 and 4.0 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a high-frequency resonance in the 6000–8000 Hz range. This region is marked by a loss of natural vocal warmth and a mechanical, synthetic quality, suggesting digital manipulation or deepfake generation. The abruptness and unnaturalness of this transition are inconsistent with typical human speech patterns, and the spectral characteristics point to an artifact introduced during voice synthesis or post-processing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 3.0–4.0 second region as anomalous, with a frequency focus of 6000–8000 Hz, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a related region (1–2 seconds, 1000–2000 Hz), but the 3.0–4.0 second region is more strongly supported by multiple XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values further support the presence of synthetic characteristics, with high values for spectralFlux_sma3_amean and StddevUnvoicedSegmentLength, which are indicative of unnatural spectral transitions and segment length irregularities. Overall, the wav2vec model’s cross-method agreement provides the strongest evidence for the anomaly, while other models and Shapley values corroborate the synthetic nature of the audio.

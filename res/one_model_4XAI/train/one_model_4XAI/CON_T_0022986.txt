@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Critical was was great," in a neutral, conversational tone. Immediately following the word "great," there is a sudden, sharp, high-frequency electronic tone that lasts for about half a second. This tone is acoustically distinct from the speech, with a piercing, synthetic quality and a frequency content in the 4000–6000 Hz range, which is not present in the speech itself. The tone is abrupt and unnatural, suggesting it was artificially inserted rather than occurring naturally in the environment.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) method highlights a significant contribution in the [1.00-1.50] seconds time range and [4000-6000] Hz frequency region, indicating that this segment is critical to the model’s classification of the audio as a deepfake. The Saliency method also identifies a region around [0.25-0.5] seconds, which corresponds to the end of the word "great" and the onset of the electronic tone, further supporting the presence of an anomaly. The LIME method, while less precise, also points to a brief interval around [1.25-1.30] seconds, aligning with the timing of the tone. The Shapley values for spectral features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and shimmerLocaldB_sma3nz_amean further reinforce the presence of an unnatural, high-frequency artifact in this region, as these features are sensitive to sudden changes in sound energy and spectral content.
+
+In summary, the audio contains a conspicuous, high-frequency electronic tone inserted immediately after the spoken phrase, which is supported by multiple XAI methods as a region of abnormality. The tone is acoustically inconsistent with the speech and is likely an artifact introduced during deepfake generation.

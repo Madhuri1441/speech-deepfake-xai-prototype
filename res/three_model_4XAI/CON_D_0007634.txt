@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 1.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.6 seconds. This artifact is characterized by a brief, unnatural burst of energy in the 3000–5000 Hz range, which is acoustically inconsistent with the surrounding speech. The artifact is not present in the original voice signal and does not correspond to any natural speech or environmental sound, suggesting it is an artificial insertion or modification. This anomaly is supported by multiple XAI methods: the wav2vec model’s Integrated Gradients (IG) highlights this time-frequency region, and the Saliency method also identifies a related high-frequency burst at 2.0–2.1 seconds, indicating a consistent focus on this acoustic anomaly. The LIME explanation for wav2vec at 0.0–0.1 seconds is less relevant, as it does not align with the main artifact. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values do not directly reference this time-frequency window, but the spectral flux features may indirectly relate to the presence of such transients.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the 1.4–1.6 seconds time window and the 3000–5000 Hz frequency range as anomalous, providing cross-model agreement for this region. The LIME explanation for wav2vec at 0.0–0.1 seconds is not aligned with the main artifact and is therefore less relevant. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values do not directly reference this time-frequency window, but the spectral flux features may indirectly relate to the presence of such transients.

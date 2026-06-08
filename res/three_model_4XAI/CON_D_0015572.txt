@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low, steady hum and a faint high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a male voice says "chaos," with a clear, neutral tone and no emotional inflection. Immediately following this, at around 1.5 seconds, a sharp, high-pitched electronic beep is heard, lasting about 0.1 seconds. This beep is distinctly artificial, with a pure sine-wave character and no natural acoustic decay, standing out against the otherwise subdued background. The beep is not a natural part of speech or environmental noise, and its sudden appearance and unnatural timbre suggest it is an inserted artifact, likely added post-recording. The remainder of the audio continues with the male speaker, maintaining a consistent, calm delivery and no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the region [1.0-1.5] seconds and [2000-6000] Hz as suspicious, with IG, Saliency, and LIME all pointing to this time-frequency window. The LIME explanation specifically highlights the 0.5-0.6 second region, which aligns with the onset of the beep. The wav2vec model’s multiple independent explanations converge on the same region, indicating a strong cross-model agreement. The Hubert and WavLM models do not provide any explanations, suggesting they did not detect anomalies in this segment. The Shap values for slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope further support the presence of an anomaly in this region, as they reflect changes in sound level and spectral characteristics consistent with the beep’s introduction. Overall, the evidence from wav2vec and Shap values strongly supports the presence of an artificial beep in the audio, with no corroborating evidence from other models.

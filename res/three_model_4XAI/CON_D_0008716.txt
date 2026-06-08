@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "conduct as one do" in a standard North American accent, with no background noise or distortion. The speech is intelligible and natural, but at approximately 1.5 seconds, a sudden, high-frequency, synthetic buzzing artifact appears. This artifact is sharply defined, lasting about 0.25 seconds, and is centered in the 4000–6000 Hz range, which is acoustically distinct from the voice’s fundamental frequency and harmonics. The buzz is not present in the original speech and does not resemble any natural sound, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech without further anomalies. This brief, unnatural buzz is the only clear acoustic abnormality in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.50–1.75 second time window and 4000–6000 Hz frequency range as salient, indicating that this region is critical for the model’s prediction. The LIME explanation for wav2vec, however, points to an earlier time window (0.0–0.1 seconds), which is inconsistent with the observed buzz and likely reflects a different aspect of the audio. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which may relate to the overall audio quality but do not specifically point to the buzz. The cross-model agreement between wav2vec’s IG and Saliency methods supports the conclusion that the buzz is a significant anomaly, while the lack of agreement from Hubert and WavLM suggests that the anomaly is not universally detected.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched, synthetic-sounding female voice saying, "Play for my put on the internet." The speech is monotonous, with a flat intonation and a slightly robotic timbre, lacking natural vocal inflections and breath sounds. At approximately 1.4–1.6 seconds, there is a subtle but noticeable pitch and amplitude shift in the word "put," which is acoustically anomalous compared to the rest of the utterance. This moment is marked by a brief, unnatural pitch rise and a slight increase in loudness, deviating from the otherwise steady vocal delivery. The frequency content in this region is concentrated between 2000–3000 Hz, corresponding to the midrange of the voice, and the abrupt change in pitch and loudness is not typical of natural speech. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.4-1.6] seconds with a frequency range of [2000-3000] Hz using Integrated Gradients (IG), and the Saliency method highlights a different region ([0.5-1.0] seconds, [6000-7000] Hz), which does not align with the observed acoustic anomaly. LIME from wav2vec also supports the [0.75-1.25] seconds region, overlapping with the anomalous moment. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent. The SHAP analysis highlights acoustic features such as loudness_sma3_meanFallingSlope and StddevUnvoicedSegmentLength, which are not directly tied to the observed pitch shift but may reflect underlying synthetic characteristics. The wav2vec IG and LIME results are the only ones that align with the acoustic anomaly, indicating that the wav2vec model is the primary source of evidence for the abnormality.

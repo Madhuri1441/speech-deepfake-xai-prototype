@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "been treated," followed by a brief pause and then "build up now." Immediately after the word "now," a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is acoustically distinct from the speech, with a stable pitch and amplitude, and no modulation or environmental context. The tone is not present in the original speech and appears to be artificially inserted, indicating a possible tampering or editing artifact. The sudden onset and unnatural character of the tone suggest it is not a natural part of the recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the abnormality in the frequency range of 2000–4000 Hz during the 1.0–1.2 seconds time window, which aligns with the onset of the electronic tone. The wav2vec model's Saliency analysis also highlights a region at 1.5–2.0 seconds in the 4000–6000 Hz range, which may correspond to the tail or residual energy of the tone. The wav2vec LIME analysis further supports the presence of an anomaly at 0.5–0.6 seconds, likely reflecting the transition from speech to the tone. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no regions. The SHAP analysis identifies features such as StddevUnvoicedSegmentLength and mfcc1_sma3_amean, which are consistent with the presence of an abrupt, non-speech sound, further supporting the conclusion that the electronic tone is an anomaly. The wav2vec model's multiple independent analyses (IG, Saliency, and LIME) consistently point to the same time and frequency region, indicating strong cross-model agreement on the abnormality.

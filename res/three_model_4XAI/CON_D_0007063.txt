@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a conversational tone, but at approximately 0.5 seconds, a sudden, unnatural shift occurs. The voice becomes distorted, with a harsh, metallic timbre and a pronounced high-frequency resonance between 3000–4000 Hz, which is not present in the rest of the recording. This distortion is accompanied by a loss of natural speech articulation, making the phrase "It's problem is that kids could always have it in from" difficult to understand. The abnormality persists until about 1.0 seconds, after which the audio returns to its original, intelligible state. This abrupt change is not typical of natural speech and suggests digital manipulation or a synthetic artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 0.5–1.0 second time region and 3000–4000 Hz frequency range as the most salient, indicating that this segment is critical for the model's prediction. The LIME explanation for wav2vec, however, points to an earlier segment (0.0–0.1 seconds), which is not supported by the other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is specifically detected by wav2vec. The Shapley values further support the importance of the abnormal segment, with features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean showing high contributions, likely due to the sudden change in speech characteristics. Overall, the wav2vec model's IG and Saliency methods agree on the abnormal region, while other models and methods do not provide supporting evidence.

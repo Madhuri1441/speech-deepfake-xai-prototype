@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Challenging, nice" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but notable acoustic anomaly occurs in the latter part of the utterance, specifically from 0.5 to 1.2 seconds. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural shimmer, which is not typical of natural human speech. This is accompanied by a high-frequency artifact in the 2000–8000 Hz range, suggesting possible digital processing or synthesis. The anomaly is not present in the initial part of the utterance, indicating a localized change in the audio signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in two overlapping regions: an IG saliency region from 0.5–1.0 seconds and a Saliency region from 1.0–1.2 seconds, both in the 2000–6000 Hz and 5000–8000 Hz frequency bands, respectively. These regions align closely with the observed acoustic abnormality in the audio. The LIME explanation for wav2vec, however, points to an earlier time (0.0–0.1 seconds), which does not correspond to the observed anomaly and is likely a false positive. The Hubert and WavLM models do not provide any saliency or IG explanations, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, which may reflect changes in the audio’s acoustic properties, but do not directly localize the anomaly. Overall, the wav2vec model’s IG and Saliency regions provide the most consistent and supported evidence for the anomaly, with cross-model agreement limited to wav2vec alone.

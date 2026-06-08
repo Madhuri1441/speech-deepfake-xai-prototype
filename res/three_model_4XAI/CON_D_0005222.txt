@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and intelligible speech. The first phrase, "This is come query," is delivered smoothly and naturally. However, at approximately 0.5 seconds, the audio quality abruptly deteriorates: the voice becomes muffled, pitch and timbre shift unnaturally, and the speech loses its natural cadence. This change persists until about 1.5 seconds, after which the audio returns to its original clarity. The most prominent acoustic abnormality is a noticeable pitch drop and increased spectral energy in the 2000–4000 Hz range, consistent with digital manipulation or deepfake generation. The speech content itself remains intelligible, but the unnatural vocal quality and abrupt transition suggest an artificial edit or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] second time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and also highlights a brief [0.0-0.2] second region with Saliency. LIME further supports the [0.5-0.6] second region. These multiple, independent XAI methods converge on the same time and frequency region, indicating strong cross-model agreement. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values for StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean further corroborate the presence of unnatural speech characteristics in the affected region, aligning with the observed pitch and spectral changes.

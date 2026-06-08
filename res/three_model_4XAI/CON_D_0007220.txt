@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering the sentence: "This is the version where they didn't win their case." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The voice is steady, with natural intonation and no signs of emotional stress or artificiality. However, at approximately 2.5–3.0 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency, synthetic-sounding artifact overlays the speech. This artifact is not a natural part of the voice or environment and is perceptible as a faint, high-pitched, digital "click" or "pop" that lasts less than half a second. The frequency range of this artifact is 4000–6000 Hz, which is outside the typical speech spectrum and does not correspond to any natural vocal or environmental sound. This anomaly is not present in the original speech and is likely the result of digital editing or a synthetic overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 2.5–3.0 seconds in the 4000–6000 Hz range using Integrated Gradients (IG), which is supported by Saliency and LIME methods, all pointing to the same time and frequency region. The Hubert and WavLM models do not detect any anomaly, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values for acoustic features (slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, jitterLocal_sma3nz_amean) do not directly indicate the anomaly, as they reflect general speech characteristics rather than localized artifacts. The cross-model agreement from wav2vec-based methods provides strong evidence for the presence of a synthetic or edited segment in the audio, specifically in the 2.5–3.0 second interval.

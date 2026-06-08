@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "She'd... we have nothing to hide. Three miles separating them." The recording is of high fidelity, with no background noise or distortion. However, a subtle anomaly is present in the word "hide," specifically between 1.5 and 2.0 seconds. During this interval, the spectral energy in the 4000–6000 Hz range is unusually elevated, deviating from the expected acoustic profile of a natural human voice. This high-frequency energy is not typical for speech and may indicate digital manipulation or an artifact introduced during synthesis. The anomaly is not perceptible to the human ear but is detectable through spectral analysis. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly broader [1-2] seconds interval and [3000-5000] Hz range. LIME analysis further corroborates the anomaly at [3.0-3.1] seconds, though this is less consistent with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the anomaly is related to the statistical properties of unvoiced segments in the audio. Overall, the wav2vec model’s IG and Saliency analyses provide the strongest and most consistent evidence for the abnormality, with LIME offering partial support.

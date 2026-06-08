@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "The house would have to buy me." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 4000 Hz, and is acoustically distinct from the voice, lacking any natural reverberation or environmental context. The abrupt onset and unnatural timbre of this tone suggest it is an artificial overlay, likely inserted post-recording. The voice remains unaffected by the tone, indicating it was not present during the original recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) that does not align with the observed synthetic tone. The LIME method also points to the [1.5, 1.6] seconds region, which is close to the onset of the synthetic tone but less precise. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shap values indicate that the synthetic tone is the dominant feature, with the equivalentSoundLevel_dBp value being significantly higher than the original, supporting the presence of an artificial overlay. The cross-model agreement between wav2vec’s IG and the observed synthetic tone confirms the abnormality, while other XAI evidence is either inconsistent or absent.

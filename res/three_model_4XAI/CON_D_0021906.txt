@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "deny the forces" in a controlled, studio-like environment. The speech is intelligible, with no background noise or distortion, and the acoustic profile is consistent with a high-quality recording. However, at approximately 0.8–1.2 seconds, a sudden, high-frequency, synthetic tone emerges. This tone is sharply defined, with a frequency content between 4000–6000 Hz, and is distinctly artificial, lacking any natural acoustic decay or environmental interaction. The tone is not present in the original speech and appears abruptly, suggesting it is an added artifact rather than a natural part of the recording. This synthetic tone is the only notable acoustic anomaly in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the synthetic tone as the primary anomaly, with IG highlighting the 0.8–1.2 second time region and 4000–6000 Hz frequency range. Saliency analysis from wav2vec also points to a brief, high-frequency event at 0.1–0.2 seconds, but this is not corroborated by other models or the audio itself, and is likely a spurious detection. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values indicate that the synthetic tone is the dominant feature driving the model’s prediction, with the slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp features showing strong positive contributions, further supporting the presence of an artificial, high-frequency event. The agreement between wav2vec’s IG and the Shapley values confirms the synthetic tone as the primary anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly is not universally detected across all models.

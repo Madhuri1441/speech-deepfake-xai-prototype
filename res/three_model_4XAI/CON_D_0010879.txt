@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, emotionally neutral statement: "to be and proud of that, but it was also my biggest disappointment." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.5 and 3.0 seconds, specifically in the 6000–7000 Hz range. This artifact is not present in the original speech and does not correspond to any natural speech or environmental sound, suggesting it is an artificial insertion. The rest of the audio is clean and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.5-3.0] seconds with a frequency range of [6000-7000] Hz using Integrated Gradients (IG), and the same region is supported by Saliency and LIME, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, likely due to their different training objectives or architectures. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and slopeUV0-500_sma3nz_amean, but these do not directly correspond to the observed artifact and are not region-specific. The wav2vec-based XAI evidence is robust and consistent, confirming the presence of an artificial anomaly in the specified time and frequency range.

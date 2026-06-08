@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "There was not that this for the majors." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no signs of digital manipulation, clipping, or unnatural pauses. However, a subtle anomaly is present in the high-frequency region (4000–6000 Hz) during the time interval [0.5–1.0] seconds, corresponding to the end of the word "majors." This region exhibits a faint, unnatural tonal quality, possibly due to a minor digital artifact or residual encoding noise, though it does not disrupt intelligibility or rhythm. No other acoustic irregularities are observed in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [0.5–1.0] seconds, [4000–6000] Hz region as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. This region aligns with the observed high-frequency anomaly at the end of the word "majors." The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not strongly detected by these models. The Shapley values further support the importance of the high-frequency segment, with StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp contributing to the model’s focus on this region. The LIME explanation for wav2vec at [1.5–1.6] seconds is not supported by other XAI methods and does not correspond to any observable anomaly in the audio. Thus, the final abnormality region is determined by cross-model agreement from wav2vec’s IG and Saliency methods, with additional support from Shapley values.

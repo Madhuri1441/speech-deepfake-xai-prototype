@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding male voice saying "rigorous," followed by a female voice saying "interest" in a neutral, conversational tone. At approximately 1.5 seconds, a sudden, unnatural shift occurs: the female voice continues with "by a dramatic decline," but the delivery becomes robotic, monotone, and lacks natural intonation or breath. This vocal change is accompanied by a harsh, high-frequency digital artifact in the 4000–6000 Hz range, which is not present in the initial speech. The artifact is consistent with a digital glitch or abrupt model transition, and the voice’s unnatural cadence suggests a synthetic or deepfake origin. The audio ends abruptly after this segment, with no fade-out or natural conclusion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) that does not align with the observed artifact. LIME also supports the [1.5-2.0] seconds region, though with a slightly narrower window ([1.8-2.0] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a sudden, unnatural change in the audio’s spectral and dynamic properties. The cross-model agreement between wav2vec and LIME supports the conclusion that the abnormality is localized to the [1.5-2.0] seconds region, with the high-frequency artifact being the most salient feature.

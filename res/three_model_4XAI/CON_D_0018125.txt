@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, speaking in English with a non-native accent. The recording is of high fidelity, with no background noise or distortion. The speech is continuous and intelligible, with no abrupt changes in pitch, volume, or timbre. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable shift in the acoustic texture of the voice, specifically in the high-frequency region (4000–6000 Hz). This region is marked by a slight increase in spectral energy and a change in the perceived brightness of the voice, which is not present in the rest of the clip. This anomaly is not accompanied by any change in speech content, rhythm, or emotional tone, suggesting a possible synthetic or manipulated segment.
+
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify this 1.5–2.0 second region as the most salient, with a strong focus on the 4000–6000 Hz frequency band. The LIME method also supports this region, albeit with a narrower focus at 2.3–2.4 seconds, which overlaps with the wav2vec findings. The wav2vec model’s attention to this region is consistent across multiple XAI methods, indicating a robust and cross-validated detection of the anomaly. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models, possibly due to differences in their training or feature extraction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients, Saliency, and LIME methods all agree on the 1.5–2.0 second time range and 4000–6000 Hz frequency range as the most suspicious region. This cross-model agreement strengthens the evidence for an acoustic anomaly in this segment. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is not universally detected across all models. The Shapley values for spectral features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly in this region, as these features are associated with changes in voice texture and spectral characteristics.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "successful" in a neutral, conversational tone, followed by "didn't socialize" with a slight downward inflection, and a brief pause. The recording is clean, with no background noise or distortion, and the speaker's voice is clear and intelligible. However, at approximately 2.0–2.5 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the voice exhibits a brief, unnatural pitch shift and a slight increase in high-frequency content, particularly in the 4000–6000 Hz range. This is accompanied by a minor, abrupt change in vocal timbre, suggesting a possible digital artifact or manipulation. The anomaly is not present in the surrounding speech and does not align with natural speech patterns or emotional shifts. No other acoustic irregularities are observed in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 2.0–2.5 second time region and 4000–6000 Hz frequency region as the most salient for its prediction, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a nearby time point (3.5–3.6 seconds), but this is less consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating that the anomaly is not detected by these models. The SHAP analysis points to features such as equivalentSoundLevel_dBp and loudness_sma3_meanFallingSlope, which may reflect changes in the audio’s spectral and dynamic characteristics during the anomaly, but these do not directly localize the event. Overall, the wav2vec model’s cross-method agreement provides the strongest evidence for the anomaly, while other models and methods either do not detect it or provide less consistent support.

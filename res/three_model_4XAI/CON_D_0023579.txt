@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.45-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "began" in a neutral, conversational tone. The recording is of low fidelity, with a persistent background hiss and a low-frequency hum, likely from a consumer-grade microphone or poor recording conditions. At approximately 0.45 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 0.6 seconds. This artifact manifests as a sharp, unnatural transient, possibly a digital click or glitch, which is not present in the original speech and stands out against the otherwise smooth vocal texture. The artifact is most prominent in the 2000–3000 Hz range, a region where human speech is typically clear and intelligible, suggesting the anomaly is not a natural part of the voice. The rest of the audio remains consistent with the initial speech, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.45-0.6] seconds in the 2000–3000 Hz range using Integrated Gradients (IG), and the same region is supported by Saliency analysis at [0.6-0.8] seconds in the 5000–7000 Hz range, indicating a broader high-frequency anomaly. LIME also points to a brief region at [1.0-1.1] seconds, though this is less consistent. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioV_sma3nz_stddevNorm, which may relate to the presence of unnatural transients or abrupt changes in the signal. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the anomaly, with cross-model agreement limited to wav2vec alone.

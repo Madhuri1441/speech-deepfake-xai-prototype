@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a pronounced, unnatural high-frequency artifact emerges, lasting until about 2.5 seconds. This artifact manifests as a sharp, metallic, and slightly distorted sound, resembling a digital glitch or synthetic overlay. The artifact is not present in the original speech content and does not correspond to any natural vocal or environmental sound. The speech itself, delivered by a female voice, is clear and intelligible, with no signs of distortion or clipping. The artifact is acoustically distinct from the speech and background noise, suggesting it is an artificial addition rather than a recording flaw. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.5 second time range, with frequency support in the 4000–8000 Hz band, while LIME provides a narrower but consistent time window of 0.7–0.8 seconds, which overlaps with the main anomaly. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shap values for slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength further support the presence of an anomaly in the 1.5–2.5 second range, as these features are sensitive to high-frequency, transient events. The combined evidence from wav2vec and Shap values strongly supports the conclusion that the artifact is a synthetic addition, not a natural part of the audio.

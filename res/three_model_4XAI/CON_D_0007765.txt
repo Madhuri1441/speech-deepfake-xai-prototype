@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a clear, neutral tone, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the initial seconds of the recording, specifically between 0.1 and 0.3 seconds. During this interval, the voice exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. This is supported by the Saliency method from the wav2vec model, which highlights this time-frequency region as significant for the model’s prediction. The wav2vec model’s Integrated Gradients (IG) also identifies a broader region (1.0–1.5 seconds, 2000–4000 Hz), but the Saliency result is more precise and directly aligns with the observed acoustic irregularity. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, and no other acoustic anomalies are apparent in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the time-frequency region [0.1-0.3] seconds and [2000-4000] Hz as significant, which aligns with the observed acoustic irregularity. The wav2vec IG method also supports this region, though less precisely. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not correspond to the observed anomaly. Thus, the final abnormality is supported by wav2vec’s Saliency and IG methods, indicating cross-model agreement within wav2vec.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a clear, neutral tone, with a slight echo suggesting a small room or untreated recording space. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as pitch warbling or unnatural pauses. However, a subtle but noticeable anomaly occurs between 1.0 and 2.0 seconds, where the voice exhibits a brief, unnatural pitch shift and a slight distortion in timbre, particularly in the high-frequency range (4000–6000 Hz). This region is marked by a momentary break in the natural flow of speech, with a faint, artificial-sounding artifact that does not match the surrounding vocal texture. The anomaly is not accompanied by any background noise or environmental cues, suggesting it is an isolated vocal artifact rather than an environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis further supports this region with a slightly extended [2.0-2.5] seconds window. LIME analysis also corroborates the anomaly at [3.0-3.1] seconds, though this is less consistent with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0, which may relate to the acoustic irregularity, but these do not pinpoint a specific time or frequency range. Overall, the wav2vec model’s IG and Saliency analyses provide the strongest and most consistent evidence for the anomaly, supported by LIME, while Hubert and WavLM do not detect the issue.

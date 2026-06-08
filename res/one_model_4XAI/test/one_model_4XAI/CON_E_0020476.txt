@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy sound at the start, followed by a female voice saying, "It was the same at his grade." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.5 seconds, a subtle but noticeable artifact emerges: a high-frequency, synthetic-sounding buzz or hum, which persists until about 1.0 seconds. This buzz is not present in the original speech and is acoustically distinct from typical background noise or environmental sounds. The buzz occupies the frequency range of 4000–6000 Hz, which is above the fundamental frequencies of the voice but within the range of harmonics and artifacts sometimes introduced by digital processing.
+
+The XAI evidence supports this observation. The Integrated Gradients (IG) analysis highlights the time interval [0.5–1.0] seconds and the frequency range [4000–6000] Hz as regions of high importance, indicating that the model attributes the anomaly to this specific segment and frequency band. The Saliency analysis further corroborates this by identifying a time window [1.75–2.00] seconds and a broader frequency range [4000–8000] Hz, suggesting that the synthetic buzz continues to influence the model’s perception beyond the initial interval. The LIME analysis also points to the [1.00–1.25] seconds window, reinforcing the presence of an anomaly in this region. The Shapley values for features such as "StddevUnvoicedSegmentLength," "loudness_sma3_meanFallingSlope," and "loudnessPeaksPerSec" indicate that the model detects irregularities in the acoustic structure and loudness patterns, which are consistent with the presence of a synthetic artifact.
+
+No other acoustic anomalies are evident in the audio, and the speech remains intelligible throughout. The synthetic buzz is the only notable deviation from natural speech, and its presence is supported by multiple XAI methods, indicating a high likelihood of a deepfake or audio manipulation artifact.

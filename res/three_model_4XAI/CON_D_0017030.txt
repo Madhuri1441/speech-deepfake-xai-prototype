@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a low-pitched, monotone voice, speaking in a neutral, conversational tone. The speech is clear and intelligible, with no background noise or environmental sounds. The acoustic environment is dry, with no reverberation or echo, suggesting a controlled or studio-like setting. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact that occurs between 2.0 and 2.8 seconds, most prominent in the 5000–7000 Hz range. This artifact is not part of the natural speech and is likely a digital artifact or an anomaly introduced during audio processing or editing. The rest of the audio is acoustically clean, with no signs of distortion, clipping, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [2.0-2.1] seconds (IG) and [2.3-2.8] seconds (Saliency), both within the 5000–7000 Hz range, indicating a high-frequency anomaly in this time window. The LIME explanation for wav2vec also supports this, highlighting the region around [0.95-1.05] seconds, which is adjacent to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shap values, while not directly identifying the time or frequency range, suggest that features related to spectral flux and unvoiced segment length are contributing to the model’s prediction, which aligns with the presence of a high-frequency artifact. The cross-model agreement between wav2vec’s IG and Saliency, as well as the LIME explanation, strongly supports the conclusion that the anomaly is present in the [2.0-2.8] seconds, 5000–7000 Hz region.

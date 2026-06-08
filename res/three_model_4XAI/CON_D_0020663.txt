@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.0-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "She has insisted by next year." The speech is clear and intelligible, with a neutral, conversational tone. However, at the very start of the clip, specifically in the first 0.2 seconds, there is a subtle but noticeable high-frequency artifact in the 1000–2000 Hz range. This artifact manifests as a faint, unnatural hiss or digital noise, which is not present in the rest of the audio. The remainder of the clip is acoustically clean, with no further anomalies. The presence of this artifact at the onset of the audio is suspicious, as it does not correspond to any natural speech or environmental sound and may indicate digital manipulation or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The saliency analysis from the wav2vec model identifies the [0.0-0.2] seconds time region and [1000-2000] Hz frequency region as the most salient for its prediction, indicating that this segment is critical to the model’s classification. The LIME explanation from wav2vec also supports this, highlighting the [0.0-0.1] seconds region. No other models (Hubert or WavLM) provide supporting evidence for this region, and their explanations are entirely absent. The Shapley values, while not directly tied to time or frequency, suggest that features related to unvoiced segment length and sound level are important, but do not specifically corroborate the acoustic anomaly. Thus, the evidence for the abnormality is primarily based on wav2vec saliency and LIME, with no cross-model agreement.

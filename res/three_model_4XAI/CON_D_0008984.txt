@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "That is a genius. Keep it in action. Oh, to that. A mark." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 3000–4000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or modulation. The tone is likely an artifact of digital editing or a post-production overlay, as it does not correspond to any natural sound event in the environment. The abrupt onset and sustained presence of this tone, coupled with its unnatural spectral profile, indicate a deliberate insertion rather than a recording error or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) and LIME identifies a very narrow segment ([0.5-0.6] seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that aligns with the observed synthetic tone in the audio, indicating cross-model agreement for the abnormality in the 1.0–2.0 seconds interval. The other XAI results do not support the presence of an anomaly and may reflect model-specific sensitivities to speech features rather than actual artifacts.

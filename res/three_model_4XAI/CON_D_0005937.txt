@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male voice speaking in a neutral, conversational tone, with no background noise or environmental sounds. The speech is clear and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, a subtle anomaly is present in the frequency range of 2000–3000 Hz during the time interval of 1.5–2.0 seconds. This region corresponds to the end of the word "overcome" and the beginning of the word "which," where a slight, unnatural pitch inflection and a faint, artificial-sounding resonance are perceptible. These acoustic features are not typical of natural speech and suggest possible digital manipulation or synthesis.
+
+The wav2vec model's Integrated Gradients (IG) analysis identifies this same time and frequency region as the most salient for its prediction, indicating that the model detects an anomaly in this segment. The Saliency method from wav2vec also highlights a different time region (0.0–0.2 seconds), but this is less consistent and not corroborated by other models. The LIME explanation from wav2vec points to a very narrow time window (0.35–0.4 seconds), which does not align with the observed acoustic anomaly. The Hubert and WavLM models do not provide any saliency or explanation, suggesting that they do not detect anomalies in this audio. The SHAP analysis identifies several acoustic features, such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are not directly tied to the observed anomaly but may reflect underlying speech characteristics.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis is the only source that identifies the time-frequency region [1.5-2.0] seconds and [2000-3000] Hz as anomalous, and this aligns with the perceptual observation of an unnatural pitch and resonance in the audio. No other XAI methods or models corroborate this finding, and the LIME and Saliency methods from wav2vec point to different regions that do not match the acoustic anomaly. Therefore, the final abnormality is based on cross-model agreement only from wav2vec's IG method, with no support from Hubert or WavLM models.

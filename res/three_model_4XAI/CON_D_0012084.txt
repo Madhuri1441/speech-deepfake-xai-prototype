@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice stating, "It was nice to get a phone." Immediately following this, a brief, high-frequency electronic tone is heard, lasting approximately one second. This tone is sharply defined, with a pitch in the 5000–7000 Hz range, and is acoustically distinct from the preceding speech. The tone is not a natural part of the speech or environment and does not resemble any typical background noise or artifact. Its sudden onset and unnatural timbre suggest it is an artificial insertion, possibly a notification or system sound, rather than a genuine environmental event. The remainder of the audio continues with the speaker's voice, which is clear and unaltered, indicating the anomaly is isolated to the brief electronic tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([1.0-2.0] seconds, 5000–7000 Hz), strongly supporting the presence of an artificial tone. The LIME method also identifies a region ([3.8-4.0] seconds), but this is not supported by other XAI methods and does not align with the observed tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values further support the presence of an anomaly, with features such as loudness and MFCCs indicating a sudden change in the signal, consistent with the insertion of an artificial tone. Overall, the wav2vec model's IG and Saliency methods provide cross-model agreement on the abnormality, while other models and methods do not corroborate this finding.

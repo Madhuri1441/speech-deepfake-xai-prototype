@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "We are also very aware of the for the, I am not a liar." The speech is generally intelligible, but at approximately 1.5–2.5 seconds, there is a noticeable shift in the acoustic texture. During this interval, the voice exhibits a harsh, metallic, and slightly distorted timbre, with a reduction in natural vocal warmth and clarity. This is accompanied by a subtle, high-frequency hiss and a loss of low-frequency content, suggesting possible digital artifacting or compression. The speech resumes its natural quality after this interval, indicating the anomaly is localized. No other acoustic irregularities are present in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.5] seconds time range and [3000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME method from wav2vec also supports this, though with a slightly earlier time range ([0.9-1.1] seconds), which may reflect a different focus on the onset of the anomaly. The Hubert and WavLM models do not provide any evidence, suggesting that the anomaly is not detected by these models or that their explanations are not sensitive to this specific acoustic change. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden change in vocal texture and energy, further supporting the wav2vec findings. Overall, the wav2vec model provides the most robust and consistent evidence for the abnormality, while the other models do not contradict but also do not add additional support.

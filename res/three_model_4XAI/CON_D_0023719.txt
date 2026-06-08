@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched male voice saying, "It has not yet opened, but things..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.5 seconds, a distinct, high-frequency, synthetic-sounding electronic tone abruptly appears. This tone is not present in the original recording but is clearly audible in the processed audio, lasting until about 3.0 seconds. The tone is centered in the 4000–8000 Hz range, with a harsh, buzzy timbre that is acoustically inconsistent with the preceding speech. The transition into and out of the tone is abrupt, suggesting digital insertion or editing. There are no other notable acoustic anomalies, such as clipping, distortion, or background noise, and the speech remains unaffected by the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.5–2.0 second region, Saliency focuses on 2.5–3.0 seconds, and LIME singles out 2.0–2.1 seconds. All three point to the same high-frequency region (4000–8000 Hz), indicating strong cross-model agreement on the presence of an anomalous electronic tone during this interval. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than non-speech artifacts. The SHAP analysis supports the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are indicative of sudden changes in sound energy and spectral content. These findings collectively confirm the insertion of a synthetic tone in the specified time and frequency range.

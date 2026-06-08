@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "the world," followed by, "doing it too well either." The speech is clear and natural, with no obvious signs of digital manipulation. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–4000 Hz during the time interval of 0.5–1.0 seconds, specifically around the word "world." This region exhibits a slight unnaturalness in the spectral envelope, possibly due to an artifact from audio processing or synthesis. The anomaly is not immediately obvious to the human ear but is detectable through spectral analysis. The subsequent word "either" is acoustically normal, with no evident irregularities.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) method from the wav2vec model identifies the 0.5–1.0 second time region and 2000–4000 Hz frequency region as significant for the model’s prediction, indicating that this segment is likely responsible for the model’s classification. The Saliency method from wav2vec also detects a distinct anomaly at 3.0–3.1 seconds in the 7500–8000 Hz range, but this is not supported by other models and is not evident in the audio. The LIME method from wav2vec further supports the 0.95–1.05 second region, aligning with the IG findings. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is specific to wav2vec’s analysis. The SHAP values highlight acoustic features such as loudness_sma3_meanFallingSlope, loudness_sma3_percentile80.0, and loudness_sma3_pctlrange0-2, which are consistent with the observed spectral irregularity in the 2000–4000 Hz range. Overall, the cross-model agreement from wav2vec’s IG and LIME methods, along with the SHAP feature analysis, supports the conclusion that the anomaly is localized in the 0.5–1.0 second, 2000–4000 Hz region.

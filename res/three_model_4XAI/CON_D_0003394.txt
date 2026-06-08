@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It is also a need for you to do this." The speech is abruptly interrupted by a sharp, high-frequency digital artifact at approximately 0.8 seconds, lasting until 1.2 seconds. This artifact is characterized by a piercing, synthetic tone in the 5000–6000 Hz range, which is acoustically inconsistent with the preceding speech and is not a natural part of the vocal signal. The artifact is not present in the original speech and appears to be an artificial insertion, likely due to a digital glitch or tampering. The voice resumes after the artifact, but the overall audio quality is degraded, with a persistent background hiss and a lack of natural reverberation, suggesting post-processing or compression artifacts. No other speech or vocal events are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent XAI methods: Integrated Gradients (IG) highlights the 0.8–1.2 second time region and 5000–6000 Hz frequency region, while Saliency also points to a broader 2.0–2.5 second interval with overlapping frequency content. LIME corroborates the timing at 1.0–1.1 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_percentile50.0, which are indicative of unnatural speech patterns and possible tampering. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods strongly supports the conclusion that the audio contains a digital artifact in the specified time and frequency range.

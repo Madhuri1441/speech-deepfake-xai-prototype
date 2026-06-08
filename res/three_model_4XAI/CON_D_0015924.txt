@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500 - 3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "tragedy" in a neutral, low-pitched tone, followed by a brief pause and a single, low-frequency electronic tone. The voice is clear and natural, with no signs of digital manipulation or unnatural artifacts. However, the electronic tone that follows is highly suspicious: it is a pure, unmodulated sine wave at approximately 2500–3000 Hz, lasting about 0.2 seconds. This tone is acoustically distinct from the voice, with no overlap in frequency or timbre, and is not a typical artifact of speech or environmental noise. Its abrupt onset and offset, as well as its unnatural purity, suggest it may be an inserted or synthetic sound, possibly used as a watermark or digital marker. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.8 - 1.0] seconds time range and [2500 - 3000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also points to a different region ([0.6 - 0.8] seconds, [5000 - 7000] Hz), which does not align with the observed tone. The LIME explanation for wav2vec is in the initial [0.0 - 0.1] seconds, which is unrelated to the tone. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values highlight the equivalentSoundLevel_dBp as the most significant feature, supporting the presence of a strong, isolated tone in the audio. The cross-model agreement from wav2vec’s IG method and the Shap value evidence both point to the [0.8 - 1.0] seconds, [2500 - 3000] Hz region as the most likely location of the anomaly.

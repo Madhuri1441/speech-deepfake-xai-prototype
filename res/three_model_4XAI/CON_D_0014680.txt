@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, declarative statement in English. The speech is intelligible and free of background noise, with a consistent low-level hiss typical of consumer-grade recording equipment. The only notable acoustic anomaly occurs between 2.0 and 2.5 seconds, where a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the speech and does not correspond to any natural vocal or environmental sound. The wav2vec model’s Integrated Gradients (IG) and Saliency methods, as well as LIME, all identify this region as anomalous, with the IG method specifically highlighting the 3000–4000 Hz frequency band. The artifact is likely a digital glitch or post-processing error, as it is not accompanied by any speech content or environmental cues. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the same time and frequency region ([2.0-2.5] seconds, 3000–4000 Hz) as anomalous, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is not detected by all models. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean do not directly support the identified region, as they reflect overall audio characteristics rather than localized anomalies. Thus, the final abnormality is supported by multiple wav2vec-based XAI methods, with no conflicting evidence from other models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice speaking the phrase, "Rangers will grab it as a unique extract." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording quality is high, with no distortion, clipping, or environmental interference. The only notable acoustic feature is a brief, high-frequency artifact occurring between 1.0 and 2.0 seconds, specifically in the 3000–6000 Hz range. This artifact manifests as a sharp, unnatural transient, likely a digital glitch or editing artifact, which is not present in the rest of the audio. The remainder of the clip is acoustically clean, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.0-2.0] seconds and [3000-6000] Hz using Integrated Gradients (IG), while Saliency analysis further narrows the region to [2.5-3.0] seconds, though this is not supported by the audio evidence. LIME analysis also supports the [1.5-2.0] seconds region. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, with a high positive value, suggesting a sudden increase in perceived loudness at the artifact’s location. The spectralFlux_sma3_amean and loudness_sma3_percentile80.0 features also contribute, indicating a change in spectral content and loudness distribution. The wav2vec model’s IG and LIME results, along with the Shapley values, consistently point to the [1.0-2.0] seconds region as the most suspicious, supported by multiple independent XAI sources.

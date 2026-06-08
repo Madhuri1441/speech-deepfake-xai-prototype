@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "She has... it's a large..." in a neutral, conversational tone. At approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.5 seconds. This transient is acoustically distinct from the speech, with a frequency content concentrated between 2000–4000 Hz, and is not present in the original speech or background. The click is abrupt, lacks any natural reverberation, and does not correspond to any expected sound in the context of the spoken phrase. This anomaly is not masked by speech and is clearly audible, suggesting an artifact rather than a genuine environmental or vocal event. No other obvious acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-1.5] seconds time region and [2000-4000] Hz frequency region as significant for the model’s prediction, aligning with the observed click. The Saliency method from wav2vec also highlights a related but slightly offset region ([1.25-1.75] seconds, [4000-6000] Hz), which may reflect the model’s sensitivity to the transient’s spectral content. The LIME explanation from wav2vec further supports the presence of an anomaly in the vicinity of the click. In contrast, the Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not consistently detected by all models. The Shapley values from wav2vec also point to features such as slopeUV0-500_sma3nz_amean, mfcc1_sma3_amean, and spectralFlux_sma3_amean, which are associated with the click’s acoustic properties. Overall, the click is supported by multiple wav2vec-based XAI methods, but not by other models, indicating a cross-model agreement within wav2vec but not across all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, factual statement: "So he wanted out. Campaigners welcomed the ruling." The speech is clean and intelligible, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or whine in the 4000–6000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The artifact is most prominent during the phrase "So he wanted out," and its abrupt onset and offset suggest it is not part of the original recording but rather an artificial insertion or modification. The rest of the audio remains free of such anomalies, and the speech is otherwise natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and at [3.0-3.5] seconds with the same frequency range using Saliency. LIME also supports the region at [2.15-2.30] seconds. These multiple, independent XAI methods from wav2vec converge on the same time and frequency range, indicating a high-confidence anomaly. The Hubert and WavLM models do not provide supporting evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shap values further reinforce the presence of an anomaly, with high contributions from features like equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are associated with the artifact’s acoustic properties. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the presence of an artificial sound artifact in the specified region.

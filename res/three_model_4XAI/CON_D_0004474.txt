@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "connection, promise to me and his mother." The speech is clear and intelligible, with a neutral, conversational tone and no apparent emotional distress. The recording is of high fidelity, with no background noise, distortion, or artifacts. However, a subtle anomaly is present in the high-frequency range (3000–4000 Hz) during the word "promise," specifically between 1.2 and 1.4 seconds. This region exhibits a slight unnaturalness in the spectral envelope, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The rest of the audio is acoustically normal, with no signs of clipping, compression, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.2-1.4] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), which is supported by the saliency analysis in the [0.0-0.2] seconds range and [100-500] Hz, indicating a possible low-frequency artifact. LIME also supports the anomaly at [2.0-2.1] seconds, though this is less consistent with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the identified abnormality. Overall, the wav2vec model's IG and saliency analyses provide the strongest evidence for the anomaly, with some support from LIME, while Hubert and WavLM do not detect any issues.

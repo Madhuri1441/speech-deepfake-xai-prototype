@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "He's to stay there for some time." The speech is clear and natural, with no obvious signs of tampering. However, a subtle but noticeable anomaly occurs in the latter part of the utterance, specifically around the word "time." From approximately 1.5 to 2.5 seconds, the audio exhibits a high-frequency, synthetic-sounding artifact, with a tonal quality in the 6000–8000 Hz range. This artifact is not present in the initial portion of the speech and does not match the natural acoustic profile of the voice. The artifact is likely a result of digital manipulation, such as a deepfake or voice synthesis overlay, which introduces unnatural frequency content inconsistent with the original speaker’s voice.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [1.5-2.5] seconds and frequency range [6000-8000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method also supports this, highlighting a narrower time window of [1.0-1.1] seconds, which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting a change in overall loudness or energy in the affected region. The combination of wav2vec’s multiple methods and the SHAP analysis provides strong evidence for the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or specific to certain model architectures.

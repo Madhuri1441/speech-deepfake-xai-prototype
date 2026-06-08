@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "Only further details about the group by this position." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic tone emerges and persists until about 2.5 seconds. This tone is not part of the natural speech and is acoustically anomalous, as it is a pure, unwavering signal in the 3000–6000 Hz range, lacking any modulation or environmental context. The tone abruptly ceases at 2.5 seconds, after which the speech resumes its natural cadence. The synthetic nature of this tone is supported by its spectral purity and unnatural onset/offset, which are inconsistent with typical speech or environmental sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods consistently highlight the time interval [1.0-2.5] seconds and the frequency range [3000-6000] Hz, indicating strong cross-model agreement on the presence of an artificial signal during this period. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are entirely absent. The Shapley values further support the presence of an anomalous event, with the equivalentSoundLevel_dBp feature showing a significant deviation from its original value, suggesting a sudden increase in sound energy in the high-frequency range. This aligns with the synthetic tone observed in the audio. No other XAI evidence contradicts this finding, and the acoustic anomaly is clearly supported by multiple sources.

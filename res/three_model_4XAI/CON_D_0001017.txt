@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "But it got all the abouts," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting until about 1.25 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital glitch or post-processing error rather than a natural event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 6000–7000 Hz frequency range during the 1.0–1.25 seconds time window, while LIME corroborates the timing at 1.3–1.4 seconds, which is consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no relevant regions. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in sound energy at the artifact’s frequency. The combination of wav2vec’s multiple XAI methods and the Shapley analysis provides strong, cross-model evidence for the abnormality, while the absence of evidence from Hubert and WavLM suggests the anomaly is not universally detectable but is clearly present in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic, monotone female voice with a distinctly unnatural cadence and rhythm, characteristic of a text-to-speech (TTS) system. The speech is segmented into short, disconnected phrases, with abrupt pauses and a lack of natural intonation or prosody. At approximately 3–4 seconds, a noticeable shift occurs in the vocal timbre and pitch, accompanied by a subtle increase in high-frequency content (2000–6000 Hz), which is inconsistent with the rest of the audio. This abrupt change is acoustically jarring and suggests a possible splice or model-generated artifact, as the voice does not transition smoothly. The overall delivery is robotic, with no emotional inflection or natural speech flow, further supporting the synthetic origin. No background noise or environmental cues are present, reinforcing the artificial nature of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [0-1] and [3-4] second intervals, respectively, with high-frequency attention in the 5000–6000 Hz and 2000–6000 Hz ranges, aligning with the observed acoustic anomaly. The LIME method also supports the [1.0-2.0] second interval, though this is less specific. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is most strongly detected by wav2vec. The Shapley values further corroborate the presence of an anomaly, with high contributions from features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which are indicative of synthetic speech characteristics. The cross-model agreement from wav2vec’s IG and Saliency methods, along with the Shapley values, confirms the [3-4] second interval as the most suspicious region.

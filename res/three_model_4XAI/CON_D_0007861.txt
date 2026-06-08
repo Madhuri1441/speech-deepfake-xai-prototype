@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "We do not expect to make an announcement shortly." The speech is clear and intelligible, with a neutral, formal tone. However, at approximately 1.0–2.0 seconds into the clip, there is a noticeable shift in the acoustic texture: the voice becomes slightly muffled, and a subtle, high-frequency hiss overlays the speech. This hiss is most prominent in the 2000–4000 Hz range, which is the region where human speech energy is concentrated for sibilant sounds. The change is abrupt and does not correspond to any natural variation in the speaker’s delivery or the recording environment. This suggests an artificial alteration or insertion of noise, likely indicative of tampering or deepfake manipulation. The rest of the audio remains stable, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME method from wav2vec also supports the abnormality, though at a slightly different time window ([2.5-3.0] seconds), which may reflect a secondary or residual effect. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The SHAP values highlight features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are consistent with changes in overall loudness and spectral characteristics, further supporting the presence of an artificial alteration in the specified time and frequency range. The cross-model agreement between wav2vec’s IG and Saliency methods strengthens the conclusion that this region is the most likely site of manipulation.

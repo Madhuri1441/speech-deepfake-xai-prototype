@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "directly at the world punishment," delivered in a neutral, declarative tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.4–0.6 seconds into the clip, a subtle but distinct acoustic anomaly is present: a brief, high-frequency, synthetic-sounding artifact overlays the speech. This artifact is not part of the original voice and is acoustically inconsistent with natural speech, suggesting a possible digital insertion or editing artifact. The artifact is most prominent in the 2000–3000 Hz frequency range, which is typical for midrange speech and synthetic tones. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in two ways: Integrated Gradients (IG) highlights the 1.4–1.6 second region, while Saliency analysis points to the 0.4–0.6 second region, both in the 2000–3000 Hz band. The LIME explanation for wav2vec is less specific, indicating a very early time region (0.0–0.1 seconds), which does not align with the observed artifact. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is the only one that detects the suspicious region. The SHAP analysis does not directly reference the artifact but instead highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly related to the observed anomaly. Therefore, the wav2vec Saliency result is the most consistent with the observed artifact, and the anomaly is supported by a single model.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.4 seconds, a male voice says “different speed” in a neutral, slightly muffled tone. The speech is clear but lacks high-frequency detail, suggesting either a low-fidelity recording or post-processing. Around 0.4–0.6 seconds, a subtle, high-frequency artifact is present, most noticeable in the 2000–3000 Hz range, which may indicate digital processing or compression. This artifact is not present in the initial or final portions of the audio, and there are no other obvious signs of editing or splicing. The background hiss remains constant throughout, with no abrupt changes or additional sounds.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the [0.4–0.6] seconds time region and [2000–3000] Hz frequency region as salient, while the IG method for wav2vec highlights a broader [0.6–1.0] seconds and [3000–5000] Hz region. The LIME method for wav2vec also supports the [0.45–0.55] seconds region. These findings are consistent with the observed high-frequency artifact in the audio, suggesting that the wav2vec model is sensitive to this region. The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not detected by these models. The Shap values for the audio features do not directly correspond to the identified time or frequency regions, but they suggest that the audio’s spectral and temporal characteristics are being used by the model for classification. Overall, the wav2vec model’s multiple XAI methods agree on the [0.4–0.6] seconds and [2000–3000] Hz region, indicating a cross-model agreement on the presence of an acoustic anomaly in this segment.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, stating, "...in England and Wales. Night tomorrow to make a decision." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second (until 2.0 seconds). This artifact is characterized by a piercing, synthetic-sounding tone in the 3000–4000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital glitch or editing error rather than a natural sound. After this transient, the audio returns to normal speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time window and the 3000–4000 Hz frequency range, while LIME corroborates the time region at 2.4–2.5 seconds, which is consistent with the transient’s tail. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are associated with the transient’s acoustic properties. Overall, the wav2vec model’s multiple lines of evidence converge on the same region, providing strong support for the presence of a synthetic artifact in the audio.

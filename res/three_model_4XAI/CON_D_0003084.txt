@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "time telling eight months late" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.6 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.2 seconds. This artifact is characterized by a piercing, static-like texture in the 4000–8000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal source. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural acoustic event. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.6 - 1.2] seconds, 4000–8000 Hz), providing strong cross-model agreement. The wav2vec IG method specifically highlights this region as the most salient for the model’s prediction, while Saliency and LIME corroborate the same interval, albeit with slightly different time boundaries. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an abnormality, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, indicating a significant deviation from the expected acoustic profile. This aligns with the presence of the high-frequency artifact. No other XAI sources or acoustic features suggest additional anomalies.

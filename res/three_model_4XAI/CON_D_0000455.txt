@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking the phrase, "Teenagers, they have the opposite effect." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the latter part of the utterance, specifically during the word "effect." From 0.5 to 1.0 seconds, the voice exhibits a slight unnaturalness in its timbre and pitch contour, with a faint digital artifact or synthetic overlay that is not typical of natural human speech. This is most apparent in the mid-frequency range (2000–4000 Hz), where the voice’s harmonics appear slightly distorted or artificially smoothed, suggesting possible post-processing or deepfake generation. The rest of the audio is acoustically normal, with no background noise or environmental cues.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] second time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong confidence in this region. The LIME method from wav2vec also supports this, focusing on a narrower [0.5-0.6] second window. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc1_sma3_amean, but does not localize the anomaly to a specific time or frequency range. Overall, the wav2vec model’s multiple independent methods agree on the abnormality, while other models do not provide supporting evidence.

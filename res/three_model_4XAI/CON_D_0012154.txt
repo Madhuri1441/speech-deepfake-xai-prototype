@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of digital manipulation. However, at approximately 1.5–2.0 seconds, a sharp, high-frequency artifact appears, lasting about half a second. This artifact is a piercing, synthetic-sounding tone, likely a result of digital clipping or a corrupted audio segment. The tone is not present in the original speech and does not match the natural frequency range of human speech or environmental sounds. The voice continues without interruption, suggesting the artifact is an overlay or insertion rather than a genuine part of the recording. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as salient. This aligns with the observed high-frequency artifact in the audio. The wav2vec Saliency method also supports the [3-4] seconds region, but this does not correspond to any clear anomaly in the audio and may reflect model-specific sensitivity to speech transitions. The Hubert and WavLM models do not provide supporting evidence for this region, as their IG, Saliency, and LIME analyses yield no relevant findings. The SHAP values indicate that the equivalentSoundLevel_dBp feature is most influential, which is consistent with the presence of a loud, high-frequency artifact. Overall, the wav2vec IG result is the strongest and most consistent indicator of the anomaly, supported by the SHAP analysis, while other XAI methods do not corroborate the finding.

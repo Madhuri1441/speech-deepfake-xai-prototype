@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "got a yellow," spoken in a standard North American accent. The recording is of high fidelity, with no background noise or distortion, and the voice is centered in the stereo field. At approximately 0.6 seconds, a sudden, loud, synthetic buzzing tone appears, lasting until about 0.8 seconds. This tone is sharply defined, with a fundamental frequency around 2000 Hz and strong harmonics extending up to 4000 Hz, giving it a harsh, electronic character. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically distinct from the preceding speech, suggesting it was artificially inserted rather than naturally occurring.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies the [0.6-0.8] second time region and [2000-4000] Hz frequency range as the most salient, indicating the model attributes the anomaly to this segment. Saliency analysis further confirms the [0.9-1.0] second window, aligning with the tail end of the buzzing tone. LIME analysis also highlights the [0.8-0.9] second region, reinforcing the presence of an anomalous event in this interval. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean are all positive, indicating that the buzzing tone significantly increases these acoustic features compared to the original speech, further supporting the presence of an artificial, high-energy sound event.
+
+No other acoustic anomalies are present in the audio, and the speech is otherwise natural and unaltered. The synthetic buzz is the only clear indicator of tampering, and all XAI methods converge on the same time and frequency region, confirming the anomaly.

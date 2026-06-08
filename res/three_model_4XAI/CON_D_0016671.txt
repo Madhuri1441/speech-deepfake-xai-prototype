@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short, coherent sentence in English. The speech is generally natural, but at approximately 3.0–4.0 seconds, there is a noticeable disruption in the vocal signal. This region exhibits a sudden, unnatural drop in pitch and a loss of vocal clarity, accompanied by a harsh, digital artifact that resembles a brief, low-frequency burst or glitch. The acoustic environment is otherwise clean, with no background noise or environmental interference, and the rest of the speech remains intelligible and stable. The abruptness and unnatural character of the vocal break, along with the accompanying digital artifact, suggest a possible audio editing or synthesis error, rather than a natural vocal event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [3.5-4.0] and [3.0-4.0] second intervals, respectively, as regions of high importance, with the latter overlapping the observed vocal break. The LIME method from wav2vec also supports this, highlighting the [3.0-3.1] second region. These findings are consistent and cross-model, indicating a strong agreement that the anomaly occurs in this time frame. The frequency regions identified by wav2vec (2000-8000 Hz) align with the spectral content of the vocal break and artifact. The Hubert and WavLM models do not provide supporting evidence, and the Shapley values for spectral features do not directly correspond to the observed anomaly, suggesting that the abnormality is not captured by these global acoustic features. Overall, the wav2vec-based XAI methods provide robust, cross-model evidence for the anomaly, while other models and features do not corroborate this finding.

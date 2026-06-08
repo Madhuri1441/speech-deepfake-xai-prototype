@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "It's an issue that will have principal..." in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, indicating a non-studio environment. At approximately 1.0 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.5 seconds. This transient is acoustically distinct from the speech, with a frequency content concentrated between 4000 and 6000 Hz, and is not present in the original speech or background noise. The click is abrupt, lacks any natural decay, and is inconsistent with typical vocal or environmental sounds, suggesting it is an artifact introduced during editing or digital processing. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at [1.0-1.5] seconds is supported by multiple XAI methods: Integrated Gradients (IG) identifies this time-frequency region as significant, and Saliency analysis also highlights a region around [0.0-0.2] seconds, which is adjacent and may reflect the onset of the click. LIME analysis further corroborates the anomaly at [1.35-1.45] seconds, aligning closely with the click’s timing. The wav2vec model is the only one to provide XAI evidence for this region, while Hubert and WavLM models do not detect any abnormalities. The Shapley values indicate that features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength are elevated, suggesting a sudden change in sound energy and segment characteristics consistent with the click. Overall, the cross-model agreement from wav2vec’s IG, Saliency, and LIME supports the presence of an artificial click in the audio, with no evidence of similar anomalies from other models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a continuous, uninterrupted sentence in a quiet, acoustically dry environment. The speech is free from background noise, distortion, or artifacts, and the voice is steady and natural in both pitch and amplitude. However, at approximately 1.5–2.0 seconds, a subtle but distinct anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the surrounding speech and does not match any natural vocal or environmental sound. The anomaly is most prominent in the 3000–3500 Hz range, which is outside the typical speech spectrum, and is likely a result of digital manipulation or a deepfake artifact. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [3000-3500] Hz frequency region as the most salient for its prediction, directly aligning with the observed synthetic artifact. The wav2vec Saliency method also highlights the [0-1] seconds region, but this is less relevant as it does not correspond to any clear anomaly. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating no strong support for any specific region. The SHAP analysis identifies three acoustic features—StddevUnvoicedSegmentLength, F3amplitudeLogRelF0_sma3nz_stddevNorm, and loudness_sma3_percentile80.0—as most influential, but these are global features and do not localize the anomaly to a specific time or frequency. Overall, the wav2vec IG result is the only one that directly supports the observed artifact, with no cross-model agreement.

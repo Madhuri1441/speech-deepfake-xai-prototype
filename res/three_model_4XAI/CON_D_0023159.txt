@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "query will concern the...". At approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a rapid, metallic, and slightly modulated timbre, with energy concentrated between 4000 Hz and 7000 Hz. The artifact overlays the speaker’s voice, causing a noticeable disruption in the natural speech flow and introducing a mechanical, unnatural quality. The speaker continues, "Hey guys, I look at this as a footballer," but the synthetic sound persists, masking the natural vocal texture and clarity. After 2.0 seconds, the artifact ceases, and the speaker’s voice resumes its natural cadence. The synthetic sound is not present in the original speech and does not resemble any environmental or biological noise, indicating it is an artificial insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [5000-7000] Hz frequency range using Integrated Gradients (IG), while Saliency and LIME methods both point to the [1.5-2.0] seconds interval and [4000-6000] Hz frequency band. The Hubert and WavLM models do not detect any abnormality, suggesting that the wav2vec-based explanations are the most reliable. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a synthetic overlay. The convergence of wav2vec’s IG, Saliency, and LIME methods on the same time and frequency range provides strong cross-model evidence for the synthetic artifact. No other XAI sources support this region, and the audio itself clearly shows the unnatural sound overlaying the speech.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "I recommend a tool." The speech is delivered in a neutral, conversational tone, with no background noise or environmental sounds. The recording is clean and of high fidelity, with no obvious signs of digital compression or distortion. However, a subtle anomaly is present in the frequency range of 1000–3000 Hz during the time interval of 0.2–0.4 seconds, which corresponds to the initial part of the word "recommend." This region exhibits a slight unnaturalness in the spectral texture, possibly due to a minor artifact or digital manipulation, though it does not affect intelligibility or the overall quality of the recording. No other acoustic anomalies are evident in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the region [0.2-0.4] seconds and [1000-3000] Hz as salient, while the IG method for wav2vec identifies a different region ([0.8-1.2] seconds, [3000-6000] Hz) and LIME identifies a very narrow region ([0.4-0.5] seconds). The Hubert and WavLM models do not provide any salient regions. The wav2vec saliency region is the only one that is consistently supported by multiple XAI methods (wav2vec saliency and wav2vec IG), indicating cross-model agreement. The Shap values suggest that features related to unvoiced segment length and sound level are significant, but these do not directly correspond to the identified abnormality. Thus, the most reliable evidence for the abnormality is the wav2vec saliency and IG regions, both pointing to the same time and frequency range.

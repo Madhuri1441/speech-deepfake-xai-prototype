@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying, "of less pressure. Target the game." The speech is delivered in a calm, measured tone, with no emotional inflection or background noise, and is followed by a brief, low-frequency electronic tone. The most notable acoustic anomaly occurs between 0.75 and 1.25 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, deviating from the otherwise natural vocal quality. This region is marked by a high-frequency artifact in the 4000–6000 Hz range, which is not present in the rest of the audio. The anomaly is subtle but distinct, suggesting a possible digital manipulation or synthesis artifact. No other acoustic irregularities are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.75–1.25 second time range and 4000–6000 Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong cross-model agreement on this region. The LIME explanation for wav2vec, however, points to an earlier time range (0.0–0.1 seconds), which does not align with the observed anomaly and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed pitch shift or frequency artifact. Overall, the wav2vec model’s IG and Saliency results provide the most consistent and reliable evidence for the anomaly.

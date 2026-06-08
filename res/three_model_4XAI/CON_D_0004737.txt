@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "Brady and Scott played" in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-professional, indoor environment. At approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.5 seconds. This artifact manifests as a sharp, synthetic-sounding buzz or whine, centered in the 3000–6000 Hz range, and is not present in the rest of the recording. The artifact is not a natural part of speech or environmental noise, and its abrupt onset and offset suggest digital manipulation or generation. The voice itself remains clear and unaffected by this artifact, indicating it is an overlay rather than a recording flaw. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through Integrated Gradients (IG), highlighting the 1.0–1.5 second time region and 3000–6000 Hz frequency range. This is corroborated by the Saliency method, which points to a 2.4–2.6 second region and 7500–8000 Hz frequency, but this is not supported by the audio evidence and is likely spurious. The LIME method identifies a very short, early time region (0.0–0.1 seconds), which is not supported by the audio. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to overall loudness or energy but rather to specific acoustic features like equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are consistent with the presence of a synthetic artifact. The wav2vec IG result is the only one that aligns with the observed artifact, and thus, the final abnormality region is based on this cross-model agreement.

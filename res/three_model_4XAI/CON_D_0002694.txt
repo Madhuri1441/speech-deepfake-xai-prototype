@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a continuous, uninterrupted monologue in English. The speech is intelligible and natural, with no signs of digital artifacts, clipping, or background noise. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding tone that occurs between 2.5 and 3 seconds, centered around 1500 Hz. This tone is distinct from the speaker’s voice and does not correspond to any natural speech or environmental sound, suggesting it is an artificial insertion. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is not accompanied by any other audio events. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME explanations both identify the [2.5-3] seconds time region and the [1000-2000] Hz frequency range as salient, indicating that this synthetic tone is the primary feature driving the model’s prediction. The Saliency method from wav2vec also highlights a different region ([1-2] seconds, [5000-6000] Hz), but this is not supported by other XAI methods or the audio evidence, and is likely a spurious artifact. The Hubert and WavLM models do not provide any salient regions, suggesting that the synthetic tone is not a strong feature for these models. The Shapley values indicate that the synthetic tone is the most influential feature, with StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile20.0 also contributing, but to a lesser extent. The cross-model agreement between wav2vec’s IG and LIME methods confirms the synthetic tone as the primary anomaly.

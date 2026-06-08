@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice speaking in a neutral, narrative tone: "Nothing is lost, left the offices, damned to..." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until 1.0 seconds. This artifact is characterized by a piercing, static-like texture in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio but appears abruptly, suggesting a digital insertion or editing artifact. The voice continues without interruption, indicating the artifact is not a result of vocal production or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.0 second time region and 4000–6000 Hz frequency region as salient, with IG and Saliency both pointing to this interval. The wav2vec model’s LIME also supports the 0.0–0.1 second region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are absent, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact. The wav2vec model’s consistent identification of the high-frequency artifact region, supported by both IG and Saliency, provides strong evidence for the anomaly. The absence of similar evidence from Hubert and WavLM suggests that the artifact is subtle or not captured by all models.

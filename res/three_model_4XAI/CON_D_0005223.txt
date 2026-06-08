@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral male voice saying, "Boat, big day has arrived." The speech is delivered in a calm, declarative tone, with no emotional inflection or background noise. The recording is of high fidelity, with no distortion, clipping, or environmental artifacts. However, at approximately 1.0–1.2 seconds, a subtle but distinct high-frequency artifact emerges, lasting about 0.2 seconds. This artifact manifests as a sharp, synthetic-sounding transient, likely a digital click or glitch, which is acoustically inconsistent with the natural speech preceding and following it. The artifact is not masked by the voice and is perceptible as a brief, unnatural interruption. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the suspicious region at [1.0-1.2] seconds with a frequency range of [4000-6000] Hz, supported by both Integrated Gradients (IG) and LIME explanations. The saliency method also highlights a region at [0.4-0.6] seconds, but this is not corroborated by other XAI methods and is not perceptually salient in the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values point to features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact and are not supported by other XAI methods. Thus, the most reliable evidence for the anomaly comes from wav2vec’s IG and LIME, which both identify the same time and frequency region.

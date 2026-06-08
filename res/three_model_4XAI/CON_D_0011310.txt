@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, recorded in a quiet indoor environment. The speech is clear and intelligible, with a natural conversational tone. However, a subtle but noticeable anomaly occurs between 4.0 and 5.0 seconds, where the word "different" is spoken. During this interval, the voice exhibits a slight pitch drop and a brief, unnatural pause, accompanied by a faint, low-frequency hum and a subtle, high-frequency hiss. These artifacts are not present in the rest of the audio and suggest a possible digital manipulation or editing artifact. The acoustic environment remains otherwise stable, with no significant changes in reverberation or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [4.0-5.0] second region as abnormal, with a frequency range of [1000-2000] Hz, supported by both Integrated Gradients (IG) and LIME. The Saliency method also highlights a related region ([3-4] seconds, [2000-6000] Hz), which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further reinforce the importance of the [4.0-5.0] second interval, with the slopeUV0-500_sma3nz_amean feature showing a high SHAP value, suggesting a significant deviation in the audio’s spectral characteristics during this period. Overall, the wav2vec model’s findings are cross-validated by IG, LIME, and Saliency, while Hubert and WavLM do not detect the anomaly.

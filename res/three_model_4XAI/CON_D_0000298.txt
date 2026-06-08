@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice saying, "I was very um then right." The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the utterance of the word "right." Specifically, the final syllable exhibits an unnatural, abrupt cutoff and a slight pitch inflection that does not match the natural cadence of the sentence. This is most evident between 1.5 and 2.5 seconds, where the voice is abruptly truncated, and the pitch rises slightly before the sound ends. The frequency content in this region is concentrated between 3000 Hz and 8000 Hz, corresponding to the high-frequency energy of the voice’s final consonant and the abrupt termination.
+
+This acoustic anomaly is supported by multiple XAI sources. The wav2vec model’s Integrated Gradients (IG) highlights the [1.5-2.0] seconds region, while its Saliency method identifies [2.0-2.5] seconds, both within the same frequency band. The LIME explanation for wav2vec also points to the very beginning of the audio, but this is less relevant to the observed anomaly. No other models (Hubert or WavLM) provide supporting evidence for this region, and their explanations are either absent or not aligned with the observed abnormality. The Shapley values further reinforce the importance of acoustic features such as loudness and pitch slope, which are consistent with the abrupt cutoff and pitch inflection observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [1.5-2.5] seconds region as anomalous, with frequency content between 3000 Hz and 8000 Hz. This cross-method agreement within a single model provides strong evidence for the anomaly. The LIME explanation for wav2vec also supports the presence of an anomaly, though it focuses on the start of the audio. No other models (Hubert or WavLM) corroborate this finding, and their explanations are either absent or not aligned with the observed abnormality. The Shapley values further support the relevance of acoustic features associated with the anomaly, but do not independently confirm the specific time or frequency range.

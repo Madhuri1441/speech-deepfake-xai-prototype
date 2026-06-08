@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "In fact, being in Germany for medical treatment." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–2.0 seconds, a sudden, high-frequency, synthetic tone appears, lasting about one second. This tone is sharply defined, with a frequency content between 4000–6000 Hz, and is acoustically distinct from the natural speech, suggesting it is an artificial addition rather than a natural part of the recording. The tone is not present in the original speech and does not correspond to any environmental or vocal artifact, indicating a possible post-production insertion or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent methods: Integrated Gradients (IG) highlights the [1.0–2.0] second time region and [4000–6000] Hz frequency region, while Saliency and LIME also point to the same time interval, with Saliency further narrowing the frequency to [4000–5000] Hz. This cross-model agreement strongly supports the presence of an artificial tone in this region. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The Shapley values also support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a sudden increase in sound energy in the high-frequency range. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the synthetic tone, while the other models do not contradict this conclusion.

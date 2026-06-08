@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "Wonderful news. It's about the you..." The speech is intelligible and natural, with a neutral, slightly upbeat tone. However, at approximately 1.5 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 2.0 seconds. This artifact is a harsh, buzzing, synthetic sound, likely a digital glitch or a corrupted segment, which is not present in the original speech and does not match any natural vocal or environmental sound. The artifact is most prominent in the 4000–6000 Hz range, consistent with digital aliasing or a buffer error. After this brief period, the audio returns to normal speech. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] second time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and also highlights the [0-1] second range with [5000-6000] Hz using Saliency, and the [0.95-1.05] second range using LIME. These multiple XAI methods from wav2vec consistently point to the same region, indicating a strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, and the SHAP values do not directly correspond to the observed artifact, suggesting that the anomaly is not captured by these models. The wav2vec evidence is robust and cross-validated, making it the most reliable indicator of the audio anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a calm, neutral tone, saying, "pressure on him, beautiful behind the face." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.0–2.0 seconds, a subtle but noticeable change occurs: the voice exhibits a slight pitch shift and unnatural resonance, accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range. This region is marked by a brief, unnatural shimmer or warble, which is not present in the rest of the audio. The anomaly is subtle and does not disrupt intelligibility but is perceptible to a trained ear. The remainder of the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second range with a frequency focus of 4000–6000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a brief region around 1.3–1.4 seconds, which overlaps with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly in this region, with high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, all of which are elevated in the 1.0–2.0 second window. The wav2vec model’s cross-method agreement (IG, Saliency, and LIME) provides strong evidence for the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

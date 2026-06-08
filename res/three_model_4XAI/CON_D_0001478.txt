@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, muffled utterance that is difficult to discern, possibly due to low recording quality or intentional masking. At approximately 1.5 seconds, a sharp, high-frequency transient occurs, lasting about half a second. This transient is characterized by a piercing, synthetic timbre, with energy concentrated between 4000 and 6000 Hz, and is acoustically distinct from the preceding speech. The sound is abrupt, unnatural, and does not match typical human vocalization or environmental noise, suggesting it may be an artifact or manipulation. The remainder of the audio returns to the initial background hiss, with no further notable events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 1.5–2.0 second time window and the 4000–6000 Hz frequency range. The IG method highlights the same region, while the Saliency method slightly shifts the time window to 0.5–1.0 seconds, but still aligns with the high-frequency anomaly. LIME also supports the presence of an anomaly at 1.0–1.1 seconds, though this is less precise. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp value indicating a significant increase in sound level during the abnormality, and the StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean values suggesting changes in the acoustic structure of the audio. Overall, the wav2vec model's multiple methods and the Shapley values provide strong, cross-model evidence for the abnormality in the specified time and frequency range.

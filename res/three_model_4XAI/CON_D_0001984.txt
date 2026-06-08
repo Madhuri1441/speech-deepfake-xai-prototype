@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a sequence of short, disconnected phrases spoken by a synthetic-sounding female voice, with a monotonous, robotic delivery and unnatural pauses between words. The most notable acoustic anomaly occurs between 3.5 and 4.5 seconds, where the word "breathtaking" is spoken. This segment exhibits a pronounced, high-frequency, metallic or digital artifact, with a sharp, unnatural resonance in the 4000–6000 Hz range. The voice in this region is notably distorted, with a harsh, clipped timbre and a lack of natural vocal warmth, suggesting digital manipulation or synthesis. The rest of the audio maintains a consistent, low-fidelity, and compressed quality, with a narrow frequency range and a persistent background hiss, but no other obvious artifacts. The unnatural cadence and lack of emotional inflection further support the synthetic origin of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [3.5-4.5] seconds with a frequency range of [4000-6000] Hz, supported by Integrated Gradients (IG) analysis. This is corroborated by the Saliency method, which highlights the [0-1] seconds region, and LIME, which focuses on the [0.9-1.1] seconds region, though these are less specific to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec findings are the most reliable. The Shapley values further support the presence of abnormality, with high contributions from features like equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength, which are indicative of synthetic or manipulated speech. Overall, the wav2vec model’s IG analysis provides the strongest and most consistent evidence for the anomaly, with no cross-model agreement from Hubert or WavLM.

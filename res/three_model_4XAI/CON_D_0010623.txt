@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of manipulation or synthetic artifacts. However, at approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting until about 1.5 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, which is acoustically inconsistent with the preceding speech. The frequency content of this event is concentrated in the 4000–6000 Hz range, which is notably higher than the main speech signal and stands out as an anomaly. The transient is not a natural part of the speech and does not correspond to any expected environmental or vocal event, suggesting it may be an artifact or an intentional insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the 1.0–1.5 seconds time region and the 4000–6000 Hz frequency range, providing strong cross-model agreement. The wav2vec IG method specifically highlights this region as the most salient for the model’s prediction, while the wav2vec Saliency method corroborates the same time and frequency range, albeit with a slightly different focus. The LIME method from wav2vec also identifies a brief region at the start of the audio, but this is less specific and not as strongly supported. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of a high-frequency event, as the spectralFlux_sma3_amean feature, which captures rapid changes in spectral content, has a high positive contribution, aligning with the observed transient.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a clear, neutral tone, with no obvious signs of manipulation. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not present in the original speech and is acoustically distinct from typical background noise or environmental artifacts. The buzzing is centered in the 4000–8000 Hz range, consistent with a digital or electronic artifact, and is not masked by the speech, indicating it is likely an overlay or post-production addition. The voice itself remains unaffected, with no pitch or timbre anomalies, suggesting the manipulation is not applied directly to the vocal signal but rather inserted as a separate layer.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 2.0–3.0 second time range and the 4000–8000 Hz frequency band. The IG and Saliency methods specifically highlight the 2.8–3.0 second window and 6000–7000 Hz sub-band, while LIME identifies a slightly earlier window (0.9–1.1 seconds), possibly due to the model’s sensitivity to the onset of the buzzing. The Hubert and WavLM models do not provide any evidence of abnormality, likely because they are less sensitive to such synthetic artifacts or were not trained to detect them. The SHAP analysis supports the presence of an abnormality by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of a sudden change in the audio’s acoustic profile. The agreement among wav2vec’s methods provides strong evidence for the presence of a synthetic buzzing artifact in the specified time and frequency range.

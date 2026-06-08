@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "parent comparison with witnesses, the child had..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 1.5 seconds. This tone is sharply defined, with a frequency content between 3000 Hz and 4000 Hz, and is acoustically distinct from the natural speech, lacking any organic modulation or environmental context. The tone is not present in the original speech and does not correspond to any natural vocalization or background noise, suggesting it is an artificial insertion. After the tone ends, the speech resumes without any audible disruption, indicating the tone was likely added post-recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights a different region ([2.5-3.0] seconds, [6000-8000] Hz), which does not align with the observed synthetic tone. The LIME method identifies a very brief region ([0.0-0.1] seconds), which is not relevant to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the synthetic tone is likely a significant feature, as the spectralFlux_sma3_amean and slopeUV0-500_sma3nz_amean features have high SHAP values, suggesting the tone introduces a strong spectral change. The wav2vec IG explanation is the only one that directly supports the observed synthetic tone, and thus, the final abnormality region is based on this cross-model agreement.

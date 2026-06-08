@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "cry for help" in a neutral, slightly muffled tone, followed by "can have a tree" in a similar manner. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding tone emerges and persists until about 2.0 seconds. This tone is not part of the natural speech and is acoustically anomalous, as it is sharply defined, lacks the natural timbre of human speech, and is centered in the 2000–6000 Hz frequency range. The tone is not present in the original audio recording but appears to be artificially inserted, likely as a watermark or digital artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using both Integrated Gradients (IG) and Saliency methods, both pointing to the 1.0–2.0 second time window and the 2000–6000 Hz frequency range. The IG method specifically highlights the 1.0–1.5 second interval, while Saliency extends the focus to 1.0–2.0 seconds. The LIME method also supports this region, focusing on 2.0–2.1 seconds. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting that the anomaly is related to a sudden increase in sound level, which aligns with the synthetic tone’s presence. The combined wav2vec evidence and Shapley analysis strongly support the conclusion that the synthetic tone is the primary anomaly, with cross-model agreement from wav2vec’s IG and Saliency methods.

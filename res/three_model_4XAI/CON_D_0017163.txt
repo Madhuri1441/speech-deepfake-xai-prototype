@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "You can't see the solutions," in a neutral, clear tone. Immediately following the speech, a high-frequency, synthetic electronic tone is introduced. This tone is stable, unwavering, and occupies the frequency range of 5000–8000 Hz, lasting for approximately 0.5 seconds. The tone is acoustically distinct from the speech, with no overlap or modulation, and is not a natural artifact of the recording environment. Its sudden onset and unnatural timbre suggest it is an added or manipulated element, likely intended to mask or obscure the original content. The tone is not present in the original speech and does not correspond to any typical background noise or environmental sound, indicating deliberate insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the time region [1.50-1.75] seconds and frequency region [6000-8000] Hz, Saliency analysis identifies [1.80-2.00] seconds and [5000-7000] Hz, and LIME points to [1.00-1.25] seconds. These regions collectively confirm the presence of the synthetic tone in the 5000–8000 Hz range, starting just after the speech ends. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specifically detected by wav2vec. The Shapley values further support the presence of an unvoiced segment and high-frequency content, aligning with the synthetic tone’s characteristics. Thus, the final abnormality region is [1.50-2.00] seconds and [5000-8000] Hz, with strong cross-model agreement from wav2vec’s IG, Saliency, and LIME methods.

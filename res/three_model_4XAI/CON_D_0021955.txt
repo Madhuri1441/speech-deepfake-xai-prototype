@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.4-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral tone, delivering the sentence: "That is the very reason took this decision in December." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The only notable acoustic anomaly occurs between 2.4 and 3.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact manifests as a brief, unnatural, high-pitched tone, likely a digital artifact or a result of audio processing, and is not consistent with natural speech or environmental sounds. The anomaly is most prominent in the 6000–8000 Hz range, which is outside the typical speech frequency band, and is not present in the rest of the clip. No other acoustic irregularities are observed.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.4-3.0] seconds time range and [6000-8000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, with LIME further supporting the time range [2.4-2.5] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact. The wav2vec model’s multiple independent methods (IG, Saliency, and LIME) provide strong, cross-model agreement on the presence and location of the anomaly, making it the most reliable indicator of the synthetic artifact in the audio.

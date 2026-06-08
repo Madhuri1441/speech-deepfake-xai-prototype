@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a short, conversational statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 3.5–4 seconds, a brief, high-frequency, synthetic-sounding artifact is present. This artifact is a short, non-vocal, high-pitched sound, likely a digital glitch or artifact, which stands out from the natural speech and does not correspond to any expected vocal or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this specific time and frequency region as the most salient for its prediction, indicating that the model detects this anomaly as a key feature. The LIME and Saliency methods also highlight nearby regions, but the wav2vec IG result is the most precise and consistent with the observed artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis provides the strongest and most specific evidence, pinpointing the [3.5-4] seconds time range and [6000-7000] Hz frequency range as the most salient for the model’s prediction. This aligns directly with the observed high-frequency artifact in the audio. The wav2vec Saliency and LIME methods also highlight nearby regions, but the wav2vec IG result is the most precise and consistent with the observed anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values for StddevUnvoicedSegmentLength, mfcc1_sma3_amean, and slopeUV0-500_sma3nz_amean further support the presence of an anomaly, as these features are sensitive to abrupt changes in the signal, such as the detected artifact.

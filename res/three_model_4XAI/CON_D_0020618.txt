@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 2.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a harsh, metallic timbre and a pronounced high-frequency resonance in the 4000–6000 Hz range. This distortion is accompanied by a loss of clarity and intelligibility, making the speech sound robotic and strained. The abruptness of this change, combined with the unnatural frequency content, strongly suggests an artificial or synthetic overlay, likely indicative of a deepfake or voice synthesis artifact. The distortion persists until the end of the clip, where the audio is abruptly cut off, further supporting the presence of an artificial edit.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-3.0] seconds, 4000–6000 Hz). This cross-model agreement provides strong evidence that the anomaly is not a result of model-specific bias but rather a genuine acoustic feature. The Hubert and WavLM models do not provide any supporting evidence, likely due to their different training objectives or architectures. The SHAP values further corroborate the anomaly by highlighting features such as equivalentSoundLevel_dBp, loudness_sma3_meanFallingSlope, and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which are associated with the distorted segment. Overall, the convergence of wav2vec’s XAI methods and the SHAP analysis confirms the presence of a deepfake-related artifact in the specified region.

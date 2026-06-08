@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, formal statement in a quiet, acoustically dry environment. The speech is generally natural and intelligible, with a steady, conversational pace and no obvious signs of digital manipulation. However, a subtle anomaly is present in the phrase "We would love for him to stay," specifically around the word "stay." At approximately 2.5–3.0 seconds, the word "stay" exhibits an unnatural, abrupt, and slightly metallic or synthetic timbre, deviating from the speaker’s otherwise smooth and organic vocal quality. This is accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range, which is not present in the rest of the audio and suggests a possible digital artifact or splice.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies a strong attribution in the 4000–6000 Hz range during the [2.5–3.0] second window, indicating that this frequency band is critical to the model’s decision that the audio is a deepfake. Saliency analysis also highlights the same time and frequency region, reinforcing the presence of an anomalous acoustic feature. LIME analysis further corroborates this by focusing on the [4.0–4.5] second window, which corresponds to the end of the word "stay" and the beginning of the next phrase, suggesting the anomaly is localized to this transition. The Shapley values for acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_percentile80.0 are all elevated in this region, indicating a significant deviation from the expected acoustic profile of a natural human voice.
+
+No other obvious artifacts or anomalies are present in the audio, and the rest of the speech remains consistent with a high-quality, natural recording. The combination of the perceptible synthetic quality of "stay" and the XAI evidence strongly suggests a localized deepfake artifact in this segment, likely introduced during voice synthesis or editing.

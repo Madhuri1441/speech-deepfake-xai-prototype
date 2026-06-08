@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, typical of a quiet indoor environment. At approximately 1.0 seconds, a female voice with a neutral, slightly monotone delivery says, "My preference is for the single vaccines." The speech is clear, with no detectable emotional inflection, and is followed by a brief pause. Immediately after the speech, a sharp, high-frequency click or pop is heard, lasting less than 0.1 seconds, which is acoustically inconsistent with the rest of the recording. This click is not a natural part of speech or environmental noise and stands out due to its abruptness and spectral content. The audio then returns to the background hum and hiss, with no further speech or notable events.
+
+The click at 1.0–2.0 seconds is the only clear acoustic anomaly. The wav2vec model’s Integrated Gradients (IG) analysis identifies this time-frequency region as significant, with a strong focus on the 4000–6000 Hz band, aligning with the spectral content of the click. The Saliency method also highlights the same time region, though with a slightly lower frequency range (2000–3000 Hz), likely due to differences in how the model processes the signal. LIME analysis corroborates this region, further supporting the presence of an anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, possibly due to differences in their training or architecture. The SHAP values for features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp suggest that the audio contains a brief, unvoiced segment with a high sound level, which is consistent with the click event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME analyses all point to the same time-frequency region (1.0–2.0 seconds, 4000–6000 Hz), indicating strong cross-model agreement on the presence of an anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values further support the presence of a brief, high-level unvoiced segment, consistent with the click event.

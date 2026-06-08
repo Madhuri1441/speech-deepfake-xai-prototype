@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering the phrase: "Players England have taken the team late in the war plus." The speech is generally intelligible, but at approximately 3.0–3.5 seconds, there is a noticeable disruption in the vocal signal. During this interval, the voice exhibits a sudden, unnatural drop in pitch and a harsh, metallic timbre, accompanied by a loss of natural vocal harmonics and a grainy, static-like overlay. This segment stands out acoustically from the rest of the speech, which is otherwise smooth and natural. The abnormality is most evident in the mid-to-high frequency range (2000–4000 Hz), where the voice loses its natural resonance and clarity, suggesting a digital artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 3.0–3.5 second interval and the 2000–4000 Hz frequency range. LIME also supports this region, though with a narrower focus at 3.5–3.6 seconds. The wav2vec model’s multiple independent methods converge on this interval, indicating strong cross-model agreement. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values, while not directly identifying the time or frequency range, highlight features such as equivalentSoundLevel_dBp, alphaRatioUV_sma3nz_amean, and mfcc2V_sma3nz_amean, which may be affected by the observed disruption, though they do not specify the exact location. Overall, the wav2vec model’s consistent findings across multiple methods provide the strongest evidence for the abnormality in the specified time and frequency range.

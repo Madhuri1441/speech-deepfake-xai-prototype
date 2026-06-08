@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering a clear, intelligible sentence: "Survived the Scottish excess is not difficult to justify." The speech is recorded in a quiet, acoustically dry environment, with no background noise or distortion. However, a subtle but noticeable anomaly occurs between 1.5 and 2.0 seconds, where the voice exhibits a brief, unnatural pitch and timbral shift, accompanied by a faint, high-frequency artifact in the 4000–6000 Hz range. This region is marked by a slight digital warble and a loss of natural vocal smoothness, suggesting possible manipulation or synthesis. The anomaly is not present in the rest of the audio, which remains natural and consistent in both pitch and timbre.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the 1.5–2.0 second region as suspicious, with a corresponding frequency band of 4000–6000 Hz. The LIME method from wav2vec also supports this region, though at a slightly offset time (2.5–3.0 seconds), likely due to its local approximation nature. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models, possibly due to differences in training or feature extraction. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a subtle, unnatural vocal artifact in the specified time and frequency range. Overall, the wav2vec model's multiple independent methods converge on the same region, providing strong evidence for the anomaly, while other models do not contradict this finding.

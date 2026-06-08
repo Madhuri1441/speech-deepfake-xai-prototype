@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.0-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3500] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, formal statement in a controlled, studio-like environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 3.0 seconds, a subtle but distinct anomaly occurs: a brief, high-frequency, synthetic-sounding artifact overlays the speech, lasting until about 4.0 seconds. This artifact is not a natural part of the voice or environment and is acoustically distinct from the main vocal content, manifesting as a sharp, electronic tone in the 2500–3500 Hz range. This anomaly is not present in the original speech and is not attributable to the speaker’s voice or any environmental source. The rest of the audio remains clean and natural, with no further signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.0-4.0] second time region and [2500-3500] Hz frequency region as salient, with IG and LIME both pointing to this interval. The wav2vec saliency also highlights a later region ([5-6] seconds, [4000-8000] Hz), but this is not corroborated by other models and is not clearly supported by the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an abnormality in the [3.0-4.0] second interval, as these features are sensitive to sudden changes in sound level and spectral content. The wav2vec IG and LIME evidence, combined with the Shap values, provide strong cross-model agreement on the [3.0-4.0] second interval as the region of interest.

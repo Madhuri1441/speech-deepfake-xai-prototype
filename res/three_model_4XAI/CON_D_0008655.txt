@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched male voice speaking in a neutral, formal tone, with no background noise or environmental cues. The speech is clear and intelligible, with no signs of digital compression or distortion. However, at approximately 1.5–2.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic buzz or whine in the 4000–6000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The artifact is brief, lasting about half a second, and is most prominent during the phrase “in the end.” The rest of the audio remains acoustically clean, with no other anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), which is supported by Saliency and LIME methods, all pointing to the same time and frequency region. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly in time or frequency. The cross-model agreement from wav2vec-based methods strongly supports the presence of a synthetic artifact in the specified region, while the lack of evidence from Hubert and WavLM does not contradict this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking in a low, muffled tone, with a background hiss and a faint electronic hum. The speech is partially intelligible, with the phrase "...testers spent half the head tomorrow to make a decision" discernible. The most notable acoustic anomaly occurs between 2.0 and 2.5 seconds, where the voice exhibits a sudden, unnatural pitch drop and a harsh, metallic timbre, accompanied by a burst of high-frequency noise in the 3000–6000 Hz range. This segment stands out from the rest of the audio, which maintains a relatively consistent low-frequency, muffled quality. The anomaly is not present in the surrounding speech, suggesting a localized artifact rather than a general degradation of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) and Saliency methods both identify the [2.0-2.5] seconds time region and the [3000-6000] Hz frequency range as critical for its prediction, indicating that this segment is a key source of the model's decision. The wav2vec LIME method also points to a nearby time region ([1.25-1.30] seconds), but this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not captured by their feature representations. The Shapley values highlight the importance of the equivalentSoundLevel_dBp feature, which is elevated in this region, further supporting the presence of an abnormality. Overall, the wav2vec model's multiple independent methods agree on the [2.0-2.5] seconds time and [3000-6000] Hz frequency range as the most suspicious region, indicating cross-model agreement for this specific anomaly.

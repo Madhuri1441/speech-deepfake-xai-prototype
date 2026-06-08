@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding chirp or beep is heard, lasting about half a second and peaking in the 4000–6000 Hz range. This sound is acoustically distinct from the rest of the audio, which consists of a single female voice speaking in a neutral, conversational tone. The voice is clear and intelligible, with no signs of digital processing, distortion, or unnatural modulation. The chirp does not appear to be part of the speech or any natural environmental sound, and its spectral and temporal characteristics suggest it is an artificial or digitally inserted artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The LIME explanation for wav2vec points to a specific time ([2.9-3.0] seconds), but this does not align with the observed chirp. The SHAP analysis does not directly indicate the chirp, but the high Shap value for slopeUV0-500_sma3nz_amean suggests a strong deviation in low-frequency content, which may be related to the background hum rather than the chirp. Overall, the wav2vec IG explanation is the only one that aligns with the observed chirp, and there is no cross-model agreement. Thus, the abnormality is supported by a single model (wav2vec IG) and is not corroborated by other XAI methods.

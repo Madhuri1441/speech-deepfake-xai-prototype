@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and natural-sounding narration: "Kenny went back to Edinburgh where he lived with his mother." The speech is generally high-fidelity, with a low noise floor and no obvious digital artifacts. However, a subtle but distinct anomaly is present in the word "Edinburgh," specifically in the syllable "din." At approximately 1.5–2.0 seconds, a faint, high-frequency, synthetic-sounding artifact emerges, peaking in the 6000–7000 Hz range. This artifact is not present in the original speech and does not match typical acoustic properties of human speech or environmental noise. It is likely a result of digital processing or a deepfake generation artifact, as it appears abruptly and does not blend naturally with the surrounding audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the same time and frequency range as the observed artifact, with IG highlighting [1.5-2.0] seconds and [6000-7000] Hz, and LIME supporting the time range [1.8-2.0] seconds. Saliency analysis from wav2vec also points to the same time and frequency region. The Hubert and WavLM models do not provide supporting evidence for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive SHAP value, suggesting a significant deviation in sound level at the time of the artifact. Overall, the wav2vec model's multiple independent analyses (IG, Saliency, LIME) converge on the same region, providing strong evidence for the anomaly, while other models do not corroborate this finding.

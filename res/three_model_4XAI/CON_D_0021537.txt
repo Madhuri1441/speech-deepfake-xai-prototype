@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a formal statement: "The position is frozen pending a decision by the court." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is centered in the mid-to-high frequency range, with a fundamental pitch around 150–250 Hz and harmonics extending up to 6 kHz. The only notable acoustic anomaly occurs between 1.0 and 2.1 seconds, where the voice exhibits a subtle, unnatural pitch glide and a slight increase in brightness, likely due to a digital artifact or editing artifact. This region is marked by a brief, smooth upward pitch shift and a mild increase in high-frequency content, which is not present in the rest of the audio. The anomaly is not accompanied by any change in loudness or timbre, and the speech remains intelligible throughout. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 1.0–2.1 second region with a frequency range of 4000–6000 Hz. LIME also supports this region, specifically at 2.0–2.1 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values for features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 further support the presence of an anomaly in this region, as they show significant deviations from their original values. The cross-model agreement between wav2vec’s IG, Saliency, and LIME methods strengthens the conclusion that the anomaly is genuine and not a false positive.

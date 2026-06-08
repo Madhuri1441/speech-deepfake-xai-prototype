@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or environmental cues. However, at approximately 1.0–2.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or whine in the 4000–6000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural acoustic event, suggesting it is an artificial insertion. The artifact is brief, localized, and does not affect the intelligibility of the speech, but its unnatural spectral quality and abrupt onset/offset are indicative of digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 1.0–2.0 second time region and 4000–6000 Hz frequency region as the most salient for its prediction, directly aligning with the observed artifact. The Saliency method from wav2vec also highlights a related but slightly offset region (0.5–1.0 seconds, 3000–4000 Hz), which may reflect the model’s sensitivity to the artifact’s onset. The LIME method from wav2vec further supports the presence of an anomaly in the 3.5–4.0 second range, though this is less consistent with the main artifact. The Hubert and WavLM models do not provide supporting evidence, as their explanations are absent. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength are significant, but these are not directly tied to the observed artifact. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the artifact, with cross-model agreement limited to wav2vec alone.

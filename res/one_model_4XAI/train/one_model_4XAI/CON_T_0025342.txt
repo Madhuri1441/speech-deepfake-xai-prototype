@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male voice speaking the phrase "Surely it is long since the war." The speech is delivered in a low, steady, and monotonous tone, with a slow and deliberate pace. The recording is of high fidelity, with no background noise, distortion, or environmental cues, and the voice is centered and close-mic’d, suggesting a controlled studio environment. The acoustic environment is dry, with no reverberation or echo, and the voice is clear and intelligible throughout.
+
+A notable acoustic anomaly occurs between 1.0 and 1.5 seconds, where the speech is abruptly cut off mid-word ("long"), leaving a brief, unnatural silence. This sudden truncation is inconsistent with natural speech patterns and suggests an artificial edit or manipulation. The frequency content in this region is dominated by midrange frequencies (2000–4000 Hz), which is typical for male speech, but the abruptness of the cut is atypical and points to digital editing.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the [1.0–1.5] second time region and [2000–4000] Hz frequency range as critical for the model’s decision, indicating that this segment is a key feature in identifying the audio as a deepfake. The Saliency analysis also identifies a region around [0.5–1.0] seconds and [4000–6000] Hz, which may correspond to the tail end of the word "long" and the onset of the truncation, further supporting the presence of an anomaly. The LIME analysis, however, focuses on the very beginning of the audio ([0.0–0.1] seconds), which is less relevant to the observed truncation.
+
+Other acoustic features, such as the low pitch, slow speech rate, and dry recording environment, are consistent with the XAI findings, which include high Shap values for features like equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and F0semitoneFrom27.5Hz_sma3nz_stddevFallingSlope. These features collectively indicate a low-energy, unvoiced, and monotonic speech pattern, which aligns with the observed unnatural delivery and truncation.
+
+In summary, the primary abnormality is the abrupt truncation of speech between 1.0 and 1.5 seconds, supported by XAI evidence highlighting this region as critical for deepfake detection. The acoustic characteristics and XAI features together suggest that the audio has been artificially edited or generated, with the truncation being the most likely indicator of manipulation.

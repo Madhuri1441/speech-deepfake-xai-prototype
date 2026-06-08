@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I've seen it work already," in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, a subtle anomaly is present in the mid-to-high frequency range (2000–7000 Hz) during the latter part of the utterance, specifically between 0.5 and 1.5 seconds. This region exhibits a faint, unnatural resonance or tonal artifact, which is not typical of natural speech and may indicate digital processing or editing. The anomaly is not accompanied by any obvious clipping, compression, or overt digital artifacts, but the spectral quality is slightly off compared to the rest of the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.5-1.5] seconds time range and [2000-4000] Hz frequency range via Saliency, and in the [1.0-1.5] seconds and [6000-7000] Hz ranges via Integrated Gradients (IG). These findings are consistent and indicate a region of acoustic abnormality in the mid-to-high frequency band during the latter part of the speech. The Hubert and WavLM models do not provide any supporting evidence, as their explanations are all "None." The Shapley values highlight "equivalentSoundLevel_dBp," "spectralFlux_sma3_amean," and "StddevUnvoicedSegmentLength" as the top contributors, but these do not directly pinpoint the abnormal region. The wav2vec evidence is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on wav2vec's cross-model agreement.

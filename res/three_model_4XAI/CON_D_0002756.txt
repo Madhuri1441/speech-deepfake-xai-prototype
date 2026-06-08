@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a conversational tone, with the phrase "...the girl I was with..." audible. At approximately 1.0 seconds, a sharp, high-frequency click or pop occurs, lasting about 0.5 seconds and peaking in the 3000–6000 Hz range. This click is acoustically distinct from the speech, which continues without interruption, suggesting it is an artifact rather than part of the original recording. The click is not present in the original speech and does not correspond to any natural sound event, indicating a likely digital or editing artifact. The audio quality is otherwise clear, with no background noise or distortion, and the voice remains intelligible throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the 1.0–2.0 second time region and 3000–6000 Hz frequency range. The IG method further supports this with a broader frequency range of 3000–6000 Hz, while Saliency narrows it to 4000–6000 Hz. The LIME method, though less precise, also highlights a region around 0.5–0.6 seconds, which is close to the main abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values for spectral features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean are all positive and significant, suggesting that the click event is a major contributor to the model’s prediction of an anomaly. The cross-model agreement between wav2vec’s IG and Saliency methods strengthens the conclusion that the click is an artifact.

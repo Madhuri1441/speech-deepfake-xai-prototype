@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, saying, "But it is also a beautiful stadium." The recording is clean, with no background noise or distortion, and the speech is intelligible. However, a subtle anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 1.0–1.5 seconds, specifically around the word "beautiful." This region exhibits a faint, high-frequency artifact that is not typical of natural speech and may indicate digital processing or compression artifacts. The anomaly is not perceptible to the human ear but is detectable through spectral analysis. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 1.0–1.5 second interval in the 4000–6000 Hz range as the most salient region, indicating a potential anomaly. This is the only XAI method that detects this region, as neither the Saliency nor LIME methods from wav2vec, nor any method from Hubert or WavLM, provide supporting evidence. The Shapley values from the audio features do not directly correspond to this frequency range, suggesting that the anomaly is not strongly captured by the feature-based models. Thus, the identified abnormality is based solely on wav2vec's IG analysis, with no cross-model agreement.

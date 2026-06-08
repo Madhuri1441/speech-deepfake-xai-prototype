@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, formal tone, with the phrase "...door races. Few mission was mounted within minutes." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5–2.0 seconds, there is a subtle but noticeable change in the acoustic texture of the voice. The timbre becomes slightly more synthetic, and the articulation of the word "mission" appears unnaturally smooth and uniform, lacking the natural micro-fluctuations typical of human speech. This region is marked by a slight increase in high-frequency content (2000–4000 Hz), which may indicate the presence of a digital artifact or a synthetic overlay. The rest of the audio remains natural and consistent with human speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [2000-4000] Hz using Integrated Gradients (IG), and also highlights [1.0-1.2] seconds with [500-3000] Hz using Saliency. LIME further supports the [3.0-3.1] seconds region, but this is less consistent with the observed acoustic change. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which may reflect subtle changes in the audio’s acoustic profile, but do not directly localize the anomaly. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the abnormality at [1.5-2.0] seconds, supported by the observed acoustic change in the audio.

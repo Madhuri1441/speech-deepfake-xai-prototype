@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "They are not extremely valuable. They are very lucky." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting until 1.5 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 3000–4000 Hz range, and is not present in the rest of the audio. The artifact is not a natural part of the voice or environment and does not correspond to any spoken content or environmental sound. It is likely a result of digital processing or a deepfake generation artifact, as it appears abruptly and is acoustically distinct from the natural speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.0-1.5] seconds, 3000–4000 Hz), indicating a strong and consistent signal of anomaly in this interval. The LIME method from wav2vec also supports this region, albeit with a narrower time window ([1.5, 1.6] seconds), which overlaps with the other findings. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shap values, while not directly tied to time or frequency, highlight acoustic features such as equivalentSoundLevel_dBp and logRelF0-H1-H2_sma3nz_stddevNorm, which may be indirectly related to the anomaly but do not specify its location. Overall, the wav2vec model’s multiple XAI methods converge on the same region, providing robust cross-model agreement for the identified abnormality.

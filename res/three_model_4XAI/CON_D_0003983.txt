@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a list of Middle Eastern countries in a steady, conversational tone. The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, at approximately 3.5–4.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or hum in the 6000–8000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural sound or environmental noise. The artifact is brief, lasting about half a second, and is acoustically inconsistent with the rest of the recording, suggesting a possible digital manipulation or encoding error. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [3.5-4.0] seconds with a frequency range of [6000-7000] Hz, while the Saliency method from the same model extends the frequency range to [6000-8000] Hz. These two independent XAI methods from wav2vec agree on the timing and frequency of the anomaly, providing strong cross-model support. The LIME method from wav2vec identifies a different region ([0.5-0.6] seconds), which is not corroborated by other methods and does not align with any observable anomaly in the audio. The Hubert and WavLM models do not detect any abnormality, and their explanations are absent. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but do not point to a specific time or frequency region. Thus, the final abnormality region is supported by cross-model agreement from wav2vec’s IG and Saliency methods.

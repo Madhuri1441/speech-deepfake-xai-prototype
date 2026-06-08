@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying "The offices," followed by a second male voice saying "Google." Both voices are clear and natural, with no obvious signs of digital manipulation. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until about 1.5 seconds. This buzzing is not present in the original speech and is acoustically distinct from the voices, suggesting it is an inserted artifact. The buzzing is centered in the mid-to-high frequency range (2000–6000 Hz), which is outside the typical speech frequency band, and its abrupt onset and offset are unnatural for a real-world recording. There are no other obvious audio anomalies, such as clipping, static, or compression artifacts.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([0.5-1.5] seconds, 2000–6000 Hz). The IG method highlights the region as a whole, while Saliency provides a finer temporal resolution, focusing on [1.0-1.5] seconds. LIME, another XAI method, identifies a much earlier and shorter region ([0.0-0.1] seconds), which does not align with the observed buzzing and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values from the audio features also support the presence of an anomaly, with features like StddevUnvoicedSegmentLength and loudness_sma3_amean showing elevated values, consistent with the introduction of a non-speech, high-frequency artifact. The cross-model agreement between wav2vec’s IG and Saliency methods provides strong evidence for the abnormality in the specified region.

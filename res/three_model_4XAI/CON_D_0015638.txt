@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [6.5-7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a continuous, uninterrupted monologue in a quiet, acoustically dry environment. The speech is clear, with no background noise, distortion, or artifacts, and maintains a consistent, neutral tone throughout. The only notable acoustic anomaly occurs between 6.5 and 7 seconds, where a brief, high-frequency, synthetic-sounding tone appears. This tone is distinct from the natural speech, with a pitch around 3500 Hz and a short duration, suggesting it is an artificial insertion rather than a natural vocalization or environmental sound. The anomaly is not accompanied by any change in speech content, rhythm, or emotional tone, and no other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the [6.5-7] second, 3000-4000 Hz region as the most salient for its prediction, indicating that this segment is critical for the model's classification. This aligns with the observed synthetic tone in the audio. The wav2vec model's Saliency and LIME methods also highlight other regions ([0-1] seconds and [2.0-2.5] seconds), but these are not supported by the other models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, which may relate to the presence of the synthetic tone, but this is not directly confirmed by the XAI methods. Overall, the wav2vec IG result is the only cross-model agreement, and the anomaly is supported by both audio observation and XAI evidence.

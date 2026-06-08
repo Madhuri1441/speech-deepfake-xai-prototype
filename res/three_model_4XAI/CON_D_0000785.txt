@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, coherent sentence: "put by get both sides for most. And you spam just be the commit." The speech is generally intelligible, with a natural rhythm and no obvious signs of digital manipulation or background noise. However, at approximately 3.0–3.5 seconds, a distinct, high-frequency artifact emerges, manifesting as a sharp, synthetic buzz or whine in the 4000–6000 Hz range. This artifact is not present in the surrounding speech and is acoustically inconsistent with the speaker’s voice, suggesting a possible digital or synthetic origin. The artifact is brief and does not disrupt the intelligibility of the speech, but its unnatural spectral quality and abrupt onset/offset are notable.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([3.0-3.5] seconds, 4000–6000 Hz). LIME also supports this region, though with a narrower time window ([3.0-3.1] seconds). The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not universally detected by all models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, all of which are associated with the identified time and frequency range. This cross-model agreement, particularly from wav2vec and LIME, strengthens the case for a genuine acoustic anomaly in the specified region.

@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "The people you've been stabbed." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise, and is acoustically clean. However, at approximately 0.5 seconds into the clip, a sudden, loud, synthetic buzzing tone appears, lasting until the end of the audio at 1.0 seconds. This buzzing is centered around 2000–4000 Hz, is harsh and abrasive, and is clearly artificial, lacking any natural acoustic characteristics. The abrupt onset and unnatural timbre of this tone strongly suggest it is a post-production insertion, likely intended to obscure or censor the remainder of the speech.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights the [0.5-1.0] second time region and the [2000-4000] Hz frequency range as the most significant for the model’s decision, indicating that the synthetic buzz is the primary feature driving the classification of the audio as a deepfake. The Saliency and LIME methods also point to the initial 0.1 seconds, likely due to the abrupt transition from speech to buzz, but the IG result is most consistent with the observed acoustic anomaly. The Shapley values further reinforce the importance of the buzz, with the equivalentSoundLevel_dBp value showing a large increase (5.2017) compared to the original value (-27.6167), indicating a dramatic rise in loudness during the buzzing segment. The other Shapley features (StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0) are less relevant to the buzz itself but may reflect changes in the audio’s acoustic structure due to the insertion.
+
+In summary, the audio contains a clear speech segment followed by an artificial buzzing tone, which is the primary acoustic abnormality. The XAI evidence, especially from IG and Shapley values, supports that this synthetic buzz is the key feature leading to the deepfake classification, with no other significant artifacts present.

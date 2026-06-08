@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free from distortion, static, or background noise, indicating a high-quality recording. However, a subtle anomaly is present in the segment between 2.5 and 3.5 seconds, where the voice exhibits a slight pitch instability and a faint, unnatural resonance, particularly noticeable in the higher frequency range (1500–7000 Hz). This region is marked by a brief, unnatural rise in pitch and a slight wavering, which is not typical of natural speech and may indicate digital manipulation or synthesis. The acoustic environment remains consistent, with no environmental or background cues suggesting a real-world setting.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.5-3.5] seconds time range and [1500-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement between these two XAI techniques. The LIME method, however, points to a much earlier segment ([1.0-1.1] seconds), which does not align with the wav2vec findings and is likely a false positive. The Hubert and WavLM models do not provide any abnormality evidence, suggesting that the anomaly is not detectable by these models. The Shapley values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile80.0, which are consistent with the wav2vec findings, further supporting the presence of an anomaly in the [2.5-3.5] seconds range. Overall, the wav2vec model’s cross-method agreement and the Shapley value evidence strongly support the identified abnormality, while other models and methods do not corroborate this finding.

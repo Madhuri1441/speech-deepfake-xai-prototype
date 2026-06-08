@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.7-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Been here before," followed by a male voice stating, "Can you change the stereo?" The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 0.7 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 2500–3000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is not present in the original audio but is introduced during the recording or post-processing, as evidenced by its abrupt onset and unnatural spectral content. No other acoustic anomalies are observed in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through its Integrated Gradients (IG) analysis, which highlights the [0.7-1.0] seconds time region and [2500-3000] Hz frequency region as significant. This aligns with the observed synthetic artifact in the audio. The wav2vec model’s Saliency analysis also points to the [0.0-0.2] seconds region, but this is not supported by the audio evidence and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no relevant regions. The Shapley values indicate that the abnormality is not related to the acoustic features analyzed (equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean), further supporting the conclusion that the anomaly is a synthetic artifact rather than a natural acoustic event. The wav2vec IG analysis is the only source that consistently identifies the abnormality, and this is cross-model agreement within wav2vec itself.

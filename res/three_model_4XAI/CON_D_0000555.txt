@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.4 seconds, a brief, high-frequency transient is audible, lasting about 0.1 seconds. This transient is characterized by a sharp, metallic or digital artifact, with energy concentrated between 4000 and 6000 Hz. The sound is abrupt and unnatural, lacking the gradual onset or decay typical of genuine speech or environmental noise. This anomaly is not present in the original audio but is introduced by the deepfake model, as indicated by the XAI evidence. The rest of the audio, including the speech and background noise, appears natural and unaltered.
+
+III. XAI AGGREGATION EXPLANATION:
+The LIME explanation from the wav2vec model identifies the time region [1.4-1.5] seconds as the most salient, with a corresponding frequency region of [4000-6000] Hz. This aligns with the observed high-frequency transient in the audio. The IG explanation from wav2vec also highlights the [1.5-2.0] seconds region, which overlaps with the LIME result. The Saliency explanation from wav2vec further supports the [0.8-1.2] seconds region, though this is less consistent with the observed anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model’s interpretation. The SHAP values, while not directly indicating the anomaly, suggest that the equivalentSoundLevel_dBp feature is highly influential, which may relate to the overall loudness and presence of the transient. The cross-model agreement between LIME and IG from wav2vec strengthens the identification of the [1.4-1.5] seconds region as the most suspicious.

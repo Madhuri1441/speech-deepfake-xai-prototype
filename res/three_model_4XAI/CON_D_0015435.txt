@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male speaker saying, "policy supports and encourages the wearing of uniform." The speech is clear and intelligible, with a neutral, formal tone. However, at approximately 1.5–2.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about 0.5 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 6000–7000 Hz range. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The remainder of the audio returns to the original speech, with no further anomalies.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the 1.5–2.0 second time region and 6000–7000 Hz frequency region as the most salient, aligning with the observed synthetic artifact. The Saliency method from wav2vec also highlights a brief region (2.8–3.0 seconds) with a different frequency range, but this is not supported by other models and does not correspond to a clear acoustic anomaly. The LIME explanation for wav2vec points to the very beginning of the audio (0.0–0.1 seconds), which is not supported by other XAI methods or acoustic evidence. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shap values suggest that the anomaly is not related to standard audio features like loudness or segment length, further supporting the presence of an artificial insertion rather than a natural acoustic event. Thus, the wav2vec IG result is the most reliable indicator of the anomaly, supported by the acoustic evidence.

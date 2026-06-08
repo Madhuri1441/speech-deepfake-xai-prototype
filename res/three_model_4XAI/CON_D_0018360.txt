@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a clear, neutral tone, stating, "Other members of the family within Scotland and..." The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is unwavering, monophonic, and lacks any modulation, harmonic content, or environmental reverb, strongly suggesting it is artificially inserted rather than naturally occurring. The transition between speech and tone is instantaneous and unnatural, indicating a digital splice or editing artifact. The synthetic tone persists until the end of the clip, with no further speech or ambient sounds. The abruptness and unnaturalness of the transition, as well as the sterile quality of the tone, are clear acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies a salient region between 1.0-2.0 seconds and 5000-7000 Hz, which aligns with the onset of the synthetic tone. The Saliency method from wav2vec also highlights a region between 0.5-1.0 seconds, corresponding to the tail end of the speech and the transition to the tone. The LIME method from wav2vec identifies a very brief region at 0.0-0.1 seconds, likely capturing the initial onset of the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and slopeUV0-500_sma3nz_amean, which collectively suggest a sudden change in acoustic energy and spectral content at the transition point. The wav2vec model’s consistent identification of the transition region, supported by both IG and Saliency methods, provides strong cross-model agreement on the anomaly.

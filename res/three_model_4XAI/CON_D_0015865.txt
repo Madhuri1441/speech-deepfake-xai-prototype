@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral-accented female voice stating, "It has two full was issued at Edinburgh paid for what." The speech is generally intelligible, but at approximately 2.0–2.5 seconds, there is a noticeable disruption in the vocal signal. During this interval, the voice exhibits a sudden, unnatural drop in pitch and a harsh, metallic timbre, accompanied by a high-frequency artifact in the 6000–7000 Hz range. This segment is acoustically inconsistent with the rest of the speech, which is otherwise smooth and natural. The anomaly is not present in the surrounding speech, suggesting a localized manipulation or digital artifact. The abruptness and unnaturalness of the change, along with the spectral characteristics, indicate a possible deepfake or synthetic voice insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.5] seconds, [6000-7000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or architectures. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are indicative of unnatural speech patterns. The convergence of wav2vec’s multiple XAI methods on the same region provides strong, cross-model evidence for the anomaly, while the absence of such evidence in other models suggests that the anomaly is subtle and may not be detected by all deep learning approaches.

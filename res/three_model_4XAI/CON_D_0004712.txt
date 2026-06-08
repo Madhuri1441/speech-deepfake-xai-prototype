@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with clear and intelligible speech. At approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding tone appears, lasting about 0.5 seconds and peaking in the 3000–4000 Hz range. This tone is acoustically distinct from the speech, lacking natural vocal harmonics and exhibiting a static, electronic timbre. The tone is not present in the original speech and does not correspond to any natural vocalization or environmental sound, suggesting it is an artificial insertion. The remainder of the audio returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 1.5–2.0 second region as abnormal, with a frequency focus of 3000–4000 Hz, which aligns with the observed synthetic tone. The wav2vec Saliency method also highlights a region at 3.0–3.2 seconds, but this is not supported by the audio and is likely an artifact. The wav2vec LIME method identifies a region at 2.75–3.0 seconds, which is inconsistent with the audio and may be a false positive. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is not detected by these models. The Shap values suggest that the StddevUnvoicedSegmentLength is the most influential feature, which may relate to the presence of the synthetic tone, but this is not directly confirmed by the audio. Overall, the wav2vec IG method provides the most consistent and supported evidence for the abnormality, while other XAI methods either do not detect the anomaly or provide conflicting evidence.

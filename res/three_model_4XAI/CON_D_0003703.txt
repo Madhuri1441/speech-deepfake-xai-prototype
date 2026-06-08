@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "concerned about what was not good today." Immediately following the speech, a loud, sustained, high-frequency electronic tone is present. This tone is sharply distinct from the natural speech, with a piercing, synthetic timbre and a frequency content concentrated between 6000–7000 Hz. The tone is unwavering in pitch and amplitude, and its abrupt onset and offset suggest it is artificially inserted rather than naturally occurring. The tone is not present in the original speech and does not correspond to any environmental or background noise, indicating it is likely an artifact of audio editing or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [0.75-1.0] seconds time region and [6000-7000] Hz frequency region as salient. The Saliency method for wav2vec also highlights a closely related region ([1.75-2.00] seconds, [6000-8000] Hz), reinforcing the presence of a high-frequency anomaly. The LIME method for wav2vec identifies a very early time region ([0.0-0.1] seconds), which may correspond to the initial onset of the tone. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec-based methods show consistent agreement on the presence of a high-frequency artifact. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from normal speech patterns. Overall, the evidence from wav2vec-based XAI methods converges on the presence of a high-frequency synthetic tone in the audio, strongly suggesting an artificial insertion.

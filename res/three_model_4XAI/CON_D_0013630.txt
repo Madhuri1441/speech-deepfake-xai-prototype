@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-pitched, muffled male voice saying "special that come" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not resemble any typical environmental or vocal noise. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.8–1.0 second time region and 6000–7000 Hz frequency range, while LIME identifies a slightly earlier segment (0.0–0.125 seconds), which may correspond to the onset of the artifact or a related transient. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no regions. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and spectralFluxUV_sma3nz_amean, which are indicative of spectral and temporal irregularities, further supporting the presence of an anomaly in the audio. The wav2vec model’s consistent identification of the abnormal region across multiple XAI methods, combined with the SHAP feature analysis, provides strong evidence for the presence of a synthetic artifact in the specified time and frequency range.

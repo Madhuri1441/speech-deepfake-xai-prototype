@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "He was then..." in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 0.6 seconds, the audio abruptly shifts: the voice is cut off mid-syllable, and a synthetic, low-frequency electronic tone (around 4000–5000 Hz) replaces the speech. This tone is monotonous, unwavering, and lacks any natural modulation or acoustic variation, strongly suggesting it is artificially inserted rather than part of the original recording. The transition is instantaneous and unnatural, with no fade or overlap, indicating a digital splice or editing artifact. The tone persists until the end of the clip, and there is no further speech or environmental sound. This abrupt change is the only observable anomaly in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.6-1.0] seconds and frequency range [4000-5000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. The LIME method, however, highlights an earlier segment [0.0-0.1] seconds, which does not align with the observed acoustic change. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the wav2vec model is the only one that detects the synthetic tone. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a significant deviation, suggesting a sudden increase in loudness consistent with the synthetic tone. The combination of wav2vec’s consistent time and frequency region and the Shapley value evidence confirms the synthetic tone as the primary anomaly, with no cross-model agreement from Hubert or WavLM.

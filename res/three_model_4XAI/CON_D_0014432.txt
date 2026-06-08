@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "You are going to Glasgow, aren't you? Fantastic out there." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5–2.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 6000–7000 Hz range. This anomaly is not present in the original speech and is likely an artifact introduced during the deepfake generation process. The rest of the audio remains natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary evidence for the abnormality comes from the wav2vec model's Integrated Gradients (IG) analysis, which identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as significant. This is corroborated by the wav2vec model's Saliency analysis, which highlights a different but adjacent time-frequency region ([3.5-4.0] seconds, [1000-2000] Hz), suggesting that the model is sensitive to both the speech and the artifact. The wav2vec model's LIME analysis also supports the presence of an anomaly around [2.5-3.0] seconds, though it does not specify the frequency. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return no significant regions. The SHAP values indicate that the abnormality is likely due to a high-frequency synthetic artifact, as reflected in the spectralFlux_sma3_amean and equivalentSoundLevel_dBp features. Overall, the wav2vec model's multiple independent analyses converge on the presence of an abnormality in the specified time and frequency range, while other models do not detect it.

@@ -1,0 +1,13 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a Scottish accent, delivering a calm, narrative statement in English. The recording is of moderate fidelity, with a low-level background hiss and a faint, steady hum, likely from a nearby electronic device. The speech is clear and intelligible, with no signs of digital compression or clipping. The acoustic environment is dry, with minimal reverberation, suggesting a small, well-dampened room.
+
+The primary acoustic abnormality occurs between 0.5 and 1.5 seconds, where the speaker says, "within the next two weeks." This segment is marked by a subtle but noticeable pitch drop and a slight increase in vocal tension, which is not present in the rest of the audio. The pitch drop is accompanied by a brief, unnatural resonance, and the articulation of "two weeks" is slightly elongated and less crisp than the surrounding speech. These features suggest a possible vocal manipulation or editing artifact, such as a splice or pitch adjustment, which is not present in the rest of the clip.
+
+The background hiss and hum are consistent throughout, with no abrupt changes or artifacts, indicating a stable recording environment. There are no signs of digital compression, clipping, or environmental noise that would suggest further manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] seconds time range and [2000-4000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating a strong and consistent signal in this region. The LIME method also supports this region, albeit with a slightly different time window ([3.0-3.5] seconds), which may correspond to a secondary acoustic anomaly or a different aspect of the same event. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shap values for StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0 further support the presence of an anomaly in the [0.5-1.5] seconds range, as these features are sensitive to changes in vocal tension and pitch. The cross-model agreement between wav2vec's IG, Saliency, and LIME methods strengthens the case for a genuine acoustic anomaly in this region.

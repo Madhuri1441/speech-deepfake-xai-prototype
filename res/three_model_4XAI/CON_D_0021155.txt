@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, saying, "They wanted the club to make money." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but noticeable anomaly is present in the high-frequency range (3000–6000 Hz) during the time interval [0.75–1.25] seconds, specifically around the word "money." This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthesis artifacts, which is not typical of natural human speech. The anomaly is not obvious to casual listening but is detectable through detailed acoustic analysis. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.75–1.25] seconds, 3000–6000 Hz). The IG method highlights the region as most salient, while Saliency and LIME corroborate the finding with slightly different but overlapping time intervals. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The SHAP analysis supports the wav2vec findings by identifying high SHAP values for spectral features (spectralFlux_sma3_amean, StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp), which are consistent with the wav2vec-identified region. This cross-model agreement from wav2vec strengthens the conclusion that the anomaly is localized in the specified time and frequency range.

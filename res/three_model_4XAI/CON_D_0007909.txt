@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying "one chair" in a neutral, conversational tone. Immediately following this, a second female voice, slightly lower in pitch, says "cabinet turned." Both voices are clean and intelligible, with no background noise or distortion. At approximately 1.00 seconds, a sharp, synthetic, high-frequency electronic tone abruptly starts and lasts for about 0.25 seconds, peaking in the 3000–4000 Hz range. This tone is distinctly artificial, with a pure, unmodulated waveform, and is acoustically inconsistent with the preceding speech, suggesting it is not a natural sound but rather a digital artifact or post-production effect. The tone ends abruptly at 1.25 seconds, after which the audio returns to silence. No other anomalies are present in the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.00–1.25 seconds time range and 3000–4000 Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also supports the 0.00–0.10 seconds region, but this is less specific and not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values highlight features such as StddevUnvoicedSegmentLength, loudness_sma3_stddevFallingSlope, and slopeUV0-500_sma3nz_amean, which are all related to acoustic and spectral properties, further supporting the presence of an artificial tone in the specified region. The cross-model agreement from wav2vec confirms the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly is subtle or not easily detectable by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "He is not over-pledged," but the word "pledged" is abruptly cut off mid-syllable, resulting in a noticeable and unnatural truncation. This truncation is acoustically evident as a sharp, unnatural silence following the incomplete word, with no natural decay or fade-out. The abruptness is further highlighted by a lack of expected vocal or breath sounds that would typically accompany the end of speech. The audio quality is otherwise clear, with no background noise or distortion, and the truncation is not due to environmental factors. The anomaly is most pronounced in the frequency range of 4000–6000 Hz, corresponding to the high-frequency content of the final syllable of "pledged," which is abruptly silenced.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.0–1.5 second time range and 4000–6000 Hz frequency range, while LIME identifies a slightly earlier time window (0.5–0.6 seconds), likely due to its different approach to feature attribution. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no salient regions. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high positive value, indicating a significant deviation in the length of unvoiced segments, which aligns with the abrupt truncation observed in the audio. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence strongly supports the conclusion that the audio contains an artificial truncation at the end of the word "pledged."

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering a short, factual statement: "Phil Marnick, manager, E.B. Williamson was disappointed, not depressed." The speech is generally intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable acoustic anomaly. During this interval, the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre, accompanied by a brief, high-frequency artifact. This distortion is not present in the rest of the audio and is inconsistent with natural speech, suggesting a digital manipulation or deepfake artifact. The anomaly is most prominent in the 3000–6000 Hz frequency range, which is typical for high-frequency digital artifacts or compression errors. No other acoustic irregularities are observed in the rest of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.0-2.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly narrower [1.0-1.5] seconds interval in the [2000-4000] Hz range. LIME analysis points to a later interval ([4.5-5.0] seconds), which does not align with the observed acoustic anomaly and is likely unrelated. The Hubert and WavLM models do not provide any supporting evidence for the anomaly. The Shapley values indicate that the anomaly is most strongly associated with the equivalentSoundLevel_dBp feature, suggesting a significant deviation in overall loudness or energy during the abnormal interval. The cross-model agreement between wav2vec’s IG and Saliency analyses confirms the presence of a deepfake artifact in the [1.0-2.0] seconds interval, with the frequency anomaly in the 3000–6000 Hz range.

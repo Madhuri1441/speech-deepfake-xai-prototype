@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3500-4500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "clear and I was so..." in a neutral, conversational tone. Immediately following the word "so," there is a brief, sharp, high-frequency transient noise lasting about 0.2 seconds, centered around 4000 Hz. This noise is acoustically distinct from the speech, lacking any natural vocal characteristics and instead resembling a digital artifact or abrupt edit. The noise is not present in the original speech and does not correspond to any natural sound event, suggesting an artificial insertion or editing artifact. This transient is the only clear acoustic anomaly in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.2-0.4] seconds time region and [3500-4500] Hz frequency region as most relevant to the model’s prediction, aligning precisely with the observed transient noise. The LIME method from wav2vec also highlights the [0.7-0.8] seconds region, which corresponds to the end of the spoken phrase and may reflect the model’s sensitivity to the abrupt transition between speech and noise. The IG method from wav2vec identifies a different region ([1.0-1.5] seconds), which does not correspond to any clear acoustic event and may be less reliable. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and MeanUnvoicedSegmentLength, which relate to the statistical properties of unvoiced speech segments, but these do not directly point to the transient noise. Overall, the transient noise is supported by wav2vec’s Saliency and LIME methods, indicating cross-model agreement on the [0.2-0.4] seconds region as the most suspicious.

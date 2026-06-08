@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "They had a big name," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.75 seconds, a subtle but distinct anomaly emerges: a brief, high-frequency, synthetic-sounding artifact overlays the end of the word "name." This artifact is not a natural part of speech or environmental noise, and it is most prominent between 2000–4000 Hz, a frequency range typical for human speech but here exhibiting an unnatural, electronic timbre. The artifact is short-lived, lasting until about 1.25 seconds, after which the audio returns to normal. This anomaly is not present in the original utterance and does not correspond to any natural vocal or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.75-1.25] seconds, [2000-4000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is subtle and may not be detected by all models. The Shap values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are associated with the identified time and frequency region. These features collectively suggest a deviation from normal speech characteristics, likely due to the synthetic artifact.

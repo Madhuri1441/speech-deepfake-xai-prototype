@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase: "The offer is in the hands of every culture in Scotland." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, at approximately 1.5–2.0 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the speech exhibits a brief, unnatural pitch shift and a slight warble, which is not present in the rest of the utterance. This anomaly is most prominent in the mid-to-high frequency range (2000–4000 Hz), where the spectral content appears momentarily altered, suggesting a possible artifact from digital processing or synthesis. The rest of the audio remains natural and free from such artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), which does not align with the observed acoustic anomaly. LIME analysis from wav2vec also points to a brief interval ([2.0, 2.1] seconds), which is close to the observed anomaly but slightly later. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature has the highest impact, suggesting that the anomaly may be related to a deviation in the duration of unvoiced segments, which could be consistent with the observed pitch shift and warble. Overall, the wav2vec model’s IG and LIME analyses provide the most consistent evidence for the anomaly, while the other models do not corroborate this finding.

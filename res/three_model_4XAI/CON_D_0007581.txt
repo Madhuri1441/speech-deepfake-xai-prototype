@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "been offended by" in a neutral, conversational tone. The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 0.75 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the clip. This artifact is characterized by a steady, unmodulated tone in the 6000–8000 Hz range, lacking the natural variation of human speech or environmental sounds. The artifact is abrupt in onset and does not fade or modulate, suggesting it was artificially inserted rather than occurring naturally. There are no other notable acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.75-1.0] seconds and frequency range [6000-8000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [0.1-0.2] seconds, though this is not supported by other models. LIME from wav2vec points to a very narrow time window [0.25-0.3] seconds, which is not corroborated by other methods. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is the most influential, suggesting the presence of an unvoiced segment, which aligns with the synthetic artifact. The spectralFlux_sma3_amean and slopeUV0-500_sma3nz_amean features further support the presence of a high-frequency, unvoiced segment. The cross-model agreement from wav2vec’s IG and the Shapley values confirm the abnormality in the specified time and frequency ranges.

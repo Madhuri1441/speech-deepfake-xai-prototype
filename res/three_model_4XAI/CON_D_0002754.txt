@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-level background hiss, followed by a single, clearly articulated word spoken by a female voice: "by beyond part." The speech is delivered in a neutral, conversational tone, with no emotional inflection or background noise. Immediately after the word "part," a sharp, high-frequency transient artifact is audible, lasting approximately 0.25 seconds. This artifact is characterized by a piercing, synthetic timbre, with a strong presence in the 3000–4000 Hz range, and is acoustically distinct from the natural speech. The artifact is not a result of the speaker’s voice or any environmental sound, but rather appears as a digital glitch or artifact, likely introduced during audio processing or synthesis. The remainder of the audio is silent, with no further speech or background activity.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([0.25-1.25] seconds, 3000–4000 Hz), indicating a strong, cross-model agreement on the presence of an anomalous signal in this region. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The Shapley values, while not directly indicating the abnormality, highlight features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which may be indirectly related to the presence of the artifact but do not pinpoint its location. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide robust evidence for the identified abnormality, while the absence of supporting evidence from other models suggests that the anomaly is specific to the wav2vec model’s analysis.

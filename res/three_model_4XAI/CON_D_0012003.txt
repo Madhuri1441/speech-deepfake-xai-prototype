@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "My big percent story," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, a subtle but noticeable acoustic anomaly is present in the frequency range of 4000–6000 Hz during the time interval of 0.5–1.0 seconds. This region exhibits a faint, high-frequency artifact that is not typical of natural speech and may indicate digital manipulation or compression artifacts. The anomaly is not accompanied by any obvious distortion, clipping, or background noise, and does not affect the intelligibility of the speech. No other acoustic irregularities are apparent in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports this with a peak in the 2.0–2.1 second range, though this is less consistent with the audio. LIME also highlights a region around 1.5–1.6 seconds, but this is less precise and not strongly supported by the audio. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shap values point to features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are consistent with the presence of a high-frequency artifact in the specified range. Overall, the wav2vec model’s IG and Saliency results provide the strongest and most consistent evidence for the abnormality, while other models and methods offer less conclusive or conflicting support.

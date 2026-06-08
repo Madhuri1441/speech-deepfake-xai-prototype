@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying, "I've got my own ideas." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.0 seconds, a high-frequency, synthetic buzzing sound abruptly appears and persists until the end of the clip. This buzzing is not present in the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the 4000–6000 Hz range, which is above the typical speech frequency band, and is likely a result of digital manipulation or post-production error. The voice itself remains unaffected by this artifact, indicating it was not part of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), which is supported by the saliency method for the same region. The LIME method also points to the [0.0-0.1] seconds region, but this is not consistent with the observed buzzing artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0, which are all related to the overall audio characteristics but do not specifically localize the buzzing artifact. The wav2vec model’s IG and saliency results are the most consistent and directly support the presence of the synthetic buzzing sound in the specified time and frequency range.

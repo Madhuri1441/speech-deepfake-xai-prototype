@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "another back survived the process." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.00 seconds, a sudden, high-frequency, synthetic buzzing artifact appears, lasting until about 1.25 seconds. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a harsh, static-like tone in the 4000–6000 Hz range. The artifact is abrupt in onset and offset, with no natural fade or modulation, and is not present in the rest of the audio. This suggests a digital or synthetic origin, likely introduced during post-processing or as a result of a deepfake manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [1.00-1.25] seconds time region and [4000-6000] Hz frequency region as significant for the model’s prediction, aligning with the observed synthetic buzzing artifact. The IG method from wav2vec also identifies a broader [0.75-1.25] seconds and [3000-6000] Hz region, overlapping with the Saliency result. The LIME method from wav2vec identifies a narrower [1.50-1.60] seconds region, which is not supported by the audio evidence and is likely an artifact of the model’s local approximation. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect changes in the audio’s acoustic structure due to the artifact, but do not directly pinpoint the abnormality. Overall, the cross-model agreement between wav2vec’s Saliency and IG methods supports the conclusion that the synthetic buzzing artifact is the primary anomaly in the audio.

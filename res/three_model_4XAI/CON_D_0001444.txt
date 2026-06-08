@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.2 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–6000 Hz range, with a harsh, buzzy timbre and no natural speech or environmental cues. The sound is abrupt in onset and offset, and its spectral content is consistent with digital clipping or a synthetic waveform, rather than a natural acoustic event. The remainder of the audio contains a faint, muffled female voice, but the speech is unintelligible and masked by the artifact. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.8-1.2] seconds, [4000-6000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight high contributions from features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a loud, static-like artifact in the specified frequency range. The cross-model agreement from wav2vec’s multiple XAI methods strongly supports the conclusion that the audio contains a synthetic or clipped artifact in the 4000–6000 Hz band between 0.8 and 1.2 seconds.

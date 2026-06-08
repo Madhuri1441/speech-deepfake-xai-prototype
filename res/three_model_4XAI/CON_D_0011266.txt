@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, with no obvious signs of digital manipulation or background noise. The speech is intelligible and delivered in a standard accent. However, at approximately 1.5 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact overlays the voice, most prominent between 4000–6000 Hz. This artifact is not present in the initial portion of the audio and is not a natural part of the speaker’s voice or the recording environment. The artifact persists until about 2.0 seconds, after which the audio returns to normal. This brief, unnatural sound is not explained by the speaker’s articulation or environmental factors, suggesting a digital manipulation or deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), and also detects a secondary anomaly in the [2.5-3.0] seconds range with a higher frequency. The Saliency method from wav2vec supports the [2.5-3.0] seconds region, while LIME highlights a brief [1.25-1.30] seconds region, which is less consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec model is the primary source of detection. The Shap values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength indicating a deviation from normal speech patterns. The cross-model agreement is limited, with wav2vec being the only model to detect the anomaly, but the consistency of the IG and Saliency methods within wav2vec strengthens the evidence for the [1.5-2.0] seconds region as the most likely location of the deepfake artifact.

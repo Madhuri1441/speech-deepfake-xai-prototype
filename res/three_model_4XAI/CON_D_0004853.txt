@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a formal, neutral tone, with a clear and steady delivery. The speech is continuous and intelligible, with no abrupt changes in pitch, volume, or timbre. However, at approximately 3.5–4.5 seconds, there is a subtle but noticeable shift in the acoustic texture of the voice, marked by a slight increase in high-frequency content (2000–6000 Hz), which is perceptible as a brief, unnatural brightness or thinness in the vocal timbre. This change is not accompanied by any speech error, emotional inflection, or environmental noise, suggesting a possible digital manipulation or artifact. The rest of the audio remains stable and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.5] seconds time region and [2000-6000] Hz frequency region as abnormal using Integrated Gradients (IG), while Saliency analysis highlights a slightly earlier [2-3] seconds region with [1000-4000] Hz content. LIME analysis also supports the [4.0-4.5] seconds region, indicating a high degree of cross-model agreement on the presence of an anomaly in the 3.5–4.5 seconds window. The Hubert and WavLM models do not provide any abnormality evidence, and the SHAP analysis does not directly point to this region, but the identified features (StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, F0semitoneFrom27.5Hz_sma3nz_percentile50.0) are consistent with subtle changes in voice texture and spectral content. Overall, the wav2vec model’s IG and LIME results, along with Saliency, provide strong, cross-model support for the anomaly in the 3.5–4.5 seconds region.

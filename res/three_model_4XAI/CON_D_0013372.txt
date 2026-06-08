@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, saying, "People say he isn't good for the game." The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, suggesting a digital splice or overlay rather than a natural sound event. There are no other notable acoustic anomalies, such as clipping, hum, or environmental noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 6000–7000 Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the 1.8–2.0 second region with a frequency range of 4000–6000 Hz, though this is less consistent with the observed artifact. The LIME method provides a much shorter and less specific time region (0.0–0.1 seconds), which does not align with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shap values highlight features such as StddevUnvoicedSegmentLength, mfcc3V_sma3nz_amean, and equivalentSoundLevel_dBp, which may relate to the presence of the artifact but do not directly indicate its location or nature. Overall, the wav2vec model's IG and Saliency methods provide the most consistent and relevant evidence for the observed high-frequency artifact, while other models and methods either do not detect the anomaly or provide less specific information.

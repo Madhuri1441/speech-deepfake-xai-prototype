@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.7-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "playing" in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. At approximately 0.7 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.5 seconds and peaking in the 2000–4000 Hz range. This click is acoustically distinct from the voice, with a much higher amplitude and a transient, non-vocal timbre. The click is not a natural part of speech or environmental sound and is likely an artifact introduced during editing or digital processing. After the click, the audio returns to the original voice, which continues uninterrupted. No other anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as a salient region using both Saliency and Integrated Gradients, with the abnormality localized to the 0.7–1.2 second time window and 2000–4000 Hz frequency range. The Hubert and WavLM models do not detect any abnormality, as their explanations return "None." The SHAP analysis highlights high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-amplitude transient event. The wav2vec evidence is cross-model consistent, while the SHAP values provide additional support for the anomaly’s acoustic nature. The click is not supported by Hubert or WavLM, but its acoustic properties and the wav2vec findings strongly indicate a digital artifact.

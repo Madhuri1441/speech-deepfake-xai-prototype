@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, clear female voice speaking in a neutral, formal tone, with no background noise or environmental cues. The speech is intelligible and delivered at a steady pace, with no signs of emotional distress or artificiality. However, a subtle but noticeable anomaly is present in the high-frequency range (3000–6000 Hz) during the latter part of the utterance, specifically between 0.5 and 1.0 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or compression artifacts, though the speech remains fully intelligible. The anomaly is not accompanied by any obvious distortion, clipping, or abrupt changes in loudness, and the voice maintains a consistent pitch and timbre throughout.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.0-0.5] seconds, [2000-3000] Hz), suggesting a possible secondary artifact. LIME analysis from wav2vec also points to the [0.8-1.2] seconds region, overlapping with the IG result. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean, which may relate to the observed spectral irregularity but do not directly pinpoint the time or frequency range. Overall, the wav2vec model’s IG and LIME results provide the strongest cross-model agreement on the [0.5-1.0] seconds, [3000-6000] Hz region as the most likely area of abnormality.

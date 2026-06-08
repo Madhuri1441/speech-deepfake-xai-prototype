@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase, "It's a personal choice or something else." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is steady and natural, with no signs of emotional stress or artificiality. However, a subtle anomaly is detected in the frequency range of 4000–6000 Hz during the time interval of 1.5–2.0 seconds, which corresponds to the end of the word "choice." This region exhibits a faint, high-frequency artifact that is not present in the rest of the audio, suggesting a possible digital manipulation or compression artifact. The anomaly is not perceptible to the human ear but is captured by the XAI models.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) method from the wav2vec model identifies the 1.5–2.0 second time region and 4000–6000 Hz frequency region as the most salient for the model’s prediction, indicating a strong alignment with the observed acoustic anomaly. The Saliency method from wav2vec also detects a different region (0.4–0.6 seconds, 2500–3500 Hz), but this does not correspond to any noticeable anomaly in the audio and is likely a false positive. The LIME method from wav2vec further supports the 1.5–2.0 second region, reinforcing the presence of the anomaly. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The SHAP values highlight the importance of the slopeUV0-500_sma3nz_amean feature, which is consistent with the high-frequency anomaly detected in the wav2vec models. Overall, the cross-model agreement from wav2vec’s IG and LIME methods provides strong evidence for the anomaly in the specified region.

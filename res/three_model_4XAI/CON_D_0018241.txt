@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying, "There's no T-D contract." The speech is delivered in a standard North American accent, with a steady, low-to-mid pitch and a calm, declarative tone. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 0.4 and 0.6 seconds, which is not present in the original speech and is not attributable to the speaker’s voice. This artifact is characterized by a sharp, electronic timbre, likely a digital glitch or post-production error, and is not masked by the speech. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.4-0.6] seconds in the time domain and [2000-3000] Hz in the frequency domain using Integrated Gradients (IG), and also highlights [0.1-0.2] seconds in the time domain and [1000-2000] Hz in the frequency domain using Saliency. LIME further supports the [0.5-0.6] seconds region. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact. The wav2vec model’s IG and LIME results, along with the Saliency result, consistently identify the [0.4-0.6] seconds region as anomalous, providing cross-model agreement.

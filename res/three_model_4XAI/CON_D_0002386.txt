@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 0.1 seconds, a sharp, high-frequency transient is heard, lasting about 0.1 seconds. This transient is characterized by a piercing, metallic timbre and a rapid onset and decay, with energy concentrated between 3000 Hz and 4000 Hz. The sound is acoustically distinct from the rest of the audio, which consists of a male voice saying "like decision" in a neutral, conversational tone. The voice is clear, with no distortion or clipping, and is centered in the mid-frequency range (300–3000 Hz). The transient does not appear to be a natural part of speech or environmental noise, and its abruptness and spectral profile suggest it may be an artifact or an intentional sound effect. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the transient as a region of interest using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.1–0.2 second time window and 3000–4000 Hz frequency range, while LIME supports the same time window but does not specify frequency. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shapley values highlight the equivalentSoundLevel_dBp as the most influential feature, suggesting that the transient is an outlier in terms of loudness compared to the rest of the audio. The combination of wav2vec’s multiple XAI methods and the Shapley analysis supports the conclusion that the transient is an anomalous acoustic event, likely unrelated to the speech content.

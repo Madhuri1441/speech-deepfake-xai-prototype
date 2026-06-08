@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "pulverwespastic" in a neutral, slightly muffled tone, followed by a brief, low-frequency electronic tone. The speech is clear but lacks high-frequency detail, suggesting either a low-fidelity recording or post-processing. The most notable acoustic anomaly occurs between 0.4 and 0.6 seconds, where a subtle, high-frequency artifact is present in the 5000–7000 Hz range. This artifact is not part of the original speech and is likely a result of digital processing or compression. The electronic tone at the end of the clip is clean and unmodulated, with no signs of distortion or modulation, indicating it is a synthetic sound rather than a natural artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the 0.4–0.6 second range, 5000–7000 Hz, is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which specifically identifies this region as contributing to the model’s prediction. The saliency analysis from wav2vec also highlights a different region (1.0–1.2 seconds, 1500–3000 Hz), but this is not corroborated by other models. The LIME explanation from wav2vec points to a slightly earlier time (0.3–0.4 seconds), which is close but not identical to the IG region. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME explanations are also absent. The SHAP values indicate that the equivalentSoundLevel_dBp feature is the most influential, suggesting that the overall loudness or energy of the audio is a key factor in the model’s decision, but this does not directly point to the specific abnormality. In summary, the anomaly is primarily supported by the wav2vec model’s IG analysis, with some partial support from its LIME explanation, but there is no cross-model agreement.

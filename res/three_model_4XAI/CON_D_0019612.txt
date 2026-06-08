@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering the sentence: "The man was a guest of the Northern Ireland bed and couple." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, specifically in the 4000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial insertion. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and also highlights a salient region at 3.0–3.5 seconds with a broader frequency range (2000–8000 Hz) using Saliency. LIME further supports the 3.0–3.1 second region. However, the Hubert and WavLM models do not detect any abnormalities, and their IG, Saliency, and LIME results are all null. The Shapley values indicate that the abnormality is not related to standard acoustic features like loudness or unvoiced segment length, but rather to a synthetic or inserted sound. The wav2vec model’s IG result is the most consistent and cross-validated by the audio evidence, indicating a synthetic artifact in the 1.5–2.0 second range. The other wav2vec saliency and LIME results are less supported by the audio and may be spurious. The Hubert and WavLM models’ lack of detection suggests the anomaly is subtle or not captured by their feature spaces.

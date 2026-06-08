@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It does not look good," in a neutral, conversational tone. Immediately following the speech, a sharp, high-frequency click or pop is heard, lasting less than a second. This click is acoustically distinct from the speech, with a prominent energy peak in the 4000–6000 Hz range, and is not a natural part of the spoken phrase. The click is likely an artifact from digital editing, file corruption, or a recording glitch, as it does not correspond to any expected sound in the context of the utterance. The click is not present in the original speech and is not masked by it, making it a clear anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the click as an anomaly through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, 4000–6000 Hz). The Hubert and WavLM models do not detect any abnormality in this region, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the anomaly by highlighting high contributions from spectral features (F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, spectralFlux_sma3_amean, slopeV0-500_sma3nz_amean), which are sensitive to abrupt changes in the signal. The cross-model agreement from wav2vec provides strong evidence that the click is an artifact rather than a natural sound event.

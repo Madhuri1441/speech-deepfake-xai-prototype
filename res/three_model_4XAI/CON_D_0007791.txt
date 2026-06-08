@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "It is certainly that." The speech is delivered in a standard, unaccented English tone, with a slight upward inflection at the end, suggesting a declarative statement. The recording is of high fidelity, with no background noise, distortion, or environmental cues, indicating a controlled studio or digital environment. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 0.75 and 1.25 seconds. This artifact manifests as a sharp, synthetic-sounding transient, likely a digital click or glitch, which is not present in the original speech and does not correspond to any natural vocal or environmental sound. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.75–1.25 second time range and 3000–4000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (0.00–0.25 seconds, 1000–2000 Hz) and LIME points to an even earlier segment (0.0–0.1 seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG result is the only one that aligns with the observed high-frequency artifact in the audio. The Shapley values indicate that the abnormality is not related to standard acoustic features like equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, or spectralFlux_sma3_amean, suggesting the anomaly is not a typical speech or environmental sound but rather a digital artifact. The wav2vec IG evidence is the most reliable and directly supports the observed abnormality, while other XAI results are inconsistent or unrelated.

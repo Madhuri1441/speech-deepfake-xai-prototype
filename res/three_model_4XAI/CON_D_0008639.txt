@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy exhalation, followed by a female voice saying, "take their mobile phones." The speech is clear, with a neutral, slightly monotonous tone, and is recorded in a quiet, acoustically dry environment. At approximately 2.0 seconds, a sudden, high-frequency, synthetic buzzing tone emerges, lasting until 2.5 seconds. This tone is sharply defined, with a frequency content between 6000 and 8000 Hz, and is distinctly artificial, lacking any natural acoustic decay or environmental context. The buzz is not present in the original recording but appears as a digital artifact, likely introduced during post-processing or as a result of a deepfake manipulation. The rest of the audio remains natural and unaltered, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The synthetic buzz at 2.0–2.5 seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which identifies this time-frequency region as significant for the model’s prediction. The Saliency method from wav2vec also highlights a different region (0.5–1.0 seconds, 2000–4000 Hz), but this does not correspond to any observable anomaly in the audio. The LIME explanation for wav2vec is limited to the first 0.1 seconds and does not align with the buzz. The Hubert and WavLM models do not provide any explanations, indicating that the buzz is not detected by these models. The SHAP analysis identifies acoustic features such as loudness_sma3_meanFallingSlope, F2bandwidth_sma3nz_amean, and shimmerLocaldB_sma3nz_stddevNorm, but these do not directly correspond to the buzz region. Thus, the synthetic buzz is primarily supported by the wav2vec IG explanation, with no cross-model agreement.

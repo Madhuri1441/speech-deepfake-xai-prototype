@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.5 seconds. This transient is characterized by a piercing, sibilant sound with a strong presence in the 6000–7000 Hz range, which is atypical for natural speech and suggests digital artifacting or synthetic generation. The sound is abrupt, lacks the natural decay of a real acoustic event, and is followed by a brief period of silence before the audio ends. No other obvious anomalies are present in the recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, [6000-7000] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME offers a more precise, localized time window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, indicating a sudden increase in loudness at the identified time. The combination of wav2vec’s multiple XAI methods and the Shapley value evidence strongly supports the conclusion that the audio contains a synthetic or manipulated segment in the specified region.

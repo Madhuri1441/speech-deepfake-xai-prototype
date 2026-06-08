@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "So there you have it," in a neutral, conversational tone. Immediately following this phrase, at approximately 1.5 seconds, a sharp, high-frequency electronic tone appears, lasting until about 2.0 seconds. This tone is distinctly artificial, with a stable pitch and a harsh, buzzy timbre, and is acoustically inconsistent with the preceding speech. The tone is not a natural part of the vocalization or environment, and its abrupt onset and unnatural spectral content suggest it is an inserted artifact. The remainder of the audio is silent, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time-frequency region ([1.5-2.0] seconds, [4000-6000] Hz). The IG and LIME methods both highlight the same time window, while Saliency confirms the frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis, which is feature-based rather than time-frequency-based, does not directly support the acoustic abnormality but provides context on the audio’s spectral and energy characteristics. The wav2vec evidence is robust and cross-validated, making it the most reliable indicator of the inserted electronic tone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral accent, delivering a short, formal statement: "job, Mr. Davis to establish the scale of this scandal." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The voice is steady, with a low pitch and a slightly raspy timbre, and the delivery is measured and deliberate. There are no signs of emotional distress, hesitation, or vocal strain. The only notable acoustic feature is a subtle, high-frequency artifact in the 3000–4000 Hz range, most prominent between 1.0 and 1.5 seconds, which is not present in the rest of the clip. This artifact manifests as a faint, synthetic-sounding shimmer or digital texture, suggesting possible post-processing or digital manipulation. No other anomalies, such as clipping, distortion, or unnatural pauses, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 1.0–1.5 second time region and 3000–4000 Hz frequency region as significant, with both Integrated Gradients and Saliency methods pointing to this area. The LIME method also supports the 1.0–1.2 second window, further reinforcing the presence of an anomaly in this segment. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not consistently detected across all models. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact and are not time-localized. Therefore, the evidence for the anomaly is primarily based on wav2vec’s multiple methods and LIME, with no cross-model agreement from Hubert or WavLM.

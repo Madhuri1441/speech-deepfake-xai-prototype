@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "Who did this to people?" The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing sound emerges. This buzzing is sharply defined, with a fundamental frequency around 4000–6000 Hz, and persists until the end of the audio. The buzzing is not a natural artifact of speech or environment; it is acoustically distinct from the voice and appears abruptly, suggesting an artificial insertion. The voice itself remains unaffected by the buzzing, indicating that the anomaly is layered on top of the original recording rather than being a product of the speech signal.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.5-2.0] seconds, 4000–6000 Hz). The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their design or training focus. The Shapley values further support the presence of an anomaly, with features such as MeanUnvoicedSegmentLength and spectralFlux_sma3_stddevNorm indicating a significant deviation from normal speech patterns, particularly in the high-frequency range. The convergence of wav2vec’s IG and Saliency results, along with the Shapley value analysis, strongly supports the conclusion that the buzzing sound is an artificial insertion. No other XAI sources corroborate this finding, and the anomaly is not present in the original speech signal.

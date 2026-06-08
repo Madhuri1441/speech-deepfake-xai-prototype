@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase, "I didn't need problems at that club." The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 1.5 and 2.0 seconds, specifically in the 4000–6000 Hz range. This artifact manifests as a sharp, unnatural transient, likely a digital glitch or editing artifact, and is not present in the rest of the recording. The speech remains intelligible and unaffected by this anomaly, and no other acoustic irregularities are detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.0] seconds, 4000–6000 Hz). The IG and Saliency methods provide broader temporal and frequency support, while LIME offers a more precise localization. In contrast, the Hubert and WavLM models do not detect any abnormalities, as their XAI methods return no evidence. The Shapley values, while not directly identifying the artifact, highlight acoustic features such as equivalentSoundLevel_dBp and jitterLocal_sma3nz_stddevNorm, which may be indirectly affected by the transient but do not pinpoint the anomaly. Overall, the wav2vec model’s consistent, multi-method detection of the artifact provides strong evidence for its presence, while the absence of such evidence in other models suggests the anomaly is subtle or localized.

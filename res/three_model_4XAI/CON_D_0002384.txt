@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone, with clear and intelligible speech. However, at approximately 1.5 seconds, a sudden, unnatural break occurs in the middle of the word "program." The voice is abruptly cut off, and a synthetic, low-frequency electronic tone (around 3000–4000 Hz) replaces the speech. This tone is steady, unmodulated, and lacks any natural acoustic variation, strongly suggesting an artificial insertion rather than a genuine environmental or vocal event. The remainder of the audio continues with the synthetic tone until the end, with no further speech or background sounds. This abrupt transition and the presence of a non-vocal, electronic sound are clear indicators of audio tampering or deepfake manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. IG highlights the time-frequency region [1.5-2.0] seconds and [3000-4000] Hz, while Saliency points to [4-5] seconds and [6000-8000] Hz, both of which align with the synthetic tone’s presence. LIME also supports the anomaly at [0.0-0.1] seconds, likely due to the initial abruptness of the audio. In contrast, the Hubert and WavLM models do not detect any abnormality, as their explanations are all "None." The SHAP analysis further supports the anomaly by highlighting features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are indicative of unnatural audio transitions. The cross-model agreement from wav2vec and the SHAP analysis confirms the synthetic tone as the primary anomaly, while the lack of evidence from Hubert and WavLM suggests that the anomaly is subtle or not captured by all models.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male voice speaking in a low, steady tone, with a clear and natural cadence. The speech is intelligible and delivered in a neutral, conversational manner, with no obvious signs of emotional distress or artificiality. However, a subtle but distinct anomaly is present in the high-frequency range (6000–8000 Hz) during the final seconds of the utterance, specifically between 2.0 and 2.5 seconds. This region exhibits a faint, synthetic-sounding artifact, likely a digital or frequency-domain anomaly, which is not present in the rest of the audio. The rest of the clip is acoustically clean, with no background noise, distortion, or abrupt changes in pitch or volume.
+
+III. XAI AGGREGATION EXPLANATION:
+The anomaly in the 6000–8000 Hz range between 2.0 and 2.5 seconds is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which specifically highlights this time-frequency region as contributing to the model’s prediction. This is the only XAI method that identifies a specific abnormality, and it is not corroborated by the Saliency or LIME explanations from wav2vec, nor by any explanations from the Hubert or WavLM models. The SHAP analysis does not directly reference this frequency range, instead highlighting features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are not directly tied to the observed artifact. Therefore, the evidence for the anomaly is based solely on the wav2vec IG explanation, with no cross-model agreement.

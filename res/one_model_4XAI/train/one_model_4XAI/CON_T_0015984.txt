@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering the phrase, "And a hard candy ball, not a form of music." The recording is of high fidelity, with no background noise or distortion, and the speaker's voice is steady and natural. However, at approximately 2.0–2.5 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency, synthetic-sounding artifact overlays the word "ball." This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, electronic tone in the 4000–6000 Hz range. This anomaly is not present in the rest of the audio, suggesting a localized digital manipulation.
+
+The XAI evidence supports this observation. The Integrated Gradients (IG) analysis highlights the [2.0–2.5] seconds time region and [4000–6000] Hz frequency range, indicating that these features are most responsible for the model’s classification of the audio as a deepfake. The Saliency map further corroborates this, pointing to a [3.0–3.5] seconds region and [7000–8000] Hz frequency, which may correspond to a secondary artifact or a related frequency component. The LIME analysis identifies the [1.8–2.0] seconds region, aligning with the onset of the anomaly. Additionally, the top three SHAP values—F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, spectralFlux_sma3_amean, and F1frequency_sma3nz_stddevNorm—reflect changes in pitch, spectral flux, and frequency characteristics, all of which are consistent with the presence of an artificial overlay in the specified time and frequency ranges.
+
+In summary, the audio contains a localized, high-frequency synthetic artifact during the word "ball," which is supported by multiple XAI methods. The anomaly is not present in the original speech and is likely the result of digital manipulation, as indicated by the model’s classification and the corresponding feature importance scores.

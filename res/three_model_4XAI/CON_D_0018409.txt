@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "Paul" in a clear, neutral tone, followed by a brief pause and a second, slightly muffled utterance, "Mark's another...". The speech is interrupted by a sharp, unnatural cut at approximately 4.0 seconds, after which a low-frequency, synthetic hum emerges and persists until the end of the clip. This hum is not present in the original speech and is acoustically distinct from the preceding vocalization, suggesting an artificial insertion. The hum is centered in the 2000–3000 Hz range, which is consistent with the frequency region flagged by the wav2vec Integrated Gradients (IG) explanation. The abrupt transition and the unnatural character of the hum indicate a likely editing artifact or deepfake manipulation, as the hum does not correspond to any natural background or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec IG explanation identifies the [4.0-5.0] seconds time region and [2000-3000] Hz frequency region as abnormal, which aligns with the observed synthetic hum. The wav2vec Saliency explanation identifies a different region ([0-1] seconds, [500-2000] Hz) associated with the initial speech, but this is not supported by other models. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP values highlight acoustic features such as loudness_sma3_stddevFallingSlope and slopeUV0-500_sma3nz_amean, which may reflect the abrupt change in the audio signal at the cut point. Overall, the wav2vec IG explanation is the only one that directly supports the observed abnormality, with no cross-model agreement.

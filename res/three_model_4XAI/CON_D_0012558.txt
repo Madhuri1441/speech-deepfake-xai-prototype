@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "can be completed and finished." The speech is intelligible and delivered in a neutral, conversational tone, with no apparent emotional inflection or background noise. However, at approximately 0.8 seconds, a sudden, high-frequency, synthetic artifact emerges, lasting until about 1.2 seconds. This artifact is characterized by a harsh, buzzing timbre, with energy concentrated in the 4000–6000 Hz range, and is acoustically distinct from the preceding speech. The artifact is not a natural part of the voice or environment and appears abruptly, suggesting a digital or synthetic origin. The audio returns to normal speech after the artifact ends, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the time interval [0.8-1.2] seconds and the frequency range [4000-6000] Hz, strongly supporting the presence of an anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods yield no salient regions. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting that the anomaly is related to a sudden change in the acoustic properties of the audio, likely due to the introduction of a synthetic artifact. The combined evidence from wav2vec’s multiple XAI methods provides robust, cross-model confirmation of the anomaly, while the lack of support from Hubert and WavLM suggests that the anomaly is subtle or not easily captured by all models.

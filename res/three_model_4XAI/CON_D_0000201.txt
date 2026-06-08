@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "one of my major and have never..." The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, sustained, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a fundamental frequency around 100 Hz and strong harmonics extending up to 6000 Hz. The sudden onset and unnatural character of the tone strongly suggest an artificial insertion, likely as a censorship bleep or a technical artifact. The transition from speech to tone is instantaneous, with no overlap or blending, indicating a digital edit. The tone remains constant in pitch and amplitude, lacking any modulation or environmental context, and is not present in the original speech. This abrupt change is acoustically jarring and inconsistent with natural audio transitions.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region at [0.25-0.5] seconds and an IG region at [0.75-1.25] seconds, both in the 1000-3000 Hz range. The saliency region aligns with the initial speech, while the IG region corresponds to the onset of the electronic tone. The LIME explanation at [1.65-1.75] seconds further supports the presence of the tone. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are consistent with the presence of a sudden, loud, and unvoiced electronic tone. The wav2vec saliency and IG regions, along with the LIME explanation, provide cross-model agreement on the abnormality, particularly in the 1000-3000 Hz range during the tone's onset.

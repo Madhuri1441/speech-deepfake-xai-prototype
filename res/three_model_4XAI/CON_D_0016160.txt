@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's completely loaded today we..." The speech is clear and intelligible, but at approximately 1.5 seconds, a sudden, unnatural high-frequency artifact emerges. This artifact is a harsh, buzzing sound in the 4000–6000 Hz range, lasting until about 2.0 seconds. The artifact is not present in the original speech and does not match typical background noise or environmental sounds. Instead, it appears abruptly and is acoustically distinct from the voice, suggesting digital manipulation or a synthetic overlay. The voice itself is otherwise unremarkable, with no signs of pitch or amplitude anomalies, and the background is silent, indicating a controlled recording environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.5-2.0] second time region and [4000-6000] Hz frequency region as salient. The Saliency method for wav2vec also highlights the [1.0-2.0] second time region and [5000-6000] Hz frequency region, overlapping with the IG result. LIME for wav2vec further narrows the time region to [1.25-1.30] seconds, reinforcing the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shapley values, while not directly identifying the artifact, highlight features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp, which may be indirectly related to the presence of the artifact. Overall, the cross-model agreement from wav2vec’s IG and Saliency methods, along with LIME’s confirmation, strongly supports the presence of an acoustic anomaly in the specified time and frequency ranges.

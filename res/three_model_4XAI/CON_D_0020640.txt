@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.3-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "for Edinburgh created a festival resource." The speech is delivered in a standard British accent, with a steady, even tone and no emotional inflection. The recording quality is high, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 2.3 and 2.5 seconds, specifically in the 4000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound, suggesting it is an artificial addition. The rest of the audio is acoustically clean, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.3-2.5] seconds, 4000–6000 Hz). The Hubert and WavLM models do not detect any abnormalities, likely due to their different training objectives or sensitivity to such artifacts. The Shapley values further support the presence of an anomaly by highlighting features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, which are indicative of unnatural signal characteristics in the affected region. The convergence of multiple XAI methods on the same region provides strong evidence that the artifact is a synthetic insertion rather than a natural part of the audio.

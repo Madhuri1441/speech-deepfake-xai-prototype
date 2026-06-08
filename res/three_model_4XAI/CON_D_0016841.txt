@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It's going to be tough," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly occurs in the frequency range of 2000–3000 Hz during the time interval of 0.4–0.6 seconds. This region corresponds to the latter part of the word "tough," where the voice exhibits a slight unnaturalness or digital artifact, possibly due to compression or synthesis. The anomaly is not immediately obvious to the human ear but is supported by XAI analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) method identifies the 0.4–0.6 second interval in the 2000–3000 Hz range as the most salient region, indicating a high probability of abnormality. This is corroborated by the wav2vec Saliency method, which highlights a broader but overlapping region (0.2–0.4 seconds, 1000–3000 Hz), suggesting that the anomaly is not isolated to a single moment but spans a short duration. The wav2vec LIME method also supports the presence of an anomaly, though it focuses on a slightly later interval (0.6–0.7 seconds), which may reflect a secondary or residual effect. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not universally detected across all models. The SHAP values further support the presence of an anomaly, with features such as spectralFlux_sma3_amean and loudness_sma3_percentile20.0 showing elevated values, suggesting a deviation from normal speech patterns. Overall, the wav2vec model's IG and Saliency methods provide the strongest and most consistent evidence for the anomaly, while the other models and SHAP values offer supplementary support.

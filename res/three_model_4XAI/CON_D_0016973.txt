@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I reckon some injustice the Southern General Hospital in Glasgow." The speech is clear and intelligible, but at approximately 1.5 seconds, a noticeable change occurs: the voice becomes distorted, with a harsh, metallic timbre and a loss of natural vocal warmth. This distortion persists until about 3.5 seconds, after which the voice returns to its original clarity. The abnormality is most prominent in the mid-to-high frequency range (2000–4000 Hz), where the voice loses its natural resonance and is replaced by a synthetic, static-like texture. This is consistent with digital clipping or compression artifacts, likely introduced during post-processing or as part of a deepfake generation process. No other acoustic anomalies, such as background noise or environmental sounds, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [3000-4000] Hz, while the Saliency method from wav2vec extends the abnormality to [3.0-3.5] seconds and broadens the frequency range to [2000-4000] Hz. The LIME method from wav2vec further supports the abnormality in the range [2.7-3.0] seconds. These three XAI methods from wav2vec consistently point to the same region of distortion, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, and the Shap values do not directly indicate the time or frequency range of the anomaly, but they highlight acoustic features (such as spectral flux and unvoiced segment length) that are likely affected by the distortion. Therefore, the final abnormality region is determined by the consistent evidence from wav2vec’s IG, Saliency, and LIME methods.

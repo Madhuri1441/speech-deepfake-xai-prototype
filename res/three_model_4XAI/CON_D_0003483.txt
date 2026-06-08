@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a short phrase in English: "cast for the weekend. There is no link being right out." The speech is generally intelligible, but at approximately 3.0–3.5 seconds, there is a noticeable, abrupt change in the acoustic texture. During this interval, the voice becomes muffled, lower in clarity, and exhibits a slight pitch drop, accompanied by a subtle, unnatural reverberation. This change is not present in the rest of the audio and does not correspond to any natural speech variation or environmental shift. The anomaly is most prominent in the 2000–4000 Hz frequency range, where the spectral energy is reduced and the timbre is altered, suggesting a possible digital artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME explanations both identify the [3.0-3.5] seconds time region and the [2000-4000] Hz frequency range as critical for its prediction, indicating a strong cross-model agreement on this anomaly. The Saliency method from wav2vec also highlights a related but slightly different region ([2.0-2.5] seconds, [4000-6000] Hz), which may reflect a secondary or transitional artifact. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by all models, but the wav2vec results are robust and consistent. The Shap values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an abnormality in this region, as they indicate a significant deviation from the expected acoustic profile. Overall, the evidence converges on the [3.0-3.5] seconds interval as the most suspicious, with wav2vec providing the strongest and most consistent support.

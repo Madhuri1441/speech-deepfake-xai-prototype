@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.95-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "awful" in a low, neutral tone, followed by a brief pause and then a short, high-pitched, synthetic-sounding electronic tone. The tone is abrupt, digitally clipped, and lacks any natural acoustic decay or environmental context, standing out as an artificial artifact. This synthetic tone is the only clearly abnormal acoustic event in the clip. The wav2vec model's Integrated Gradients (IG) analysis identifies the [0.95-1.25] second region as the most salient, with a frequency range of [3000-6000] Hz, which aligns with the pitch and duration of the synthetic tone. The Saliency method from wav2vec also highlights a region around [0.25-0.5] seconds, corresponding to the end of the word "awful," but this is less prominent and not corroborated by other models. The LIME method from wav2vec further supports the [0.8-1.0] second region, which overlaps with the synthetic tone. No other XAI methods (Hubert or WavLM) provide supporting evidence, and the SHAP values do not directly reference this region, though they indicate features related to sound level and unvoiced segment length, which may be indirectly relevant.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all independently identify the [0.95-1.25] second region as the most suspicious, with consistent frequency support in the [3000-6000] Hz range. This cross-model agreement from wav2vec provides strong evidence for the synthetic tone as the primary abnormality. The Hubert and WavLM models do not provide supporting evidence for this region, and the SHAP values do not directly reference the abnormality, though they may reflect underlying acoustic features. The final abnormality is thus supported by multiple wav2vec methods, with no conflicting evidence from other models.

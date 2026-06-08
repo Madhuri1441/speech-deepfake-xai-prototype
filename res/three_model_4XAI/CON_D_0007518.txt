@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [6.5-7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a synthetic-sounding female voice delivering a neutral, monotone news-style statement. The speech is clear and intelligible, with a slightly robotic cadence and unnatural intonation, especially at the end of phrases. The background is silent except for a faint, steady hiss, and there are no environmental or human sounds. The most notable acoustic anomaly occurs between 6.5 and 7 seconds, where a brief, high-frequency, synthetic artifact is present. This artifact manifests as a sharp, unnatural tone in the 3000–4000 Hz range, which is inconsistent with the natural speech and background hiss. This anomaly is not present in the original audio but is introduced by the model, likely as a result of the generation process. The rest of the audio is acoustically stable, with no other obvious artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 6.5–7 seconds in the 3000–4000 Hz range using Integrated Gradients (IG), while the Saliency method also highlights a region at 0–1 seconds in the 2000–4000 Hz range, though this is less specific. The LIME method supports the wav2vec IG result by identifying a suspicious region at 2.0–2.1 seconds, but this is not directly overlapping. The Hubert and WavLM models do not provide any evidence of anomalies, indicating that the wav2vec IG result is the most robust. The Shapley values suggest that the anomaly is not related to overall audio energy or segment length but rather to subtle spectral features. The wav2vec IG result is the only one that is cross-model supported, as it is the only one that aligns with the observed synthetic artifact in the audio.

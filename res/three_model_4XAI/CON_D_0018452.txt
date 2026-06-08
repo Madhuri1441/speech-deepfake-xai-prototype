@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "the turn, the quality of life is part of the event." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, masking the remainder of the speech and introducing a jarring, unnatural transition. The tone is acoustically distinct from the preceding speech, with a frequency content concentrated between 1000 Hz and 4000 Hz, and it is significantly louder than the speech, indicating a possible post-production edit or digital artifact. The abruptness and unnatural character of the tone suggest it is not part of the original recording but rather an inserted sound, likely intended as a censor beep or placeholder.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the time interval [2.0-3.0] seconds and the frequency range [1000-4000] Hz. This cross-model agreement strongly supports the presence of an anomalous event in this region. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley value analysis further corroborates the anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, which are associated with the sudden loudness and spectral characteristics of the tone. The combined evidence from wav2vec and Shapley values confirms the presence of a synthetic, intrusive tone in the specified time and frequency range, with no supporting evidence from other models.

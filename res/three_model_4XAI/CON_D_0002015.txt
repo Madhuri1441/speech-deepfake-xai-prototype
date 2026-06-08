@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.8-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip features a single male speaker with a clear, neutral tone, delivering the phrase: "though to see a resolution to this before the end of the week." The recording is clean, with no background noise or distortion, and the speech is intelligible throughout. However, a subtle but noticeable anomaly occurs between 2.8 and 3.0 seconds, where a faint, high-frequency artifact appears. This artifact is not present in the surrounding speech and is not attributable to the speaker’s voice or any environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis highlights this exact time-frequency region, indicating that the model identifies this segment as a potential anomaly. The Saliency method from wav2vec also detects a high saliency region at 0.5–1.0 seconds, but this is less specific and does not align with the observed artifact. The LIME method corroborates the wav2vec IG result, focusing on the same time range. No other models or XAI methods provide supporting evidence for this region. The Shapley values from the audio features do not directly indicate this anomaly, suggesting that the artifact is not strongly captured by the selected acoustic features.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and LIME methods both identify the [2.8-3.0] seconds, [1500-2000] Hz region as anomalous, providing cross-model agreement. The wav2vec Saliency method also detects a high saliency region, but it is less specific and does not align with the observed artifact. The Hubert and WavLM models do not provide any supporting evidence for this region. The Shapley values from the audio features do not directly indicate the anomaly, suggesting that the artifact is not strongly captured by the selected acoustic features.

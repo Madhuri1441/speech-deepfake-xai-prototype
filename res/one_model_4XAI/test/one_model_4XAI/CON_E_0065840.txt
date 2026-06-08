@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female speaker with a clear, neutral tone, delivering the phrase, "to get hardly move for the next couple of days." The speech is generally natural, but a subtle anomaly is observed in the word "hardly" at approximately 1.5–2.0 seconds. During this interval, the voice exhibits a brief, unnatural pitch inflection and a slight digital artifact, likely a result of waveform manipulation or synthesis. This is accompanied by a faint, high-frequency shimmer in the 5000–7000 Hz range, which is not typical of natural speech and suggests post-processing or deepfake generation.  
+
+The XAI evidence supports this observation:  
+- Integrated Gradients (IG) highlights the same time and frequency region, indicating that these acoustic features are critical to the model’s classification of the audio as synthetic.  
+- Saliency analysis further confirms the importance of the 1.8–2.0 second window and 5000–6000 Hz band, reinforcing the presence of an artificial artifact.  
+- LIME analysis identifies the 1.5–1.6 second interval as significant, aligning with the onset of the anomaly.  
+- Shapley values for features like slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0 are elevated, indicating that the model detects irregularities in pitch, unvoiced segment length, and loudness, which are consistent with the observed acoustic anomaly.  
+
+No other significant anomalies are present in the audio, and the rest of the speech remains natural and intelligible. The combination of acoustic and XAI evidence strongly suggests that the region around "hardly" is a synthetic artifact, likely introduced during deepfake generation.

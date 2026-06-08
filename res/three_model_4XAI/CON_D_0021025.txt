@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled, and slightly distorted male voice, likely synthetic or heavily processed, saying "...bit gaudy at all. Did that it is a big...". The speech is monotonous, with unnatural pauses and a lack of emotional inflection, suggesting a text-to-speech or deepfake origin. At approximately 1.0–1.5 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, characterized by a sharp, buzzing, and static-like timbre in the 4000–6000 Hz range. This artifact is not present in the original speech and appears abruptly, indicating a possible digital corruption or post-processing anomaly. The audio quality is poor, with a persistent background hiss and limited frequency response, further supporting the synthetic nature of the clip. No other obvious acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region using both Integrated Gradients (IG) and Saliency methods, indicating strong agreement between these two XAI techniques. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by these models. The Shapley values highlight high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect the presence of the synthetic artifact and its impact on the audio’s acoustic properties. The wav2vec-based evidence is cross-model (IG and Saliency), while the Shapley values provide additional, independent support for the anomaly’s presence.

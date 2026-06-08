@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, sharp click, likely from a microphone or recording device. At approximately 1.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like tone in the 4000–7000 Hz range, which is acoustically distinct from the natural speech and background noise. The artifact is not present in the original audio but is introduced during post-processing or digital manipulation. The speech itself is clear and intelligible, with no signs of distortion or clipping, and the background remains quiet except for the hum and click. The synthetic artifact is not supported by any XAI evidence from the Hubert or WavLM models, but it is highlighted by both the IG and Saliency methods from the wav2vec model, indicating a strong, cross-model agreement on its presence and location.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the 1.8–2.5 second time range and 4000–7000 Hz frequency range as abnormal, providing cross-model agreement on the synthetic artifact’s location. The LIME method from wav2vec also points to a brief region around 1.0–1.1 seconds, but this is less consistent and not corroborated by other models. The Hubert and WavLM models do not provide any evidence for this region, indicating that the artifact is not detected by these models. The Shap values highlight acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and loudness_sma3_stddevFallingSlope, but these do not directly correspond to the synthetic artifact and are not supported by the XAI methods. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality.

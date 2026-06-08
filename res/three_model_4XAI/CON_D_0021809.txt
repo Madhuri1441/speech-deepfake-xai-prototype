@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I was at a pool," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds into the clip, a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second (up to 2.0 seconds). This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a sharp, electronic tone in the 3000–4000 Hz range. This anomaly is not present in the original utterance and is likely the result of digital editing or a synthetic overlay. No other acoustic irregularities are observed in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.5-2.0] seconds, [3000-4000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, either due to lack of salient features or absence of explanation. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean, which are consistent with the presence of a synthetic tone in the specified region. The combined evidence from wav2vec and SHAP supports the conclusion that the anomaly is a synthetic overlay, not a natural part of the speech.

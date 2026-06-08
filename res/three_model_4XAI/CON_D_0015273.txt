@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "The result case in India, protentious." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is not part of the natural speech and is acoustically distinct from the voice, manifesting as a sharp, electronic buzz or tone in the 4000–6000 Hz range. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and does not correspond to any natural vocalization or environmental sound. After the artifact, the speech resumes without interruption, suggesting the anomaly is localized and not a result of editing or signal loss.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), which is supported by the Saliency method in the 0.0–0.5 second range and 1000–2000 Hz, and LIME in the 0.5–0.6 second range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic structure due to the artifact. The wav2vec model’s IG and Saliency results align with the observed synthetic buzz, confirming the anomaly’s presence and location. The lack of agreement from Hubert and WavLM suggests the anomaly may be subtle or context-dependent, but the wav2vec evidence is robust and consistent with the audio observation.

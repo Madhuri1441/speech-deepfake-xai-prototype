@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2800-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying "They're filming it." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 2800–4000 Hz range, which is acoustically inconsistent with the preceding speech and background. The artifact is abrupt, with no gradual onset or decay, and stands out as a digital anomaly rather than a natural sound event. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.50-2.0] seconds, [2800-4000] Hz), indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all "None." The Shapley value analysis highlights features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and shimmerLocaldB_sma3nz_amean, but these do not localize the anomaly to a specific time or frequency range. Thus, the wav2vec model's IG and Saliency results are the only ones that support the presence of an acoustic anomaly, and they agree on the same region.

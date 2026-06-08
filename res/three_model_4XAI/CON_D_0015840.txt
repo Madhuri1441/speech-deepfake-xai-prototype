@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with clear and natural speech. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges and persists until about 2.0 seconds. This tone is distinctly artificial, with a stable pitch and amplitude, lacking the natural variation of human speech or environmental sounds. The tone is most prominent in the 4000–6000 Hz frequency range, which is not typical for human speech and suggests a digital artifact or watermark. The voice continues unaffected, indicating the tone is not part of the original recording but was added post-production. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.5–2.0 second time region and 4000–6000 Hz frequency range as significant, indicating that this synthetic tone is a key feature in the model’s prediction. The LIME method for wav2vec also supports this region, though at a slightly later time (4.5–5 seconds), likely due to differences in how the model processes the audio. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the synthetic tone is not a feature they detect or consider important. The Shapley values, while not directly tied to the synthetic tone, highlight acoustic features such as slopeUV0-500_sma3nz_amean and loudness_sma3_stddevFallingSlope, which may relate to the presence of the artificial tone but are not conclusive. Overall, the wav2vec model’s multiple XAI methods consistently identify the synthetic tone as a key anomaly, while other models do not, indicating cross-model agreement for this specific region.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "We will... I'm very tired." The phrase "I'm very tired" is spoken with a low, breathy, and slightly strained tone, consistent with fatigue. At approximately 1.0–1.5 seconds, a subtle but noticeable shift occurs in the vocal timbre and pitch contour, which is accompanied by a brief, unnatural pitch glide and a slight increase in breathiness. This segment is acoustically anomalous, as the voice exhibits a synthetic or digitally manipulated quality, deviating from the natural speech pattern. The frequency region [2000–4000] Hz, where the anomaly is most pronounced, is associated with the midrange of human speech and is critical for intelligibility and emotional expression. The anomaly is not present in the initial "We will..." portion, which is more stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the [1.0–1.5] seconds time range and [2000–4000] Hz frequency range, while LIME identifies a brief segment at [0.0–0.1] seconds, which is not supported by other methods. The Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly in the [1.0–1.5] seconds region, with features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp showing significant deviation from expected values. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the anomaly in the specified time and frequency range.

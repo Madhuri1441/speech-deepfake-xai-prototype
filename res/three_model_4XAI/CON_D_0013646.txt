@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "test the lighted at the cabinet it will decide." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.8 seconds, a sudden, high-frequency, synthetic tone appears, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 5000 Hz and 6000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is abrupt in onset and offset, suggesting it was artificially inserted rather than occurring naturally. There are no other obvious audio artifacts, such as clipping, distortion, or background noise, and the speech remains unaffected by the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality at 1.8–2.0 seconds is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model specifically identifies this time-frequency region as critical for the model’s prediction. The Saliency method from wav2vec also highlights a related region (1.0–1.5 seconds, 6000–7000 Hz), which is adjacent and likely part of the same synthetic event. The LIME explanation from wav2vec, however, points to an earlier time (0.0–0.1 seconds), which is not supported by other methods and may be a spurious artifact. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP analysis identifies acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but does not localize the anomaly in time or frequency. Overall, the cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the synthetic tone’s presence and its impact on the model’s prediction.

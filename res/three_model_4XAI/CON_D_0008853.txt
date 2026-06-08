@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2800-3200] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering the sentence: "He is very expert for it, both in England and abroad." The recording is of high fidelity, with no background noise, distortion, or environmental cues. The only notable acoustic anomaly occurs between 3.0 and 3.5 seconds, where a subtle, high-frequency artifact is present in the 2800–3200 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, likely introduced during post-processing or synthesis. The anomaly is not perceptible to the human ear and does not affect speech intelligibility. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 3.0–3.5 second range, specifically in the 2800–3200 Hz band, using Integrated Gradients (IG). This is corroborated by the LIME explanation, which highlights the 0.9–1.1 second region, though this is not directly aligned with the wav2vec result. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature has the highest impact, suggesting a strong deviation in low-frequency slope, but this does not directly correspond to the observed high-frequency anomaly. Overall, the wav2vec IG and LIME evidence, though not perfectly aligned, both point to a region of interest, with wav2vec providing the most specific frequency and time localization.

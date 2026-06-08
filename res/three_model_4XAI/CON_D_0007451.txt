@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "degrees of injury reported by Mr. Bevan." The speech is delivered in a controlled, professional manner, with no background noise or distortion. However, at approximately 3.5 seconds, a sudden, loud, low-frequency electronic tone abruptly interrupts the speech. This tone is harsh, synthetic, and sustained until the end of the clip, masking the remainder of the speech and introducing a jarring, unnatural transition. The tone is acoustically distinct from the preceding speech, with a frequency content concentrated between 1000–2000 Hz, and its onset is abrupt, lacking any fade-in or natural decay. This anomaly is not present in the original speech and appears to be an artificial insertion, likely intended to censor or obscure the final portion of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.0–2.0 second region, Saliency focuses on the 3.5–4.0 second region, and LIME pinpoints the 3.0–3.1 second region, all of which correspond to the onset and presence of the electronic tone. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of the electronic tone, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are characteristic of sudden, non-speech events. The wav2vec model’s multiple lines of evidence, combined with the Shapley values, confirm the electronic tone as the primary anomaly, while the absence of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

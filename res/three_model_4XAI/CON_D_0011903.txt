@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a brief, low-frequency, non-verbal vocalization (possibly a throat-clear or grunt) at the start, followed by a clear, neutral female voice saying "It is work." The speech is delivered in a standard North American accent, with a steady, calm tone and no emotional inflection. Immediately after the word "work," there is a sharp, high-frequency digital artifact—a brief, unnatural click or pop—lasting less than half a second. This artifact is acoustically distinct from the natural speech, with a frequency content concentrated between 4000–7000 Hz, and is not present in the original utterance. The artifact is not masked by the speech and is clearly audible, suggesting it is an editing or encoding error rather than a natural sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the time range [0.6-1.2] seconds and frequency range [4000-7000] Hz, with both Integrated Gradients (IG) and Saliency methods pointing to this region. LIME also supports this, focusing on a narrower window [0.65-0.7] seconds. These findings are consistent and cross-model, indicating a strong agreement that the artifact occurs during the tail end of the word "work" and immediately after. The Hubert and WavLM models do not provide any saliency or explanation for this region, likely due to their different training objectives or architectures. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may reflect the presence of the artifact, but these are not directly tied to the specific time or frequency region. Overall, the wav2vec-based explanations provide the most robust and consistent evidence for the abnormality, supported by multiple independent methods.

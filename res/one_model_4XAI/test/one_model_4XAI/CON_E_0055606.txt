@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "during the sun trade, but you are not..." The speech is abruptly cut off mid-word ("not") at approximately 1.25 seconds, leaving a brief silence before a loud, synthetic, low-frequency electronic tone starts. This tone is harsh, static, and unmodulated, with a fundamental frequency around 100 Hz and strong harmonics extending up to 6000 Hz, dominating the upper frequency range. The sudden onset and unnatural character of this tone strongly suggest an artificial insertion, likely as a censorship bleep or a technical artifact, rather than a natural sound event.
+
+The XAI evidence supports this observation: the Integrated Gradients (IG) analysis highlights a significant contribution in the [1.0-1.25] seconds time range and [4000-6000] Hz frequency range, aligning with the onset and spectral content of the electronic tone. The Saliency analysis also identifies the [1.00-1.50] seconds interval and [2000-6000] Hz range as critical, further corroborating the presence of the synthetic tone. The LIME analysis, however, points to an earlier [0.00-0.10] seconds region, which corresponds to the initial speech and does not match the abnormality. The Shapley values indicate that the synthetic tone is the primary driver of the model’s decision, with the equivalentSoundLevel_dBp feature showing a large positive value, confirming the presence of a loud, artificial sound. The other features (StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean) are less relevant to the abnormality.
+
+In summary, the audio contains a clear speech segment followed by an abrupt, synthetic electronic tone, which is supported by multiple XAI methods as the primary anomaly. The tone’s spectral and temporal characteristics, along with the Shapley values, confirm its artificial nature and its role in the model’s classification.

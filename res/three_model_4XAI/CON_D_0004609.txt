@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The whole thing would be too much." The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until about 1.5 seconds. This artifact manifests as a faint, synthetic-sounding hiss or whine, most prominent in the 4000–6000 Hz range, and is not present in the rest of the recording. The artifact is not part of the original speech and does not correspond to any environmental or vocal source, suggesting it may be an artifact of digital processing or a deepfake insertion. The voice itself remains unaffected, with no pitch or timbre anomalies, and the rest of the audio is clean and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.0-1.5] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a similar region at [2.0-2.1] seconds, though this is less consistent. LIME supports the wav2vec findings with a time region of [1.75-1.85] seconds, which overlaps with the wav2vec result. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values point to features such as equivalentSoundLevel_dBp, mfcc1_sma3_amean, and StddevUnvoicedSegmentLength, but these do not directly correspond to the observed artifact. Overall, the wav2vec model and its IG and LIME explanations provide the strongest and most consistent evidence for the abnormality, while other models and methods do not corroborate this finding.

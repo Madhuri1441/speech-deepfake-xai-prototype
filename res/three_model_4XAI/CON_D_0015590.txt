@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a continuous, neutral statement in a quiet, acoustically dry environment. The recording is of high fidelity, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency, synthetic-sounding artifact occurring between 0.5 and 1.5 seconds. This artifact is characterized by a sharp, metallic, and slightly abrasive timbre, with energy concentrated between 4000 and 6000 Hz, and is not present in the rest of the audio. The artifact is not speech-related and does not correspond to any natural sound or vocal event. It is likely a digital artifact or an intentional overlay, but its exact origin cannot be determined from the audio alone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through its Integrated Gradients (IG) method, which highlights the 0.5–1.5 second time region and 4000–6000 Hz frequency range as anomalous. This is corroborated by the Saliency method, which points to a different region (0–1 seconds, 1000–2000 Hz), and the LIME method, which identifies a region at 5.5–6 seconds, but these are not consistent with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is not related to standard audio features like sound level or spectral slope, suggesting the anomaly is not captured by these features. The wav2vec IG result is the only one that aligns with the observed artifact, and thus, the final abnormality region is based on this cross-model agreement.

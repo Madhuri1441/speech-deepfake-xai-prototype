@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-5000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a neutral, formal tone, with no background noise or environmental sounds. The speech is clear and intelligible, with no obvious signs of digital manipulation, such as pitch warbling, unnatural pauses, or abrupt volume changes. However, a subtle anomaly is present in the word "concern" (spoken at 1.8 seconds), where the acoustic texture appears slightly unnatural, with a possible artifact in the high-frequency region (4000–5000 Hz). This is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which highlights this time-frequency region as salient for the model’s prediction. The Saliency method from wav2vec also identifies a broader high-frequency region (5000–7000 Hz) around the same time, but the IG result is more specific and directly aligns with the observed acoustic irregularity. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this region, and no other acoustic anomalies are apparent in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region [1.8-2.0] seconds, [4000-5000] Hz is supported by the Integrated Gradients (IG) explanation from the wav2vec model. This is cross-model agreement, as both IG and Saliency from wav2vec point to the same general time-frequency region, though only IG precisely matches the observed acoustic irregularity. The evidence is not corroborated by Hubert, WavLM, or Shapley values, which provide no relevant information for this region.

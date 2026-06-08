@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-1.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, followed by a female voice speaking in a neutral, declarative tone. The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 0.4 seconds, a sharp, high-frequency transient artifact appears, lasting until about 1.1 seconds. This artifact manifests as a brief, piercing, and unnatural sound, distinct from the natural speech and background. The artifact is not present in the original audio but is introduced during post-processing or editing, as evidenced by its abrupt onset and unnatural spectral content. The voice resumes normally after this artifact, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the artifact through multiple independent XAI methods: Integrated Gradients (IG) highlights the 1.5–2.0 second region, Saliency analysis points to 0.9–1.1 seconds, and LIME analysis identifies 0.4–0.5 seconds. These regions collectively confirm the presence of the artifact in the 0.4–1.1 second range, with a frequency range of 2000–4000 Hz. The Hubert and WavLM models do not provide supporting evidence, as their XAI methods yield no relevant regions. The Shapley values further support the anomaly by highlighting features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are indicative of sudden, unnatural sound events. The cross-model agreement from wav2vec’s IG, Saliency, and LIME methods confirms the artifact’s presence and location.

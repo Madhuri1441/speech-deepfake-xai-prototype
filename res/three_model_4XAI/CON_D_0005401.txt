@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "chances, better fall behind the face." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 6000–7000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is static in pitch and amplitude, with no modulation or fade, and is not present in the original speech, indicating it is an added artifact. The abrupt onset and unnatural character of this tone suggest it is not part of the original recording but rather a post-production insertion, likely intended as a censor beep or placeholder.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 2.0–3.0 second time range and 6000–7000 Hz frequency region. The IG and Saliency methods provide broader temporal and frequency support, while LIME offers a more precise temporal localization. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight the equivalentSoundLevel_dBp feature as the most influential, further supporting the presence of a high-frequency, loud artifact in the audio. The convergence of wav2vec’s multiple XAI methods confirms the synthetic tone as the primary anomaly, with no cross-model agreement from Hubert or WavLM.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "to death" in a low, somber tone, followed by a brief pause and then "can work" in a slightly higher pitch, suggesting a contemplative or resigned mood. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.5 seconds into the clip, a subtle but distinct high-frequency artifact emerges, lasting until 1.0 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered around 2000–4000 Hz, which is not present in the rest of the audio. The artifact is not masked by the speech and is perceptible as a slight digital distortion, possibly indicating a momentary glitch or encoding error. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also highlights the [0.00-0.25] seconds range with a frequency of [1000-3000] Hz, which partially overlaps with the observed artifact. LIME from wav2vec supports the [0.00-0.10] seconds region, but this is not strongly aligned with the artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shap values suggest that the equivalentSoundLevel_dBp feature is most influential, but this does not directly correspond to the observed artifact. Overall, the wav2vec model’s IG and Saliency methods provide the strongest and most consistent evidence for the abnormality, while other models and methods do not corroborate this finding.

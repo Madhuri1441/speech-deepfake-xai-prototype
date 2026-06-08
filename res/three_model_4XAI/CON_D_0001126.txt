@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "He has already suffered..." The speech is clear and intelligible, with a low-to-mid pitch and natural cadence. At approximately 1.0 seconds, the voice is abruptly interrupted by a loud, synthetic, high-frequency electronic tone. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is sustained for about one second before cutting off abruptly at 2.0 seconds. The tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics, and is likely an artifact or overlay rather than part of the original recording. The remainder of the audio is silent, with no further speech or background noise.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz) and LIME identifies a very short segment ([0.0, 0.1] seconds). The Hubert and WavLM models do not provide any evidence of abnormality. The wav2vec IG explanation aligns with the observed synthetic tone in the audio, making it the most reliable indicator of the anomaly. The other XAI results do not support the presence of an abnormality in the audio and may reflect model-specific sensitivities or noise. Thus, the final abnormality region is supported by wav2vec IG evidence and is consistent with the acoustic observation of a synthetic tone.

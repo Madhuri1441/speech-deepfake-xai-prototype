@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a South African accent delivering the phrase, "The South African defended his work listing." The recording is of high fidelity, with a clear, steady voice and no background noise or distortion. However, a subtle anomaly is present in the segment from 1.0 to 1.5 seconds, where a faint, high-frequency artifact emerges. This artifact manifests as a brief, unnatural tonal overlay, likely a synthetic or digitally manipulated sound, which is not part of the original speech. The anomaly is most prominent in the 4000–6000 Hz frequency range, suggesting a possible digital artifact or tampering.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies the same time and frequency region as significant, indicating that this segment contributes strongly to the model’s classification of the audio as a deepfake. The Saliency map further corroborates this, highlighting the 2.0–2.5 second window with a broader frequency range (4000–8000 Hz), which may reflect the model’s sensitivity to the artifact’s tail or residual effects. LIME analysis, though focused on the very beginning of the audio, does not contradict the findings but suggests the model also pays attention to the initial speech segment. The Shapley values reinforce the importance of the spectral features in this region, with high values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, indicating that the anomaly significantly alters the acoustic profile compared to a genuine recording.
+
+In summary, the audio contains a subtle but detectable anomaly in the 1.0–1.5 second window, supported by multiple XAI methods. The anomaly is likely a digital artifact introduced during deepfake generation, and the acoustic evidence aligns with the model’s identification of this region as critical for classification.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.0–1.5 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or hiss in the 6000–7000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency region as a key contributor to its prediction, indicating that the model detects an anomaly here. The wav2vec Saliency analysis also highlights a related region (1.5–2.0 seconds, 4000–6000 Hz), suggesting a broader high-frequency anomaly, but the most consistent and specific evidence is the 1.0–1.5 seconds, 6000–7000 Hz region. No other XAI models (Hubert, WavLM) or Shapley values provide supporting evidence for this region, and no other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency analyses both point to the 1.0–1.5 seconds, 6000–7000 Hz region as a key anomaly, with IG providing the most precise localization. The Hubert and WavLM models do not identify any abnormal regions, and the Shapley values do not align with this specific time-frequency region. Thus, the evidence for the anomaly is based on cross-model agreement within wav2vec, but not across all models.

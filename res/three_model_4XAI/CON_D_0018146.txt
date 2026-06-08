@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "No family, I was shocked, Mike." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a high-frequency, synthetic buzzing tone abruptly appears and persists until 1.5 seconds. This tone is distinct from the speech, with a frequency content in the 4000–6000 Hz range, and is acoustically inconsistent with the rest of the audio, which is dominated by the male voice in the 100–3000 Hz range. The sudden onset and unnatural timbre of this tone suggest it is an artificial artifact, likely inserted during post-production or as a result of digital editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-1.5] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, directly aligning with the observed synthetic buzzing tone. The Saliency explanation from wav2vec also highlights a region around [0.0-0.2] seconds, but this is less relevant to the main anomaly. The LIME explanation from wav2vec further supports the [0.85-0.9] seconds region, which is close to the main anomaly but not identical. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is primarily detected by wav2vec. The Shapley values indicate that the equivalentSoundLevel_dBp feature is most influential, which is consistent with the presence of the high-frequency tone. Overall, the anomaly is supported by multiple wav2vec-based XAI methods, with IG providing the most direct evidence.

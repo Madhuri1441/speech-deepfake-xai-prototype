@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice delivering a formal statement, but the initial segment (0-1 seconds) exhibits unnatural, robotic speech characteristics. The voice is monotonous, lacks natural intonation, and displays a synthetic timbre, with a noticeable absence of breath and subtle vocal artifacts. These qualities are consistent with a deepfake or text-to-speech-generated voice. The acoustic environment is otherwise clean, with no background noise or environmental cues, further suggesting a digitally constructed origin. The speech is clear and intelligible, but the unnatural delivery and lack of human vocal variation are evident. No other acoustic anomalies are present in the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the initial segment (0-1 seconds) with both Integrated Gradients (IG) and Saliency methods, focusing on the 2000-4000 Hz frequency range. The LIME method also supports this region, albeit with a slightly narrower time window (0.5-1 seconds). In contrast, the Hubert and WavLM models do not detect any abnormalities, as their IG, Saliency, and LIME methods return no evidence. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is highly influential, suggesting the presence of unnatural pauses or gaps in the speech, which aligns with the synthetic nature of the audio. The combination of wav2vec’s multiple methods and the Shapley analysis provides strong, cross-model evidence for the abnormality in the first second of the audio.

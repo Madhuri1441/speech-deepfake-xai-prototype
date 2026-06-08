@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a clear and intelligible sentence: "Then people think they are chosen just because they play with a big two in Glasgow." The speech is recorded in a quiet, controlled environment, with no background noise or distortion. The voice is steady, with a natural rhythm and intonation, and the acoustic environment is dry, lacking reverberation or echo. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 1.8 and 2.0 seconds. This artifact manifests as a sharp, transient, and unnatural sound, likely a digital glitch or editing artifact, which stands out from the otherwise clean speech. No other anomalies, such as pitch instability, clipping, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.8-2.0] seconds in the 3000–4000 Hz range using Integrated Gradients (IG), and this is corroborated by the Saliency method, which highlights the same time and frequency range. The LIME method also supports this region, though with a slightly different time window ([0.5-1.0] seconds), indicating a possible overlap or variation in the model’s interpretation. The Hubert and WavLM models do not provide any evidence for this region, suggesting that the anomaly is not universally detected across all models. The Shapley values further support the presence of an anomaly, with the top feature being StddevUnvoicedSegmentLength, which is associated with abrupt changes in the audio signal, such as those caused by digital artifacts. Overall, the wav2vec model’s IG and Saliency methods, along with the LIME method, provide consistent evidence for the abnormality, while the other models do not detect it.

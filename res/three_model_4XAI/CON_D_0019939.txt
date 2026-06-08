@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "been very busy 'cause his imminent retirement." The speech is clear and natural, with no obvious signs of tampering. However, at approximately 0.5 seconds, a sudden, unnatural high-frequency artifact appears, lasting until about 1.0 seconds. This artifact is a sharp, synthetic-sounding tone, likely a digital glitch or a spliced-in sound, which is not present in the original speech and does not match the acoustic environment of the rest of the clip. The artifact is most prominent in the 2000–4000 Hz frequency range, which is consistent with the region of highest energy in the speech, but the tone itself is distinctly artificial and does not correspond to any natural vocal or environmental sound. After 1.0 seconds, the audio returns to normal, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, which aligns with the observed synthetic tone. The saliency method from wav2vec also highlights a region at [0.0-0.5] seconds, but this is less consistent with the actual anomaly. The LIME method from wav2vec points to a very narrow time window at [2.5-2.6] seconds, which does not correspond to any clear acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is the only one that detects the anomaly. The Shap values do not directly indicate the time or frequency of the anomaly but provide general acoustic features that may be relevant to the model’s decision-making process. Overall, the wav2vec model’s IG and saliency methods provide the most consistent evidence for the abnormality, while other models and methods do not support the finding.

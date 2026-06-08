@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a clear, neutral tone, saying, "quite astonishing what she has achieved." The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a strong presence in the 2000–4000 Hz range, and is acoustically inconsistent with the preceding speech. The sudden transition and the unnatural, artificial quality of the tone strongly suggest an audio edit or insertion, indicative of tampering or manipulation. The tone persists until the end of the clip, with no further speech or environmental sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 2000–4000 Hz frequency range, aligning with the observed synthetic tone. The saliency method from wav2vec also highlights a brief, high-frequency anomaly at 2.0–2.1 seconds, which may correspond to a transient artifact or digital glitch, though this is less prominent. The LIME explanation for wav2vec points to the 0.0–0.1 second range, likely reflecting the initial abrupt transition. The Hubert and WavLM models do not provide supporting evidence, indicating that the anomaly is not consistently detected by all models. The Shap values further support the presence of an abnormality, with high contributions from features like equivalentSoundLevel_dBp and loudness_sma3_percentile20.0, which are associated with the loudness and spectral content of the synthetic tone. Overall, the wav2vec model’s explanations, particularly IG and LIME, provide cross-model agreement on the abnormality, while Hubert and WavLM do not detect it, suggesting the anomaly is primarily captured by wav2vec.

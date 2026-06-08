@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a male voice saying, "Hopefully to get away with it." The speech is clear and intelligible, with a neutral, conversational tone. However, in the latter part of the utterance, specifically from 0.5 to 1.0 seconds, the voice exhibits a noticeable unnaturalness. The pitch and timbre shift abruptly, and the final syllable "it" is delivered with a slightly higher pitch and a synthetic, robotic quality, deviating from the natural cadence of the rest of the sentence. This region is acoustically anomalous, as the voice sounds less organic and more processed, suggesting possible digital manipulation or deepfake generation.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the [0.5-1.0] seconds time region and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a slightly broader frequency range of [2000-4000] Hz. These two XAI methods from wav2vec agree on the presence of an anomaly in the latter part of the speech, specifically around the final word. The LIME explanation for wav2vec, however, points to an earlier time region ([0.0-0.1] seconds), which does not align with the observed acoustic anomaly and is likely a false positive. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values indicate that features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean contribute to the model’s decision, but these do not directly pinpoint the abnormal region. Overall, the wav2vec model’s IG and Saliency analyses provide cross-model agreement on the [0.5-1.0] seconds time region and [2000-6000] Hz frequency range as the most likely area of acoustic anomaly.

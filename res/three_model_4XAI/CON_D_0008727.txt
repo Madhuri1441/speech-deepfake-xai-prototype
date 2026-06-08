@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a statement in a controlled, professional tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 3.5–4.0 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency artifact appears in the 6000–7000 Hz range. This artifact manifests as a faint, synthetic-sounding buzz or digital artifact, which is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The anomaly is brief and isolated, suggesting a possible digital glitch or editing artifact rather than a genuine acoustic event. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [6000-7000] Hz frequency region as significant through its Integrated Gradients (IG) and LIME explanations. The Saliency method from wav2vec also highlights a related region ([2.5-3.0] seconds, [4000-6000] Hz), but this is less consistent with the observed artifact. The Hubert and WavLM models do not provide any supporting evidence for this region, indicating that the anomaly is primarily detected by wav2vec. The SHAP analysis does not directly reference this region, instead highlighting unrelated features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are not directly connected to the observed artifact. Thus, the final abnormality region is supported by wav2vec’s IG and LIME methods, with no cross-model agreement.

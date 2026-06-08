@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "There was too much..." in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a non-professional, indoor environment. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.2 seconds. This transient is acoustically anomalous, as it is not a natural part of speech or environmental noise; it is a brief, piercing sound with a spectral peak in the 6000–7000 Hz range, likely caused by a digital artifact or editing error. The voice is abruptly cut off at this point, with no natural fade or decay, indicating a hard edit or truncation. No other acoustic anomalies are present in the remainder of the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency range ([1.0-1.2] seconds, [6000-7000] Hz). The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The SHAP analysis highlights high values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency transient and abrupt audio truncation. The cross-model agreement from wav2vec’s IG and Saliency methods, combined with the SHAP feature importance, strongly supports the conclusion that the audio contains a digital artifact or editing error at the specified time and frequency range.

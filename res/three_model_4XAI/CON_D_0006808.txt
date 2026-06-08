@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, neutral tone, delivering the phrase, "He's delighted to with the new on Monday morning." The speech is generally intelligible, but at approximately 3.0–3.5 seconds, there is a noticeable, unnatural break in the word "with." The transition between "to" and "with" is abrupt, with a slight pitch and timbre mismatch, suggesting a possible splice or digital manipulation. This is further supported by a subtle, high-frequency artifact in the 6000–8000 Hz range, which is not present in the rest of the audio and may indicate a digital editing artifact or a synthetic voice component. No other obvious acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 3.0–3.5 second region, with IG and Saliency also highlighting the 6000–8000 Hz frequency range. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values suggest that features related to spectral envelope and pitch (slopeUV0-500_sma3nz_amean, alphaRatioUV_sma3nz_amean, mfcc3V_sma3nz_amean) are most affected, which aligns with the observed pitch and timbre mismatch. The wav2vec evidence is cross-model, while the Shapley values provide additional support for the spectral and pitch-related anomaly.

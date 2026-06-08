@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-5000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, sharp click, followed by a soft, breathy female voice saying "carry away" in a neutral, slightly downward inflection. The voice is clear and intelligible, with no obvious emotional inflection or background noise. Immediately after the spoken phrase, a high-frequency, synthetic electronic tone emerges, lasting about 0.6 seconds. This tone is centered around 4000–5000 Hz, with a harsh, buzzy timbre and a rapid, steady pulse, resembling a square or sawtooth wave. The tone is acoustically distinct from the voice, with no overlap or blending, and is abruptly cut off at the end of the clip. The overall recording is clean, with no distortion, clipping, or environmental noise, and the voice is close-mic’d, suggesting a controlled studio or digital environment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two distinct abnormality regions: a low-frequency click at 0.6–0.8 seconds (Saliency) and a high-frequency synthetic tone at 1.0–1.2 seconds (IG). The Hubert and WavLM models do not provide any abnormality evidence, indicating that the synthetic tone is not detected as anomalous by these models. The Shapley values highlight the importance of the equivalentSoundLevel_dBp feature, which is strongly associated with the loudness of the synthetic tone, further supporting its significance. The wav2vec model’s dual-region evidence, combined with the Shapley analysis, points to the synthetic tone as the primary anomaly. The click at 0.6–0.8 seconds is less supported, as it is only detected by wav2vec and not corroborated by other models or features. Thus, the most consistent and cross-model-supported abnormality is the synthetic tone in the 1.0–1.2 seconds range, with wav2vec and Shapley value evidence aligning on its significance.

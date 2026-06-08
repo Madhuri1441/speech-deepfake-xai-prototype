@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, high-frequency click at 0.0 seconds, likely a recording artifact or digital edit. From 0.5 to 1.5 seconds, a pronounced, unnatural high-frequency resonance is present, with energy concentrated between 2000–7000 Hz. This region is marked by a harsh, metallic timbre and a lack of natural speech harmonics, suggesting synthetic or manipulated audio. The voice in this segment is notably distorted, with a strained, unnatural pitch and rhythm, and the word "life" is delivered with an exaggerated, artificial emphasis. The remainder of the audio (1.5–4.0 seconds) is more intelligible but still exhibits a slightly robotic cadence and a subtle, persistent high-frequency hiss, indicating possible compression or digital processing. The final word "world" is abruptly truncated, further suggesting editing or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a click at 0.0–0.1 seconds (LIME) and a high-frequency resonance at 0.5–1.5 seconds (Saliency, 2000–4000 Hz) and 1.0–1.5 seconds (IG, 6000–7000 Hz). The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to the anomaly. The Shapley values highlight high contributions from equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which support the presence of unnatural loudness, abrupt segment changes, and spectral instability—consistent with synthetic or manipulated speech. The wav2vec saliency and IG regions overlap in time and frequency, providing cross-model agreement on the 0.5–1.5 seconds interval and 2000–7000 Hz range. Thus, the wav2vec model’s evidence is the primary basis for identifying the abnormality, with no corroborating evidence from Hubert or WavLM.

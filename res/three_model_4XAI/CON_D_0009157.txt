@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "My first concern is the safety of the public." The speech is clear and intelligible, with a low-pitched, neutral tone and no emotional inflection. However, a subtle but noticeable anomaly is present in the frequency range of 4000–7000 Hz during the time interval of 0.5–1.2 seconds. This region contains a faint, high-frequency electronic artifact that is not typical of natural human speech and is likely the result of digital manipulation or post-processing. The artifact manifests as a brief, unnatural tonal overlay, possibly due to compression, resampling, or synthetic voice generation. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the 0.5–1.2 seconds time range and 4000–7000 Hz frequency range using both Integrated Gradients (IG) and Saliency methods, indicating strong cross-model agreement on this region. The LIME explanation from wav2vec also supports the presence of an anomaly, though at a slightly different time (2.3–2.4 seconds), which may correspond to a secondary or residual artifact. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is subtle and only detectable by certain models. The SHAP values highlight the importance of spectral features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope, which further corroborate the presence of an unnatural signal in the specified frequency band. Overall, the wav2vec model’s consistent findings across multiple XAI methods provide the strongest evidence for the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "Pals, touch his both ways." Immediately following this phrase, at approximately 1.5 seconds, a loud, sustained, high-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is sharply distinct from the preceding speech, with a piercing, synthetic timbre and a frequency content concentrated between 6000 Hz and 7000 Hz. The tone is unwavering in pitch and amplitude, lacking any modulation or environmental context, and is acoustically inconsistent with the natural speech preceding it. This sudden transition and the unnatural character of the tone suggest an artificial insertion or overlay, likely intended to mask or obscure the remainder of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the frequency range of 6000–7000 Hz during the time interval of 1.00–1.50 seconds, which aligns with the onset of the electronic tone. The saliency analysis from wav2vec further supports this by highlighting a brief time window (1.95–2.05 seconds) and the same frequency range, reinforcing the presence of the artificial tone. The LIME explanation from wav2vec points to the very beginning of the audio (0.0–0.1 seconds), which may correspond to the start of the speech or the initial transition. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values suggest that features related to unvoiced segment length and MFCCs are significant, but these do not directly correspond to the observed electronic tone. Overall, the wav2vec model's explanations, particularly the IG and saliency analyses, provide consistent evidence for the abnormality, while the other models do not contribute additional support.

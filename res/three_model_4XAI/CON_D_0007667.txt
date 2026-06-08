@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.3-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "I was shocked the game was not a trial." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.3 seconds, a sharp, high-frequency transient artifact appears, lasting until about 2.0 seconds. This artifact manifests as a brief, unnatural, high-pitched squeal or digital glitch, which is acoustically distinct from the natural speech and background. The artifact is not present in the original utterance and does not correspond to any natural vocalization or environmental sound. The frequency content of this anomaly is concentrated between 2000 Hz and 6000 Hz, which is outside the expected range for typical speech and is likely a result of digital processing or editing error. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG) highlights the [1.3-1.5] seconds region, Saliency points to [1.8-2.0] seconds, and LIME identifies [1.0-1.1] seconds. All three methods converge on the same time interval, with frequency regions between 2000 Hz and 6000 Hz, indicating a consistent detection of the artifact. The Hubert and WavLM models do not provide any evidence of anomalies, suggesting that the wav2vec model is uniquely sensitive to this type of digital artifact. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which are indicative of sudden changes in sound intensity and segment structure. The combined evidence from wav2vec and the Shapley analysis confirms the presence of a digital artifact in the specified time and frequency range.

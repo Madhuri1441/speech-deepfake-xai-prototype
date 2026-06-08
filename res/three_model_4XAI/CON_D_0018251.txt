@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering the phrase: "That is when we are really effective." The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.0–1.2 seconds, a subtle but noticeable artifact is present: a brief, high-frequency, synthetic-sounding tone overlays the speech. This tone is not part of the natural vocal spectrum and is acoustically distinct from the speaker’s voice, suggesting a digital or synthetic origin. The tone is most prominent in the 3000–4000 Hz range, which is outside the typical speech energy band, and is not present in the rest of the clip. This anomaly is not perceptible as a major disruption but is detectable upon close listening and spectral analysis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.0-1.2] seconds, [3000-4000] Hz). LIME also supports this region, though with a slightly different time window ([1.25-1.30] seconds), which is close enough to be considered consistent. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The Shapley values further support the presence of an anomaly, with features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean indicating a deviation from normal speech patterns, particularly in the high-frequency range. The cross-model agreement from wav2vec and LIME, along with the Shapley values, strongly supports the conclusion that the audio contains a synthetic or digitally inserted artifact in the specified region.

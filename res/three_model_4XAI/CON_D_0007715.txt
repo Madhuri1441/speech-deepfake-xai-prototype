@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I saw some good, the Taliban regime is finished." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.0–1.5 seconds into the clip, a distinct, high-frequency, synthetic-sounding tone abruptly overlays the speech. This tone is centered around 3000 Hz and is markedly different from the natural speech spectrum, which is concentrated below 2000 Hz. The synthetic tone is steady, unmodulated, and persists for about half a second, after which the audio returns to normal speech. This anomaly is not present in the original recording and is likely an artifact introduced during post-processing or digital editing.
+
+The synthetic tone is not supported by any XAI evidence from the Hubert or WavLM models, which report no abnormality regions. However, the wav2vec model identifies the anomaly through multiple independent methods: Integrated Gradients (IG) highlights the 1.0–1.5 second region, Saliency analysis also points to 0.5–1.0 seconds, and LIME confirms a brief abnormality at 1.5–1.6 seconds. These cross-referenced findings from wav2vec strongly support the presence of an artificial tone in this time range. The Shapley values further reinforce this, with the equivalentSoundLevel_dBp feature showing a significant deviation, indicating a sudden increase in sound energy at the anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across IG, Saliency, and LIME methods, all pointing to the 1.0–1.5 second region as abnormal. The Hubert and WavLM models do not detect any anomaly, but their lack of evidence does not contradict the wav2vec findings. The Shapley values corroborate the wav2vec results, indicating a significant deviation in sound level at the same time. Thus, the final abnormality region is supported by cross-model agreement from wav2vec and Shapley analysis, while the other models do not detect the anomaly.

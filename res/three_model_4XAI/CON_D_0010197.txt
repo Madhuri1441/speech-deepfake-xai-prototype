@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000 - 4000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral male voice saying "play appointed." Immediately following the spoken phrase, there is a brief, sharp, high-frequency transient sound in the 3000–4000 Hz range, lasting from approximately 0.8 to 1.0 seconds. This transient is acoustically distinct from the voice, with a synthetic, digital timbre and a rapid onset and decay, suggesting it is not a natural vocalization or environmental artifact. The voice itself is clean and well-articulated, with no signs of digital manipulation or distortion, and the background is silent, indicating a controlled recording environment. The transient sound is not present in the original speech and does not correspond to any expected post-processing or environmental noise, making it a likely candidate for an audio artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and LIME. Both point to the same time and frequency region ([0.8 - 1.0] seconds, [3000 - 4000] Hz], indicating strong cross-model agreement. The Saliency method from wav2vec also identifies a different region ([0.0 - 0.2] seconds, [1000 - 2000] Hz], which aligns with the initial speech but does not support the transient. The Hubert and WavLM models do not provide any evidence for the abnormality, as their XAI methods return "None." The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, but these do not directly correspond to the observed transient and are not supported by the XAI methods. Therefore, the final abnormality is supported by cross-model agreement from wav2vec’s IG and LIME methods.

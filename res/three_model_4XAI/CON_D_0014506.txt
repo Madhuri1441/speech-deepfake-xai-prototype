@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice speaking the phrase, “No, causes, that for a seriously deep.” The speech is clear and intelligible, with a neutral, conversational tone. However, a subtle but noticeable anomaly is present in the high-frequency range (4000–6000 Hz) during the time interval [1.5–2.0] seconds, coinciding with the word “causes.” This region exhibits a faint, artificial-sounding resonance or tonal artifact, which is not present in the rest of the audio. The anomaly is not perceptible to casual listening but is detectable through spectral analysis. The rest of the audio is acoustically clean, with no signs of clipping, distortion, or background noise.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The anomaly in the [1.5–2.0] seconds, [4000–6000] Hz region is supported by the Integrated Gradients (IG) explanation from the wav2vec model, which specifically identifies this region as salient for the model’s prediction. The Saliency method from wav2vec also highlights a different region ([0–1] seconds, [2000–4000] Hz), but this is not consistent with the observed acoustic anomaly. The LIME explanation from wav2vec further supports the [1.5–2.0] seconds interval, though with a narrower focus ([1.25–1.35] seconds). The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is primarily detected by wav2vec. The Shapley values do not directly indicate the abnormality, as they focus on global acoustic features rather than localized anomalies. Thus, the evidence for the anomaly is cross-model agreement between wav2vec’s IG and LIME explanations, with no support from Hubert or WavLM.

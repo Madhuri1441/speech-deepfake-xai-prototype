@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "He did not all a bed of roses." The speech is delivered in a neutral, declarative tone, with no emotional inflection or background noise. The recording is clean, with no audible artifacts such as clipping, distortion, or compression. However, at approximately 1.0–2.0 seconds, a sudden, high-frequency, synthetic tone appears, lasting about one second. This tone is sharply defined, with a frequency content between 4000–6000 Hz, and is acoustically distinct from the speech, lacking any natural vocal harmonics or environmental context. The tone is likely an artifact or overlay, not part of the original speech, and its abrupt onset and unnatural spectral profile suggest it is not a genuine acoustic event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–2.0 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis highlights a related but slightly earlier region (0.5–1.0 seconds, 2000–4000 Hz). LIME analysis also supports the presence of an anomaly at 1.0–1.1 seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength indicating deviations from expected speech patterns. The cross-model agreement between wav2vec’s IG and Saliency, along with LIME, confirms the presence of an artificial or synthetic tone in the specified region.

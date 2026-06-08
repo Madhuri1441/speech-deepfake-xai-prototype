@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.0-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a clear, neutral tone, but at approximately 3.0 seconds, the speech abruptly halts, leaving a brief silence. Immediately following this, a synthetic, low-frequency electronic tone emerges, lasting until about 3.5 seconds. This tone is characterized by a steady, unmodulated pitch in the 2000–4000 Hz range, lacking any natural vocal or environmental artifacts. The transition from speech to this tone is abrupt and unnatural, suggesting a digital insertion or replacement rather than a natural vocal or environmental event. The tone is monophonic, with no harmonics or modulation, and its onset and offset are perfectly clean, indicating digital editing. No other background sounds or environmental cues are present, reinforcing the artificial nature of the inserted tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [3.0-3.5] seconds time region and [2000-4000] Hz frequency region using Integrated Gradients (IG), while Saliency and LIME also point to the [4.0-4.1] seconds region, though this is less consistent with the observed tone. The Hubert and WavLM models do not provide supporting evidence for this region. The Shapley values further support the presence of an abnormality, with the StddevUnvoicedSegmentLength feature indicating a significant deviation from expected speech patterns, and spectralFlux_sma3_amean suggesting a sudden change in spectral content. The combination of wav2vec’s IG, Saliency, and LIME evidence, along with the Shapley values, confirms the presence of an artificial tone in the specified region, with cross-model agreement from wav2vec and supporting evidence from Shapley values.

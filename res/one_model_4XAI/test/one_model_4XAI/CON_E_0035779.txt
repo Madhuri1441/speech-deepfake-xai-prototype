@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice stating, "It is highly unfair." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but notable acoustic anomaly is present in the final word, "unfair," specifically in the time interval of 1.0–1.2 seconds. During this period, a high-frequency artifact emerges, manifesting as a sharp, synthetic-sounding buzz or whine in the 5000–6000 Hz range. This artifact is not part of the natural vocal spectrum and is acoustically distinct from the speaker’s voice, suggesting an artificial or digitally manipulated origin.
+
+This anomaly is corroborated by the Integrated Gradients (IG) explanation, which highlights the same time and frequency region as significant for the model’s decision, indicating that the model has learned to associate this artifact with the deepfake classification. The Saliency method also identifies a different but adjacent region (0.0–0.2 seconds, 1500–3000 Hz), likely corresponding to the initial consonant of the word "unfair," but does not directly support the high-frequency buzz. LIME analysis further isolates the anomaly to 0.2–0.3 seconds, reinforcing the presence of an atypical acoustic event in the latter part of the utterance. The Shapley values for features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and equivalentSoundLevel_dBp collectively indicate that the model is sensitive to deviations in spectral and temporal characteristics, particularly in the high-frequency range, which aligns with the observed artifact.
+
+In summary, the audio contains a high-frequency synthetic buzz in the final word, which is supported by multiple XAI methods and is likely the key acoustic feature that the model uses to identify the clip as a deepfake. No other significant anomalies are present in the audio.

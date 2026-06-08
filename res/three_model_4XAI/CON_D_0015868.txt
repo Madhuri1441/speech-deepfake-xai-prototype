@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a formal statement in English. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a brief, high-frequency artifact is audible, manifesting as a sharp, synthetic-sounding click or pop. This artifact is not present in the original speech and is acoustically inconsistent with the rest of the recording, suggesting a digital editing or generation error. The artifact is most prominent in the 4000–6000 Hz range, which is typical for high-frequency digital glitches or compression artifacts. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as salient, directly aligning with the observed high-frequency click in the audio. The Saliency method from wav2vec also highlights the [0-1] seconds region, but this does not correspond to any clear anomaly and is likely a model artifact. The LIME explanation from wav2vec supports the [2.0-2.1] seconds region, which is adjacent to the main anomaly and may reflect the model’s sensitivity to the artifact’s tail. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly, with features like loudness_sma3_percentile20.0 and slopeUV500-1500_sma3nz_amean indicating deviations in the audio’s spectral and temporal characteristics. Overall, the anomaly is supported by multiple wav2vec-based XAI methods, particularly IG and Saliency, but not by Hubert or WavLM.

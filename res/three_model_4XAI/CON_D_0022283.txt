@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "the load of with him on. I don't it has b-". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a distinct, high-frequency, synthetic buzzing sound emerges and persists until about 1.5 seconds. This buzzing is not part of the natural speech and is acoustically anomalous, as it does not correspond to any expected vocal or environmental sound. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of human speech, and its sudden onset and unnatural timbre suggest it may be an artifact of digital processing or a deepfake insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three methods converge on the same time and frequency region ([1.0-1.5] seconds, [4000-6000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, but their lack of findings does not contradict the wav2vec results. The Shapley values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an abnormal acoustic event in this region, as these features are sensitive to sudden changes in sound energy and spectral content. Overall, the evidence from multiple wav2vec methods and Shapley values strongly supports the conclusion that the buzzing sound is an anomaly, likely introduced by deepfake manipulation.

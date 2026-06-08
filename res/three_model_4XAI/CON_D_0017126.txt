@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice stating, "the average was three hours," in a clear, neutral tone. Immediately following this, a second female voice says, "Elephant story," with a slightly higher pitch and a more playful, narrative tone. At the 2.0-second mark, a loud, synthetic, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is monophonic, unwavering in pitch and amplitude, and lacks any natural acoustic variation, suggesting it is artificially generated rather than a real-world sound. The transition from speech to the electronic tone is abrupt and unnatural, with no fade or overlap, indicating a possible digital splice or insertion. The synthetic tone is acoustically distinct from the preceding speech, and its sudden appearance is a clear anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [5000-7000] Hz frequency range, which aligns with the synthetic tone’s onset and its spectral content. The Saliency method from wav2vec also highlights the [0.5-1.0] seconds region, corresponding to the tail end of the first speaker’s phrase and the beginning of the second, but the most consistent and supported region is [1.0-2.0] seconds. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The Shap values suggest that features related to unvoiced segment length and sound level are present, but these do not directly correspond to the synthetic tone. The wav2vec model’s IG and Saliency methods both support the [1.0-2.0] seconds region, making this the most reliable evidence for the anomaly.

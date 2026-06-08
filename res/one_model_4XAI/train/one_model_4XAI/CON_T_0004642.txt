@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint rustling sound, likely from clothing or handling the recording device, followed by a female voice stating, "It was a poor performance." The speech is clear and intelligible, with a neutral, slightly disappointed tone. However, during the word "performance," specifically between 1.5 and 2.0 seconds, a distinct high-frequency artifact emerges in the 3000–4000 Hz range. This artifact manifests as a sharp, synthetic-sounding hiss or digital noise, which is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The artifact is abrupt, with no gradual onset or offset, and is acoustically inconsistent with the surrounding speech, suggesting a digital manipulation or encoding error.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) highlights the 1.5–2.0 second region and the 3000–4000 Hz frequency band, indicating that these features are critical to the model’s classification of the audio as a deepfake. Saliency analysis also points to the 0–1 second region and the 2000–4000 Hz band, reinforcing the presence of anomalous high-frequency content. LIME analysis identifies the 2.0–2.1 second region, likely corresponding to the tail end of the artifact. The top three SHAP values—loudness_sma3_percentile20.0, MeanUnvoicedSegmentLength, and mfcc1_sma3_amean—further indicate that the audio’s acoustic properties deviate from natural speech, particularly in terms of loudness, unvoiced segment characteristics, and MFCC features, all of which are affected by the presence of the artifact.
+
+No other significant acoustic anomalies are present in the audio, and the artifact is not explained by any natural sound or speech event. The combination of the audible artifact and the XAI evidence strongly suggests that the audio has been digitally manipulated, likely as part of a deepfake generation process.

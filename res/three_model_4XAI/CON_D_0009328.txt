@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. The main content is a single, low-pitched male voice speaking the phrase "Gardner reckon do it, Paul had had." The speech is clear, with a neutral, conversational tone and no emotional inflection. The voice is centered in the stereo field, with no spatial movement or background activity. At approximately 0.4 seconds, a subtle, high-frequency artifact emerges, lasting until 0.6 seconds. This artifact manifests as a faint, synthetic-sounding buzz or hum, most prominent in the 5000–6000 Hz range, and is not present in the original speech. The artifact is not a natural part of the voice or environment and is likely a result of digital processing or encoding error. No other acoustic anomalies are present, and the remainder of the audio is free from distortion, clipping, or additional artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [0.4-0.6] seconds with a frequency range of [5000-6000] Hz using Integrated Gradients (IG), and the Saliency method also highlights a region at [1.75-2.0] seconds in the [3000-4000] Hz range, though this is not supported by other models. LIME supports the [0.5-0.6] seconds region, aligning with the wav2vec IG result. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_percentile20.0, but these do not directly correspond to the observed artifact. The wav2vec IG and LIME results are consistent and point to the same time and frequency range, indicating a cross-model agreement on the presence of an anomalous high-frequency artifact in the audio.

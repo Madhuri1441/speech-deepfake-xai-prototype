@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "Was it quality spend money on housing. There is—". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated in the 4000–6000 Hz range, and is acoustically distinct from the natural speech. The artifact is abrupt in onset and offset, suggesting a digital insertion rather than a natural acoustic event. After this interval, the audio returns to the original speech without any further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([2.0-2.5] seconds, 4000–6000 Hz). LIME also supports this region, though with a slightly different time window ([2.8, 3.0] seconds), which is close to the wav2vec findings. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not detected by all models. The Shap values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are sensitive to sudden changes in loudness and spectral content—consistent with the observed artifact. Overall, the wav2vec model’s dual evidence and the Shap value analysis provide strong support for the identified abnormality, while the lack of evidence from Hubert and WavLM suggests that the anomaly may be subtle or context-dependent.

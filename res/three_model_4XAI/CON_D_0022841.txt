@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or unusual delivery. However, a subtle but noticeable anomaly is present in the frequency range of 5000–6000 Hz during the time interval of 2.0–3.0 seconds. This region exhibits a slight unnaturalness in the spectral texture, possibly due to digital processing or synthetic generation, which is not typical of natural human speech. The anomaly is not accompanied by any obvious background noise, distortion, or artifacts, and the rest of the audio remains consistent with natural speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 2.0–3.0 second time region and 5000–6000 Hz frequency region as suspicious, indicating that this segment is likely responsible for the model's prediction of a deepfake. The Saliency method from wav2vec also highlights a different region (0–1 seconds, 4000–5000 Hz), but this is not corroborated by other models. The LIME method from wav2vec supports the 1.5–2.0 second region, which partially overlaps with the IG region but is not fully consistent. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent, suggesting that the anomaly is not strongly detected by these models. The SHAP analysis highlights acoustic features such as MeanUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_percentile80.0, but does not specify a time or frequency region, making it less directly relevant to pinpointing the anomaly. Overall, the wav2vec IG result provides the most consistent and cross-model-supported evidence for the anomaly in the 2.0–3.0 second, 5000–6000 Hz region.

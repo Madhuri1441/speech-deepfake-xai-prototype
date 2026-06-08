@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a male voice with a General American accent says, "Let's take to break that cycle." The speech is clear, with a neutral, declarative tone and no emotional inflection. However, at the end of the phrase, specifically between 1.0 and 1.5 seconds, there is a noticeable, unnatural high-frequency artifact in the 4000–6000 Hz range. This artifact manifests as a sharp, synthetic-sounding burst, likely a digital glitch or a post-processing error, which is not present in the rest of the audio. The artifact is abrupt, does not match the natural acoustic profile of the voice, and is not accompanied by any corresponding change in the speaker’s delivery or the background noise. No other acoustic anomalies are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.0-1.5] seconds, 4000–6000 Hz). The IG and Saliency methods provide broader temporal and frequency support, while LIME offers a more precise pinpoint. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values, while not directly referencing the artifact, highlight acoustic features such as logRelF0-H1-H2_sma3nz_stddevNorm and StddevUnvoicedSegmentLength, which may relate to the unnatural pitch and timing changes caused by the artifact. Overall, the wav2vec model’s multiple, consistent findings strongly support the presence of an artificial anomaly in the specified region.

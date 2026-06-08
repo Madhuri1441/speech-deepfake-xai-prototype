@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.75-3.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and lacks any obvious signs of digital manipulation, such as pitch warbling or unnatural pauses. However, at approximately 2.75–3.0 seconds, a subtle but noticeable high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural tonal burst in the 6000–8000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural phonetic or environmental sound, suggesting a possible digital anomaly or editing artifact. The rest of the audio remains acoustically stable, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:  
+The primary evidence for the abnormality comes from the wav2vec model’s Integrated Gradients (IG) analysis, which specifically highlights the [2.75-3.0] seconds time region and the [6000-8000] Hz frequency range. This aligns with the observed high-frequency artifact in the audio. The wav2vec model’s Saliency and LIME also point to other regions ([0.0-0.5] seconds and [3.0, 3.1] seconds), but these are less consistent with the main anomaly and may reflect normal speech features. The Hubert and WavLM models do not provide supporting evidence for this region, as their IG, Saliency, and LIME analyses yield no relevant findings. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength feature showing a high SHAP value, indicating a deviation in the acoustic structure of the audio at the identified time and frequency range. Overall, the wav2vec model’s IG analysis provides the strongest and most consistent evidence for the abnormality, with no cross-model agreement from Hubert or WavLM.

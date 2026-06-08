@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying, "Sergio, Sergio." The speech is clear and natural, with no signs of digital manipulation. At approximately 2.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 3.0 seconds. This tone is sharply defined, with a static pitch and amplitude, and is acoustically distinct from the preceding speech. It is not a natural vocalization or environmental sound, and its abrupt onset and cessation suggest digital insertion. The tone is accompanied by a subtle, low-frequency hum, but no other background noise or artifacts are present. The remainder of the audio is silent, with no further speech or sound events.
+
+The synthetic tone is supported by multiple XAI sources: the wav2vec model's Integrated Gradients (IG) identifies the [2.5-3.0] second region as abnormal, with a frequency range of [4000-6000] Hz, and the LIME method also highlights the same time interval. The Shapley values further support this, with the slopeUV0-500_sma3nz_amean feature showing a strong positive contribution, indicating a sudden change in spectral slope consistent with the synthetic tone. The wav2vec model's Saliency method identifies a different region ([0.5-1.0] seconds), but this is not corroborated by other methods and is not supported by the audio evidence. The Hubert and WavLM models do not provide any abnormality evidence, likely due to their design or training focus.
+
+III. XAI AGGREGATION EXPLANATION:
+The final abnormality region is supported by cross-model agreement between wav2vec's IG and LIME methods, both identifying the [2.5-3.0] second interval with a frequency range of [4000-6000] Hz. The Shapley value analysis further corroborates this, with the slopeUV0-500_sma3nz_amean feature showing a strong positive contribution. The wav2vec Saliency method identifies a different region, but this is not supported by other methods and is not aligned with the audio evidence. The Hubert and WavLM models do not provide any abnormality evidence.

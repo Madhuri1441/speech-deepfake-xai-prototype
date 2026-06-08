@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "takes a lot of years to ex-". At approximately 1.5 seconds, the speech is abruptly interrupted by a sharp, unnatural cutoff, with no fade or natural decay. Immediately following this, a high-frequency, synthetic-sounding tone emerges, lasting until about 2.1 seconds. This tone is characterized by a harsh, buzzy timbre and a frequency content between 3000 Hz and 7000 Hz, which is inconsistent with the preceding speech and does not resemble any natural acoustic artifact. The transition between speech and the synthetic tone is abrupt and unnatural, suggesting a digital splice or insertion. The synthetic tone is not present in the original audio, and its sudden appearance and unnatural spectral content are clear indicators of an audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's explanations (both Integrated Gradients and Saliency) identify the abnormality in the time range of [1.5-2.1] seconds and frequency range of [3000-7000] Hz, which aligns with the synthetic tone observed in the audio. The LIME explanation from wav2vec also supports the abnormality at [1.0-1.1] seconds, which corresponds to the moment of speech interruption. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, unnatural change in the audio signal. The wav2vec model's multiple independent explanations (IG, Saliency, and LIME) provide strong, cross-model agreement on the abnormality, confirming the presence of a synthetic tone inserted into the audio.

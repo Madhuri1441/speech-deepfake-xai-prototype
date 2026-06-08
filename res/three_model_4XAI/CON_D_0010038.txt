@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "That is not to make changes." The speech is clear and intelligible, with a neutral, declarative tone. Immediately following the spoken phrase, a distinct, high-frequency electronic tone emerges, lasting for approximately 1.5 seconds. This tone is centered in the 3000–6000 Hz range and is acoustically consistent with a synthetic beep or alert, such as those used in digital devices or software notifications. The tone is abrupt in onset and offset, with no fade-in or fade-out, and is acoustically isolated from the speech, suggesting it is not a natural part of the environment or vocalization. There are no other background noises, music, or environmental sounds present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.5–2.0 second time range and 3000–6000 Hz frequency range using Integrated Gradients (IG) and LIME, and in the 4.0–4.5 second range using Saliency. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the abnormality is most strongly associated with the equivalentSoundLevel_dBp feature, which is elevated during the tone, and to a lesser extent with slopeUV0-500_sma3nz_amean and loudness_sma3_amean. The cross-model agreement from wav2vec (IG and LIME) supports the conclusion that the high-frequency tone is an anomalous event, likely a synthetic alert or notification, rather than a natural acoustic artifact.

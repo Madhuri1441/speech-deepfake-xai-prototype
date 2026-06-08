@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, formal tone, with a clear and steady delivery. The speech is in English, with a non-native accent, and the content is: "The program is designed to cater for people of all ages." The recording is of high fidelity, with no background noise, distortion, or clipping, and the voice is centered in the stereo field. The acoustic environment is dry, with no reverberation or echo, suggesting a studio or controlled setting.
+
+A suspicious acoustic region is identified between 1.0 and 1.5 seconds, where the voice exhibits a subtle but noticeable unnaturalness. This is characterized by a slight pitch instability and a lack of natural vocal vibrato, which is atypical for a human speaker. The region is marked by a frequency concentration between 3000 and 4000 Hz, corresponding to the midrange of the voice, where the unnaturalness is most apparent. This is supported by the Integrated Gradients (IG) analysis, which highlights this time-frequency region as a key area of abnormality, indicating that the model detects a deviation from expected human speech patterns.
+
+The Saliency analysis further supports this finding, pointing to a time-frequency region between 2.5 and 3.0 seconds and 7000 to 8000 Hz, which corresponds to the high-frequency harmonics of the voice. This region also shows signs of unnaturalness, likely due to digital artifacts or synthetic processing. The LIME analysis identifies a brief time interval (0.5–0.6 seconds) as suspicious, which aligns with the onset of the speech and may indicate an initial instability in the voice generation process.
+
+Shapley values provide additional insight into the acoustic features contributing to the abnormality. The feature "slopeUV0-500_sma3nz_amean" has a high Shap value (4.1748), indicating that the slope of the fundamental frequency in the low-frequency range is a key factor in the model’s decision. The "StddevUnvoicedSegmentLength" feature (Shap value: 3.3500) suggests that the variability in unvoiced segment lengths is also significant, pointing to inconsistencies in the speech’s rhythm or pauses. The "loudness_sma3_percentile20.0" feature (Shap value: 1.4121) indicates that the loudness profile of the voice is another contributing factor, likely due to unnatural fluctuations in volume.
+
+In summary, the audio exhibits subtle but consistent signs of artificiality, particularly in the mid and high-frequency ranges, as evidenced by both acoustic analysis and XAI methods. The Shapley values further confirm that deviations in pitch, rhythm, and loudness are key indicators of the deepfake nature of the audio. No other artifacts or anomalies are present outside these regions.

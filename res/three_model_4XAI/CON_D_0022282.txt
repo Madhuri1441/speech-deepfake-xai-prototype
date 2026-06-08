@@ -1,0 +1,16 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-5000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, neutral female voice saying "British Olympic cycling" in a standard British accent, with no background noise or distortion. However, at approximately 0.6 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting an artificial overlay or insertion. The buzzing is centered in the 3000–5000 Hz range, which is above the typical speech frequency band, and is consistent with a digital artifact or watermark. The voice remains unaffected by this tone, indicating it was added post-recording. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality is supported by multiple XAI sources:  
+- The wav2vec model’s Integrated Gradients (IG) method identifies the [0.6-1.0] seconds time region and [3000-5000] Hz frequency region as salient, aligning with the observed buzzing tone.  
+- The wav2vec model’s Saliency method also highlights a brief time region ([1.25-1.35] seconds) and a lower frequency band ([1000-2000] Hz), which may correspond to a secondary artifact or residual signal, but this is less consistent with the main anomaly.  
+- The Hubert and WavLM models do not provide any saliency or IG evidence, indicating that the anomaly is not detected by these models.  
+- The LIME method for wav2vec identifies a very early time region ([0.0-0.1] seconds), which does not correspond to any observable anomaly in the audio.  
+- The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are not directly tied to the buzzing tone but may reflect changes in the audio’s acoustic structure due to the insertion.  
+
+In summary, the primary abnormality is a synthetic buzzing tone in the 3000–5000 Hz range from 0.6 to 1.0 seconds, supported by wav2vec’s IG and Saliency methods. The agreement between these methods confirms the anomaly, while other XAI sources do not detect it. No other acoustic anomalies are present in the audio.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "I thought it was so interesting and they they must pinion of the..." The speech is clear and intelligible, with a natural conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the speaker’s voice, indicating an artificial insertion. The buzzing is centered in the 4000–6000 Hz range, which is consistent with the frequency region flagged by the wav2vec model’s Integrated Gradients (IG) explanation. The wav2vec model also identifies a saliency peak at 2.8–3.0 seconds, which aligns with the onset and continuation of the buzzing sound. No other XAI models (Hubert, WavLM) or Shapley values provide supporting evidence for this region, and no other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients and Saliency methods both identify the 1.0–2.0 seconds time range and 4000–6000 Hz frequency range as abnormal, corresponding to the synthetic buzzing sound. This is the only region supported by multiple XAI sources. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not align with the observed anomaly. Thus, the final abnormality is based on cross-model agreement from wav2vec only.

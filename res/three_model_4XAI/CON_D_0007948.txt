@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a recording artifact or microphone handling noise, followed by a female voice speaking in a neutral, formal tone: "That was the members were effectively demoted." The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, at approximately 2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until 2.5 seconds. This artifact is characterized by a piercing, static-like timbre in the 4000–6000 Hz range, which is acoustically distinct from the natural speech and background. The artifact is abrupt in onset and offset, with no gradual fade, and does not correspond to any natural sound event or speech content. The remainder of the audio returns to normal speech without further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), while the Saliency method also highlights the [0.9-1.1] seconds region, which does not align with the observed artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected by all models. The SHAP analysis identifies three features—StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope—with positive contributions, but these are not directly linked to the observed artifact. The wav2vec IG explanation is the only one that aligns with the acoustic anomaly, suggesting that the artifact is likely a synthetic or post-processing artifact rather than a natural event.

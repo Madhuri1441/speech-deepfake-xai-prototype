@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a male voice with a General American accent says, "It's not an op name, eh." The speech is clear, with a neutral, slightly rising intonation at the end, suggesting a conversational or explanatory tone. Immediately following the utterance, a sharp, high-frequency click or pop is heard, lasting less than 0.1 seconds. This click is acoustically distinct from the speech, with a frequency content in the 4000–6000 Hz range, and is not present in the original recording, indicating it is an artifact introduced during post-processing or editing. The click is abrupt and does not blend with the natural decay of the voice, suggesting it is a digital splice or editing artifact rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the 1.5–2.0 second time window and 4000–6000 Hz frequency range. The IG and LIME methods specifically highlight the click artifact, while Saliency focuses on the speech segment. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of the click, with features such as "slopeUV0-500_sma3nz_amean" and "equivalentSoundLevel_dBp" showing significant contributions, likely due to the sudden change in acoustic energy at the click. The cross-model agreement from wav2vec confirms the click as the primary anomaly, while the lack of evidence from Hubert and WavLM suggests that the artifact is not captured by all models.

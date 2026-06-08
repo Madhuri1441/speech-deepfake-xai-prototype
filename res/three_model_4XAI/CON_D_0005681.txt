@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.7-1.8] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "in that situation, but people should be beaten." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 0.7 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 2000 Hz and 6000 Hz, and is acoustically distinct from the voice, lacking any natural speech characteristics or environmental reverberation. The abrupt onset and unnatural timbre of this tone suggest it is not part of the original recording but was added post-production, likely as an artifact or censorship bleep. The voice continues uninterrupted, indicating the tone is a post-processed overlay rather than a genuine environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an IG-based explanation for the time interval [0.7-1.3] seconds and a frequency range of [2000-4000] Hz, and a Saliency-based explanation for [1.2-1.8] seconds and [4000-6000] Hz. These regions align closely with the observed synthetic tone, which starts at 0.7 seconds and spans the full frequency range of 2000-6000 Hz. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an abnormality, with high contributions from features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which are consistent with the introduction of a synthetic, high-frequency tone. The agreement between wav2vec’s IG and Saliency methods, both pointing to the same time and frequency ranges, provides strong cross-model evidence for the synthetic tone’s presence.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a sharp, high-frequency click at 0.0 seconds, followed by a brief pause and a soft, breathy exhalation at 0.5 seconds. At 1.5 seconds, a distinct, high-pitched, synthetic-sounding "t" or "ch" consonant is heard, lasting until 2.0 seconds. This sound is notably different from the rest of the speech, which is a low-pitched, breathy, and slightly raspy female voice. The synthetic quality of the consonant is marked by its sharp attack, lack of natural vocal resonance, and a frequency profile concentrated between 4000-6000 Hz, which is atypical for human speech. The remainder of the audio consists of the phrase "been offended, my problems with the shells," delivered in a subdued, emotionally flat tone, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also supports this region, though with a slightly different time window ([3.0-3.5] seconds), which may correspond to the tail of the synthetic sound or a related artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shap values for equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and mfcc2V_sma3nz_amean further support the presence of a high-frequency, transient event at this time, aligning with the synthetic consonant. The combined evidence from wav2vec and Shap values strongly supports the conclusion that the anomaly is a synthetic or digitally inserted sound, not present in the original speech.

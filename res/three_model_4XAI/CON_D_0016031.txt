@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "The parents," followed by a male voice saying, "Several accidents, too." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.5 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 3.0 seconds. This artifact is characterized by a piercing, static-like tone in the 6000–7000 Hz range, which is acoustically distinct from the natural speech and does not correspond to any environmental or vocal event. The artifact is abrupt in onset and offset, suggesting a digital insertion or editing artifact rather than a natural sound. This anomaly is not present in the original speech and is not explained by any background noise or environmental sound.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([2.5-3.0] seconds, [6000-7000] Hz), indicating strong cross-model agreement on the location of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values also support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean showing elevated values, suggesting a deviation from normal speech patterns. However, these features do not specify the exact time or frequency of the anomaly, so the wav2vec IG and Saliency results are prioritized for the final determination.

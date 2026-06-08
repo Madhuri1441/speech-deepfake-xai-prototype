@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of manipulation. However, at approximately 2.5 seconds, a sharp, high-frequency artifact emerges, lasting until 3.0 seconds. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with a frequency content between 6000–8000 Hz, which is inconsistent with typical human speech or environmental sounds. The artifact is abrupt in onset and offset, and its spectral profile is markedly different from the rest of the audio, which is dominated by lower frequencies and natural speech harmonics. This anomaly is not present in the initial or final portions of the audio, suggesting a localized manipulation.
+
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [2.5-3.0] second time region and the [6000-8000] Hz frequency range as critical for its prediction, indicating that the model detects the anomaly as a significant deviation from expected speech patterns. The LIME explanation for wav2vec also points to a brief time window around 0.3–0.4 seconds, but this is less consistent with the observed artifact and may reflect a secondary or less prominent anomaly. The Hubert and WavLM models do not provide any saliency or explanation for this region, suggesting that the anomaly is not detected by these models, possibly due to differences in training or feature extraction.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the [2.5-3.0] second time region and [6000-8000] Hz frequency range as abnormal, providing cross-model agreement for this specific artifact. The LIME explanation for wav2vec also supports this region, though less precisely. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not universally detected across all models. The Shapley values for features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean further support the presence of an anomaly in this region, as these features are sensitive to abrupt changes in speech and spectral content.

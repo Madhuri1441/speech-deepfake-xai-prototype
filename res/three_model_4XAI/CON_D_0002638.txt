@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a brief, low-frequency thump, likely from a microphone bump or handling noise. At approximately 1.0 seconds, a sharp, high-frequency transient is heard, lasting about 0.6 seconds. This transient is characterized by a piercing, sibilant quality, with energy concentrated between 3000 Hz and 7000 Hz, and is acoustically distinct from the preceding and following speech. The transient is not a natural part of the spoken phrase "at by his pledge to," which resumes after the anomaly. The sound is abrupt, unnatural, and does not match typical speech or environmental sounds, suggesting it is an artifact or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG) highlights the region [1.2-1.4] seconds, Saliency points to [1.0-1.2] seconds, and LIME identifies [1.5-1.6] seconds. All three methods converge on the same time interval, with overlapping frequency ranges between 3000 Hz and 7000 Hz, indicating a strong, cross-model agreement on the presence of an abnormal acoustic event. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their different training objectives or feature extraction methods. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp and slopeUV0-500_sma3nz_amean, which are associated with high-frequency, transient events. Overall, the wav2vec model’s multiple XAI methods consistently identify the same region, providing robust evidence of an acoustic anomaly in the audio.

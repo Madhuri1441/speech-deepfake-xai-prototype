@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "prosecutorial people" in a standard North American accent, with no background noise or distortion. The speech is intelligible and natural, with a smooth, steady pitch and no signs of emotional stress or artificiality. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice becomes heavily distorted, with a metallic, robotic timbre and a pronounced, rapid vibrato. This distortion persists until the end of the clip at 1.0 seconds, where the audio abruptly cuts off. The acoustic anomaly is marked by a loss of natural vocal texture, replaced by a synthetic, modulated sound, and is accompanied by a frequency shift into the 2000–6000 Hz range, consistent with digital processing or deepfake generation artifacts. No other acoustic irregularities are present before or after this interval.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, while the Saliency method from wav2vec further refines the abnormality to [0.5-1.0] seconds and [4000-6000] Hz. The LIME method from wav2vec supports the anomaly at [0.75, 0.8] seconds, indicating a localized event within the broader abnormal interval. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which may be indicative of the synthetic nature of the audio, but do not specify a time or frequency range. The wav2vec model's multiple independent methods (IG, Saliency, and LIME) consistently point to the same abnormal region, providing strong cross-model agreement.

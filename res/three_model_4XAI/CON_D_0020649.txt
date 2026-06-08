@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a male speaker with a clear, neutral tone, speaking in English with a non-native accent. The speech is generally intelligible, but at approximately 3.5–4.0 seconds, there is a noticeable, abrupt change in the acoustic texture of the voice. This segment is marked by a harsh, metallic, and slightly distorted timbre, with a pronounced high-frequency content in the 6000–7000 Hz range. The distortion is not present in the surrounding speech, suggesting a localized anomaly. The voice in this region sounds unnatural, with a mechanical or synthetic quality, and lacks the natural vibrato and breathiness of the rest of the audio. This abrupt change is not explained by the speaker’s natural speech patterns or environmental factors, indicating a possible digital manipulation or artifact.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the [3.5-4.0] seconds time region and the [6000-7000] Hz frequency range as critical for the model’s prediction, indicating strong cross-model agreement on this anomaly. The LIME explanation for wav2vec also supports this region, though with a slightly broader time window ([0.5-1.0] seconds), which may reflect a secondary or related artifact. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not consistently detected by all models, but the wav2vec results are robust and cross-validated. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may relate to the unnatural acoustic properties in the anomalous segment, though these do not directly pinpoint the time or frequency range. Overall, the wav2vec-based evidence provides the most consistent and reliable indication of the anomaly.

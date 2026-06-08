@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, conversational tone, with a clear and steady delivery. The speech is intelligible and free from distortion, static, or background noise, indicating a high-quality recording. However, at approximately 1.5–2.0 seconds, a subtle but noticeable anomaly occurs: a brief, high-frequency artifact appears, manifesting as a sharp, synthetic-sounding burst in the 6000–7000 Hz range. This artifact is not present in the surrounding speech and does not match the natural acoustic profile of the speaker’s voice, suggesting it is an artificial insertion rather than a genuine vocal event. The rest of the audio remains stable and natural, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME methods both identify the [1.5-2.0] seconds time region and the [6000-7000] Hz frequency region as salient, indicating that this segment is critical for the model’s prediction. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, but do not specify a time or frequency range, making them less directly relevant to pinpointing the artifact. Overall, the cross-model agreement from wav2vec’s IG and LIME methods supports the conclusion that the [1.5-2.0] seconds, [6000-7000] Hz region is the most suspicious and likely contains the deepfake artifact.

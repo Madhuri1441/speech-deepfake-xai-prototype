@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a factual statement about the refugee problem and Milosevic’s trial in The Hague. The speech is generally intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, a subtle anomaly is present in the frequency range of 2000–3000 Hz during the time interval of 3.5–4.0 seconds, coinciding with the phrase “the refugee problem solved.” This region exhibits a faint, unnatural resonance or tonal shift, which is not typical of natural speech and may indicate a synthetic or manipulated segment. The anomaly is not perceptible to casual listening but is supported by multiple XAI methods.
+
+III. XAI AGGREGATION EXPLANATION:
+The region [3.5-4.0] seconds and [2000-3000] Hz Hz is supported by the Integrated Gradients (IG) method from the wav2vec model, which specifically highlights this time-frequency window as critical for the model’s prediction. This region is not corroborated by the Hubert or WavLM models, which report no significant regions using IG, Saliency, or LIME. The Shapley values also point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not localize to a specific time or frequency range. Thus, the evidence for the anomaly is primarily from the wav2vec model’s IG analysis, with no cross-model agreement.

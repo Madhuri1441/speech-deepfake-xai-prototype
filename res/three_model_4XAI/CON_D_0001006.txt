@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Promotional and marketing, what is the influence?" The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, unnatural shift occurs: the voice becomes distorted, with a metallic, robotic timbre and a noticeable drop in pitch. This change persists until about 1.5 seconds, after which the voice returns to its original quality. The abnormality is most prominent in the 3000–4000 Hz frequency range, where the voice exhibits harshness and digital artifacts, consistent with a deepfake or voice synthesis artifact. The abruptness and unnaturalness of the transition, as well as the spectral distortion, suggest a tampering event, such as a splice or model-generated overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the [2.0-2.5] seconds interval with a focus on [4000-6000] Hz, indicating a secondary anomaly. LIME also highlights a brief interval at [1.5, 1.6] seconds, reinforcing the presence of an anomaly in this region. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not robustly detected by all models. The Shap values indicate that the StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean features are most affected, which may reflect changes in the acoustic structure of the voice during the anomaly. Overall, the wav2vec model’s IG and LIME results, along with the Saliency method, provide cross-model agreement on the [1.0-1.5] seconds interval as the primary region of abnormality.

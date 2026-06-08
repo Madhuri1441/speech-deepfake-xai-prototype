@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "both very brave" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 0.6 seconds into the clip, a subtle but distinct artifact emerges: a high-frequency, synthetic-sounding noise that persists until about 1.0 seconds. This noise is not present in the original speech and does not correspond to any natural acoustic event, such as a cough, breath, or environmental sound. The noise is centered in the 4000–6000 Hz frequency range, which is consistent with the timbre of a digital artifact or post-processing error.
+
+This acoustic anomaly is corroborated by the Integrated Gradients (IG) explanation, which highlights the same time and frequency regions as significant for the model’s decision. The IG attribution suggests that the model is particularly sensitive to this high-frequency noise, likely because it deviates from the expected acoustic profile of natural speech. The Saliency method also identifies a related but slightly later region (1.2–1.4 seconds, 5000–8000 Hz), which may reflect the model’s response to residual or secondary effects of the same underlying artifact. The LIME explanation, while pointing to an earlier time (0.0–0.1 seconds), does not align with the observed anomaly and may instead reflect the model’s sensitivity to the initial speech onset. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which collectively indicate deviations from normal speech patterns, likely caused by the synthetic noise.
+
+In summary, the audio contains a high-frequency synthetic artifact between 0.6 and 1.0 seconds, which is supported by multiple XAI methods and is likely responsible for the model’s detection of a deepfake. No other acoustic anomalies are evident in the clip.

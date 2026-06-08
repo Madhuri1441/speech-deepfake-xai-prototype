@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "of fire set both otherwise a..." The speech is abruptly cut off mid-word, with a noticeable digital click or artifact at the transition point. Immediately following this, a synthetic, high-frequency electronic tone (approximately 6.5 kHz) is introduced, which is unnatural and inconsistent with the preceding speech. This tone is sustained for about 0.5 seconds before the audio ends. The abruptness of the cut and the unnatural introduction of the electronic tone suggest tampering or editing, likely indicative of a deepfake or audio manipulation. The synthetic tone is not present in the original speech and does not match typical environmental or vocal artifacts, making it a clear acoustic anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2.0] seconds time region and [6000-7000] Hz frequency region as significant for the model’s prediction, aligning with the observed synthetic tone. The Saliency method from wav2vec also highlights the [0.0-0.1] seconds region, corresponding to the initial speech, but this is not supported by other models. The LIME explanation from wav2vec overlaps with the Saliency result, but again, this is not corroborated by Hubert or WavLM models. The SHAP values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean contribute to the model’s decision, but these do not directly point to the synthetic tone. Overall, the most consistent and cross-model evidence supports the [1.5-2.0] seconds and [6000-7000] Hz region as the location of the anomaly, primarily through the wav2vec model’s IG explanation.

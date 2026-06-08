@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "I take a risk" in a neutral, conversational tone. Immediately following the speech, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a harsh, buzzing timbre and a static pitch, lacking any modulation or environmental context. The transition from speech to tone is abrupt and unnatural, with no fade or overlap, suggesting an artificial insertion. The tone’s spectral content is concentrated between 1000–6000 Hz, with a strong fundamental and harmonics, and its amplitude is significantly higher than the preceding speech, indicating a possible post-production edit or synthetic overlay. No other background sounds or environmental cues are present, further supporting the artificial nature of the tone.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.75-1.25] seconds time range and [1000-6000] Hz frequency range using Integrated Gradients (IG), while LIME also supports the [0.8-1.2] seconds interval. Saliency analysis from wav2vec highlights a brief [0.35-0.45] seconds region, but this is not corroborated by other models and is likely a minor artifact. The Hubert and WavLM models do not provide any supporting evidence, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of an abnormality, with features such as loudness and voiced/unvoiced segment statistics indicating a sudden, unnatural change in the audio signal. The cross-model agreement between wav2vec’s IG and LIME confirms the [0.75-1.25] seconds interval as the most likely region of synthetic insertion.

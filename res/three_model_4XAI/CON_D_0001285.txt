@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 2.5 seconds, a male voice with a neutral, formal tone begins to speak: “repeated his call for an income for it is her month.” The speech is clear and intelligible, with no obvious distortion or clipping. However, at the word “for,” there is a brief, unnatural pause and a slight pitch drop, which is acoustically anomalous. This moment is marked by a subtle, high-frequency artifact in the 4000–6000 Hz range, which is not present in the rest of the audio. The artifact is most prominent between 2.5 and 3.0 seconds, coinciding with the word “for.” The remainder of the audio is free of such anomalies, with the voice continuing smoothly and naturally.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region using three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency range ([2.5-3.0] seconds, [4000-6000] Hz). The wav2vec model’s IG and LIME methods both highlight the same time and frequency region, while Saliency confirms the time range but with a slightly different frequency range ([2000-6000] Hz), which still overlaps with the identified anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shap values for equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_stddevFallingSlope further support the presence of an anomaly in this region, as they indicate a significant deviation from the baseline values. The cross-model agreement from wav2vec’s multiple methods strengthens the conclusion that this region is anomalous.

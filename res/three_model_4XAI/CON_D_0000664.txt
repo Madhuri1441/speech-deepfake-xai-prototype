@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.45-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking the phrase, "quality, they sadness, the picture marks by few." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 0.45 seconds, a distinct, high-frequency, synthetic buzzing sound emerges and persists until about 1.25 seconds. This buzzing is not part of the original speech and is acoustically inconsistent with the rest of the audio, which is otherwise clean and free of background noise. The buzzing is centered in the mid-to-high frequency range (3000–6000 Hz), and its sudden onset and unnatural timbre suggest it is an artifact introduced during post-processing or editing, rather than a genuine environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.45-1.25] seconds, [3000-6000] Hz). The IG and Saliency methods provide broader temporal and frequency support, while LIME narrows the time window to [0.75-0.8] seconds, all within the same frequency band. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP values for features such as equivalentSoundLevel_dBp, loudness_sma3_amean, and StddevUnvoicedSegmentLength further support the presence of an abnormal acoustic event in this region, as they show significant deviations from their original values. The agreement among wav2vec’s XAI methods confirms the presence of a synthetic buzzing artifact in the specified time and frequency range.

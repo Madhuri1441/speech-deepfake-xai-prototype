@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.0-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral accent, delivering a short, conversational phrase: "to council an agent call for a long time yeah." The recording is clean, with no background noise, and the speech is intelligible throughout. However, at approximately 4.0–5.0 seconds, a distinct, high-frequency artifact emerges, lasting about one second. This artifact manifests as a sharp, synthetic, buzzing tone in the 6000–8000 Hz range, which is acoustically inconsistent with the natural speech and background. The tone is abrupt in onset and offset, with no gradual fade, and does not correspond to any natural vocalization or environmental sound. This anomaly is not present in the original speech and is likely an artifact introduced during post-processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([4.0-5.0] seconds, [6000-8000] Hz). The IG and Saliency methods highlight the same high-frequency region, while LIME provides a narrower but consistent time window. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values further support the presence of an anomaly, with high contributions from features like StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, indicating a sudden change in acoustic properties. The cross-model agreement from wav2vec’s multiple XAI methods provides strong evidence for the identified artifact, while the lack of detection by Hubert and WavLM suggests the anomaly is subtle or not captured by all models.

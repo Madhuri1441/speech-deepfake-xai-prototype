@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "I suspect the letter," spoken in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. At approximately 0.8 seconds, a sharp, high-frequency transient occurs, lasting about 0.4 seconds. This transient is acoustically distinct from the speech, characterized by a piercing, metallic timbre and a rapid onset and decay, resembling a digital artifact or a synthetic sound effect. The frequency content of this transient is concentrated between 4000 Hz and 6000 Hz, which is outside the primary speech band and stands out as an anomaly. The rest of the audio remains consistent with natural speech and background noise, with no further irregularities.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 0.8–1.2 second time window and 4000–6000 Hz frequency range, while LIME identifies a slightly earlier, 0.15–0.2 second window, likely due to its local approximation approach. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency event. The cross-model agreement from wav2vec strongly supports the conclusion that the transient is an artifact or synthetic sound, not part of the natural speech.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying, "too hard with very good people." The speech is clear, with a neutral, conversational tone and no signs of emotional distress or artificiality. However, at approximately 1.2 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.2 seconds. This artifact is characterized by a piercing, synthetic-sounding tone in the 6000–7000 Hz range, which is acoustically inconsistent with the preceding speech and background. The artifact is abrupt, with no natural fade-in or fade-out, and stands out as a digital glitch or splicing error. After the artifact, the audio resumes with the original voice and background hum, with no further anomalies. The rest of the audio remains natural and free of distortion, indicating the anomaly is localized and isolated.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.2-1.4] seconds, [6000-7000] Hz). The IG and Saliency methods provide broader but overlapping regions, while LIME offers a precise pinpoint. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values highlight acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a sudden, unnatural high-frequency event. The cross-model agreement from wav2vec confirms the artifact’s location and nature, while the absence of evidence from Hubert and WavLM suggests the anomaly is subtle or not captured by those models.

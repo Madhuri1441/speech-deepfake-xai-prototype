@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.05-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "There is no need" in a neutral, conversational tone. The recording is of high fidelity, with no background noise or distortion. However, at approximately 1.05 seconds, a brief, unnatural, high-frequency artifact appears, lasting about 0.15 seconds. This artifact is a sharp, synthetic-sounding tone in the 1500–2000 Hz range, which is acoustically inconsistent with the preceding speech and does not match any natural vocal or environmental sound. The artifact is not present in the original speech and is not a result of microphone handling or environmental noise. Its abrupt onset and cessation, as well as its spectral characteristics, suggest it is a digital artifact, likely introduced during post-processing or as a result of a deepfake manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time and frequency region ([1.05-1.2] seconds, [1500-2000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The SHAP analysis highlights high contributions from spectral features such as spectralFlux_sma3_amean and equivalentSoundLevel_dBp, which are consistent with the presence of a sudden, high-frequency event. The combined evidence from wav2vec and SHAP supports the conclusion that the audio contains a synthetic artifact in the specified region, likely introduced during deepfake generation or editing.

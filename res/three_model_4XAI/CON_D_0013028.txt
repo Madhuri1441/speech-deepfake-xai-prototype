@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.75-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "changes at the per-" in a neutral, conversational tone, with no background noise or environmental cues. The recording is clean and of high fidelity, with no signs of compression, distortion, or digital artifacts. The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a hard edit. Immediately following the cutoff, a synthetic, low-frequency electronic tone (approximately 100 Hz) appears, lasting for about 0.25 seconds. This tone is perfectly stable in pitch and amplitude, with no modulation, vibrato, or harmonic content, and is acoustically distinct from the preceding speech. The tone is not present in the original audio but is introduced as an artifact, likely due to editing or post-processing. The abrupt transition and unnatural tone are the only observable anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.75-1.0] seconds and frequency range [2000-4000] Hz, while the saliency method from wav2vec further supports the region [0.75-1.0] seconds and [4000-6000] Hz. The LIME method from wav2vec also confirms the region [0.9-1.0] seconds. These three XAI sources from wav2vec consistently point to the same time interval, indicating a strong cross-model agreement on the presence of an anomaly in this segment. The Hubert and WavLM models do not provide any evidence of abnormality, and the SHAP values do not directly correspond to the observed synthetic tone, suggesting that the anomaly is not captured by these models. The synthetic tone is the only clear acoustic abnormality, and the wav2vec-based XAI methods provide robust, cross-model support for its identification.

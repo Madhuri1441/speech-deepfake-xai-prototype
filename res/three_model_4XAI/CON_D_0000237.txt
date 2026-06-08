@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, saying, "completely horrified, played it all, there's a..." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.5 seconds. This tone is sharply distinct from the natural speech, with a piercing, electronic timbre and a frequency content in the 4000–6000 Hz range, which is not present in the rest of the audio. The tone is abrupt in onset and offset, suggesting it was artificially inserted rather than occurring naturally. There are no other notable acoustic anomalies, such as clipping, distortion, or background artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([2.0-2.5] seconds, [4000-6000] Hz). The IG and Saliency methods highlight the synthetic tone as a significant deviation from expected speech patterns, while LIME confirms the temporal localization of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, likely due to their focus on speech content rather than synthetic artifacts. The Shap values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive deviation, indicating a sudden increase in sound level at the identified time. The combination of these findings strongly suggests that the synthetic tone is an artificial insertion, supported by cross-model agreement from wav2vec.

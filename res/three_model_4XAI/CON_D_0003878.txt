@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering the phrase: "The death, it was of of life five children." The speech is recorded in a quiet, acoustically dry environment, with no background noise or reverberation. The only notable acoustic anomaly occurs between 1.5 and 2.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact manifests as a brief, sharp, and unnatural tone, distinct from the natural speech and background, and is not present in the original recording. The anomaly is not perceptible to the human ear as a separate sound but is detectable through spectral analysis. The wav2vec model's Integrated Gradients (IG) analysis identifies this region as the most salient for its prediction, indicating that the model is particularly sensitive to this high-frequency content. The wav2vec model's Saliency and LIME also highlight other regions, but the IG result is the most robust and consistent.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) analysis from the wav2vec model identifies the time interval [1.5-2.0] seconds and frequency range [6000-7000] Hz as the most significant for the model's prediction. This region is supported by the wav2vec model alone, as the Hubert and WavLM models do not provide any saliency or IG evidence. The Shapley values indicate that features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean contribute to the model's decision, but these do not directly correspond to the observed acoustic anomaly. The final abnormality region is based on cross-model agreement from wav2vec's IG analysis, with no supporting evidence from Hubert or WavLM.

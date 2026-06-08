@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.3-3.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "if it's a policy with just the full support of mentally..." The speech is abruptly cut off mid-word ("mentally"), with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a strong presence in the 1000–6000 Hz range, and is acoustically inconsistent with the preceding speech. The sudden transition and unnatural character of the tone strongly suggest an artificial insertion, likely as a result of audio editing or digital manipulation. The tone persists until the end of the clip, with no further speech or environmental sounds.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through multiple independent methods: Integrated Gradients (IG) highlights the 3.0–3.5 second region, Saliency analysis points to 2.5–3.0 seconds, and LIME analysis identifies 2.3–2.4 seconds, all within the same frequency band (1000–6000 Hz). These cross-model and cross-method confirmations indicate a strong consensus that the synthetic tone is the source of the anomaly. The Hubert and WavLM models do not provide any evidence, likely due to their inability to detect such abrupt, non-speech artifacts. The Shapley values further support the presence of an abnormality, with high contributions from features like equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which are characteristic of sudden, loud, and non-vocal sounds. The evidence from wav2vec is robust and cross-validated, while the absence of findings from Hubert and WavLM does not contradict the conclusion but rather reflects their limitations in detecting such anomalies.

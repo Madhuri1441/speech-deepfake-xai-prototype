@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral accent, delivering a short, coherent sentence: "This probably a great moment to majorly look at this seriously." The speech is generally natural, but at approximately 1.8–2.2 seconds, there is a subtle but noticeable disruption in the vocal texture. This region exhibits a slight pitch instability and a faint, unnatural resonance, which is not present in the rest of the utterance. The acoustic anomaly is most apparent in the high-frequency range (5000–6000 Hz), where the spectral content becomes slightly distorted, suggesting a possible digital artifact or manipulation. This is further supported by the wav2vec model’s Integrated Gradients (IG) analysis, which highlights this exact time and frequency region as a key area of model attention, indicating that the model detects an anomaly here. The LIME explanation also points to a similar time window (2.1–2.3 seconds), reinforcing the suspicion of an abnormality in this segment. No other XAI methods (Saliency, LIME, or SHAP) provide supporting evidence for this region, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME explanations both identify the same time and frequency region ([1.8-2.2] seconds, [5000-6000] Hz) as anomalous, providing cross-model agreement. The wav2vec Saliency method does not support this region, and neither Hubert nor WavLM models provide any evidence for this area. The SHAP values do not directly correspond to this region, as they relate to different acoustic features. Thus, the strongest evidence for the anomaly comes from wav2vec’s IG and LIME, which are independent methods within the same model, indicating a high confidence in the identified abnormality.

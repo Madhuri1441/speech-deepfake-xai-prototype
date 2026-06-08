@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "We really need a restart." Immediately following this, a brief, high-pitched, synthetic electronic tone is heard, lasting about half a second. This tone is sharply distinct from the preceding speech, with a clean, pure timbre and a frequency content concentrated between 4000 Hz and 6000 Hz. The tone is acoustically artificial, lacking the natural variation and harmonics of human speech or environmental sounds, and is likely a system-generated notification or alert. The abruptness and unnaturalness of the tone suggest it is not part of the original recording but has been inserted or generated post hoc, possibly as a result of a system error or digital manipulation. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), and in the [2.0-2.5] seconds range using Saliency, both pointing to the synthetic tone. LIME also supports the abnormality in the [1.0-1.2] seconds range, which aligns with the onset of the tone. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values further support the presence of an artificial sound event, with the equivalentSoundLevel_dBp feature showing a significant deviation from the baseline, indicating a sudden increase in sound energy at the tone’s frequency. The combination of wav2vec’s IG and Saliency, along with LIME, provides cross-model agreement on the synthetic tone’s presence and location, confirming the anomaly.

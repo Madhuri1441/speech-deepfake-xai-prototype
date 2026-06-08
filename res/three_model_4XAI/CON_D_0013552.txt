@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, emotionally charged utterance of "Grandfather, great..." spoken by a female voice in a controlled, studio-like environment. The recording is high-fidelity, with no background noise or distortion. However, at approximately 0.5 seconds, a sudden, unnatural shift occurs: the voice becomes muffled, pitch drops, and the timbre changes, indicating a digital artifact or manipulation. This abnormality persists until about 1.5 seconds, after which the voice returns to its original clarity. The frequency range of the anomaly (4000–6000 Hz) aligns with the loss of high-frequency content, consistent with compression or digital degradation. The abruptness and unnaturalness of the transition suggest a splice or editing artifact rather than a natural vocal change.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.5-1.5] second time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly broader [1.0-2.0] second window. LIME analysis further corroborates the anomaly at [1.3-1.5] seconds. These multiple XAI methods from wav2vec converge on the same region, indicating strong cross-model agreement. In contrast, Hubert and WavLM models do not detect any abnormality, suggesting that the anomaly is subtle or not captured by all models. The Shapley values highlight acoustic features such as loudness_sma3_meanFallingSlope, StddevUnvoicedSegmentLength, and slopeUV0-500_sma3nz_amean, which may reflect changes in vocal stability and spectral characteristics during the anomaly. Overall, the evidence from wav2vec models and Shapley values strongly supports the presence of a digital manipulation in the specified time and frequency range.

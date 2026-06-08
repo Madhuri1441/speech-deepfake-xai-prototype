@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, formal tone, saying, "The decision was forced to be announced." The speech is clear and intelligible, with no obvious signs of tampering or distortion. However, at approximately 1.5 seconds, a sudden, high-frequency, synthetic tone emerges, lasting until about 2.0 seconds. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. It does not blend naturally with the voice, suggesting it was artificially inserted or overlaid. The tone is not present in the original speech and does not correspond to any natural vocalization or environmental sound, indicating a possible manipulation or deepfake artifact. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz, supported by both Integrated Gradients (IG) and LIME explanations. The Saliency method also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected across all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_percentile20.0, but these do not directly align with the observed synthetic tone. The wav2vec model’s IG and LIME results are the only ones that consistently identify the synthetic tone, making this the most reliable evidence of the anomaly.

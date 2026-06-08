@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying "different to run" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting until about 1.2 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 5000 Hz and 8000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio but appears abruptly, suggesting it may be a result of post-processing or digital editing. No other acoustic anomalies are present in the clip.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([0.8-1.2] seconds, [5000-8000] Hz). The IG and Saliency methods provide overlapping but slightly different time and frequency boundaries, while LIME narrows the time window to [0.95-1.05] seconds, all within the same frequency range. The Hubert and WavLM models do not detect any abnormality, as their XAI methods return no evidence. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, supporting the presence of a high-frequency artifact. The combined wav2vec evidence strongly supports the conclusion that the abnormality is a synthetic artifact in the specified region.

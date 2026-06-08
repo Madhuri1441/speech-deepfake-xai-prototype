@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent, delivering a monologue in a quiet, controlled environment. The speech is clear and intelligible, with no background noise or environmental artifacts. However, at approximately 4.5–5.0 seconds, a subtle but distinct acoustic anomaly occurs: a brief, high-frequency, synthetic-sounding artifact appears, characterized by a sharp, metallic timbre and a frequency range of 3000–4000 Hz. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound. The anomaly is brief and isolated, suggesting a possible digital manipulation or artifact introduced during post-processing or synthesis.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [4.5-5.0] seconds time region and [3000-4000] Hz frequency region as the most salient for its prediction, directly aligning with the observed synthetic artifact. The Saliency method from wav2vec also highlights a nearby region ([3-4] seconds), but this is less consistent with the actual anomaly. The LIME method from wav2vec supports the [3.0-3.5] seconds region, which is adjacent but not overlapping with the main anomaly. The Hubert and WavLM models do not provide any saliency or attribution evidence for this region, indicating that the anomaly is specifically detected by wav2vec. The Shapley values from the audio features (slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, jitterLocal_sma3nz_stddevNorm) do not directly reference the anomaly but may reflect underlying acoustic properties that contribute to the model’s sensitivity to such artifacts. Overall, the wav2vec IG attribution provides the strongest and most consistent evidence for the anomaly, with no cross-model agreement from Hubert or WavLM.

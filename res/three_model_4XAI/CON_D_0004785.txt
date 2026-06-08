@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "I never almost been impaired." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the audio. This buzzing is not part of the original speech and is acoustically distinct from the voice, with a frequency content in the 2000–4000 Hz range. The abrupt onset and unnatural timbre of this tone suggest it is an artificial insertion, likely intended to mask or obscure the original content. The voice remains unaffected by the buzzing, indicating the tone was added post-recording. No other acoustic anomalies, such as clipping, distortion, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-4000] Hz, which aligns with the synthetic buzzing tone observed in the audio. The saliency method from wav2vec also highlights a region at the start of the audio ([0.00-0.25] seconds), but this is less consistent with the actual anomaly. The LIME method from wav2vec identifies a very short initial segment ([0.0-0.1] seconds), which is not strongly supported by the audio evidence. The Hubert and WavLM models do not provide any saliency or LIME evidence, and their IG explanations are absent, indicating they did not detect the anomaly. The Shap values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed buzzing tone. Overall, the wav2vec model’s IG explanation is the only one that consistently supports the observed abnormality, with no cross-model agreement.

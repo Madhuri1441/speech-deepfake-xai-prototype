@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.6-0.8] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, human-like utterance of the word "policy," spoken in a neutral, adult female voice. The recording is of high fidelity, with no background noise or distortion. Immediately following the spoken word, a sharp, synthetic, high-frequency tone is introduced. This tone is sustained for approximately 0.2 seconds, starting at 0.6 seconds and ending at 0.8 seconds, and is centered in the 5000–7000 Hz range. The tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics, and is likely an artifact of digital editing or a post-production sound effect. There are no other audible anomalies or background sounds.
+
+III. XAI AGGREGATION EXPLANATION:  
+The wav2vec model identifies the abnormality in the 0.6–0.8 second time range and 5000–7000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (0.1–0.3 seconds, 2000–4000 Hz), which does not align with the observed synthetic tone. The LIME method also supports the 0.7–0.8 second region, corroborating the wav2vec IG result. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the synthetic tone is not detected by these models. The SHAP values, while not directly referencing the synthetic tone, highlight features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may relate to the abrupt change in audio characteristics but do not pinpoint the exact abnormality. The cross-model agreement between wav2vec and LIME on the 0.6–0.8 second, 5000–7000 Hz region provides strong evidence for the synthetic tone as the primary anomaly.

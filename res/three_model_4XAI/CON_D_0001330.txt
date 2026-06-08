@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "but cannot allow it if you just have..." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the clip. This buzzing is not part of the original speech and is acoustically distinct from the voice, with a frequency content concentrated between 4000 Hz and 6000 Hz. The buzzing is steady, unmodulated, and lacks any natural acoustic characteristics, suggesting it is an artificial overlay rather than a genuine environmental or vocal artifact. The voice itself remains unaffected by the buzzing, indicating the anomaly is post-production or digitally inserted.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The wav2vec model's Integrated Gradients (IG) method identifies the [1.0-2.0] seconds time region and [4000-6000] Hz frequency region as salient, aligning with the observed buzzing. The wav2vec Saliency method also highlights the [0.5-1.0] seconds region, which overlaps with the start of the buzzing. The wav2vec LIME method further corroborates the [0.75-1.25] seconds interval. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the buzzing is not captured by their representations. The SHAP values for features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_percentile80.0 also point to the presence of an artificial sound event in the latter part of the audio, reinforcing the conclusion that the buzzing is an anomaly. There is strong cross-model agreement from wav2vec, but not from Hubert or WavLM.

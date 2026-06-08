@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-0.7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I was shot," in a low, somber tone. Immediately following the spoken phrase, a sharp, high-frequency electronic tone is heard, lasting approximately 0.2 seconds. This tone is acoustically distinct from the voice, with a clear presence in the 2000–4000 Hz range and a sudden onset and offset, suggesting it is not a natural part of the speech or environment. The tone is likely an artifact, possibly a digital glitch, notification, or post-production effect, and does not correspond to any natural sound or environmental noise. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–0.7 second time range and 2000–4000 Hz frequency range using Integrated Gradients (IG), while Saliency analysis also highlights a similar frequency range in the 0.15–0.25 second window. LIME analysis points to a slightly later time (0.75–0.8 seconds), but the frequency range remains consistent. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The Shapley values indicate that the abnormality is not related to standard audio features like sound level or MFCCs, but rather to a feature related to unvoiced segment length, which may reflect the presence of the electronic tone. The wav2vec model’s IG and Saliency evidence, both pointing to the same frequency range and a time window overlapping with the electronic tone, provide strong cross-model agreement. The LIME evidence from wav2vec is less consistent in timing but still supports the presence of an anomaly in the same frequency band. Thus, the wav2vec model’s IG and Saliency results are the most reliable indicators of the abnormality, with LIME providing supplementary support.

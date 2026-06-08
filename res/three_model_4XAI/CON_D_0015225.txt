@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "Why it was so vital to come here." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.25 seconds, a high-frequency, synthetic-sounding tone abruptly appears, lasting until about 2.00 seconds. This tone is distinctly artificial, with a stable pitch and timbre that does not match the speaker’s voice or any natural background sound. The tone is not present in the original audio but is introduced as an artifact, likely as a result of post-processing or digital editing. The tone’s frequency falls within the 4000–7000 Hz range, which is above the typical human speech spectrum, and its sudden onset and unnatural character suggest it is not part of the original recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify the 1.25–2.00 second time range and the 4000–7000 Hz frequency range as regions of abnormality, indicating strong agreement between these two XAI techniques. The wav2vec LIME method, however, points to a much earlier time (0.0–0.1 seconds), which does not align with the observed synthetic tone and is likely an artifact of the model’s interpretation. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, all of which are associated with the synthetic tone’s introduction. Overall, the wav2vec IG and Saliency methods provide cross-model agreement on the abnormality, while the other models and methods do not corroborate this finding.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female voice speaking the phrase, "This isn't an outrageous keep please." The speech is clear, with a neutral, slightly formal tone, and is recorded in a quiet, acoustically dry environment. There are no background noises, music, or environmental sounds. The voice is centered in the stereo field, and the recording is of high fidelity, with no distortion or clipping. The only notable acoustic feature is a brief, high-frequency artifact in the 3000–4000 Hz range, occurring between 0.8 and 1.2 seconds. This artifact manifests as a sharp, unnatural transient, likely a digital glitch or editing artifact, and is not present in the surrounding speech. The rest of the audio is acoustically normal, with no signs of compression, background noise, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.8–1.2 second region as abnormal, with a frequency range of 3000–4000 Hz, supported by both Integrated Gradients (IG) and Saliency methods. The LIME explanation also points to a specific time window (1.5–1.6 seconds), but this is not supported by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any abnormality indications. The Shapley values highlight features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed artifact. The wav2vec-based evidence is the only one that aligns with the acoustic anomaly, and it is supported by multiple XAI methods within the same model.

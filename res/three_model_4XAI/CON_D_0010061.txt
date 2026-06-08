@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.85-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "Paul had had..." in a neutral, conversational tone. The speech is intelligible and exhibits typical human vocal characteristics, including a smooth pitch contour and natural intonation. However, at approximately 0.85 seconds, a sudden, high-frequency, synthetic-sounding artifact appears, lasting until 1.0 seconds. This artifact is sharply distinct from the preceding speech, with a piercing, static-like timbre and a frequency content concentrated between 6000–7000 Hz, which is atypical for human speech. The artifact is abrupt in onset and offset, with no gradual fade-in or fade-out, and does not blend with the natural speech. This anomaly is not present in the original audio, suggesting it is an artificial insertion or modification.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([0.85-1.0] seconds, [6000-7000] Hz], while LIME corroborates the time region ([0.75-0.85] seconds), which overlaps with the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shap values further support the presence of an abnormality, with the StddevUnvoicedSegmentLength feature showing a high positive value, suggesting a deviation from expected speech patterns. The spectralFlux_sma3_amean feature also indicates a change in spectral characteristics, aligning with the presence of the synthetic artifact. Overall, the wav2vec model's multiple XAI methods consistently identify the same region, providing strong evidence for the anomaly.

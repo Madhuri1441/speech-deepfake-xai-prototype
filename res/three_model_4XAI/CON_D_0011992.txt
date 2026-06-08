@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.8-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "Here to help is there for anyone." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.8 seconds, a sudden, high-frequency, synthetic buzzing artifact appears and persists until about 2.5 seconds. This artifact is not part of the original speech and is acoustically distinct from the voice, manifesting as a harsh, electronic tone with a frequency content between 2500 Hz and 8000 Hz. The artifact is abrupt in onset and offset, suggesting a digital or post-processing origin rather than a natural sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an initial LIME-based alert at [0.0-0.1] seconds and a more substantial IG-based alert at [1.8-2.0] seconds, with a frequency range of [2500-3000] Hz, and a Saliency-based alert at [2.0-2.5] seconds, with a frequency range of [4000-8000] Hz. These regions overlap and collectively support the presence of a high-frequency artifact in the 2.5-second window. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shap values, while not directly referencing time or frequency, highlight features such as slopeUV0-500_sma3nz_amean and loudness_sma3_percentile20.0, which may be indirectly related to the presence of the artifact but do not specify its location. The wav2vec model's multiple, overlapping alerts provide the strongest evidence for the artifact's presence and location.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.3-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, breathy vocalization ("uh") followed by a female voice saying, "It is a coming trip in the hall." The speech is clear and intelligible, with a neutral, conversational tone. However, at approximately 1.3–1.5 seconds, a subtle but distinct acoustic anomaly occurs: a high-frequency, synthetic-sounding artifact appears, lasting about 0.2 seconds. This artifact is not present in the original speech and is acoustically inconsistent with natural human speech or environmental sounds. The artifact is characterized by a sharp, high-frequency tone in the 2000–4000 Hz range, which is not typical of human vocalizations or room acoustics. This anomaly is not accompanied by any change in the speaker’s voice or background noise, suggesting it is an artificial insertion rather than a recording artifact or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both methods point to the same time and frequency region ([1.3-1.5] seconds, 2000–4000 Hz), indicating strong cross-model agreement on the location of the anomaly. The LIME method, however, identifies a different region ([0.0-0.1] seconds), which does not align with the observed artifact and is likely a false positive. The Hubert and WavLM models do not provide any evidence of the anomaly, suggesting they are less sensitive to this type of synthetic insertion. The Shap values, while not directly identifying the artifact, highlight acoustic features such as spectral flux and loudness, which may be indirectly related to the anomaly but do not pinpoint its location. Overall, the wav2vec model’s IG and Saliency methods provide the most reliable evidence for the anomaly, supported by cross-model agreement.

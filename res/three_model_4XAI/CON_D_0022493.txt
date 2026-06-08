@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I feel things is wrong," delivered in a low, slightly muffled tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, a subtle but noticeable anomaly occurs in the high-frequency region (4000–6000 Hz) between 0.5 and 1.0 seconds, where the voice exhibits a faint, unnatural shimmer or warble. This artifact is not present in the rest of the audio and does not correspond to any natural speech variation or environmental sound. The anomaly is most likely a result of digital processing or synthesis, as it is not accompanied by any physical or environmental cues.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [0.5-1.0] seconds time region and [4000-6000] Hz frequency region using Integrated Gradients (IG), while Saliency analysis highlights a different region ([0.25-0.5] seconds, [1000-3000] Hz), which does not align with the observed artifact. LIME analysis from wav2vec also points to the [0.95-1.05] seconds region, which overlaps with the anomalous segment. The Hubert and WavLM models do not provide any supporting evidence for the anomaly, as their IG, Saliency, and LIME analyses return no significant regions. The Shapley values indicate that the anomaly is not strongly linked to the acoustic features analyzed, suggesting that the artifact is not captured by these features. Overall, the wav2vec model’s IG and LIME analyses provide cross-model agreement on the anomalous region, while other models and features do not support this finding.

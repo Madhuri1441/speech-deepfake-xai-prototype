@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "You don't know what it's been such a do next." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact overlays the speech. This artifact is most prominent between 1.0 and 1.5 seconds, with a frequency range of 3000–6000 Hz, and is characterized by a smooth, tonal quality that does not match the natural acoustic profile of the voice. The artifact is not present before or after this interval, suggesting a localized anomaly. The voice itself remains unaffected in terms of pitch, timbre, or loudness, indicating the artifact is likely a post-production addition rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.0-1.5] seconds time range and [3000-6000] Hz frequency range using Integrated Gradients (IG), while Saliency analysis supports a slightly broader [1.0-2.0] seconds interval. LIME analysis further narrows the anomaly to [1.7-1.8] seconds, reinforcing the presence of a localized artifact. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic properties during the anomaly, but do not pinpoint the exact time or frequency range. Overall, the wav2vec model’s IG and Saliency analyses, along with LIME, provide consistent evidence of the anomaly, while Hubert and WavLM do not detect it.

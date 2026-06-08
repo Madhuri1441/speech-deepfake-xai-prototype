@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "No one wanted to... tonight." The speech is clear and intelligible, with a neutral, slightly somber tone. However, at approximately 1.5 seconds, a sharp, high-frequency click or pop is heard, lasting about a second. This click is acoustically distinct from the speech, with a frequency content in the 2000–6000 Hz range, and is not a natural part of the spoken phrase. The click is followed by a brief, low-frequency hum or buzz, which is also unnatural in this context. These artifacts are not present in the original speech and suggest a digital or mechanical origin, such as a file corruption, buffer glitch, or editing error. The audio then returns to normal speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of abnormality: an Integrated Gradients (IG) region from 1.5–2.0 seconds in the 2000–3000 Hz range, and a Saliency region from 2.0–2.5 seconds in the 4000–6000 Hz range. These regions align with the observed click and buzz, confirming the presence of unnatural acoustic events. The LIME explanation for wav2vec also supports a brief abnormality around 0.25–0.3 seconds, but this is not strongly corroborated by other evidence. The Hubert and WavLM models do not identify any abnormal regions, likely due to their different training objectives or sensitivity. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and mfcc3V_sma3nz_amean, which are consistent with the presence of a sudden, high-frequency artifact. Overall, the wav2vec model’s IG and Saliency results provide cross-model agreement on the abnormality, while other evidence is either absent or less consistent.

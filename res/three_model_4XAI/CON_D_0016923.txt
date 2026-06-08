@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with the phrase "...game, my place, port gate, play at...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a sharp, high-frequency transient artifact appears, lasting about half a second. This artifact is characterized by a piercing, synthetic, and unnatural timbre, with energy concentrated between 6000–7000 Hz, which is inconsistent with the natural frequency content of the voice. The artifact is not present in the original speech and does not correspond to any expected environmental or vocal event. It is likely a digital glitch or an artifact introduced during audio processing or editing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time-frequency region ([1.5-2.0] seconds, [6000-7000] Hz), while LIME identifies a slightly earlier time window ([0.95-1.05] seconds), which may reflect a secondary or related anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no regions. The Shapley value analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact and are not time-localized. The wav2vec evidence is cross-model consistent, while the other models do not support the finding. Thus, the wav2vec results are the most reliable indicators of the anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "due contract was not renewed." Immediately following the word "renewed," there is a sharp, unnatural cutoff, with no natural decay or fade-out, indicating a digital splice. This abrupt termination is acoustically anomalous and suggests the audio has been edited or manipulated. The final syllable of "renewed" is truncated, and the transition to silence is instantaneous, which is inconsistent with natural speech endings. There is no background noise, reverberation, or environmental sound, further supporting the likelihood of digital editing. The voice itself is clear and intelligible, with no signs of pitch or timbre manipulation, but the unnatural ending is the primary acoustic anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-1.25] seconds time region and [4000-6000] Hz frequency region as the most salient for the model’s prediction, aligning with the observed abrupt cutoff in the audio. The Saliency method from wav2vec also identifies a region ([1.75-2.00] seconds, [1000-2000] Hz), but this is not supported by the audio evidence and is likely a model artifact. The LIME explanation from wav2vec points to [0.0-0.1] seconds, which is not supported by the audio and may reflect a model bias. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight features such as StddevUnvoicedSegmentLength and spectralFlux, which are related to the acoustic properties of the audio, but do not directly point to the splice. The cross-model agreement is limited to the wav2vec IG explanation, which is the most reliable indicator of the anomaly.

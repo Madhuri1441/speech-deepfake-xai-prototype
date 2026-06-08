@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.00-0.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "It means a great deal to the families." Immediately following this phrase, a brief, high-pitched, synthetic electronic tone is heard, lasting approximately 0.25 seconds. This tone is acoustically distinct from the speech, with a frequency content in the 1000–2000 Hz range, and is sharply introduced and terminated, lacking any natural fade or environmental context. The tone is not a typical notification or system sound, but rather resembles a digital artifact or post-production edit, suggesting an artificial insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.00-0.25] seconds time range and [1000-2000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method also supports this region, though with a slightly narrower time window ([0.00-0.10] seconds). The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values further support the presence of an abnormality, with features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0 showing elevated values, suggesting a deviation from expected speech patterns. The wav2vec model's multiple independent methods (IG, Saliency, and LIME) provide strong cross-model agreement on the [0.00-0.25] seconds interval as the region of interest.

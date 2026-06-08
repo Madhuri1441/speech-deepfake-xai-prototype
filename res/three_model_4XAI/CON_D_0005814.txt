@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6 - 0.7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2500 - 3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "Was that they should be go..." in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.6 seconds, a sharp, high-frequency transient is audible, lasting until about 0.7 seconds. This transient is acoustically distinct from the speech, presenting as a brief, piercing sound with a frequency content between 2500 Hz and 3500 Hz. The sound is abrupt and does not match the natural cadence or spectral profile of the speaker’s voice, suggesting it may be an artifact or an anomaly. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the audio through two independent XAI methods: Integrated Gradients (IG) and Saliency. Both point to the same time and frequency region ([0.6 - 0.7] seconds, [2500 - 3500] Hz), indicating a high degree of cross-model agreement. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The Shapley values further support the presence of an anomaly, with the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features showing high SHAP values, suggesting a deviation from expected acoustic patterns. The spectralFlux_sma3_amean feature also contributes, though to a lesser extent. Overall, the wav2vec model’s consistent findings, supported by multiple XAI methods, indicate a high confidence in the identified abnormality.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone: "It is a lot of years to be in this decision." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 2.0 seconds, a subtle but distinct anomaly emerges: a high-frequency, synthetic-sounding artifact overlays the speech. This artifact is most prominent between 2.0 and 2.5 seconds, with a frequency range of 3000–6000 Hz, and is not present in the rest of the audio. The artifact is not a natural part of the voice or environment, and its sudden appearance and unnatural spectral profile suggest it is an artificial insertion, likely a result of digital manipulation or deepfake generation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [2.0-2.5] seconds time region and [3000-6000] Hz frequency region using Integrated Gradients (IG), while Saliency analysis supports a slightly broader [2.0-3.0] seconds interval and [1000-8000] Hz range. LIME analysis also points to a brief interval around [1.5-1.6] seconds, which is close to the main anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength, which may be related to the presence of the artifact, but these are not directly visualized in the audio. Overall, the wav2vec model’s IG and Saliency analyses provide the strongest and most consistent evidence for the anomaly, supported by LIME, while Hubert and WavLM do not detect the anomaly.

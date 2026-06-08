@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard British accent, delivering a formal statement in a controlled, studio-like environment. The speech is generally intelligible, with a slight hesitation and a minor verbal stumble at 00:04 ("it's the..."), which is typical of natural speech. However, at approximately 00:04.5, a brief, high-frequency, synthetic-sounding artifact is audible, lasting about 0.5 seconds. This artifact is not present in the original speech and is acoustically distinct from the speaker’s voice, manifesting as a sharp, high-pitched, and unnatural sound, likely a digital glitch or a synthetic overlay. This anomaly is most prominent in the frequency range of 4000–8000 Hz, which is above the typical speech range and suggests a non-vocal, possibly machine-generated origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly through three independent XAI methods: Integrated Gradients (IG) highlights the 2.5–3 second region, Saliency focuses on 4.5–5 seconds, and LIME points to 3.0–3.5 seconds, all within the 2.5–5 second window and overlapping in the 4000–8000 Hz frequency range. These findings are consistent with the observed synthetic artifact in the audio. In contrast, the Hubert and WavLM models do not provide any saliency or attribution evidence, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly by highlighting features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are indicative of sudden changes in acoustic properties. The combined evidence from wav2vec and the Shapley values strongly supports the presence of a synthetic artifact in the specified time and frequency range.

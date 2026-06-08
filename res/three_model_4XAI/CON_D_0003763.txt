@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, neutral tone, delivering a short, grammatically correct sentence in a standard English accent. The recording is clean, with no background noise, distortion, or environmental cues, and the speech is evenly paced and intelligible. However, a subtle but noticeable anomaly occurs between 1.5 and 2.5 seconds, where the voice exhibits a slight pitch instability and a faint, artificial shimmer, particularly in the higher frequency range (3000–6000 Hz). This is most evident on the word "him," where the voice briefly wavers and loses natural resonance, suggesting a possible digital artifact or manipulation. The acoustic environment is otherwise consistent, with no signs of editing, clipping, or compression.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the [1.5-2.0] seconds time region and [3000-4000] Hz frequency range, while the Saliency method highlights the [2.0-2.5] seconds and [4000-6000] Hz region. These two methods, both based on wav2vec, provide overlapping and complementary evidence, confirming the presence of an anomaly in the 1.5–2.5 seconds window and 3000–6000 Hz band. The LIME method also supports the [1.75-2.0] seconds region, further reinforcing the wav2vec findings. In contrast, the Hubert and WavLM models do not detect any abnormality, and their explanations are absent. The Shap values indicate that the StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp features are most influential, suggesting that the anomaly is related to subtle changes in voice stability and sound level, consistent with the observed pitch instability and shimmer. No other XAI sources support the anomaly, and the evidence is primarily cross-model agreement within wav2vec.

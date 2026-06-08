@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "But if you like to London, probably he was one of the...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–2.0 seconds, a high-frequency, synthetic-sounding artifact emerges, lasting about one second. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 6000–7000 Hz, and is acoustically distinct from the natural speech. The artifact is not present in the original audio but appears abruptly, suggesting a possible digital insertion or editing artifact. The voice continues without interruption, indicating the artifact is likely a post-production addition rather than a recording flaw.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent methods: Integrated Gradients (IG) and Saliency. Both point to the 1.0–2.0 second time region and the 6000–7000 Hz frequency range, strongly supporting the presence of an artificial sound artifact. The LIME explanation from wav2vec also highlights a specific time point (2.5–2.6 seconds), which may correspond to the tail end of the artifact. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME explanations are all null. The SHAP analysis, which focuses on acoustic features rather than time-frequency regions, does not directly corroborate the artifact but provides context on the audio’s spectral and temporal characteristics. Overall, the wav2vec model’s cross-method agreement provides the strongest evidence for the artifact, while other models and SHAP values do not contradict but also do not support the finding.

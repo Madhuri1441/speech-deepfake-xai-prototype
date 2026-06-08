@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, high-frequency rustling sound, likely caused by the speaker adjusting clothing or a microphone. This is followed by a brief, sharp inhalation, which is acoustically distinct and occurs at the start of the speech. The main vocalization, "There was no mention of an amnesty in the Belfast Agreement," is delivered in a clear, neutral tone with no emotional inflection. The speech is recorded in a quiet, acoustically treated environment, with no background noise or reverberation. The only notable acoustic anomaly is a short, high-frequency transient at 0.1–0.2 seconds, which is not part of the speech and may be a minor handling noise or artifact from the recording setup. This transient is not present in the spoken content and does not interfere with intelligibility.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the transient at 0.1–0.2 seconds and 1500–3000 Hz as a salient region, while the IG method highlights a different region (1.5–2.0 seconds, 4000–6000 Hz) that does not correspond to any clear acoustic event in the audio. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected across all models. The Shap values suggest that features like StddevUnvoicedSegmentLength and spectralFlux_sma3_amean are important, but these are not directly linked to the transient. The wav2vec saliency is the only evidence that aligns with the observed transient, and it is not corroborated by other models. Thus, the transient at 0.1–0.2 seconds and 1500–3000 Hz is the only region supported by XAI evidence, though it is based on a single model.

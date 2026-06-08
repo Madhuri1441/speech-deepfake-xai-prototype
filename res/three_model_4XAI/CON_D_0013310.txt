@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a clear, conversational tone, speaking in English with a non-native accent. The recording is of moderate fidelity, with a low-level background hiss and a slight room reverberation, suggesting a small indoor space. The speech is continuous and intelligible, with no obvious signs of digital manipulation, such as clipping, distortion, or unnatural pauses. However, at approximately 3.5–4.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural tonal burst in the 6000–8000 Hz range. This artifact is not present in the surrounding speech and does not correspond to any natural vocal or environmental sound, indicating a possible digital anomaly or editing artifact. The rest of the audio remains stable and free of such anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [6000-8000] Hz frequency region as salient, with both Integrated Gradients and Saliency methods pointing to the same interval. LIME also supports the [3.5-4.0] seconds region. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but does not specify a time or frequency range, making it less directly aligned with the observed artifact. Overall, the wav2vec model’s multiple XAI methods and LIME converge on the same time and frequency region, providing strong cross-model agreement for the anomaly at [3.5-4.0] seconds and [6000-8000] Hz.

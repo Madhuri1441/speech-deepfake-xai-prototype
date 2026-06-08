@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a synthetic, monotone female voice stating, "Thank you for your inquiry and declare his name." The speech is delivered in a flat, emotionless tone with a slightly robotic cadence, lacking natural intonation and breathiness. At approximately 1.0–1.5 seconds, a subtle but noticeable artifact emerges: a high-frequency, buzzing or static-like overlay, most prominent in the 4000–6000 Hz range. This artifact is not present in the initial portion of the audio and persists through the remainder of the clip, coinciding with the latter part of the phrase "declare his name." The artifact is not a natural part of speech and appears to be an electronic or digital anomaly, possibly due to compression, encoding, or a synthetic voice generation error. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.0–1.5 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), while the Saliency method highlights a different region (2.5–3.0 seconds, 7000–8000 Hz), which does not align with the observed artifact. The LIME method also points to a brief interval (0.5–0.6 seconds), but this is not supported by the audio evidence. The Hubert and WavLM models do not provide any saliency or attribution evidence for the anomaly. The Shapley values indicate that the abnormality is not strongly linked to standard acoustic features such as unvoiced segment length or loudness, suggesting the anomaly is not captured by these features. The wav2vec IG result is the only one that aligns with the observed artifact, and thus, the final abnormality region is based on this single-source evidence.

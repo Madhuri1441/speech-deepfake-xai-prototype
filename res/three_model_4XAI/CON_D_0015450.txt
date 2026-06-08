@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a low-fidelity, muffled male voice, likely synthesized or heavily processed, speaking the phrase: "to this only have question accident that drivers were told not tomorrow without assistance." The speech is monotonous, with unnatural pauses and a lack of emotional inflection, suggesting a text-to-speech or deepfake origin. At approximately 0.5–1.5 seconds, a distinct, high-frequency, synthetic artifact appears, characterized by a sharp, buzzing tone in the 4000–6000 Hz range. This artifact is not present in the original speech and is acoustically inconsistent with the rest of the audio, indicating a possible digital manipulation or encoding error. The remainder of the audio continues with the same synthetic voice, maintaining a flat, emotionless delivery and low-frequency hum, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.5–1.5 second time region and 4000–6000 Hz frequency region as abnormal using Integrated Gradients (IG), while the Saliency method also highlights a different region (2–3 seconds, 2000–4000 Hz), but this is not supported by other models. The Hubert and WavLM models do not provide any abnormality evidence. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting the presence of unnatural pauses or gaps in the audio, which aligns with the observed synthetic speech. The cross-model agreement from wav2vec’s IG method and the Shapley value analysis supports the conclusion that the audio contains a synthetic artifact in the 0.5–1.5 second, 4000–6000 Hz region, likely due to digital manipulation or encoding error.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with no obvious signs of emotional distress or artificiality. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice acquires a slightly metallic, synthetic timbre, and the articulation becomes less natural, with a slight reduction in dynamic range. This change persists until about 1.0 seconds, after which the voice returns to its original, more natural quality. The frequency region of this anomaly is centered around 2000–3000 Hz, which is typical for midrange vocal energy but is marked by a subtle, unnatural resonance during the abnormal segment. No other acoustic anomalies, such as clipping, static, or background noise, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [2000-3000] Hz using Integrated Gradients (IG), and the saliency method further supports a region at [2.0-2.5] seconds, though this is less consistent with the observed audio. LIME also highlights a brief region at [1.0-1.1] seconds, which aligns with the wav2vec findings. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP values suggest that features related to unvoiced segment length and spectral flux are elevated, which may correspond to the unnatural vocal quality during the abnormal segment. Overall, the wav2vec model’s IG and LIME results, along with the SHAP feature analysis, support the presence of a synthetic or manipulated vocal segment in the audio, specifically between 0.5 and 1.0 seconds.

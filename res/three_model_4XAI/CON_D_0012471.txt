@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice delivering a formal statement in standard British English. However, at the very start (0-1 seconds), there is a subtle but noticeable acoustic anomaly: a faint, high-frequency, synthetic-sounding artifact overlays the initial speech. This artifact is not present in the rest of the clip and is not attributable to the speaker’s voice or the recording environment. The anomaly is most prominent in the 2000–4000 Hz range, consistent with digital compression or post-processing artifacts. The rest of the audio is clean and natural, with no further signs of tampering or distortion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the first second of the audio, specifically in the 2000–4000 Hz frequency range, using Integrated Gradients (IG), Saliency, and LIME. The Hubert and WavLM models do not detect any anomaly, likely due to their different training objectives or sensitivity to such artifacts. The Shapley value analysis highlights features like StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which may reflect the presence of an unnatural segment at the start, but these are not directly tied to the observed artifact. The wav2vec evidence is the only one that aligns with the acoustic anomaly, and it is supported by multiple XAI methods within the same model.

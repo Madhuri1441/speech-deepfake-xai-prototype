@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice speaking in a neutral, formal tone, with a slight echo and a low-level background hiss. The speech is clear and intelligible, with no obvious signs of digital manipulation or overt audio artifacts. However, at approximately 3.5–4.0 seconds, there is a subtle but noticeable change in the acoustic texture of the voice, specifically in the mid-frequency range (2000–3000 Hz). This region exhibits a slight pitch instability and a brief, unnatural resonance, which is not present in the rest of the audio. These acoustic anomalies are not accompanied by any speech errors or changes in content, suggesting a localized, possibly synthetic, modification. The background hiss and room echo remain consistent throughout, indicating that the anomaly is not due to environmental changes.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [3.5-4.0] seconds time region and [2000-3000] Hz frequency region as salient, with both Integrated Gradients (IG) and Saliency methods pointing to this interval. The LIME method, while using a slightly broader time window ([2.0-2.5] seconds), still aligns with the presence of an anomaly in this vicinity. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as slopeUV0-500_sma3nz_amean and StddevUnvoicedSegmentLength, which are related to voice texture and unvoiced segment characteristics, further supporting the presence of an anomaly in the mid-frequency range. The cross-model agreement between wav2vec’s IG and Saliency methods, along with the LIME method’s partial support, strongly indicates that the anomaly is localized in the [3.5-4.0] seconds time and [2000-3000] Hz frequency range.

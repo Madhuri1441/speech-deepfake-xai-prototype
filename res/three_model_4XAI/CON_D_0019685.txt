@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "cast for the weekend." Immediately following the spoken phrase, a synthetic, high-frequency electronic tone emerges, lasting approximately 1.5 seconds. This tone is characterized by a stable pitch in the 3000–4000 Hz range, with a subtle, rapid modulation (flutter) and a harsh, buzzy timbre, indicative of a square or sawtooth waveform. The tone is acoustically distinct from the preceding speech, lacking any natural vocal harmonics or environmental reverberation, and is abruptly cut off at the end of the clip. There are no other background noises, speech, or environmental cues present.
+
+The wav2vec model identifies the abnormality in two overlapping regions: an Integrated Gradients (IG) region from 1.0–2.0 seconds in the 3000–4000 Hz band, and a Saliency region from 2.0–2.5 seconds in the 4000–6000 Hz band. LIME further supports the presence of an anomaly at 2.4–2.5 seconds. These regions align with the onset and modulation of the synthetic tone, confirming its artificial nature. The Hubert and WavLM models do not detect any abnormality, likely due to their focus on speech content and lack of sensitivity to non-speech artifacts. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, high-frequency, non-vocal sound event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across multiple XAI methods (IG, Saliency, and LIME) that the abnormality occurs between 1.0–2.5 seconds, with frequency content in the 3000–6000 Hz range. This cross-model agreement strongly supports the presence of a synthetic tone in this region. The Hubert and WavLM models do not detect any anomaly, likely due to their focus on speech content and lack of sensitivity to non-speech artifacts. The SHAP values further corroborate the presence of a sudden, high-frequency, non-vocal sound event.

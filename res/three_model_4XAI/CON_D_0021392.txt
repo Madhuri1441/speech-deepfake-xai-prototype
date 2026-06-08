@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "to take the plunge" in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.4 seconds into the clip, a subtle but distinct high-frequency artifact emerges, lasting until about 0.6 seconds. This artifact manifests as a brief, unnatural, high-pitched electronic tone or whine, which is not present in the original speech and does not correspond to any natural vocal or environmental sound. The artifact is most prominent in the 2000–4000 Hz frequency range, which is consistent with the frequency region identified by the wav2vec Integrated Gradients (IG) explanation. The wav2vec Saliency and LIME explanations also point to this time-frequency region, indicating that the model is particularly sensitive to this anomaly. No other XAI models (Hubert, WavLM) provide supporting evidence, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides multiple independent explanations (IG, Saliency, and LIME) that all point to the same time-frequency region ([0.4-0.6] seconds, 2000–4000 Hz), indicating strong cross-model agreement for this anomaly. The Hubert and WavLM models do not provide any supporting evidence for this region, and the SHAP values do not directly correspond to this artifact. Therefore, the final abnormality region is based on consistent wav2vec evidence, with no cross-model agreement from other XAI sources.

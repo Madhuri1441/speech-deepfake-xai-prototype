@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a brief, low-pitched, non-verbal vocalization, likely a throat-clear or grunt, followed by a female speaker with a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5–2.0 seconds, a subtle but distinct high-frequency artifact emerges, lasting about half a second. This artifact manifests as a faint, synthetic-sounding buzz or hum, centered in the 4000–6000 Hz range, and is not present in the rest of the recording. The artifact is not masked by speech or other sounds, making it perceptible to a careful listener. This anomaly is not explained by the speaker’s voice or any environmental noise, suggesting it may be an artifact of audio processing or editing.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as the most salient for its prediction, directly aligning with the observed high-frequency artifact. The Saliency method from wav2vec also highlights the [0-1] seconds region, which corresponds to the initial non-verbal vocalization, but this is not supported by other models. The LIME method from wav2vec further supports the [0.5-1.0] seconds region, again focusing on the non-verbal sound. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values from the equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope features do not directly point to the artifact but may reflect general audio characteristics. Overall, the wav2vec IG analysis is the only source that consistently identifies the artifact region, with no cross-model agreement.

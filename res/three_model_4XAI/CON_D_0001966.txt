@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "inside problem with alcohol." Immediately following the spoken phrase, a loud, sustained, low-frequency electronic tone abruptly starts and continues until the end of the clip. This tone is highly unnatural, with a harsh, buzzy timbre and a fundamental frequency around 100 Hz, accompanied by strong harmonics extending up to 6 kHz. The tone is static in pitch and amplitude, with no modulation or fade, and is acoustically distinct from the preceding speech. The transition between the speech and the tone is abrupt, with no fade or overlap, and the tone’s spectral content (4000–6000 Hz) is not present in the speech, indicating a separate, artificial source. The tone’s characteristics are inconsistent with any natural or environmental sound, suggesting deliberate insertion or digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 0.5–1.0 second time range and 4000–6000 Hz frequency range, aligning with the onset and spectral content of the electronic tone. The wav2vec saliency analysis also highlights the 0.0–0.2 second region, corresponding to the initial speech, but the LIME analysis for wav2vec focuses on the 0.5–0.6 second region, which overlaps with the tone’s onset. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which are consistent with the presence of a sudden, loud, and static tone following the speech. The wav2vec model’s multiple independent explanations (IG, Saliency, and LIME) converge on the 0.5–1.0 second region, providing cross-model agreement for the abnormality.

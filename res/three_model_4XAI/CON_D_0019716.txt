@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "disease was quiet time." The speech is clear and intelligible, with a neutral, declarative tone. Immediately following the spoken phrase, a synthetic, high-pitched electronic tone is heard. This tone is abrupt, sustained, and monophonic, with a frequency around 6500 Hz, lasting approximately 0.4 seconds. The tone is acoustically distinct from the preceding speech, lacking any natural vocal characteristics, and appears to be artificially inserted. There are no other background noises, artifacts, or environmental sounds present. The transition from speech to tone is abrupt, with no fade or overlap, suggesting a deliberate insertion rather than a natural event.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.8-1.2] seconds time range and [6000-7000] Hz frequency range using Integrated Gradients (IG), and the Saliency method also supports this region with a slightly broader frequency range of [5000-8000] Hz. These two independent XAI methods from the same model converge on the same time and frequency region, indicating strong agreement. The LIME explanation for wav2vec is inconsistent with the observed abnormality, as it points to the very beginning of the audio, which contains only speech. The Hubert and WavLM models do not provide any explanations, likely due to their inability to detect the synthetic tone. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a sudden, high-frequency tone following speech. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the synthetic tone as the primary anomaly.

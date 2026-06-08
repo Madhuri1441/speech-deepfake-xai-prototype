@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male speaker saying, "I was obsessed with the name behavior has no anything is..." The speech is abruptly cut off mid-word, with the final syllable "is" truncated and replaced by a synthetic, low-frequency electronic tone. This tone is steady, unmodulated, and lacks any natural acoustic decay or environmental context, strongly indicating digital insertion rather than a natural sound event. The transition from speech to tone is instantaneous and unnatural, with no fade or overlap, and the tone persists until the end of the clip. The abruptness and unnatural character of this transition are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.0-2.5] seconds time range and [3000-4000] Hz frequency range using Integrated Gradients (IG), while the Saliency method from the same model highlights a slightly broader [2.0-3.0] seconds interval and a higher frequency band [6000-8000] Hz. The LIME method from wav2vec points to an earlier [0.5-0.6] seconds interval, which does not align with the observed anomaly. The Hubert and WavLM models provide no evidence of abnormality. The Shapley values indicate that the StddevUnvoicedSegmentLength feature is most influential, suggesting the anomaly is related to a sudden, unnatural change in the acoustic profile, consistent with the insertion of a synthetic tone. The wav2vec IG and Saliency methods agree on the time and frequency ranges of the anomaly, providing cross-model support for the observed acoustic abnormality.

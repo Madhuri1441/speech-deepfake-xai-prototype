@@ -1,0 +1,13 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying "Got no beer now." The speech is delivered in a neutral, conversational tone, with a slight downward inflection at the end. The recording is of moderate fidelity, with a low-level background hiss and a faint hum, likely from the recording equipment or environment. There are no obvious signs of digital compression, clipping, or environmental noise. The voice is centered in the stereo field, and the room acoustics suggest a small, untreated indoor space.
+
+The only notable acoustic anomaly occurs in the first syllable of "beer," specifically between 0.2 and 0.4 seconds. During this interval, the voice exhibits a subtle but perceptible pitch instability and a slight break in the vocal fold closure, resulting in a brief, breathy, or "crackling" artifact. This is not a natural part of the speaker's voice and is inconsistent with the rest of the utterance, which is smooth and stable. The anomaly is most prominent in the 1000–3000 Hz frequency range, corresponding to the fundamental and first harmonic of the male voice, and is not present in the following syllables.
+
+This brief vocal instability is supported by multiple XAI sources. The Saliency method from the wav2vec model identifies this region as the most salient, indicating that it is a key feature in the model's prediction. The IG method from wav2vec also highlights this time-frequency region, reinforcing its importance. The LIME method, while less precise, supports the presence of an anomaly in the same general time frame. The absence of such evidence from the Hubert and WavLM models suggests that these models do not focus on this region, but the wav2vec results are consistent and robust.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Saliency and IG methods both identify the same time-frequency region ([0.2-0.4] seconds, [1000-3000] Hz) as the most salient, indicating a cross-model agreement on the presence of an acoustic anomaly. The LIME method from wav2vec provides additional, though less precise, support for this region. The Hubert and WavLM models do not provide evidence for this region, but the wav2vec results are consistent and robust. Therefore, the final abnormality region is determined by cross-model agreement from wav2vec.

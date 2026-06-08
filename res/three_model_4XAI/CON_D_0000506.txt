@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "I have only one the whole..." The speech is abruptly cut off mid-word, with no natural fade or pause, and is immediately replaced by a loud, synthetic, low-frequency electronic tone. This tone is harsh, static, and unmodulated, with a strong presence in the 4000–6000 Hz range, and persists until the end of the clip. The sudden transition from speech to tone is unnatural and suggests an artificial edit or insertion, likely intended to mask or censor the remainder of the utterance. The tone’s spectral content and timbre are inconsistent with typical background noise or environmental sounds, indicating deliberate digital manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the 1.00–1.50 second time range and 4000–6000 Hz frequency range using Integrated Gradients (IG), and in the 1.75–2.00 second range using Saliency, with a focus on the 6000–8000 Hz band. LIME also supports the 1.00–1.20 second region. The Hubert and WavLM models do not provide any evidence, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean, which are consistent with the presence of a sudden, loud, and unnatural sound event. The cross-model agreement from wav2vec’s IG and LIME, along with the Shapley values, supports the conclusion that the audio contains a suspicious, artificially inserted tone in the specified time and frequency range.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8 - 1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000 - 7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "I had to run for my life," delivered in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of emotional distress or artificiality. However, at approximately 0.8 seconds, a high-frequency, synthetic-sounding artifact emerges and persists until the end of the clip. This artifact is characterized by a piercing, steady tone in the 6000–7000 Hz range, lacking any natural modulation or harmonic structure typical of human speech or environmental sounds. The artifact is not present in the initial speech segment and appears abruptly, suggesting it is an added or manipulated element rather than a natural part of the recording. No other acoustic anomalies, such as clipping, distortion, or background noise, are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 6000–7000 Hz frequency range and the 0.8–1.0 second time interval as the most salient region for the model's prediction, indicating that this artifact is a key feature in the model's decision-making. The Saliency method from wav2vec also highlights a different region (0.35–0.45 seconds, 2000–3000 Hz), but this is not supported by other models or the audio evidence, and is likely a spurious or less relevant feature. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME analysis is inconclusive. The SHAP values point to features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp, which may relate to the presence of the artifact, but do not directly indicate its location or frequency. Overall, the wav2vec IG result is the only cross-model agreement, and it aligns with the observed high-frequency artifact in the audio.

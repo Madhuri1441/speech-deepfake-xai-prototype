@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, but at approximately 0.1–0.2 seconds, there is a brief, unnatural high-frequency artifact in the 5000–6000 Hz range. This artifact manifests as a sharp, synthetic-sounding transient, inconsistent with typical speech or environmental noise. The rest of the audio is relatively clean, with no significant distortion, clipping, or background interference. The presence of this artifact is supported by multiple XAI methods: Integrated Gradients (IG) identifies this region as a key contributor to the model’s prediction, while Saliency analysis highlights a similar high-frequency event at 1.0–1.2 seconds, suggesting a possible secondary anomaly. LIME also points to a brief, high-frequency event at 0.45–0.5 seconds, though this is less consistent with the other findings. The Shapley values indicate that features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp are highly influential, which may reflect the presence of unnatural pauses or abrupt changes in the audio, potentially caused by the artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The primary abnormality at 0.1–0.2 seconds is supported by both Integrated Gradients and Saliency methods, indicating cross-model agreement on the presence of a high-frequency anomaly. LIME also detects a similar event, though at a slightly different time, suggesting possible secondary or related artifacts. The Shapley values further reinforce the presence of unnatural audio features, such as abrupt changes in sound level or unvoiced segments, which may be linked to the artifact. Overall, the evidence points to a synthetic or manipulated segment in the audio, with strong cross-model agreement on the main abnormality.

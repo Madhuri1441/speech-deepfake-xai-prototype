@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a calm, neutral statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 3.5–4.0 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a brief, sharp, and unnatural sound that overlays the word "minimal." This artifact is not present in the original speech and is acoustically inconsistent with the surrounding audio, suggesting a possible digital manipulation or editing artifact. The artifact is most prominent in the 6000–8000 Hz range, which is outside the typical speech spectrum and does not correspond to any natural vocal or environmental sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [3.5-4.0] seconds with a frequency range of [6000-8000] Hz using both Integrated Gradients (IG) and Saliency methods, indicating strong and consistent evidence for this region. The LIME method from wav2vec also supports this region, though with a slightly different time window ([0.9, 1.1] seconds), which may reflect a different focus on the audio but does not contradict the main finding. The Hubert and WavLM models do not provide any evidence for abnormalities, likely due to their different training objectives or architectures. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, all of which are indicative of a sudden, unnatural sound event. Overall, the wav2vec model’s multiple independent methods converge on the same abnormality, providing robust cross-model agreement.

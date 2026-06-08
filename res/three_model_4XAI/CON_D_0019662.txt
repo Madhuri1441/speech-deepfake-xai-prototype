@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice stating, "Little voice is on general release." Immediately following this, a sharp, high-frequency rustling sound is heard, lasting approximately 0.5 seconds and peaking in the 6000–7000 Hz range. This rustling is acoustically distinct from the voice, with a dry, synthetic texture that suggests the handling of a thin, non-fabric material such as paper or plastic. The sound is abrupt and lacks the natural resonance or frictional qualities of typical clothing or paper movement, indicating possible digital manipulation or artificial generation. The voice itself is clear and well-articulated, with no signs of pitch instability or unnatural modulation, and the background is silent except for a faint electronic hiss. No other speech or vocalizations are present, and the overall audio quality is high, with no distortion or clipping.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 2.5–3.0 second region as abnormal, with a frequency focus of 6000–7000 Hz, aligning with the observed rustling sound. The Saliency method from wav2vec also highlights the 0–1 second region, but this is less relevant as it corresponds to the initial speech, which is not abnormal. The LIME method from wav2vec supports the 2.0–2.1 second region, which is close to the observed anomaly. The Hubert and WavLM models do not provide any abnormality indications, suggesting that the anomaly is not detected by these models. The Shap values indicate that the equivalentSoundLevel_dBp and MeanUnvoicedSegmentLength features are most influential, further supporting the presence of an abnormal sound event in the specified time and frequency range. The cross-model agreement between wav2vec’s IG and LIME methods strengthens the conclusion that the rustling sound is an anomaly.

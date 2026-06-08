@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, high-pitched female voice saying, "There's a pretty sharp..." The speech is abruptly cut off mid-word, with no natural fade or trailing sound, indicating a sudden edit. Immediately following the cutoff, a loud, synthetic, low-frequency electronic tone (approximately 100 Hz) is introduced, which is not present in the original speech and persists until the end of the clip. This tone is harsh, static, and lacks any modulation or environmental context, strongly suggesting it was artificially inserted. The abrupt transition and the unnatural presence of the tone are the primary acoustic anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: a saliency region from 0.25-0.5 seconds in the 4000-6000 Hz range, and an IG region from 1.25-1.30 seconds in the 3000-4000 Hz range. The LIME model highlights the initial 0.0-0.1 seconds, likely corresponding to the start of the speech. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME is also absent for these models. The wav2vec saliency region aligns with the abrupt cutoff of the speech, while the IG region corresponds to the onset of the synthetic tone. The wav2vec saliency and LIME evidence are consistent with the observed acoustic anomaly at the start of the clip, while the IG evidence supports the synthetic tone’s presence. The wav2vec saliency and LIME evidence are cross-model, as both models independently highlight the same time region. The IG evidence is unique to wav2vec.

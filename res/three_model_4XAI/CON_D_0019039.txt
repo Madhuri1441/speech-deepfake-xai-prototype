@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.2-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "playing" followed by "perform." The speech is delivered in a controlled, studio-like environment with no background noise or reverberation, indicating high recording quality. However, at approximately 0.2 seconds into the clip, a subtle but distinct anomaly occurs: a brief, unnatural pitch shift or digital artifact is present, most noticeable in the second syllable of "perform." This anomaly is accompanied by a slight, unnatural modulation in the mid-frequency range (1000–3000 Hz), which is not typical of natural human speech. The anomaly is transient, lasting until about 0.4 seconds, after which the audio returns to normal. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time range [0.2-0.4] seconds and frequency range [1000-3000] Hz using Integrated Gradients (IG), while Saliency analysis from the same model supports a slightly narrower time window [0.15-0.25] seconds and frequency range [1500-2500] Hz. LIME analysis from wav2vec also supports the time region [0.3, 0.4] seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with significant contributions from features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV500-1500_sma3nz_amean, which are all indicative of speech irregularities. The agreement among wav2vec’s IG, Saliency, and LIME analyses confirms the anomaly’s presence in the specified time and frequency ranges.

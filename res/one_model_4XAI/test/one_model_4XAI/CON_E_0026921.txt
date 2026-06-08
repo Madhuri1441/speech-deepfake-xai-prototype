@@ -1,0 +1,10 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "course very sharp" in a neutral, conversational tone. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 0.5 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural part of the voice or environment, and its abrupt onset and unnatural timbre suggest it is an artificial addition, likely inserted post-recording.
+
+The XAI evidence supports this observation: Integrated Gradients (IG) identifies the [0.5-1.0] second time region and [4000-6000] Hz frequency region as highly influential, indicating that the synthetic tone is the primary feature driving the model’s classification of the audio as a deepfake. Saliency analysis further confirms the [1.0-1.2] second window and [5000-6000] Hz range as critical, aligning with the sustained presence of the tone. LIME analysis highlights the [0.0-0.1] second window, which corresponds to the initial speech segment, but this is less relevant to the abnormality. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean all point to the synthetic tone as the dominant feature, with the tone’s loudness and spectral characteristics significantly deviating from the natural speech.
+
+No other acoustic anomalies are present in the audio, and the synthetic tone is the only feature that stands out as suspicious. The XAI evidence consistently identifies the same time and frequency regions, confirming the synthetic tone as the likely source of the deepfake classification.

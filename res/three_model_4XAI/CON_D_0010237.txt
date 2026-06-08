@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.00-0.25] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying, "Dramatic capital are leaving." The speech is delivered in a standard, non-regional accent, with a steady, even tone and no emotional inflection. The recording quality is high, with no background noise, distortion, or artifacts. The only notable acoustic feature is a brief, high-frequency hiss or static that appears at the very start of the audio, specifically in the 1000–2000 Hz range, lasting for approximately 0.25 seconds. This hiss is not present in the rest of the clip and does not interfere with speech intelligibility. There are no other audible anomalies, such as clipping, hum, or digital artifacts.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the 0.00–0.25 seconds time region and 1000–2000 Hz frequency region as salient, with the Saliency method specifically highlighting this segment. The wav2vec model also identifies a second region (1.00–1.25 seconds, 3000–4000 Hz) using Integrated Gradients, but this is not supported by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected across all models. The Shapley values point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and slopeUV500-1500_sma3nz_amean, but these do not directly correspond to the observed hiss in the audio. The wav2vec Saliency result is the only one that aligns with the audible hiss, suggesting that this is the most reliable indicator of the anomaly.

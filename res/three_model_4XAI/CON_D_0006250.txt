@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "It will take Greece of injury to child." The speech is delivered in a standard, unaccented English tone, with no apparent emotional inflection or background noise. However, at approximately 1.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing sound emerges and persists until the end of the recording. This buzzing is sharply defined, with a fundamental frequency around 4.5 kHz and strong harmonics extending up to 6 kHz, consistent with a digital artifact or electronic interference. The buzz overlays the final portion of the speech, partially masking the word "child" and making it difficult to discern. The abrupt onset and unnatural spectral content of the buzz strongly suggest a technical malfunction or digital corruption rather than a natural or intentional sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second time range and 4000–6000 Hz frequency range, while LIME corroborates the time interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with high contributions from features such as equivalentSoundLevel_dBp and stddevUnvoicedSegmentLength, which are associated with the sudden change in audio characteristics. The agreement among wav2vec’s methods confirms the region of abnormality, while the lack of evidence from Hubert and WavLM suggests that the anomaly is not universally detectable across all models.

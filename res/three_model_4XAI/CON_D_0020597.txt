@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.5-2] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a clear, natural-sounding female voice saying "brother, Tyrell." Immediately following this, at approximately 1.5 seconds, a high-frequency, synthetic buzzing tone emerges and persists until about 2 seconds. This tone is sharply distinct from the preceding speech, with a frequency content in the 6000–7000 Hz range, and is acoustically inconsistent with typical human speech or environmental sounds. The tone is abrupt in onset and offset, suggesting it was artificially inserted rather than occurring naturally. There are no other notable acoustic anomalies in the audio.
+
+III. XAI AGGREGATION EXPLANATION:  
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.5-2] seconds time region and [6000-7000] Hz frequency region as critical for the model’s prediction, indicating that this synthetic buzz is a key feature in the model’s decision-making. The Saliency method from wav2vec also highlights a different time-frequency region ([4-5] seconds, [3000-6000] Hz), but this does not align with the observed buzz and is likely unrelated to the anomaly. The LIME explanation from wav2vec supports the [0.9-1.1] seconds region, which corresponds to the tail end of the spoken phrase and is not anomalous. The Hubert and WavLM models do not provide any saliency or explanation for the anomaly, indicating that the synthetic buzz is not captured by their feature extraction. The SHAP analysis identifies acoustic features such as slopeUV0-500_sma3nz_amean, MeanUnvoicedSegmentLength, and loudness_sma3_amean, but does not directly reference the buzz region. Overall, the anomaly is supported by the wav2vec IG explanation, which is the only cross-model agreement pointing to the synthetic buzz.

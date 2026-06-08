@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering a statement in standard English. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and natural, with no abrupt changes in pitch, volume, or timbre. However, at approximately 2.0–3.0 seconds, there is a subtle but noticeable shift in the acoustic texture of the voice, specifically in the higher frequency range (4000–6000 Hz), where the spectral content becomes slightly smoother and less sharp. This change is not accompanied by any speech-related cues such as pauses, pitch shifts, or emotional inflection, suggesting a possible digital manipulation or editing artifact. The rest of the audio remains acoustically stable and natural.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) analysis identifies the [2.0-3.0] second time region and [4000-6000] Hz frequency region as the most salient for its prediction, indicating that this segment is likely anomalous. The Saliency method from wav2vec also highlights a different region ([0-1] seconds, [2000-4000] Hz), but this is not corroborated by other models. The LIME method from wav2vec points to a very short segment ([5.0-5.1] seconds), which is not supported by other XAI methods. The Hubert and WavLM models do not provide any salient regions, suggesting that the anomaly is not detected by these models. The Shapley values indicate that the acoustic features related to high-frequency content and sound level are most influential, further supporting the presence of an anomaly in the 4000–6000 Hz range. Overall, the wav2vec IG result is the only one that is cross-model supported, and it aligns with the observed acoustic change in the audio.

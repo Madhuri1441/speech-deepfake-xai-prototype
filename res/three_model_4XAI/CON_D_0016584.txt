@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.2-1.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-3500] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a soft, breathy female voice saying "under review." Immediately following, a second female voice, slightly higher in pitch and more distant, states "evidence from consumers." The recording is clean, with no background noise or distortion, and both voices are clearly articulated. However, at approximately 1.2–1.4 seconds, a subtle but distinct high-frequency artifact emerges, lasting about 0.2 seconds. This artifact is a sharp, synthetic-sounding transient, likely a digital click or glitch, which stands out against the otherwise natural vocal timbre. The artifact is not present in the original speech and does not correspond to any natural acoustic event, suggesting a possible editing or encoding error. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through both Integrated Gradients (IG) and Saliency methods, both pointing to the same time and frequency region ([1.2-1.4] seconds, [3000-3500] Hz). The IG method highlights the region as a key contributor to the model’s prediction, while Saliency confirms the same interval with a broader frequency range. LIME also supports this region, though with a narrower time window ([3.0-3.1] seconds), which may reflect a different analytical focus. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the importance of the loudness and equivalent sound level features, which are likely affected by the transient artifact. Overall, the wav2vec model’s multiple methods and LIME’s confirmation provide strong cross-model agreement for the identified abnormality.

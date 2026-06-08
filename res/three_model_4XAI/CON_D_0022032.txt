@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "again," followed by a second female voice stating, "Voice is on general release." Immediately after the word "release," a sharp, high-frequency rustling or crinkling sound is heard, lasting approximately 0.5 seconds. This sound is acoustically distinct from the speech, with a frequency content in the 3000–6000 Hz range, and is not a natural part of the spoken environment. The rustling is abrupt and does not match the acoustic profile of clothing, paper, or other typical background noises, suggesting it may be an artifact or an intentional addition. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients (IG) analysis identifies the 1.5–2.0 second time window and 3000–6000 Hz frequency range as the most salient region, directly corresponding to the observed rustling sound. The Saliency method from wav2vec also highlights a region around 0–1 seconds, but this aligns with the speech and is not anomalous. LIME analysis from wav2vec supports the 2.5–3 second region, which is less clear but may relate to the tail of the rustling sound. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP analysis identifies acoustic features such as slopeUV0-500_sma3nz_amean, MeanUnvoicedSegmentLength, and loudness_sma3_amean, which are not directly tied to the rustling sound but may reflect underlying acoustic changes. Overall, the most robust evidence for the anomaly comes from wav2vec's IG analysis, with some support from Saliency and LIME, but no cross-model agreement.

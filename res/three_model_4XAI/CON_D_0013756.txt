@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [0.95-1.05] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "...of the event, but always forward." The speech is clear and natural, with no obvious signs of tampering or distortion. However, at approximately 0.95 seconds, a sharp, high-frequency transient artifact appears, lasting about 0.1 seconds. This artifact is acoustically distinct from the speech, manifesting as a brief, piercing, and unnatural sound, likely a digital glitch or a synthetic overlay. The artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The frequency content of this artifact is concentrated between 6000–7000 Hz, which is outside the typical range of human speech and suggests a non-biological origin.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [0.95-1.05] seconds time region and [6000-7000] Hz frequency region as the most salient for the model’s prediction, indicating that this segment is critical for the model’s classification. The Saliency method from wav2vec also highlights a different region ([1.75-2.00] seconds, [1000-3000] Hz), but this does not align with the observed artifact. The LIME explanation from wav2vec points to [0.75-0.8] seconds, which is close to the artifact but not as precise. The Hubert and WavLM models do not provide any saliency or explanation, indicating that the anomaly is not detected by these models. The SHAP values suggest that the artifact may be related to features like StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, but these are not directly tied to the observed artifact. Overall, the most consistent and supported evidence comes from the wav2vec model’s IG explanation, which aligns with the observed acoustic anomaly.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, standard British accent, delivering a short, coherent sentence in a quiet, acoustically neutral environment. The speech is natural and intelligible, with no signs of digital artifacts, background noise, or emotional distress. However, at approximately 1.5–2.0 seconds, a brief, high-frequency, synthetic-sounding tone appears, lasting about half a second. This tone is acoustically distinct from the speech, with a pitch in the 4000–6000 Hz range, and is not present in the original recording. Its sudden onset and unnatural timbre suggest it is an artificial insertion, likely a watermark or digital artifact, rather than a genuine environmental or vocal event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 1.5–2.0 second region, with IG further specifying the 4000–6000 Hz frequency range. LIME corroborates the time region with a single time point at 2.3–2.4 seconds, which is consistent with the broader interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean, which are related to speech characteristics and spectral content, but do not directly indicate the presence of the synthetic tone. The wav2vec model’s multiple, consistent findings across different XAI methods provide strong evidence for the synthetic tone’s presence in the specified time and frequency range.

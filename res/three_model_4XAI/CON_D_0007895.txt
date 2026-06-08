@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle, high-frequency hiss, both consistent with a quiet, indoor recording environment. At approximately 2.0 seconds, a sharp, high-frequency transient is heard, lasting about 0.1 seconds. This transient is acoustically anomalous, as it stands out from the otherwise smooth and natural speech and background noise. The transient is not a typical part of human speech or environmental sound and is likely an artifact, possibly due to digital clipping, a sudden edit, or a synthetic overlay. The wav2vec model’s Integrated Gradients (IG) analysis identifies this exact time and frequency region as the most salient for its prediction, indicating that the model detects this transient as a key feature. The LIME analysis also supports this region, though with a slightly different time window, suggesting the anomaly is robustly detected by multiple XAI methods. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) and LIME analyses both identify the anomalous transient at 2.0–2.1 seconds in the 6000–7000 Hz range, providing cross-model agreement on this region. The wav2vec Saliency method also highlights a different, earlier region (0.5–1.0 seconds, 2000–4000 Hz), but this is not corroborated by other models and is not as strongly supported by the audio evidence. The Hubert and WavLM models do not provide any saliency or LIME evidence, indicating that the anomaly is most salient to wav2vec. The Shapley values for acoustic features do not directly correspond to the transient, suggesting that the anomaly is not captured by these global feature importance measures. Overall, the wav2vec IG and LIME results provide the strongest and most consistent evidence for the anomalous region.

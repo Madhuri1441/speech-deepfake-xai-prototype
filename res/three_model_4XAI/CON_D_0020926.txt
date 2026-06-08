@@ -1,0 +1,11 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level background hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.0 seconds, a sharp, high-frequency transient occurs, lasting until about 1.75 seconds. This transient is characterized by a brief, piercing, and unnatural sound, with a frequency content concentrated between 2000 Hz and 4000 Hz. The sound is abrupt, lacks any natural speech or environmental context, and does not correspond to any expected acoustic event in the audio. The remainder of the clip returns to the initial background noise, with no further anomalies.
+
+The wav2vec model identifies this transient as a region of interest using both Integrated Gradients (IG) and Saliency methods, with IG highlighting the [1.0-1.25] seconds interval and Saliency extending the focus to [1.25-1.75] seconds, both within the 2000-4000 Hz frequency range. This cross-referenced evidence from two independent XAI methods within the same model strongly supports the presence of an anomalous event in this time-frequency window. The Hubert and WavLM models do not provide any supporting evidence, and the LIME explanations are either absent or not aligned with the observed anomaly.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both identify the [1.0-1.75] seconds interval in the 2000-4000 Hz range as anomalous, providing cross-model agreement within wav2vec. The Hubert and WavLM models do not support this region, and the LIME explanations are either absent or not aligned with the observed anomaly. Thus, the final abnormality region is based on wav2vec’s cross-referenced IG and Saliency evidence.

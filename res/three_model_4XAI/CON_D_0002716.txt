@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.3-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, low-pitched tone, saying, "It is horrifying at the degrees of injury." The speech is clear and intelligible, with no background noise or distortion. However, at approximately 0.3 seconds, a sudden, high-frequency, synthetic buzzing sound emerges and persists until about 0.5 seconds. This buzzing is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the speech, suggesting it is an artificial overlay rather than a natural sound. The buzzing is not present in the original speech and does not correspond to any natural vocal or environmental artifact. The abrupt onset and offset of the buzzing, along with its unnatural spectral profile, indicate a possible digital manipulation or insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.3-0.5] seconds time range and [4000-6000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The LIME method from wav2vec also supports this region, albeit with a slightly different time window ([1.4-1.5] seconds), which may be due to the method’s sensitivity to local features. The Hubert and WavLM models do not provide any evidence of abnormality, as their explanations are all null. The Shapley value analysis highlights features such as StddevUnvoicedSegmentLength and spectralFlux_sma3_amean, which are related to speech characteristics, but these do not directly correspond to the buzzing artifact. The cross-model agreement from wav2vec’s IG and Saliency methods provides strong evidence for the presence of an artificial sound in the specified time and frequency range.

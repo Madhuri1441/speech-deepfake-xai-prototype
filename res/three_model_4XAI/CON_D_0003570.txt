@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency thump, likely a microphone bump or handling noise, followed by a male voice speaking in a neutral, conversational tone: "We just need the government to act." The speech is clear and intelligible, with no signs of emotional distress or unusual delivery. However, a subtle but noticeable anomaly occurs between 1.0 and 1.5 seconds, where a high-frequency, synthetic-sounding artifact appears. This artifact is not present in the original speech and is acoustically distinct from the voice, suggesting it is an artificial addition rather than a natural part of the recording. The artifact is characterized by a piercing, static-like timbre, and its frequency content is concentrated between 6000 and 7000 Hz, which is outside the typical range of human speech. This anomaly is not supported by any of the XAI methods (IG, Saliency, LIME) for the wav2vec, Hubert, or WavLM models, nor is it explained by the Shap values, which focus on low-frequency and spectral features unrelated to the observed artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+- The wav2vec model's Integrated Gradients (IG) method identifies the [1.0-1.5] seconds time region and [6000-7000] Hz frequency region as significant, aligning with the observed synthetic artifact. However, the other XAI methods (Saliency, LIME) for wav2vec, as well as all methods for Hubert and WavLM, do not support this region. The Shap values also do not provide evidence for this anomaly, focusing instead on low-frequency and spectral features. Thus, the anomaly is supported only by the wav2vec IG method, with no cross-model agreement.

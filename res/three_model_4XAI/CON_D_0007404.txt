@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.4-0.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "It's final" in a neutral, declarative tone, followed by a brief pause and a sharp, high-pitched electronic beep. The beep is the only non-speech sound and is acoustically anomalous due to its abrupt onset, unnatural timbre, and lack of any natural decay or environmental context. The beep is centered in the 2000–3000 Hz frequency range and occurs between 0.4 and 0.6 seconds, which is the only region flagged by multiple XAI methods. The voice is clear and intelligible, with no signs of digital manipulation or background noise, suggesting the anomaly is isolated to the beep. The beep’s synthetic quality and sudden appearance are inconsistent with typical human speech or environmental sounds, indicating it is likely an artificial or digitally inserted artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the beep is supported by multiple XAI methods: Integrated Gradients (IG) from the wav2vec model identifies the [0.4-0.6] seconds time region and [2000-3000] Hz frequency region as salient, while LIME from the wav2vec model also highlights the [0.6-0.7] seconds region, overlapping with the beep’s duration. Saliency from wav2vec points to a slightly earlier time and lower frequency, but still within the beep’s acoustic range. The Hubert and WavLM models do not provide supporting evidence, but their lack of findings does not contradict the wav2vec results. The Shapley values further support the anomaly by highlighting features like equivalentSoundLevel_dBp and loudness_sma3_amean, which are associated with the beep’s acoustic properties. Overall, the consensus among wav2vec’s IG and LIME methods, along with Shapley values, confirms the beep as the primary anomaly.

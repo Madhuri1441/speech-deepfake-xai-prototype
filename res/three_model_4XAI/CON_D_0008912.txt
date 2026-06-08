@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "The news from him," followed by a male voice stating, "The market will follow suit." Both voices are clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0–1.5 seconds, a subtle but noticeable acoustic anomaly occurs. During this interval, the female speaker’s voice exhibits a slight pitch instability and a brief, unnatural resonance, which is not present in the rest of the utterance. This is accompanied by a mild, high-frequency artifact in the 2000–4000 Hz range, suggesting a possible digital artifact or editing artifact. The male speaker’s voice remains unaffected and natural throughout. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the female speaker’s voice during the [1.0-1.5] seconds interval, with a corresponding frequency range of [2000-4000] Hz, as supported by both Integrated Gradients (IG) and Saliency methods. The LIME method also highlights a narrow time window around [0.9-1.1] seconds, reinforcing the presence of an anomaly in this region. In contrast, the Hubert and WavLM models do not detect any abnormality, as their explanations are all null. The SHAP analysis does not directly reference the audio but instead focuses on acoustic features such as slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are not directly linked to the observed anomaly. Therefore, the wav2vec model’s multi-method evidence provides the strongest support for the identified abnormality, while other models and features do not corroborate this finding.

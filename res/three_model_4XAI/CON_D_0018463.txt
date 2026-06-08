@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice reading a formal news-style passage in a neutral, professional tone. The recording is clean, with no background noise or environmental artifacts, and the speech is clear and intelligible. However, at approximately 2.5–3 seconds, a subtle but noticeable anomaly occurs: the voice exhibits a brief, unnatural pitch inflection and a slight increase in loudness, which is inconsistent with the otherwise steady and controlled delivery. This moment is acoustically distinct, with a mild pitch jump and a brief, unnatural resonance, suggesting a possible digital manipulation or splice. The anomaly is most prominent in the mid-frequency range (1000–4000 Hz), where the voice’s timbre and articulation are most affected. No other acoustic irregularities are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at 2.5–3 seconds in the 1000–4000 Hz range using Integrated Gradients (IG), while the Saliency method highlights a separate region at 4.5–5 seconds in the 7000–8000 Hz range, which does not align with the observed pitch inflection. LIME also points to a brief region at 4.0–4.1 seconds, but this is not supported by the audio evidence. The Hubert and WavLM models do not detect any anomalies, and their explanations are absent. The SHAP analysis identifies three acoustic features—StddevUnvoicedSegmentLength, loudness_sma3_percentile20.0, and spectralFlux_sma3_amean—whose values are significantly higher than their original values, suggesting a deviation in voice characteristics at the anomaly region. The wav2vec IG explanation is the only one that aligns with the observed pitch inflection, and thus, the final abnormality region is supported by wav2vec IG evidence.

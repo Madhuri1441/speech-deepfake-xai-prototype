@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.8-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, low-pitched male voice saying, "I am so option." The speech is delivered in a neutral, conversational tone, with no emotional inflection or background noise. The recording is of high fidelity, with no distortion, clipping, or environmental artifacts. However, a subtle but noticeable anomaly is present in the high-frequency region (4000–6000 Hz) during the final portion of the utterance, specifically between 0.8 and 1.2 seconds. This segment exhibits a faint, artificial-sounding shimmer or modulation, which is not typical of natural human speech and may indicate digital manipulation or synthesis. The anomaly is not accompanied by any obvious pitch or amplitude changes, but the spectral texture is distinctly different from the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly in the time-frequency region [0.8-1.2] seconds and [4000-6000] Hz using Integrated Gradients (IG), and also detects a salient region at [0.1-0.2] seconds and [4000-5000] Hz using Saliency. LIME further supports the presence of an anomaly in the initial segment [0.0-0.1] seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values highlight StddevUnvoicedSegmentLength as the top contributor, suggesting that the anomaly may be related to the statistical properties of unvoiced speech segments. The combined evidence from wav2vec’s IG and Saliency, along with LIME, supports the conclusion that the anomaly is present in the high-frequency region during the final part of the utterance. This is a cross-model agreement, as multiple wav2vec methods converge on the same region, while Hubert and WavLM do not detect the anomaly.

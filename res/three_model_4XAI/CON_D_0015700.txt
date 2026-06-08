@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "The time for your kids up, but it was fun, be easy." The speech is clear and intelligible, with a neutral, conversational tone. However, a noticeable acoustic anomaly occurs in the segment from 0.5 to 2.0 seconds, where the voice exhibits a sudden, unnatural pitch shift and a harsh, metallic timbre. This distortion is not present in the rest of the audio and is inconsistent with natural speech, suggesting a digital artifact or manipulation. The frequency range of the anomaly (4000–6000 Hz) aligns with the spectral region where the wav2vec model’s saliency and IG methods detect high importance, indicating that this segment is likely the source of the model’s prediction. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s saliency and IG methods both identify the [0.5-2.0] seconds time range and [4000-6000] Hz frequency range as critical for its prediction, providing cross-model agreement. The wav2vec LIME method, however, points to an earlier segment ([0.0-0.1] seconds), which is not supported by other XAI methods or the audio evidence. The Hubert and WavLM models do not provide any saliency, IG, or LIME evidence, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed acoustic anomaly. Thus, the wav2vec saliency and IG results are the most reliable indicators of the anomaly.

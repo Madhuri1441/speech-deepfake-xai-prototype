@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "profile" in a standard North American accent, followed by "for people are helping" in a slightly more rushed, emotionally neutral tone. The recording is clean, with no background noise or distortion, and the speech is intelligible. However, at approximately 1.5 seconds into the clip, a sudden, high-frequency, synthetic buzzing tone emerges and persists until the end of the audio. This tone is centered around 6000–8000 Hz, with a harsh, electronic timbre and a steady amplitude, lacking any modulation or natural variation. The tone is acoustically distinct from the speech, suggesting it was artificially inserted rather than being part of the original recording. The abrupt onset and unnatural frequency content of this tone are clear indicators of digital manipulation or post-production insertion.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG) highlights the 1.5–2.0 second region, Saliency analysis points to 2.0–2.5 seconds, and LIME isolates a narrow window at 1.75–1.85 seconds, all within the 6000–8000 Hz range. These findings are consistent and cross-validated, indicating a strong, multi-model agreement on the presence of the synthetic tone. In contrast, the Hubert and WavLM models do not provide any saliency or attribution evidence, suggesting they are less sensitive to this type of anomaly. The Shapley values further support the presence of a high-frequency, steady-state artifact, with the equivalentSoundLevel_dBp feature showing a significant increase, aligning with the observed synthetic tone. No other acoustic anomalies are present in the audio, and the speech remains unaffected by the inserted tone.

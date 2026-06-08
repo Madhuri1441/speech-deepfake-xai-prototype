@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [6.5-7.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single female speaker with a Scottish accent, delivering a continuous, conversational monologue in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise, distortion, or abrupt changes in volume or timbre. The only notable acoustic anomaly occurs between 6.5 and 7.0 seconds, where a high-frequency, synthetic-sounding artifact is present. This artifact is characterized by a sharp, piercing tone in the 4000–6000 Hz range, lacking the natural resonance or modulation of human speech. It is brief, distinct, and does not overlap with the speaker’s voice, suggesting it is an artificial insertion rather than a recording artifact or environmental noise. No other acoustic irregularities are observed in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomaly at [6.5-7.0] seconds in the 4000–6000 Hz range using Integrated Gradients (IG), and the same region is supported by Saliency analysis at [2.5-3.5] seconds in the 1000–4000 Hz range, though this is not the primary focus. LIME analysis also supports the [3.5-4] seconds region, but this is less consistent with the main anomaly. The Hubert and WavLM models do not provide any evidence for the anomaly, indicating that the wav2vec model is the primary source of detection. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and slopeUV0-500_sma3nz_amean indicating deviations from expected speech patterns. Overall, the wav2vec model’s IG and Saliency analyses provide cross-model agreement on the [6.5-7.0] seconds region, making it the most reliable indicator of the anomaly.

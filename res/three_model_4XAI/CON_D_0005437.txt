@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, both consistent with a quiet, controlled recording environment. At approximately 2.0 seconds, a female voice begins to speak in a neutral, declarative tone: “I do not own the vessel in question.” The speech is clear, with a standard North American accent and no detectable emotional inflection. However, at the end of the phrase, specifically around 2.5 seconds, the voice exhibits a sudden, unnatural pitch drop and a brief, metallic resonance, which is inconsistent with natural speech. This anomaly is accompanied by a sharp, high-frequency transient (5000–7000 Hz) that is not present in the rest of the audio, suggesting a digital artifact or manipulation. The remainder of the audio returns to the original background hum and hiss, with no further speech or notable events.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the 2.0–3.0 second time range and 5000–7000 Hz frequency region, while LIME provides a more precise timestamp at 2.4–2.5 seconds. These findings are consistent with the observed pitch drop and high-frequency transient in the audio. In contrast, the Hubert and WavLM models do not detect any abnormality, as their XAI methods yield no relevant evidence. The SHAP analysis highlights acoustic features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the observed anomaly. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the abnormality, while the other models and SHAP values do not support this finding.

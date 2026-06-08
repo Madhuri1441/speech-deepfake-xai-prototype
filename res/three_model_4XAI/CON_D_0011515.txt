@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0-1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [0-2000] Hz
+
+II. EXPLANATION:
+The audio begins with a brief, low-frequency, breathy sound that is acoustically inconsistent with the rest of the recording. This sound, occurring between 0 and 1 seconds, is characterized by a low-frequency content (0–2000 Hz) and a soft, non-verbal quality, resembling a suppressed cough or throat clearing. It is not aligned with the speaker’s subsequent speech and appears as an isolated, non-linguistic event. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both highlight this region, indicating that it is a key feature in the model’s decision-making process. The LIME explanation also supports this, showing a strong focus on the first second of the audio. The wav2vec model’s sensitivity to this region suggests that it is either an anomaly or a critical cue for classification, while the Hubert and WavLM models do not assign importance to this segment, indicating a lack of cross-model agreement.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME methods all independently identify the 0–1 second region as significant, with a focus on low-frequency content. This cross-model agreement within wav2vec supports the conclusion that this segment is a key acoustic abnormality. The Hubert and WavLM models do not highlight this region, indicating that the anomaly is not universally recognized across all models. The Shapley values for equivalentSoundLevel_dBp, F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, and slopeUV0-500_sma3nz_amean further support the importance of this segment, as they are associated with the initial sound event.

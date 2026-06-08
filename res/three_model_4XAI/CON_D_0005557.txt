@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "I am a student," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.25 seconds, a sudden, high-frequency, synthetic buzzing tone emerges and persists until about 2.00 seconds. This tone is distinctly artificial, with a harsh, static timbre and a frequency content between 4000 Hz and 6000 Hz, which is well above the typical range of human speech. The buzzing is not modulated and does not interact with the speech, suggesting it is an added artifact rather than a natural part of the recording. After 2.00 seconds, the buzzing abruptly ceases, and the original speech resumes without any audible disruption or change in quality.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through two independent XAI methods: Integrated Gradients (IG) and Saliency, both pointing to the same time and frequency region ([1.25-2.00] seconds, 4000-6000 Hz). The IG method highlights the region as a critical area for the model’s prediction, while Saliency confirms the same interval, reinforcing the presence of an anomalous signal. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME methods return no relevant regions. The Shapley value analysis further supports the presence of an anomaly, with the top feature "StddevUnvoicedSegmentLength" showing a high positive contribution, indicating a significant deviation in the acoustic structure of the audio during the buzzing interval. This cross-model agreement from wav2vec, combined with the Shapley analysis, strongly suggests that the buzzing tone is an artificial artifact introduced during or after the recording process.

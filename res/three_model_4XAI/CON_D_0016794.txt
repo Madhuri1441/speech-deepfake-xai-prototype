@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.00-1.50] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "It's South Tech." Immediately following this, a sharp, high-frequency electronic tone abruptly starts at approximately 1.0 seconds and lasts until about 1.5 seconds. This tone is characterized by a piercing, synthetic timbre, with energy concentrated between 2000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is unnatural and does not resemble any typical environmental or vocal sound, suggesting it is an artificial artifact. The transition from speech to tone is abrupt and lacks any natural fade or overlap, further indicating a possible digital insertion or editing artifact. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality in the audio is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.00-1.50] seconds time region and [2000-6000] Hz frequency region as significant. The Saliency explanation from wav2vec also highlights the [1.9-2.0] seconds region, which overlaps with the tone’s presence, and the LIME explanation from wav2vec points to the [0.0-0.1] seconds region, likely corresponding to the start of the speech. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is primarily detected by wav2vec. The Shapley values further support the presence of a high-frequency, loud event, as the equivalentSoundLevel_dBp feature has a large positive Shap value, consistent with the sudden appearance of the electronic tone. Overall, the evidence from wav2vec’s IG and Saliency methods, along with the Shapley values, strongly supports the conclusion that the audio contains an artificial tone in the specified time and frequency range.

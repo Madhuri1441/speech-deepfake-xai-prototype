@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice saying "pleased to buy City Hall." Immediately following the word "pleased," there is a brief, unnatural pause, after which the speaker continues with "to buy City Hall." This pause is acoustically anomalous, as it is shorter and less natural than a typical pause between words, and is accompanied by a subtle, high-frequency artifact in the 2000–6000 Hz range. This artifact is not present in the rest of the audio and suggests digital manipulation or editing. The voice itself is clear and well-articulated, with no signs of emotional inflection or background noise, but the unnatural timing and spectral quality of the pause indicate a possible deepfake or synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-1.5] seconds time region and [2000-6000] Hz frequency region as suspicious, aligning with the observed acoustic anomaly. The Saliency method from wav2vec also supports this, highlighting a [1.8-2.0] seconds region, which overlaps with the anomalous pause. LIME from wav2vec further corroborates the anomaly at [1.5-1.6] seconds. The Hubert and WavLM models do not provide supporting evidence, but the wav2vec model’s multiple independent methods (IG, Saliency, LIME) converge on the same region, strengthening the case for an anomaly. The SHAP values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope further support the presence of an unnatural pause and spectral irregularity, though they do not pinpoint the exact time or frequency range. Overall, the wav2vec model’s cross-method agreement and the SHAP feature values indicate a high likelihood of synthetic manipulation in the audio.

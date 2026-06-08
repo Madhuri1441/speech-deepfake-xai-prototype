@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.5-3.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, neutral tone, delivering a sentence in English: "She admitted that Kennedy had an effect." The recording is of high fidelity, with no background noise or distortion. However, at approximately 2.5 seconds, a brief, unnatural high-frequency artifact appears, lasting about half a second. This artifact manifests as a sharp, synthetic-sounding tone, likely a digital glitch or artifact from audio processing, and is not present in the original speech. The artifact is most prominent in the 6000–8000 Hz range, which is above the typical speech spectrum, and is not a natural part of the voice or environment. The rest of the audio remains clean and unaffected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [2.5-3.0] seconds time range and [6000-7000] Hz frequency range using both Integrated Gradients (IG) and Saliency methods. The Saliency method extends the frequency range to [6000-8000] Hz, further supporting the presence of a high-frequency anomaly. The LIME method, while using a different time window ([0.8-1.2] seconds), still points to a region near the artifact, suggesting some cross-model alignment. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the wav2vec model is the most sensitive to this specific artifact. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, which are consistent with the presence of a sudden, high-frequency event in the audio. Overall, the wav2vec model’s IG and Saliency methods provide strong, cross-model evidence for the abnormality, while other models do not detect it.

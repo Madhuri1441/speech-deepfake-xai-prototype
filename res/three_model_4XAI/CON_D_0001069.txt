@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice stating, "that we are engaged in a war as..." The speech is clear and intelligible, with a neutral, declarative tone. However, at approximately 1.25 seconds, a distinct, high-frequency, synthetic buzzing sound emerges and persists until 1.75 seconds. This buzzing is not part of the original speech and is acoustically inconsistent with the rest of the audio, which features only the speaker’s voice and a faint background hiss. The buzzing is centered in the 3000–4000 Hz range, a frequency band not present in the original speech, and its abrupt onset and unnatural timbre suggest digital manipulation or insertion. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple independent XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [1.25-1.75] seconds time region and [3000-4000] Hz frequency region as salient, indicating that this segment is critical for the model’s prediction. The LIME method from wav2vec also highlights the [1.2, 1.3] seconds time region, further corroborating the presence of an anomaly in this interval. In contrast, the Hubert and WavLM models do not provide any saliency or explanation for this region, indicating that the anomaly is not universally detected by all models. The Shapley values, while not directly identifying the buzzing, highlight features such as equivalentSoundLevel_dBp and StddevUnvoicedSegmentLength, which may be indirectly affected by the synthetic sound. Overall, the cross-model agreement from wav2vec’s IG and LIME methods, combined with the clear acoustic evidence of the buzzing, strongly supports the conclusion that this is a manipulated segment.

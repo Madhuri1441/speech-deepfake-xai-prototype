@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding male voice saying, "and huge importance to think of." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 0.5 seconds, a subtle but noticeable change occurs: the voice acquires a slightly artificial, metallic timbre, and the overall clarity diminishes. This change is most prominent between 0.5 and 1.0 seconds, where the voice sounds less natural and more processed, with a slight digital artifact or distortion. The frequency range of this abnormality is centered around 4000–6000 Hz, which is consistent with the midrange frequencies where such digital artifacts often manifest. After 1.0 seconds, the voice returns to its original, natural quality, suggesting that the anomaly is localized and not a continuous effect.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [0.5-1.0] seconds and frequency range [4000-6000] Hz using Integrated Gradients (IG), and the LIME method supports this with a time region of [0.5, 0.6] seconds. The saliency method also points to a related region at [2.0-2.5] seconds, but this is less consistent with the observed audio and is likely a secondary or spurious effect. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s acoustic properties during the abnormal segment. Overall, the wav2vec model’s IG and LIME results provide the strongest and most consistent evidence for the abnormality, supported by the observed acoustic change in the audio.

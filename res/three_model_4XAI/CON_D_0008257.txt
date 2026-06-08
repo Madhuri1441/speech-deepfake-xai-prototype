@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz  
+
+II. EXPLANATION:  
+The audio clip begins with a female voice saying, "I'm not taking mobile phones." The speech is clear and intelligible, but at approximately 1.0–2.0 seconds, there is a noticeable distortion in the voice, particularly in the high-frequency range (5000–7000 Hz). This distortion manifests as a harsh, buzzing artifact that overlays the natural timbre of the voice, suggesting a digital or synthetic anomaly. The distortion is not present in the rest of the audio, indicating a localized issue. This abnormality is not explained by the original acoustic environment, as the rest of the recording is clean and free from background noise or artifacts.  
+
+III. XAI AGGREGATION EXPLANATION:  
+The abnormality in the audio is supported by multiple XAI sources. The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-2.0] seconds time region and [5000-7000] Hz frequency region as salient, aligning with the observed distortion. The Saliency method from wav2vec also highlights the [0.5-1.0] seconds region, which overlaps with the abnormality, though it focuses on a slightly earlier time frame. The LIME explanation from wav2vec further supports the [1.3-1.4] seconds region, reinforcing the presence of an anomaly in this interval. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is specific to the wav2vec model’s analysis. The Shap values for features such as equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and spectralFlux_sma3_amean also point to the presence of an anomaly in the audio, though they do not specify the exact time or frequency range. Overall, the cross-model agreement from wav2vec’s IG, Saliency, and LIME methods confirms the presence of an abnormality in the [1.0-2.0] seconds and [5000-7000] Hz region.

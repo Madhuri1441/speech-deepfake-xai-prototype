@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.2] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "It was a breathtaking moment." The speech is clear and natural, with no obvious signs of digital manipulation or background noise. However, a subtle anomaly is present in the mid-frequency range (2000–4000 Hz) during the time interval [0.6–1.2] seconds, specifically around the word "breathtaking." This region exhibits a slight unnatural resonance or tonal shift, which is not typical of natural human speech and may indicate digital manipulation or synthesis. The anomaly is not accompanied by any obvious artifacts such as clicks, pops, or static, and the rest of the audio remains consistent with natural speech.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time-frequency region [0.6–1.2] seconds and [2000–4000] Hz using Integrated Gradients (IG), while Saliency analysis highlights a different region ([1.5–2.0] seconds, [1000–2000] Hz), which does not align with the observed acoustic anomaly. LIME analysis also points to a region ([1.0–1.1] seconds), but this is less specific and does not match the frequency range of the anomaly. The Hubert and WavLM models do not provide any evidence of abnormality, as their IG, Saliency, and LIME analyses return "None." The SHAP analysis identifies three features—StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and loudness_sma3_meanFallingSlope—each with positive SHAP values, suggesting that these features deviate from expected values, but they do not directly pinpoint the abnormal region. The wav2vec IG result is the only one that aligns with the observed acoustic anomaly, and thus, the final abnormality region is based on this single-model evidence.

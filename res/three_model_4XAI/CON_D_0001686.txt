@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a formal statement in a quiet, acoustically dry environment. The speech is clear and intelligible, with no background noise or distortion. However, at approximately 1.5–2.0 seconds, a brief, high-frequency, synthetic-sounding artifact is present, most likely a digital click or pop. This artifact is not part of the natural speech and is acoustically distinct from the speaker’s voice, which occupies a lower frequency range. The artifact is not accompanied by any speech or vocalization, and its sudden onset and offset suggest a digital editing or encoding error rather than a natural sound event. No other acoustic anomalies are evident in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Integrated Gradients (IG) method identifies the [1.5-2.0] seconds time region and [3000-4000] Hz frequency region as significant, aligning with the observed synthetic artifact. The Saliency method from wav2vec also highlights a region around 3–4 seconds, but this is less specific and not supported by other models. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values from the wav2vec model point to acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, which are consistent with the presence of a brief, high-frequency artifact. The wav2vec IG result is the only one that directly supports the observed anomaly, with no cross-model agreement.

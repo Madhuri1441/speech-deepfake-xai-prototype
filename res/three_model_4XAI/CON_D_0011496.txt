@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone: "What the dangers and the standards of the problems we have." The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.5 seconds, a high-frequency, synthetic buzzing sound abruptly appears and persists until the end of the clip. This buzzing is not present in the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the 4000–6000 Hz range, which is above the typical fundamental frequency of the speaker’s voice, and is likely a result of digital processing or post-production error. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.5-2.0] seconds time region and [4000-6000] Hz frequency region as salient, indicating that these features are critical for the model’s prediction. The Saliency method for wav2vec also highlights the [0.5-1.5] seconds region, which overlaps with the abnormality region, and the LIME method for wav2vec identifies a very narrow [2.0, 2.1] seconds time region, further supporting the presence of an anomaly around 2 seconds. The Hubert and WavLM models do not provide any saliency or explanation, but the wav2vec-based evidence is consistent and cross-validated. The Shapley values indicate that the slopeUV0-500_sma3nz_amean feature is highly influential, which may correspond to the sudden onset of the buzzing sound. Overall, the evidence from wav2vec’s IG, Saliency, and LIME methods converges on the same abnormality region, confirming the presence of a synthetic buzzing artifact in the audio.

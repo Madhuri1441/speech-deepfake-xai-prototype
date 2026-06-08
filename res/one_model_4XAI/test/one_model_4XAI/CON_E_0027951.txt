@@ -1,0 +1,14 @@
+I. AUDIO_ABNORMALTY:  
+1. TIME_ABNORMALITY_RANGE: [1.25-1.75] seconds  
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz  
+
+II. EXPLANATION:  
+The audio clip features a female voice stating, "I want to plan to change this." The speech is clear and intelligible, but a subtle anomaly is present in the high-frequency region between 3000–6000 Hz during the time interval of 1.25–1.75 seconds. This region corresponds to the end of the word "plan" and the beginning of "to," where a faint, unnatural high-frequency artifact is audible. The artifact manifests as a brief, sharp, and slightly metallic or synthetic tone, which is inconsistent with the natural acoustic profile of the speaker’s voice. This anomaly is not present in the rest of the audio and does not align with typical vocal or environmental sounds.
+
+The XAI evidence supports this observation:  
+- The Integrated Gradients (IG) analysis highlights the TIME_REGION [1.25-1.50] seconds and FREQUENCY_REGION [3000-6000] Hz, indicating that this segment is a key contributor to the model’s decision, likely due to the presence of the artifact.  
+- The Saliency map further confirms the TIME_REGION [1.50-1.75] seconds and FREQUENCY_REGION [4000-6000] Hz, reinforcing the importance of this high-frequency segment.  
+- LIME analysis identifies the TIME_REGION [1.50-1.60] seconds, aligning with the artifact’s presence.  
+- The top three SHAP values (StddevUnvoicedSegmentLength, slopeUV0-500_sma3nz_amean, mfcc1_sma3_stddevNorm) all point to features related to unvoiced segments and spectral characteristics, which are affected by the high-frequency anomaly.  
+
+No other acoustic anomalies are present in the audio, and the rest of the speech is natural and free from distortion. The selected XAI evidence consistently supports the presence of an artificial or synthetic artifact in the specified time and frequency range, indicating a likely deepfake manipulation.

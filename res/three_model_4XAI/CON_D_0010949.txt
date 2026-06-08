@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.50-2.00] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "They are all to be indifferent." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5 seconds, a high-frequency, synthetic buzzing sound emerges and persists until about 2.0 seconds. This buzzing is not part of the original speech and is acoustically distinct from the voice, suggesting it is an added artifact. The buzzing is centered in the mid-to-high frequency range (2000–8000 Hz), which is outside the typical range of human speech, further supporting its artificial origin. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two regions of interest: an Integrated Gradients (IG) region from 1.50–1.75 seconds in the 2000–4000 Hz range, and a Saliency region from 1.75–2.00 seconds in the 6000–8000 Hz range. These regions align with the observed synthetic buzzing sound, providing cross-model agreement on the timing and frequency of the anomaly. The LIME explanation from wav2vec at 0.85–0.9 seconds does not correspond to any observable anomaly and is likely unrelated. The Hubert and WavLM models do not provide any explanations, indicating that the anomaly is not detected by these models. The Shap values for StddevUnvoicedSegmentLength, mfcc3V_sma3nz_amean, and slopeUV500-1500_sma3nz_amean do not directly indicate the presence of the buzzing artifact, as they relate to speech characteristics rather than the synthetic sound. Thus, the final abnormality region is supported by wav2vec’s IG and Saliency methods, with no cross-model agreement from Hubert or WavLM.

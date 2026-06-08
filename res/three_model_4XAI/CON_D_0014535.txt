@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a Scottish accent delivering a formal statement: "Councillor, the Scottish Parliament is entitled to take a view on that." The speech is clear and intelligible, with a neutral, professional tone and no overt signs of emotional distress or artificiality. However, a subtle but notable acoustic anomaly is present in the segment from 1.0 to 2.5 seconds, where the voice exhibits a slightly unnatural, synthetic timbre and a faint, high-frequency shimmer. This is most apparent on the word "Scottish," where the sibilance is unusually bright and smooth, lacking the natural micro-fluctuations of a real human voice. The frequency region [4000-6000] Hz is particularly affected, suggesting possible digital processing or synthesis artifacts. No other obvious anomalies, such as pitch instability or abrupt volume changes, are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [1.0-2.5] seconds time region and [4000-6000] Hz frequency region as salient, with IG and Saliency both pointing to this segment. The LIME explanation also supports this, highlighting a specific moment within the same time frame. In contrast, the Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values for slopeUV0-500_sma3nz_amean, StddevUnvoicedSegmentLength, and jitterLocal_sma3nz_amean are all positive, suggesting increased variability and instability in these acoustic features, which may correspond to the synthetic or processed nature of the voice in the highlighted region. Overall, the wav2vec model's multiple independent explanations provide strong evidence for the anomaly, while the lack of support from Hubert and WavLM suggests the anomaly may be subtle or context-specific.

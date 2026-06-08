@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male voice speaking in English with a neutral, formal tone, likely recorded in a quiet, controlled environment. The speech is clear and intelligible, with no obvious background noise or distortion. However, at approximately 1.5–2.5 seconds, there is a subtle but noticeable change in the acoustic texture of the voice. The voice becomes slightly more strained and less natural, with a subtle increase in high-frequency content (6000–8000 Hz), which is not present in the rest of the audio. This change is not accompanied by any change in speech content or emotional tone, suggesting a possible digital manipulation or artifact rather than a natural vocal variation. The rest of the audio remains stable and natural, with no other anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.5-2.0] seconds time region and [6000-7000] Hz frequency range using Integrated Gradients (IG), and in the [2.3-2.5] seconds time region and [6000-8000] Hz frequency range using Saliency. LIME also points to a brief region at the start of the audio, but this is not supported by other models. The wav2vec model’s IG and Saliency methods both highlight the same high-frequency region, indicating cross-model agreement on the abnormality. The Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is subtle and only detectable by certain models. The SHAP analysis does not directly indicate the abnormality but provides context on spectral features, which aligns with the observed high-frequency change. Overall, the wav2vec model’s IG and Saliency methods provide consistent evidence of the abnormality, while other models do not support it.

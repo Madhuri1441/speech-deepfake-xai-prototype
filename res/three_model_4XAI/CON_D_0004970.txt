@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.6-1.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying "the house on the bu—" in a neutral, conversational tone, with clear and natural speech characteristics. However, at approximately 0.6 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is sharply defined, with a fundamental frequency around 3000 Hz and strong harmonics extending up to 4000 Hz, and is acoustically distinct from the preceding speech. The buzzing is not a natural artifact of speech or environmental noise, but rather a digitally inserted sound, likely intended to mask or obscure the remainder of the spoken phrase. The abrupt onset and unnatural spectral content of this tone are clear indicators of an audio manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [0.6-1.0] seconds time range and [2000-4000] Hz frequency range using Integrated Gradients (IG), and the Saliency method further supports the abnormality in the [0.95-1.05] seconds range with a frequency focus of [1000-2000] Hz. The LIME explanation for wav2vec is less specific, pointing to the very beginning of the audio, but this is not corroborated by other XAI methods. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shapley values highlight features such as StddevUnvoicedSegmentLength, spectralFlux_sma3_amean, and spectralFluxUV_sma3nz_amean, which are consistent with the presence of a synthetic, unvoiced segment and spectral changes, further supporting the conclusion of an inserted artificial tone. The cross-model agreement between wav2vec’s IG and Saliency methods confirms the [0.6-1.0] seconds and [2000-4000] Hz region as the most reliable indicator of audio manipulation.

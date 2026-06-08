@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [3.5-4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady voice, speaking in a neutral, conversational tone. The recording is of high fidelity, with no background noise, distortion, or environmental artifacts. The speech is continuous and intelligible, with no abrupt changes in pitch, volume, or timbre. However, at approximately 3.5 to 4 seconds, there is a subtle but noticeable acoustic anomaly: a brief, high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the surrounding speech and does not match any natural vocal or environmental sound. The wav2vec model’s Integrated Gradients (IG) and Saliency methods both identify this region as the most salient, with IG focusing on the 6000–8000 Hz range and Saliency on 2000–6000 Hz, indicating a strong model response to this high-frequency event. The LIME explanation for wav2vec also points to a nearby region (0.8–1.2 seconds), but this is less specific and not corroborated by other models. No other XAI methods (Hubert, WavLM) or Shapley values provide evidence for this anomaly, and no other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG and Saliency methods both independently identify the 3.5–4 second, 2000–8000 Hz region as the most salient, indicating cross-model agreement on the presence of an acoustic anomaly in this interval. The LIME explanation for wav2vec also supports this, though less directly. The Hubert and WavLM models do not provide any evidence for this region, and the Shapley values do not align with the observed anomaly. Thus, the strongest evidence for the anomaly comes from multiple wav2vec methods, with no corroborating evidence from other models or acoustic features.

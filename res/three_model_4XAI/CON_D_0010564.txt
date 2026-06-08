@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "This is a good performance," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or distortion. However, at approximately 1.5 seconds, a brief, high-frequency, synthetic-sounding artifact appears, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated in the 4000–6000 Hz range, and is acoustically distinct from the natural speech. It does not resemble any typical environmental or vocal sound and is likely an artifact of digital processing or a deepfake insertion. The rest of the audio remains free of such anomalies, with no further evidence of tampering or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and LIME also supports this region, albeit with a slightly narrower window of [1.8-2.0] seconds. Saliency analysis from wav2vec further corroborates the presence of an anomaly in the same time and frequency range. In contrast, the Hubert and WavLM models do not detect any abnormalities, as their IG, Saliency, and LIME analyses return no evidence of tampering. The SHAP analysis highlights features such as equivalentSoundLevel_dBp, spectralFlux_sma3_amean, and StddevUnvoicedSegmentLength, but does not localize the anomaly to a specific time or frequency range. Overall, the wav2vec model’s IG and LIME results, along with wav2vec’s Saliency, provide consistent cross-model evidence for the anomaly at [1.5-2.0] seconds, while other models and SHAP do not support this finding.

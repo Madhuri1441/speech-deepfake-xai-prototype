@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a calm, conversational tone, with the phrase "...at our the day should busy the market it was decided the...". The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic tone emerges and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the preceding speech. The tone is not a natural artifact of the recording environment and does not correspond to any expected background sound, suggesting it is an artificial addition. The abrupt onset and sustained presence of this tone, coupled with its spectral characteristics, indicate a possible post-production insertion or digital overlay.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-1.5] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), while the Saliency method also highlights the [0.5-1.0] seconds range, indicating a possible transition or onset of the anomaly. The LIME method further supports the [1.4-1.5] seconds region, reinforcing the presence of the synthetic tone. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, suggesting that the anomaly is not universally detected by all models. The Shapley values indicate that features such as slopeUV0-500_sma3nz_amean and equivalentSoundLevel_dBp are significantly affected, likely due to the introduction of the synthetic tone. Overall, the wav2vec model's IG and Saliency methods, along with LIME, provide consistent evidence of the abnormality, while Hubert and WavLM do not detect it.

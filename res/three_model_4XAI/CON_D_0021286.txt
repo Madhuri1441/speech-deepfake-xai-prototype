@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female speaker saying, "Our idea is to make it entirely Irish." The speech is clear and intelligible, with a natural cadence and no obvious signs of digital manipulation. However, at approximately 1.0–2.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about one second. This artifact is not present in the original speech and is acoustically distinct from the voice, manifesting as a sharp, buzzing tone in the 4000–6000 Hz range. The artifact is not masked by the speech and is clearly audible, suggesting it was inserted or generated during post-processing. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple independent XAI sources. The Integrated Gradients (IG) method for the wav2vec model identifies the [1.0-2.0] seconds time region and [4000-6000] Hz frequency region as salient, indicating that these features are critical for the model’s prediction. The Saliency method for wav2vec also highlights a different region ([0.0-0.5] seconds, [1000-2000] Hz), but this is not consistent with the observed artifact. LIME for wav2vec identifies a single time point ([1.5, 1.6] seconds), which aligns with the artifact’s presence. The Hubert and WavLM models do not provide any saliency or LIME evidence, but the wav2vec results are consistent and cross-validated. The SHAP values for spectralFlux_sma3_amean, equivalentSoundLevel_dBp, and StddevUnvoicedSegmentLength further support the presence of an anomalous sound event in the audio, as these features are sensitive to sudden changes in spectral content and sound level. Overall, the wav2vec model’s IG and LIME results provide strong, cross-model agreement on the abnormality, while the SHAP values corroborate the presence of a distinct acoustic event.

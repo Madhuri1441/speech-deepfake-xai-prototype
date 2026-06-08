@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice saying, "Please, almost in our islandness." The speech is clear and natural, with no obvious signs of digital manipulation. However, at approximately 1.5–2.0 seconds, a high-frequency, synthetic-sounding artifact appears, lasting about half a second. This artifact is not present in the original speech and is acoustically distinct from the voice, suggesting it is an added or inserted element. The artifact is most prominent in the 4000–6000 Hz range, which is outside the typical speech frequency band, and is likely a result of digital processing or insertion of a non-speech sound. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [4000-6000] Hz using Integrated Gradients (IG), and also highlights a region at [2.5-3.0] seconds with a frequency range of [1000-2000] Hz using Saliency. LIME further supports the [0.3-0.4] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality. The Shapley values indicate that the equivalentSoundLevel_dBp feature is the most influential, aligning with the high-frequency artifact detected by wav2vec. The cross-model agreement between wav2vec’s IG and Saliency methods supports the conclusion that the artifact at [1.5-2.0] seconds is the most suspicious region.

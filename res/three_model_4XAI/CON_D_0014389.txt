@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral female voice stating, "pressure was now back on Mr. Arafat." The speech is intelligible and delivered in a standard, unaccented English tone, with no background noise or distortion. However, at approximately 1.0 seconds, a sudden, high-frequency, synthetic buzzing tone appears and persists until the end of the clip. This tone is sharply defined, with a frequency content between 4000 Hz and 6000 Hz, and is acoustically distinct from the speech, lacking any natural reverberation or environmental context. The abrupt onset and unnatural timbre of this tone suggest it is not part of the original recording but was digitally inserted, likely as an artifact or watermark. The speech remains unaffected by the tone, indicating the two were layered post-recording.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the [1.0-2.0] seconds time range and [4000-6000] Hz frequency range using Integrated Gradients (IG), which is supported by Saliency analysis in the [0.0-0.5] seconds range and [1000-2000] Hz, though this earlier region does not align with the observed synthetic tone. LIME analysis from wav2vec also points to the [0.0-0.1] seconds region, but this is not corroborated by other models. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by these models. The Shap values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed synthetic tone. The wav2vec model’s IG and Saliency results are the only ones that align with the acoustic evidence of the synthetic tone, suggesting that this is the most reliable indicator of the anomaly.

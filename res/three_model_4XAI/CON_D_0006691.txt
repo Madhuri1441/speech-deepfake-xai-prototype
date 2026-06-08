@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a single, low-pitched male voice with a Scottish accent, speaking in a formal, declarative tone: "There is great day in Stewart's tree and prove again that there is no other game like rugby." The speech is clear and intelligible, with no background noise or environmental sounds. However, at approximately 2.0–2.5 seconds, there is a noticeable acoustic anomaly: a brief, high-frequency, synthetic-sounding artifact appears, characterized by a piercing, static-like timbre in the 4000–6000 Hz range. This artifact is not present in the rest of the audio and does not correspond to any natural speech or environmental sound. The anomaly is abrupt in onset and offset, suggesting a digital or synthetic origin, such as a corrupted audio segment or an inserted sound effect. No other acoustic irregularities are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] seconds time region and [4000-6000] Hz frequency region as salient, with both Integrated Gradients (IG) and Saliency methods pointing to the same interval. The LIME method also supports this region, albeit with a narrower focus at [3.0-3.1] seconds. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shapley values further support the presence of an anomaly in this region, with high contributions from features such as StddevUnvoicedSegmentLength and loudness_sma3_percentile20.0, which are indicative of abrupt changes in speech characteristics. The wav2vec model’s consistent identification of the anomaly, supported by multiple XAI methods, provides strong evidence for the presence of a synthetic or corrupted segment in the audio.

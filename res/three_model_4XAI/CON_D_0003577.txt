@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a subtle high-frequency hiss, consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a female voice starts speaking in a neutral, conversational tone, saying, "By then, it was he wouldn't break any word that..." The speech is clear and intelligible, with no signs of emotional distress or unusual vocalization. However, at around 1.5–2.0 seconds, a distinct, high-pitched, synthetic-sounding artifact appears, overlaying the speech. This artifact is not present in the original audio but is introduced by the deepfake model, manifesting as a brief, unnatural tone in the 3000–4000 Hz range. The artifact is not masked by the speech and is audible, suggesting a model-generated anomaly. No other acoustic irregularities, such as clipping, distortion, or abrupt volume changes, are present.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality in the time range [1.5-2.0] seconds and frequency range [3000-4000] Hz using Integrated Gradients (IG), while Saliency analysis highlights a slightly broader frequency range of [4000-6000] Hz. LIME corroborates the time range [1.5-2.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not consistently detected across all models. The Shapley values point to features such as slopeUV0-500_sma3nz_amean, equivalentSoundLevel_dBp, and loudness_sma3_stddevFallingSlope, which may relate to the synthetic artifact’s spectral and loudness characteristics. The wav2vec model’s IG and LIME evidence, along with the Saliency analysis, support the conclusion that the anomaly is a synthetic artifact introduced by the deepfake model, specifically in the 3000–4000 Hz range during the 1.5–2.0 second interval.

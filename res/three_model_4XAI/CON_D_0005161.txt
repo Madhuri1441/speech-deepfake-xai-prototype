@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-7000] Hz
+
+II. EXPLANATION:
+The audio clip features a female speaker with a clear, conversational tone, but at approximately 1.0–2.0 seconds, there is a noticeable, unnatural break in the speech. The phrase "Yes, they say that museums got galleries of the new bi..." is abruptly cut off, with the word "bi-" left incomplete and no natural pause or breath. This suggests a possible digital splice or editing artifact. The acoustic environment is otherwise clean, with no background noise or distortion, and the voice maintains consistent pitch and timbre throughout. The abruptness of the cut, especially mid-word, is not typical of natural speech and may indicate tampering or a synthetic origin.
+
+III. XAI AGGREGATION EXPLANATION:
+The Integrated Gradients (IG) explanation from the wav2vec model identifies the [1.0-2.0] second time region and [5000-7000] Hz frequency range as significant, aligning with the observed speech break. The Saliency method from wav2vec also highlights the [0.0-0.5] second region, which is less relevant to the main anomaly but supports the model’s sensitivity to speech features. The LIME explanation from wav2vec points to the [3.5-4.0] second region, which does not correspond to any clear acoustic abnormality. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The SHAP values highlight acoustic features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, which may reflect changes in the audio’s energy and spectral characteristics, but do not directly pinpoint the anomaly. Overall, the primary evidence for the abnormality comes from the wav2vec model’s IG and Saliency methods, with the LIME method providing less relevant support.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.4-1.6] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, muffled utterance, "station at all," spoken by a male voice in a neutral, conversational tone. The recording is of low fidelity, with a persistent background hiss and a limited frequency range, suggesting it was captured on a consumer-grade device. At approximately 1.4 seconds, a sharp, high-frequency click or pop is heard, lasting about 0.2 seconds. This transient event is acoustically distinct from the rest of the audio, standing out due to its abruptness and spectral content, which peaks in the 2000–3000 Hz range. The click is not a natural part of speech or environmental noise and is likely an artifact of digital editing or a recording glitch. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality at [1.4-1.6] seconds with a frequency range of [2000-3000] Hz using Integrated Gradients (IG) and LIME, and [0.6-0.8] seconds with [2000-4000] Hz using Saliency. The wav2vec model’s IG and LIME results are consistent with the observed click at 1.4–1.6 seconds, while the Saliency result at 0.6–0.8 seconds does not align with any clear acoustic event and is likely spurious. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not robustly detected by all models. The Shapley values highlight equivalentSoundLevel_dBp as the most influential feature, supporting the presence of a sudden loud event, which aligns with the click. In summary, the wav2vec model’s IG and LIME results provide cross-model agreement on the abnormality at 1.4–1.6 seconds, while other evidence is either inconsistent or absent.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a clear, steady, and neutral tone, delivering a short, formal statement: "However, both to act together in the Ministry of Defense by not the...". The speech is abruptly cut off mid-word, with no natural fade or pause, indicating a possible edit or truncation. The recording is of high fidelity, with no background noise, distortion, or environmental cues, and the voice is centered and close-mic’d, suggesting a controlled studio or booth setting. The only notable acoustic irregularity occurs between 2.0 and 2.5 seconds, where a subtle, high-frequency artifact is present in the 4000–6000 Hz range. This artifact manifests as a faint, unnatural resonance or digital shimmer, distinct from the speaker’s voice and not attributable to room acoustics or microphone handling. The rest of the audio is acoustically clean, with no signs of compression, clipping, or environmental interference.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the [2.0-2.5] second time region and 4000–6000 Hz frequency region as anomalous using Integrated Gradients (IG), while LIME independently confirms the [2.3-2.4] second sub-region. The wav2vec Saliency method also detects a brief anomaly at [0.0-0.1] seconds, but this is not corroborated by other models or the audio itself, and is likely a minor artifact. The Hubert and WavLM models do not detect any anomalies, and their IG, Saliency, and LIME results are all null, indicating no cross-model agreement. The SHAP analysis highlights features such as StddevUnvoicedSegmentLength, equivalentSoundLevel_dBp, and spectralFlux_sma3_amean, but these do not directly correspond to the observed acoustic anomaly. Thus, the most reliable evidence for the abnormality comes from wav2vec’s IG and LIME, with no support from Hubert or WavLM.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.1-0.3] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking in a neutral, conversational tone, with no obvious signs of distress or artificiality. However, at approximately 0.1–0.3 seconds, a subtle but distinct high-frequency artifact emerges, manifesting as a faint, synthetic-sounding buzz or hiss. This artifact is not present in the original speech and is acoustically inconsistent with the natural voice, suggesting a possible digital manipulation or encoding error. The artifact is most prominent in the 4000–6000 Hz range, which is above the typical fundamental frequency of the speaker’s voice, further supporting its artificial origin. No other obvious anomalies are present in the rest of the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s Saliency method identifies the [0.1-0.3] seconds time region and [4000-6000] Hz frequency region as salient, aligning with the observed artifact. The IG method from wav2vec also highlights a region at [1.5-2.0] seconds, but this does not correspond to any clear anomaly in the audio and is likely a false positive. The LIME method from wav2vec identifies a very narrow [0.5-0.6] seconds region, which is not supported by other XAI methods or the audio itself. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not consistently detected by all models. The Shap values point to features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean, but these do not directly correspond to the observed artifact and may reflect general audio characteristics rather than specific anomalies. Overall, the wav2vec Saliency method provides the most consistent and supported evidence for the artifact, while other XAI methods either do not detect it or provide conflicting results.

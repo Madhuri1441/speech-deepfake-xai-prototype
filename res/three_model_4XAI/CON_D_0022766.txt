@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.25-1.35] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "and the fire in front of me," in a neutral, conversational tone. The recording is of moderate fidelity, with a low-level background hiss and a faint, low-frequency hum, likely from the recording environment or equipment. The voice is clear and intelligible, with no obvious distortion or clipping. At approximately 1.25 seconds, a sharp, high-frequency transient occurs, lasting about 0.1 seconds. This transient is acoustically distinct from the speech, with a frequency content in the 2000–4000 Hz range, and is not present in the original voice or background. The transient is abrupt and does not match the natural decay of speech or environmental sounds, suggesting it is an artificial insertion. This anomaly is not supported by any XAI evidence from the Hubert or WavLM models, but is strongly indicated by the wav2vec model's IG and LIME explanations, which both point to this specific time and frequency region.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model provides consistent evidence across two independent XAI methods (Integrated Gradients and LIME) that the anomaly occurs between 1.25 and 1.35 seconds, with a frequency range of 2000–4000 Hz. The Hubert and WavLM models do not provide any supporting evidence for this region, and their explanations are entirely absent. The Shapley values indicate that the anomaly is likely related to features such as StddevUnvoicedSegmentLength and loudness_sma3_meanFallingSlope, which are associated with abrupt changes in the signal. The wav2vec model's cross-method agreement provides strong support for the presence of an artificial insertion in the audio at the specified time and frequency range.

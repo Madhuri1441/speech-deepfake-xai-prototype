@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.35] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [5000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice saying, "But it is with the..." followed by a second male voice stating, "It's been a long time ago." The speech is clear and natural, with no obvious signs of tampering or artificiality. However, at approximately 0.25–0.35 seconds, a subtle but distinct high-frequency artifact appears, characterized by a brief, sharp, and unnatural sound in the 5000–6000 Hz range. This artifact is not present in the original speech and does not correspond to any natural vocal or environmental sound. The wav2vec model's Integrated Gradients (IG) and Saliency methods both highlight this region, indicating that the model identifies this segment as anomalous. The LIME explanation also supports this, focusing on the same time interval. The wav2vec model's sensitivity to this region suggests that the artifact is likely synthetic or digitally manipulated, as it is not detected by the Hubert or WavLM models, which do not provide any saliency or IG evidence for this segment.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's IG, Saliency, and LIME methods all independently identify the same time and frequency region ([0.25-0.35] seconds, [5000-6000] Hz) as anomalous, providing strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, indicating that the anomaly is specific to the wav2vec model's analysis. The Shapley values for features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and alphaRatioUV_sma3nz_amean do not directly correspond to the identified region, suggesting that these features are not the primary cause of the detected anomaly. Overall, the evidence points to a synthetic or digitally manipulated artifact in the audio, supported by multiple wav2vec-based XAI methods.

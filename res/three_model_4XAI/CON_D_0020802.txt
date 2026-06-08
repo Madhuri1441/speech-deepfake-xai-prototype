@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [4.5-5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [7000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a male speaker with a Scottish accent, delivering a short, declarative statement in a neutral, monotone voice. The speech is clear and intelligible, with no background noise or environmental sounds, indicating a controlled recording environment. The only notable acoustic anomaly occurs between 4.5 and 5 seconds, where a brief, high-frequency, synthetic-sounding artifact is present. This artifact is not part of the original speech and is acoustically distinct from the speaker’s voice, suggesting it is a digital artifact introduced during post-processing or editing. The wav2vec model’s Integrated Gradients (IG) and Saliency methods, as well as its LIME explanation, all point to this specific time and frequency range, indicating that the model identifies this region as anomalous. The Hubert and WavLM models do not highlight this region, but their lack of explanation does not contradict the wav2vec findings. The Shapley values for equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and spectralFlux_sma3_amean further support the presence of an abnormality in this region, as they indicate a significant deviation from the expected acoustic profile.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model’s IG, Saliency, and LIME explanations all converge on the same time and frequency range ([4.5-5] seconds, [7000-8000] Hz), providing strong cross-model agreement that this region is anomalous. The Shapley values corroborate this finding, indicating a significant deviation in acoustic features. The Hubert and WavLM models do not provide explanations for this region, but their absence of evidence does not contradict the wav2vec findings. Therefore, the final abnormality region is supported by multiple independent XAI sources, primarily from the wav2vec model.

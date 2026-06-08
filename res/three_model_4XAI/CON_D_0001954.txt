@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.5 - 0.7] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000 - 8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, neutral male voice saying "council" in a standard British accent, with no background noise or distortion. Immediately after the word, a sharp, high-frequency electronic tone is heard, lasting about 0.2 seconds. This tone is acoustically distinct from the speech, with a piercing, synthetic timbre and a frequency content spanning from 2000 Hz up to 8000 Hz. The tone is abrupt, with no fade-in or fade-out, and is not a natural part of speech or environmental sound. This anomaly is supported by multiple XAI methods: the Integrated Gradients (IG) method for the wav2vec model identifies a salient region between 0.5 and 0.6 seconds in the 2000–3000 Hz range, while the Saliency method for wav2vec highlights a broader region from 0.6 to 0.7 seconds in the 2000–8000 Hz range. These overlapping regions indicate that the model is particularly sensitive to the high-frequency electronic tone, suggesting it is an anomalous feature. No other acoustic irregularities are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model's Integrated Gradients and Saliency methods both identify the same high-frequency region (2000–8000 Hz) between 0.5 and 0.7 seconds as anomalous, providing cross-model agreement. The LIME method for wav2vec identifies a much earlier, low-frequency region (0.0–0.05 seconds), which is not supported by other methods and is likely a false positive. The Hubert and WavLM models do not provide any salient regions, indicating that the anomaly is not detected by these models. The Shapley values further support the presence of an anomaly, with the equivalentSoundLevel_dBp feature showing a large positive contribution, suggesting a sudden increase in sound level at the time of the electronic tone.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.4] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, muffled utterance, "to me, do," spoken by a male voice. Immediately following this, a sharp, high-frequency transient is heard, lasting approximately 0.15 seconds, with a prominent energy peak between 3000–4000 Hz. This transient is acoustically distinct from the preceding speech, exhibiting a harsh, digital timbre and a rapid onset and decay, which is inconsistent with natural speech or environmental sounds. The transient is not accompanied by any reverberation or spatial cues, suggesting it is an artifact rather than a genuine sound event. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The Saliency method from the wav2vec model identifies the [0.25-0.4] seconds time region and [3000-4000] Hz frequency region as the most salient, indicating that this transient is a key feature for the model’s prediction. The LIME method from wav2vec also supports this region, albeit with a slightly different time window ([0.45-0.55] seconds), which overlaps with the Saliency region. The IG method from wav2vec identifies a different region ([1.4-1.6] seconds), but this does not correspond to any notable acoustic event in the audio. The Hubert and WavLM models do not provide any saliency or IG evidence, and their LIME results are also absent. The SHAP values highlight features such as equivalentSoundLevel_dBp, StddevUnvoicedSegmentLength, and loudness_sma3_meanFallingSlope, but these do not directly correspond to the transient event. Overall, the transient is supported by multiple wav2vec-based XAI methods, indicating cross-model agreement on its significance.

@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-frequency hum and a brief, high-pitched click, followed by a female voice speaking in a neutral, narrative tone. The speech is clear and intelligible, with no signs of emotional distress or artificiality. However, at approximately 1.5 seconds, a subtle but distinct high-frequency artifact emerges, lasting until about 2.0 seconds. This artifact manifests as a sharp, synthetic-sounding click or transient, which is acoustically inconsistent with the natural speech and background. The artifact is not present in the initial or subsequent speech, nor does it resemble any environmental noise or recording artifact. This anomaly is supported by multiple XAI methods: the Saliency method for the wav2vec model identifies a salient region in the same time and frequency range, while the IG method for wav2vec also highlights this interval, indicating that the model attributes the deepfake classification to this specific acoustic feature. The LIME method for wav2vec further corroborates this, though with a slightly earlier start time. No other XAI methods or models provide supporting evidence for this region.
+
+III. XAI AGGREGATION EXPLANATION:
+The acoustic abnormality at [1.5-2.0] seconds, [3000-4000] Hz is supported by three independent XAI methods (Saliency, IG, and LIME) from the wav2vec model, indicating strong cross-model agreement. The Hubert and WavLM models do not provide any evidence for this region, and the SHAP values do not directly correspond to this interval, suggesting that the anomaly is not captured by global feature importance. The convergence of multiple XAI methods on the same region strengthens the case for a localized, synthetic artifact consistent with deepfake generation.

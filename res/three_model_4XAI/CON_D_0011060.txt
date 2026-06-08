@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-4000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, high-frequency hiss and a subtle, low-frequency hum, both of which are consistent with a quiet, indoor recording environment. At approximately 1.5 seconds, a brief, unnatural high-frequency artifact appears, lasting until about 2.0 seconds. This artifact manifests as a sharp, synthetic-sounding burst, distinct from the natural speech and background noise. The frequency content of this artifact is concentrated between 3000 Hz and 4000 Hz, which is outside the primary speech range and does not correspond to any natural acoustic event. The remainder of the audio, including the speech and background, remains clear and unaltered, with no further anomalies detected.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the suspicious region at [1.5-2.0] seconds with a frequency range of [3000-4000] Hz, supported by both Integrated Gradients (IG) and Saliency methods. LIME also supports this region, albeit with a slightly narrower window of [1.8-2.0] seconds. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not universally detected by all models. The Shap values for equivalentSoundLevel_dBp, slopeUV0-500_sma3nz_amean, and StddevUnvoicedSegmentLength further suggest that the audio’s acoustic properties are altered in this region, though these features are not directly tied to the specific time or frequency range. Overall, the wav2vec model’s multiple independent methods provide strong evidence for the presence of an artificial artifact in the specified time and frequency range.

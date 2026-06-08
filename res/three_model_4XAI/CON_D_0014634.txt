@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [6000-8000] Hz
+
+II. EXPLANATION:
+The audio clip features a female voice stating, "I have only won two tournaments." The speech is clear and intelligible, with a neutral, declarative tone. However, a subtle but noticeable anomaly occurs in the word "tournaments" between 1.5 and 2.0 seconds. During this interval, the voice exhibits a brief, unnatural pitch inflection and a slight distortion in the high-frequency range (6000–8000 Hz), which is inconsistent with the rest of the utterance. This region appears to be artificially altered, as the pitch and spectral content do not match the natural speech pattern. The anomaly is not present in the surrounding speech, suggesting a localized edit or manipulation.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG and Saliency both point to the same time and frequency region ([1.5-2.0] seconds, [6000-8000] Hz], while LIME corroborates the time interval. The Hubert and WavLM models do not provide any evidence of abnormality, indicating that the anomaly is not detected by all models. The SHAP analysis highlights acoustic features such as StddevUnvoicedSegmentLength and F0semitoneFrom27.5Hz_sma3nz_stddevRisingSlope, which may be related to the pitch and voicing irregularities in the anomalous region. Overall, the wav2vec model’s multiple XAI methods consistently identify the same region, providing strong evidence for the anomaly, while other models do not detect it.

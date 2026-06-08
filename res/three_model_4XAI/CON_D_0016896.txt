@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.5-1.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [3000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying "finding them." Immediately following, the speaker continues with "tomorrow well kept fluent of to pension," but the phrase is abruptly cut off mid-word ("pension" becomes "pen-"), and the remainder of the audio is replaced by a synthetic, low-frequency electronic tone. This tone is steady, unmodulated, and lacks any natural acoustic variation, strongly indicating a digital artifact or post-production edit. The transition from speech to the synthetic tone is abrupt and unnatural, with no fade or overlap, suggesting a hard splice or insertion of a placeholder sound. The synthetic tone persists until the end of the clip, masking any further speech or ambient sound. The initial speech segment is clear and intelligible, with no signs of digital compression or distortion, and the synthetic tone is acoustically sterile, lacking any environmental context.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies two distinct abnormality regions: [0.5-1.0] seconds in the frequency range [3000-4000] Hz and [1.0-1.5] seconds in [4000-6000] Hz, both of which align with the transition from speech to synthetic tone. The LIME explanation further supports the abnormality at [1.25-1.35] seconds, reinforcing the presence of an anomaly in this time frame. The Hubert and WavLM models do not provide any abnormality evidence, indicating that the anomaly is not detected by these models. The Shap values highlight features related to unvoiced segment length and F0 slope, which may reflect the abrupt change in speech characteristics at the splice point. Overall, the wav2vec and LIME models agree on the presence of an abnormality in the [0.5-1.5] seconds range, with wav2vec providing more detailed frequency localization.

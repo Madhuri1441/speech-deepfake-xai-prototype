@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.0-2.0] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [4000-6000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a male voice speaking in a neutral, conversational tone, with the phrase "...time for an...". At approximately 1.0 seconds, a distinct, high-frequency, synthetic-sounding artifact emerges, lasting until about 2.0 seconds. This artifact is characterized by a piercing, static-like timbre, with energy concentrated between 4000–6000 Hz, and is acoustically inconsistent with the natural speech preceding and following it. The artifact is not a product of the speaker’s voice or any environmental sound, but rather appears abruptly and is clearly artificial in nature. After 2.0 seconds, the audio returns to the original speech, with no further anomalies.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. All three point to the same time-frequency region ([1.0-2.0] seconds, [4000-6000] Hz), providing strong cross-model agreement. The Hubert and WavLM models do not detect any abnormality, but their lack of evidence does not contradict the wav2vec findings. The Shapley values further support the presence of an anomaly, with features such as StddevUnvoicedSegmentLength and equivalentSoundLevel_dBp indicating a significant deviation from normal speech patterns. The combined evidence from multiple XAI methods and the acoustic analysis confirms the presence of a synthetic artifact in the specified region.

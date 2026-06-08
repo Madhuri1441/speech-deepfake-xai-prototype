@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [2.0-2.1] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1500-2000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a faint, low-level hiss and a brief, muffled utterance in a non-native English accent, likely from a female speaker. The speech is indistinct and lacks clarity, suggesting either poor recording quality or deliberate masking. At approximately 2.0 seconds, a sharp, high-frequency transient occurs, lasting about 0.1 seconds. This transient is acoustically anomalous, standing out from the otherwise subdued and low-frequency background. The transient is not a natural part of speech or environmental noise, and its spectral content falls within the 1500–2000 Hz range, which is atypical for human speech and more consistent with digital artifacts or synthetic sound insertion. No other obvious anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the anomalous region through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME. IG highlights the 0.5–1.0 second region, Saliency focuses on the 2.0–2.1 second transient, and LIME points to the 2.5–3.0 second region, all of which are consistent with the observed acoustic anomaly. The Hubert and WavLM models do not provide any salient regions, indicating that the wav2vec model is uniquely sensitive to the anomaly. The SHAP analysis supports the presence of a high-frequency transient, as the top feature (slopeUV0-500_sma3nz_amean) is associated with spectral irregularities, further corroborating the wav2vec findings. The agreement among wav2vec’s multiple XAI methods provides strong evidence for the anomaly at 2.0–2.1 seconds, while the lack of support from Hubert and WavLM suggests this is a model-specific detection.

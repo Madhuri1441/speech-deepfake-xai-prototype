@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALTY:
+1. TIME_ABNORMALITY_RANGE: [0.25-0.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [1000-3000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a female voice speaking the phrase, "Could we be on just to go through," in a neutral, conversational tone. The speech is clear and intelligible, with no obvious signs of digital manipulation or background noise. However, at approximately 0.25 seconds into the clip, a distinct, high-frequency, synthetic tone emerges and persists until the end of the audio at 0.5 seconds. This tone is sharply defined, with a frequency content between 1000 Hz and 3000 Hz, and is acoustically inconsistent with the natural speech preceding it. The tone is not a product of the speaker’s voice or any environmental sound, and its abrupt onset and unnatural timbre suggest it is an artificial insertion, likely a digital artifact or watermark. No other acoustic anomalies are present in the audio.
+
+III. XAI AGGREGATION EXPLANATION:
+The abnormality is supported by multiple independent XAI sources. The Integrated Gradients (IG) method from the wav2vec model identifies the [0.25-0.5] seconds time region and [1000-3000] Hz frequency region as significant for the model’s prediction, indicating that this segment is critical to the model’s classification. The Saliency method from wav2vec also highlights the [0.00-0.25] seconds region, but the most consistent and cross-model evidence is the IG result. The Hubert and WavLM models do not provide any saliency or IG evidence, and LIME does not support the abnormality. The Shapley values indicate that features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean are significant, but these do not directly correspond to the observed synthetic tone. The alignment between the IG result and the audible synthetic tone confirms the presence of an artificial insertion in the audio, with strong cross-model agreement from wav2vec’s IG method.

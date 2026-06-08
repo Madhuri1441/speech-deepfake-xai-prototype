@@ -1,0 +1,9 @@
+I. AUDIO_ABNORMALITY:
+1. TIME_ABNORMALITY_RANGE: [1.5-2.5] seconds
+2. FREQUENCY_ABNORMALITY_RANGE: [2000-8000] Hz
+
+II. EXPLANATION:
+The audio clip begins with a clear, natural-sounding female voice saying, "then DNA is in some deaths." The speech is intelligible and delivered in a neutral, conversational tone. However, at approximately 1.5 seconds, a sudden, unnatural high-frequency artifact emerges, lasting until about 2.5 seconds. This artifact is characterized by a harsh, buzzing, and static-like timbre, with energy concentrated between 2000 Hz and 8000 Hz, which is inconsistent with the natural speech spectrum. The artifact is not present in the initial or final portions of the audio, suggesting it is an artificial insertion rather than a recording flaw or environmental noise. The abrupt onset and offset, as well as the unnatural spectral content, indicate a digital manipulation or deepfake artifact.
+
+III. XAI AGGREGATION EXPLANATION:
+The wav2vec model identifies the abnormality through three independent XAI methods: Integrated Gradients (IG), Saliency, and LIME, all pointing to the same time and frequency region ([1.5-2.5] seconds, [2000-8000] Hz). The IG method highlights the region as a critical input for the model’s prediction, while Saliency and LIME further confirm the temporal and spectral characteristics of the anomaly. In contrast, the Hubert and WavLM models do not provide any evidence of abnormality, as their XAI methods return no relevant regions. The SHAP analysis, while not directly identifying the artifact, highlights features such as equivalentSoundLevel_dBp and spectralFlux_sma3_amean, which may be indirectly affected by the presence of the artifact but do not pinpoint its location. Overall, the wav2vec model’s cross-method agreement provides strong evidence for the presence of a deepfake artifact in the specified region, while other models and methods do not contradict this finding.
