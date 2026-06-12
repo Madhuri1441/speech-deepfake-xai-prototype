@@ -159,3 +159,12 @@ Generated results are stored in `res/`.
 - `res/three_model_4XAI/`: explanation outputs from the three-model XAI setting.
 
 Each text file contains the explanation output generated from XAI-grounded multimodal reasoning.
+
+| Setting | Generated Explanation | Comments |
+|----------|-----------------------|----------|
+| Pure audio | The audio clip begins with a faint, low-frequency thump, likely a microphone pop or handling noise, followed by a brief pause. The voice is monotonous, with a flat, robotic intonation and a lack of emotional inflection or dynamic range... | Too superficial |
+| IG | ...at the **word "time"** (1.5–2.0 seconds), the voice exhibits a sudden, unnatural pitch drop and a brief, glitch-like distortion, accompanied by a sharp, high-frequency artifact in the 6000–7000 Hz range... The XAI explanation using IG highlights this same time and frequency region... | Specific but limited to single-model evidence |
+| LIME | The audio exhibits a noticeable acoustic anomaly in the form of a high-frequency, synthetic-sounding **artifact occurring between 2.5 and 3 seconds**... The XAI explanation from LIME identifies the `TIME_REGION: [2.5–3] seconds` as a region of interest, which aligns with the observed anomaly... | Specific but biased |
+| Saliency | The audio exhibits a noticeable acoustic anomaly in the form of a sharp, high-frequency transient at approximately 4.5–5 seconds, **coinciding with the word "insisted."** The XAI saliency map confirms this region as a point of high gradient importance... | Specific but biased |
+| All XAI (Single Model) | ...**The speech is:** "This time, believe the silent good and insisted the lesser." The most notable acoustic anomaly occurs between 4.5 and 5.0 seconds, where a subtle, unnatural pitch drop is observed in the word **"insisted."** The Saliency analysis confirms this region as a key area of abnormality. **Other XAI evidence**, such as the SHAP values for loudness... | Specific and analysed |
+| All XAI (Three Model) | The audio begins with a female voice speaking in a synthetic tone: **"This time, believe ..."** The speech is clear and evenly paced, with no emotional inflection or natural pauses, **suggesting a text-to-speech (TTS) origin.** At approximately 1.5 seconds, a subtle but noticeable high-frequency artifact emerges, lasting until 2.0 seconds... The wav2vec model identifies... **The HuBERT and WavLM models do not provide** any evidence for this region... | Specific, analysed and reasoned |
