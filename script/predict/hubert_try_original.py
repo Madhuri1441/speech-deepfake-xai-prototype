@@ -182,11 +182,7 @@ def evaluate_split(name, data):
     for f in correct_files:
         print(f)
 
-    if name == "valid":
-        with open("common_valid_correct_files.txt", "w") as fp:
-            for fname in correct_files:
-                fp.write(fname + "\n")
-        print(f"Saved {len(correct_files)} filenames to common_valid_correct_files.txt")
+
 
     return y_true, y_pred, y_score
 
