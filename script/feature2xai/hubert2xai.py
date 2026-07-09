@@ -18,12 +18,12 @@ warnings.filterwarnings("ignore")
 
 # === 1. Configuration ===
 # 你的音频根目录
-database_root = "../database/dev"
+database_root = "database/dev"
 # 你的文件名列表 txt
 file_list_path = "./common_valid_correct_files.txt"
 
 # 输出目录配置
-output_root = "../XAI_Image/hubert/dev"
+output_root = "XAI_Image/hubert/dev"
 folders = {
     "IG": os.path.join(output_root, "IG"),
     "lime": os.path.join(output_root, "lime"),
@@ -37,6 +37,15 @@ print(f"Using device: {device}")
 for folder in folders.values():
     os.makedirs(folder, exist_ok=True)
 print(f"Output directories created at: {output_root}")
+##############################################################
+# Proposed Method: Consensus-Based Evidence Filtering (CBEF)
+##############################################################
+
+USE_CBEF = True
+
+CONSENSUS_BLEND = 0.30
+
+EPS = 1e-8
 
 # === Download HuBERT Checkpoint ===
 ssl_path = "hubert_xtralarge_ll60k.pt"
@@ -300,4 +309,91 @@ for idx, filename in enumerate(target_files):
         print(f"  ❌ Error processing {filename}: {e}")
         continue
 
-print("\nBatch processing complete!")
+# ============================================================
+# Reliability-Guided Evidence Refinement (RGER)
+# ============================================================
+
+def normalize_map(x):
+    """
+    Min-max normalize an attribution map to [0,1].
+    """
+    x = x.astype(np.float32)
+    x = x - np.min(x)
+    if np.max(x) > 0:
+        x = x / np.max(x)
+    return x
+
+
+def lime_to_2d(lime_weights, target_shape):
+    """
+    Expand 1D LIME weights into a 2D map matching the
+    spectrogram dimensions.
+
+    target_shape = (freq_bins, time_bins)
+    """
+    h, w = target_shape
+
+    # interpolate LIME weights along time
+    x_old = np.linspace(0, 1, len(lime_weights))
+    x_new = np.linspace(0, 1, w)
+
+    interp = np.interp(x_new, x_old, lime_weights)
+
+    # repeat over frequency dimension
+    lime_map = np.tile(interp, (h, 1))
+
+    return normalize_map(lime_map)
+
+
+def align_maps(spec_ig, spec_sal, lime_map):
+    """
+    Ensure all attribution maps have identical shapes.
+    """
+    h = min(spec_ig.shape[0], spec_sal.shape[0], lime_map.shape[0])
+    w = min(spec_ig.shape[1], spec_sal.shape[1], lime_map.shape[1])
+
+    spec_ig = spec_ig[:h, :w]
+    spec_sal = spec_sal[:h, :w]
+    lime_map = lime_map[:h, :w]
+
+    return spec_ig, spec_sal, lime_map
+
+def build_consensus(spec_ig,
+                    spec_sal,
+                    lime_map,
+                    w_ig=1/3,
+                    w_sal=1/3,
+                    w_lime=1/3):
+    """
+    Reliability-weighted consensus map.
+    """
+
+    consensus = (
+        w_ig * spec_ig +
+        w_sal * spec_sal +
+        w_lime * lime_map
+    )
+
+    return normalize_map(consensus)
+
+
+def adaptive_threshold(consensus, percentile=85):
+    """
+    Compute an adaptive threshold using the percentile
+    of the consensus distribution.
+    """
+    return np.percentile(consensus, percentile)
+
+
+def refine_map(xai_map, consensus, percentile=85):
+    """
+    Refine an attribution map using the consensus mask.
+    """
+
+    th = adaptive_threshold(consensus, percentile)
+
+    mask = consensus >= th
+
+    refined = xai_map * mask
+
+    return normalize_map(refined), maskprint("\nBatch processing complete!")
