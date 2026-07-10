@@ -1,5 +1,4 @@
 import os
-import json
 import torch
 import torchaudio
 import numpy as np
@@ -28,28 +27,7 @@ output_root = "XAI_Image/hubert/dev"
 folders = {
     "IG": os.path.join(output_root, "IG"),
     "lime": os.path.join(output_root, "lime"),
-    "saliency": os.path.join(output_root, "saliency"),
-    "consensus": os.path.join(output_root, "consensus"),
-    "agreement": os.path.join(output_root, "agreement"),
-    "refined_ig": os.path.join(output_root, "refined_ig"),
-    "refined_saliency": os.path.join(output_root, "refined_saliency"),
-    "refined_lime": os.path.join(output_root, "refined_lime"),
-    "numpy_ig": os.path.join(output_root, "numpy", "ig"),
-    "numpy_saliency": os.path.join(output_root, "numpy", "saliency"),
-    "numpy_lime": os.path.join(output_root, "numpy", "lime"),
-    # Additive: raw float arrays for CGXA outputs, needed so the evidence
-    # extraction stage works on real numbers instead of reverse-engineering
-    # values from colormapped JPEG pixels.
-    "numpy_consensus": os.path.join(output_root, "numpy", "consensus"),
-    "numpy_agreement": os.path.join(output_root, "numpy", "agreement"),
-    "numpy_refined_ig": os.path.join(output_root, "numpy", "refined_ig"),
-    "numpy_refined_saliency": os.path.join(output_root, "numpy", "refined_saliency"),
-    "numpy_refined_lime": os.path.join(output_root, "numpy", "refined_lime"),
-    "numpy_mask": os.path.join(output_root, "numpy", "mask"),
-    # Additive: per-file physical scale metadata (duration_sec, max_freq_hz,
-    # array shape) so a later, independent script can convert pixel
-    # coordinates back into seconds/Hz without re-reading the audio.
-    "meta": os.path.join(output_root, "meta"),
+    "saliency": os.path.join(output_root, "saliency")
 }
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -60,10 +38,10 @@ for folder in folders.values():
     os.makedirs(folder, exist_ok=True)
 print(f"Output directories created at: {output_root}")
 ##############################################################
-# Proposed Method: Consensus-Guided XAI Aggregation (CGXA)
+# Proposed Method: Consensus-Based Evidence Filtering (CBEF)
 ##############################################################
 
-USE_CGXA = True
+USE_CBEF = True
 
 CONSENSUS_BLEND = 0.30
 
@@ -293,21 +271,12 @@ class CGXA:
         Agreement-aware confidence map.
 
         High agreement → value close to 1.
-        High disagreement OR no signal → value close to 0.
-
-        NOTE: (1 - std) alone is degenerate — three maps that all read
-        zero at a pixel have zero std, which scores as "perfect
-        agreement" even though nothing important is there. We fix
-        this by requiring both low disagreement (low std) AND actual
-        signal (nonzero mean magnitude) before calling it "agreement".
+        High disagreement → value close to 0.
         """
 
         stack = np.stack([ig, sal, lime], axis=0)
 
-        disagreement = np.std(stack, axis=0)
-        signal = np.mean(stack, axis=0)
-
-        agreement = (1.0 - disagreement) * signal
+        agreement = 1.0 - np.std(stack, axis=0)
 
         agreement = np.clip(agreement, 0, 1)
 
@@ -315,7 +284,7 @@ class CGXA:
 
     ########################################################
 
-    def agreement_weighted_consensus(self, ig, sal, lime):
+    def consensus_map(self, ig, sal, lime):
         """
         Build the agreement-aware consensus map.
         """
@@ -388,7 +357,7 @@ class CGXA:
             lime_map
         )
 
-        consensus = self.agreement_weighted_consensus(
+        consensus = self.consensus_map(
             spec_ig,
             spec_sal,
             lime_map
@@ -430,9 +399,6 @@ model = DeepfakeDetector.from_pretrained("nii-yamagishilab/hubert-xlarge-anti-de
 model.to(device)
 model.eval()
 
-# CGXA is stateless w.r.t. individual files, so instantiate once.
-cgxa = CGXA()
-
 # === 文件映射 ===
 print("Scanning database directory to map files...")
 file_path_map = {}
@@ -465,52 +431,13 @@ for idx, filename in enumerate(target_files):
     full_path = file_path_map[filename]
     base_name = os.path.splitext(filename)[0]
     jpg_name = base_name + ".jpg"
-    npy_name = base_name + ".npy"
 
-    # 真·断点续传：如果在 load audio 之前发现所有输出都齐了，直接跳过
+    # 真·断点续传：如果在 load audio 之前发现图都齐了，直接跳过
     path_ig = os.path.join(folders["IG"], jpg_name)
     path_sal = os.path.join(folders["saliency"], jpg_name)
     path_lime = os.path.join(folders["lime"], jpg_name)
-    path_consensus = os.path.join(folders["consensus"], jpg_name)
-    path_agreement = os.path.join(folders["agreement"], jpg_name)
-    path_refined_ig = os.path.join(folders["refined_ig"], jpg_name)
-    path_refined_sal = os.path.join(folders["refined_saliency"], jpg_name)
-    path_refined_lime = os.path.join(folders["refined_lime"], jpg_name)
-    path_npy_ig = os.path.join(folders["numpy_ig"], npy_name)
-    path_npy_sal = os.path.join(folders["numpy_saliency"], npy_name)
-    path_npy_lime = os.path.join(folders["numpy_lime"], npy_name)
-    path_npy_consensus = os.path.join(folders["numpy_consensus"], npy_name)
-    path_npy_agreement = os.path.join(folders["numpy_agreement"], npy_name)
-    path_npy_refined_ig = os.path.join(folders["numpy_refined_ig"], npy_name)
-    path_npy_refined_sal = os.path.join(folders["numpy_refined_saliency"], npy_name)
-    path_npy_refined_lime = os.path.join(folders["numpy_refined_lime"], npy_name)
-    path_npy_mask = os.path.join(folders["numpy_mask"], npy_name)
-    path_meta = os.path.join(folders["meta"], base_name + ".json")
 
-    cgxa_outputs_required = (
-        os.path.exists(path_consensus)
-        and os.path.exists(path_agreement)
-        and os.path.exists(path_refined_ig)
-        and os.path.exists(path_refined_sal)
-        and os.path.exists(path_refined_lime)
-        and os.path.exists(path_npy_ig)
-        and os.path.exists(path_npy_sal)
-        and os.path.exists(path_npy_lime)
-        and os.path.exists(path_npy_consensus)
-        and os.path.exists(path_npy_agreement)
-        and os.path.exists(path_npy_refined_ig)
-        and os.path.exists(path_npy_refined_sal)
-        and os.path.exists(path_npy_refined_lime)
-        and os.path.exists(path_npy_mask)
-        and os.path.exists(path_meta)
-    ) if USE_CGXA else True
-
-    if (
-        os.path.exists(path_ig)
-        and os.path.exists(path_sal)
-        and os.path.exists(path_lime)
-        and cgxa_outputs_required
-    ):
+    if os.path.exists(path_ig) and os.path.exists(path_sal) and os.path.exists(path_lime):
         continue
 
     print(f"[{idx + 1}/{len(target_files)}] Processing: {filename}")
@@ -527,124 +454,42 @@ for idx, filename in enumerate(target_files):
             target_class_idx = 0
             label_str = "Unknown"
 
-        # Load Audio (无截断) — cheap decode, needed regardless of what's cached
+        # Load Audio (无截断)
         input_wav = load_wav_and_preprocess(full_path, requires_grad=True)
         duration_sec = input_wav.shape[-1] / 16000
         max_freq_hz = 8000
 
-        # === A. Generate IG (skip if already computed and saved) ===
-        if os.path.exists(path_npy_ig):
-            spec_ig = np.load(path_npy_ig)
-        else:
+        # === A. Generate IG ===
+        if not os.path.exists(path_ig):
             ig = IntegratedGradients(model)
             # 【关键修改】internal_batch_size=1：防止IG显存爆炸
             attr_ig = ig.attribute(input_wav, target=target_class_idx, n_steps=50, internal_batch_size=1)
             spec_ig = compute_attribution_spectrogram(attr_ig)
+            plot_and_save_spectrogram(spec_ig, f"IG - {filename} ({label_str})", path_ig, duration_sec, max_freq_hz)
 
+            # 手动清理
             del attr_ig, ig
             torch.cuda.empty_cache()
             gc.collect()
 
-        # === B. Generate Saliency (skip if already computed and saved) ===
-        if os.path.exists(path_npy_sal):
-            spec_sal = np.load(path_npy_sal)
-        else:
+        # === B. Generate Saliency ===
+        if not os.path.exists(path_sal):
             saliency = Saliency(model)
             attr_sal = saliency.attribute(input_wav, target=target_class_idx, abs=False)
             spec_sal = compute_attribution_spectrogram(attr_sal)
+            plot_and_save_spectrogram(spec_sal, f"Saliency - {filename} ({label_str})", path_sal, duration_sec,
+                                      max_freq_hz)
 
             del attr_sal, saliency
             torch.cuda.empty_cache()
 
-        # === C. Generate LIME (skip if already computed and saved) ===
-        if os.path.exists(path_npy_lime):
-            lime_weights = np.load(path_npy_lime)
-        else:
-            lime_weights = run_audio_lime(model, input_wav, target_class_idx, num_segments=40, num_samples=100)
-
-        # === D. Save raw arrays (skip re-saving what's already on disk) ===
-        if not os.path.exists(path_npy_ig):
-            np.save(path_npy_ig, spec_ig)
-        if not os.path.exists(path_npy_sal):
-            np.save(path_npy_sal, spec_sal)
-        if not os.path.exists(path_npy_lime):
-            np.save(path_npy_lime, lime_weights)
-
-        # === E. Run CGXA (needs spec_ig, spec_sal, lime_weights together) ===
-        results = cgxa.process(spec_ig, spec_sal, lime_weights) if USE_CGXA else None
-
-        # === F. Save original images (only if missing) ===
-        if not os.path.exists(path_ig):
-            plot_and_save_spectrogram(spec_ig, f"IG - {filename} ({label_str})", path_ig, duration_sec, max_freq_hz)
-
-        if not os.path.exists(path_sal):
-            plot_and_save_spectrogram(spec_sal, f"Saliency - {filename} ({label_str})", path_sal, duration_sec,
-                                      max_freq_hz)
-
+        # === C. Generate LIME ===
         if not os.path.exists(path_lime):
+            lime_weights = run_audio_lime(model, input_wav, target_class_idx, num_segments=40, num_samples=100)
             plot_and_save_lime(lime_weights, f"LIME - {filename} ({label_str})", path_lime, duration_sec)
 
-        if USE_CGXA:
-            # === G. Save consensus + agreement ===
-            if not os.path.exists(path_consensus):
-                plot_and_save_spectrogram(results["consensus"], f"Consensus - {filename} ({label_str})",
-                                          path_consensus, duration_sec, max_freq_hz)
-
-            if not os.path.exists(path_agreement):
-                plot_and_save_spectrogram(results["agreement"], f"Agreement - {filename} ({label_str})",
-                                          path_agreement, duration_sec, max_freq_hz)
-
-            # === H. Save refined maps ===
-            if not os.path.exists(path_refined_ig):
-                plot_and_save_spectrogram(results["refined_ig"], f"Refined IG - {filename} ({label_str})",
-                                          path_refined_ig, duration_sec, max_freq_hz)
-
-            if not os.path.exists(path_refined_sal):
-                plot_and_save_spectrogram(results["refined_saliency"], f"Refined Saliency - {filename} ({label_str})",
-                                          path_refined_sal, duration_sec, max_freq_hz)
-
-            if not os.path.exists(path_refined_lime):
-                plot_and_save_spectrogram(results["refined_lime"], f"Refined LIME - {filename} ({label_str})",
-                                          path_refined_lime, duration_sec, max_freq_hz)
-
-            # === H2. Save raw CGXA arrays + physical-scale metadata (additive) ===
-            # These are what the evidence extraction stage actually consumes —
-            # the JPEGs above are for human eyes only.
-            if not os.path.exists(path_npy_consensus):
-                np.save(path_npy_consensus, results["consensus"])
-            if not os.path.exists(path_npy_agreement):
-                np.save(path_npy_agreement, results["agreement"])
-            if not os.path.exists(path_npy_refined_ig):
-                np.save(path_npy_refined_ig, results["refined_ig"])
-            if not os.path.exists(path_npy_refined_sal):
-                np.save(path_npy_refined_sal, results["refined_saliency"])
-            if not os.path.exists(path_npy_refined_lime):
-                np.save(path_npy_refined_lime, results["refined_lime"])
-            if not os.path.exists(path_npy_mask):
-                np.save(path_npy_mask, results["mask"])
-            if not os.path.exists(path_meta):
-                meta = {
-                    "filename": filename,
-                    "base_name": base_name,
-                    "prediction": label_str,
-                    "target_class_idx": target_class_idx,
-                    "duration_sec": float(duration_sec),
-                    "max_freq_hz": float(max_freq_hz),
-                    "map_shape": list(results["consensus"].shape),  # [freq_bins, time_frames]
-                }
-                with open(path_meta, "w") as f:
-                    json.dump(meta, f, indent=2)
-
-        # === I. Cleanup (after CGXA, not before) ===
-        if 'results' in locals():
-            del results
-        if 'spec_ig' in locals():
-            del spec_ig
-        if 'spec_sal' in locals():
-            del spec_sal
-        if 'lime_weights' in locals():
             del lime_weights
-        torch.cuda.empty_cache()
+            torch.cuda.empty_cache()
 
         # Final cleanup for loop
         del input_wav
@@ -665,4 +510,91 @@ for idx, filename in enumerate(target_files):
         print(f"  ❌ Error processing {filename}: {e}")
         continue
 
-print("\nBatch processing complete!")
+# ============================================================
+# Reliability-Guided Evidence Refinement (RGER)
+# ============================================================
+
+def normalize_map(x):
+    """
+    Min-max normalize an attribution map to [0,1].
+    """
+    x = x.astype(np.float32)
+    x = x - np.min(x)
+    if np.max(x) > 0:
+        x = x / np.max(x)
+    return x
+
+
+def lime_to_2d(lime_weights, target_shape):
+    """
+    Expand 1D LIME weights into a 2D map matching the
+    spectrogram dimensions.
+
+    target_shape = (freq_bins, time_bins)
+    """
+    h, w = target_shape
+
+    # interpolate LIME weights along time
+    x_old = np.linspace(0, 1, len(lime_weights))
+    x_new = np.linspace(0, 1, w)
+
+    interp = np.interp(x_new, x_old, lime_weights)
+
+    # repeat over frequency dimension
+    lime_map = np.tile(interp, (h, 1))
+
+    return normalize_map(lime_map)
+
+
+def align_maps(spec_ig, spec_sal, lime_map):
+    """
+    Ensure all attribution maps have identical shapes.
+    """
+    h = min(spec_ig.shape[0], spec_sal.shape[0], lime_map.shape[0])
+    w = min(spec_ig.shape[1], spec_sal.shape[1], lime_map.shape[1])
+
+    spec_ig = spec_ig[:h, :w]
+    spec_sal = spec_sal[:h, :w]
+    lime_map = lime_map[:h, :w]
+
+    return spec_ig, spec_sal, lime_map
+
+def build_consensus(spec_ig,
+                    spec_sal,
+                    lime_map,
+                    w_ig=1/3,
+                    w_sal=1/3,
+                    w_lime=1/3):
+    """
+    Reliability-weighted consensus map.
+    """
+
+    consensus = (
+        w_ig * spec_ig +
+        w_sal * spec_sal +
+        w_lime * lime_map
+    )
+
+    return normalize_map(consensus)
+
+
+def adaptive_threshold(consensus, percentile=85):
+    """
+    Compute an adaptive threshold using the percentile
+    of the consensus distribution.
+    """
+    return np.percentile(consensus, percentile)
+
+
+def refine_map(xai_map, consensus, percentile=85):
+    """
+    Refine an attribution map using the consensus mask.
+    """
+
+    th = adaptive_threshold(consensus, percentile)
+
+    mask = consensus >= th
+
+    refined = xai_map * mask
+
+    return normalize_map(refined), maskprint("\nBatch processing complete!")
